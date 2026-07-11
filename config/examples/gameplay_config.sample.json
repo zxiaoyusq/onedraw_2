@@ -1,0 +1,6558 @@
+{
+  "schemaVersion": 1,
+  "contentVersion": "0.1.0-sample",
+  "contentHash": "ed8ab5789586c1e6b5c82b9f3185052f408cd61b53126cd8ec81b917c738756a",
+  "global": [
+    {
+      "key": "config_schema_version",
+      "valueType": "int",
+      "intValue": 1,
+      "floatValue": null,
+      "stringValue": "",
+      "boolValue": null,
+      "unit": "version",
+      "description": "配置结构版本"
+    },
+    {
+      "key": "content_version",
+      "valueType": "string",
+      "intValue": null,
+      "floatValue": null,
+      "stringValue": "0.1.0-sample",
+      "boolValue": null,
+      "unit": "semver",
+      "description": "内容版本"
+    },
+    {
+      "key": "reference_width",
+      "valueType": "int",
+      "intValue": 1920,
+      "floatValue": null,
+      "stringValue": "",
+      "boolValue": null,
+      "unit": "px",
+      "description": "手势参考分辨率宽"
+    },
+    {
+      "key": "reference_height",
+      "valueType": "int",
+      "intValue": 1080,
+      "floatValue": null,
+      "stringValue": "",
+      "boolValue": null,
+      "unit": "px",
+      "description": "手势参考分辨率高"
+    },
+    {
+      "key": "target_frame_rate",
+      "valueType": "int",
+      "intValue": 60,
+      "floatValue": null,
+      "stringValue": "",
+      "boolValue": null,
+      "unit": "fps",
+      "description": "目标帧率"
+    },
+    {
+      "key": "max_active_enemies",
+      "valueType": "int",
+      "intValue": 18,
+      "floatValue": null,
+      "stringValue": "",
+      "boolValue": null,
+      "unit": "count",
+      "description": "同时存活敌人数上限"
+    },
+    {
+      "key": "max_active_projectiles",
+      "valueType": "int",
+      "intValue": 40,
+      "floatValue": null,
+      "stringValue": "",
+      "boolValue": null,
+      "unit": "count",
+      "description": "同时存活弹幕上限"
+    },
+    {
+      "key": "max_active_vfx",
+      "valueType": "int",
+      "intValue": 60,
+      "floatValue": null,
+      "stringValue": "",
+      "boolValue": null,
+      "unit": "count",
+      "description": "同时存活特效上限"
+    },
+    {
+      "key": "battle_countdown_sec",
+      "valueType": "float",
+      "intValue": null,
+      "floatValue": 2.0,
+      "stringValue": "",
+      "boolValue": null,
+      "unit": "sec",
+      "description": "关卡开始倒计时"
+    },
+    {
+      "key": "pause_on_focus_lost",
+      "valueType": "bool",
+      "intValue": null,
+      "floatValue": null,
+      "stringValue": "",
+      "boolValue": true,
+      "unit": "bool",
+      "description": "前后台切换时暂停"
+    },
+    {
+      "key": "combo_timeout_sec",
+      "valueType": "float",
+      "intValue": null,
+      "floatValue": 1.8,
+      "stringValue": "",
+      "boolValue": null,
+      "unit": "sec",
+      "description": "连击保持时间"
+    },
+    {
+      "key": "damage_number_pool_size",
+      "valueType": "int",
+      "intValue": 30,
+      "floatValue": null,
+      "stringValue": "",
+      "boolValue": null,
+      "unit": "count",
+      "description": "伤害数字池预热"
+    }
+  ],
+  "players": [
+    {
+      "playerId": "player_moyan",
+      "displayNameKey": "text_player_moyan",
+      "maxHp": 100,
+      "maxEnergy": 100,
+      "defaultStanceId": "stance_blade",
+      "ultimateSkillId": "skill_ultimate_seal",
+      "hitInvulnSec": 0.35,
+      "assetKey": "char_moyan_idle"
+    }
+  ],
+  "stances": [
+    {
+      "stanceId": "stance_blade",
+      "displayNameKey": "text_stance_blade",
+      "damageMultiplier": 1.0,
+      "ghostDamageMultiplier": 0.85,
+      "projectileCutMultiplier": 0.8,
+      "strokeWidthRefPx": 18,
+      "switchCooldownSec": 1.0,
+      "onSwitchEffectGroupId": "fx_switch_to_blade",
+      "assetKey": "icon_stance_blade"
+    },
+    {
+      "stanceId": "stance_talisman",
+      "displayNameKey": "text_stance_talisman",
+      "damageMultiplier": 0.82,
+      "ghostDamageMultiplier": 1.35,
+      "projectileCutMultiplier": 1.4,
+      "strokeWidthRefPx": 28,
+      "switchCooldownSec": 1.0,
+      "onSwitchEffectGroupId": "fx_switch_to_talisman",
+      "assetKey": "icon_stance_talisman"
+    }
+  ],
+  "strokeRules": [
+    {
+      "ruleId": "stroke_any",
+      "gestureType": "Any",
+      "minPointDistanceRefPx": 8,
+      "maxStrokeLengthRefPx": 1400,
+      "rdpEpsilonRefPx": 5,
+      "maxPointCount": 64,
+      "minLengthRefPx": 45,
+      "directionToleranceDeg": 35,
+      "closeDistanceRefPx": 0,
+      "minAreaRefPx2": 0,
+      "minArcCurvature": 0,
+      "chargeHoldSec": 0,
+      "hitRadiusRefPx": 18
+    },
+    {
+      "ruleId": "stroke_horizontal",
+      "gestureType": "Horizontal",
+      "minPointDistanceRefPx": 8,
+      "maxStrokeLengthRefPx": 1400,
+      "rdpEpsilonRefPx": 5,
+      "maxPointCount": 64,
+      "minLengthRefPx": 90,
+      "directionToleranceDeg": 22,
+      "closeDistanceRefPx": 0,
+      "minAreaRefPx2": 0,
+      "minArcCurvature": 0,
+      "chargeHoldSec": 0,
+      "hitRadiusRefPx": 20
+    },
+    {
+      "ruleId": "stroke_vertical",
+      "gestureType": "Vertical",
+      "minPointDistanceRefPx": 8,
+      "maxStrokeLengthRefPx": 1400,
+      "rdpEpsilonRefPx": 5,
+      "maxPointCount": 64,
+      "minLengthRefPx": 90,
+      "directionToleranceDeg": 22,
+      "closeDistanceRefPx": 0,
+      "minAreaRefPx2": 0,
+      "minArcCurvature": 0,
+      "chargeHoldSec": 0,
+      "hitRadiusRefPx": 20
+    },
+    {
+      "ruleId": "stroke_diagonal",
+      "gestureType": "Diagonal",
+      "minPointDistanceRefPx": 8,
+      "maxStrokeLengthRefPx": 1400,
+      "rdpEpsilonRefPx": 5,
+      "maxPointCount": 64,
+      "minLengthRefPx": 90,
+      "directionToleranceDeg": 20,
+      "closeDistanceRefPx": 0,
+      "minAreaRefPx2": 0,
+      "minArcCurvature": 0,
+      "chargeHoldSec": 0,
+      "hitRadiusRefPx": 18
+    },
+    {
+      "ruleId": "stroke_arc",
+      "gestureType": "Arc",
+      "minPointDistanceRefPx": 8,
+      "maxStrokeLengthRefPx": 1500,
+      "rdpEpsilonRefPx": 5,
+      "maxPointCount": 72,
+      "minLengthRefPx": 120,
+      "directionToleranceDeg": 40,
+      "closeDistanceRefPx": 0,
+      "minAreaRefPx2": 0,
+      "minArcCurvature": 0.22,
+      "chargeHoldSec": 0,
+      "hitRadiusRefPx": 24
+    },
+    {
+      "ruleId": "stroke_circle",
+      "gestureType": "Circle",
+      "minPointDistanceRefPx": 8,
+      "maxStrokeLengthRefPx": 1600,
+      "rdpEpsilonRefPx": 5,
+      "maxPointCount": 80,
+      "minLengthRefPx": 180,
+      "directionToleranceDeg": 45,
+      "closeDistanceRefPx": 75,
+      "minAreaRefPx2": 16000,
+      "minArcCurvature": 0.15,
+      "chargeHoldSec": 0,
+      "hitRadiusRefPx": 28
+    },
+    {
+      "ruleId": "stroke_charged",
+      "gestureType": "Charged",
+      "minPointDistanceRefPx": 8,
+      "maxStrokeLengthRefPx": 1400,
+      "rdpEpsilonRefPx": 5,
+      "maxPointCount": 64,
+      "minLengthRefPx": 100,
+      "directionToleranceDeg": 35,
+      "closeDistanceRefPx": 0,
+      "minAreaRefPx2": 0,
+      "minArcCurvature": 0,
+      "chargeHoldSec": 0.4,
+      "hitRadiusRefPx": 26
+    }
+  ],
+  "damageFormulas": [
+    {
+      "formulaId": "damage_player_default",
+      "baseDamage": 12,
+      "criticalChance": 0.08,
+      "criticalMultiplier": 1.5,
+      "weakpointMultiplier": 2.0,
+      "wrongDirectionMultiplier": 0.15,
+      "comboStep": 0.1,
+      "comboMaxMultiplier": 1.5,
+      "energyPerHit": 3,
+      "scorePerHit": 100
+    },
+    {
+      "formulaId": "damage_talisman_default",
+      "baseDamage": 9,
+      "criticalChance": 0.05,
+      "criticalMultiplier": 1.4,
+      "weakpointMultiplier": 1.8,
+      "wrongDirectionMultiplier": 0.2,
+      "comboStep": 0.08,
+      "comboMaxMultiplier": 1.4,
+      "energyPerHit": 4,
+      "scorePerHit": 110
+    },
+    {
+      "formulaId": "damage_ultimate",
+      "baseDamage": 50,
+      "criticalChance": 0.0,
+      "criticalMultiplier": 1.0,
+      "weakpointMultiplier": 1.0,
+      "wrongDirectionMultiplier": 1.0,
+      "comboStep": 0.0,
+      "comboMaxMultiplier": 1.0,
+      "energyPerHit": 0,
+      "scorePerHit": 1000
+    }
+  ],
+  "defenseRules": [
+    {
+      "defenseRuleId": "defense_none",
+      "armorHp": 0,
+      "requiredGestureType": "Any",
+      "requiredStanceId": "",
+      "breakDamageMultiplier": 1.0,
+      "wrongGestureDamageMultiplier": 1.0,
+      "reflectDamage": 0,
+      "breakEffectGroupId": ""
+    },
+    {
+      "defenseRuleId": "defense_turtle_shell",
+      "armorHp": 40,
+      "requiredGestureType": "Charged",
+      "requiredStanceId": "stance_blade",
+      "breakDamageMultiplier": 1.5,
+      "wrongGestureDamageMultiplier": 0.1,
+      "reflectDamage": 0,
+      "breakEffectGroupId": "fx_break_armor"
+    },
+    {
+      "defenseRuleId": "defense_direction_seal",
+      "armorHp": 60,
+      "requiredGestureType": "Horizontal",
+      "requiredStanceId": "",
+      "breakDamageMultiplier": 1.3,
+      "wrongGestureDamageMultiplier": 0.05,
+      "reflectDamage": 2,
+      "breakEffectGroupId": "fx_break_seal"
+    },
+    {
+      "defenseRuleId": "defense_boss_pins",
+      "armorHp": 120,
+      "requiredGestureType": "Vertical",
+      "requiredStanceId": "stance_blade",
+      "breakDamageMultiplier": 1.2,
+      "wrongGestureDamageMultiplier": 0.1,
+      "reflectDamage": 4,
+      "breakEffectGroupId": "fx_break_boss_pin"
+    }
+  ],
+  "weakpointRules": [
+    {
+      "weakpointRuleId": "weakpoint_none",
+      "windowStartSec": 0,
+      "windowEndSec": 0,
+      "radiusRefPx": 0,
+      "damageMultiplier": 1.0,
+      "interruptAttack": false,
+      "energyBonus": 0,
+      "scoreBonus": 0,
+      "vfxKey": ""
+    },
+    {
+      "weakpointRuleId": "weakpoint_forehead_talisman",
+      "windowStartSec": 0.35,
+      "windowEndSec": 0.9,
+      "radiusRefPx": 52,
+      "damageMultiplier": 2.0,
+      "interruptAttack": true,
+      "energyBonus": 8,
+      "scoreBonus": 250,
+      "vfxKey": "vfx_weakpoint_hit"
+    },
+    {
+      "weakpointRuleId": "weakpoint_turtle_belly",
+      "windowStartSec": 0.55,
+      "windowEndSec": 1.2,
+      "radiusRefPx": 70,
+      "damageMultiplier": 2.2,
+      "interruptAttack": true,
+      "energyBonus": 10,
+      "scoreBonus": 350,
+      "vfxKey": "vfx_armor_critical"
+    },
+    {
+      "weakpointRuleId": "weakpoint_bat_dive",
+      "windowStartSec": 0.2,
+      "windowEndSec": 0.65,
+      "radiusRefPx": 46,
+      "damageMultiplier": 1.8,
+      "interruptAttack": true,
+      "energyBonus": 6,
+      "scoreBonus": 220,
+      "vfxKey": "vfx_air_interrupt"
+    },
+    {
+      "weakpointRuleId": "weakpoint_boss_seal",
+      "windowStartSec": 0.45,
+      "windowEndSec": 1.3,
+      "radiusRefPx": 90,
+      "damageMultiplier": 2.5,
+      "interruptAttack": true,
+      "energyBonus": 15,
+      "scoreBonus": 600,
+      "vfxKey": "vfx_boss_seal_hit"
+    }
+  ],
+  "movePatterns": [
+    {
+      "movePatternId": "move_ground_left",
+      "patternType": "Linear",
+      "speedMultiplier": 1.0,
+      "amplitudeRefPx": 0,
+      "frequency": 0,
+      "startXNorm": 0.92,
+      "endXNorm": 0.18,
+      "startYNorm": 0.34,
+      "endYNorm": 0.34,
+      "loop": false,
+      "description": "地面从右向左推进"
+    },
+    {
+      "movePatternId": "move_fly_sine",
+      "patternType": "Sine",
+      "speedMultiplier": 1.0,
+      "amplitudeRefPx": 80,
+      "frequency": 1.4,
+      "startXNorm": 0.95,
+      "endXNorm": 0.2,
+      "startYNorm": 0.68,
+      "endYNorm": 0.55,
+      "loop": false,
+      "description": "空中正弦漂浮"
+    },
+    {
+      "movePatternId": "move_dive",
+      "patternType": "Dive",
+      "speedMultiplier": 1.35,
+      "amplitudeRefPx": 0,
+      "frequency": 0,
+      "startXNorm": 0.95,
+      "endXNorm": 0.25,
+      "startYNorm": 0.78,
+      "endYNorm": 0.42,
+      "loop": false,
+      "description": "锁定后俯冲"
+    },
+    {
+      "movePatternId": "move_hover",
+      "patternType": "Hover",
+      "speedMultiplier": 0.65,
+      "amplitudeRefPx": 45,
+      "frequency": 0.8,
+      "startXNorm": 0.86,
+      "endXNorm": 0.62,
+      "startYNorm": 0.62,
+      "endYNorm": 0.62,
+      "loop": true,
+      "description": "精英悬浮支援"
+    },
+    {
+      "movePatternId": "move_boss_ground",
+      "patternType": "Boss",
+      "speedMultiplier": 0.5,
+      "amplitudeRefPx": 0,
+      "frequency": 0,
+      "startXNorm": 0.82,
+      "endXNorm": 0.58,
+      "startYNorm": 0.38,
+      "endYNorm": 0.38,
+      "loop": true,
+      "description": "Boss地面阶段"
+    }
+  ],
+  "enemies": [
+    {
+      "enemyId": "enemy_fire_fish",
+      "displayNameKey": "text_enemy_fire_fish",
+      "tier": "Normal",
+      "maxHp": 30,
+      "movePatternId": "move_fly_sine",
+      "moveSpeedRefPxSec": 110,
+      "attackSetId": "attackset_fire_fish",
+      "defenseRuleId": "defense_none",
+      "weakpointRuleId": "weakpoint_forehead_talisman",
+      "stanceVulnerability": "Any",
+      "contactDamage": 8,
+      "scoreValue": 120,
+      "assetKey": "enemy_fire_fish",
+      "poolPrewarm": 6
+    },
+    {
+      "enemyId": "enemy_wheel_zombie",
+      "displayNameKey": "text_enemy_wheel_zombie",
+      "tier": "Normal",
+      "maxHp": 45,
+      "movePatternId": "move_ground_left",
+      "moveSpeedRefPxSec": 95,
+      "attackSetId": "attackset_wheel_zombie",
+      "defenseRuleId": "defense_none",
+      "weakpointRuleId": "weakpoint_forehead_talisman",
+      "stanceVulnerability": "Blade",
+      "contactDamage": 12,
+      "scoreValue": 150,
+      "assetKey": "enemy_wheel_zombie",
+      "poolPrewarm": 6
+    },
+    {
+      "enemyId": "enemy_stone_turtle",
+      "displayNameKey": "text_enemy_stone_turtle",
+      "tier": "Normal",
+      "maxHp": 100,
+      "movePatternId": "move_ground_left",
+      "moveSpeedRefPxSec": 55,
+      "attackSetId": "attackset_stone_turtle",
+      "defenseRuleId": "defense_turtle_shell",
+      "weakpointRuleId": "weakpoint_turtle_belly",
+      "stanceVulnerability": "Blade",
+      "contactDamage": 18,
+      "scoreValue": 260,
+      "assetKey": "enemy_stone_turtle",
+      "poolPrewarm": 4
+    },
+    {
+      "enemyId": "enemy_skeleton_ghost",
+      "displayNameKey": "text_enemy_skeleton_ghost",
+      "tier": "Normal",
+      "maxHp": 55,
+      "movePatternId": "move_fly_sine",
+      "moveSpeedRefPxSec": 75,
+      "attackSetId": "attackset_skeleton_ghost",
+      "defenseRuleId": "defense_none",
+      "weakpointRuleId": "weakpoint_none",
+      "stanceVulnerability": "Talisman",
+      "contactDamage": 10,
+      "scoreValue": 190,
+      "assetKey": "enemy_skeleton_ghost",
+      "poolPrewarm": 5
+    },
+    {
+      "enemyId": "enemy_talisman_bat",
+      "displayNameKey": "text_enemy_talisman_bat",
+      "tier": "Normal",
+      "maxHp": 35,
+      "movePatternId": "move_dive",
+      "moveSpeedRefPxSec": 145,
+      "attackSetId": "attackset_talisman_bat",
+      "defenseRuleId": "defense_none",
+      "weakpointRuleId": "weakpoint_bat_dive",
+      "stanceVulnerability": "Blade",
+      "contactDamage": 14,
+      "scoreValue": 180,
+      "assetKey": "enemy_talisman_bat",
+      "poolPrewarm": 6
+    },
+    {
+      "enemyId": "enemy_soul_puppet",
+      "displayNameKey": "text_enemy_soul_puppet",
+      "tier": "Elite",
+      "maxHp": 160,
+      "movePatternId": "move_hover",
+      "moveSpeedRefPxSec": 45,
+      "attackSetId": "attackset_soul_puppet",
+      "defenseRuleId": "defense_direction_seal",
+      "weakpointRuleId": "weakpoint_forehead_talisman",
+      "stanceVulnerability": "Talisman",
+      "contactDamage": 20,
+      "scoreValue": 650,
+      "assetKey": "enemy_soul_puppet",
+      "poolPrewarm": 2
+    },
+    {
+      "enemyId": "boss_tomb_armor_king",
+      "displayNameKey": "text_boss_tomb_armor_king",
+      "tier": "Boss",
+      "maxHp": 1200,
+      "movePatternId": "move_boss_ground",
+      "moveSpeedRefPxSec": 40,
+      "attackSetId": "attackset_boss_phase1",
+      "defenseRuleId": "defense_boss_pins",
+      "weakpointRuleId": "weakpoint_boss_seal",
+      "stanceVulnerability": "Any",
+      "contactDamage": 30,
+      "scoreValue": 5000,
+      "assetKey": "boss_tomb_armor_king",
+      "poolPrewarm": 1
+    }
+  ],
+  "enemyAttacks": [
+    {
+      "attackId": "atk_fire_fish_orb",
+      "attackSetId": "attackset_fire_fish",
+      "order": 1,
+      "triggerType": "Cooldown",
+      "cooldownSec": 2.8,
+      "windupSec": 0.55,
+      "activeSec": 0.25,
+      "damage": 8,
+      "projectileId": "proj_ghost_fire",
+      "gestureInterruptType": "Any",
+      "interruptStartSec": 0.3,
+      "interruptEndSec": 0.7,
+      "effectGroupId": "fx_enemy_cast",
+      "weight": 1.0
+    },
+    {
+      "attackId": "atk_wheel_charge",
+      "attackSetId": "attackset_wheel_zombie",
+      "order": 1,
+      "triggerType": "Distance",
+      "cooldownSec": 3.2,
+      "windupSec": 0.65,
+      "activeSec": 0.5,
+      "damage": 12,
+      "projectileId": "",
+      "gestureInterruptType": "Horizontal",
+      "interruptStartSec": 0.35,
+      "interruptEndSec": 0.9,
+      "effectGroupId": "fx_wheel_charge",
+      "weight": 1.0
+    },
+    {
+      "attackId": "atk_turtle_slam",
+      "attackSetId": "attackset_stone_turtle",
+      "order": 1,
+      "triggerType": "Cooldown",
+      "cooldownSec": 3.8,
+      "windupSec": 0.9,
+      "activeSec": 0.55,
+      "damage": 18,
+      "projectileId": "",
+      "gestureInterruptType": "Vertical",
+      "interruptStartSec": 0.55,
+      "interruptEndSec": 1.2,
+      "effectGroupId": "fx_turtle_slam",
+      "weight": 1.0
+    },
+    {
+      "attackId": "atk_ghost_volley",
+      "attackSetId": "attackset_skeleton_ghost",
+      "order": 1,
+      "triggerType": "Cooldown",
+      "cooldownSec": 3.0,
+      "windupSec": 0.7,
+      "activeSec": 0.4,
+      "damage": 10,
+      "projectileId": "proj_soul_shard",
+      "gestureInterruptType": "Arc",
+      "interruptStartSec": 0.4,
+      "interruptEndSec": 0.95,
+      "effectGroupId": "fx_ghost_volley",
+      "weight": 1.0
+    },
+    {
+      "attackId": "atk_bat_dive",
+      "attackSetId": "attackset_talisman_bat",
+      "order": 1,
+      "triggerType": "Cooldown",
+      "cooldownSec": 2.4,
+      "windupSec": 0.45,
+      "activeSec": 0.55,
+      "damage": 14,
+      "projectileId": "",
+      "gestureInterruptType": "Diagonal",
+      "interruptStartSec": 0.2,
+      "interruptEndSec": 0.65,
+      "effectGroupId": "fx_bat_dive",
+      "weight": 1.0
+    },
+    {
+      "attackId": "atk_puppet_shield",
+      "attackSetId": "attackset_soul_puppet",
+      "order": 1,
+      "triggerType": "Support",
+      "cooldownSec": 4.5,
+      "windupSec": 0.8,
+      "activeSec": 0.5,
+      "damage": 0,
+      "projectileId": "",
+      "gestureInterruptType": "Circle",
+      "interruptStartSec": 0.35,
+      "interruptEndSec": 1.1,
+      "effectGroupId": "fx_puppet_shield",
+      "weight": 0.65
+    },
+    {
+      "attackId": "atk_puppet_bolt",
+      "attackSetId": "attackset_soul_puppet",
+      "order": 2,
+      "triggerType": "Cooldown",
+      "cooldownSec": 3.2,
+      "windupSec": 0.6,
+      "activeSec": 0.35,
+      "damage": 16,
+      "projectileId": "proj_seal_bolt",
+      "gestureInterruptType": "Any",
+      "interruptStartSec": 0.35,
+      "interruptEndSec": 0.85,
+      "effectGroupId": "fx_puppet_bolt",
+      "weight": 0.35
+    },
+    {
+      "attackId": "atk_boss_rockfall",
+      "attackSetId": "attackset_boss_phase1",
+      "order": 1,
+      "triggerType": "Cooldown",
+      "cooldownSec": 3.2,
+      "windupSec": 0.8,
+      "activeSec": 0.5,
+      "damage": 18,
+      "projectileId": "proj_rockfall",
+      "gestureInterruptType": "Any",
+      "interruptStartSec": 0.4,
+      "interruptEndSec": 1.0,
+      "effectGroupId": "fx_boss_rockfall",
+      "weight": 1.0
+    },
+    {
+      "attackId": "atk_boss_seal_wave",
+      "attackSetId": "attackset_boss_phase2",
+      "order": 1,
+      "triggerType": "Cooldown",
+      "cooldownSec": 2.8,
+      "windupSec": 0.75,
+      "activeSec": 0.45,
+      "damage": 22,
+      "projectileId": "proj_seal_wave",
+      "gestureInterruptType": "Horizontal",
+      "interruptStartSec": 0.4,
+      "interruptEndSec": 1.0,
+      "effectGroupId": "fx_boss_wave",
+      "weight": 1.0
+    },
+    {
+      "attackId": "atk_boss_charge",
+      "attackSetId": "attackset_boss_phase3",
+      "order": 1,
+      "triggerType": "HpThreshold",
+      "cooldownSec": 4.0,
+      "windupSec": 1.1,
+      "activeSec": 0.8,
+      "damage": 30,
+      "projectileId": "",
+      "gestureInterruptType": "Diagonal",
+      "interruptStartSec": 0.55,
+      "interruptEndSec": 1.35,
+      "effectGroupId": "fx_boss_charge",
+      "weight": 1.0
+    }
+  ],
+  "projectiles": [
+    {
+      "projectileId": "proj_ghost_fire",
+      "movePatternId": "move_ground_left",
+      "speedRefPxSec": 260,
+      "lifeSec": 4.0,
+      "damage": 8,
+      "cuttable": true,
+      "reflectable": true,
+      "requiredStanceId": "",
+      "hitRadiusRefPx": 26,
+      "assetKey": "proj_ghost_fire",
+      "vfxKey": "vfx_projectile_cut"
+    },
+    {
+      "projectileId": "proj_soul_shard",
+      "movePatternId": "move_ground_left",
+      "speedRefPxSec": 320,
+      "lifeSec": 3.5,
+      "damage": 10,
+      "cuttable": true,
+      "reflectable": false,
+      "requiredStanceId": "stance_talisman",
+      "hitRadiusRefPx": 22,
+      "assetKey": "proj_soul_shard",
+      "vfxKey": "vfx_projectile_cut"
+    },
+    {
+      "projectileId": "proj_seal_bolt",
+      "movePatternId": "move_ground_left",
+      "speedRefPxSec": 280,
+      "lifeSec": 4.0,
+      "damage": 16,
+      "cuttable": true,
+      "reflectable": true,
+      "requiredStanceId": "stance_talisman",
+      "hitRadiusRefPx": 28,
+      "assetKey": "proj_seal_bolt",
+      "vfxKey": "vfx_projectile_cut"
+    },
+    {
+      "projectileId": "proj_rockfall",
+      "movePatternId": "move_ground_left",
+      "speedRefPxSec": 360,
+      "lifeSec": 2.5,
+      "damage": 18,
+      "cuttable": true,
+      "reflectable": false,
+      "requiredStanceId": "",
+      "hitRadiusRefPx": 34,
+      "assetKey": "proj_rockfall",
+      "vfxKey": "vfx_rock_break"
+    },
+    {
+      "projectileId": "proj_seal_wave",
+      "movePatternId": "move_ground_left",
+      "speedRefPxSec": 220,
+      "lifeSec": 4.5,
+      "damage": 22,
+      "cuttable": true,
+      "reflectable": false,
+      "requiredStanceId": "stance_talisman",
+      "hitRadiusRefPx": 42,
+      "assetKey": "proj_seal_wave",
+      "vfxKey": "vfx_seal_wave_cut"
+    }
+  ],
+  "buffs": [
+    {
+      "buffId": "buff_slow_30",
+      "type": "Slow",
+      "durationSec": 2.0,
+      "maxStacks": 1,
+      "magnitude": 0.3,
+      "tickSec": 0,
+      "refreshPolicy": "Refresh",
+      "vfxKey": "vfx_slow",
+      "textKey": "text_buff_slow"
+    },
+    {
+      "buffId": "buff_stun",
+      "type": "Stun",
+      "durationSec": 1.2,
+      "maxStacks": 1,
+      "magnitude": 1.0,
+      "tickSec": 0,
+      "refreshPolicy": "Replace",
+      "vfxKey": "vfx_stun",
+      "textKey": "text_buff_stun"
+    },
+    {
+      "buffId": "buff_burn",
+      "type": "DamageOverTime",
+      "durationSec": 3.0,
+      "maxStacks": 3,
+      "magnitude": 3.0,
+      "tickSec": 0.5,
+      "refreshPolicy": "AddStack",
+      "vfxKey": "vfx_burn",
+      "textKey": "text_buff_burn"
+    },
+    {
+      "buffId": "buff_bind",
+      "type": "Root",
+      "durationSec": 1.5,
+      "maxStacks": 1,
+      "magnitude": 1.0,
+      "tickSec": 0,
+      "refreshPolicy": "Refresh",
+      "vfxKey": "vfx_bind",
+      "textKey": "text_buff_bind"
+    },
+    {
+      "buffId": "buff_vulnerable",
+      "type": "DamageTaken",
+      "durationSec": 2.0,
+      "maxStacks": 1,
+      "magnitude": 0.3,
+      "tickSec": 0,
+      "refreshPolicy": "Refresh",
+      "vfxKey": "vfx_vulnerable",
+      "textKey": "text_buff_vulnerable"
+    }
+  ],
+  "skills": [
+    {
+      "skillId": "skill_blade_echo",
+      "displayNameKey": "text_skill_blade_echo",
+      "triggerType": "Passive",
+      "requiredStanceId": "stance_blade",
+      "energyCost": 0,
+      "cooldownSec": 0,
+      "gestureType": "Any",
+      "inputWindowSec": 0,
+      "effectGroupId": "fx_blade_echo",
+      "iconAssetKey": "icon_skill_blade_echo",
+      "textKey": "text_skill_blade_echo_desc"
+    },
+    {
+      "skillId": "skill_talisman_bind",
+      "displayNameKey": "text_skill_talisman_bind",
+      "triggerType": "Gesture",
+      "requiredStanceId": "stance_talisman",
+      "energyCost": 20,
+      "cooldownSec": 6.0,
+      "gestureType": "Circle",
+      "inputWindowSec": 1.8,
+      "effectGroupId": "fx_talisman_bind",
+      "iconAssetKey": "icon_skill_talisman_bind",
+      "textKey": "text_skill_talisman_bind_desc"
+    },
+    {
+      "skillId": "skill_ultimate_seal",
+      "displayNameKey": "text_skill_ultimate_seal",
+      "triggerType": "Ultimate",
+      "requiredStanceId": "",
+      "energyCost": 100,
+      "cooldownSec": 0,
+      "gestureType": "Circle",
+      "inputWindowSec": 2.5,
+      "effectGroupId": "fx_ultimate_seal",
+      "iconAssetKey": "icon_skill_ultimate",
+      "textKey": "text_skill_ultimate_desc"
+    }
+  ],
+  "skillEffects": [
+    {
+      "effectGroupId": "fx_switch_to_blade",
+      "order": 1,
+      "effectType": "DamageMultiplier",
+      "targetType": "NextStroke",
+      "value1": 1.35,
+      "value2": 0,
+      "durationSec": 0,
+      "buffId": "",
+      "vfxKey": "vfx_switch_blade",
+      "audioKey": "sfx_switch",
+      "condition": ""
+    },
+    {
+      "effectGroupId": "fx_switch_to_talisman",
+      "order": 1,
+      "effectType": "Knockback",
+      "targetType": "EnemiesInRadius",
+      "value1": 80,
+      "value2": 0,
+      "durationSec": 0,
+      "buffId": "",
+      "vfxKey": "vfx_switch_talisman",
+      "audioKey": "sfx_switch",
+      "condition": ""
+    },
+    {
+      "effectGroupId": "fx_blade_echo",
+      "order": 1,
+      "effectType": "RepeatStroke",
+      "targetType": "LastStrokeTargets",
+      "value1": 0.55,
+      "value2": 0.2,
+      "durationSec": 0,
+      "buffId": "",
+      "vfxKey": "vfx_blade_echo",
+      "audioKey": "sfx_echo",
+      "condition": "comboCount>=3"
+    },
+    {
+      "effectGroupId": "fx_talisman_bind",
+      "order": 1,
+      "effectType": "ApplyBuff",
+      "targetType": "EnemiesInsideGesture",
+      "value1": 0,
+      "value2": 0,
+      "durationSec": 1.5,
+      "buffId": "buff_bind",
+      "vfxKey": "vfx_bind",
+      "audioKey": "sfx_bind",
+      "condition": ""
+    },
+    {
+      "effectGroupId": "fx_talisman_bind",
+      "order": 2,
+      "effectType": "Damage",
+      "targetType": "EnemiesInsideGesture",
+      "value1": 14,
+      "value2": 0,
+      "durationSec": 0,
+      "buffId": "",
+      "vfxKey": "vfx_talisman_burst",
+      "audioKey": "sfx_talisman_hit",
+      "condition": ""
+    },
+    {
+      "effectGroupId": "fx_ultimate_seal",
+      "order": 1,
+      "effectType": "TimeScale",
+      "targetType": "Battle",
+      "value1": 0.25,
+      "value2": 0,
+      "durationSec": 0.8,
+      "buffId": "",
+      "vfxKey": "vfx_ultimate_prepare",
+      "audioKey": "sfx_ultimate_start",
+      "condition": ""
+    },
+    {
+      "effectGroupId": "fx_ultimate_seal",
+      "order": 2,
+      "effectType": "Damage",
+      "targetType": "AllEnemies",
+      "value1": 50,
+      "value2": 0,
+      "durationSec": 0,
+      "buffId": "",
+      "vfxKey": "vfx_ultimate_slash",
+      "audioKey": "sfx_ultimate_hit",
+      "condition": ""
+    },
+    {
+      "effectGroupId": "fx_ultimate_seal",
+      "order": 3,
+      "effectType": "ExecuteBelowHpRatio",
+      "targetType": "NormalEnemies",
+      "value1": 0.25,
+      "value2": 0,
+      "durationSec": 0,
+      "buffId": "",
+      "vfxKey": "vfx_seal_execute",
+      "audioKey": "sfx_seal",
+      "condition": ""
+    },
+    {
+      "effectGroupId": "fx_ultimate_seal",
+      "order": 4,
+      "effectType": "ApplyBuff",
+      "targetType": "Boss",
+      "value1": 0,
+      "value2": 0,
+      "durationSec": 2.0,
+      "buffId": "buff_vulnerable",
+      "vfxKey": "vfx_boss_break",
+      "audioKey": "sfx_break",
+      "condition": ""
+    },
+    {
+      "effectGroupId": "fx_break_armor",
+      "order": 1,
+      "effectType": "RemoveArmor",
+      "targetType": "Target",
+      "value1": 1,
+      "value2": 0,
+      "durationSec": 0,
+      "buffId": "",
+      "vfxKey": "vfx_armor_break",
+      "audioKey": "sfx_armor_break",
+      "condition": ""
+    },
+    {
+      "effectGroupId": "fx_break_seal",
+      "order": 1,
+      "effectType": "RemoveArmor",
+      "targetType": "Target",
+      "value1": 1,
+      "value2": 0,
+      "durationSec": 0,
+      "buffId": "",
+      "vfxKey": "vfx_seal_break",
+      "audioKey": "sfx_seal_break",
+      "condition": ""
+    },
+    {
+      "effectGroupId": "fx_break_boss_pin",
+      "order": 1,
+      "effectType": "IncrementCounter",
+      "targetType": "Boss",
+      "value1": 1,
+      "value2": 4,
+      "durationSec": 0,
+      "buffId": "",
+      "vfxKey": "vfx_boss_pin_break",
+      "audioKey": "sfx_boss_pin",
+      "condition": ""
+    },
+    {
+      "effectGroupId": "fx_bat_dive",
+      "order": 1,
+      "effectType": "PlayVfx",
+      "targetType": "Target",
+      "value1": 0,
+      "value2": 0,
+      "durationSec": 0,
+      "buffId": "",
+      "vfxKey": "vfx_bat_dive",
+      "audioKey": "",
+      "condition": ""
+    },
+    {
+      "effectGroupId": "fx_boss_charge",
+      "order": 1,
+      "effectType": "PlayVfx",
+      "targetType": "Target",
+      "value1": 0,
+      "value2": 0,
+      "durationSec": 0,
+      "buffId": "",
+      "vfxKey": "vfx_boss_charge",
+      "audioKey": "",
+      "condition": ""
+    },
+    {
+      "effectGroupId": "fx_boss_phase1_enter",
+      "order": 1,
+      "effectType": "PlayVfx",
+      "targetType": "Target",
+      "value1": 0,
+      "value2": 0,
+      "durationSec": 0,
+      "buffId": "",
+      "vfxKey": "vfx_boss_phase1_enter",
+      "audioKey": "",
+      "condition": ""
+    },
+    {
+      "effectGroupId": "fx_boss_phase2_enter",
+      "order": 1,
+      "effectType": "PlayVfx",
+      "targetType": "Target",
+      "value1": 0,
+      "value2": 0,
+      "durationSec": 0,
+      "buffId": "",
+      "vfxKey": "vfx_boss_phase2_enter",
+      "audioKey": "",
+      "condition": ""
+    },
+    {
+      "effectGroupId": "fx_boss_phase3_enter",
+      "order": 1,
+      "effectType": "PlayVfx",
+      "targetType": "Target",
+      "value1": 0,
+      "value2": 0,
+      "durationSec": 0,
+      "buffId": "",
+      "vfxKey": "vfx_boss_phase3_enter",
+      "audioKey": "",
+      "condition": ""
+    },
+    {
+      "effectGroupId": "fx_boss_rockfall",
+      "order": 1,
+      "effectType": "PlayVfx",
+      "targetType": "Target",
+      "value1": 0,
+      "value2": 0,
+      "durationSec": 0,
+      "buffId": "",
+      "vfxKey": "vfx_boss_rockfall",
+      "audioKey": "",
+      "condition": ""
+    },
+    {
+      "effectGroupId": "fx_boss_wave",
+      "order": 1,
+      "effectType": "PlayVfx",
+      "targetType": "Target",
+      "value1": 0,
+      "value2": 0,
+      "durationSec": 0,
+      "buffId": "",
+      "vfxKey": "vfx_boss_wave",
+      "audioKey": "",
+      "condition": ""
+    },
+    {
+      "effectGroupId": "fx_enemy_cast",
+      "order": 1,
+      "effectType": "PlayVfx",
+      "targetType": "Target",
+      "value1": 0,
+      "value2": 0,
+      "durationSec": 0,
+      "buffId": "",
+      "vfxKey": "vfx_enemy_cast",
+      "audioKey": "",
+      "condition": ""
+    },
+    {
+      "effectGroupId": "fx_ghost_volley",
+      "order": 1,
+      "effectType": "PlayVfx",
+      "targetType": "Target",
+      "value1": 0,
+      "value2": 0,
+      "durationSec": 0,
+      "buffId": "",
+      "vfxKey": "vfx_ghost_volley",
+      "audioKey": "",
+      "condition": ""
+    },
+    {
+      "effectGroupId": "fx_puppet_bolt",
+      "order": 1,
+      "effectType": "PlayVfx",
+      "targetType": "Target",
+      "value1": 0,
+      "value2": 0,
+      "durationSec": 0,
+      "buffId": "",
+      "vfxKey": "vfx_puppet_bolt",
+      "audioKey": "",
+      "condition": ""
+    },
+    {
+      "effectGroupId": "fx_puppet_shield",
+      "order": 1,
+      "effectType": "PlayVfx",
+      "targetType": "Target",
+      "value1": 0,
+      "value2": 0,
+      "durationSec": 0,
+      "buffId": "",
+      "vfxKey": "vfx_puppet_shield",
+      "audioKey": "",
+      "condition": ""
+    },
+    {
+      "effectGroupId": "fx_turtle_slam",
+      "order": 1,
+      "effectType": "PlayVfx",
+      "targetType": "Target",
+      "value1": 0,
+      "value2": 0,
+      "durationSec": 0,
+      "buffId": "",
+      "vfxKey": "vfx_turtle_slam",
+      "audioKey": "",
+      "condition": ""
+    },
+    {
+      "effectGroupId": "fx_wheel_charge",
+      "order": 1,
+      "effectType": "PlayVfx",
+      "targetType": "Target",
+      "value1": 0,
+      "value2": 0,
+      "durationSec": 0,
+      "buffId": "",
+      "vfxKey": "vfx_wheel_charge",
+      "audioKey": "",
+      "condition": ""
+    }
+  ],
+  "levels": [
+    {
+      "levelId": "level_001",
+      "displayNameKey": "text_level_001",
+      "sceneKey": "scene_battle",
+      "backgroundAssetKey": "bg_red_cave",
+      "durationLimitSec": 180,
+      "nextLevelId": "level_002",
+      "rewardTableId": "reward_level_001",
+      "starScore1": 2500,
+      "starScore2": 4200,
+      "starScore3": 6000,
+      "tutorialId": "tutorial_level_001",
+      "bossEnemyId": ""
+    },
+    {
+      "levelId": "level_002",
+      "displayNameKey": "text_level_002",
+      "sceneKey": "scene_battle",
+      "backgroundAssetKey": "bg_red_cave",
+      "durationLimitSec": 210,
+      "nextLevelId": "level_003",
+      "rewardTableId": "reward_level_002",
+      "starScore1": 3500,
+      "starScore2": 5800,
+      "starScore3": 8000,
+      "tutorialId": "tutorial_level_002",
+      "bossEnemyId": ""
+    },
+    {
+      "levelId": "level_003",
+      "displayNameKey": "text_level_003",
+      "sceneKey": "scene_battle",
+      "backgroundAssetKey": "bg_red_cave_boss",
+      "durationLimitSec": 300,
+      "nextLevelId": "",
+      "rewardTableId": "reward_level_003",
+      "starScore1": 7000,
+      "starScore2": 10000,
+      "starScore3": 14000,
+      "tutorialId": "tutorial_level_003",
+      "bossEnemyId": "boss_tomb_armor_king"
+    }
+  ],
+  "waves": [
+    {
+      "waveId": "wave_001_01",
+      "levelId": "level_001",
+      "order": 1,
+      "startTrigger": "LevelStart",
+      "startDelaySec": 0.0,
+      "endCondition": "AllEnemiesDefeated",
+      "endDelaySec": 0.8,
+      "musicKey": "bgm_cave_01",
+      "maxAlive": 6
+    },
+    {
+      "waveId": "wave_001_02",
+      "levelId": "level_001",
+      "order": 2,
+      "startTrigger": "PreviousWaveEnd",
+      "startDelaySec": 0.5,
+      "endCondition": "AllEnemiesDefeated",
+      "endDelaySec": 0.8,
+      "musicKey": "bgm_cave_01",
+      "maxAlive": 7
+    },
+    {
+      "waveId": "wave_001_03",
+      "levelId": "level_001",
+      "order": 3,
+      "startTrigger": "PreviousWaveEnd",
+      "startDelaySec": 0.5,
+      "endCondition": "AllEnemiesDefeated",
+      "endDelaySec": 0.5,
+      "musicKey": "bgm_cave_01",
+      "maxAlive": 8
+    },
+    {
+      "waveId": "wave_002_01",
+      "levelId": "level_002",
+      "order": 1,
+      "startTrigger": "LevelStart",
+      "startDelaySec": 0.0,
+      "endCondition": "AllEnemiesDefeated",
+      "endDelaySec": 0.8,
+      "musicKey": "bgm_cave_02",
+      "maxAlive": 7
+    },
+    {
+      "waveId": "wave_002_02",
+      "levelId": "level_002",
+      "order": 2,
+      "startTrigger": "PreviousWaveEnd",
+      "startDelaySec": 0.6,
+      "endCondition": "AllEnemiesDefeated",
+      "endDelaySec": 0.8,
+      "musicKey": "bgm_cave_02",
+      "maxAlive": 8
+    },
+    {
+      "waveId": "wave_002_03",
+      "levelId": "level_002",
+      "order": 3,
+      "startTrigger": "PreviousWaveEnd",
+      "startDelaySec": 0.6,
+      "endCondition": "AllEnemiesDefeated",
+      "endDelaySec": 0.8,
+      "musicKey": "bgm_cave_02",
+      "maxAlive": 9
+    },
+    {
+      "waveId": "wave_002_04",
+      "levelId": "level_002",
+      "order": 4,
+      "startTrigger": "PreviousWaveEnd",
+      "startDelaySec": 0.6,
+      "endCondition": "AllEnemiesDefeated",
+      "endDelaySec": 0.5,
+      "musicKey": "bgm_cave_02",
+      "maxAlive": 10
+    },
+    {
+      "waveId": "wave_003_01",
+      "levelId": "level_003",
+      "order": 1,
+      "startTrigger": "LevelStart",
+      "startDelaySec": 0.0,
+      "endCondition": "AllEnemiesDefeated",
+      "endDelaySec": 0.8,
+      "musicKey": "bgm_boss_intro",
+      "maxAlive": 8
+    },
+    {
+      "waveId": "wave_003_02",
+      "levelId": "level_003",
+      "order": 2,
+      "startTrigger": "PreviousWaveEnd",
+      "startDelaySec": 0.8,
+      "endCondition": "BossDefeated",
+      "endDelaySec": 0.0,
+      "musicKey": "bgm_boss",
+      "maxAlive": 1
+    }
+  ],
+  "spawnPoints": [
+    {
+      "spawnPointId": "spawn_ground_right",
+      "levelId": "*",
+      "normalizedX": 0.96,
+      "normalizedY": 0.34,
+      "lane": "Ground",
+      "jitterX": 0.03,
+      "jitterY": 0.02,
+      "facing": "Left",
+      "notes": "通用右侧地面出生点"
+    },
+    {
+      "spawnPointId": "spawn_air_high",
+      "levelId": "*",
+      "normalizedX": 0.94,
+      "normalizedY": 0.72,
+      "lane": "Air",
+      "jitterX": 0.04,
+      "jitterY": 0.06,
+      "facing": "Left",
+      "notes": "通用右侧高空出生点"
+    },
+    {
+      "spawnPointId": "spawn_air_mid",
+      "levelId": "*",
+      "normalizedX": 0.9,
+      "normalizedY": 0.58,
+      "lane": "Air",
+      "jitterX": 0.05,
+      "jitterY": 0.05,
+      "facing": "Left",
+      "notes": "通用右侧中空出生点"
+    },
+    {
+      "spawnPointId": "spawn_boss",
+      "levelId": "level_003",
+      "normalizedX": 0.8,
+      "normalizedY": 0.38,
+      "lane": "Boss",
+      "jitterX": 0,
+      "jitterY": 0,
+      "facing": "Left",
+      "notes": "Boss固定出生点"
+    }
+  ],
+  "enemyModifiers": [
+    {
+      "modifierId": "modifier_none",
+      "displayNameKey": "text_modifier_none",
+      "hpMultiplier": 1.0,
+      "damageMultiplier": 1.0,
+      "speedMultiplier": 1.0,
+      "scoreMultiplier": 1.0,
+      "tintHex": "#FFFFFF",
+      "extraBuffId": ""
+    },
+    {
+      "modifierId": "modifier_elite",
+      "displayNameKey": "text_modifier_elite",
+      "hpMultiplier": 1.6,
+      "damageMultiplier": 1.25,
+      "speedMultiplier": 1.1,
+      "scoreMultiplier": 1.8,
+      "tintHex": "#E6B84A",
+      "extraBuffId": "buff_vulnerable"
+    }
+  ],
+  "spawns": [
+    {
+      "spawnId": "spawn_001_01_a",
+      "waveId": "wave_001_01",
+      "spawnTimeSec": 0.2,
+      "enemyId": "enemy_fire_fish",
+      "count": 3,
+      "intervalSec": 0.7,
+      "spawnPointId": "spawn_air_mid",
+      "spawnPattern": "Line",
+      "modifierId": "modifier_none"
+    },
+    {
+      "spawnId": "spawn_001_02_a",
+      "waveId": "wave_001_02",
+      "spawnTimeSec": 0.2,
+      "enemyId": "enemy_wheel_zombie",
+      "count": 4,
+      "intervalSec": 0.65,
+      "spawnPointId": "spawn_ground_right",
+      "spawnPattern": "Line",
+      "modifierId": "modifier_none"
+    },
+    {
+      "spawnId": "spawn_001_03_a",
+      "waveId": "wave_001_03",
+      "spawnTimeSec": 0.2,
+      "enemyId": "enemy_fire_fish",
+      "count": 2,
+      "intervalSec": 0.6,
+      "spawnPointId": "spawn_air_high",
+      "spawnPattern": "Line",
+      "modifierId": "modifier_none"
+    },
+    {
+      "spawnId": "spawn_001_03_b",
+      "waveId": "wave_001_03",
+      "spawnTimeSec": 0.6,
+      "enemyId": "enemy_stone_turtle",
+      "count": 1,
+      "intervalSec": 0,
+      "spawnPointId": "spawn_ground_right",
+      "spawnPattern": "Single",
+      "modifierId": "modifier_none"
+    },
+    {
+      "spawnId": "spawn_002_01_a",
+      "waveId": "wave_002_01",
+      "spawnTimeSec": 0.2,
+      "enemyId": "enemy_skeleton_ghost",
+      "count": 4,
+      "intervalSec": 0.7,
+      "spawnPointId": "spawn_air_mid",
+      "spawnPattern": "Scatter",
+      "modifierId": "modifier_none"
+    },
+    {
+      "spawnId": "spawn_002_02_a",
+      "waveId": "wave_002_02",
+      "spawnTimeSec": 0.2,
+      "enemyId": "enemy_talisman_bat",
+      "count": 4,
+      "intervalSec": 0.55,
+      "spawnPointId": "spawn_air_high",
+      "spawnPattern": "Stagger",
+      "modifierId": "modifier_none"
+    },
+    {
+      "spawnId": "spawn_002_03_a",
+      "waveId": "wave_002_03",
+      "spawnTimeSec": 0.2,
+      "enemyId": "enemy_stone_turtle",
+      "count": 2,
+      "intervalSec": 1.0,
+      "spawnPointId": "spawn_ground_right",
+      "spawnPattern": "Line",
+      "modifierId": "modifier_none"
+    },
+    {
+      "spawnId": "spawn_002_03_b",
+      "waveId": "wave_002_03",
+      "spawnTimeSec": 0.6,
+      "enemyId": "enemy_skeleton_ghost",
+      "count": 3,
+      "intervalSec": 0.7,
+      "spawnPointId": "spawn_air_mid",
+      "spawnPattern": "Scatter",
+      "modifierId": "modifier_none"
+    },
+    {
+      "spawnId": "spawn_002_04_a",
+      "waveId": "wave_002_04",
+      "spawnTimeSec": 0.2,
+      "enemyId": "enemy_soul_puppet",
+      "count": 1,
+      "intervalSec": 0,
+      "spawnPointId": "spawn_air_mid",
+      "spawnPattern": "Single",
+      "modifierId": "modifier_elite"
+    },
+    {
+      "spawnId": "spawn_002_04_b",
+      "waveId": "wave_002_04",
+      "spawnTimeSec": 0.8,
+      "enemyId": "enemy_wheel_zombie",
+      "count": 4,
+      "intervalSec": 0.6,
+      "spawnPointId": "spawn_ground_right",
+      "spawnPattern": "Line",
+      "modifierId": "modifier_none"
+    },
+    {
+      "spawnId": "spawn_003_01_a",
+      "waveId": "wave_003_01",
+      "spawnTimeSec": 0.2,
+      "enemyId": "enemy_fire_fish",
+      "count": 3,
+      "intervalSec": 0.5,
+      "spawnPointId": "spawn_air_mid",
+      "spawnPattern": "Line",
+      "modifierId": "modifier_none"
+    },
+    {
+      "spawnId": "spawn_003_01_b",
+      "waveId": "wave_003_01",
+      "spawnTimeSec": 0.6,
+      "enemyId": "enemy_talisman_bat",
+      "count": 3,
+      "intervalSec": 0.6,
+      "spawnPointId": "spawn_air_high",
+      "spawnPattern": "Stagger",
+      "modifierId": "modifier_none"
+    },
+    {
+      "spawnId": "spawn_003_02_a",
+      "waveId": "wave_003_02",
+      "spawnTimeSec": 0.0,
+      "enemyId": "boss_tomb_armor_king",
+      "count": 1,
+      "intervalSec": 0,
+      "spawnPointId": "spawn_boss",
+      "spawnPattern": "Single",
+      "modifierId": "modifier_none"
+    }
+  ],
+  "bossPhases": [
+    {
+      "bossPhaseId": "boss_tomb_phase_1",
+      "enemyId": "boss_tomb_armor_king",
+      "order": 1,
+      "enterHpRatio": 1.0,
+      "exitHpRatio": 0.67,
+      "movementPatternId": "move_boss_ground",
+      "attackSetId": "attackset_boss_phase1",
+      "defenseRuleId": "defense_boss_pins",
+      "weakpointRuleId": "weakpoint_none",
+      "onEnterEffectGroupId": "fx_boss_phase1_enter",
+      "descriptionKey": "text_boss_phase1"
+    },
+    {
+      "bossPhaseId": "boss_tomb_phase_2",
+      "enemyId": "boss_tomb_armor_king",
+      "order": 2,
+      "enterHpRatio": 0.67,
+      "exitHpRatio": 0.34,
+      "movementPatternId": "move_boss_ground",
+      "attackSetId": "attackset_boss_phase2",
+      "defenseRuleId": "defense_direction_seal",
+      "weakpointRuleId": "weakpoint_boss_seal",
+      "onEnterEffectGroupId": "fx_boss_phase2_enter",
+      "descriptionKey": "text_boss_phase2"
+    },
+    {
+      "bossPhaseId": "boss_tomb_phase_3",
+      "enemyId": "boss_tomb_armor_king",
+      "order": 3,
+      "enterHpRatio": 0.34,
+      "exitHpRatio": 0.0,
+      "movementPatternId": "move_boss_ground",
+      "attackSetId": "attackset_boss_phase3",
+      "defenseRuleId": "defense_none",
+      "weakpointRuleId": "weakpoint_boss_seal",
+      "onEnterEffectGroupId": "fx_boss_phase3_enter",
+      "descriptionKey": "text_boss_phase3"
+    }
+  ],
+  "rewards": [
+    {
+      "rewardTableId": "reward_level_001",
+      "order": 1,
+      "conditionType": "Clear",
+      "conditionValue": "1",
+      "rewardType": "UnlockLevel",
+      "rewardId": "level_002",
+      "amount": 1
+    },
+    {
+      "rewardTableId": "reward_level_001",
+      "order": 2,
+      "conditionType": "StarAtLeast",
+      "conditionValue": "2",
+      "rewardType": "ScoreToken",
+      "rewardId": "token_score",
+      "amount": 100
+    },
+    {
+      "rewardTableId": "reward_level_002",
+      "order": 1,
+      "conditionType": "Clear",
+      "conditionValue": "1",
+      "rewardType": "UnlockLevel",
+      "rewardId": "level_003",
+      "amount": 1
+    },
+    {
+      "rewardTableId": "reward_level_002",
+      "order": 2,
+      "conditionType": "StarAtLeast",
+      "conditionValue": "2",
+      "rewardType": "ScoreToken",
+      "rewardId": "token_score",
+      "amount": 150
+    },
+    {
+      "rewardTableId": "reward_level_003",
+      "order": 1,
+      "conditionType": "Clear",
+      "conditionValue": "1",
+      "rewardType": "UnlockFeature",
+      "rewardId": "feature_challenge",
+      "amount": 1
+    },
+    {
+      "rewardTableId": "reward_level_003",
+      "order": 2,
+      "conditionType": "StarAtLeast",
+      "conditionValue": "3",
+      "rewardType": "ScoreToken",
+      "rewardId": "token_score",
+      "amount": 300
+    }
+  ],
+  "tutorials": [
+    {
+      "tutorialId": "tutorial_level_001",
+      "order": 1,
+      "triggerEvent": "BattleReady",
+      "blockProgress": true,
+      "minDisplaySec": 0.5,
+      "completeEvent": "ValidStroke",
+      "textKey": "text_tutorial_swipe",
+      "highlightTarget": "BattleArea",
+      "gestureType": "Any"
+    },
+    {
+      "tutorialId": "tutorial_level_001",
+      "order": 2,
+      "triggerEvent": "EnemyWeakpointShown",
+      "blockProgress": true,
+      "minDisplaySec": 0.5,
+      "completeEvent": "WeakpointHit",
+      "textKey": "text_tutorial_weakpoint",
+      "highlightTarget": "Weakpoint",
+      "gestureType": "Any"
+    },
+    {
+      "tutorialId": "tutorial_level_001",
+      "order": 3,
+      "triggerEvent": "WaveMultiTarget",
+      "blockProgress": true,
+      "minDisplaySec": 0.5,
+      "completeEvent": "StrokeHitCount>=3",
+      "textKey": "text_tutorial_combo",
+      "highlightTarget": "BattleArea",
+      "gestureType": "Any"
+    },
+    {
+      "tutorialId": "tutorial_level_001",
+      "order": 4,
+      "triggerEvent": "ProjectileSpawned",
+      "blockProgress": true,
+      "minDisplaySec": 0.4,
+      "completeEvent": "ProjectileCut",
+      "textKey": "text_tutorial_cut",
+      "highlightTarget": "Projectile",
+      "gestureType": "Any"
+    },
+    {
+      "tutorialId": "tutorial_level_002",
+      "order": 1,
+      "triggerEvent": "ArmoredEnemySpawned",
+      "blockProgress": true,
+      "minDisplaySec": 0.5,
+      "completeEvent": "ArmorBroken",
+      "textKey": "text_tutorial_charge",
+      "highlightTarget": "Enemy",
+      "gestureType": "Charged"
+    },
+    {
+      "tutorialId": "tutorial_level_002",
+      "order": 2,
+      "triggerEvent": "GhostSpawned",
+      "blockProgress": true,
+      "minDisplaySec": 0.5,
+      "completeEvent": "StanceChanged",
+      "textKey": "text_tutorial_stance",
+      "highlightTarget": "SwitchButton",
+      "gestureType": "Any"
+    },
+    {
+      "tutorialId": "tutorial_level_003",
+      "order": 1,
+      "triggerEvent": "UltimateReady",
+      "blockProgress": true,
+      "minDisplaySec": 0.5,
+      "completeEvent": "UltimateSucceeded",
+      "textKey": "text_tutorial_ultimate",
+      "highlightTarget": "UltimateButton",
+      "gestureType": "Circle"
+    }
+  ],
+  "texts": [
+    {
+      "textKey": "text_player_moyan",
+      "zhCN": "玄狸·墨砚",
+      "enUS": "Moyan",
+      "context": "玩家名"
+    },
+    {
+      "textKey": "text_stance_blade",
+      "zhCN": "斩妖刀",
+      "enUS": "Demon Blade",
+      "context": "架势名"
+    },
+    {
+      "textKey": "text_stance_talisman",
+      "zhCN": "镇魂笔",
+      "enUS": "Soul Talisman",
+      "context": "架势名"
+    },
+    {
+      "textKey": "text_enemy_fire_fish",
+      "zhCN": "符火鱼妖",
+      "enUS": "Talisman Firefish",
+      "context": "敌人名"
+    },
+    {
+      "textKey": "text_enemy_wheel_zombie",
+      "zhCN": "轮车僵妖",
+      "enUS": "Wheel Zombie",
+      "context": "敌人名"
+    },
+    {
+      "textKey": "text_enemy_stone_turtle",
+      "zhCN": "石甲龟妖",
+      "enUS": "Stone Turtle",
+      "context": "敌人名"
+    },
+    {
+      "textKey": "text_enemy_skeleton_ghost",
+      "zhCN": "骷髅幽魂",
+      "enUS": "Skeleton Ghost",
+      "context": "敌人名"
+    },
+    {
+      "textKey": "text_enemy_talisman_bat",
+      "zhCN": "飞行符蝠",
+      "enUS": "Talisman Bat",
+      "context": "敌人名"
+    },
+    {
+      "textKey": "text_enemy_soul_puppet",
+      "zhCN": "摄魂道傀",
+      "enUS": "Soul Puppet",
+      "context": "精英名"
+    },
+    {
+      "textKey": "text_boss_tomb_armor_king",
+      "zhCN": "镇墓玄甲王",
+      "enUS": "Tomb Armor King",
+      "context": "Boss名"
+    },
+    {
+      "textKey": "text_level_001",
+      "zhCN": "幽菌古道",
+      "enUS": "Luminous Fungi Path",
+      "context": "关卡名"
+    },
+    {
+      "textKey": "text_level_002",
+      "zhCN": "百鬼回廊",
+      "enUS": "Hundred Ghost Gallery",
+      "context": "关卡名"
+    },
+    {
+      "textKey": "text_level_003",
+      "zhCN": "玄甲镇墓",
+      "enUS": "Tomb of Black Armor",
+      "context": "关卡名"
+    },
+    {
+      "textKey": "text_tutorial_swipe",
+      "zhCN": "划过妖怪即可攻击",
+      "enUS": "Swipe through monsters to attack",
+      "context": "教程"
+    },
+    {
+      "textKey": "text_tutorial_weakpoint",
+      "zhCN": "斩中发光弱点可打断并暴击",
+      "enUS": "Hit the glowing weakpoint to interrupt",
+      "context": "教程"
+    },
+    {
+      "textKey": "text_tutorial_combo",
+      "zhCN": "一笔划过多个目标，连斩更强",
+      "enUS": "Hit multiple targets in one stroke",
+      "context": "教程"
+    },
+    {
+      "textKey": "text_tutorial_cut",
+      "zhCN": "敌人的法术也可以斩断",
+      "enUS": "Enemy projectiles can be cut",
+      "context": "教程"
+    },
+    {
+      "textKey": "text_tutorial_charge",
+      "zhCN": "按住片刻再划动，破开重甲",
+      "enUS": "Hold briefly, then swipe to break armor",
+      "context": "教程"
+    },
+    {
+      "textKey": "text_tutorial_stance",
+      "zhCN": "切换镇魂笔，对幽魂更有效",
+      "enUS": "Switch stance for ghosts",
+      "context": "教程"
+    },
+    {
+      "textKey": "text_tutorial_ultimate",
+      "zhCN": "点击终极并画出封印",
+      "enUS": "Tap Ultimate and draw the seal",
+      "context": "教程"
+    },
+    {
+      "textKey": "text_skill_blade_echo",
+      "zhCN": "追影刀光",
+      "enUS": "Echo Slash",
+      "context": "技能名"
+    },
+    {
+      "textKey": "text_skill_talisman_bind",
+      "zhCN": "缚妖圈",
+      "enUS": "Demon Binding Circle",
+      "context": "技能名"
+    },
+    {
+      "textKey": "text_skill_ultimate_seal",
+      "zhCN": "天地封妖令",
+      "enUS": "Heaven-Earth Seal",
+      "context": "技能名"
+    },
+    {
+      "textKey": "text_skill_blade_echo_desc",
+      "zhCN": "连续精准命中后，下一笔产生追击刀光",
+      "enUS": "Creates an echo slash after precise hits",
+      "context": "技能说明"
+    },
+    {
+      "textKey": "text_skill_talisman_bind_desc",
+      "zhCN": "画出闭合符圈，定身圈内敌人",
+      "enUS": "Draw a closed circle to bind enemies",
+      "context": "技能说明"
+    },
+    {
+      "textKey": "text_skill_ultimate_desc",
+      "zhCN": "画出封印，对全场造成伤害并压制Boss",
+      "enUS": "Draw a seal to damage all enemies",
+      "context": "技能说明"
+    },
+    {
+      "textKey": "text_buff_slow",
+      "zhCN": "迟缓",
+      "enUS": "Slow",
+      "context": "Buff"
+    },
+    {
+      "textKey": "text_buff_stun",
+      "zhCN": "眩晕",
+      "enUS": "Stun",
+      "context": "Buff"
+    },
+    {
+      "textKey": "text_buff_burn",
+      "zhCN": "灼烧",
+      "enUS": "Burn",
+      "context": "Buff"
+    },
+    {
+      "textKey": "text_buff_bind",
+      "zhCN": "束缚",
+      "enUS": "Bind",
+      "context": "Buff"
+    },
+    {
+      "textKey": "text_buff_vulnerable",
+      "zhCN": "破绽",
+      "enUS": "Vulnerable",
+      "context": "Buff"
+    },
+    {
+      "textKey": "text_modifier_none",
+      "zhCN": "普通",
+      "enUS": "Normal",
+      "context": "Modifier"
+    },
+    {
+      "textKey": "text_modifier_elite",
+      "zhCN": "精英",
+      "enUS": "Elite",
+      "context": "Modifier"
+    },
+    {
+      "textKey": "text_boss_phase1",
+      "zhCN": "破除四枚符钉",
+      "enUS": "Break the four seal pins",
+      "context": "Boss phase"
+    },
+    {
+      "textKey": "text_boss_phase2",
+      "zhCN": "按方向斩开腹部封印",
+      "enUS": "Slash the seal in sequence",
+      "context": "Boss phase"
+    },
+    {
+      "textKey": "text_boss_phase3",
+      "zhCN": "切断法术并阻止冲撞",
+      "enUS": "Cut projectiles and stop the charge",
+      "context": "Boss phase"
+    }
+  ],
+  "audioCues": [
+    {
+      "audioKey": "bgm_cave_01",
+      "assetKey": "audio_bgm_cave_01",
+      "category": "BGM",
+      "volume": 0.7,
+      "pitchMin": 1.0,
+      "pitchMax": 1.0,
+      "maxConcurrent": 1,
+      "cooldownSec": 0
+    },
+    {
+      "audioKey": "bgm_cave_02",
+      "assetKey": "audio_bgm_cave_02",
+      "category": "BGM",
+      "volume": 0.7,
+      "pitchMin": 1.0,
+      "pitchMax": 1.0,
+      "maxConcurrent": 1,
+      "cooldownSec": 0
+    },
+    {
+      "audioKey": "bgm_boss_intro",
+      "assetKey": "audio_bgm_boss_intro",
+      "category": "BGM",
+      "volume": 0.75,
+      "pitchMin": 1.0,
+      "pitchMax": 1.0,
+      "maxConcurrent": 1,
+      "cooldownSec": 0
+    },
+    {
+      "audioKey": "bgm_boss",
+      "assetKey": "audio_bgm_boss",
+      "category": "BGM",
+      "volume": 0.8,
+      "pitchMin": 1.0,
+      "pitchMax": 1.0,
+      "maxConcurrent": 1,
+      "cooldownSec": 0
+    },
+    {
+      "audioKey": "sfx_slash",
+      "assetKey": "audio_sfx_slash",
+      "category": "SFX",
+      "volume": 0.85,
+      "pitchMin": 0.95,
+      "pitchMax": 1.05,
+      "maxConcurrent": 4,
+      "cooldownSec": 0.03
+    },
+    {
+      "audioKey": "sfx_hit",
+      "assetKey": "audio_sfx_hit",
+      "category": "SFX",
+      "volume": 0.9,
+      "pitchMin": 0.92,
+      "pitchMax": 1.08,
+      "maxConcurrent": 6,
+      "cooldownSec": 0.03
+    },
+    {
+      "audioKey": "sfx_switch",
+      "assetKey": "audio_sfx_switch",
+      "category": "SFX",
+      "volume": 0.8,
+      "pitchMin": 1.0,
+      "pitchMax": 1.0,
+      "maxConcurrent": 2,
+      "cooldownSec": 0.1
+    },
+    {
+      "audioKey": "sfx_ultimate_start",
+      "assetKey": "audio_sfx_ultimate_start",
+      "category": "SFX",
+      "volume": 1.0,
+      "pitchMin": 1.0,
+      "pitchMax": 1.0,
+      "maxConcurrent": 1,
+      "cooldownSec": 0.5
+    },
+    {
+      "audioKey": "sfx_ultimate_hit",
+      "assetKey": "audio_sfx_ultimate_hit",
+      "category": "SFX",
+      "volume": 1.0,
+      "pitchMin": 1.0,
+      "pitchMax": 1.0,
+      "maxConcurrent": 1,
+      "cooldownSec": 0.5
+    },
+    {
+      "audioKey": "sfx_armor_break",
+      "assetKey": "audio_sfx_armor_break",
+      "category": "SFX",
+      "volume": 0.85,
+      "pitchMin": 0.96,
+      "pitchMax": 1.04,
+      "maxConcurrent": 4,
+      "cooldownSec": 0.05
+    },
+    {
+      "audioKey": "sfx_bind",
+      "assetKey": "audio_sfx_bind",
+      "category": "SFX",
+      "volume": 0.85,
+      "pitchMin": 0.96,
+      "pitchMax": 1.04,
+      "maxConcurrent": 4,
+      "cooldownSec": 0.05
+    },
+    {
+      "audioKey": "sfx_boss_pin",
+      "assetKey": "audio_sfx_boss_pin",
+      "category": "SFX",
+      "volume": 0.85,
+      "pitchMin": 0.96,
+      "pitchMax": 1.04,
+      "maxConcurrent": 4,
+      "cooldownSec": 0.05
+    },
+    {
+      "audioKey": "sfx_break",
+      "assetKey": "audio_sfx_break",
+      "category": "SFX",
+      "volume": 0.85,
+      "pitchMin": 0.96,
+      "pitchMax": 1.04,
+      "maxConcurrent": 4,
+      "cooldownSec": 0.05
+    },
+    {
+      "audioKey": "sfx_echo",
+      "assetKey": "audio_sfx_echo",
+      "category": "SFX",
+      "volume": 0.85,
+      "pitchMin": 0.96,
+      "pitchMax": 1.04,
+      "maxConcurrent": 4,
+      "cooldownSec": 0.05
+    },
+    {
+      "audioKey": "sfx_seal",
+      "assetKey": "audio_sfx_seal",
+      "category": "SFX",
+      "volume": 0.85,
+      "pitchMin": 0.96,
+      "pitchMax": 1.04,
+      "maxConcurrent": 4,
+      "cooldownSec": 0.05
+    },
+    {
+      "audioKey": "sfx_seal_break",
+      "assetKey": "audio_sfx_seal_break",
+      "category": "SFX",
+      "volume": 0.85,
+      "pitchMin": 0.96,
+      "pitchMax": 1.04,
+      "maxConcurrent": 4,
+      "cooldownSec": 0.05
+    },
+    {
+      "audioKey": "sfx_talisman_hit",
+      "assetKey": "audio_sfx_talisman_hit",
+      "category": "SFX",
+      "volume": 0.85,
+      "pitchMin": 0.96,
+      "pitchMax": 1.04,
+      "maxConcurrent": 4,
+      "cooldownSec": 0.05
+    }
+  ],
+  "vfxCues": [
+    {
+      "vfxKey": "vfx_slash",
+      "assetKey": "vfx_slash",
+      "lifeSec": 0.3,
+      "poolPrewarm": 12,
+      "followTarget": false,
+      "sortingLayer": "VFX",
+      "sortingOrder": 20
+    },
+    {
+      "vfxKey": "vfx_hit",
+      "assetKey": "vfx_hit",
+      "lifeSec": 0.35,
+      "poolPrewarm": 16,
+      "followTarget": true,
+      "sortingLayer": "VFX",
+      "sortingOrder": 25
+    },
+    {
+      "vfxKey": "vfx_weakpoint_hit",
+      "assetKey": "vfx_weakpoint_hit",
+      "lifeSec": 0.45,
+      "poolPrewarm": 6,
+      "followTarget": true,
+      "sortingLayer": "VFX",
+      "sortingOrder": 30
+    },
+    {
+      "vfxKey": "vfx_armor_break",
+      "assetKey": "vfx_armor_break",
+      "lifeSec": 0.8,
+      "poolPrewarm": 4,
+      "followTarget": true,
+      "sortingLayer": "VFX",
+      "sortingOrder": 35
+    },
+    {
+      "vfxKey": "vfx_projectile_cut",
+      "assetKey": "vfx_projectile_cut",
+      "lifeSec": 0.5,
+      "poolPrewarm": 8,
+      "followTarget": false,
+      "sortingLayer": "VFX",
+      "sortingOrder": 30
+    },
+    {
+      "vfxKey": "vfx_bind",
+      "assetKey": "vfx_bind",
+      "lifeSec": 1.6,
+      "poolPrewarm": 3,
+      "followTarget": true,
+      "sortingLayer": "VFX",
+      "sortingOrder": 15
+    },
+    {
+      "vfxKey": "vfx_ultimate_prepare",
+      "assetKey": "vfx_ultimate_prepare",
+      "lifeSec": 1.0,
+      "poolPrewarm": 1,
+      "followTarget": false,
+      "sortingLayer": "VFX",
+      "sortingOrder": 40
+    },
+    {
+      "vfxKey": "vfx_ultimate_slash",
+      "assetKey": "vfx_ultimate_slash",
+      "lifeSec": 1.2,
+      "poolPrewarm": 1,
+      "followTarget": false,
+      "sortingLayer": "VFX",
+      "sortingOrder": 45
+    },
+    {
+      "vfxKey": "vfx_air_interrupt",
+      "assetKey": "vfx_air_interrupt",
+      "lifeSec": 0.8,
+      "poolPrewarm": 3,
+      "followTarget": true,
+      "sortingLayer": "VFX",
+      "sortingOrder": 30
+    },
+    {
+      "vfxKey": "vfx_armor_critical",
+      "assetKey": "vfx_armor_critical",
+      "lifeSec": 0.8,
+      "poolPrewarm": 3,
+      "followTarget": true,
+      "sortingLayer": "VFX",
+      "sortingOrder": 30
+    },
+    {
+      "vfxKey": "vfx_bat_dive",
+      "assetKey": "vfx_bat_dive",
+      "lifeSec": 0.8,
+      "poolPrewarm": 3,
+      "followTarget": true,
+      "sortingLayer": "VFX",
+      "sortingOrder": 30
+    },
+    {
+      "vfxKey": "vfx_blade_echo",
+      "assetKey": "vfx_blade_echo",
+      "lifeSec": 0.8,
+      "poolPrewarm": 3,
+      "followTarget": true,
+      "sortingLayer": "VFX",
+      "sortingOrder": 30
+    },
+    {
+      "vfxKey": "vfx_boss_break",
+      "assetKey": "vfx_boss_break",
+      "lifeSec": 0.8,
+      "poolPrewarm": 3,
+      "followTarget": true,
+      "sortingLayer": "VFX",
+      "sortingOrder": 30
+    },
+    {
+      "vfxKey": "vfx_boss_charge",
+      "assetKey": "vfx_boss_charge",
+      "lifeSec": 0.8,
+      "poolPrewarm": 3,
+      "followTarget": true,
+      "sortingLayer": "VFX",
+      "sortingOrder": 30
+    },
+    {
+      "vfxKey": "vfx_boss_phase1_enter",
+      "assetKey": "vfx_boss_phase1_enter",
+      "lifeSec": 0.8,
+      "poolPrewarm": 3,
+      "followTarget": true,
+      "sortingLayer": "VFX",
+      "sortingOrder": 30
+    },
+    {
+      "vfxKey": "vfx_boss_phase2_enter",
+      "assetKey": "vfx_boss_phase2_enter",
+      "lifeSec": 0.8,
+      "poolPrewarm": 3,
+      "followTarget": true,
+      "sortingLayer": "VFX",
+      "sortingOrder": 30
+    },
+    {
+      "vfxKey": "vfx_boss_phase3_enter",
+      "assetKey": "vfx_boss_phase3_enter",
+      "lifeSec": 0.8,
+      "poolPrewarm": 3,
+      "followTarget": true,
+      "sortingLayer": "VFX",
+      "sortingOrder": 30
+    },
+    {
+      "vfxKey": "vfx_boss_pin_break",
+      "assetKey": "vfx_boss_pin_break",
+      "lifeSec": 0.8,
+      "poolPrewarm": 3,
+      "followTarget": true,
+      "sortingLayer": "VFX",
+      "sortingOrder": 30
+    },
+    {
+      "vfxKey": "vfx_boss_rockfall",
+      "assetKey": "vfx_boss_rockfall",
+      "lifeSec": 0.8,
+      "poolPrewarm": 3,
+      "followTarget": true,
+      "sortingLayer": "VFX",
+      "sortingOrder": 30
+    },
+    {
+      "vfxKey": "vfx_boss_seal_hit",
+      "assetKey": "vfx_boss_seal_hit",
+      "lifeSec": 0.8,
+      "poolPrewarm": 3,
+      "followTarget": true,
+      "sortingLayer": "VFX",
+      "sortingOrder": 30
+    },
+    {
+      "vfxKey": "vfx_boss_wave",
+      "assetKey": "vfx_boss_wave",
+      "lifeSec": 0.8,
+      "poolPrewarm": 3,
+      "followTarget": true,
+      "sortingLayer": "VFX",
+      "sortingOrder": 30
+    },
+    {
+      "vfxKey": "vfx_burn",
+      "assetKey": "vfx_burn",
+      "lifeSec": 0.8,
+      "poolPrewarm": 3,
+      "followTarget": true,
+      "sortingLayer": "VFX",
+      "sortingOrder": 30
+    },
+    {
+      "vfxKey": "vfx_enemy_cast",
+      "assetKey": "vfx_enemy_cast",
+      "lifeSec": 0.8,
+      "poolPrewarm": 3,
+      "followTarget": true,
+      "sortingLayer": "VFX",
+      "sortingOrder": 30
+    },
+    {
+      "vfxKey": "vfx_ghost_volley",
+      "assetKey": "vfx_ghost_volley",
+      "lifeSec": 0.8,
+      "poolPrewarm": 3,
+      "followTarget": true,
+      "sortingLayer": "VFX",
+      "sortingOrder": 30
+    },
+    {
+      "vfxKey": "vfx_puppet_bolt",
+      "assetKey": "vfx_puppet_bolt",
+      "lifeSec": 0.8,
+      "poolPrewarm": 3,
+      "followTarget": true,
+      "sortingLayer": "VFX",
+      "sortingOrder": 30
+    },
+    {
+      "vfxKey": "vfx_puppet_shield",
+      "assetKey": "vfx_puppet_shield",
+      "lifeSec": 0.8,
+      "poolPrewarm": 3,
+      "followTarget": true,
+      "sortingLayer": "VFX",
+      "sortingOrder": 30
+    },
+    {
+      "vfxKey": "vfx_rock_break",
+      "assetKey": "vfx_rock_break",
+      "lifeSec": 0.8,
+      "poolPrewarm": 3,
+      "followTarget": true,
+      "sortingLayer": "VFX",
+      "sortingOrder": 30
+    },
+    {
+      "vfxKey": "vfx_seal_break",
+      "assetKey": "vfx_seal_break",
+      "lifeSec": 0.8,
+      "poolPrewarm": 3,
+      "followTarget": true,
+      "sortingLayer": "VFX",
+      "sortingOrder": 30
+    },
+    {
+      "vfxKey": "vfx_seal_execute",
+      "assetKey": "vfx_seal_execute",
+      "lifeSec": 0.8,
+      "poolPrewarm": 3,
+      "followTarget": true,
+      "sortingLayer": "VFX",
+      "sortingOrder": 30
+    },
+    {
+      "vfxKey": "vfx_seal_wave_cut",
+      "assetKey": "vfx_seal_wave_cut",
+      "lifeSec": 0.8,
+      "poolPrewarm": 3,
+      "followTarget": true,
+      "sortingLayer": "VFX",
+      "sortingOrder": 30
+    },
+    {
+      "vfxKey": "vfx_slow",
+      "assetKey": "vfx_slow",
+      "lifeSec": 0.8,
+      "poolPrewarm": 3,
+      "followTarget": true,
+      "sortingLayer": "VFX",
+      "sortingOrder": 30
+    },
+    {
+      "vfxKey": "vfx_stun",
+      "assetKey": "vfx_stun",
+      "lifeSec": 0.8,
+      "poolPrewarm": 3,
+      "followTarget": true,
+      "sortingLayer": "VFX",
+      "sortingOrder": 30
+    },
+    {
+      "vfxKey": "vfx_switch_blade",
+      "assetKey": "vfx_switch_blade",
+      "lifeSec": 0.8,
+      "poolPrewarm": 3,
+      "followTarget": true,
+      "sortingLayer": "VFX",
+      "sortingOrder": 30
+    },
+    {
+      "vfxKey": "vfx_switch_talisman",
+      "assetKey": "vfx_switch_talisman",
+      "lifeSec": 0.8,
+      "poolPrewarm": 3,
+      "followTarget": true,
+      "sortingLayer": "VFX",
+      "sortingOrder": 30
+    },
+    {
+      "vfxKey": "vfx_talisman_burst",
+      "assetKey": "vfx_talisman_burst",
+      "lifeSec": 0.8,
+      "poolPrewarm": 3,
+      "followTarget": true,
+      "sortingLayer": "VFX",
+      "sortingOrder": 30
+    },
+    {
+      "vfxKey": "vfx_turtle_slam",
+      "assetKey": "vfx_turtle_slam",
+      "lifeSec": 0.8,
+      "poolPrewarm": 3,
+      "followTarget": true,
+      "sortingLayer": "VFX",
+      "sortingOrder": 30
+    },
+    {
+      "vfxKey": "vfx_vulnerable",
+      "assetKey": "vfx_vulnerable",
+      "lifeSec": 0.8,
+      "poolPrewarm": 3,
+      "followTarget": true,
+      "sortingLayer": "VFX",
+      "sortingOrder": 30
+    },
+    {
+      "vfxKey": "vfx_wheel_charge",
+      "assetKey": "vfx_wheel_charge",
+      "lifeSec": 0.8,
+      "poolPrewarm": 3,
+      "followTarget": true,
+      "sortingLayer": "VFX",
+      "sortingOrder": 30
+    }
+  ],
+  "assetManifest": [
+    {
+      "assetKey": "char_moyan_idle",
+      "assetType": "Sprite",
+      "addressOrPath": "Assets/_Game/Art/Characters/Moyan/moyan_idle.png",
+      "requiredInMvp": true,
+      "notes": "PSD导出静态主角"
+    },
+    {
+      "assetKey": "enemy_fire_fish",
+      "assetType": "Sprite",
+      "addressOrPath": "Assets/_Game/Art/Enemies/fire_fish.png",
+      "requiredInMvp": true,
+      "notes": "PSD导出"
+    },
+    {
+      "assetKey": "enemy_wheel_zombie",
+      "assetType": "Sprite",
+      "addressOrPath": "Assets/_Game/Art/Enemies/wheel_zombie.png",
+      "requiredInMvp": true,
+      "notes": "确认来源授权"
+    },
+    {
+      "assetKey": "enemy_stone_turtle",
+      "assetType": "Sprite",
+      "addressOrPath": "Assets/_Game/Art/Enemies/stone_turtle.png",
+      "requiredInMvp": true,
+      "notes": "PSD导出"
+    },
+    {
+      "assetKey": "enemy_skeleton_ghost",
+      "assetType": "Sprite",
+      "addressOrPath": "Assets/_Game/Art/Enemies/skeleton_ghost.png",
+      "requiredInMvp": true,
+      "notes": "PSD导出"
+    },
+    {
+      "assetKey": "enemy_talisman_bat",
+      "assetType": "Sprite",
+      "addressOrPath": "Assets/_Game/Art/Enemies/talisman_bat.png",
+      "requiredInMvp": true,
+      "notes": "PSD导出"
+    },
+    {
+      "assetKey": "enemy_soul_puppet",
+      "assetType": "Prefab",
+      "addressOrPath": "Assets/_Game/Prefabs/Actors/EnemySoulPuppet.prefab",
+      "requiredInMvp": true,
+      "notes": "需要新制"
+    },
+    {
+      "assetKey": "boss_tomb_armor_king",
+      "assetType": "Prefab",
+      "addressOrPath": "Assets/_Game/Prefabs/Actors/BossTombArmorKing.prefab",
+      "requiredInMvp": true,
+      "notes": "需要新制"
+    },
+    {
+      "assetKey": "bg_red_cave",
+      "assetType": "Sprite",
+      "addressOrPath": "Assets/_Game/Art/Backgrounds/bg_red_cave.png",
+      "requiredInMvp": true,
+      "notes": "PSD当前背景"
+    },
+    {
+      "assetKey": "bg_red_cave_boss",
+      "assetType": "Sprite",
+      "addressOrPath": "Assets/_Game/Art/Backgrounds/bg_red_cave_boss.png",
+      "requiredInMvp": true,
+      "notes": "Boss版变体"
+    },
+    {
+      "assetKey": "scene_battle",
+      "assetType": "Scene",
+      "addressOrPath": "Assets/_Game/Scenes/Battle.unity",
+      "requiredInMvp": true,
+      "notes": "通用战斗场景"
+    },
+    {
+      "assetKey": "icon_stance_blade",
+      "assetType": "Sprite",
+      "addressOrPath": "Assets/_Game/Art/UI/icon_stance_blade.png",
+      "requiredInMvp": true,
+      "notes": "需要整理"
+    },
+    {
+      "assetKey": "icon_stance_talisman",
+      "assetType": "Sprite",
+      "addressOrPath": "Assets/_Game/Art/UI/icon_stance_talisman.png",
+      "requiredInMvp": true,
+      "notes": "需要整理"
+    },
+    {
+      "assetKey": "icon_skill_ultimate",
+      "assetType": "Sprite",
+      "addressOrPath": "Assets/_Game/Art/UI/icon_skill_ultimate.png",
+      "requiredInMvp": true,
+      "notes": "PSD按钮可作参考"
+    },
+    {
+      "assetKey": "audio_bgm_boss",
+      "assetType": "AudioClip",
+      "addressOrPath": "Assets/_Game/Art/Audio/audio_bgm_boss.wav",
+      "requiredInMvp": true,
+      "notes": "模板占位路径，导入资源后更新"
+    },
+    {
+      "assetKey": "audio_bgm_boss_intro",
+      "assetType": "AudioClip",
+      "addressOrPath": "Assets/_Game/Art/Audio/audio_bgm_boss_intro.wav",
+      "requiredInMvp": true,
+      "notes": "模板占位路径，导入资源后更新"
+    },
+    {
+      "assetKey": "audio_bgm_cave_01",
+      "assetType": "AudioClip",
+      "addressOrPath": "Assets/_Game/Art/Audio/audio_bgm_cave_01.wav",
+      "requiredInMvp": true,
+      "notes": "模板占位路径，导入资源后更新"
+    },
+    {
+      "assetKey": "audio_bgm_cave_02",
+      "assetType": "AudioClip",
+      "addressOrPath": "Assets/_Game/Art/Audio/audio_bgm_cave_02.wav",
+      "requiredInMvp": true,
+      "notes": "模板占位路径，导入资源后更新"
+    },
+    {
+      "assetKey": "audio_sfx_armor_break",
+      "assetType": "AudioClip",
+      "addressOrPath": "Assets/_Game/Art/Audio/audio_sfx_armor_break.wav",
+      "requiredInMvp": true,
+      "notes": "模板占位路径，导入资源后更新"
+    },
+    {
+      "assetKey": "audio_sfx_bind",
+      "assetType": "AudioClip",
+      "addressOrPath": "Assets/_Game/Art/Audio/audio_sfx_bind.wav",
+      "requiredInMvp": true,
+      "notes": "模板占位路径，导入资源后更新"
+    },
+    {
+      "assetKey": "audio_sfx_boss_pin",
+      "assetType": "AudioClip",
+      "addressOrPath": "Assets/_Game/Art/Audio/audio_sfx_boss_pin.wav",
+      "requiredInMvp": true,
+      "notes": "模板占位路径，导入资源后更新"
+    },
+    {
+      "assetKey": "audio_sfx_break",
+      "assetType": "AudioClip",
+      "addressOrPath": "Assets/_Game/Art/Audio/audio_sfx_break.wav",
+      "requiredInMvp": true,
+      "notes": "模板占位路径，导入资源后更新"
+    },
+    {
+      "assetKey": "audio_sfx_echo",
+      "assetType": "AudioClip",
+      "addressOrPath": "Assets/_Game/Art/Audio/audio_sfx_echo.wav",
+      "requiredInMvp": true,
+      "notes": "模板占位路径，导入资源后更新"
+    },
+    {
+      "assetKey": "audio_sfx_hit",
+      "assetType": "AudioClip",
+      "addressOrPath": "Assets/_Game/Art/Audio/audio_sfx_hit.wav",
+      "requiredInMvp": true,
+      "notes": "模板占位路径，导入资源后更新"
+    },
+    {
+      "assetKey": "audio_sfx_seal",
+      "assetType": "AudioClip",
+      "addressOrPath": "Assets/_Game/Art/Audio/audio_sfx_seal.wav",
+      "requiredInMvp": true,
+      "notes": "模板占位路径，导入资源后更新"
+    },
+    {
+      "assetKey": "audio_sfx_seal_break",
+      "assetType": "AudioClip",
+      "addressOrPath": "Assets/_Game/Art/Audio/audio_sfx_seal_break.wav",
+      "requiredInMvp": true,
+      "notes": "模板占位路径，导入资源后更新"
+    },
+    {
+      "assetKey": "audio_sfx_slash",
+      "assetType": "AudioClip",
+      "addressOrPath": "Assets/_Game/Art/Audio/audio_sfx_slash.wav",
+      "requiredInMvp": true,
+      "notes": "模板占位路径，导入资源后更新"
+    },
+    {
+      "assetKey": "audio_sfx_switch",
+      "assetType": "AudioClip",
+      "addressOrPath": "Assets/_Game/Art/Audio/audio_sfx_switch.wav",
+      "requiredInMvp": true,
+      "notes": "模板占位路径，导入资源后更新"
+    },
+    {
+      "assetKey": "audio_sfx_talisman_hit",
+      "assetType": "AudioClip",
+      "addressOrPath": "Assets/_Game/Art/Audio/audio_sfx_talisman_hit.wav",
+      "requiredInMvp": true,
+      "notes": "模板占位路径，导入资源后更新"
+    },
+    {
+      "assetKey": "audio_sfx_ultimate_hit",
+      "assetType": "AudioClip",
+      "addressOrPath": "Assets/_Game/Art/Audio/audio_sfx_ultimate_hit.wav",
+      "requiredInMvp": true,
+      "notes": "模板占位路径，导入资源后更新"
+    },
+    {
+      "assetKey": "audio_sfx_ultimate_start",
+      "assetType": "AudioClip",
+      "addressOrPath": "Assets/_Game/Art/Audio/audio_sfx_ultimate_start.wav",
+      "requiredInMvp": true,
+      "notes": "模板占位路径，导入资源后更新"
+    },
+    {
+      "assetKey": "icon_skill_blade_echo",
+      "assetType": "Sprite",
+      "addressOrPath": "Assets/_Game/Art/Sprites/icon_skill_blade_echo.png",
+      "requiredInMvp": true,
+      "notes": "模板占位路径，导入资源后更新"
+    },
+    {
+      "assetKey": "icon_skill_talisman_bind",
+      "assetType": "Sprite",
+      "addressOrPath": "Assets/_Game/Art/Sprites/icon_skill_talisman_bind.png",
+      "requiredInMvp": true,
+      "notes": "模板占位路径，导入资源后更新"
+    },
+    {
+      "assetKey": "proj_ghost_fire",
+      "assetType": "Sprite",
+      "addressOrPath": "Assets/_Game/Art/Sprites/proj_ghost_fire.png",
+      "requiredInMvp": true,
+      "notes": "模板占位路径，导入资源后更新"
+    },
+    {
+      "assetKey": "proj_rockfall",
+      "assetType": "Sprite",
+      "addressOrPath": "Assets/_Game/Art/Sprites/proj_rockfall.png",
+      "requiredInMvp": true,
+      "notes": "模板占位路径，导入资源后更新"
+    },
+    {
+      "assetKey": "proj_seal_bolt",
+      "assetType": "Sprite",
+      "addressOrPath": "Assets/_Game/Art/Sprites/proj_seal_bolt.png",
+      "requiredInMvp": true,
+      "notes": "模板占位路径，导入资源后更新"
+    },
+    {
+      "assetKey": "proj_seal_wave",
+      "assetType": "Sprite",
+      "addressOrPath": "Assets/_Game/Art/Sprites/proj_seal_wave.png",
+      "requiredInMvp": true,
+      "notes": "模板占位路径，导入资源后更新"
+    },
+    {
+      "assetKey": "proj_soul_shard",
+      "assetType": "Sprite",
+      "addressOrPath": "Assets/_Game/Art/Sprites/proj_soul_shard.png",
+      "requiredInMvp": true,
+      "notes": "模板占位路径，导入资源后更新"
+    },
+    {
+      "assetKey": "vfx_air_interrupt",
+      "assetType": "Prefab",
+      "addressOrPath": "Assets/_Game/Art/VFX/vfx_air_interrupt.prefab",
+      "requiredInMvp": true,
+      "notes": "模板占位路径，导入资源后更新"
+    },
+    {
+      "assetKey": "vfx_armor_break",
+      "assetType": "Prefab",
+      "addressOrPath": "Assets/_Game/Art/VFX/vfx_armor_break.prefab",
+      "requiredInMvp": true,
+      "notes": "模板占位路径，导入资源后更新"
+    },
+    {
+      "assetKey": "vfx_armor_critical",
+      "assetType": "Prefab",
+      "addressOrPath": "Assets/_Game/Art/VFX/vfx_armor_critical.prefab",
+      "requiredInMvp": true,
+      "notes": "模板占位路径，导入资源后更新"
+    },
+    {
+      "assetKey": "vfx_bat_dive",
+      "assetType": "Prefab",
+      "addressOrPath": "Assets/_Game/Art/VFX/vfx_bat_dive.prefab",
+      "requiredInMvp": true,
+      "notes": "模板占位路径，导入资源后更新"
+    },
+    {
+      "assetKey": "vfx_bind",
+      "assetType": "Prefab",
+      "addressOrPath": "Assets/_Game/Art/VFX/vfx_bind.prefab",
+      "requiredInMvp": true,
+      "notes": "模板占位路径，导入资源后更新"
+    },
+    {
+      "assetKey": "vfx_blade_echo",
+      "assetType": "Prefab",
+      "addressOrPath": "Assets/_Game/Art/VFX/vfx_blade_echo.prefab",
+      "requiredInMvp": true,
+      "notes": "模板占位路径，导入资源后更新"
+    },
+    {
+      "assetKey": "vfx_boss_break",
+      "assetType": "Prefab",
+      "addressOrPath": "Assets/_Game/Art/VFX/vfx_boss_break.prefab",
+      "requiredInMvp": true,
+      "notes": "模板占位路径，导入资源后更新"
+    },
+    {
+      "assetKey": "vfx_boss_charge",
+      "assetType": "Prefab",
+      "addressOrPath": "Assets/_Game/Art/VFX/vfx_boss_charge.prefab",
+      "requiredInMvp": true,
+      "notes": "模板占位路径，导入资源后更新"
+    },
+    {
+      "assetKey": "vfx_boss_phase1_enter",
+      "assetType": "Prefab",
+      "addressOrPath": "Assets/_Game/Art/VFX/vfx_boss_phase1_enter.prefab",
+      "requiredInMvp": true,
+      "notes": "模板占位路径，导入资源后更新"
+    },
+    {
+      "assetKey": "vfx_boss_phase2_enter",
+      "assetType": "Prefab",
+      "addressOrPath": "Assets/_Game/Art/VFX/vfx_boss_phase2_enter.prefab",
+      "requiredInMvp": true,
+      "notes": "模板占位路径，导入资源后更新"
+    },
+    {
+      "assetKey": "vfx_boss_phase3_enter",
+      "assetType": "Prefab",
+      "addressOrPath": "Assets/_Game/Art/VFX/vfx_boss_phase3_enter.prefab",
+      "requiredInMvp": true,
+      "notes": "模板占位路径，导入资源后更新"
+    },
+    {
+      "assetKey": "vfx_boss_pin_break",
+      "assetType": "Prefab",
+      "addressOrPath": "Assets/_Game/Art/VFX/vfx_boss_pin_break.prefab",
+      "requiredInMvp": true,
+      "notes": "模板占位路径，导入资源后更新"
+    },
+    {
+      "assetKey": "vfx_boss_rockfall",
+      "assetType": "Prefab",
+      "addressOrPath": "Assets/_Game/Art/VFX/vfx_boss_rockfall.prefab",
+      "requiredInMvp": true,
+      "notes": "模板占位路径，导入资源后更新"
+    },
+    {
+      "assetKey": "vfx_boss_seal_hit",
+      "assetType": "Prefab",
+      "addressOrPath": "Assets/_Game/Art/VFX/vfx_boss_seal_hit.prefab",
+      "requiredInMvp": true,
+      "notes": "模板占位路径，导入资源后更新"
+    },
+    {
+      "assetKey": "vfx_boss_wave",
+      "assetType": "Prefab",
+      "addressOrPath": "Assets/_Game/Art/VFX/vfx_boss_wave.prefab",
+      "requiredInMvp": true,
+      "notes": "模板占位路径，导入资源后更新"
+    },
+    {
+      "assetKey": "vfx_burn",
+      "assetType": "Prefab",
+      "addressOrPath": "Assets/_Game/Art/VFX/vfx_burn.prefab",
+      "requiredInMvp": true,
+      "notes": "模板占位路径，导入资源后更新"
+    },
+    {
+      "assetKey": "vfx_enemy_cast",
+      "assetType": "Prefab",
+      "addressOrPath": "Assets/_Game/Art/VFX/vfx_enemy_cast.prefab",
+      "requiredInMvp": true,
+      "notes": "模板占位路径，导入资源后更新"
+    },
+    {
+      "assetKey": "vfx_ghost_volley",
+      "assetType": "Prefab",
+      "addressOrPath": "Assets/_Game/Art/VFX/vfx_ghost_volley.prefab",
+      "requiredInMvp": true,
+      "notes": "模板占位路径，导入资源后更新"
+    },
+    {
+      "assetKey": "vfx_hit",
+      "assetType": "Prefab",
+      "addressOrPath": "Assets/_Game/Art/VFX/vfx_hit.prefab",
+      "requiredInMvp": true,
+      "notes": "模板占位路径，导入资源后更新"
+    },
+    {
+      "assetKey": "vfx_projectile_cut",
+      "assetType": "Prefab",
+      "addressOrPath": "Assets/_Game/Art/VFX/vfx_projectile_cut.prefab",
+      "requiredInMvp": true,
+      "notes": "模板占位路径，导入资源后更新"
+    },
+    {
+      "assetKey": "vfx_puppet_bolt",
+      "assetType": "Prefab",
+      "addressOrPath": "Assets/_Game/Art/VFX/vfx_puppet_bolt.prefab",
+      "requiredInMvp": true,
+      "notes": "模板占位路径，导入资源后更新"
+    },
+    {
+      "assetKey": "vfx_puppet_shield",
+      "assetType": "Prefab",
+      "addressOrPath": "Assets/_Game/Art/VFX/vfx_puppet_shield.prefab",
+      "requiredInMvp": true,
+      "notes": "模板占位路径，导入资源后更新"
+    },
+    {
+      "assetKey": "vfx_rock_break",
+      "assetType": "Prefab",
+      "addressOrPath": "Assets/_Game/Art/VFX/vfx_rock_break.prefab",
+      "requiredInMvp": true,
+      "notes": "模板占位路径，导入资源后更新"
+    },
+    {
+      "assetKey": "vfx_seal_break",
+      "assetType": "Prefab",
+      "addressOrPath": "Assets/_Game/Art/VFX/vfx_seal_break.prefab",
+      "requiredInMvp": true,
+      "notes": "模板占位路径，导入资源后更新"
+    },
+    {
+      "assetKey": "vfx_seal_execute",
+      "assetType": "Prefab",
+      "addressOrPath": "Assets/_Game/Art/VFX/vfx_seal_execute.prefab",
+      "requiredInMvp": true,
+      "notes": "模板占位路径，导入资源后更新"
+    },
+    {
+      "assetKey": "vfx_seal_wave_cut",
+      "assetType": "Prefab",
+      "addressOrPath": "Assets/_Game/Art/VFX/vfx_seal_wave_cut.prefab",
+      "requiredInMvp": true,
+      "notes": "模板占位路径，导入资源后更新"
+    },
+    {
+      "assetKey": "vfx_slash",
+      "assetType": "Prefab",
+      "addressOrPath": "Assets/_Game/Art/VFX/vfx_slash.prefab",
+      "requiredInMvp": true,
+      "notes": "模板占位路径，导入资源后更新"
+    },
+    {
+      "assetKey": "vfx_slow",
+      "assetType": "Prefab",
+      "addressOrPath": "Assets/_Game/Art/VFX/vfx_slow.prefab",
+      "requiredInMvp": true,
+      "notes": "模板占位路径，导入资源后更新"
+    },
+    {
+      "assetKey": "vfx_stun",
+      "assetType": "Prefab",
+      "addressOrPath": "Assets/_Game/Art/VFX/vfx_stun.prefab",
+      "requiredInMvp": true,
+      "notes": "模板占位路径，导入资源后更新"
+    },
+    {
+      "assetKey": "vfx_switch_blade",
+      "assetType": "Prefab",
+      "addressOrPath": "Assets/_Game/Art/VFX/vfx_switch_blade.prefab",
+      "requiredInMvp": true,
+      "notes": "模板占位路径，导入资源后更新"
+    },
+    {
+      "assetKey": "vfx_switch_talisman",
+      "assetType": "Prefab",
+      "addressOrPath": "Assets/_Game/Art/VFX/vfx_switch_talisman.prefab",
+      "requiredInMvp": true,
+      "notes": "模板占位路径，导入资源后更新"
+    },
+    {
+      "assetKey": "vfx_talisman_burst",
+      "assetType": "Prefab",
+      "addressOrPath": "Assets/_Game/Art/VFX/vfx_talisman_burst.prefab",
+      "requiredInMvp": true,
+      "notes": "模板占位路径，导入资源后更新"
+    },
+    {
+      "assetKey": "vfx_turtle_slam",
+      "assetType": "Prefab",
+      "addressOrPath": "Assets/_Game/Art/VFX/vfx_turtle_slam.prefab",
+      "requiredInMvp": true,
+      "notes": "模板占位路径，导入资源后更新"
+    },
+    {
+      "assetKey": "vfx_ultimate_prepare",
+      "assetType": "Prefab",
+      "addressOrPath": "Assets/_Game/Art/VFX/vfx_ultimate_prepare.prefab",
+      "requiredInMvp": true,
+      "notes": "模板占位路径，导入资源后更新"
+    },
+    {
+      "assetKey": "vfx_ultimate_slash",
+      "assetType": "Prefab",
+      "addressOrPath": "Assets/_Game/Art/VFX/vfx_ultimate_slash.prefab",
+      "requiredInMvp": true,
+      "notes": "模板占位路径，导入资源后更新"
+    },
+    {
+      "assetKey": "vfx_vulnerable",
+      "assetType": "Prefab",
+      "addressOrPath": "Assets/_Game/Art/VFX/vfx_vulnerable.prefab",
+      "requiredInMvp": true,
+      "notes": "模板占位路径，导入资源后更新"
+    },
+    {
+      "assetKey": "vfx_weakpoint_hit",
+      "assetType": "Prefab",
+      "addressOrPath": "Assets/_Game/Art/VFX/vfx_weakpoint_hit.prefab",
+      "requiredInMvp": true,
+      "notes": "模板占位路径，导入资源后更新"
+    },
+    {
+      "assetKey": "vfx_wheel_charge",
+      "assetType": "Prefab",
+      "addressOrPath": "Assets/_Game/Art/VFX/vfx_wheel_charge.prefab",
+      "requiredInMvp": true,
+      "notes": "模板占位路径，导入资源后更新"
+    }
+  ],
+  "enums": [
+    {
+      "enumType": "GestureType",
+      "value": "Any",
+      "displayName": "Any",
+      "description": "代码与配置共享的稳定枚举值"
+    },
+    {
+      "enumType": "GestureType",
+      "value": "Horizontal",
+      "displayName": "Horizontal",
+      "description": "代码与配置共享的稳定枚举值"
+    },
+    {
+      "enumType": "GestureType",
+      "value": "Vertical",
+      "displayName": "Vertical",
+      "description": "代码与配置共享的稳定枚举值"
+    },
+    {
+      "enumType": "GestureType",
+      "value": "Diagonal",
+      "displayName": "Diagonal",
+      "description": "代码与配置共享的稳定枚举值"
+    },
+    {
+      "enumType": "GestureType",
+      "value": "Arc",
+      "displayName": "Arc",
+      "description": "代码与配置共享的稳定枚举值"
+    },
+    {
+      "enumType": "GestureType",
+      "value": "Circle",
+      "displayName": "Circle",
+      "description": "代码与配置共享的稳定枚举值"
+    },
+    {
+      "enumType": "GestureType",
+      "value": "Charged",
+      "displayName": "Charged",
+      "description": "代码与配置共享的稳定枚举值"
+    },
+    {
+      "enumType": "EnemyTier",
+      "value": "Normal",
+      "displayName": "Normal",
+      "description": "代码与配置共享的稳定枚举值"
+    },
+    {
+      "enumType": "EnemyTier",
+      "value": "Elite",
+      "displayName": "Elite",
+      "description": "代码与配置共享的稳定枚举值"
+    },
+    {
+      "enumType": "EnemyTier",
+      "value": "Boss",
+      "displayName": "Boss",
+      "description": "代码与配置共享的稳定枚举值"
+    },
+    {
+      "enumType": "StanceVulnerability",
+      "value": "Any",
+      "displayName": "Any",
+      "description": "代码与配置共享的稳定枚举值"
+    },
+    {
+      "enumType": "StanceVulnerability",
+      "value": "Blade",
+      "displayName": "Blade",
+      "description": "代码与配置共享的稳定枚举值"
+    },
+    {
+      "enumType": "StanceVulnerability",
+      "value": "Talisman",
+      "displayName": "Talisman",
+      "description": "代码与配置共享的稳定枚举值"
+    },
+    {
+      "enumType": "MovePatternType",
+      "value": "Linear",
+      "displayName": "Linear",
+      "description": "代码与配置共享的稳定枚举值"
+    },
+    {
+      "enumType": "MovePatternType",
+      "value": "Sine",
+      "displayName": "Sine",
+      "description": "代码与配置共享的稳定枚举值"
+    },
+    {
+      "enumType": "MovePatternType",
+      "value": "Dive",
+      "displayName": "Dive",
+      "description": "代码与配置共享的稳定枚举值"
+    },
+    {
+      "enumType": "MovePatternType",
+      "value": "Hover",
+      "displayName": "Hover",
+      "description": "代码与配置共享的稳定枚举值"
+    },
+    {
+      "enumType": "MovePatternType",
+      "value": "Boss",
+      "displayName": "Boss",
+      "description": "代码与配置共享的稳定枚举值"
+    },
+    {
+      "enumType": "AttackTriggerType",
+      "value": "Cooldown",
+      "displayName": "Cooldown",
+      "description": "代码与配置共享的稳定枚举值"
+    },
+    {
+      "enumType": "AttackTriggerType",
+      "value": "Distance",
+      "displayName": "Distance",
+      "description": "代码与配置共享的稳定枚举值"
+    },
+    {
+      "enumType": "AttackTriggerType",
+      "value": "Support",
+      "displayName": "Support",
+      "description": "代码与配置共享的稳定枚举值"
+    },
+    {
+      "enumType": "AttackTriggerType",
+      "value": "HpThreshold",
+      "displayName": "HpThreshold",
+      "description": "代码与配置共享的稳定枚举值"
+    },
+    {
+      "enumType": "BuffType",
+      "value": "Slow",
+      "displayName": "Slow",
+      "description": "代码与配置共享的稳定枚举值"
+    },
+    {
+      "enumType": "BuffType",
+      "value": "Stun",
+      "displayName": "Stun",
+      "description": "代码与配置共享的稳定枚举值"
+    },
+    {
+      "enumType": "BuffType",
+      "value": "DamageOverTime",
+      "displayName": "DamageOverTime",
+      "description": "代码与配置共享的稳定枚举值"
+    },
+    {
+      "enumType": "BuffType",
+      "value": "Root",
+      "displayName": "Root",
+      "description": "代码与配置共享的稳定枚举值"
+    },
+    {
+      "enumType": "BuffType",
+      "value": "DamageTaken",
+      "displayName": "DamageTaken",
+      "description": "代码与配置共享的稳定枚举值"
+    },
+    {
+      "enumType": "BuffRefreshPolicy",
+      "value": "Refresh",
+      "displayName": "Refresh",
+      "description": "代码与配置共享的稳定枚举值"
+    },
+    {
+      "enumType": "BuffRefreshPolicy",
+      "value": "Replace",
+      "displayName": "Replace",
+      "description": "代码与配置共享的稳定枚举值"
+    },
+    {
+      "enumType": "BuffRefreshPolicy",
+      "value": "AddStack",
+      "displayName": "AddStack",
+      "description": "代码与配置共享的稳定枚举值"
+    },
+    {
+      "enumType": "SkillTriggerType",
+      "value": "Passive",
+      "displayName": "Passive",
+      "description": "代码与配置共享的稳定枚举值"
+    },
+    {
+      "enumType": "SkillTriggerType",
+      "value": "Gesture",
+      "displayName": "Gesture",
+      "description": "代码与配置共享的稳定枚举值"
+    },
+    {
+      "enumType": "SkillTriggerType",
+      "value": "Ultimate",
+      "displayName": "Ultimate",
+      "description": "代码与配置共享的稳定枚举值"
+    },
+    {
+      "enumType": "WaveStartTrigger",
+      "value": "LevelStart",
+      "displayName": "LevelStart",
+      "description": "代码与配置共享的稳定枚举值"
+    },
+    {
+      "enumType": "WaveStartTrigger",
+      "value": "PreviousWaveEnd",
+      "displayName": "PreviousWaveEnd",
+      "description": "代码与配置共享的稳定枚举值"
+    },
+    {
+      "enumType": "WaveStartTrigger",
+      "value": "PlayerConfirmed",
+      "displayName": "PlayerConfirmed",
+      "description": "代码与配置共享的稳定枚举值"
+    },
+    {
+      "enumType": "WaveStartTrigger",
+      "value": "TimeElapsed",
+      "displayName": "TimeElapsed",
+      "description": "代码与配置共享的稳定枚举值"
+    },
+    {
+      "enumType": "WaveEndCondition",
+      "value": "AllEnemiesDefeated",
+      "displayName": "AllEnemiesDefeated",
+      "description": "代码与配置共享的稳定枚举值"
+    },
+    {
+      "enumType": "WaveEndCondition",
+      "value": "BossDefeated",
+      "displayName": "BossDefeated",
+      "description": "代码与配置共享的稳定枚举值"
+    },
+    {
+      "enumType": "WaveEndCondition",
+      "value": "TimeElapsed",
+      "displayName": "TimeElapsed",
+      "description": "代码与配置共享的稳定枚举值"
+    },
+    {
+      "enumType": "WaveEndCondition",
+      "value": "PlayerConfirmed",
+      "displayName": "PlayerConfirmed",
+      "description": "代码与配置共享的稳定枚举值"
+    },
+    {
+      "enumType": "SpawnPattern",
+      "value": "Single",
+      "displayName": "Single",
+      "description": "代码与配置共享的稳定枚举值"
+    },
+    {
+      "enumType": "SpawnPattern",
+      "value": "Line",
+      "displayName": "Line",
+      "description": "代码与配置共享的稳定枚举值"
+    },
+    {
+      "enumType": "SpawnPattern",
+      "value": "Scatter",
+      "displayName": "Scatter",
+      "description": "代码与配置共享的稳定枚举值"
+    },
+    {
+      "enumType": "SpawnPattern",
+      "value": "Stagger",
+      "displayName": "Stagger",
+      "description": "代码与配置共享的稳定枚举值"
+    },
+    {
+      "enumType": "RewardCondition",
+      "value": "Clear",
+      "displayName": "Clear",
+      "description": "代码与配置共享的稳定枚举值"
+    },
+    {
+      "enumType": "RewardCondition",
+      "value": "StarAtLeast",
+      "displayName": "StarAtLeast",
+      "description": "代码与配置共享的稳定枚举值"
+    },
+    {
+      "enumType": "RewardCondition",
+      "value": "ScoreAtLeast",
+      "displayName": "ScoreAtLeast",
+      "description": "代码与配置共享的稳定枚举值"
+    },
+    {
+      "enumType": "RewardType",
+      "value": "UnlockLevel",
+      "displayName": "UnlockLevel",
+      "description": "代码与配置共享的稳定枚举值"
+    },
+    {
+      "enumType": "RewardType",
+      "value": "UnlockFeature",
+      "displayName": "UnlockFeature",
+      "description": "代码与配置共享的稳定枚举值"
+    },
+    {
+      "enumType": "RewardType",
+      "value": "ScoreToken",
+      "displayName": "ScoreToken",
+      "description": "代码与配置共享的稳定枚举值"
+    },
+    {
+      "enumType": "AssetType",
+      "value": "Sprite",
+      "displayName": "Sprite",
+      "description": "代码与配置共享的稳定枚举值"
+    },
+    {
+      "enumType": "AssetType",
+      "value": "Prefab",
+      "displayName": "Prefab",
+      "description": "代码与配置共享的稳定枚举值"
+    },
+    {
+      "enumType": "AssetType",
+      "value": "AudioClip",
+      "displayName": "AudioClip",
+      "description": "代码与配置共享的稳定枚举值"
+    },
+    {
+      "enumType": "AssetType",
+      "value": "Scene",
+      "displayName": "Scene",
+      "description": "代码与配置共享的稳定枚举值"
+    },
+    {
+      "enumType": "AssetType",
+      "value": "Material",
+      "displayName": "Material",
+      "description": "代码与配置共享的稳定枚举值"
+    },
+    {
+      "enumType": "AssetType",
+      "value": "Font",
+      "displayName": "Font",
+      "description": "代码与配置共享的稳定枚举值"
+    },
+    {
+      "enumType": "AssetType",
+      "value": "AnimationClip",
+      "displayName": "AnimationClip",
+      "description": "代码与配置共享的稳定枚举值"
+    },
+    {
+      "enumType": "AudioCategory",
+      "value": "BGM",
+      "displayName": "BGM",
+      "description": "代码与配置共享的稳定枚举值"
+    },
+    {
+      "enumType": "AudioCategory",
+      "value": "SFX",
+      "displayName": "SFX",
+      "description": "代码与配置共享的稳定枚举值"
+    },
+    {
+      "enumType": "AudioCategory",
+      "value": "UI",
+      "displayName": "UI",
+      "description": "代码与配置共享的稳定枚举值"
+    },
+    {
+      "enumType": "EffectType",
+      "value": "Damage",
+      "displayName": "Damage",
+      "description": "代码与配置共享的稳定枚举值"
+    },
+    {
+      "enumType": "EffectType",
+      "value": "ApplyBuff",
+      "displayName": "ApplyBuff",
+      "description": "代码与配置共享的稳定枚举值"
+    },
+    {
+      "enumType": "EffectType",
+      "value": "RemoveArmor",
+      "displayName": "RemoveArmor",
+      "description": "代码与配置共享的稳定枚举值"
+    },
+    {
+      "enumType": "EffectType",
+      "value": "Knockback",
+      "displayName": "Knockback",
+      "description": "代码与配置共享的稳定枚举值"
+    },
+    {
+      "enumType": "EffectType",
+      "value": "RepeatStroke",
+      "displayName": "RepeatStroke",
+      "description": "代码与配置共享的稳定枚举值"
+    },
+    {
+      "enumType": "EffectType",
+      "value": "TimeScale",
+      "displayName": "TimeScale",
+      "description": "代码与配置共享的稳定枚举值"
+    },
+    {
+      "enumType": "EffectType",
+      "value": "ExecuteBelowHpRatio",
+      "displayName": "ExecuteBelowHpRatio",
+      "description": "代码与配置共享的稳定枚举值"
+    },
+    {
+      "enumType": "EffectType",
+      "value": "DamageMultiplier",
+      "displayName": "DamageMultiplier",
+      "description": "代码与配置共享的稳定枚举值"
+    },
+    {
+      "enumType": "EffectType",
+      "value": "IncrementCounter",
+      "displayName": "IncrementCounter",
+      "description": "代码与配置共享的稳定枚举值"
+    },
+    {
+      "enumType": "TargetType",
+      "value": "Target",
+      "displayName": "Target",
+      "description": "代码与配置共享的稳定枚举值"
+    },
+    {
+      "enumType": "TargetType",
+      "value": "NextStroke",
+      "displayName": "NextStroke",
+      "description": "代码与配置共享的稳定枚举值"
+    },
+    {
+      "enumType": "TargetType",
+      "value": "EnemiesInRadius",
+      "displayName": "EnemiesInRadius",
+      "description": "代码与配置共享的稳定枚举值"
+    },
+    {
+      "enumType": "TargetType",
+      "value": "LastStrokeTargets",
+      "displayName": "LastStrokeTargets",
+      "description": "代码与配置共享的稳定枚举值"
+    },
+    {
+      "enumType": "TargetType",
+      "value": "EnemiesInsideGesture",
+      "displayName": "EnemiesInsideGesture",
+      "description": "代码与配置共享的稳定枚举值"
+    },
+    {
+      "enumType": "TargetType",
+      "value": "Battle",
+      "displayName": "Battle",
+      "description": "代码与配置共享的稳定枚举值"
+    },
+    {
+      "enumType": "TargetType",
+      "value": "AllEnemies",
+      "displayName": "AllEnemies",
+      "description": "代码与配置共享的稳定枚举值"
+    },
+    {
+      "enumType": "TargetType",
+      "value": "NormalEnemies",
+      "displayName": "NormalEnemies",
+      "description": "代码与配置共享的稳定枚举值"
+    },
+    {
+      "enumType": "TargetType",
+      "value": "Boss",
+      "displayName": "Boss",
+      "description": "代码与配置共享的稳定枚举值"
+    },
+    {
+      "enumType": "EffectType",
+      "value": "PlayVfx",
+      "displayName": "PlayVfx",
+      "description": "代码与配置共享的稳定枚举值"
+    },
+    {
+      "enumType": "ValueType",
+      "value": "int",
+      "displayName": "int",
+      "description": "代码与配置共享的稳定枚举值"
+    },
+    {
+      "enumType": "ValueType",
+      "value": "float",
+      "displayName": "float",
+      "description": "代码与配置共享的稳定枚举值"
+    },
+    {
+      "enumType": "ValueType",
+      "value": "string",
+      "displayName": "string",
+      "description": "代码与配置共享的稳定枚举值"
+    },
+    {
+      "enumType": "ValueType",
+      "value": "bool",
+      "displayName": "bool",
+      "description": "代码与配置共享的稳定枚举值"
+    },
+    {
+      "enumType": "SpawnLane",
+      "value": "Ground",
+      "displayName": "Ground",
+      "description": "代码与配置共享的稳定枚举值"
+    },
+    {
+      "enumType": "SpawnLane",
+      "value": "Air",
+      "displayName": "Air",
+      "description": "代码与配置共享的稳定枚举值"
+    },
+    {
+      "enumType": "SpawnLane",
+      "value": "Boss",
+      "displayName": "Boss",
+      "description": "代码与配置共享的稳定枚举值"
+    },
+    {
+      "enumType": "Facing",
+      "value": "Left",
+      "displayName": "Left",
+      "description": "代码与配置共享的稳定枚举值"
+    },
+    {
+      "enumType": "Facing",
+      "value": "Right",
+      "displayName": "Right",
+      "description": "代码与配置共享的稳定枚举值"
+    }
+  ],
+  "fieldDictionary": [
+    {
+      "sheet": "Global",
+      "field": "key",
+      "type": "string",
+      "required": "true",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "",
+      "description": "Global 表的 key 字段"
+    },
+    {
+      "sheet": "Global",
+      "field": "valueType",
+      "type": "string",
+      "required": "true",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "ValueType",
+      "foreignKey": "",
+      "description": "Global 表的 valueType 字段"
+    },
+    {
+      "sheet": "Global",
+      "field": "intValue",
+      "type": "int",
+      "required": "true",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "",
+      "description": "Global 表的 intValue 字段"
+    },
+    {
+      "sheet": "Global",
+      "field": "floatValue",
+      "type": "float",
+      "required": "true",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "",
+      "description": "Global 表的 floatValue 字段"
+    },
+    {
+      "sheet": "Global",
+      "field": "stringValue",
+      "type": "string",
+      "required": "true",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "",
+      "description": "Global 表的 stringValue 字段"
+    },
+    {
+      "sheet": "Global",
+      "field": "boolValue",
+      "type": "bool",
+      "required": "true",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "",
+      "description": "Global 表的 boolValue 字段"
+    },
+    {
+      "sheet": "Global",
+      "field": "unit",
+      "type": "string",
+      "required": "true",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "",
+      "description": "Global 表的 unit 字段"
+    },
+    {
+      "sheet": "Global",
+      "field": "description",
+      "type": "string",
+      "required": "true",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "",
+      "description": "Global 表的 description 字段"
+    },
+    {
+      "sheet": "Players",
+      "field": "playerId",
+      "type": "string",
+      "required": "true",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "",
+      "description": "玩家稳定ID"
+    },
+    {
+      "sheet": "Players",
+      "field": "displayNameKey",
+      "type": "string",
+      "required": "true",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "Texts.textKey",
+      "description": "显示名称文案键"
+    },
+    {
+      "sheet": "Players",
+      "field": "maxHp",
+      "type": "int",
+      "required": "true",
+      "default": "",
+      "min": 1,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "",
+      "description": "最大生命值"
+    },
+    {
+      "sheet": "Players",
+      "field": "maxEnergy",
+      "type": "int",
+      "required": "true",
+      "default": "",
+      "min": 1,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "",
+      "description": "最大能量"
+    },
+    {
+      "sheet": "Players",
+      "field": "defaultStanceId",
+      "type": "string",
+      "required": "true",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "Stances.stanceId",
+      "description": "Players 表的 defaultStanceId 字段"
+    },
+    {
+      "sheet": "Players",
+      "field": "ultimateSkillId",
+      "type": "string",
+      "required": "true",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "Skills.skillId",
+      "description": "Players 表的 ultimateSkillId 字段"
+    },
+    {
+      "sheet": "Players",
+      "field": "hitInvulnSec",
+      "type": "float",
+      "required": "true",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "",
+      "description": "Players 表的 hitInvulnSec 字段"
+    },
+    {
+      "sheet": "Players",
+      "field": "assetKey",
+      "type": "string",
+      "required": "true",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "AssetManifest.assetKey",
+      "description": "Unity资源注册键"
+    },
+    {
+      "sheet": "Stances",
+      "field": "stanceId",
+      "type": "string",
+      "required": "true",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "",
+      "description": "Stances 表的 stanceId 字段"
+    },
+    {
+      "sheet": "Stances",
+      "field": "displayNameKey",
+      "type": "string",
+      "required": "true",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "Texts.textKey",
+      "description": "显示名称文案键"
+    },
+    {
+      "sheet": "Stances",
+      "field": "damageMultiplier",
+      "type": "float",
+      "required": "true",
+      "default": "",
+      "min": 0,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "",
+      "description": "Stances 表的 damageMultiplier 字段"
+    },
+    {
+      "sheet": "Stances",
+      "field": "ghostDamageMultiplier",
+      "type": "float",
+      "required": "true",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "",
+      "description": "Stances 表的 ghostDamageMultiplier 字段"
+    },
+    {
+      "sheet": "Stances",
+      "field": "projectileCutMultiplier",
+      "type": "float",
+      "required": "true",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "",
+      "description": "Stances 表的 projectileCutMultiplier 字段"
+    },
+    {
+      "sheet": "Stances",
+      "field": "strokeWidthRefPx",
+      "type": "int",
+      "required": "true",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "",
+      "description": "Stances 表的 strokeWidthRefPx 字段"
+    },
+    {
+      "sheet": "Stances",
+      "field": "switchCooldownSec",
+      "type": "float",
+      "required": "true",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "",
+      "description": "Stances 表的 switchCooldownSec 字段"
+    },
+    {
+      "sheet": "Stances",
+      "field": "onSwitchEffectGroupId",
+      "type": "string",
+      "required": "false",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "SkillEffects.effectGroupId",
+      "description": "Stances 表的 onSwitchEffectGroupId 字段"
+    },
+    {
+      "sheet": "Stances",
+      "field": "assetKey",
+      "type": "string",
+      "required": "true",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "AssetManifest.assetKey",
+      "description": "Unity资源注册键"
+    },
+    {
+      "sheet": "StrokeRules",
+      "field": "ruleId",
+      "type": "string",
+      "required": "true",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "",
+      "description": "手势规则稳定ID"
+    },
+    {
+      "sheet": "StrokeRules",
+      "field": "gestureType",
+      "type": "string",
+      "required": "true",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "GestureType",
+      "foreignKey": "",
+      "description": "StrokeRules 表的 gestureType 字段"
+    },
+    {
+      "sheet": "StrokeRules",
+      "field": "minPointDistanceRefPx",
+      "type": "int",
+      "required": "true",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "",
+      "description": "StrokeRules 表的 minPointDistanceRefPx 字段"
+    },
+    {
+      "sheet": "StrokeRules",
+      "field": "maxStrokeLengthRefPx",
+      "type": "int",
+      "required": "true",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "",
+      "description": "StrokeRules 表的 maxStrokeLengthRefPx 字段"
+    },
+    {
+      "sheet": "StrokeRules",
+      "field": "rdpEpsilonRefPx",
+      "type": "int",
+      "required": "true",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "",
+      "description": "StrokeRules 表的 rdpEpsilonRefPx 字段"
+    },
+    {
+      "sheet": "StrokeRules",
+      "field": "maxPointCount",
+      "type": "int",
+      "required": "true",
+      "default": "",
+      "min": 2,
+      "max": 256,
+      "enumType": "",
+      "foreignKey": "",
+      "description": "StrokeRules 表的 maxPointCount 字段"
+    },
+    {
+      "sheet": "StrokeRules",
+      "field": "minLengthRefPx",
+      "type": "int",
+      "required": "true",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "",
+      "description": "StrokeRules 表的 minLengthRefPx 字段"
+    },
+    {
+      "sheet": "StrokeRules",
+      "field": "directionToleranceDeg",
+      "type": "int",
+      "required": "true",
+      "default": "",
+      "min": 0,
+      "max": 90,
+      "enumType": "",
+      "foreignKey": "",
+      "description": "StrokeRules 表的 directionToleranceDeg 字段"
+    },
+    {
+      "sheet": "StrokeRules",
+      "field": "closeDistanceRefPx",
+      "type": "int",
+      "required": "true",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "",
+      "description": "StrokeRules 表的 closeDistanceRefPx 字段"
+    },
+    {
+      "sheet": "StrokeRules",
+      "field": "minAreaRefPx2",
+      "type": "int",
+      "required": "true",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "",
+      "description": "StrokeRules 表的 minAreaRefPx2 字段"
+    },
+    {
+      "sheet": "StrokeRules",
+      "field": "minArcCurvature",
+      "type": "float",
+      "required": "true",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "",
+      "description": "StrokeRules 表的 minArcCurvature 字段"
+    },
+    {
+      "sheet": "StrokeRules",
+      "field": "chargeHoldSec",
+      "type": "float",
+      "required": "true",
+      "default": "",
+      "min": 0,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "",
+      "description": "StrokeRules 表的 chargeHoldSec 字段"
+    },
+    {
+      "sheet": "StrokeRules",
+      "field": "hitRadiusRefPx",
+      "type": "int",
+      "required": "true",
+      "default": "",
+      "min": 0,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "",
+      "description": "StrokeRules 表的 hitRadiusRefPx 字段"
+    },
+    {
+      "sheet": "DamageFormulas",
+      "field": "formulaId",
+      "type": "string",
+      "required": "true",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "",
+      "description": "伤害公式稳定ID"
+    },
+    {
+      "sheet": "DamageFormulas",
+      "field": "baseDamage",
+      "type": "int",
+      "required": "true",
+      "default": "",
+      "min": 0,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "",
+      "description": "DamageFormulas 表的 baseDamage 字段"
+    },
+    {
+      "sheet": "DamageFormulas",
+      "field": "criticalChance",
+      "type": "float",
+      "required": "true",
+      "default": "",
+      "min": 0,
+      "max": 1,
+      "enumType": "",
+      "foreignKey": "",
+      "description": "DamageFormulas 表的 criticalChance 字段"
+    },
+    {
+      "sheet": "DamageFormulas",
+      "field": "criticalMultiplier",
+      "type": "float",
+      "required": "true",
+      "default": "",
+      "min": 0,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "",
+      "description": "DamageFormulas 表的 criticalMultiplier 字段"
+    },
+    {
+      "sheet": "DamageFormulas",
+      "field": "weakpointMultiplier",
+      "type": "float",
+      "required": "true",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "",
+      "description": "DamageFormulas 表的 weakpointMultiplier 字段"
+    },
+    {
+      "sheet": "DamageFormulas",
+      "field": "wrongDirectionMultiplier",
+      "type": "float",
+      "required": "true",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "",
+      "description": "DamageFormulas 表的 wrongDirectionMultiplier 字段"
+    },
+    {
+      "sheet": "DamageFormulas",
+      "field": "comboStep",
+      "type": "float",
+      "required": "true",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "",
+      "description": "DamageFormulas 表的 comboStep 字段"
+    },
+    {
+      "sheet": "DamageFormulas",
+      "field": "comboMaxMultiplier",
+      "type": "float",
+      "required": "true",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "",
+      "description": "DamageFormulas 表的 comboMaxMultiplier 字段"
+    },
+    {
+      "sheet": "DamageFormulas",
+      "field": "energyPerHit",
+      "type": "int",
+      "required": "true",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "",
+      "description": "DamageFormulas 表的 energyPerHit 字段"
+    },
+    {
+      "sheet": "DamageFormulas",
+      "field": "scorePerHit",
+      "type": "int",
+      "required": "true",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "",
+      "description": "DamageFormulas 表的 scorePerHit 字段"
+    },
+    {
+      "sheet": "DefenseRules",
+      "field": "defenseRuleId",
+      "type": "string",
+      "required": "false",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "",
+      "description": "防御规则稳定ID"
+    },
+    {
+      "sheet": "DefenseRules",
+      "field": "armorHp",
+      "type": "int",
+      "required": "true",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "",
+      "description": "DefenseRules 表的 armorHp 字段"
+    },
+    {
+      "sheet": "DefenseRules",
+      "field": "requiredGestureType",
+      "type": "string",
+      "required": "true",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "GestureType",
+      "foreignKey": "",
+      "description": "DefenseRules 表的 requiredGestureType 字段"
+    },
+    {
+      "sheet": "DefenseRules",
+      "field": "requiredStanceId",
+      "type": "string",
+      "required": "false",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "Stances.stanceId",
+      "description": "DefenseRules 表的 requiredStanceId 字段"
+    },
+    {
+      "sheet": "DefenseRules",
+      "field": "breakDamageMultiplier",
+      "type": "float",
+      "required": "true",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "",
+      "description": "DefenseRules 表的 breakDamageMultiplier 字段"
+    },
+    {
+      "sheet": "DefenseRules",
+      "field": "wrongGestureDamageMultiplier",
+      "type": "float",
+      "required": "true",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "",
+      "description": "DefenseRules 表的 wrongGestureDamageMultiplier 字段"
+    },
+    {
+      "sheet": "DefenseRules",
+      "field": "reflectDamage",
+      "type": "int",
+      "required": "true",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "",
+      "description": "DefenseRules 表的 reflectDamage 字段"
+    },
+    {
+      "sheet": "DefenseRules",
+      "field": "breakEffectGroupId",
+      "type": "string",
+      "required": "false",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "SkillEffects.effectGroupId",
+      "description": "DefenseRules 表的 breakEffectGroupId 字段"
+    },
+    {
+      "sheet": "WeakpointRules",
+      "field": "weakpointRuleId",
+      "type": "string",
+      "required": "false",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "",
+      "description": "弱点规则稳定ID"
+    },
+    {
+      "sheet": "WeakpointRules",
+      "field": "windowStartSec",
+      "type": "float",
+      "required": "true",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "",
+      "description": "WeakpointRules 表的 windowStartSec 字段"
+    },
+    {
+      "sheet": "WeakpointRules",
+      "field": "windowEndSec",
+      "type": "float",
+      "required": "true",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "",
+      "description": "WeakpointRules 表的 windowEndSec 字段"
+    },
+    {
+      "sheet": "WeakpointRules",
+      "field": "radiusRefPx",
+      "type": "int",
+      "required": "true",
+      "default": "",
+      "min": 0,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "",
+      "description": "WeakpointRules 表的 radiusRefPx 字段"
+    },
+    {
+      "sheet": "WeakpointRules",
+      "field": "damageMultiplier",
+      "type": "float",
+      "required": "true",
+      "default": "",
+      "min": 0,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "",
+      "description": "WeakpointRules 表的 damageMultiplier 字段"
+    },
+    {
+      "sheet": "WeakpointRules",
+      "field": "interruptAttack",
+      "type": "bool",
+      "required": "true",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "",
+      "description": "WeakpointRules 表的 interruptAttack 字段"
+    },
+    {
+      "sheet": "WeakpointRules",
+      "field": "energyBonus",
+      "type": "int",
+      "required": "true",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "",
+      "description": "WeakpointRules 表的 energyBonus 字段"
+    },
+    {
+      "sheet": "WeakpointRules",
+      "field": "scoreBonus",
+      "type": "int",
+      "required": "true",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "",
+      "description": "WeakpointRules 表的 scoreBonus 字段"
+    },
+    {
+      "sheet": "WeakpointRules",
+      "field": "vfxKey",
+      "type": "string",
+      "required": "false",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "VfxCues.vfxKey",
+      "description": "特效事件键"
+    },
+    {
+      "sheet": "MovePatterns",
+      "field": "movePatternId",
+      "type": "string",
+      "required": "true",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "",
+      "description": "移动策略配置ID"
+    },
+    {
+      "sheet": "MovePatterns",
+      "field": "patternType",
+      "type": "string",
+      "required": "true",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "MovePatternType",
+      "foreignKey": "",
+      "description": "MovePatterns 表的 patternType 字段"
+    },
+    {
+      "sheet": "MovePatterns",
+      "field": "speedMultiplier",
+      "type": "float",
+      "required": "true",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "",
+      "description": "MovePatterns 表的 speedMultiplier 字段"
+    },
+    {
+      "sheet": "MovePatterns",
+      "field": "amplitudeRefPx",
+      "type": "int",
+      "required": "true",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "",
+      "description": "MovePatterns 表的 amplitudeRefPx 字段"
+    },
+    {
+      "sheet": "MovePatterns",
+      "field": "frequency",
+      "type": "float",
+      "required": "true",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "",
+      "description": "MovePatterns 表的 frequency 字段"
+    },
+    {
+      "sheet": "MovePatterns",
+      "field": "startXNorm",
+      "type": "float",
+      "required": "true",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "",
+      "description": "MovePatterns 表的 startXNorm 字段"
+    },
+    {
+      "sheet": "MovePatterns",
+      "field": "endXNorm",
+      "type": "float",
+      "required": "true",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "",
+      "description": "MovePatterns 表的 endXNorm 字段"
+    },
+    {
+      "sheet": "MovePatterns",
+      "field": "startYNorm",
+      "type": "float",
+      "required": "true",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "",
+      "description": "MovePatterns 表的 startYNorm 字段"
+    },
+    {
+      "sheet": "MovePatterns",
+      "field": "endYNorm",
+      "type": "float",
+      "required": "true",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "",
+      "description": "MovePatterns 表的 endYNorm 字段"
+    },
+    {
+      "sheet": "MovePatterns",
+      "field": "loop",
+      "type": "bool",
+      "required": "true",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "",
+      "description": "MovePatterns 表的 loop 字段"
+    },
+    {
+      "sheet": "MovePatterns",
+      "field": "description",
+      "type": "string",
+      "required": "true",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "",
+      "description": "MovePatterns 表的 description 字段"
+    },
+    {
+      "sheet": "Enemies",
+      "field": "enemyId",
+      "type": "string",
+      "required": "true",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "",
+      "description": "敌人稳定ID"
+    },
+    {
+      "sheet": "Enemies",
+      "field": "displayNameKey",
+      "type": "string",
+      "required": "true",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "Texts.textKey",
+      "description": "显示名称文案键"
+    },
+    {
+      "sheet": "Enemies",
+      "field": "tier",
+      "type": "string",
+      "required": "true",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "EnemyTier",
+      "foreignKey": "",
+      "description": "Enemies 表的 tier 字段"
+    },
+    {
+      "sheet": "Enemies",
+      "field": "maxHp",
+      "type": "int",
+      "required": "true",
+      "default": "",
+      "min": 1,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "",
+      "description": "最大生命值"
+    },
+    {
+      "sheet": "Enemies",
+      "field": "movePatternId",
+      "type": "string",
+      "required": "true",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "MovePatterns.movePatternId",
+      "description": "移动策略配置ID"
+    },
+    {
+      "sheet": "Enemies",
+      "field": "moveSpeedRefPxSec",
+      "type": "int",
+      "required": "true",
+      "default": "",
+      "min": 0,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "",
+      "description": "Enemies 表的 moveSpeedRefPxSec 字段"
+    },
+    {
+      "sheet": "Enemies",
+      "field": "attackSetId",
+      "type": "string",
+      "required": "true",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "",
+      "description": "攻击集合分组ID"
+    },
+    {
+      "sheet": "Enemies",
+      "field": "defenseRuleId",
+      "type": "string",
+      "required": "true",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "DefenseRules.defenseRuleId",
+      "description": "防御规则稳定ID"
+    },
+    {
+      "sheet": "Enemies",
+      "field": "weakpointRuleId",
+      "type": "string",
+      "required": "true",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "WeakpointRules.weakpointRuleId",
+      "description": "弱点规则稳定ID"
+    },
+    {
+      "sheet": "Enemies",
+      "field": "stanceVulnerability",
+      "type": "string",
+      "required": "true",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "StanceVulnerability",
+      "foreignKey": "",
+      "description": "Enemies 表的 stanceVulnerability 字段"
+    },
+    {
+      "sheet": "Enemies",
+      "field": "contactDamage",
+      "type": "int",
+      "required": "true",
+      "default": "",
+      "min": 0,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "",
+      "description": "Enemies 表的 contactDamage 字段"
+    },
+    {
+      "sheet": "Enemies",
+      "field": "scoreValue",
+      "type": "int",
+      "required": "true",
+      "default": "",
+      "min": 0,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "",
+      "description": "击败基础得分"
+    },
+    {
+      "sheet": "Enemies",
+      "field": "assetKey",
+      "type": "string",
+      "required": "true",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "AssetManifest.assetKey",
+      "description": "Unity资源注册键"
+    },
+    {
+      "sheet": "Enemies",
+      "field": "poolPrewarm",
+      "type": "int",
+      "required": "true",
+      "default": "",
+      "min": 0,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "",
+      "description": "对象池预热数量"
+    },
+    {
+      "sheet": "EnemyAttacks",
+      "field": "attackId",
+      "type": "string",
+      "required": "true",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "",
+      "description": "EnemyAttacks 表的 attackId 字段"
+    },
+    {
+      "sheet": "EnemyAttacks",
+      "field": "attackSetId",
+      "type": "string",
+      "required": "true",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "",
+      "description": "攻击集合分组ID"
+    },
+    {
+      "sheet": "EnemyAttacks",
+      "field": "order",
+      "type": "int",
+      "required": "true",
+      "default": "",
+      "min": 1,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "",
+      "description": "组内执行/展示顺序，从1开始"
+    },
+    {
+      "sheet": "EnemyAttacks",
+      "field": "triggerType",
+      "type": "string",
+      "required": "true",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "AttackTriggerType",
+      "foreignKey": "",
+      "description": "EnemyAttacks 表的 triggerType 字段"
+    },
+    {
+      "sheet": "EnemyAttacks",
+      "field": "cooldownSec",
+      "type": "float",
+      "required": "true",
+      "default": "",
+      "min": 0,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "",
+      "description": "冷却时间（秒）"
+    },
+    {
+      "sheet": "EnemyAttacks",
+      "field": "windupSec",
+      "type": "float",
+      "required": "true",
+      "default": "",
+      "min": 0,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "",
+      "description": "攻击前摇（秒）"
+    },
+    {
+      "sheet": "EnemyAttacks",
+      "field": "activeSec",
+      "type": "float",
+      "required": "true",
+      "default": "",
+      "min": 0,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "",
+      "description": "有效窗口（秒）"
+    },
+    {
+      "sheet": "EnemyAttacks",
+      "field": "damage",
+      "type": "int",
+      "required": "true",
+      "default": "",
+      "min": 0,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "",
+      "description": "造成的基础伤害"
+    },
+    {
+      "sheet": "EnemyAttacks",
+      "field": "projectileId",
+      "type": "string",
+      "required": "false",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "Projectiles.projectileId",
+      "description": "弹幕稳定ID"
+    },
+    {
+      "sheet": "EnemyAttacks",
+      "field": "gestureInterruptType",
+      "type": "string",
+      "required": "true",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "GestureType",
+      "foreignKey": "",
+      "description": "EnemyAttacks 表的 gestureInterruptType 字段"
+    },
+    {
+      "sheet": "EnemyAttacks",
+      "field": "interruptStartSec",
+      "type": "float",
+      "required": "true",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "",
+      "description": "EnemyAttacks 表的 interruptStartSec 字段"
+    },
+    {
+      "sheet": "EnemyAttacks",
+      "field": "interruptEndSec",
+      "type": "float",
+      "required": "true",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "",
+      "description": "EnemyAttacks 表的 interruptEndSec 字段"
+    },
+    {
+      "sheet": "EnemyAttacks",
+      "field": "effectGroupId",
+      "type": "string",
+      "required": "false",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "SkillEffects.effectGroupId",
+      "description": "效果链分组ID"
+    },
+    {
+      "sheet": "EnemyAttacks",
+      "field": "weight",
+      "type": "float",
+      "required": "true",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "",
+      "description": "EnemyAttacks 表的 weight 字段"
+    },
+    {
+      "sheet": "Projectiles",
+      "field": "projectileId",
+      "type": "string",
+      "required": "false",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "",
+      "description": "弹幕稳定ID"
+    },
+    {
+      "sheet": "Projectiles",
+      "field": "movePatternId",
+      "type": "string",
+      "required": "true",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "MovePatterns.movePatternId",
+      "description": "移动策略配置ID"
+    },
+    {
+      "sheet": "Projectiles",
+      "field": "speedRefPxSec",
+      "type": "int",
+      "required": "true",
+      "default": "",
+      "min": 0,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "",
+      "description": "Projectiles 表的 speedRefPxSec 字段"
+    },
+    {
+      "sheet": "Projectiles",
+      "field": "lifeSec",
+      "type": "float",
+      "required": "true",
+      "default": "",
+      "min": 0,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "",
+      "description": "Projectiles 表的 lifeSec 字段"
+    },
+    {
+      "sheet": "Projectiles",
+      "field": "damage",
+      "type": "int",
+      "required": "true",
+      "default": "",
+      "min": 0,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "",
+      "description": "造成的基础伤害"
+    },
+    {
+      "sheet": "Projectiles",
+      "field": "cuttable",
+      "type": "bool",
+      "required": "true",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "",
+      "description": "Projectiles 表的 cuttable 字段"
+    },
+    {
+      "sheet": "Projectiles",
+      "field": "reflectable",
+      "type": "bool",
+      "required": "true",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "",
+      "description": "Projectiles 表的 reflectable 字段"
+    },
+    {
+      "sheet": "Projectiles",
+      "field": "requiredStanceId",
+      "type": "string",
+      "required": "false",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "Stances.stanceId",
+      "description": "Projectiles 表的 requiredStanceId 字段"
+    },
+    {
+      "sheet": "Projectiles",
+      "field": "hitRadiusRefPx",
+      "type": "int",
+      "required": "true",
+      "default": "",
+      "min": 0,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "",
+      "description": "Projectiles 表的 hitRadiusRefPx 字段"
+    },
+    {
+      "sheet": "Projectiles",
+      "field": "assetKey",
+      "type": "string",
+      "required": "true",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "AssetManifest.assetKey",
+      "description": "Unity资源注册键"
+    },
+    {
+      "sheet": "Projectiles",
+      "field": "vfxKey",
+      "type": "string",
+      "required": "false",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "VfxCues.vfxKey",
+      "description": "特效事件键"
+    },
+    {
+      "sheet": "Buffs",
+      "field": "buffId",
+      "type": "string",
+      "required": "false",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "",
+      "description": "状态效果稳定ID"
+    },
+    {
+      "sheet": "Buffs",
+      "field": "type",
+      "type": "string",
+      "required": "true",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "BuffType",
+      "foreignKey": "",
+      "description": "Buffs 表的 type 字段"
+    },
+    {
+      "sheet": "Buffs",
+      "field": "durationSec",
+      "type": "float",
+      "required": "true",
+      "default": "",
+      "min": 0,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "",
+      "description": "持续时间（秒）"
+    },
+    {
+      "sheet": "Buffs",
+      "field": "maxStacks",
+      "type": "int",
+      "required": "true",
+      "default": "",
+      "min": 1,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "",
+      "description": "Buffs 表的 maxStacks 字段"
+    },
+    {
+      "sheet": "Buffs",
+      "field": "magnitude",
+      "type": "float",
+      "required": "true",
+      "default": "",
+      "min": 0,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "",
+      "description": "Buffs 表的 magnitude 字段"
+    },
+    {
+      "sheet": "Buffs",
+      "field": "tickSec",
+      "type": "float",
+      "required": "true",
+      "default": "",
+      "min": 0,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "",
+      "description": "Buffs 表的 tickSec 字段"
+    },
+    {
+      "sheet": "Buffs",
+      "field": "refreshPolicy",
+      "type": "string",
+      "required": "true",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "BuffRefreshPolicy",
+      "foreignKey": "",
+      "description": "Buffs 表的 refreshPolicy 字段"
+    },
+    {
+      "sheet": "Buffs",
+      "field": "vfxKey",
+      "type": "string",
+      "required": "false",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "VfxCues.vfxKey",
+      "description": "特效事件键"
+    },
+    {
+      "sheet": "Buffs",
+      "field": "textKey",
+      "type": "string",
+      "required": "true",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "Texts.textKey",
+      "description": "文案键"
+    },
+    {
+      "sheet": "Skills",
+      "field": "skillId",
+      "type": "string",
+      "required": "true",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "",
+      "description": "技能稳定ID"
+    },
+    {
+      "sheet": "Skills",
+      "field": "displayNameKey",
+      "type": "string",
+      "required": "true",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "Texts.textKey",
+      "description": "显示名称文案键"
+    },
+    {
+      "sheet": "Skills",
+      "field": "triggerType",
+      "type": "string",
+      "required": "true",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "SkillTriggerType",
+      "foreignKey": "",
+      "description": "Skills 表的 triggerType 字段"
+    },
+    {
+      "sheet": "Skills",
+      "field": "requiredStanceId",
+      "type": "string",
+      "required": "false",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "Stances.stanceId",
+      "description": "Skills 表的 requiredStanceId 字段"
+    },
+    {
+      "sheet": "Skills",
+      "field": "energyCost",
+      "type": "int",
+      "required": "true",
+      "default": "",
+      "min": 0,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "",
+      "description": "Skills 表的 energyCost 字段"
+    },
+    {
+      "sheet": "Skills",
+      "field": "cooldownSec",
+      "type": "float",
+      "required": "true",
+      "default": "",
+      "min": 0,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "",
+      "description": "冷却时间（秒）"
+    },
+    {
+      "sheet": "Skills",
+      "field": "gestureType",
+      "type": "string",
+      "required": "true",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "GestureType",
+      "foreignKey": "",
+      "description": "Skills 表的 gestureType 字段"
+    },
+    {
+      "sheet": "Skills",
+      "field": "inputWindowSec",
+      "type": "float",
+      "required": "true",
+      "default": "",
+      "min": 0,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "",
+      "description": "Skills 表的 inputWindowSec 字段"
+    },
+    {
+      "sheet": "Skills",
+      "field": "effectGroupId",
+      "type": "string",
+      "required": "true",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "SkillEffects.effectGroupId",
+      "description": "效果链分组ID"
+    },
+    {
+      "sheet": "Skills",
+      "field": "iconAssetKey",
+      "type": "string",
+      "required": "true",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "AssetManifest.assetKey",
+      "description": "Skills 表的 iconAssetKey 字段"
+    },
+    {
+      "sheet": "Skills",
+      "field": "textKey",
+      "type": "string",
+      "required": "true",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "Texts.textKey",
+      "description": "文案键"
+    },
+    {
+      "sheet": "SkillEffects",
+      "field": "effectGroupId",
+      "type": "string",
+      "required": "false",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "",
+      "description": "效果链分组ID"
+    },
+    {
+      "sheet": "SkillEffects",
+      "field": "order",
+      "type": "int",
+      "required": "true",
+      "default": "",
+      "min": 1,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "",
+      "description": "组内执行/展示顺序，从1开始"
+    },
+    {
+      "sheet": "SkillEffects",
+      "field": "effectType",
+      "type": "string",
+      "required": "true",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "EffectType",
+      "foreignKey": "",
+      "description": "SkillEffects 表的 effectType 字段"
+    },
+    {
+      "sheet": "SkillEffects",
+      "field": "targetType",
+      "type": "string",
+      "required": "true",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "TargetType",
+      "foreignKey": "",
+      "description": "SkillEffects 表的 targetType 字段"
+    },
+    {
+      "sheet": "SkillEffects",
+      "field": "value1",
+      "type": "float",
+      "required": "true",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "",
+      "description": "SkillEffects 表的 value1 字段"
+    },
+    {
+      "sheet": "SkillEffects",
+      "field": "value2",
+      "type": "float",
+      "required": "true",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "",
+      "description": "SkillEffects 表的 value2 字段"
+    },
+    {
+      "sheet": "SkillEffects",
+      "field": "durationSec",
+      "type": "float",
+      "required": "true",
+      "default": "",
+      "min": 0,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "",
+      "description": "持续时间（秒）"
+    },
+    {
+      "sheet": "SkillEffects",
+      "field": "buffId",
+      "type": "string",
+      "required": "false",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "Buffs.buffId",
+      "description": "状态效果稳定ID"
+    },
+    {
+      "sheet": "SkillEffects",
+      "field": "vfxKey",
+      "type": "string",
+      "required": "false",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "VfxCues.vfxKey",
+      "description": "特效事件键"
+    },
+    {
+      "sheet": "SkillEffects",
+      "field": "audioKey",
+      "type": "string",
+      "required": "false",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "AudioCues.audioKey",
+      "description": "音频事件键"
+    },
+    {
+      "sheet": "SkillEffects",
+      "field": "condition",
+      "type": "string",
+      "required": "false",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "",
+      "description": "SkillEffects 表的 condition 字段"
+    },
+    {
+      "sheet": "Levels",
+      "field": "levelId",
+      "type": "string",
+      "required": "true",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "",
+      "description": "关卡稳定ID"
+    },
+    {
+      "sheet": "Levels",
+      "field": "displayNameKey",
+      "type": "string",
+      "required": "true",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "Texts.textKey",
+      "description": "显示名称文案键"
+    },
+    {
+      "sheet": "Levels",
+      "field": "sceneKey",
+      "type": "string",
+      "required": "true",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "AssetManifest.assetKey",
+      "description": "Levels 表的 sceneKey 字段"
+    },
+    {
+      "sheet": "Levels",
+      "field": "backgroundAssetKey",
+      "type": "string",
+      "required": "true",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "AssetManifest.assetKey",
+      "description": "Levels 表的 backgroundAssetKey 字段"
+    },
+    {
+      "sheet": "Levels",
+      "field": "durationLimitSec",
+      "type": "int",
+      "required": "true",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "",
+      "description": "Levels 表的 durationLimitSec 字段"
+    },
+    {
+      "sheet": "Levels",
+      "field": "nextLevelId",
+      "type": "string",
+      "required": "false",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "Levels.levelId",
+      "description": "Levels 表的 nextLevelId 字段"
+    },
+    {
+      "sheet": "Levels",
+      "field": "rewardTableId",
+      "type": "string",
+      "required": "true",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "Rewards.rewardTableId",
+      "description": "奖励表分组ID"
+    },
+    {
+      "sheet": "Levels",
+      "field": "starScore1",
+      "type": "int",
+      "required": "true",
+      "default": "",
+      "min": 0,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "",
+      "description": "Levels 表的 starScore1 字段"
+    },
+    {
+      "sheet": "Levels",
+      "field": "starScore2",
+      "type": "int",
+      "required": "true",
+      "default": "",
+      "min": 0,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "",
+      "description": "Levels 表的 starScore2 字段"
+    },
+    {
+      "sheet": "Levels",
+      "field": "starScore3",
+      "type": "int",
+      "required": "true",
+      "default": "",
+      "min": 0,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "",
+      "description": "Levels 表的 starScore3 字段"
+    },
+    {
+      "sheet": "Levels",
+      "field": "tutorialId",
+      "type": "string",
+      "required": "true",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "Tutorials.tutorialId",
+      "description": "教程流程ID"
+    },
+    {
+      "sheet": "Levels",
+      "field": "bossEnemyId",
+      "type": "string",
+      "required": "false",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "Enemies.enemyId",
+      "description": "Levels 表的 bossEnemyId 字段"
+    },
+    {
+      "sheet": "Waves",
+      "field": "waveId",
+      "type": "string",
+      "required": "true",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "",
+      "description": "波次稳定ID"
+    },
+    {
+      "sheet": "Waves",
+      "field": "levelId",
+      "type": "string",
+      "required": "true",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "Levels.levelId",
+      "description": "关卡稳定ID"
+    },
+    {
+      "sheet": "Waves",
+      "field": "order",
+      "type": "int",
+      "required": "true",
+      "default": "",
+      "min": 1,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "",
+      "description": "组内执行/展示顺序，从1开始"
+    },
+    {
+      "sheet": "Waves",
+      "field": "startTrigger",
+      "type": "string",
+      "required": "true",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "WaveStartTrigger",
+      "foreignKey": "",
+      "description": "Waves 表的 startTrigger 字段"
+    },
+    {
+      "sheet": "Waves",
+      "field": "startDelaySec",
+      "type": "float",
+      "required": "true",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "",
+      "description": "Waves 表的 startDelaySec 字段"
+    },
+    {
+      "sheet": "Waves",
+      "field": "endCondition",
+      "type": "string",
+      "required": "false",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "WaveEndCondition",
+      "foreignKey": "",
+      "description": "Waves 表的 endCondition 字段"
+    },
+    {
+      "sheet": "Waves",
+      "field": "endDelaySec",
+      "type": "float",
+      "required": "true",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "",
+      "description": "Waves 表的 endDelaySec 字段"
+    },
+    {
+      "sheet": "Waves",
+      "field": "musicKey",
+      "type": "string",
+      "required": "true",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "AudioCues.audioKey",
+      "description": "Waves 表的 musicKey 字段"
+    },
+    {
+      "sheet": "Waves",
+      "field": "maxAlive",
+      "type": "int",
+      "required": "true",
+      "default": "",
+      "min": 1,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "",
+      "description": "Waves 表的 maxAlive 字段"
+    },
+    {
+      "sheet": "SpawnPoints",
+      "field": "spawnPointId",
+      "type": "string",
+      "required": "true",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "",
+      "description": "SpawnPoints 表的 spawnPointId 字段"
+    },
+    {
+      "sheet": "SpawnPoints",
+      "field": "levelId",
+      "type": "string",
+      "required": "true",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "Levels.levelId",
+      "description": "关卡稳定ID"
+    },
+    {
+      "sheet": "SpawnPoints",
+      "field": "normalizedX",
+      "type": "float",
+      "required": "true",
+      "default": "",
+      "min": 0,
+      "max": 1,
+      "enumType": "",
+      "foreignKey": "",
+      "description": "Safe Area归一化X坐标"
+    },
+    {
+      "sheet": "SpawnPoints",
+      "field": "normalizedY",
+      "type": "float",
+      "required": "true",
+      "default": "",
+      "min": 0,
+      "max": 1,
+      "enumType": "",
+      "foreignKey": "",
+      "description": "Safe Area归一化Y坐标"
+    },
+    {
+      "sheet": "SpawnPoints",
+      "field": "lane",
+      "type": "string",
+      "required": "true",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "SpawnLane",
+      "foreignKey": "",
+      "description": "SpawnPoints 表的 lane 字段"
+    },
+    {
+      "sheet": "SpawnPoints",
+      "field": "jitterX",
+      "type": "float",
+      "required": "true",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "",
+      "description": "SpawnPoints 表的 jitterX 字段"
+    },
+    {
+      "sheet": "SpawnPoints",
+      "field": "jitterY",
+      "type": "float",
+      "required": "true",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "",
+      "description": "SpawnPoints 表的 jitterY 字段"
+    },
+    {
+      "sheet": "SpawnPoints",
+      "field": "facing",
+      "type": "string",
+      "required": "true",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "Facing",
+      "foreignKey": "",
+      "description": "SpawnPoints 表的 facing 字段"
+    },
+    {
+      "sheet": "SpawnPoints",
+      "field": "notes",
+      "type": "string",
+      "required": "true",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "",
+      "description": "SpawnPoints 表的 notes 字段"
+    },
+    {
+      "sheet": "EnemyModifiers",
+      "field": "modifierId",
+      "type": "string",
+      "required": "true",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "",
+      "description": "EnemyModifiers 表的 modifierId 字段"
+    },
+    {
+      "sheet": "EnemyModifiers",
+      "field": "displayNameKey",
+      "type": "string",
+      "required": "true",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "Texts.textKey",
+      "description": "显示名称文案键"
+    },
+    {
+      "sheet": "EnemyModifiers",
+      "field": "hpMultiplier",
+      "type": "float",
+      "required": "true",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "",
+      "description": "EnemyModifiers 表的 hpMultiplier 字段"
+    },
+    {
+      "sheet": "EnemyModifiers",
+      "field": "damageMultiplier",
+      "type": "float",
+      "required": "true",
+      "default": "",
+      "min": 0,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "",
+      "description": "EnemyModifiers 表的 damageMultiplier 字段"
+    },
+    {
+      "sheet": "EnemyModifiers",
+      "field": "speedMultiplier",
+      "type": "float",
+      "required": "true",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "",
+      "description": "EnemyModifiers 表的 speedMultiplier 字段"
+    },
+    {
+      "sheet": "EnemyModifiers",
+      "field": "scoreMultiplier",
+      "type": "float",
+      "required": "true",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "",
+      "description": "EnemyModifiers 表的 scoreMultiplier 字段"
+    },
+    {
+      "sheet": "EnemyModifiers",
+      "field": "tintHex",
+      "type": "string",
+      "required": "true",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "",
+      "description": "EnemyModifiers 表的 tintHex 字段"
+    },
+    {
+      "sheet": "EnemyModifiers",
+      "field": "extraBuffId",
+      "type": "string",
+      "required": "false",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "Buffs.buffId",
+      "description": "EnemyModifiers 表的 extraBuffId 字段"
+    },
+    {
+      "sheet": "Spawns",
+      "field": "spawnId",
+      "type": "string",
+      "required": "true",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "",
+      "description": "出生条目稳定ID"
+    },
+    {
+      "sheet": "Spawns",
+      "field": "waveId",
+      "type": "string",
+      "required": "true",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "Waves.waveId",
+      "description": "波次稳定ID"
+    },
+    {
+      "sheet": "Spawns",
+      "field": "spawnTimeSec",
+      "type": "float",
+      "required": "true",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "",
+      "description": "Spawns 表的 spawnTimeSec 字段"
+    },
+    {
+      "sheet": "Spawns",
+      "field": "enemyId",
+      "type": "string",
+      "required": "true",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "Enemies.enemyId",
+      "description": "敌人稳定ID"
+    },
+    {
+      "sheet": "Spawns",
+      "field": "count",
+      "type": "int",
+      "required": "true",
+      "default": "",
+      "min": 1,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "",
+      "description": "Spawns 表的 count 字段"
+    },
+    {
+      "sheet": "Spawns",
+      "field": "intervalSec",
+      "type": "float",
+      "required": "true",
+      "default": "",
+      "min": 0,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "",
+      "description": "Spawns 表的 intervalSec 字段"
+    },
+    {
+      "sheet": "Spawns",
+      "field": "spawnPointId",
+      "type": "string",
+      "required": "true",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "SpawnPoints.spawnPointId",
+      "description": "Spawns 表的 spawnPointId 字段"
+    },
+    {
+      "sheet": "Spawns",
+      "field": "spawnPattern",
+      "type": "string",
+      "required": "true",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "SpawnPattern",
+      "foreignKey": "",
+      "description": "Spawns 表的 spawnPattern 字段"
+    },
+    {
+      "sheet": "Spawns",
+      "field": "modifierId",
+      "type": "string",
+      "required": "true",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "EnemyModifiers.modifierId",
+      "description": "Spawns 表的 modifierId 字段"
+    },
+    {
+      "sheet": "BossPhases",
+      "field": "bossPhaseId",
+      "type": "string",
+      "required": "true",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "",
+      "description": "BossPhases 表的 bossPhaseId 字段"
+    },
+    {
+      "sheet": "BossPhases",
+      "field": "enemyId",
+      "type": "string",
+      "required": "true",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "Enemies.enemyId",
+      "description": "敌人稳定ID"
+    },
+    {
+      "sheet": "BossPhases",
+      "field": "order",
+      "type": "int",
+      "required": "true",
+      "default": "",
+      "min": 1,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "",
+      "description": "组内执行/展示顺序，从1开始"
+    },
+    {
+      "sheet": "BossPhases",
+      "field": "enterHpRatio",
+      "type": "float",
+      "required": "true",
+      "default": "",
+      "min": 0,
+      "max": 1,
+      "enumType": "",
+      "foreignKey": "",
+      "description": "BossPhases 表的 enterHpRatio 字段"
+    },
+    {
+      "sheet": "BossPhases",
+      "field": "exitHpRatio",
+      "type": "float",
+      "required": "true",
+      "default": "",
+      "min": 0,
+      "max": 1,
+      "enumType": "",
+      "foreignKey": "",
+      "description": "BossPhases 表的 exitHpRatio 字段"
+    },
+    {
+      "sheet": "BossPhases",
+      "field": "movementPatternId",
+      "type": "string",
+      "required": "true",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "MovePatterns.movePatternId",
+      "description": "BossPhases 表的 movementPatternId 字段"
+    },
+    {
+      "sheet": "BossPhases",
+      "field": "attackSetId",
+      "type": "string",
+      "required": "true",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "",
+      "description": "攻击集合分组ID"
+    },
+    {
+      "sheet": "BossPhases",
+      "field": "defenseRuleId",
+      "type": "string",
+      "required": "true",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "DefenseRules.defenseRuleId",
+      "description": "防御规则稳定ID"
+    },
+    {
+      "sheet": "BossPhases",
+      "field": "weakpointRuleId",
+      "type": "string",
+      "required": "true",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "WeakpointRules.weakpointRuleId",
+      "description": "弱点规则稳定ID"
+    },
+    {
+      "sheet": "BossPhases",
+      "field": "onEnterEffectGroupId",
+      "type": "string",
+      "required": "true",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "SkillEffects.effectGroupId",
+      "description": "BossPhases 表的 onEnterEffectGroupId 字段"
+    },
+    {
+      "sheet": "BossPhases",
+      "field": "descriptionKey",
+      "type": "string",
+      "required": "true",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "Texts.textKey",
+      "description": "BossPhases 表的 descriptionKey 字段"
+    },
+    {
+      "sheet": "Rewards",
+      "field": "rewardTableId",
+      "type": "string",
+      "required": "true",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "",
+      "description": "奖励表分组ID"
+    },
+    {
+      "sheet": "Rewards",
+      "field": "order",
+      "type": "int",
+      "required": "true",
+      "default": "",
+      "min": 1,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "",
+      "description": "组内执行/展示顺序，从1开始"
+    },
+    {
+      "sheet": "Rewards",
+      "field": "conditionType",
+      "type": "string",
+      "required": "false",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "RewardCondition",
+      "foreignKey": "",
+      "description": "Rewards 表的 conditionType 字段"
+    },
+    {
+      "sheet": "Rewards",
+      "field": "conditionValue",
+      "type": "string",
+      "required": "false",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "",
+      "description": "Rewards 表的 conditionValue 字段"
+    },
+    {
+      "sheet": "Rewards",
+      "field": "rewardType",
+      "type": "string",
+      "required": "true",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "RewardType",
+      "foreignKey": "",
+      "description": "Rewards 表的 rewardType 字段"
+    },
+    {
+      "sheet": "Rewards",
+      "field": "rewardId",
+      "type": "string",
+      "required": "true",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "conditional",
+      "description": "Rewards 表的 rewardId 字段"
+    },
+    {
+      "sheet": "Rewards",
+      "field": "amount",
+      "type": "int",
+      "required": "true",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "",
+      "description": "Rewards 表的 amount 字段"
+    },
+    {
+      "sheet": "Tutorials",
+      "field": "tutorialId",
+      "type": "string",
+      "required": "true",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "",
+      "description": "教程流程ID"
+    },
+    {
+      "sheet": "Tutorials",
+      "field": "order",
+      "type": "int",
+      "required": "true",
+      "default": "",
+      "min": 1,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "",
+      "description": "组内执行/展示顺序，从1开始"
+    },
+    {
+      "sheet": "Tutorials",
+      "field": "triggerEvent",
+      "type": "string",
+      "required": "true",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "",
+      "description": "Tutorials 表的 triggerEvent 字段"
+    },
+    {
+      "sheet": "Tutorials",
+      "field": "blockProgress",
+      "type": "bool",
+      "required": "true",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "",
+      "description": "Tutorials 表的 blockProgress 字段"
+    },
+    {
+      "sheet": "Tutorials",
+      "field": "minDisplaySec",
+      "type": "float",
+      "required": "true",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "",
+      "description": "Tutorials 表的 minDisplaySec 字段"
+    },
+    {
+      "sheet": "Tutorials",
+      "field": "completeEvent",
+      "type": "string",
+      "required": "true",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "",
+      "description": "Tutorials 表的 completeEvent 字段"
+    },
+    {
+      "sheet": "Tutorials",
+      "field": "textKey",
+      "type": "string",
+      "required": "true",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "Texts.textKey",
+      "description": "文案键"
+    },
+    {
+      "sheet": "Tutorials",
+      "field": "highlightTarget",
+      "type": "string",
+      "required": "true",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "",
+      "description": "Tutorials 表的 highlightTarget 字段"
+    },
+    {
+      "sheet": "Tutorials",
+      "field": "gestureType",
+      "type": "string",
+      "required": "true",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "GestureType",
+      "foreignKey": "",
+      "description": "Tutorials 表的 gestureType 字段"
+    },
+    {
+      "sheet": "Texts",
+      "field": "textKey",
+      "type": "string",
+      "required": "true",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "",
+      "description": "文案键"
+    },
+    {
+      "sheet": "Texts",
+      "field": "zhCN",
+      "type": "string",
+      "required": "true",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "",
+      "description": "Texts 表的 zhCN 字段"
+    },
+    {
+      "sheet": "Texts",
+      "field": "enUS",
+      "type": "string",
+      "required": "true",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "",
+      "description": "Texts 表的 enUS 字段"
+    },
+    {
+      "sheet": "Texts",
+      "field": "context",
+      "type": "string",
+      "required": "true",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "",
+      "description": "Texts 表的 context 字段"
+    },
+    {
+      "sheet": "AudioCues",
+      "field": "audioKey",
+      "type": "string",
+      "required": "false",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "",
+      "description": "音频事件键"
+    },
+    {
+      "sheet": "AudioCues",
+      "field": "assetKey",
+      "type": "string",
+      "required": "true",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "AssetManifest.assetKey",
+      "description": "Unity资源注册键"
+    },
+    {
+      "sheet": "AudioCues",
+      "field": "category",
+      "type": "string",
+      "required": "true",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "AudioCategory",
+      "foreignKey": "",
+      "description": "AudioCues 表的 category 字段"
+    },
+    {
+      "sheet": "AudioCues",
+      "field": "volume",
+      "type": "float",
+      "required": "true",
+      "default": "",
+      "min": 0,
+      "max": 1,
+      "enumType": "",
+      "foreignKey": "",
+      "description": "AudioCues 表的 volume 字段"
+    },
+    {
+      "sheet": "AudioCues",
+      "field": "pitchMin",
+      "type": "float",
+      "required": "true",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "",
+      "description": "AudioCues 表的 pitchMin 字段"
+    },
+    {
+      "sheet": "AudioCues",
+      "field": "pitchMax",
+      "type": "float",
+      "required": "true",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "",
+      "description": "AudioCues 表的 pitchMax 字段"
+    },
+    {
+      "sheet": "AudioCues",
+      "field": "maxConcurrent",
+      "type": "int",
+      "required": "true",
+      "default": "",
+      "min": 1,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "",
+      "description": "AudioCues 表的 maxConcurrent 字段"
+    },
+    {
+      "sheet": "AudioCues",
+      "field": "cooldownSec",
+      "type": "float",
+      "required": "true",
+      "default": "",
+      "min": 0,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "",
+      "description": "冷却时间（秒）"
+    },
+    {
+      "sheet": "VfxCues",
+      "field": "vfxKey",
+      "type": "string",
+      "required": "false",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "",
+      "description": "特效事件键"
+    },
+    {
+      "sheet": "VfxCues",
+      "field": "assetKey",
+      "type": "string",
+      "required": "true",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "AssetManifest.assetKey",
+      "description": "Unity资源注册键"
+    },
+    {
+      "sheet": "VfxCues",
+      "field": "lifeSec",
+      "type": "float",
+      "required": "true",
+      "default": "",
+      "min": 0,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "",
+      "description": "VfxCues 表的 lifeSec 字段"
+    },
+    {
+      "sheet": "VfxCues",
+      "field": "poolPrewarm",
+      "type": "int",
+      "required": "true",
+      "default": "",
+      "min": 0,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "",
+      "description": "对象池预热数量"
+    },
+    {
+      "sheet": "VfxCues",
+      "field": "followTarget",
+      "type": "bool",
+      "required": "true",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "",
+      "description": "VfxCues 表的 followTarget 字段"
+    },
+    {
+      "sheet": "VfxCues",
+      "field": "sortingLayer",
+      "type": "string",
+      "required": "true",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "",
+      "description": "VfxCues 表的 sortingLayer 字段"
+    },
+    {
+      "sheet": "VfxCues",
+      "field": "sortingOrder",
+      "type": "int",
+      "required": "true",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "",
+      "description": "VfxCues 表的 sortingOrder 字段"
+    },
+    {
+      "sheet": "AssetManifest",
+      "field": "assetKey",
+      "type": "string",
+      "required": "true",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "",
+      "description": "Unity资源注册键"
+    },
+    {
+      "sheet": "AssetManifest",
+      "field": "assetType",
+      "type": "string",
+      "required": "true",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "AssetType",
+      "foreignKey": "",
+      "description": "AssetManifest 表的 assetType 字段"
+    },
+    {
+      "sheet": "AssetManifest",
+      "field": "addressOrPath",
+      "type": "string",
+      "required": "true",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "",
+      "description": "AssetManifest 表的 addressOrPath 字段"
+    },
+    {
+      "sheet": "AssetManifest",
+      "field": "requiredInMvp",
+      "type": "bool",
+      "required": "true",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "",
+      "description": "AssetManifest 表的 requiredInMvp 字段"
+    },
+    {
+      "sheet": "AssetManifest",
+      "field": "notes",
+      "type": "string",
+      "required": "true",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "",
+      "description": "AssetManifest 表的 notes 字段"
+    },
+    {
+      "sheet": "Enums",
+      "field": "enumType",
+      "type": "string",
+      "required": "true",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "",
+      "description": "Enums 表的 enumType 字段"
+    },
+    {
+      "sheet": "Enums",
+      "field": "value",
+      "type": "string",
+      "required": "true",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "",
+      "description": "Enums 表的 value 字段"
+    },
+    {
+      "sheet": "Enums",
+      "field": "displayName",
+      "type": "string",
+      "required": "true",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "",
+      "description": "Enums 表的 displayName 字段"
+    },
+    {
+      "sheet": "Enums",
+      "field": "description",
+      "type": "string",
+      "required": "true",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "",
+      "description": "Enums 表的 description 字段"
+    }
+  ]
+}

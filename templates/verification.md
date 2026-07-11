@@ -1,0 +1,23 @@
+# TASK-ID Verification
+
+- 日期：
+- 任务：
+- 分支/commit：
+- Unity精确版本：
+- Unity/MCP实例：
+- 配置Schema/内容版本/hash：
+- 做了什么：
+- 明确没做什么：
+- 任务开始Git基线：
+- 预计改动白名单：
+- 实际改动：
+- 静态/导出校验：
+- EditMode：总数 / 通过 / 失败
+- PlayMode：总数 / 通过 / 失败
+- 真实玩家路径：
+- 可断言数值：
+- Console新增Error/Warning：
+- Web/转换/DevTools/真机：
+- 截图/日志/产物：
+- 已知问题：
+- 结论：PASS / REVIEW / BLOCKED / KNOWN ISSUE

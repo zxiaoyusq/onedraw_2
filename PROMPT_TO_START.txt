@@ -1,0 +1,7 @@
+完整读取并严格遵守 AGENTS.md。
+然后读取 project-index.yaml、docs/GAME_DESIGN_MVP.md、docs/MVP_SCOPE.md、
+docs/TECH_SPEC.md、docs/CONFIG_SCHEMA.md、docs/TASKS.md、docs/PROGRESS.md。
+只执行第一个依赖均为 DONE 的 READY 任务。
+开始前输出：任务ID、目标、不做项、预计改动白名单、验收路径、专项测试、Git基线和外部工具门。
+完成后运行最小反馈环，保存 artifacts/evals/TASK-ID/verification.md，
+更新 TASKS/PROGRESS/project-index，只提交当前任务，然后停止。

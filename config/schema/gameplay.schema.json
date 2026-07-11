@@ -1,0 +1,1723 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/one-stroke-demon/gameplay.schema.json",
+  "title": "One Stroke Demon Gameplay Config",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "contentVersion",
+    "contentHash",
+    "global",
+    "players",
+    "stances",
+    "strokeRules",
+    "damageFormulas",
+    "defenseRules",
+    "weakpointRules",
+    "movePatterns",
+    "enemies",
+    "enemyAttacks",
+    "projectiles",
+    "buffs",
+    "skills",
+    "skillEffects",
+    "levels",
+    "waves",
+    "spawnPoints",
+    "enemyModifiers",
+    "spawns",
+    "bossPhases",
+    "rewards",
+    "tutorials",
+    "texts",
+    "audioCues",
+    "vfxCues",
+    "assetManifest",
+    "enums",
+    "fieldDictionary"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "contentVersion": {
+      "type": "string",
+      "minLength": 1
+    },
+    "contentHash": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "global": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/GlobalRow"
+      }
+    },
+    "players": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/PlayersRow"
+      }
+    },
+    "stances": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/StancesRow"
+      }
+    },
+    "strokeRules": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/StrokeRulesRow"
+      }
+    },
+    "damageFormulas": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/DamageFormulasRow"
+      }
+    },
+    "defenseRules": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/DefenseRulesRow"
+      }
+    },
+    "weakpointRules": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/WeakpointRulesRow"
+      }
+    },
+    "movePatterns": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/MovePatternsRow"
+      }
+    },
+    "enemies": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/EnemiesRow"
+      }
+    },
+    "enemyAttacks": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/EnemyAttacksRow"
+      }
+    },
+    "projectiles": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/ProjectilesRow"
+      }
+    },
+    "buffs": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/BuffsRow"
+      }
+    },
+    "skills": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/SkillsRow"
+      }
+    },
+    "skillEffects": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/SkillEffectsRow"
+      }
+    },
+    "levels": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/LevelsRow"
+      }
+    },
+    "waves": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/WavesRow"
+      }
+    },
+    "spawnPoints": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/SpawnPointsRow"
+      }
+    },
+    "enemyModifiers": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/EnemyModifiersRow"
+      }
+    },
+    "spawns": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/SpawnsRow"
+      }
+    },
+    "bossPhases": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/BossPhasesRow"
+      }
+    },
+    "rewards": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/RewardsRow"
+      }
+    },
+    "tutorials": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/TutorialsRow"
+      }
+    },
+    "texts": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/TextsRow"
+      }
+    },
+    "audioCues": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/AudioCuesRow"
+      }
+    },
+    "vfxCues": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/VfxCuesRow"
+      }
+    },
+    "assetManifest": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/AssetManifestRow"
+      }
+    },
+    "enums": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/EnumsRow"
+      }
+    },
+    "fieldDictionary": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/FieldDictionaryRow"
+      }
+    }
+  },
+  "$defs": {
+    "GlobalRow": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "key",
+        "valueType",
+        "intValue",
+        "floatValue",
+        "stringValue",
+        "boolValue",
+        "unit",
+        "description"
+      ],
+      "properties": {
+        "key": {
+          "type": "string"
+        },
+        "valueType": {
+          "type": "string",
+          "enum": [
+            "int",
+            "float",
+            "string",
+            "bool"
+          ]
+        },
+        "intValue": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "floatValue": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "stringValue": {
+          "type": "string"
+        },
+        "boolValue": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "unit": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        }
+      }
+    },
+    "PlayersRow": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "playerId",
+        "displayNameKey",
+        "maxHp",
+        "maxEnergy",
+        "defaultStanceId",
+        "ultimateSkillId",
+        "hitInvulnSec",
+        "assetKey"
+      ],
+      "properties": {
+        "playerId": {
+          "type": "string"
+        },
+        "displayNameKey": {
+          "type": "string"
+        },
+        "maxHp": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "maxEnergy": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "defaultStanceId": {
+          "type": "string"
+        },
+        "ultimateSkillId": {
+          "type": "string"
+        },
+        "hitInvulnSec": {
+          "type": "number"
+        },
+        "assetKey": {
+          "type": "string"
+        }
+      }
+    },
+    "StancesRow": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "stanceId",
+        "displayNameKey",
+        "damageMultiplier",
+        "ghostDamageMultiplier",
+        "projectileCutMultiplier",
+        "strokeWidthRefPx",
+        "switchCooldownSec",
+        "onSwitchEffectGroupId",
+        "assetKey"
+      ],
+      "properties": {
+        "stanceId": {
+          "type": "string"
+        },
+        "displayNameKey": {
+          "type": "string"
+        },
+        "damageMultiplier": {
+          "type": "number",
+          "minimum": 0
+        },
+        "ghostDamageMultiplier": {
+          "type": "number"
+        },
+        "projectileCutMultiplier": {
+          "type": "number"
+        },
+        "strokeWidthRefPx": {
+          "type": "integer"
+        },
+        "switchCooldownSec": {
+          "type": "number"
+        },
+        "onSwitchEffectGroupId": {
+          "type": "string"
+        },
+        "assetKey": {
+          "type": "string"
+        }
+      }
+    },
+    "StrokeRulesRow": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "ruleId",
+        "gestureType",
+        "minPointDistanceRefPx",
+        "maxStrokeLengthRefPx",
+        "rdpEpsilonRefPx",
+        "maxPointCount",
+        "minLengthRefPx",
+        "directionToleranceDeg",
+        "closeDistanceRefPx",
+        "minAreaRefPx2",
+        "minArcCurvature",
+        "chargeHoldSec",
+        "hitRadiusRefPx"
+      ],
+      "properties": {
+        "ruleId": {
+          "type": "string"
+        },
+        "gestureType": {
+          "type": "string",
+          "enum": [
+            "Any",
+            "Horizontal",
+            "Vertical",
+            "Diagonal",
+            "Arc",
+            "Circle",
+            "Charged"
+          ]
+        },
+        "minPointDistanceRefPx": {
+          "type": "integer"
+        },
+        "maxStrokeLengthRefPx": {
+          "type": "integer"
+        },
+        "rdpEpsilonRefPx": {
+          "type": "integer"
+        },
+        "maxPointCount": {
+          "type": "integer",
+          "minimum": 2,
+          "maximum": 256
+        },
+        "minLengthRefPx": {
+          "type": "integer"
+        },
+        "directionToleranceDeg": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 90
+        },
+        "closeDistanceRefPx": {
+          "type": "integer"
+        },
+        "minAreaRefPx2": {
+          "type": "integer"
+        },
+        "minArcCurvature": {
+          "type": "number"
+        },
+        "chargeHoldSec": {
+          "type": "number",
+          "minimum": 0
+        },
+        "hitRadiusRefPx": {
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    },
+    "DamageFormulasRow": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "formulaId",
+        "baseDamage",
+        "criticalChance",
+        "criticalMultiplier",
+        "weakpointMultiplier",
+        "wrongDirectionMultiplier",
+        "comboStep",
+        "comboMaxMultiplier",
+        "energyPerHit",
+        "scorePerHit"
+      ],
+      "properties": {
+        "formulaId": {
+          "type": "string"
+        },
+        "baseDamage": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "criticalChance": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "criticalMultiplier": {
+          "type": "number",
+          "minimum": 0
+        },
+        "weakpointMultiplier": {
+          "type": "number"
+        },
+        "wrongDirectionMultiplier": {
+          "type": "number"
+        },
+        "comboStep": {
+          "type": "number"
+        },
+        "comboMaxMultiplier": {
+          "type": "number"
+        },
+        "energyPerHit": {
+          "type": "integer"
+        },
+        "scorePerHit": {
+          "type": "integer"
+        }
+      }
+    },
+    "DefenseRulesRow": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "defenseRuleId",
+        "armorHp",
+        "requiredGestureType",
+        "requiredStanceId",
+        "breakDamageMultiplier",
+        "wrongGestureDamageMultiplier",
+        "reflectDamage",
+        "breakEffectGroupId"
+      ],
+      "properties": {
+        "defenseRuleId": {
+          "type": "string"
+        },
+        "armorHp": {
+          "type": "integer"
+        },
+        "requiredGestureType": {
+          "type": "string",
+          "enum": [
+            "Any",
+            "Horizontal",
+            "Vertical",
+            "Diagonal",
+            "Arc",
+            "Circle",
+            "Charged"
+          ]
+        },
+        "requiredStanceId": {
+          "type": "string"
+        },
+        "breakDamageMultiplier": {
+          "type": "number"
+        },
+        "wrongGestureDamageMultiplier": {
+          "type": "number"
+        },
+        "reflectDamage": {
+          "type": "integer"
+        },
+        "breakEffectGroupId": {
+          "type": "string"
+        }
+      }
+    },
+    "WeakpointRulesRow": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "weakpointRuleId",
+        "windowStartSec",
+        "windowEndSec",
+        "radiusRefPx",
+        "damageMultiplier",
+        "interruptAttack",
+        "energyBonus",
+        "scoreBonus",
+        "vfxKey"
+      ],
+      "properties": {
+        "weakpointRuleId": {
+          "type": "string"
+        },
+        "windowStartSec": {
+          "type": "number"
+        },
+        "windowEndSec": {
+          "type": "number"
+        },
+        "radiusRefPx": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "damageMultiplier": {
+          "type": "number",
+          "minimum": 0
+        },
+        "interruptAttack": {
+          "type": "boolean"
+        },
+        "energyBonus": {
+          "type": "integer"
+        },
+        "scoreBonus": {
+          "type": "integer"
+        },
+        "vfxKey": {
+          "type": "string"
+        }
+      }
+    },
+    "MovePatternsRow": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "movePatternId",
+        "patternType",
+        "speedMultiplier",
+        "amplitudeRefPx",
+        "frequency",
+        "startXNorm",
+        "endXNorm",
+        "startYNorm",
+        "endYNorm",
+        "loop",
+        "description"
+      ],
+      "properties": {
+        "movePatternId": {
+          "type": "string"
+        },
+        "patternType": {
+          "type": "string",
+          "enum": [
+            "Linear",
+            "Sine",
+            "Dive",
+            "Hover",
+            "Boss"
+          ]
+        },
+        "speedMultiplier": {
+          "type": "number"
+        },
+        "amplitudeRefPx": {
+          "type": "integer"
+        },
+        "frequency": {
+          "type": "number"
+        },
+        "startXNorm": {
+          "type": "number"
+        },
+        "endXNorm": {
+          "type": "number"
+        },
+        "startYNorm": {
+          "type": "number"
+        },
+        "endYNorm": {
+          "type": "number"
+        },
+        "loop": {
+          "type": "boolean"
+        },
+        "description": {
+          "type": "string"
+        }
+      }
+    },
+    "EnemiesRow": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "enemyId",
+        "displayNameKey",
+        "tier",
+        "maxHp",
+        "movePatternId",
+        "moveSpeedRefPxSec",
+        "attackSetId",
+        "defenseRuleId",
+        "weakpointRuleId",
+        "stanceVulnerability",
+        "contactDamage",
+        "scoreValue",
+        "assetKey",
+        "poolPrewarm"
+      ],
+      "properties": {
+        "enemyId": {
+          "type": "string"
+        },
+        "displayNameKey": {
+          "type": "string"
+        },
+        "tier": {
+          "type": "string",
+          "enum": [
+            "Normal",
+            "Elite",
+            "Boss"
+          ]
+        },
+        "maxHp": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "movePatternId": {
+          "type": "string"
+        },
+        "moveSpeedRefPxSec": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "attackSetId": {
+          "type": "string"
+        },
+        "defenseRuleId": {
+          "type": "string"
+        },
+        "weakpointRuleId": {
+          "type": "string"
+        },
+        "stanceVulnerability": {
+          "type": "string",
+          "enum": [
+            "Any",
+            "Blade",
+            "Talisman"
+          ]
+        },
+        "contactDamage": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "scoreValue": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "assetKey": {
+          "type": "string"
+        },
+        "poolPrewarm": {
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    },
+    "EnemyAttacksRow": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "attackId",
+        "attackSetId",
+        "order",
+        "triggerType",
+        "cooldownSec",
+        "windupSec",
+        "activeSec",
+        "damage",
+        "projectileId",
+        "gestureInterruptType",
+        "interruptStartSec",
+        "interruptEndSec",
+        "effectGroupId",
+        "weight"
+      ],
+      "properties": {
+        "attackId": {
+          "type": "string"
+        },
+        "attackSetId": {
+          "type": "string"
+        },
+        "order": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "triggerType": {
+          "type": "string",
+          "enum": [
+            "Cooldown",
+            "Distance",
+            "Support",
+            "HpThreshold"
+          ]
+        },
+        "cooldownSec": {
+          "type": "number",
+          "minimum": 0
+        },
+        "windupSec": {
+          "type": "number",
+          "minimum": 0
+        },
+        "activeSec": {
+          "type": "number",
+          "minimum": 0
+        },
+        "damage": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "projectileId": {
+          "type": "string"
+        },
+        "gestureInterruptType": {
+          "type": "string",
+          "enum": [
+            "Any",
+            "Horizontal",
+            "Vertical",
+            "Diagonal",
+            "Arc",
+            "Circle",
+            "Charged"
+          ]
+        },
+        "interruptStartSec": {
+          "type": "number"
+        },
+        "interruptEndSec": {
+          "type": "number"
+        },
+        "effectGroupId": {
+          "type": "string"
+        },
+        "weight": {
+          "type": "number"
+        }
+      }
+    },
+    "ProjectilesRow": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "projectileId",
+        "movePatternId",
+        "speedRefPxSec",
+        "lifeSec",
+        "damage",
+        "cuttable",
+        "reflectable",
+        "requiredStanceId",
+        "hitRadiusRefPx",
+        "assetKey",
+        "vfxKey"
+      ],
+      "properties": {
+        "projectileId": {
+          "type": "string"
+        },
+        "movePatternId": {
+          "type": "string"
+        },
+        "speedRefPxSec": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "lifeSec": {
+          "type": "number",
+          "minimum": 0
+        },
+        "damage": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "cuttable": {
+          "type": "boolean"
+        },
+        "reflectable": {
+          "type": "boolean"
+        },
+        "requiredStanceId": {
+          "type": "string"
+        },
+        "hitRadiusRefPx": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "assetKey": {
+          "type": "string"
+        },
+        "vfxKey": {
+          "type": "string"
+        }
+      }
+    },
+    "BuffsRow": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "buffId",
+        "type",
+        "durationSec",
+        "maxStacks",
+        "magnitude",
+        "tickSec",
+        "refreshPolicy",
+        "vfxKey",
+        "textKey"
+      ],
+      "properties": {
+        "buffId": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "Slow",
+            "Stun",
+            "DamageOverTime",
+            "Root",
+            "DamageTaken"
+          ]
+        },
+        "durationSec": {
+          "type": "number",
+          "minimum": 0
+        },
+        "maxStacks": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "magnitude": {
+          "type": "number",
+          "minimum": 0
+        },
+        "tickSec": {
+          "type": "number",
+          "minimum": 0
+        },
+        "refreshPolicy": {
+          "type": "string",
+          "enum": [
+            "Refresh",
+            "Replace",
+            "AddStack"
+          ]
+        },
+        "vfxKey": {
+          "type": "string"
+        },
+        "textKey": {
+          "type": "string"
+        }
+      }
+    },
+    "SkillsRow": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "skillId",
+        "displayNameKey",
+        "triggerType",
+        "requiredStanceId",
+        "energyCost",
+        "cooldownSec",
+        "gestureType",
+        "inputWindowSec",
+        "effectGroupId",
+        "iconAssetKey",
+        "textKey"
+      ],
+      "properties": {
+        "skillId": {
+          "type": "string"
+        },
+        "displayNameKey": {
+          "type": "string"
+        },
+        "triggerType": {
+          "type": "string",
+          "enum": [
+            "Passive",
+            "Gesture",
+            "Ultimate"
+          ]
+        },
+        "requiredStanceId": {
+          "type": "string"
+        },
+        "energyCost": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "cooldownSec": {
+          "type": "number",
+          "minimum": 0
+        },
+        "gestureType": {
+          "type": "string",
+          "enum": [
+            "Any",
+            "Horizontal",
+            "Vertical",
+            "Diagonal",
+            "Arc",
+            "Circle",
+            "Charged"
+          ]
+        },
+        "inputWindowSec": {
+          "type": "number",
+          "minimum": 0
+        },
+        "effectGroupId": {
+          "type": "string"
+        },
+        "iconAssetKey": {
+          "type": "string"
+        },
+        "textKey": {
+          "type": "string"
+        }
+      }
+    },
+    "SkillEffectsRow": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "effectGroupId",
+        "order",
+        "effectType",
+        "targetType",
+        "value1",
+        "value2",
+        "durationSec",
+        "buffId",
+        "vfxKey",
+        "audioKey",
+        "condition"
+      ],
+      "properties": {
+        "effectGroupId": {
+          "type": "string"
+        },
+        "order": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "effectType": {
+          "type": "string",
+          "enum": [
+            "Damage",
+            "ApplyBuff",
+            "RemoveArmor",
+            "Knockback",
+            "RepeatStroke",
+            "TimeScale",
+            "ExecuteBelowHpRatio",
+            "DamageMultiplier",
+            "IncrementCounter",
+            "PlayVfx"
+          ]
+        },
+        "targetType": {
+          "type": "string",
+          "enum": [
+            "Target",
+            "NextStroke",
+            "EnemiesInRadius",
+            "LastStrokeTargets",
+            "EnemiesInsideGesture",
+            "Battle",
+            "AllEnemies",
+            "NormalEnemies",
+            "Boss"
+          ]
+        },
+        "value1": {
+          "type": "number"
+        },
+        "value2": {
+          "type": "number"
+        },
+        "durationSec": {
+          "type": "number",
+          "minimum": 0
+        },
+        "buffId": {
+          "type": "string"
+        },
+        "vfxKey": {
+          "type": "string"
+        },
+        "audioKey": {
+          "type": "string"
+        },
+        "condition": {
+          "type": "string"
+        }
+      }
+    },
+    "LevelsRow": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "levelId",
+        "displayNameKey",
+        "sceneKey",
+        "backgroundAssetKey",
+        "durationLimitSec",
+        "nextLevelId",
+        "rewardTableId",
+        "starScore1",
+        "starScore2",
+        "starScore3",
+        "tutorialId",
+        "bossEnemyId"
+      ],
+      "properties": {
+        "levelId": {
+          "type": "string"
+        },
+        "displayNameKey": {
+          "type": "string"
+        },
+        "sceneKey": {
+          "type": "string"
+        },
+        "backgroundAssetKey": {
+          "type": "string"
+        },
+        "durationLimitSec": {
+          "type": "integer"
+        },
+        "nextLevelId": {
+          "type": "string"
+        },
+        "rewardTableId": {
+          "type": "string"
+        },
+        "starScore1": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "starScore2": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "starScore3": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "tutorialId": {
+          "type": "string"
+        },
+        "bossEnemyId": {
+          "type": "string"
+        }
+      }
+    },
+    "WavesRow": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "waveId",
+        "levelId",
+        "order",
+        "startTrigger",
+        "startDelaySec",
+        "endCondition",
+        "endDelaySec",
+        "musicKey",
+        "maxAlive"
+      ],
+      "properties": {
+        "waveId": {
+          "type": "string"
+        },
+        "levelId": {
+          "type": "string"
+        },
+        "order": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "startTrigger": {
+          "type": "string",
+          "enum": [
+            "LevelStart",
+            "PreviousWaveEnd",
+            "PlayerConfirmed",
+            "TimeElapsed"
+          ]
+        },
+        "startDelaySec": {
+          "type": "number"
+        },
+        "endCondition": {
+          "type": "string",
+          "enum": [
+            "AllEnemiesDefeated",
+            "BossDefeated",
+            "TimeElapsed",
+            "PlayerConfirmed"
+          ]
+        },
+        "endDelaySec": {
+          "type": "number"
+        },
+        "musicKey": {
+          "type": "string"
+        },
+        "maxAlive": {
+          "type": "integer",
+          "minimum": 1
+        }
+      }
+    },
+    "SpawnPointsRow": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "spawnPointId",
+        "levelId",
+        "normalizedX",
+        "normalizedY",
+        "lane",
+        "jitterX",
+        "jitterY",
+        "facing",
+        "notes"
+      ],
+      "properties": {
+        "spawnPointId": {
+          "type": "string"
+        },
+        "levelId": {
+          "type": "string"
+        },
+        "normalizedX": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "normalizedY": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "lane": {
+          "type": "string",
+          "enum": [
+            "Ground",
+            "Air",
+            "Boss"
+          ]
+        },
+        "jitterX": {
+          "type": "number"
+        },
+        "jitterY": {
+          "type": "number"
+        },
+        "facing": {
+          "type": "string",
+          "enum": [
+            "Left",
+            "Right"
+          ]
+        },
+        "notes": {
+          "type": "string"
+        }
+      }
+    },
+    "EnemyModifiersRow": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "modifierId",
+        "displayNameKey",
+        "hpMultiplier",
+        "damageMultiplier",
+        "speedMultiplier",
+        "scoreMultiplier",
+        "tintHex",
+        "extraBuffId"
+      ],
+      "properties": {
+        "modifierId": {
+          "type": "string"
+        },
+        "displayNameKey": {
+          "type": "string"
+        },
+        "hpMultiplier": {
+          "type": "number"
+        },
+        "damageMultiplier": {
+          "type": "number",
+          "minimum": 0
+        },
+        "speedMultiplier": {
+          "type": "number"
+        },
+        "scoreMultiplier": {
+          "type": "number"
+        },
+        "tintHex": {
+          "type": "string"
+        },
+        "extraBuffId": {
+          "type": "string"
+        }
+      }
+    },
+    "SpawnsRow": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "spawnId",
+        "waveId",
+        "spawnTimeSec",
+        "enemyId",
+        "count",
+        "intervalSec",
+        "spawnPointId",
+        "spawnPattern",
+        "modifierId"
+      ],
+      "properties": {
+        "spawnId": {
+          "type": "string"
+        },
+        "waveId": {
+          "type": "string"
+        },
+        "spawnTimeSec": {
+          "type": "number"
+        },
+        "enemyId": {
+          "type": "string"
+        },
+        "count": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "intervalSec": {
+          "type": "number",
+          "minimum": 0
+        },
+        "spawnPointId": {
+          "type": "string"
+        },
+        "spawnPattern": {
+          "type": "string",
+          "enum": [
+            "Single",
+            "Line",
+            "Scatter",
+            "Stagger"
+          ]
+        },
+        "modifierId": {
+          "type": "string"
+        }
+      }
+    },
+    "BossPhasesRow": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "bossPhaseId",
+        "enemyId",
+        "order",
+        "enterHpRatio",
+        "exitHpRatio",
+        "movementPatternId",
+        "attackSetId",
+        "defenseRuleId",
+        "weakpointRuleId",
+        "onEnterEffectGroupId",
+        "descriptionKey"
+      ],
+      "properties": {
+        "bossPhaseId": {
+          "type": "string"
+        },
+        "enemyId": {
+          "type": "string"
+        },
+        "order": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "enterHpRatio": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "exitHpRatio": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "movementPatternId": {
+          "type": "string"
+        },
+        "attackSetId": {
+          "type": "string"
+        },
+        "defenseRuleId": {
+          "type": "string"
+        },
+        "weakpointRuleId": {
+          "type": "string"
+        },
+        "onEnterEffectGroupId": {
+          "type": "string"
+        },
+        "descriptionKey": {
+          "type": "string"
+        }
+      }
+    },
+    "RewardsRow": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "rewardTableId",
+        "order",
+        "conditionType",
+        "conditionValue",
+        "rewardType",
+        "rewardId",
+        "amount"
+      ],
+      "properties": {
+        "rewardTableId": {
+          "type": "string"
+        },
+        "order": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "conditionType": {
+          "type": "string",
+          "enum": [
+            "Clear",
+            "StarAtLeast",
+            "ScoreAtLeast"
+          ]
+        },
+        "conditionValue": {
+          "type": "string"
+        },
+        "rewardType": {
+          "type": "string",
+          "enum": [
+            "UnlockLevel",
+            "UnlockFeature",
+            "ScoreToken"
+          ]
+        },
+        "rewardId": {
+          "type": "string"
+        },
+        "amount": {
+          "type": "integer"
+        }
+      }
+    },
+    "TutorialsRow": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "tutorialId",
+        "order",
+        "triggerEvent",
+        "blockProgress",
+        "minDisplaySec",
+        "completeEvent",
+        "textKey",
+        "highlightTarget",
+        "gestureType"
+      ],
+      "properties": {
+        "tutorialId": {
+          "type": "string"
+        },
+        "order": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "triggerEvent": {
+          "type": "string"
+        },
+        "blockProgress": {
+          "type": "boolean"
+        },
+        "minDisplaySec": {
+          "type": "number"
+        },
+        "completeEvent": {
+          "type": "string"
+        },
+        "textKey": {
+          "type": "string"
+        },
+        "highlightTarget": {
+          "type": "string"
+        },
+        "gestureType": {
+          "type": "string",
+          "enum": [
+            "Any",
+            "Horizontal",
+            "Vertical",
+            "Diagonal",
+            "Arc",
+            "Circle",
+            "Charged"
+          ]
+        }
+      }
+    },
+    "TextsRow": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "textKey",
+        "zhCN",
+        "enUS",
+        "context"
+      ],
+      "properties": {
+        "textKey": {
+          "type": "string"
+        },
+        "zhCN": {
+          "type": "string"
+        },
+        "enUS": {
+          "type": "string"
+        },
+        "context": {
+          "type": "string"
+        }
+      }
+    },
+    "AudioCuesRow": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "audioKey",
+        "assetKey",
+        "category",
+        "volume",
+        "pitchMin",
+        "pitchMax",
+        "maxConcurrent",
+        "cooldownSec"
+      ],
+      "properties": {
+        "audioKey": {
+          "type": "string"
+        },
+        "assetKey": {
+          "type": "string"
+        },
+        "category": {
+          "type": "string",
+          "enum": [
+            "BGM",
+            "SFX",
+            "UI"
+          ]
+        },
+        "volume": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "pitchMin": {
+          "type": "number"
+        },
+        "pitchMax": {
+          "type": "number"
+        },
+        "maxConcurrent": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "cooldownSec": {
+          "type": "number",
+          "minimum": 0
+        }
+      }
+    },
+    "VfxCuesRow": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "vfxKey",
+        "assetKey",
+        "lifeSec",
+        "poolPrewarm",
+        "followTarget",
+        "sortingLayer",
+        "sortingOrder"
+      ],
+      "properties": {
+        "vfxKey": {
+          "type": "string"
+        },
+        "assetKey": {
+          "type": "string"
+        },
+        "lifeSec": {
+          "type": "number",
+          "minimum": 0
+        },
+        "poolPrewarm": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "followTarget": {
+          "type": "boolean"
+        },
+        "sortingLayer": {
+          "type": "string"
+        },
+        "sortingOrder": {
+          "type": "integer"
+        }
+      }
+    },
+    "AssetManifestRow": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "assetKey",
+        "assetType",
+        "addressOrPath",
+        "requiredInMvp",
+        "notes"
+      ],
+      "properties": {
+        "assetKey": {
+          "type": "string"
+        },
+        "assetType": {
+          "type": "string",
+          "enum": [
+            "Sprite",
+            "Prefab",
+            "AudioClip",
+            "Scene",
+            "Material",
+            "Font",
+            "AnimationClip"
+          ]
+        },
+        "addressOrPath": {
+          "type": "string"
+        },
+        "requiredInMvp": {
+          "type": "boolean"
+        },
+        "notes": {
+          "type": "string"
+        }
+      }
+    },
+    "EnumsRow": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "enumType",
+        "value",
+        "displayName",
+        "description"
+      ],
+      "properties": {
+        "enumType": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string"
+        },
+        "displayName": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        }
+      }
+    },
+    "FieldDictionaryRow": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "sheet",
+        "field",
+        "type",
+        "required",
+        "default",
+        "min",
+        "max",
+        "enumType",
+        "foreignKey",
+        "description"
+      ],
+      "properties": {
+        "sheet": {
+          "type": "string"
+        },
+        "field": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "required": {
+          "type": "string"
+        },
+        "default": {
+          "type": "string"
+        },
+        "min": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "max": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "enumType": {
+          "type": "string"
+        },
+        "foreignKey": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

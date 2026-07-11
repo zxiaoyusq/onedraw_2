@@ -7,8 +7,8 @@
 | ID | 阶段 | 状态 | 依赖 | 估算人日 | 目标 |
 |---|---|---|---|---:|---|
 | T000 | P0 合同与Harness | DONE | — | 0.5 | 统一玩法、MVP范围、技术基线、配置唯一真相源和完成定义。 |
-| T010 | P0 合同与Harness | READY | T000 | 1.0 | 验收并纳管仓库根目录现有Unity 6000.5.1f1 2D工程基线。 |
-| T020 | P0 合同与Harness | BACKLOG | T010 | 1.0 | 固定URP 2D、Input System、TMP、Test Framework和质量档。 |
+| T010 | P0 合同与Harness | DONE | T000 | 1.0 | 验收并纳管仓库根目录现有Unity 6000.5.1f1 2D工程基线。 |
+| T020 | P0 合同与Harness | READY | T010 | 1.0 | 固定URP 2D、Input System、TMP、Test Framework和质量档。 |
 | T030 | P0 合同与Harness | BACKLOG | T020 | 1.0 | 建立目录、asmdef和Bootstrap/MainMenu/Battle三场景骨架。 |
 | T040 | P0 合同与Harness | BACKLOG | T030 | 1.0 | 建立构建、测试、证据和一任务一提交工作流。 |
 | T100 | P1 微信平台Spike | BACKLOG | T040 | 1.0 | 先验证标准Unity Web构建，不接微信转换。 |
@@ -72,7 +72,7 @@
 
 ### T010 · 验收并纳管仓库根目录现有Unity 6000.5.1f1 2D工程基线。
 
-- **状态：** `READY`
+- **状态：** `DONE`
 - **依赖：** T000
 - **估算：** 1.0 人日
 - **产出：** 根目录Unity工程；根.gitignore；确认精确ProjectVersion.txt；空场景。
@@ -84,7 +84,7 @@
 
 ### T020 · 固定URP 2D、Input System、TMP、Test Framework和质量档。
 
-- **状态：** `BACKLOG`
+- **状态：** `READY`
 - **依赖：** T010
 - **估算：** 1.0 人日
 - **产出：** URP Asset与2D Renderer；Input Actions；Low/High质量档；包版本清单。

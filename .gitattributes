@@ -1,0 +1,12 @@
+# Unity serializes empty YAML scalar values with a trailing space.
+*.asset -whitespace
+*.meta -whitespace
+*.unity -whitespace
+*.scenetemplate -whitespace
+
+# Keep source and configuration files text-normalized.
+*.cs text eol=lf
+*.json text eol=lf
+*.md text eol=lf
+*.yaml text eol=lf
+*.yml text eol=lf
