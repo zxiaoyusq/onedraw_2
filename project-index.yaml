@@ -1,0 +1,28 @@
+project: OneStrokeDemon
+project_cn: 一笔镇妖
+plan_generated: 2026-07-11
+current_task: T010
+current_task_status: READY
+unity:
+  project_root: .
+  preferred_family: "6000.5"
+  exact_version: 6000.5.1f1
+  render_pipeline: URP_2D
+  input: Input_System
+  orientation: landscape
+  reference_resolution: 1920x1080
+config:
+  source: Design/Config/GameConfig.xlsx
+  generated_json: Assets/_Game/Config/Generated/gameplay_config.json
+  schema_version: 1
+  content_version: 0.1.0-sample
+manual_gates:
+  unity_editor_smoke: pending
+  standard_web_build: pending
+  wechat_sdk_source_verified: pending
+  wechat_conversion: pending
+  wechat_devtools: pending
+  android_phone_smoke: pending
+  ios_phone_smoke: pending
+evidence_root: artifacts/evals
+status_values: [BACKLOG, READY, IN_PROGRESS, REVIEW, DONE, BLOCKED]

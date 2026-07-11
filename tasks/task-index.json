@@ -1,0 +1,1433 @@
+{
+  "schemaVersion": 1,
+  "project": "OneStrokeDemon",
+  "currentTask": "T010",
+  "statusValues": [
+    "BACKLOG",
+    "READY",
+    "IN_PROGRESS",
+    "REVIEW",
+    "DONE",
+    "BLOCKED"
+  ],
+  "tasks": [
+    {
+      "id": "T000",
+      "phase": "P0 合同与Harness",
+      "status": "DONE",
+      "deps": [],
+      "days": 0.5,
+      "goal": "统一玩法、MVP范围、技术基线、配置唯一真相源和完成定义。",
+      "outputs": [
+        "处理文档中的待确认项",
+        "更新project-index",
+        "锁定下一任务"
+      ],
+      "not_do": [
+        "不写业务C#",
+        "不导入正式美术",
+        "不安装微信SDK"
+      ],
+      "acceptance": [
+        "权威文档之间无冲突",
+        "所有TBD被确认或明确BLOCKED",
+        "T010改为READY"
+      ],
+      "tests": [
+        "文档交叉检查",
+        "git status基线"
+      ],
+      "evidence": "artifacts/evals/T000/"
+    },
+    {
+      "id": "T010",
+      "phase": "P0 合同与Harness",
+      "status": "READY",
+      "deps": [
+        "T000"
+      ],
+      "days": 1.0,
+      "goal": "验收并纳管仓库根目录现有Unity 6000.5.1f1 2D工程基线。",
+      "outputs": [
+        "根目录Unity工程",
+        "根.gitignore",
+        "确认精确ProjectVersion.txt",
+        "空场景"
+      ],
+      "not_do": [
+        "不接微信SDK",
+        "不写战斗代码",
+        "不创建嵌套.git"
+      ],
+      "acceptance": [
+        "Unity 6000.5.1f1可打开并进入Play Mode",
+        "Console无Error",
+        "仓库只有一个.git"
+      ],
+      "tests": [
+        "Unity空场景冒烟",
+        "git status审查"
+      ],
+      "evidence": "artifacts/evals/T010/"
+    },
+    {
+      "id": "T020",
+      "phase": "P0 合同与Harness",
+      "status": "BACKLOG",
+      "deps": [
+        "T010"
+      ],
+      "days": 1.0,
+      "goal": "固定URP 2D、Input System、TMP、Test Framework和质量档。",
+      "outputs": [
+        "URP Asset与2D Renderer",
+        "Input Actions",
+        "Low/High质量档",
+        "包版本清单"
+      ],
+      "not_do": [
+        "不引入非必要框架",
+        "不实现玩法"
+      ],
+      "acceptance": [
+        "Graphics及Quality均指向正确URP",
+        "鼠标/触摸统一输入可读",
+        "测试程序集可发现"
+      ],
+      "tests": [
+        "RenderPipelineBaselineTests",
+        "InputBaselinePlayModeTests"
+      ],
+      "evidence": "artifacts/evals/T020/"
+    },
+    {
+      "id": "T030",
+      "phase": "P0 合同与Harness",
+      "status": "BACKLOG",
+      "deps": [
+        "T020"
+      ],
+      "days": 1.0,
+      "goal": "建立目录、asmdef和Bootstrap/MainMenu/Battle三场景骨架。",
+      "outputs": [
+        "模块目录",
+        "Runtime/Editor/EditMode/PlayMode asmdef",
+        "Bootstrap场景",
+        "场景流接口"
+      ],
+      "not_do": [
+        "不实现具体战斗",
+        "不手改Unity YAML"
+      ],
+      "acceptance": [
+        "无程序集循环依赖",
+        "Bootstrap能加载主菜单和战斗灰盒",
+        "场景由Unity保存"
+      ],
+      "tests": [
+        "AssemblyDependencyTests",
+        "SceneFlowSmokePlayModeTests"
+      ],
+      "evidence": "artifacts/evals/T030/"
+    },
+    {
+      "id": "T040",
+      "phase": "P0 合同与Harness",
+      "status": "BACKLOG",
+      "deps": [
+        "T030"
+      ],
+      "days": 1.0,
+      "goal": "建立构建、测试、证据和一任务一提交工作流。",
+      "outputs": [
+        "批处理测试命令",
+        "Web构建入口",
+        "verification模板",
+        "改动白名单流程"
+      ],
+      "not_do": [
+        "不宣称微信真机通过"
+      ],
+      "acceptance": [
+        "EditMode/PlayMode可独立输出XML",
+        "失败返回非零",
+        "证据模板可复用"
+      ],
+      "tests": [
+        "空测试流水线冒烟"
+      ],
+      "evidence": "artifacts/evals/T040/"
+    },
+    {
+      "id": "T100",
+      "phase": "P1 微信平台Spike",
+      "status": "BACKLOG",
+      "deps": [
+        "T040"
+      ],
+      "days": 1.0,
+      "goal": "先验证标准Unity Web构建，不接微信转换。",
+      "outputs": [
+        "最小Web构建",
+        "输入/音频/中文/存储冒烟",
+        "构建日志与体积"
+      ],
+      "not_do": [
+        "不接业务内容",
+        "不把浏览器成功等同微信成功"
+      ],
+      "acceptance": [
+        "标准Web构建完成",
+        "本地HTTP可运行",
+        "核心冒烟有记录"
+      ],
+      "tests": [
+        "WebBuildSmoke",
+        "浏览器人工冒烟"
+      ],
+      "evidence": "artifacts/evals/T100/"
+    },
+    {
+      "id": "T110",
+      "phase": "P1 微信平台Spike",
+      "status": "BACKLOG",
+      "deps": [
+        "T100"
+      ],
+      "days": 2.0,
+      "goal": "确认当前官方微信Unity转换方案并做Unity/SDK兼容矩阵。",
+      "outputs": [
+        "SDK来源/版本/commit/许可证",
+        "兼容矩阵",
+        "UPSTREAM.md",
+        "补丁决策"
+      ],
+      "not_do": [
+        "不使用浮动分支",
+        "不把旧失效仓库当安装源",
+        "未经决策不换Unity版本"
+      ],
+      "acceptance": [
+        "依赖可复现",
+        "导入后全工程编译",
+        "失败保留原始错误并正确标记"
+      ],
+      "tests": [
+        "SDKImportCompile",
+        "版本与许可证审查"
+      ],
+      "evidence": "artifacts/evals/T110/"
+    },
+    {
+      "id": "T120",
+      "phase": "P1 微信平台Spike",
+      "status": "BACKLOG",
+      "deps": [
+        "T110"
+      ],
+      "days": 2.0,
+      "goal": "完成微信转换、开发者工具和至少一台真机的分级冒烟。",
+      "outputs": [
+        "转换输出",
+        "DevTools日志/截图",
+        "真机触摸/音频/前后台/存储结果"
+      ],
+      "not_do": [
+        "缺工具或真机时不得写PASS"
+      ],
+      "acceptance": [
+        "四级结果独立记录：Web/转换/DevTools/真机",
+        "失败可定位到层级"
+      ],
+      "tests": [
+        "人工平台矩阵"
+      ],
+      "evidence": "artifacts/evals/T120/"
+    },
+    {
+      "id": "T130",
+      "phase": "P1 微信平台Spike",
+      "status": "BACKLOG",
+      "deps": [
+        "T110"
+      ],
+      "days": 1.0,
+      "goal": "建立Editor/Web/WeChat平台服务抽象。",
+      "outputs": [
+        "IPlatformService",
+        "存储/震动/生命周期/日志接口",
+        "Editor/Web Stub",
+        "微信实现壳"
+      ],
+      "not_do": [
+        "不接广告支付排行榜",
+        "Gameplay不直接调用WX静态API"
+      ],
+      "acceptance": [
+        "Gameplay程序集不依赖微信SDK",
+        "无SDK时Editor仍可运行",
+        "平台实现可替换"
+      ],
+      "tests": [
+        "PlatformServiceContractTests"
+      ],
+      "evidence": "artifacts/evals/T130/"
+    },
+    {
+      "id": "T200",
+      "phase": "P2 配置系统",
+      "status": "BACKLOG",
+      "deps": [
+        "T040"
+      ],
+      "days": 1.0,
+      "goal": "确认Excel工作簿、字段字典、ID规则和数据所有权。",
+      "outputs": [
+        "GameConfig.xlsx",
+        "CONFIG_SCHEMA",
+        "枚举/字段字典",
+        "样例数据"
+      ],
+      "not_do": [
+        "不让Inspector成为第二数值库",
+        "运行时不读xlsx"
+      ],
+      "acceptance": [
+        "玩家/手势/敌人/技能/关卡/Boss/文本/VFX均有表",
+        "外键关系明确"
+      ],
+      "tests": [
+        "Schema人工审查"
+      ],
+      "evidence": "artifacts/evals/T200/"
+    },
+    {
+      "id": "T210",
+      "phase": "P2 配置系统",
+      "status": "BACKLOG",
+      "deps": [
+        "T200"
+      ],
+      "days": 2.0,
+      "goal": "实现独立.NET配置导出器：xlsx到稳定JSON。",
+      "outputs": [
+        "Tools/ConfigExporter",
+        "export/validate命令",
+        "稳定排序和hash",
+        "原子写入"
+      ],
+      "not_do": [
+        "Excel库不进入Unity Runtime",
+        "输出不含无意义随机时间戳"
+      ],
+      "acceptance": [
+        "同一输入重复导出字节一致",
+        "错误返回非零",
+        "输出自校验后替换"
+      ],
+      "tests": [
+        "ExporterDeterminismTests",
+        "ExporterHeaderTests"
+      ],
+      "evidence": "artifacts/evals/T210/"
+    },
+    {
+      "id": "T220",
+      "phase": "P2 配置系统",
+      "status": "BACKLOG",
+      "deps": [
+        "T210"
+      ],
+      "days": 2.0,
+      "goal": "实现结构、范围、枚举、唯一性、外键和跨表语义校验。",
+      "outputs": [
+        "ConfigValidator",
+        "Sheet/Row/Field定位",
+        "错误码",
+        "坏配置样例"
+      ],
+      "not_do": [
+        "不允许半应用坏配置",
+        "不静默修正策划数据"
+      ],
+      "acceptance": [
+        "重复ID/缺外键/负时间/Boss阈值乱序等全部失败",
+        "错误可定位单元格"
+      ],
+      "tests": [
+        "ConfigValidationTests"
+      ],
+      "evidence": "artifacts/evals/T220/"
+    },
+    {
+      "id": "T230",
+      "phase": "P2 配置系统",
+      "status": "BACKLOG",
+      "deps": [
+        "T220"
+      ],
+      "days": 2.0,
+      "goal": "实现Unity Runtime配置加载、版本检查和只读索引。",
+      "outputs": [
+        "GameplayConfigDocument DTO",
+        "GameplayConfigService",
+        "ID索引",
+        "启动摘要"
+      ],
+      "not_do": [
+        "热路径不反序列化",
+        "不使用反射驱动战斗"
+      ],
+      "acceptance": [
+        "启动一次解析并建立只读字典",
+        "版本不兼容阻止进战斗",
+        "日志有来源/hash/数量"
+      ],
+      "tests": [
+        "RuntimeConfigLoadTests",
+        "InvalidConfigTests"
+      ],
+      "evidence": "artifacts/evals/T230/"
+    },
+    {
+      "id": "T240",
+      "phase": "P2 配置系统",
+      "status": "BACKLOG",
+      "deps": [
+        "T230"
+      ],
+      "days": 1.0,
+      "goal": "建立assetKey到Unity对象的AssetRegistry，且不保存平衡值。",
+      "outputs": [
+        "AssetRegistrySO",
+        "Prefab/Sprite/Audio/VFX映射",
+        "Editor校验器"
+      ],
+      "not_do": [
+        "SO不复制HP/CD/伤害",
+        "配置不写GUID或路径"
+      ],
+      "acceptance": [
+        "每个assetKey可校验",
+        "缺失/重复键构建失败",
+        "资源替换不改配置ID"
+      ],
+      "tests": [
+        "AssetRegistryValidationTests"
+      ],
+      "evidence": "artifacts/evals/T240/"
+    },
+    {
+      "id": "T250",
+      "phase": "P2 配置系统",
+      "status": "BACKLOG",
+      "deps": [
+        "T240"
+      ],
+      "days": 1.0,
+      "goal": "把导出、校验、JSON diff和Unity配置测试接入一条命令。",
+      "outputs": [
+        "verify-config脚本",
+        "生成JSON快照",
+        "CI说明"
+      ],
+      "not_do": [
+        "不允许只改Excel不提交JSON",
+        "不允许手改生成JSON"
+      ],
+      "acceptance": [
+        "一键导出验证",
+        "生成物漂移可检测",
+        "全绿后才进入玩法任务"
+      ],
+      "tests": [
+        "ConfigPipelineE2E"
+      ],
+      "evidence": "artifacts/evals/T250/"
+    },
+    {
+      "id": "T300",
+      "phase": "P3 手势战斗核心",
+      "status": "BACKLOG",
+      "deps": [
+        "T250",
+        "T030"
+      ],
+      "days": 1.0,
+      "goal": "实现统一指针输入、UI阻挡、Safe Area和参考像素坐标。",
+      "outputs": [
+        "IPointerInput",
+        "InputSystemPointerAdapter",
+        "ReferencePixelConverter",
+        "失焦取消"
+      ],
+      "not_do": [
+        "不依赖Screen.dpi",
+        "MVP不支持多指战斗"
+      ],
+      "acceptance": [
+        "鼠标与触摸同接口",
+        "UI上起笔不攻击",
+        "前后台会取消当前笔迹"
+      ],
+      "tests": [
+        "PointerInputTests",
+        "PointerCancelPlayModeTests"
+      ],
+      "evidence": "artifacts/evals/T300/"
+    },
+    {
+      "id": "T310",
+      "phase": "P3 手势战斗核心",
+      "status": "BACKLOG",
+      "deps": [
+        "T300"
+      ],
+      "days": 1.0,
+      "goal": "实现笔迹采样、最小距离、最大点数和长度裁剪。",
+      "outputs": [
+        "StrokeSampler纯C#",
+        "不可变StrokeData",
+        "配置阈值"
+      ],
+      "not_do": [
+        "不为每点创建GameObject",
+        "Update热路径不分配列表"
+      ],
+      "acceptance": [
+        "短抖动过滤",
+        "超长笔迹精确截断",
+        "点数上限稳定"
+      ],
+      "tests": [
+        "StrokeSamplerBoundaryTests"
+      ],
+      "evidence": "artifacts/evals/T310/"
+    },
+    {
+      "id": "T320",
+      "phase": "P3 手势战斗核心",
+      "status": "BACKLOG",
+      "deps": [
+        "T310"
+      ],
+      "days": 2.0,
+      "goal": "实现RDP简化、重采样、长度、包围盒、面积、闭合和曲率。",
+      "outputs": [
+        "StrokeGeometry纯C#",
+        "容差说明",
+        "退化输入处理"
+      ],
+      "not_do": [
+        "算法不藏在MonoBehaviour"
+      ],
+      "acceptance": [
+        "直线/折线/弧/圆稳定",
+        "重复点和极短输入不崩溃",
+        "结果可回放"
+      ],
+      "tests": [
+        "StrokeGeometryTests"
+      ],
+      "evidence": "artifacts/evals/T320/"
+    },
+    {
+      "id": "T330",
+      "phase": "P3 手势战斗核心",
+      "status": "BACKLOG",
+      "deps": [
+        "T320"
+      ],
+      "days": 2.0,
+      "goal": "配置驱动识别横、竖、斜、弧、圆和蓄力笔势。",
+      "outputs": [
+        "GestureClassifier",
+        "GestureMatchResult及置信度",
+        "规则表映射"
+      ],
+      "not_do": [
+        "MVP不做机器学习",
+        "不要求像素级书法精度"
+      ],
+      "acceptance": [
+        "角度/闭合/曲率均来自表",
+        "输入相同结果相同",
+        "误识别样例有回归"
+      ],
+      "tests": [
+        "GestureClassifierTests"
+      ],
+      "evidence": "artifacts/evals/T330/"
+    },
+    {
+      "id": "T340",
+      "phase": "P3 手势战斗核心",
+      "status": "BACKLOG",
+      "deps": [
+        "T310"
+      ],
+      "days": 1.5,
+      "goal": "实现低分配笔迹视觉、淡出和池化。",
+      "outputs": [
+        "StrokeTrailView",
+        "LineRenderer或程序化Mesh",
+        "轨迹对象池"
+      ],
+      "not_do": [
+        "视觉组件不决定命中",
+        "不为每段实例化材质"
+      ],
+      "acceptance": [
+        "快速连续划动无明显GC尖峰",
+        "刀/符轨迹可配置切换"
+      ],
+      "tests": [
+        "StrokeTrailPoolPlayModeTests"
+      ],
+      "evidence": "artifacts/evals/T340/"
+    },
+    {
+      "id": "T350",
+      "phase": "P3 手势战斗核心",
+      "status": "BACKLOG",
+      "deps": [
+        "T320",
+        "T340"
+      ],
+      "days": 2.0,
+      "goal": "实现分段胶囊命中、顺序排序、同笔去重和弱点命中。",
+      "outputs": [
+        "StrokeHitResolver",
+        "IHittable",
+        "HitRecord",
+        "NonAlloc查询缓存"
+      ],
+      "not_do": [
+        "不动态生成大量Collider",
+        "默认同一目标同笔只伤一次"
+      ],
+      "acceptance": [
+        "一笔多目标顺序正确",
+        "同目标不重复伤害",
+        "弱点与主体可区分"
+      ],
+      "tests": [
+        "StrokeHitResolverTests",
+        "MultiTargetHitPlayModeTests"
+      ],
+      "evidence": "artifacts/evals/T350/"
+    },
+    {
+      "id": "T360",
+      "phase": "P3 手势战斗核心",
+      "status": "BACKLOG",
+      "deps": [
+        "T350",
+        "T230"
+      ],
+      "days": 1.5,
+      "goal": "实现伤害公式、方向奖励、连斩、评分和能量。",
+      "outputs": [
+        "DamageCalculator纯C#",
+        "ComboService",
+        "ScoreService",
+        "DamageContext"
+      ],
+      "not_do": [
+        "不在敌人脚本散落公式",
+        "不硬编码倍率"
+      ],
+      "acceptance": [
+        "所有倍率来自表",
+        "弱点/方向/连斩可独立断言",
+        "浮点取整规则明确"
+      ],
+      "tests": [
+        "DamageFormulaTests",
+        "ComboScoreTests"
+      ],
+      "evidence": "artifacts/evals/T360/"
+    },
+    {
+      "id": "T370",
+      "phase": "P3 手势战斗核心",
+      "status": "BACKLOG",
+      "deps": [
+        "T350"
+      ],
+      "days": 1.5,
+      "goal": "实现可切断、不可切断和可反弹的敌方投射物。",
+      "outputs": [
+        "ProjectileController",
+        "ProjectileHitTarget",
+        "切断/反弹规则"
+      ],
+      "not_do": [
+        "不依赖不可控物理力"
+      ],
+      "acceptance": [
+        "三类规则均可配",
+        "反弹归属和伤害来源正确",
+        "回收状态完整"
+      ],
+      "tests": [
+        "ProjectileCutTests",
+        "ProjectileReflectPlayModeTests"
+      ],
+      "evidence": "artifacts/evals/T370/"
+    },
+    {
+      "id": "T400",
+      "phase": "P4 玩家敌人技能",
+      "status": "BACKLOG",
+      "deps": [
+        "T360"
+      ],
+      "days": 1.5,
+      "goal": "实现玩家HP、能量、刀/符架势、切换冷却和战斗事件。",
+      "outputs": [
+        "PlayerCombatModel",
+        "PlayerCombatController",
+        "StanceService"
+      ],
+      "not_do": [
+        "MVP不做自由移动",
+        "数值不放Inspector"
+      ],
+      "acceptance": [
+        "架势影响轨迹/伤害/切弹",
+        "能量获取消耗可配",
+        "死亡只触发一次"
+      ],
+      "tests": [
+        "PlayerCombatTests",
+        "StanceSwitchPlayModeTests"
+      ],
+      "evidence": "artifacts/evals/T400/"
+    },
+    {
+      "id": "T410",
+      "phase": "P4 玩家敌人技能",
+      "status": "BACKLOG",
+      "deps": [
+        "T400",
+        "T230"
+      ],
+      "days": 3.0,
+      "goal": "实现数据驱动Skill到EffectGroup到有序Effect执行链。",
+      "outputs": [
+        "SkillService",
+        "IEffectExecutor",
+        "伤害/治疗/Buff/击退/清弹/慢动作等"
+      ],
+      "not_do": [
+        "不为每个技能写独立MonoBehaviour",
+        "不反射查执行器"
+      ],
+      "acceptance": [
+        "新增由现有效果组成的技能只改表",
+        "顺序稳定",
+        "目标过滤可配"
+      ],
+      "tests": [
+        "SkillEffectPipelineTests",
+        "UltimateSkillPlayModeTests"
+      ],
+      "evidence": "artifacts/evals/T410/"
+    },
+    {
+      "id": "T420",
+      "phase": "P4 玩家敌人技能",
+      "status": "BACKLOG",
+      "deps": [
+        "T360"
+      ],
+      "days": 2.0,
+      "goal": "实现通用敌人状态机、Damageable和Weakpoint。",
+      "outputs": [
+        "EnemyController",
+        "EnemyStateMachine",
+        "Damageable",
+        "WeakpointController"
+      ],
+      "not_do": [
+        "不创建每怪空壳子类"
+      ],
+      "acceptance": [
+        "Spawn/Move/Windup/Attack/Recovery/Stun/Dead清晰",
+        "死亡/打断/回收幂等"
+      ],
+      "tests": [
+        "EnemyStateMachineTests"
+      ],
+      "evidence": "artifacts/evals/T420/"
+    },
+    {
+      "id": "T430",
+      "phase": "P4 玩家敌人技能",
+      "status": "BACKLOG",
+      "deps": [
+        "T420",
+        "T370"
+      ],
+      "days": 3.0,
+      "goal": "实现可组合移动、攻击、防御和支援策略注册表。",
+      "outputs": [
+        "MovementStrategyRegistry",
+        "AttackStrategyRegistry",
+        "DefenseRuleService",
+        "Telegraph"
+      ],
+      "not_do": [
+        "不引入NavMesh/A*",
+        "不把动画事件当唯一伤害真相"
+      ],
+      "acceptance": [
+        "靠近/悬浮/俯冲/冲撞/投射物/护盾可复用",
+        "未知策略ID校验失败"
+      ],
+      "tests": [
+        "EnemyStrategyTests",
+        "AttackTelegraphPlayModeTests"
+      ],
+      "evidence": "artifacts/evals/T430/"
+    },
+    {
+      "id": "T440",
+      "phase": "P4 玩家敌人技能",
+      "status": "BACKLOG",
+      "deps": [
+        "T420"
+      ],
+      "days": 1.5,
+      "goal": "建立敌人、投射物、VFX和伤害数字对象池及完整重置。",
+      "outputs": [
+        "ObjectPoolService",
+        "IPoolable",
+        "预热配置",
+        "泄漏检测"
+      ],
+      "not_do": [
+        "不只重置activeSelf",
+        "不让事件订阅跨回收残留"
+      ],
+      "acceptance": [
+        "连续生成/击杀/清场/重开3次无旧状态",
+        "池不足策略可配"
+      ],
+      "tests": [
+        "PoolResetTests",
+        "RestartThreeTimesPlayModeTests"
+      ],
+      "evidence": "artifacts/evals/T440/"
+    },
+    {
+      "id": "T450",
+      "phase": "P4 玩家敌人技能",
+      "status": "BACKLOG",
+      "deps": [
+        "T430",
+        "T440"
+      ],
+      "days": 2.0,
+      "goal": "只用配置组合5种普通怪和1种精英怪。",
+      "outputs": [
+        "符火鱼妖",
+        "轮车僵妖",
+        "石甲龟妖",
+        "骷髅幽魂",
+        "飞行符蝠",
+        "摄魂道傀"
+      ],
+      "not_do": [
+        "不为内容复制业务代码",
+        "不先追求正式动画"
+      ],
+      "acceptance": [
+        "每怪有独立教学点与清晰前摇",
+        "改HP/速度/攻击无需改C#"
+      ],
+      "tests": [
+        "EnemyArchetypeConfigTests",
+        "EnemyGalleryPlayModeTests"
+      ],
+      "evidence": "artifacts/evals/T450/"
+    },
+    {
+      "id": "T460",
+      "phase": "P4 玩家敌人技能",
+      "status": "BACKLOG",
+      "deps": [
+        "T410",
+        "T430"
+      ],
+      "days": 3.0,
+      "goal": "实现配置驱动Boss阶段、阈值、技能序列和切换。",
+      "outputs": [
+        "BossPhaseController",
+        "阶段条件/进入动作",
+        "镇墓玄甲王三阶段"
+      ],
+      "not_do": [
+        "不在Boss脚本硬编码百分比",
+        "切换不依赖动画长度猜测"
+      ],
+      "acceptance": [
+        "阈值顺序校验",
+        "阶段可换攻击/速度/护甲/弱点",
+        "事件只触发一次"
+      ],
+      "tests": [
+        "BossPhaseTests",
+        "BossBattlePlayModeTests"
+      ],
+      "evidence": "artifacts/evals/T460/"
+    },
+    {
+      "id": "T500",
+      "phase": "P5 关卡完整单局",
+      "status": "BACKLOG",
+      "deps": [
+        "T450"
+      ],
+      "days": 2.0,
+      "goal": "实现Level/Wave/Spawn时间轴和条件结束。",
+      "outputs": [
+        "LevelRunner",
+        "WaveRunner",
+        "SpawnScheduler",
+        "归一化出生区域"
+      ],
+      "not_do": [
+        "不在场景手摆每波敌人",
+        "不让计时器跨过玩家必须完成的动作门"
+      ],
+      "acceptance": [
+        "波次和刷怪完全来自表",
+        "AllDefeated/TimeElapsed/BossDefeated可用",
+        "暂停不推进"
+      ],
+      "tests": [
+        "SpawnTimelineTests",
+        "WaveRunnerPlayModeTests"
+      ],
+      "evidence": "artifacts/evals/T500/"
+    },
+    {
+      "id": "T510",
+      "phase": "P5 关卡完整单局",
+      "status": "BACKLOG",
+      "deps": [
+        "T500",
+        "T400"
+      ],
+      "days": 1.5,
+      "goal": "实现Countdown/Playing/UltimateDrawing/Paused/Victory/Defeat状态机。",
+      "outputs": [
+        "BattleFlowStateMachine",
+        "事件门",
+        "统一时间源"
+      ],
+      "not_do": [
+        "不以计时器替代玩家确认",
+        "不允许重复结算"
+      ],
+      "acceptance": [
+        "终极必须收到有效笔势事件",
+        "暂停/失焦恢复一致",
+        "胜负互斥"
+      ],
+      "tests": [
+        "BattleFlowTests",
+        "NoAdvanceBeforePlayerActionTests"
+      ],
+      "evidence": "artifacts/evals/T510/"
+    },
+    {
+      "id": "T520",
+      "phase": "P5 关卡完整单局",
+      "status": "BACKLOG",
+      "deps": [
+        "T510"
+      ],
+      "days": 2.0,
+      "goal": "完成幽菌古道教学关：普通斩、连斩、切弹、架势和终极。",
+      "outputs": [
+        "lv_001_tutorial配置",
+        "约6波",
+        "教程步骤"
+      ],
+      "not_do": [
+        "不做复杂剧情",
+        "不强制精确书法"
+      ],
+      "acceptance": [
+        "新玩家约3分钟理解核心",
+        "教程由事件触发而非固定秒数"
+      ],
+      "tests": [
+        "TutorialLevelE2EPlayModeTests",
+        "人工无提示试玩"
+      ],
+      "evidence": "artifacts/evals/T520/"
+    },
+    {
+      "id": "T530",
+      "phase": "P5 关卡完整单局",
+      "status": "BACKLOG",
+      "deps": [
+        "T520"
+      ],
+      "days": 2.0,
+      "goal": "完成混合怪物普通关，验证战术组合和难度曲线。",
+      "outputs": [
+        "lv_002_cave配置",
+        "约8波",
+        "精英与危险目标组合"
+      ],
+      "not_do": [
+        "不新增代码型敌人"
+      ],
+      "acceptance": [
+        "节奏只改表即可",
+        "核心机制都有发挥",
+        "不存在不可解组合"
+      ],
+      "tests": [
+        "NormalLevelE2EPlayModeTests"
+      ],
+      "evidence": "artifacts/evals/T530/"
+    },
+    {
+      "id": "T540",
+      "phase": "P5 关卡完整单局",
+      "status": "BACKLOG",
+      "deps": [
+        "T460",
+        "T530"
+      ],
+      "days": 2.5,
+      "goal": "完成Boss关和镇墓玄甲王三阶段战斗。",
+      "outputs": [
+        "lv_003_boss配置",
+        "阶段与处决流程",
+        "胜败回路"
+      ],
+      "not_do": [
+        "不加入第二Boss",
+        "不依赖正式过场"
+      ],
+      "acceptance": [
+        "约4分钟可完成",
+        "阶段提示清晰",
+        "失败重试和胜利均稳定"
+      ],
+      "tests": [
+        "BossLevelE2EPlayModeTests"
+      ],
+      "evidence": "artifacts/evals/T540/"
+    },
+    {
+      "id": "T550",
+      "phase": "P5 关卡完整单局",
+      "status": "BACKLOG",
+      "deps": [
+        "T540"
+      ],
+      "days": 2.0,
+      "goal": "实现结算、星级/评分、解锁、重开和最小进度保存。",
+      "outputs": [
+        "ResultService",
+        "ProgressSave v1",
+        "Restart/NextLevel",
+        "迁移接口"
+      ],
+      "not_do": [
+        "不做云存档",
+        "不做付费货币"
+      ],
+      "acceptance": [
+        "重复结算幂等",
+        "坏存档可回退",
+        "连续重开3次无泄漏"
+      ],
+      "tests": [
+        "ResultTests",
+        "SaveMigrationTests",
+        "RestartThreeTimesPlayModeTests"
+      ],
+      "evidence": "artifacts/evals/T550/"
+    },
+    {
+      "id": "T600",
+      "phase": "P6 表现与资源",
+      "status": "BACKLOG",
+      "deps": [
+        "T510"
+      ],
+      "days": 2.0,
+      "goal": "实现生命、能量、连斩、评分、架势、终极、暂停和结算UI。",
+      "outputs": [
+        "BattleHUD",
+        "UI Presenter",
+        "按钮状态/冷却",
+        "无业务逻辑View"
+      ],
+      "not_do": [
+        "UI不直接改战斗Model",
+        "UI文字不硬编码"
+      ],
+      "acceptance": [
+        "UI只订阅状态/事件",
+        "按钮状态完整",
+        "Safe Area内可用"
+      ],
+      "tests": [
+        "HudBindingPlayModeTests"
+      ],
+      "evidence": "artifacts/evals/T600/"
+    },
+    {
+      "id": "T610",
+      "phase": "P6 表现与资源",
+      "status": "BACKLOG",
+      "deps": [
+        "T600"
+      ],
+      "days": 1.0,
+      "goal": "建立中文TMP字体、fallback和字符覆盖检查。",
+      "outputs": [
+        "中文字体Asset",
+        "fallback设置",
+        "常用字符集清单"
+      ],
+      "not_do": [
+        "不打包不必要超大Atlas",
+        "不在交付包外发字体源文件"
+      ],
+      "acceptance": [
+        "配置文本无方框/缺字/裁切",
+        "动态伤害数字正常"
+      ],
+      "tests": [
+        "LocalizationGlyphTests",
+        "PlayMode截图"
+      ],
+      "evidence": "artifacts/evals/T610/"
+    },
+    {
+      "id": "T620",
+      "phase": "P6 表现与资源",
+      "status": "BACKLOG",
+      "deps": [
+        "T360",
+        "T440"
+      ],
+      "days": 2.0,
+      "goal": "实现受击停顿、闪白、震屏、伤害数字、音效、震动和慢动作。",
+      "outputs": [
+        "CombatFeedbackService",
+        "VFX/Audio cue映射",
+        "反馈强度设置"
+      ],
+      "not_do": [
+        "反馈不改变伤害真相",
+        "不阻塞加载音频"
+      ],
+      "acceptance": [
+        "不看Console也能理解命中/弱点/破甲/弹反",
+        "对象池化",
+        "震动可关闭"
+      ],
+      "tests": [
+        "FeedbackEventTests",
+        "人工感知验收"
+      ],
+      "evidence": "artifacts/evals/T620/"
+    },
+    {
+      "id": "T630",
+      "phase": "P6 表现与资源",
+      "status": "BACKLOG",
+      "deps": [
+        "T450",
+        "T600"
+      ],
+      "days": 2.0,
+      "goal": "接入PSD解析出的背景、主角、怪物、UI和特效作为原型资源。",
+      "outputs": [
+        "Sprite导入规范",
+        "SpriteAtlas",
+        "Pivot/PPU/SortingLayer",
+        "来源记录"
+      ],
+      "not_do": [
+        "不把125MB PSD放进Runtime Assets",
+        "不把单张角色当骨骼拆件"
+      ],
+      "acceptance": [
+        "只导出透明PNG",
+        "尺寸/压缩/命名统一",
+        "生成图素材完成授权核对"
+      ],
+      "tests": [
+        "AssetImportValidationTests",
+        "真机视觉冒烟"
+      ],
+      "evidence": "artifacts/evals/T630/"
+    },
+    {
+      "id": "T640",
+      "phase": "P6 表现与资源",
+      "status": "BACKLOG",
+      "deps": [
+        "T600",
+        "T120"
+      ],
+      "days": 1.5,
+      "goal": "适配横屏比例、刘海/圆角、安全区和触控遮挡。",
+      "outputs": [
+        "SafeAreaFitter",
+        "背景裁切策略",
+        "左右手按钮镜像"
+      ],
+      "not_do": [
+        "不按单一设备绝对坐标布局"
+      ],
+      "acceptance": [
+        "16:9/19.5:9/平板不遮挡关键内容",
+        "UI区与划动区冲突可测"
+      ],
+      "tests": [
+        "ResolutionLayoutPlayModeTests",
+        "多设备截图"
+      ],
+      "evidence": "artifacts/evals/T640/"
+    },
+    {
+      "id": "T650",
+      "phase": "P6 表现与资源",
+      "status": "BACKLOG",
+      "deps": [
+        "T520",
+        "T600"
+      ],
+      "days": 1.5,
+      "goal": "完成事件驱动教程遮罩、手势示意和跳过/回看。",
+      "outputs": [
+        "TutorialDirector",
+        "配置化步骤",
+        "一次性标记"
+      ],
+      "not_do": [
+        "不靠固定延时推进关键步骤"
+      ],
+      "acceptance": [
+        "完成目标动作才推进",
+        "重开/跳过不锁死",
+        "文案来自Texts表"
+      ],
+      "tests": [
+        "TutorialGateTests",
+        "TutorialSkipPlayModeTests"
+      ],
+      "evidence": "artifacts/evals/T650/"
+    },
+    {
+      "id": "T700",
+      "phase": "P7 质量发布",
+      "status": "BACKLOG",
+      "deps": [
+        "T540"
+      ],
+      "days": 2.0,
+      "goal": "补齐纯规则EditMode回归矩阵。",
+      "outputs": [
+        "手势/伤害/配置/技能/状态机/Boss测试"
+      ],
+      "not_do": [
+        "纯算法不使用场景测试"
+      ],
+      "acceptance": [
+        "边界、无效输入、重复事件覆盖",
+        "测试无顺序依赖"
+      ],
+      "tests": [
+        "全量EditMode"
+      ],
+      "evidence": "artifacts/evals/T700/"
+    },
+    {
+      "id": "T710",
+      "phase": "P7 质量发布",
+      "status": "BACKLOG",
+      "deps": [
+        "T550",
+        "T650"
+      ],
+      "days": 3.0,
+      "goal": "补齐Unity集成、完整单局、暂停、重开和生命周期PlayMode测试。",
+      "outputs": [
+        "专项与E2E测试",
+        "按玩家意图命名的测试helper"
+      ],
+      "not_do": [
+        "不直接篡改内部状态伪造玩家动作"
+      ],
+      "acceptance": [
+        "三关核心路径可自动跑完",
+        "动作前不会错误推进",
+        "重开3次通过"
+      ],
+      "tests": [
+        "全量PlayMode"
+      ],
+      "evidence": "artifacts/evals/T710/"
+    },
+    {
+      "id": "T720",
+      "phase": "P7 质量发布",
+      "status": "BACKLOG",
+      "deps": [
+        "T710",
+        "T250"
+      ],
+      "days": 1.0,
+      "goal": "审计所有玩法数值、内容和文案是否来自配置表。",
+      "outputs": [
+        "ConfigCoverageReport",
+        "硬编码扫描规则",
+        "例外白名单"
+      ],
+      "not_do": [
+        "不把引擎常量误判策划数值",
+        "不保留Inspector双真相"
+      ],
+      "acceptance": [
+        "敌人/技能/关卡改动无需改C#",
+        "所有例外有Decision记录"
+      ],
+      "tests": [
+        "rg静态扫描",
+        "配置覆盖测试"
+      ],
+      "evidence": "artifacts/evals/T720/"
+    },
+    {
+      "id": "T730",
+      "phase": "P7 质量发布",
+      "status": "BACKLOG",
+      "deps": [
+        "T710",
+        "T630"
+      ],
+      "days": 3.0,
+      "goal": "在目标低端机收敛CPU、GC、内存、DrawCall、纹理和包体。",
+      "outputs": [
+        "Profiler记录",
+        "质量档",
+        "图集/音频/纹理优化",
+        "预算报告"
+      ],
+      "not_do": [
+        "不只看Editor Profiler",
+        "不牺牲到不可读画质"
+      ],
+      "acceptance": [
+        "目标60fps且不持续低于30fps",
+        "热路径GC约0",
+        "内存与包体在项目预算"
+      ],
+      "tests": [
+        "设备性能场景",
+        "10分钟压力"
+      ],
+      "evidence": "artifacts/evals/T730/"
+    },
+    {
+      "id": "T740",
+      "phase": "P7 质量发布",
+      "status": "BACKLOG",
+      "deps": [
+        "T730"
+      ],
+      "days": 2.0,
+      "goal": "自动化配置验证、Unity测试、Web构建和证据归档。",
+      "outputs": [
+        "verify-all脚本",
+        "测试XML/构建日志/体积摘要",
+        "版本号注入"
+      ],
+      "not_do": [
+        "日志不泄露AppSecret",
+        "长构建不放在最小反馈环前"
+      ],
+      "acceptance": [
+        "一条命令产出可审查结果",
+        "失败层级清晰",
+        "构建可复现"
+      ],
+      "tests": [
+        "本地/CI流水线冒烟"
+      ],
+      "evidence": "artifacts/evals/T740/"
+    },
+    {
+      "id": "T750",
+      "phase": "P7 质量发布",
+      "status": "BACKLOG",
+      "deps": [
+        "T740",
+        "T120"
+      ],
+      "days": 2.0,
+      "goal": "生成微信小游戏发布候选并完成四级平台验收。",
+      "outputs": [
+        "RC构建",
+        "转换日志",
+        "DevTools结果",
+        "真机矩阵",
+        "已知问题"
+      ],
+      "not_do": [
+        "任一未执行层不得PASS",
+        "不使用未固定SDK"
+      ],
+      "acceptance": [
+        "三关/前后台/音频/存档/触摸/异常重启真机通过",
+        "阻断问题为0"
+      ],
+      "tests": [
+        "人工RC清单"
+      ],
+      "evidence": "artifacts/evals/T750/"
+    },
+    {
+      "id": "T760",
+      "phase": "P7 质量发布",
+      "status": "BACKLOG",
+      "deps": [
+        "T750"
+      ],
+      "days": 1.0,
+      "goal": "完成发布资料、版本冻结、回滚方案和最终证据索引。",
+      "outputs": [
+        "RELEASE_CHECKLIST",
+        "代码/配置/SDK/Unity追溯",
+        "回滚说明",
+        "风险接受记录"
+      ],
+      "not_do": [
+        "冻结后不顺手加功能"
+      ],
+      "acceptance": [
+        "发布包可完整追溯",
+        "所有KNOWN ISSUE有明确处理决定"
+      ],
+      "tests": [
+        "独立验收"
+      ],
+      "evidence": "artifacts/evals/T760/"
+    }
+  ]
+}

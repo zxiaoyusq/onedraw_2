@@ -1,0 +1,50 @@
+﻿id,phase,status,dependencies,estimate_days,goal,outputs,acceptance
+T000,P0 合同与Harness,DONE,,0.5,统一玩法、MVP范围、技术基线、配置唯一真相源和完成定义。,处理文档中的待确认项；更新project-index；锁定下一任务,权威文档之间无冲突；所有TBD被确认或明确BLOCKED；T010改为READY
+T010,P0 合同与Harness,READY,T000,1.0,验收并纳管仓库根目录现有Unity 6000.5.1f1 2D工程基线。,根目录Unity工程；根.gitignore；确认精确ProjectVersion.txt；空场景,Unity 6000.5.1f1可打开并进入Play Mode；Console无Error；仓库只有一个.git
+T020,P0 合同与Harness,BACKLOG,T010,1.0,固定URP 2D、Input System、TMP、Test Framework和质量档。,URP Asset与2D Renderer；Input Actions；Low/High质量档；包版本清单,Graphics及Quality均指向正确URP；鼠标/触摸统一输入可读；测试程序集可发现
+T030,P0 合同与Harness,BACKLOG,T020,1.0,建立目录、asmdef和Bootstrap/MainMenu/Battle三场景骨架。,模块目录；Runtime/Editor/EditMode/PlayMode asmdef；Bootstrap场景；场景流接口,无程序集循环依赖；Bootstrap能加载主菜单和战斗灰盒；场景由Unity保存
+T040,P0 合同与Harness,BACKLOG,T030,1.0,建立构建、测试、证据和一任务一提交工作流。,批处理测试命令；Web构建入口；verification模板；改动白名单流程,EditMode/PlayMode可独立输出XML；失败返回非零；证据模板可复用
+T100,P1 微信平台Spike,BACKLOG,T040,1.0,先验证标准Unity Web构建，不接微信转换。,最小Web构建；输入/音频/中文/存储冒烟；构建日志与体积,标准Web构建完成；本地HTTP可运行；核心冒烟有记录
+T110,P1 微信平台Spike,BACKLOG,T100,2.0,确认当前官方微信Unity转换方案并做Unity/SDK兼容矩阵。,SDK来源/版本/commit/许可证；兼容矩阵；UPSTREAM.md；补丁决策,依赖可复现；导入后全工程编译；失败保留原始错误并正确标记
+T120,P1 微信平台Spike,BACKLOG,T110,2.0,完成微信转换、开发者工具和至少一台真机的分级冒烟。,转换输出；DevTools日志/截图；真机触摸/音频/前后台/存储结果,四级结果独立记录：Web/转换/DevTools/真机；失败可定位到层级
+T130,P1 微信平台Spike,BACKLOG,T110,1.0,建立Editor/Web/WeChat平台服务抽象。,IPlatformService；存储/震动/生命周期/日志接口；Editor/Web Stub；微信实现壳,Gameplay程序集不依赖微信SDK；无SDK时Editor仍可运行；平台实现可替换
+T200,P2 配置系统,BACKLOG,T040,1.0,确认Excel工作簿、字段字典、ID规则和数据所有权。,GameConfig.xlsx；CONFIG_SCHEMA；枚举/字段字典；样例数据,玩家/手势/敌人/技能/关卡/Boss/文本/VFX均有表；外键关系明确
+T210,P2 配置系统,BACKLOG,T200,2.0,实现独立.NET配置导出器：xlsx到稳定JSON。,Tools/ConfigExporter；export/validate命令；稳定排序和hash；原子写入,同一输入重复导出字节一致；错误返回非零；输出自校验后替换
+T220,P2 配置系统,BACKLOG,T210,2.0,实现结构、范围、枚举、唯一性、外键和跨表语义校验。,ConfigValidator；Sheet/Row/Field定位；错误码；坏配置样例,重复ID/缺外键/负时间/Boss阈值乱序等全部失败；错误可定位单元格
+T230,P2 配置系统,BACKLOG,T220,2.0,实现Unity Runtime配置加载、版本检查和只读索引。,GameplayConfigDocument DTO；GameplayConfigService；ID索引；启动摘要,启动一次解析并建立只读字典；版本不兼容阻止进战斗；日志有来源/hash/数量
+T240,P2 配置系统,BACKLOG,T230,1.0,建立assetKey到Unity对象的AssetRegistry，且不保存平衡值。,AssetRegistrySO；Prefab/Sprite/Audio/VFX映射；Editor校验器,每个assetKey可校验；缺失/重复键构建失败；资源替换不改配置ID
+T250,P2 配置系统,BACKLOG,T240,1.0,把导出、校验、JSON diff和Unity配置测试接入一条命令。,verify-config脚本；生成JSON快照；CI说明,一键导出验证；生成物漂移可检测；全绿后才进入玩法任务
+T300,P3 手势战斗核心,BACKLOG,"T250,T030",1.0,实现统一指针输入、UI阻挡、Safe Area和参考像素坐标。,IPointerInput；InputSystemPointerAdapter；ReferencePixelConverter；失焦取消,鼠标与触摸同接口；UI上起笔不攻击；前后台会取消当前笔迹
+T310,P3 手势战斗核心,BACKLOG,T300,1.0,实现笔迹采样、最小距离、最大点数和长度裁剪。,StrokeSampler纯C#；不可变StrokeData；配置阈值,短抖动过滤；超长笔迹精确截断；点数上限稳定
+T320,P3 手势战斗核心,BACKLOG,T310,2.0,实现RDP简化、重采样、长度、包围盒、面积、闭合和曲率。,StrokeGeometry纯C#；容差说明；退化输入处理,直线/折线/弧/圆稳定；重复点和极短输入不崩溃；结果可回放
+T330,P3 手势战斗核心,BACKLOG,T320,2.0,配置驱动识别横、竖、斜、弧、圆和蓄力笔势。,GestureClassifier；GestureMatchResult及置信度；规则表映射,角度/闭合/曲率均来自表；输入相同结果相同；误识别样例有回归
+T340,P3 手势战斗核心,BACKLOG,T310,1.5,实现低分配笔迹视觉、淡出和池化。,StrokeTrailView；LineRenderer或程序化Mesh；轨迹对象池,快速连续划动无明显GC尖峰；刀/符轨迹可配置切换
+T350,P3 手势战斗核心,BACKLOG,"T320,T340",2.0,实现分段胶囊命中、顺序排序、同笔去重和弱点命中。,StrokeHitResolver；IHittable；HitRecord；NonAlloc查询缓存,一笔多目标顺序正确；同目标不重复伤害；弱点与主体可区分
+T360,P3 手势战斗核心,BACKLOG,"T350,T230",1.5,实现伤害公式、方向奖励、连斩、评分和能量。,DamageCalculator纯C#；ComboService；ScoreService；DamageContext,所有倍率来自表；弱点/方向/连斩可独立断言；浮点取整规则明确
+T370,P3 手势战斗核心,BACKLOG,T350,1.5,实现可切断、不可切断和可反弹的敌方投射物。,ProjectileController；ProjectileHitTarget；切断/反弹规则,三类规则均可配；反弹归属和伤害来源正确；回收状态完整
+T400,P4 玩家敌人技能,BACKLOG,T360,1.5,实现玩家HP、能量、刀/符架势、切换冷却和战斗事件。,PlayerCombatModel；PlayerCombatController；StanceService,架势影响轨迹/伤害/切弹；能量获取消耗可配；死亡只触发一次
+T410,P4 玩家敌人技能,BACKLOG,"T400,T230",3.0,实现数据驱动Skill到EffectGroup到有序Effect执行链。,SkillService；IEffectExecutor；伤害/治疗/Buff/击退/清弹/慢动作等,新增由现有效果组成的技能只改表；顺序稳定；目标过滤可配
+T420,P4 玩家敌人技能,BACKLOG,T360,2.0,实现通用敌人状态机、Damageable和Weakpoint。,EnemyController；EnemyStateMachine；Damageable；WeakpointController,Spawn/Move/Windup/Attack/Recovery/Stun/Dead清晰；死亡/打断/回收幂等
+T430,P4 玩家敌人技能,BACKLOG,"T420,T370",3.0,实现可组合移动、攻击、防御和支援策略注册表。,MovementStrategyRegistry；AttackStrategyRegistry；DefenseRuleService；Telegraph,靠近/悬浮/俯冲/冲撞/投射物/护盾可复用；未知策略ID校验失败
+T440,P4 玩家敌人技能,BACKLOG,T420,1.5,建立敌人、投射物、VFX和伤害数字对象池及完整重置。,ObjectPoolService；IPoolable；预热配置；泄漏检测,连续生成/击杀/清场/重开3次无旧状态；池不足策略可配
+T450,P4 玩家敌人技能,BACKLOG,"T430,T440",2.0,只用配置组合5种普通怪和1种精英怪。,符火鱼妖；轮车僵妖；石甲龟妖；骷髅幽魂；飞行符蝠；摄魂道傀,每怪有独立教学点与清晰前摇；改HP/速度/攻击无需改C#
+T460,P4 玩家敌人技能,BACKLOG,"T410,T430",3.0,实现配置驱动Boss阶段、阈值、技能序列和切换。,BossPhaseController；阶段条件/进入动作；镇墓玄甲王三阶段,阈值顺序校验；阶段可换攻击/速度/护甲/弱点；事件只触发一次
+T500,P5 关卡完整单局,BACKLOG,T450,2.0,实现Level/Wave/Spawn时间轴和条件结束。,LevelRunner；WaveRunner；SpawnScheduler；归一化出生区域,波次和刷怪完全来自表；AllDefeated/TimeElapsed/BossDefeated可用；暂停不推进
+T510,P5 关卡完整单局,BACKLOG,"T500,T400",1.5,实现Countdown/Playing/UltimateDrawing/Paused/Victory/Defeat状态机。,BattleFlowStateMachine；事件门；统一时间源,终极必须收到有效笔势事件；暂停/失焦恢复一致；胜负互斥
+T520,P5 关卡完整单局,BACKLOG,T510,2.0,完成幽菌古道教学关：普通斩、连斩、切弹、架势和终极。,lv_001_tutorial配置；约6波；教程步骤,新玩家约3分钟理解核心；教程由事件触发而非固定秒数
+T530,P5 关卡完整单局,BACKLOG,T520,2.0,完成混合怪物普通关，验证战术组合和难度曲线。,lv_002_cave配置；约8波；精英与危险目标组合,节奏只改表即可；核心机制都有发挥；不存在不可解组合
+T540,P5 关卡完整单局,BACKLOG,"T460,T530",2.5,完成Boss关和镇墓玄甲王三阶段战斗。,lv_003_boss配置；阶段与处决流程；胜败回路,约4分钟可完成；阶段提示清晰；失败重试和胜利均稳定
+T550,P5 关卡完整单局,BACKLOG,T540,2.0,实现结算、星级/评分、解锁、重开和最小进度保存。,ResultService；ProgressSave v1；Restart/NextLevel；迁移接口,重复结算幂等；坏存档可回退；连续重开3次无泄漏
+T600,P6 表现与资源,BACKLOG,T510,2.0,实现生命、能量、连斩、评分、架势、终极、暂停和结算UI。,BattleHUD；UI Presenter；按钮状态/冷却；无业务逻辑View,UI只订阅状态/事件；按钮状态完整；Safe Area内可用
+T610,P6 表现与资源,BACKLOG,T600,1.0,建立中文TMP字体、fallback和字符覆盖检查。,中文字体Asset；fallback设置；常用字符集清单,配置文本无方框/缺字/裁切；动态伤害数字正常
+T620,P6 表现与资源,BACKLOG,"T360,T440",2.0,实现受击停顿、闪白、震屏、伤害数字、音效、震动和慢动作。,CombatFeedbackService；VFX/Audio cue映射；反馈强度设置,不看Console也能理解命中/弱点/破甲/弹反；对象池化；震动可关闭
+T630,P6 表现与资源,BACKLOG,"T450,T600",2.0,接入PSD解析出的背景、主角、怪物、UI和特效作为原型资源。,Sprite导入规范；SpriteAtlas；Pivot/PPU/SortingLayer；来源记录,只导出透明PNG；尺寸/压缩/命名统一；生成图素材完成授权核对
+T640,P6 表现与资源,BACKLOG,"T600,T120",1.5,适配横屏比例、刘海/圆角、安全区和触控遮挡。,SafeAreaFitter；背景裁切策略；左右手按钮镜像,16:9/19.5:9/平板不遮挡关键内容；UI区与划动区冲突可测
+T650,P6 表现与资源,BACKLOG,"T520,T600",1.5,完成事件驱动教程遮罩、手势示意和跳过/回看。,TutorialDirector；配置化步骤；一次性标记,完成目标动作才推进；重开/跳过不锁死；文案来自Texts表
+T700,P7 质量发布,BACKLOG,T540,2.0,补齐纯规则EditMode回归矩阵。,手势/伤害/配置/技能/状态机/Boss测试,边界、无效输入、重复事件覆盖；测试无顺序依赖
+T710,P7 质量发布,BACKLOG,"T550,T650",3.0,补齐Unity集成、完整单局、暂停、重开和生命周期PlayMode测试。,专项与E2E测试；按玩家意图命名的测试helper,三关核心路径可自动跑完；动作前不会错误推进；重开3次通过
+T720,P7 质量发布,BACKLOG,"T710,T250",1.0,审计所有玩法数值、内容和文案是否来自配置表。,ConfigCoverageReport；硬编码扫描规则；例外白名单,敌人/技能/关卡改动无需改C#；所有例外有Decision记录
+T730,P7 质量发布,BACKLOG,"T710,T630",3.0,在目标低端机收敛CPU、GC、内存、DrawCall、纹理和包体。,Profiler记录；质量档；图集/音频/纹理优化；预算报告,目标60fps且不持续低于30fps；热路径GC约0；内存与包体在项目预算
+T740,P7 质量发布,BACKLOG,T730,2.0,自动化配置验证、Unity测试、Web构建和证据归档。,verify-all脚本；测试XML/构建日志/体积摘要；版本号注入,一条命令产出可审查结果；失败层级清晰；构建可复现
+T750,P7 质量发布,BACKLOG,"T740,T120",2.0,生成微信小游戏发布候选并完成四级平台验收。,RC构建；转换日志；DevTools结果；真机矩阵；已知问题,三关/前后台/音频/存档/触摸/异常重启真机通过；阻断问题为0
+T760,P7 质量发布,BACKLOG,T750,1.0,完成发布资料、版本冻结、回滚方案和最终证据索引。,RELEASE_CHECKLIST；代码/配置/SDK/Unity追溯；回滚说明；风险接受记录,发布包可完整追溯；所有KNOWN ISSUE有明确处理决定
