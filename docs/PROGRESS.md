@@ -1,8 +1,8 @@
 # PROGRESS
 
 - 日期：2026-07-11
-- 当前成熟度：T010 Unity工程基线已纳管并通过空场景Editor冒烟
-- 当前任务：T020
+- 当前成熟度：T020 Unity渲染、输入、UI测试与包版本基线已固定
+- 当前任务：T030
 - 状态：READY
 - Unity精确版本：6000.5.1f1（已由ProjectVersion.txt与本机安装核验）
 - 微信SDK来源或版本：PENDING_VERIFICATION
@@ -13,6 +13,9 @@
 
 - T000：玩法、MVP范围、技术边界、配置唯一真相源和完成定义已统一。
 - T010：建立根 `.gitignore`，现有Unity工程与开发合同已纳入唯一Git根。
+- T020：Graphics与Low/High质量档统一使用URP 2D；Unity MCP依赖固定到commit。
+- T020 EditMode 3/3、PlayMode 1/1通过；Mouse与Touchscreen均可驱动同一个Pointer Action。
+- TMP与Unity Test Framework程序集已加载，测试程序集可发现并独立运行。
 - Unity 6000.5.1f1成功加载SampleScene并进入Play Mode 2秒；探针记录Console Error/Exception/Assert为0。
 - 已确认SampleScene包含Main Camera与Global Light 2D，且已在EditorBuildSettings启用。
 - 接受现有Unity `6000.5.1f1` 与“仓库根目录即Unity工程根”的基线决策。
@@ -24,10 +27,9 @@
 ## 当前风险
 
 1. 当前官方微信Unity转换SDK分发渠道和Unity 6000.5.1f1兼容性尚未验证。
-2. Unity MCP服务可访问，但本轮实例桥接未自动重连；T010已用一次性Editor探针完成真实Play Mode验收，后续场景任务前仍需恢复MCP active instance。
-3. `com.coplaydev.unity-mcp` 的manifest仍写 `#main`，但 `packages-lock.json` 已解析到hash `11836003a5e2ffcb7715ecec7e1fbb9d9cdb5bb8`；T020应固定并记录包基线。
-4. PSD主角和怪物大多为单张Sprite；中文字体包体、Web内存和真机触摸延迟仍需后续验证。
+2. Unity MCP服务可访问，但实例桥接仍未自动重连；T030需要场景操作，开始时必须优先恢复并核验active instance。
+3. PSD主角和怪物大多为单张Sprite；中文字体包体、Web内存和真机触摸延迟仍需后续验证。
 
 ## 下一步
 
-只执行T020：固定并验证URP 2D、Input System、TMP、Test Framework、质量档和包版本清单。不要开始T030或业务代码。
+只执行T030：建立目标目录、程序集边界和Bootstrap/MainMenu/Battle三场景骨架，并恢复Unity MCP场景操作链路。不要开始T040或业务玩法。

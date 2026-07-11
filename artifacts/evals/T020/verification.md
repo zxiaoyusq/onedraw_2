@@ -1,0 +1,22 @@
+# T020 Verification
+
+- 日期：2026-07-11
+- Git基线：`04d4c4ad T010: validate Unity project baseline`，分支 `main`
+- 计划提交：`T020: establish Unity subsystem baseline`
+- 范围：固定URP 2D、Input System、TMP、Test Framework、Low/High质量档与包版本；未实现玩法，未创建T030场景或业务程序集。
+- Unity版本：`6000.5.1f1 (0d9463e84828)`。
+- 渲染：Unity Editor将Graphics默认管线写为 `Assets/Settings/UniversalRP.asset`；Low与High质量档均引用同一资产；默认Renderer为 `Renderer2D.asset` / Renderer2DData。
+- 质量迁移：Unity将QualitySettings序列化版本4迁移为5并补充默认字段，Low/High原有数值与管线引用未改变。
+- 输入：新Input System启用；Input Actions的UI/Point与UI/Click同时包含Mouse和Touchscreen绑定。
+- TMP/Test：Unity.TextMeshPro、Unity Test Framework与NUnit程序集已加载，EditMode/PlayMode测试程序集均可发现。
+- 包固定：URP 17.5.0、Input System 1.19.0、uGUI/TMP 2.5.0、Test Framework 1.7.0；Unity MCP固定commit `11836003a5e2ffcb7715ecec7e1fbb9d9cdb5bb8`。
+- 初次反馈：第一次配置批处理因EditMode测试缺少 `using UnityEngine` 产生CS0103，未写入配置；补齐引用后重新编译与执行成功。
+- EditMode：PASS，3/3。覆盖Graphics/Quality/Renderer2D、Mouse/Touch Input Actions、TMP/Test程序集。
+- PlayMode：PASS，1/1。Input System Test Framework注入Mouse与Touchscreen位置，两者均驱动同一个Point Action。
+- Console/编译：最终配置、EditMode和PlayMode日志无 `error CS`、`Compilation failed` 或测试失败；测试失败数为0。
+- 真实输入路径：PlayMode依次注入Mouse位置与Touch触点，逐帧读取共享Pointer Action，断言均通过。
+- 清理：临时 `Assets/Editor/T020BaselineApply.cs`、对应meta与目录已移除，未进入Git。
+- 证据：`apply-summary.log`、`editmode-results.xml`、`editmode-summary.log`、`playmode-results.xml`、`playmode-summary.log`。
+- 日志卫生：原始Unity日志含本机License会话/机器标识，复核后删除；提交过滤摘要与NUnit XML，不包含访问凭据。
+- 已知问题：Unity MCP active instance仍未恢复；微信平台门均未执行。
+- 结论：PASS。T020完成，T030置为READY；未开始T030。

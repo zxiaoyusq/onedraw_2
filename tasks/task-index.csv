@@ -1,8 +1,8 @@
 ﻿id,phase,status,dependencies,estimate_days,goal,outputs,acceptance
 T000,P0 合同与Harness,DONE,,0.5,统一玩法、MVP范围、技术基线、配置唯一真相源和完成定义。,处理文档中的待确认项；更新project-index；锁定下一任务,权威文档之间无冲突；所有TBD被确认或明确BLOCKED；T010改为READY
 T010,P0 合同与Harness,DONE,T000,1.0,验收并纳管仓库根目录现有Unity 6000.5.1f1 2D工程基线。,根目录Unity工程；根.gitignore；确认精确ProjectVersion.txt；空场景,Unity 6000.5.1f1可打开并进入Play Mode；Console无Error；仓库只有一个.git
-T020,P0 合同与Harness,READY,T010,1.0,固定URP 2D、Input System、TMP、Test Framework和质量档。,URP Asset与2D Renderer；Input Actions；Low/High质量档；包版本清单,Graphics及Quality均指向正确URP；鼠标/触摸统一输入可读；测试程序集可发现
-T030,P0 合同与Harness,BACKLOG,T020,1.0,建立目录、asmdef和Bootstrap/MainMenu/Battle三场景骨架。,模块目录；Runtime/Editor/EditMode/PlayMode asmdef；Bootstrap场景；场景流接口,无程序集循环依赖；Bootstrap能加载主菜单和战斗灰盒；场景由Unity保存
+T020,P0 合同与Harness,DONE,T010,1.0,固定URP 2D、Input System、TMP、Test Framework和质量档。,URP Asset与2D Renderer；Input Actions；Low/High质量档；包版本清单,Graphics及Quality均指向正确URP；鼠标/触摸统一输入可读；测试程序集可发现
+T030,P0 合同与Harness,READY,T020,1.0,建立目录、asmdef和Bootstrap/MainMenu/Battle三场景骨架。,模块目录；Runtime/Editor/EditMode/PlayMode asmdef；Bootstrap场景；场景流接口,无程序集循环依赖；Bootstrap能加载主菜单和战斗灰盒；场景由Unity保存
 T040,P0 合同与Harness,BACKLOG,T030,1.0,建立构建、测试、证据和一任务一提交工作流。,批处理测试命令；Web构建入口；verification模板；改动白名单流程,EditMode/PlayMode可独立输出XML；失败返回非零；证据模板可复用
 T100,P1 微信平台Spike,BACKLOG,T040,1.0,先验证标准Unity Web构建，不接微信转换。,最小Web构建；输入/音频/中文/存储冒烟；构建日志与体积,标准Web构建完成；本地HTTP可运行；核心冒烟有记录
 T110,P1 微信平台Spike,BACKLOG,T100,2.0,确认当前官方微信Unity转换方案并做Unity/SDK兼容矩阵。,SDK来源/版本/commit/许可证；兼容矩阵；UPSTREAM.md；补丁决策,依赖可复现；导入后全工程编译；失败保留原始错误并正确标记

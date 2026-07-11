@@ -5,7 +5,7 @@
 > 生成日期：2026-07-11
 > 项目形态：Unity 2D 横屏手势动作游戏，目标平台为微信小游戏
 > 计划总量：49 个原子任务，约 84.0 人日（不含正式美术重绘、商店审核等待和大规模内容量产）
-> 当前允许执行任务：`T020`（T000、T010已完成）
+> 当前允许执行任务：`T030`（T000、T010、T020已完成）
 
 ---
 
@@ -319,8 +319,8 @@ Design/Config/GameConfig.xlsx
 |---|---|---|---|---:|---|
 | T000 | P0 合同与Harness | DONE | — | 0.5 | 统一玩法、MVP范围、技术基线、配置唯一真相源和完成定义。 |
 | T010 | P0 合同与Harness | DONE | T000 | 1.0 | 验收并纳管仓库根目录现有Unity 6000.5.1f1 2D工程基线。 |
-| T020 | P0 合同与Harness | READY | T010 | 1.0 | 固定URP 2D、Input System、TMP、Test Framework和质量档。 |
-| T030 | P0 合同与Harness | BACKLOG | T020 | 1.0 | 建立目录、asmdef和Bootstrap/MainMenu/Battle三场景骨架。 |
+| T020 | P0 合同与Harness | DONE | T010 | 1.0 | 固定URP 2D、Input System、TMP、Test Framework和质量档。 |
+| T030 | P0 合同与Harness | READY | T020 | 1.0 | 建立目录、asmdef和Bootstrap/MainMenu/Battle三场景骨架。 |
 | T040 | P0 合同与Harness | BACKLOG | T030 | 1.0 | 建立构建、测试、证据和一任务一提交工作流。 |
 | T100 | P1 微信平台Spike | BACKLOG | T040 | 1.0 | 先验证标准Unity Web构建，不接微信转换。 |
 | T110 | P1 微信平台Spike | BACKLOG | T100 | 2.0 | 确认当前官方微信Unity转换方案并做Unity/SDK兼容矩阵。 |
