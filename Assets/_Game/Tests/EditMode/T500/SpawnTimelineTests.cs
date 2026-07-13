@@ -33,15 +33,15 @@ namespace OneStrokeDemon.Tests.EditMode.T500
                 ConfigIds.Levels.Lv003Boss);
 
             Assert.That(tutorial.Waves.Count, Is.EqualTo(6));
-            Assert.That(cave.Waves.Count, Is.EqualTo(4));
+            Assert.That(cave.Waves.Count, Is.EqualTo(8));
             Assert.That(boss.Waves.Count, Is.EqualTo(2));
-            Assert.That(CountSpawnRows(tutorial, cave, boss), Is.EqualTo(15));
-            Assert.That(CountScheduledEnemies(tutorial, cave, boss), Is.EqualTo(40));
+            Assert.That(CountSpawnRows(tutorial, cave, boss), Is.EqualTo(32));
+            Assert.That(CountScheduledEnemies(tutorial, cave, boss), Is.EqualTo(67));
 
-            WaveDefinition eliteWave = cave.Waves[3];
+            WaveDefinition eliteWave = cave.Waves[4];
             SpawnDefinition elite = FindSpawn(
                 eliteWave,
-                ConfigIds.Spawns.Spawn00204A);
+                ConfigIds.Spawns.Spawn00205A);
             Assert.That(elite.EnemyId, Is.EqualTo(ConfigIds.Enemies.EnemySoulPuppet));
             Assert.That(elite.Modifier.ModifierId, Is.EqualTo(ConfigIds.EnemyModifiers.ModifierElite));
             Assert.That(elite.Modifier.HpMultiplier, Is.EqualTo(1.6d).Within(0.000001d));

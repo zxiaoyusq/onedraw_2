@@ -1,0 +1,30 @@
+T530 FINAL WHITELIST REVIEW
+
+Baseline: 7fb86e7cd60cbf10e34c1b85c9e3f3c159c0674a
+Baseline user changes: none; working tree was clean.
+
+ALLOWED AND PRESENT
+- Formal workbook and byte-identical Chinese mirror.
+- Managed gameplay_config.json/hash/ConfigIds and byte-identical sample JSON.
+- Exporter, Runtime config and T500 frozen-value tests affected by the new table rows.
+- New T530 EditMode/PlayMode tests and Unity-generated meta files.
+- T530 evidence: baseline, whitelist, workbook before/final renders, config logs, NUnit XML, player path, static audit and verification.
+- CONFIG_SCHEMA, DECISIONS, TEST_PLAN, TASKS, PROGRESS and project-index task/config/test statistics.
+
+CONDITIONALLY ALLOWED BUT NOT USED
+- No Assets/_Game/Scripts/Levels product runtime change.
+- No exporter/schema/FieldDictionary/DTO/asmdef change.
+
+FORBIDDEN AND ABSENT
+- No scene, prefab, AssetRegistry, Input Actions, Packages, ProjectSettings, WeChat SDK or Builds change.
+- No T540 or later product implementation.
+
+FINAL CHECKS
+- git diff --check: PASS.
+- Formal/mirror workbook byte comparison: PASS.
+- Runtime/sample JSON byte comparison: PASS.
+- Static config verification: PASS, .NET 56/56.
+- T530 EditMode/PlayMode: 4/4 and 1/1.
+- Full EditMode/PlayMode: 159/159 and 39/39.
+- Unity final Console Error: 0.
+- Every status entry is inside the T530 whitelist; outputs/ intermediate files were removed and are not staged.

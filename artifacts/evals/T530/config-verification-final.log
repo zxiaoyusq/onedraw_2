@@ -1,0 +1,14 @@
+CONFIG_PIPELINE_START update=0 skipUnity=1
+ConfigExporter build: 0 Warning(s), 0 Error(s)
+CONFIG_GENERATION_PASS
+schema=4 content=0.5.3-sample hash=50ff7874f59f60092fe9eae71a8184c88828e78a6dd66cf04ea4abc066c611fe tables=28 records=689 strict=True
+jsonBytes=180658 hashBytes=65 idsBytes=25514 idSets=27 idConstants=341
+CONFIG_GENERATED_VERIFY_PASS
+CONFIG_GENERATED_DIFF_PASS artifacts=3
+ConfigExporter.Tests: passed=56 failed=0 skipped=0 total=56
+CONFIG_PIPELINE_PARTIAL_PASS unity=NOT_RUN reason=explicit_skip
+
+Command: Tools/CI/verify-config.sh --skip-unity --results-root artifacts/tmp/T530-static-final
+Exit code: 0
+Generated JSON SHA-256: fca5ee3b8b3553b362bf3461eea9ad336759c1a9bb5444bf56f5510b404b7666
+Workbook SHA-256: c97eda688c060b55cf49dbedab89246bd971f73d17f18cf58e9bf7b585401bdc

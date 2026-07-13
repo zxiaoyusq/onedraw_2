@@ -1,7 +1,7 @@
 {
   "schemaVersion": 4,
-  "contentVersion": "0.5.2-sample",
-  "contentHash": "f666feb2c6a94439b0bdeee0c8f939b61728d04a04ec5ed62a23bdf100a98e92",
+  "contentVersion": "0.5.3-sample",
+  "contentHash": "50ff7874f59f60092fe9eae71a8184c88828e78a6dd66cf04ea4abc066c611fe",
   "global": [
     {
       "key": "battle_countdown_sec",
@@ -38,7 +38,7 @@
       "valueType": "string",
       "intValue": null,
       "floatValue": null,
-      "stringValue": "0.5.2-sample",
+      "stringValue": "0.5.3-sample",
       "boolValue": null,
       "unit": "semver",
       "description": "内容版本"
@@ -1367,9 +1367,9 @@
       "durationLimitSec": 210,
       "nextLevelId": "lv_003_boss",
       "rewardTableId": "reward_level_002",
-      "starScore1": 3500,
-      "starScore2": 5800,
-      "starScore3": 8000,
+      "starScore1": 6500,
+      "starScore2": 9500,
+      "starScore3": 13000,
       "tutorialId": "tutorial_level_002",
       "bossEnemyId": ""
     },
@@ -1464,7 +1464,7 @@
       "endCondition": "AllEnemiesDefeated",
       "endDelaySec": 0.8,
       "musicKey": "bgm_cave_02",
-      "maxAlive": 7
+      "maxAlive": 5
     },
     {
       "waveId": "wave_002_02",
@@ -1473,9 +1473,9 @@
       "startTrigger": "PreviousWaveEnd",
       "startDelaySec": 0.6,
       "endCondition": "AllEnemiesDefeated",
-      "endDelaySec": 0.8,
+      "endDelaySec": 0.75,
       "musicKey": "bgm_cave_02",
-      "maxAlive": 8
+      "maxAlive": 5
     },
     {
       "waveId": "wave_002_03",
@@ -1484,20 +1484,64 @@
       "startTrigger": "PreviousWaveEnd",
       "startDelaySec": 0.6,
       "endCondition": "AllEnemiesDefeated",
-      "endDelaySec": 0.8,
+      "endDelaySec": 0.7,
       "musicKey": "bgm_cave_02",
-      "maxAlive": 9
+      "maxAlive": 5
     },
     {
       "waveId": "wave_002_04",
       "levelId": "lv_002_cave",
       "order": 4,
       "startTrigger": "PreviousWaveEnd",
-      "startDelaySec": 0.6,
+      "startDelaySec": 0.55,
+      "endCondition": "AllEnemiesDefeated",
+      "endDelaySec": 0.65,
+      "musicKey": "bgm_cave_02",
+      "maxAlive": 7
+    },
+    {
+      "waveId": "wave_002_05",
+      "levelId": "lv_002_cave",
+      "order": 5,
+      "startTrigger": "PreviousWaveEnd",
+      "startDelaySec": 0.55,
+      "endCondition": "AllEnemiesDefeated",
+      "endDelaySec": 0.6,
+      "musicKey": "bgm_cave_02",
+      "maxAlive": 6
+    },
+    {
+      "waveId": "wave_002_06",
+      "levelId": "lv_002_cave",
+      "order": 6,
+      "startTrigger": "PreviousWaveEnd",
+      "startDelaySec": 0.5,
+      "endCondition": "AllEnemiesDefeated",
+      "endDelaySec": 0.55,
+      "musicKey": "bgm_cave_02",
+      "maxAlive": 6
+    },
+    {
+      "waveId": "wave_002_07",
+      "levelId": "lv_002_cave",
+      "order": 7,
+      "startTrigger": "PreviousWaveEnd",
+      "startDelaySec": 0.5,
       "endCondition": "AllEnemiesDefeated",
       "endDelaySec": 0.5,
       "musicKey": "bgm_cave_02",
-      "maxAlive": 10
+      "maxAlive": 7
+    },
+    {
+      "waveId": "wave_002_08",
+      "levelId": "lv_002_cave",
+      "order": 8,
+      "startTrigger": "PreviousWaveEnd",
+      "startDelaySec": 0.45,
+      "endCondition": "AllEnemiesDefeated",
+      "endDelaySec": 0.4,
+      "musicKey": "bgm_cave_02",
+      "maxAlive": 8
     },
     {
       "waveId": "wave_003_01",
@@ -1661,11 +1705,22 @@
       "spawnId": "spawn_002_01_a",
       "waveId": "wave_002_01",
       "spawnTimeSec": 0.2,
-      "enemyId": "enemy_skeleton_ghost",
-      "count": 4,
+      "enemyId": "enemy_fire_fish",
+      "count": 3,
       "intervalSec": 0.7,
       "spawnPointId": "spawn_air_mid",
-      "spawnPattern": "Scatter",
+      "spawnPattern": "Line",
+      "modifierId": "modifier_none"
+    },
+    {
+      "spawnId": "spawn_002_01_b",
+      "waveId": "wave_002_01",
+      "spawnTimeSec": 0.8,
+      "enemyId": "enemy_wheel_zombie",
+      "count": 2,
+      "intervalSec": 0.8,
+      "spawnPointId": "spawn_ground_right",
+      "spawnPattern": "Line",
       "modifierId": "modifier_none"
     },
     {
@@ -1673,10 +1728,21 @@
       "waveId": "wave_002_02",
       "spawnTimeSec": 0.2,
       "enemyId": "enemy_talisman_bat",
-      "count": 4,
+      "count": 3,
       "intervalSec": 0.55,
       "spawnPointId": "spawn_air_high",
       "spawnPattern": "Stagger",
+      "modifierId": "modifier_none"
+    },
+    {
+      "spawnId": "spawn_002_02_b",
+      "waveId": "wave_002_02",
+      "spawnTimeSec": 1,
+      "enemyId": "enemy_fire_fish",
+      "count": 2,
+      "intervalSec": 0.75,
+      "spawnPointId": "spawn_air_mid",
+      "spawnPattern": "Line",
       "modifierId": "modifier_none"
     },
     {
@@ -1685,7 +1751,7 @@
       "spawnTimeSec": 0.2,
       "enemyId": "enemy_stone_turtle",
       "count": 2,
-      "intervalSec": 1,
+      "intervalSec": 1.1,
       "spawnPointId": "spawn_ground_right",
       "spawnPattern": "Line",
       "modifierId": "modifier_none"
@@ -1693,17 +1759,39 @@
     {
       "spawnId": "spawn_002_03_b",
       "waveId": "wave_002_03",
-      "spawnTimeSec": 0.6,
-      "enemyId": "enemy_skeleton_ghost",
-      "count": 3,
+      "spawnTimeSec": 0.9,
+      "enemyId": "enemy_wheel_zombie",
+      "count": 2,
       "intervalSec": 0.7,
-      "spawnPointId": "spawn_air_mid",
-      "spawnPattern": "Scatter",
+      "spawnPointId": "spawn_ground_right",
+      "spawnPattern": "Stagger",
       "modifierId": "modifier_none"
     },
     {
       "spawnId": "spawn_002_04_a",
       "waveId": "wave_002_04",
+      "spawnTimeSec": 0.2,
+      "enemyId": "enemy_skeleton_ghost",
+      "count": 4,
+      "intervalSec": 0.65,
+      "spawnPointId": "spawn_air_mid",
+      "spawnPattern": "Scatter",
+      "modifierId": "modifier_none"
+    },
+    {
+      "spawnId": "spawn_002_04_b",
+      "waveId": "wave_002_04",
+      "spawnTimeSec": 1,
+      "enemyId": "enemy_fire_fish",
+      "count": 3,
+      "intervalSec": 0.65,
+      "spawnPointId": "spawn_air_high",
+      "spawnPattern": "Line",
+      "modifierId": "modifier_none"
+    },
+    {
+      "spawnId": "spawn_002_05_a",
+      "waveId": "wave_002_05",
       "spawnTimeSec": 0.2,
       "enemyId": "enemy_soul_puppet",
       "count": 1,
@@ -1713,14 +1801,157 @@
       "modifierId": "modifier_elite"
     },
     {
-      "spawnId": "spawn_002_04_b",
-      "waveId": "wave_002_04",
-      "spawnTimeSec": 0.8,
+      "spawnId": "spawn_002_05_b",
+      "waveId": "wave_002_05",
+      "spawnTimeSec": 1.3,
       "enemyId": "enemy_wheel_zombie",
-      "count": 4,
-      "intervalSec": 0.6,
+      "count": 2,
+      "intervalSec": 0.65,
       "spawnPointId": "spawn_ground_right",
       "spawnPattern": "Line",
+      "modifierId": "modifier_none"
+    },
+    {
+      "spawnId": "spawn_002_05_c",
+      "waveId": "wave_002_05",
+      "spawnTimeSec": 1.6,
+      "enemyId": "enemy_fire_fish",
+      "count": 2,
+      "intervalSec": 0.75,
+      "spawnPointId": "spawn_air_high",
+      "spawnPattern": "Stagger",
+      "modifierId": "modifier_none"
+    },
+    {
+      "spawnId": "spawn_002_06_a",
+      "waveId": "wave_002_06",
+      "spawnTimeSec": 0.2,
+      "enemyId": "enemy_stone_turtle",
+      "count": 1,
+      "intervalSec": 0,
+      "spawnPointId": "spawn_ground_right",
+      "spawnPattern": "Single",
+      "modifierId": "modifier_none"
+    },
+    {
+      "spawnId": "spawn_002_06_b",
+      "waveId": "wave_002_06",
+      "spawnTimeSec": 1.4,
+      "enemyId": "enemy_skeleton_ghost",
+      "count": 3,
+      "intervalSec": 0.65,
+      "spawnPointId": "spawn_air_mid",
+      "spawnPattern": "Scatter",
+      "modifierId": "modifier_none"
+    },
+    {
+      "spawnId": "spawn_002_06_c",
+      "waveId": "wave_002_06",
+      "spawnTimeSec": 2.5,
+      "enemyId": "enemy_talisman_bat",
+      "count": 2,
+      "intervalSec": 0.6,
+      "spawnPointId": "spawn_air_high",
+      "spawnPattern": "Stagger",
+      "modifierId": "modifier_none"
+    },
+    {
+      "spawnId": "spawn_002_07_a",
+      "waveId": "wave_002_07",
+      "spawnTimeSec": 0.2,
+      "enemyId": "enemy_soul_puppet",
+      "count": 1,
+      "intervalSec": 0,
+      "spawnPointId": "spawn_air_mid",
+      "spawnPattern": "Single",
+      "modifierId": "modifier_elite"
+    },
+    {
+      "spawnId": "spawn_002_07_b",
+      "waveId": "wave_002_07",
+      "spawnTimeSec": 1.2,
+      "enemyId": "enemy_skeleton_ghost",
+      "count": 3,
+      "intervalSec": 0.65,
+      "spawnPointId": "spawn_air_mid",
+      "spawnPattern": "Scatter",
+      "modifierId": "modifier_none"
+    },
+    {
+      "spawnId": "spawn_002_07_c",
+      "waveId": "wave_002_07",
+      "spawnTimeSec": 1.6,
+      "enemyId": "enemy_fire_fish",
+      "count": 2,
+      "intervalSec": 0.75,
+      "spawnPointId": "spawn_air_high",
+      "spawnPattern": "Line",
+      "modifierId": "modifier_none"
+    },
+    {
+      "spawnId": "spawn_002_08_a",
+      "waveId": "wave_002_08",
+      "spawnTimeSec": 0.2,
+      "enemyId": "enemy_soul_puppet",
+      "count": 1,
+      "intervalSec": 0,
+      "spawnPointId": "spawn_air_mid",
+      "spawnPattern": "Single",
+      "modifierId": "modifier_elite"
+    },
+    {
+      "spawnId": "spawn_002_08_b",
+      "waveId": "wave_002_08",
+      "spawnTimeSec": 1.3,
+      "enemyId": "enemy_stone_turtle",
+      "count": 1,
+      "intervalSec": 0,
+      "spawnPointId": "spawn_ground_right",
+      "spawnPattern": "Single",
+      "modifierId": "modifier_none"
+    },
+    {
+      "spawnId": "spawn_002_08_c",
+      "waveId": "wave_002_08",
+      "spawnTimeSec": 2,
+      "enemyId": "enemy_skeleton_ghost",
+      "count": 1,
+      "intervalSec": 0,
+      "spawnPointId": "spawn_air_mid",
+      "spawnPattern": "Single",
+      "modifierId": "modifier_none"
+    },
+    {
+      "spawnId": "spawn_002_08_d",
+      "waveId": "wave_002_08",
+      "spawnTimeSec": 2.6,
+      "enemyId": "enemy_talisman_bat",
+      "count": 2,
+      "intervalSec": 0.55,
+      "spawnPointId": "spawn_air_high",
+      "spawnPattern": "Stagger",
+      "modifierId": "modifier_none"
+    },
+    {
+      "spawnId": "spawn_002_08_e",
+      "waveId": "wave_002_08",
+      "spawnTimeSec": 3.3,
+      "enemyId": "enemy_wheel_zombie",
+      "count": 1,
+      "intervalSec": 0,
+      "spawnPointId": "spawn_ground_right",
+      "spawnPattern": "Single",
+      "modifierId": "modifier_none"
+    },
+    {
+      "spawnId": "spawn_002_08_f",
+      "waveId": "wave_002_08",
+      "spawnTimeSec": 3.8,
+      "enemyId": "enemy_fire_fish",
+      "count": 1,
+      "intervalSec": 0,
+      "spawnPointId": "spawn_air_mid",
+      "spawnPattern": "Single",
       "modifierId": "modifier_none"
     },
     {

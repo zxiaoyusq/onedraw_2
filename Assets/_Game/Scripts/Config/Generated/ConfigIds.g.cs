@@ -6,10 +6,10 @@ namespace OneStrokeDemon.Config
     public static class ConfigIds
     {
         public const int SchemaVersion = 4;
-        public const string ContentVersion = "0.5.2-sample";
-        public const string ContentHash = "f666feb2c6a94439b0bdeee0c8f939b61728d04a04ec5ed62a23bdf100a98e92";
+        public const string ContentVersion = "0.5.3-sample";
+        public const string ContentHash = "50ff7874f59f60092fe9eae71a8184c88828e78a6dd66cf04ea4abc066c611fe";
         public const int IdSetCount = 27;
-        public const int IdConstantCount = 320;
+        public const int IdConstantCount = 341;
 
         public static class GlobalKeys
         {
@@ -197,6 +197,10 @@ namespace OneStrokeDemon.Config
             public const string Wave00202 = "wave_002_02";
             public const string Wave00203 = "wave_002_03";
             public const string Wave00204 = "wave_002_04";
+            public const string Wave00205 = "wave_002_05";
+            public const string Wave00206 = "wave_002_06";
+            public const string Wave00207 = "wave_002_07";
+            public const string Wave00208 = "wave_002_08";
             public const string Wave00301 = "wave_003_01";
             public const string Wave00302 = "wave_003_02";
         }
@@ -224,11 +228,28 @@ namespace OneStrokeDemon.Config
             public const string Spawn00105A = "spawn_001_05_a";
             public const string Spawn00106A = "spawn_001_06_a";
             public const string Spawn00201A = "spawn_002_01_a";
+            public const string Spawn00201B = "spawn_002_01_b";
             public const string Spawn00202A = "spawn_002_02_a";
+            public const string Spawn00202B = "spawn_002_02_b";
             public const string Spawn00203A = "spawn_002_03_a";
             public const string Spawn00203B = "spawn_002_03_b";
             public const string Spawn00204A = "spawn_002_04_a";
             public const string Spawn00204B = "spawn_002_04_b";
+            public const string Spawn00205A = "spawn_002_05_a";
+            public const string Spawn00205B = "spawn_002_05_b";
+            public const string Spawn00205C = "spawn_002_05_c";
+            public const string Spawn00206A = "spawn_002_06_a";
+            public const string Spawn00206B = "spawn_002_06_b";
+            public const string Spawn00206C = "spawn_002_06_c";
+            public const string Spawn00207A = "spawn_002_07_a";
+            public const string Spawn00207B = "spawn_002_07_b";
+            public const string Spawn00207C = "spawn_002_07_c";
+            public const string Spawn00208A = "spawn_002_08_a";
+            public const string Spawn00208B = "spawn_002_08_b";
+            public const string Spawn00208C = "spawn_002_08_c";
+            public const string Spawn00208D = "spawn_002_08_d";
+            public const string Spawn00208E = "spawn_002_08_e";
+            public const string Spawn00208F = "spawn_002_08_f";
             public const string Spawn00301A = "spawn_003_01_a";
             public const string Spawn00301B = "spawn_003_01_b";
             public const string Spawn00302A = "spawn_003_02_a";
