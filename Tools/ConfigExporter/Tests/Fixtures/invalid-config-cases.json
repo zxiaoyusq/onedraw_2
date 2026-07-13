@@ -1,0 +1,342 @@
+{
+  "cases": [
+    {
+      "id": "required_cell_empty",
+      "expectedCode": "CFG003",
+      "expectedSheet": "Players",
+      "expectedField": "defaultStanceId",
+      "mutations": [
+        { "operation": "set", "sheet": "Players", "match": { "playerId": "player_moyan" }, "values": { "defaultStanceId": "" } }
+      ]
+    },
+    {
+      "id": "invalid_integer_type",
+      "expectedCode": "CFG004",
+      "expectedSheet": "Players",
+      "expectedField": "maxHp",
+      "mutations": [
+        { "operation": "set", "sheet": "Players", "match": { "playerId": "player_moyan" }, "values": { "maxHp": "not-an-int" } }
+      ]
+    },
+    {
+      "id": "declared_minimum_violated",
+      "expectedCode": "CFG007",
+      "expectedSheet": "Players",
+      "expectedField": "maxHp",
+      "mutations": [
+        { "operation": "set", "sheet": "Players", "match": { "playerId": "player_moyan" }, "values": { "maxHp": "0" } }
+      ]
+    },
+    {
+      "id": "content_version_format_invalid",
+      "expectedCode": "CFG009",
+      "expectedSheet": "Global",
+      "expectedField": "stringValue",
+      "mutations": [
+        { "operation": "set", "sheet": "Global", "match": { "key": "content_version" }, "values": { "stringValue": "version one" } }
+      ]
+    },
+    {
+      "id": "enum_value_unknown",
+      "expectedCode": "CFG006",
+      "expectedSheet": "Enemies",
+      "expectedField": "tier",
+      "mutations": [
+        { "operation": "set", "sheet": "Enemies", "match": { "enemyId": "enemy_fire_fish" }, "values": { "tier": "Legendary" } }
+      ]
+    },
+    {
+      "id": "primary_key_duplicate",
+      "expectedCode": "CFG005",
+      "expectedSheet": "Enemies",
+      "expectedField": "enemyId",
+      "mutations": [
+        { "operation": "set", "sheet": "Enemies", "match": { "enemyId": "enemy_wheel_zombie" }, "values": { "enemyId": "enemy_fire_fish" } }
+      ]
+    },
+    {
+      "id": "stable_id_pattern_invalid",
+      "expectedCode": "CFG009",
+      "expectedSheet": "Enemies",
+      "expectedField": "enemyId",
+      "mutations": [
+        { "operation": "set", "sheet": "Enemies", "match": { "enemyId": "enemy_fire_fish" }, "values": { "enemyId": "Enemy-Fire" } }
+      ]
+    },
+    {
+      "id": "ordinary_foreign_key_missing",
+      "expectedCode": "CFG008",
+      "expectedSheet": "Enemies",
+      "expectedField": "movePatternId",
+      "mutations": [
+        { "operation": "set", "sheet": "Enemies", "match": { "enemyId": "enemy_fire_fish" }, "values": { "movePatternId": "move_missing" } }
+      ]
+    },
+    {
+      "id": "wildcard_outside_spawn_point_scope",
+      "expectedCode": "CFG009",
+      "expectedSheet": "Players",
+      "expectedField": "playerId",
+      "mutations": [
+        { "operation": "set", "sheet": "Players", "match": { "playerId": "player_moyan" }, "values": { "playerId": "*" } }
+      ]
+    },
+    {
+      "id": "negative_time",
+      "expectedCode": "CFG007",
+      "expectedSheet": "Spawns",
+      "expectedField": "spawnTimeSec",
+      "mutations": [
+        { "operation": "set", "sheet": "Spawns", "match": { "spawnId": "spawn_001_01_a" }, "values": { "spawnTimeSec": "-0.1" } }
+      ]
+    },
+    {
+      "id": "normalized_coordinate_out_of_range",
+      "expectedCode": "CFG007",
+      "expectedSheet": "MovePatterns",
+      "expectedField": "startXNorm",
+      "mutations": [
+        { "operation": "set", "sheet": "MovePatterns", "match": { "movePatternId": "move_ground_left" }, "values": { "startXNorm": "1.1" } }
+      ]
+    },
+    {
+      "id": "group_order_gap",
+      "expectedCode": "CFG009",
+      "expectedSheet": "EnemyAttacks",
+      "expectedField": "order",
+      "mutations": [
+        { "operation": "set", "sheet": "EnemyAttacks", "match": { "attackId": "atk_puppet_bolt" }, "values": { "order": "3" } }
+      ]
+    },
+    {
+      "id": "star_threshold_not_increasing",
+      "expectedCode": "CFG009",
+      "expectedSheet": "Levels",
+      "expectedField": "starScore2",
+      "mutations": [
+        { "operation": "set", "sheet": "Levels", "match": { "levelId": "lv_001_tutorial" }, "values": { "starScore2": "2000" } }
+      ]
+    },
+    {
+      "id": "boss_threshold_gap",
+      "expectedCode": "CFG010",
+      "expectedSheet": "BossPhases",
+      "expectedField": "enterHpRatio",
+      "mutations": [
+        { "operation": "set", "sheet": "BossPhases", "match": { "bossPhaseId": "boss_tomb_phase_2" }, "values": { "enterHpRatio": "0.66" } }
+      ]
+    },
+    {
+      "id": "boss_coverage_does_not_end_at_zero",
+      "expectedCode": "CFG010",
+      "expectedSheet": "BossPhases",
+      "expectedField": "exitHpRatio",
+      "mutations": [
+        { "operation": "set", "sheet": "BossPhases", "match": { "bossPhaseId": "boss_tomb_phase_3" }, "values": { "exitHpRatio": "0.1" } }
+      ]
+    },
+    {
+      "id": "global_typed_union_has_two_values",
+      "expectedCode": "CFG009",
+      "expectedSheet": "Global",
+      "expectedField": "intValue",
+      "mutations": [
+        { "operation": "set", "sheet": "Global", "match": { "key": "target_frame_rate" }, "values": { "boolValue": "true" } }
+      ]
+    },
+    {
+      "id": "conditional_unlock_level_missing",
+      "expectedCode": "CFG008",
+      "expectedSheet": "Rewards",
+      "expectedField": "rewardId",
+      "mutations": [
+        { "operation": "set", "sheet": "Rewards", "match": { "rewardTableId": "reward_level_001", "order": "1" }, "values": { "rewardId": "lv_missing" } }
+      ]
+    },
+    {
+      "id": "conditional_feature_namespace_invalid",
+      "expectedCode": "CFG008",
+      "expectedSheet": "Rewards",
+      "expectedField": "rewardId",
+      "mutations": [
+        { "operation": "set", "sheet": "Rewards", "match": { "rewardTableId": "reward_level_003", "order": "1" }, "values": { "rewardId": "challenge" } }
+      ]
+    },
+    {
+      "id": "conditional_reward_type_unhandled",
+      "expectedCode": "CFG008",
+      "expectedSheet": "Rewards",
+      "expectedField": "rewardId",
+      "mutations": [
+        { "operation": "copy", "sheet": "Enums", "match": { "enumType": "RewardType", "value": "ScoreToken" }, "values": { "value": "CustomReward", "displayName": "自定义奖励", "description": "测试未登记奖励类型" } },
+        { "operation": "set", "sheet": "Rewards", "match": { "rewardTableId": "reward_level_003", "order": "1" }, "values": { "rewardType": "CustomReward" } }
+      ]
+    },
+    {
+      "id": "strategy_enum_not_registered_by_code",
+      "expectedCode": "CFG006",
+      "expectedSheet": "Enums",
+      "expectedField": "value",
+      "mutations": [
+        { "operation": "copy", "sheet": "Enums", "match": { "enumType": "MovePatternType", "value": "Linear" }, "values": { "value": "Teleport", "displayName": "瞬移", "description": "测试未注册策略" } },
+        { "operation": "set", "sheet": "MovePatterns", "match": { "movePatternId": "move_ground_left" }, "values": { "patternType": "Teleport" } }
+      ]
+    },
+    {
+      "id": "wave_has_no_spawn",
+      "expectedCode": "CFG010",
+      "expectedSheet": "Waves",
+      "expectedField": "waveId",
+      "mutations": [
+        { "operation": "remove", "sheet": "Spawns", "match": { "waveId": "wave_001_01" } }
+      ]
+    },
+    {
+      "id": "level_has_no_wave",
+      "expectedCode": "CFG010",
+      "expectedSheet": "Levels",
+      "expectedField": "levelId",
+      "mutations": [
+        { "operation": "remove", "sheet": "Spawns", "match": { "waveId": "wave_001_01" } },
+        { "operation": "remove", "sheet": "Spawns", "match": { "waveId": "wave_001_02" } },
+        { "operation": "remove", "sheet": "Spawns", "match": { "waveId": "wave_001_03" } },
+        { "operation": "remove", "sheet": "Waves", "match": { "levelId": "lv_001_tutorial" } }
+      ]
+    },
+    {
+      "id": "spawn_point_level_scope_mismatch",
+      "expectedCode": "CFG010",
+      "expectedSheet": "Spawns",
+      "expectedField": "spawnPointId",
+      "mutations": [
+        { "operation": "set", "sheet": "SpawnPoints", "match": { "spawnPointId": "spawn_boss" }, "values": { "levelId": "lv_002_cave" } }
+      ]
+    },
+    {
+      "id": "boss_phase_enemy_not_boss_tier",
+      "expectedCode": "CFG010",
+      "expectedSheet": "BossPhases",
+      "expectedField": "enemyId",
+      "mutations": [
+        { "operation": "set", "sheet": "Enemies", "match": { "enemyId": "boss_tomb_king" }, "values": { "tier": "Normal" } }
+      ]
+    },
+    {
+      "id": "boss_level_has_no_boss_defeated_wave",
+      "expectedCode": "CFG010",
+      "expectedSheet": "Levels",
+      "expectedField": "bossEnemyId",
+      "mutations": [
+        { "operation": "set", "sheet": "Waves", "match": { "waveId": "wave_003_02" }, "values": { "endCondition": "AllEnemiesDefeated" } }
+      ]
+    },
+    {
+      "id": "boss_level_never_spawns_boss",
+      "expectedCode": "CFG010",
+      "expectedSheet": "Levels",
+      "expectedField": "bossEnemyId",
+      "mutations": [
+        { "operation": "set", "sheet": "Spawns", "match": { "spawnId": "spawn_003_02_a" }, "values": { "enemyId": "enemy_fire_fish" } }
+      ]
+    },
+    {
+      "id": "boss_enemy_has_no_phases",
+      "expectedCode": "CFG010",
+      "expectedSheet": "Enemies",
+      "expectedField": "enemyId",
+      "mutations": [
+        { "operation": "remove", "sheet": "BossPhases", "match": { "enemyId": "boss_tomb_king" } }
+      ]
+    },
+    {
+      "id": "asset_reference_missing",
+      "expectedCode": "CFG008",
+      "expectedSheet": "Players",
+      "expectedField": "assetKey",
+      "mutations": [
+        { "operation": "set", "sheet": "Players", "match": { "playerId": "player_moyan" }, "values": { "assetKey": "asset_missing" } }
+      ]
+    },
+    {
+      "id": "group_foreign_key_missing",
+      "expectedCode": "CFG008",
+      "expectedSheet": "Enemies",
+      "expectedField": "attackSetId",
+      "mutations": [
+        { "operation": "set", "sheet": "Enemies", "match": { "enemyId": "enemy_fire_fish" }, "values": { "attackSetId": "attackset_missing" } }
+      ]
+    },
+    {
+      "id": "field_dictionary_min_exceeds_max",
+      "expectedCode": "CFG009",
+      "expectedSheet": "FieldDictionary",
+      "expectedField": "min",
+      "mutations": [
+        { "operation": "set", "sheet": "FieldDictionary", "match": { "sheet": "Players", "field": "maxHp" }, "values": { "max": "0" } }
+      ]
+    },
+    {
+      "id": "field_dictionary_schema_minimum_drift",
+      "expectedCode": "CFG002",
+      "expectedSheet": "FieldDictionary",
+      "expectedField": "min",
+      "mutations": [
+        { "operation": "set", "sheet": "FieldDictionary", "match": { "sheet": "Players", "field": "maxHp" }, "values": { "min": "0" } }
+      ]
+    },
+    {
+      "id": "field_dictionary_description_empty",
+      "expectedCode": "CFG003",
+      "expectedSheet": "FieldDictionary",
+      "expectedField": "description",
+      "mutations": [
+        { "operation": "set", "sheet": "FieldDictionary", "match": { "sheet": "Players", "field": "maxHp" }, "values": { "description": "" } }
+      ]
+    },
+    {
+      "id": "field_dictionary_enum_type_missing",
+      "expectedCode": "CFG006",
+      "expectedSheet": "FieldDictionary",
+      "expectedField": "enumType",
+      "mutations": [
+        { "operation": "set", "sheet": "FieldDictionary", "match": { "sheet": "Enemies", "field": "tier" }, "values": { "enumType": "MissingEnum" } }
+      ]
+    },
+    {
+      "id": "field_dictionary_foreign_key_malformed",
+      "expectedCode": "CFG002",
+      "expectedSheet": "FieldDictionary",
+      "expectedField": "foreignKey",
+      "mutations": [
+        { "operation": "set", "sheet": "FieldDictionary", "match": { "sheet": "Players", "field": "assetKey" }, "values": { "foreignKey": "BrokenTarget" } }
+      ]
+    },
+    {
+      "id": "weakpoint_window_reversed",
+      "expectedCode": "CFG009",
+      "expectedSheet": "WeakpointRules",
+      "expectedField": "windowEndSec",
+      "mutations": [
+        { "operation": "set", "sheet": "WeakpointRules", "match": { "weakpointRuleId": "weakpoint_bat_dive" }, "values": { "windowEndSec": "0.1" } }
+      ]
+    },
+    {
+      "id": "audio_pitch_range_reversed",
+      "expectedCode": "CFG009",
+      "expectedSheet": "AudioCues",
+      "expectedField": "pitchMax",
+      "mutations": [
+        { "operation": "set", "sheet": "AudioCues", "match": { "audioKey": "sfx_hit" }, "values": { "pitchMax": "0.8" } }
+      ]
+    },
+    {
+      "id": "reward_condition_value_invalid",
+      "expectedCode": "CFG009",
+      "expectedSheet": "Rewards",
+      "expectedField": "conditionValue",
+      "mutations": [
+        { "operation": "set", "sheet": "Rewards", "match": { "rewardTableId": "reward_level_001", "order": "2" }, "values": { "conditionValue": "4" } }
+      ]
+    }
+  ]
+}

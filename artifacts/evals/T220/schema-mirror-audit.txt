@@ -1,0 +1,6 @@
+T220 Schema mirror review (2026-07-13 Asia/Shanghai)
+
+JSON Schema field minimum/maximum versus FieldDictionary: 0 mismatches
+JSON Schema field enum values versus referenced Enums groups: 0 mismatches
+Root input pattern additionally enforced: contentVersion semantic-version pattern
+Production behavior: SchemaConstraintMirrorValidator rejects type/nullability/min/max/enum drift before serialization/write.

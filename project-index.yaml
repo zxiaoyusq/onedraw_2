@@ -1,7 +1,7 @@
 project: OneStrokeDemon
 project_cn: 一笔镇妖
 plan_generated: 2026-07-11
-current_task: T220
+current_task: T230
 current_task_status: READY
 unity:
   project_root: .
@@ -37,6 +37,14 @@ config:
     output_bytes: 168071
     output_sha256: 91d2c312cd2caead5243ef76ee12b54dc53702dc0ba23d4d34b0726c111a066a
     runtime_snapshot_committed: false
+  validator:
+    path: Tools/ConfigExporter/Validation
+    status: pass
+    test_count: 46
+    invalid_case_count: 37
+    diagnostic_location: Sheet/ExcelRow/Field
+    schema_mirror_check: pass
+    whole_package_rejection: true
 manual_gates:
   unity_editor_smoke: pass
   standard_web_build: pass_with_known_issues
@@ -82,7 +90,7 @@ wechat_conversion:
 execution_order:
   deferred_tasks: [T120, T130]
   deferral_reason: user_prioritized_main_game_content_over_wechat_devtools_device_and_packaging_work
-  next_content_task: T220
+  next_content_task: T230
   resume_platform_before: [T640, T750]
 workflow:
   unity_test_command: Tools/CI/run-unity-tests.sh

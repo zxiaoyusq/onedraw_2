@@ -15,6 +15,14 @@ internal sealed class TestRepository
 
     public string SamplePath => Path.Combine(RootPath, "config", "examples", "gameplay_config.sample.json");
 
+    public string InvalidConfigCasesPath => Path.Combine(
+        RootPath,
+        "Tools",
+        "ConfigExporter",
+        "Tests",
+        "Fixtures",
+        "invalid-config-cases.json");
+
     public static TestRepository Find()
     {
         foreach (var startPath in new[] { AppContext.BaseDirectory, Directory.GetCurrentDirectory() })

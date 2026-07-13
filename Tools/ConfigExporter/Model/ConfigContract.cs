@@ -8,6 +8,11 @@ internal sealed record SheetContract(
     public string SchemaDefinitionName => $"{SheetName}Row";
 }
 
+internal sealed record GroupOrderContract(
+    string SheetName,
+    string GroupField,
+    string OrderField);
+
 internal static class ConfigContract
 {
     public const string ReadmeSheetName = "README";
@@ -72,10 +77,43 @@ internal static class ConfigContract
         DictionaryField("description", ConfigValueKind.String, required: true, order: 9),
     };
 
+    public static readonly IReadOnlyList<GroupOrderContract> GroupOrders = new[]
+    {
+        new GroupOrderContract("EnemyAttacks", "attackSetId", "order"),
+        new GroupOrderContract("SkillEffects", "effectGroupId", "order"),
+        new GroupOrderContract("Waves", "levelId", "order"),
+        new GroupOrderContract("BossPhases", "enemyId", "order"),
+        new GroupOrderContract("Rewards", "rewardTableId", "order"),
+        new GroupOrderContract("Tutorials", "tutorialId", "order"),
+    };
+
+    public static readonly IReadOnlyDictionary<string, IReadOnlySet<string>> RegisteredStrategyEnums =
+        new Dictionary<string, IReadOnlySet<string>>(StringComparer.Ordinal)
+        {
+            ["MovePatternType"] = new HashSet<string>(
+                new[] { "Boss", "Dive", "Hover", "Linear", "Sine" },
+                StringComparer.Ordinal),
+            ["AttackTriggerType"] = new HashSet<string>(
+                new[] { "Cooldown", "Distance", "HpThreshold", "Support" },
+                StringComparer.Ordinal),
+        };
+
     public static SheetContract GetDataSheet(string sheetName)
     {
         return DataSheets.FirstOrDefault(sheet => string.Equals(sheet.SheetName, sheetName, StringComparison.Ordinal))
             ?? throw new InvalidOperationException($"Unknown data sheet '{sheetName}'.");
+    }
+
+    public static IReadOnlyList<string> GetPrimaryKeyFields(string sheetName)
+    {
+        return sheetName switch
+        {
+            "EnemyAttacks" => new[] { "attackId" },
+            "Waves" => new[] { "waveId" },
+            "BossPhases" => new[] { "bossPhaseId" },
+            FieldDictionarySheetName => new[] { "sheet", "field" },
+            _ => GetDataSheet(sheetName).SortFields,
+        };
     }
 
     private static SheetContract Sheet(string sheetName, string jsonPropertyName, params string[] sortFields)

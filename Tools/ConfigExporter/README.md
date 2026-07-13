@@ -29,9 +29,19 @@ dotnet run --project Tools/ConfigExporter -- \
 - `contentHash` 是不包含自身字段的规范化 JSON 的 SHA-256。
 - 每份输出在替换前重新解析，检查顶层顺序、元数据、记录数和哈希。
 
-## T210 校验边界
+## 生产校验合同
 
-当前 `--strict` 对任何已实现的错误都返回非零值。T210 只负责可读取性、Sheet/表头、基础类型、Schema/表头对齐、排序/哈希确定性和输出自检。主键、必填、范围、枚举、外键和跨表语义由 `T220` 实现。
+`validate` 与 `export` 使用同一完整校验链。任何配置错误都在序列化和原子写入前阻断整包，不半应用、不静默修正。当前生产校验覆盖：
+
+- 29个Sheet及表头、FieldDictionary覆盖、字段类型/空值、`contentVersion`和Schema合同。
+- 必填、稳定ID、主键/组合键唯一、min/max、时间/归一化范围、大小写敏感枚举。
+- FieldDictionary、Enums与JSON Schema中的类型、可空性、范围和枚举镜像一致性。
+- 普通、分组、唯一通配符及conditional外键，资源、文案、音频和VFX引用。
+- 六类分组连续order、Global联合、星级阈值、Level→Wave→Spawn完整性和出生点作用域。
+- Boss阶段从1连续覆盖到0、阈值严格下降且无缝相接，Boss关卡结束条件与实际出生一致。
+- `MovePatternType`和`AttackTriggerType`必须与代码登记的策略集合精确一致。
+
+配置诊断格式为 `CODE [sheet=..., row=..., field=...]: message`。稳定错误码按类别划分：`CFG001/CFG002`结构合同、`CFG003`必填、`CFG004`类型、`CFG005`唯一性、`CFG006`枚举/策略、`CFG007`范围、`CFG008`外键、`CFG009`行内语义、`CFG010`跨表/Boss、`CFG011`版本、`CFG012`输出自检。
 
 ## 测试
 
@@ -39,4 +49,4 @@ dotnet run --project Tools/ConfigExporter -- \
 dotnet test Tools/ConfigExporter/Tests/ConfigExporter.Tests.csproj
 ```
 
-测试覆盖双导出字节一致、冻结哈希/样例语义一致、表头漂移、区域设置无关性、CLI 非零错误码，以及自校验失败时保护旧输出。
+测试覆盖双导出字节一致、冻结哈希/样例语义一致、表头漂移、区域设置无关性、CLI非零错误码、自校验失败保护旧输出，以及37类只修改内存副本的坏配置。坏配置断言精确错误码、Sheet、Excel行和字段；正式xlsx在测试中保持只读。

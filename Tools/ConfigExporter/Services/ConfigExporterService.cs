@@ -3,6 +3,7 @@ using OneStrokeDemon.ConfigExporter.IO;
 using OneStrokeDemon.ConfigExporter.Model;
 using OneStrokeDemon.ConfigExporter.Processing;
 using OneStrokeDemon.ConfigExporter.Serialization;
+using OneStrokeDemon.ConfigExporter.Validation;
 
 namespace OneStrokeDemon.ConfigExporter.Services;
 
@@ -10,6 +11,7 @@ public sealed class ConfigExporterService
 {
     private readonly OpenXmlWorkbookReader _workbookReader;
     private readonly ConfigDocumentBuilder _documentBuilder;
+    private readonly ConfigValidator _validator;
     private readonly StableJsonSerializer _serializer;
     private readonly OutputVerifier _outputVerifier;
     private readonly AtomicFileWriter _atomicFileWriter;
@@ -18,6 +20,7 @@ public sealed class ConfigExporterService
         : this(
             new OpenXmlWorkbookReader(),
             new ConfigDocumentBuilder(new SchemaContractValidator()),
+            new ConfigValidator(),
             new StableJsonSerializer(),
             new OutputVerifier(),
             new AtomicFileWriter())
@@ -27,12 +30,14 @@ public sealed class ConfigExporterService
     internal ConfigExporterService(
         OpenXmlWorkbookReader workbookReader,
         ConfigDocumentBuilder documentBuilder,
+        ConfigValidator validator,
         StableJsonSerializer serializer,
         OutputVerifier outputVerifier,
         AtomicFileWriter atomicFileWriter)
     {
         _workbookReader = workbookReader;
         _documentBuilder = documentBuilder;
+        _validator = validator;
         _serializer = serializer;
         _outputVerifier = outputVerifier;
         _atomicFileWriter = atomicFileWriter;
@@ -63,6 +68,7 @@ public sealed class ConfigExporterService
     {
         var workbook = _workbookReader.Read(inputPath);
         var document = _documentBuilder.Build(workbook, schemaPath);
+        _validator.Validate(document, schemaPath);
         var serialized = _serializer.Serialize(document);
         return new PreparedExport(document, serialized);
     }

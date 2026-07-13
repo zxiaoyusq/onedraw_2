@@ -95,3 +95,12 @@
 - 理由：相同工作簿在不同机器和重复运行中必须得到字节一致快照，且导出器异常或自检失败不能破坏最后一份有效JSON。
 - 许可证：运行时工具依赖均为MIT；测试依赖为MIT或Apache-2.0，完整版本和上游记录见 `Tools/ConfigExporter/THIRD_PARTY_NOTICES.md`。
 - 限制：T210只证明可导出性、契约对齐与确定性，不执行T220的必填、范围、枚举、唯一性、外键或跨表生产校验，不创建T230/T250负责的Unity Runtime资产。
+
+## D-014 · T220生产校验与整包拒绝
+
+- 状态：ACCEPTED
+- 决定：`ConfigValidator`在完整工作簿建模后、序列化和原子写入前执行；任一错误以稳定`CFG`错误码和Sheet/Excel行/字段定位并拒绝整包，不半应用、不静默修正。
+- 决定：生产合同覆盖必填、类型/范围、稳定ID、主键/组合键、枚举、普通/分组/通配符/conditional外键、连续order、Global联合、Level→Wave→Spawn、星级和Boss全覆盖语义。提供Schema时，FieldDictionary/Enums的类型、可空性、min/max和枚举集合还必须与Schema精确一致。
+- 决定：`MovePatternType`与`AttackTriggerType`属于代码拥有的算法合同，当前由导出器登记精确集合；T430实现Runtime策略注册表时必须复用或同步该合同，不能把策略选择变成第二套玩法数值库。
+- 测试策略：坏配置样例采用可审查JSON变更清单，只修改正式工作簿读取后的内存副本；37类反例逐一断言错误码、Sheet、Excel数据行和字段，正式xlsx及其镜像、Schema、样例JSON保持只读。
+- 限制：T220不生成Unity Runtime快照、DTO、加载服务或AssetRegistry；这些仍分别属于T230、T240和T250。

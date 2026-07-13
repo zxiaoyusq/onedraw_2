@@ -11,7 +11,7 @@
 - Bootstrap/Harness任务：T000、T010、T020、T030、T040（DONE）
 - 标准Web G1：T100（PASS WITH KNOWN ISSUES）
 - 配置契约：T200（DONE）
-- 当前任务：T220（READY；T120/T130按用户决定延期）
+- 当前任务：T230（READY；T120/T130按用户决定延期）
 
 ## 配置契约
 
@@ -21,7 +21,7 @@
 - FieldDictionary字段条目：248；按约定不递归描述自身
 - 示例JSON：31个顶层属性
 - 表头/Schema/样例结构对照：PASS
-- 样例JSON Schema校验：PASS（T200项目内只读契约审计；生产校验器属于T220）
+- 样例JSON Schema校验：PASS；T220生产校验还会拒绝FieldDictionary/Enums与Schema约束漂移
 - 主键/组合键重复：0
 - 普通、分组、通配符和conditional外键缺失：0
 - 组内order/关卡-Boss跨表语义错误：0
@@ -49,8 +49,16 @@
 - 独立 `net8.0` CLI位于 `Tools/ConfigExporter`，使用精确固定并锁定的 `DocumentFormat.OpenXml 3.5.1`；依赖未进入 `Assets/` 或Unity程序集。
 - `validate/export --input ... --schema ... --strict` 已读取29个Sheet、导出28张表共645条记录，版本为schema `1` / content `0.1.1-sample`，规范化内容hash保持 `16b64a6f...b4b1c`。
 - 同一输入两次输出均为168,071字节，文件SHA-256均为 `91d2c312cd2caead5243ef76ee12b54dc53702dc0ba23d4d34b0726c111a066a`；自动测试同时覆盖反转源行、区域设置、表头漂移、CLI错误码和原子写保护。
-- T210不执行必填/范围/枚举/唯一性/外键/跨表生产校验，不生成受管Runtime JSON；这些仍分别属于T220、T230/T250。
+- T210的确定性输出边界由T220生产校验链补全；受管Runtime JSON仍属于T230/T250。
 - T210结论：DONE；锁定还原、0 warning/0 error编译、专项.NET测试8/8及真实CLI双导出全部PASS，证据位于 `artifacts/evals/T210/`。
+
+## T220生产校验基线
+
+- `ConfigValidator`在序列化/写入前执行必填、类型、范围、枚举、稳定ID、唯一性、普通/分组/通配符/conditional外键和跨表语义校验；坏配置拒绝整包，不覆盖旧输出。
+- 连续order、Global联合、星级阈值、Level→Wave→Spawn、出生点作用域及Boss从1到0无缝覆盖均有明确规则；代码策略枚举还要与登记集合精确一致。
+- 37类内存坏配置覆盖重复ID、缺外键、负时间、Boss阈值乱序等路径，并逐项断言稳定错误码、Sheet、Excel数据行和字段；正式xlsx、镜像、Schema和样例未修改。
+- Release锁定还原和编译0 warning/0 error，格式检查通过，全套.NET测试46/46通过。正式CLI校验28表645条记录通过，两次导出均为168,071字节且文件SHA-256均为`91d2c312...1a066a`。
+- T220结论：DONE；证据位于 `artifacts/evals/T220/`。本任务未生成Runtime JSON，也未运行无改动关联的Unity场景/平台门。
 
 ## 平台说明
 

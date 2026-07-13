@@ -48,7 +48,7 @@ internal sealed class ConfigExporterApplication
                 $"tables={result.RecordCounts.Count} records={recordCount} strict={options.Strict}");
             if (options.Command == ExporterCommand.Validate)
             {
-                standardOutput.WriteLine("VALIDATION_SCOPE=T210_EXPORTABILITY_HEADER_TYPE_DETERMINISM_ONLY");
+                standardOutput.WriteLine("VALIDATION_SCOPE=T220_PRODUCTION_CONFIG_CONTRACT");
             }
 
             return SuccessExitCode;
@@ -77,7 +77,7 @@ internal sealed class ConfigExporterApplication
         validate --input <GameConfig.xlsx> [--schema <gameplay.schema.json>] [--strict]
         export   --input <GameConfig.xlsx> --output <gameplay_config.json> [--schema <gameplay.schema.json>] [--strict]
 
-        T210 validates exportability, fixed sheets/headers, value parsing, schema/header alignment,
-        deterministic ordering/hash, and output self-check. T220 adds full content semantics.
+        Validation covers fixed structure, required values, types, ranges, enums, IDs, uniqueness,
+        foreign keys, group order, level/wave/spawn completeness, boss coverage, and output determinism.
         """;
 }
