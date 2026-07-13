@@ -1,8 +1,8 @@
 # PROGRESS
 
 - 日期：2026-07-13
-- 当前成熟度：P3手势战斗核心已完成；T370具备配置驱动的投射物切断、免疫、反弹、伤害归属和确定性回收，进入P4玩家战斗状态
-- 当前任务：T400
+- 当前成熟度：P3手势战斗核心已完成；T400具备配置驱动的玩家HP、当前能量、刀/符架势、冷却和一次性死亡事件，进入P4技能效果链
+- 当前任务：T410
 - 状态：READY
 - Unity精确版本：6000.5.1f1（已由ProjectVersion.txt与本机安装核验）
 - 微信SDK来源或版本：官方 `minigame-tuanjie-transform-sdk` v0.1.33 / commit `ed4ad28f433c6b52b5fd3f22a6fa155a0c98c228` / embedded最小补丁
@@ -11,6 +11,12 @@
 
 ## 已完成
 
+- T400：`PlayerCombatSettingsFactory`沿`Players`映射HP/能量上限、默认架势、终极技能和受击无敌，并沿`ultimateSkillId`读取`Skills.energyCost`；`PlayerCombatModel`初始满HP/空能量，伤害夹到0，配置无敌窗在精确边界恢复，同帧重复致死不会重复标记。
+- T400：T360 `DamageResult.energyAward`进入当前能量时按配置上限无溢出饱和；技能扣能直接读取`Skills.energyCost/requiredStanceId`，架势不符、能量不足或死亡均不部分扣除。终极100能量、符术20能量等值未复制到Inspector或产品代码。
+- T400：`StanceService`把目标`Stances`行完整映射为不可变快照，成功切入目标后按该目标的`switchCooldownSec`计算冷却，等于边界可再次切换；同架势/冷却内/死亡请求均不发布事件。成功切换携带配置`onSwitchEffectGroupId`意图，实际EffectGroup执行留给T410。
+- T400：`PlayerCombatController`发布单调序号`HpChanged/EnergyChanged/StanceChanged/Died`事件，致死固定先HP变化后死亡且生命周期只一次。当前架势直接驱动T340轨迹宽度、T360伤害公式/倍率和T370投射物`requiredStanceId`门，并公开配置切弹/幽魂倍率，不维护刀/符第二映射。
+- T400：专项EditMode 8/8、专项PlayMode 2/2，最终全量EditMode 106/106、PlayMode 27/27；配置三生成物无漂移、.NET 55/55，最终脚本刷新编译Console Error/Warning为0。Bootstrap→MainMenu真实运行时路径验证刀18→符28参考像素、伤害公式切换、`proj_seal_bolt`从架势不符变为反弹、能量扣除和同帧一次死亡。
+- T400：未修改xlsx、Schema、FieldDictionary、导出器、受管JSON/hash/ConfigIds、场景、Prefab、Input Actions、Packages、ProjectSettings或微信SDK；未实现T410技能CD/效果链、T420敌人状态机、T510战斗流程或T600 HUD。
 - T370：`ProjectileRuleSetFactory`从现有`Projectiles`表完整映射移动策略ID、参考像素速度、寿命、伤害、切断/反弹开关、所需架势、命中半径和资源键；未修改xlsx、Schema、导出器或三生成物，也未在Prefab/Inspector/C#复制玩法数值。
 - T370：`ProjectileCutResolver`冻结架势门→反弹→切断→不可切断优先级；`reflectable=true`时优先反弹，只有`cuttable=true`时回收，两者都false时保持弹体。反弹把当前归属切为玩家并反转显式方向，同时保留原敌方实体与反弹次数；同阵营笔迹和碰撞均不会错误消费弹体。
 - T370：`ProjectileController`在参考像素空间按配置速度/寿命与外部delta做确定性Transform位移，不使用Rigidbody力；`ProjectileHitTarget`直接接入T350 `IHittable/HitRecord`。切断、敌方命中、寿命到期和显式释放均先保留快照，再清空规则、归属、参考空间、位置、方向、时间、命中ID、Collider和Transform并停用，同对象复用由新配置/来源完整覆盖。
@@ -136,4 +142,4 @@
 8. T240为尚未到达资源接入阶段的75个非场景键使用按类型共享的受管占位资源；类型与覆盖合同已成立，但正式视觉、音频和逐Prefab内容仍须在T630及相应玩法任务中替换并重新校验。
 ## 下一步
 
-只执行T400：实现配置驱动的玩家HP、当前能量、刀/符架势、切换冷却和战斗事件；不提前实现T410技能效果链或T420敌人状态机，也不恢复T120/T130。平台任务最迟在T640/T750前恢复。
+只执行T410：实现配置驱动的Skill→EffectGroup→有序Effect执行链；不提前实现T420敌人状态机、T430策略注册表或T510战斗流程，也不恢复T120/T130。平台任务最迟在T640/T750前恢复。

@@ -152,3 +152,13 @@ T360新增的`Stances.damageFormulaId -> DamageFormulas.formulaId`是必填普�
 - 伤害来源由`projectileId`、表内`damage`、当前归属、原始归属和反弹次数共同组成。敌方投射物只能伤玩家阵营；反弹后只能伤敌方阵营，命中同阵营不消费投射物。
 - `ProjectileController`只按调用方给出的参考像素位置/单位方向、表内`speedRefPxSec`与外部`deltaSeconds`做确定性Transform位移，不使用`Rigidbody2D.AddForce`或随机物理力；达到`lifeSec`边界时回收。
 - 切断、有效碰撞、寿命到期或显式回收都先生成不可变快照，再清空规则、归属、参考空间、位置、方向、已过时间与`ProjectileHitTarget` ID，禁用并清空Stroke Collider状态，重置Transform并停用GameObject。再次生成必须由新配置和新初始归属完整覆盖；通用池容量、预热与泄漏检测仍属于T440。
+
+## 13. T400玩家战斗状态与架势切换语义
+
+- `PlayerCombatSettingsFactory`只从`Players`行映射`maxHp`、`maxEnergy`、`defaultStanceId`、`ultimateSkillId`和`hitInvulnSec`，并沿`ultimateSkillId`读取`Skills.energyCost`；玩家初始HP等于配置上限，当前能量从战斗语义的空槽开始，不允许Inspector或Prefab复制数值。
+- `PlayerCombatModel`是无`MonoBehaviour`依赖的纯状态模型。有效伤害把HP夹到0；成功受击后在`hitInvulnSec`内拒绝后续伤害，等于边界时允许再次受击。HP第一次从正数变为0时结果中的`DeathTriggered`为true，之后同帧或后续伤害都只返回`AlreadyDead`。
+- T360 `DamageResult.energyAward`进入玩家当前能量时按`Players.maxEnergy`饱和，不溢出；技能消耗只能读取目标`Skills.energyCost`，能量不足、所需架势不匹配或玩家已死亡均不得部分扣除。T400只预留消耗结果，不执行技能CD或EffectGroup，后者属于T410。
+- `StanceService`每次从目标`Stances`行构造不可变快照，公开伤害公式/倍率、幽魂倍率、切弹倍率、轨迹宽度、切换冷却、即时效果组与资源键。首次切换可立即发生；成功切入目标架势后使用该目标行的`switchCooldownSec`计算下一次可切换时刻，等于边界允许，重复点击当前架势或冷却内请求不发布切换事件。
+- 成功切换立即更新唯一当前架势，并发布带`onSwitchEffectGroupId`的`StanceChanged`意图；T410只消费该意图执行配置效果链，不得在T400控制器中硬编码即时效果。玩家死亡后不能再切换架势。
+- 当前架势ID必须直接传给T340 `StrokeTrailSettingsFactory`、T360 `DamageRuleSetFactory`和T370 `ProjectileCutResolver`。因此同一玩家状态切换后，轨迹宽度、伤害公式/倍率、`projectileCutMultiplier`快照及投射物`requiredStanceId`门在同一次调用后立即生效，不维护刀/符第二映射。
+- `PlayerCombatController`只把纯模型结果转换为单调序号的`HpChanged`、`EnergyChanged`、`StanceChanged`和`Died`战斗事件；致死顺序固定为HP变化后死亡，同一玩家生命周期最多发布一次死亡事件。T400不修改场景/Prefab，也不实现自由移动、HUD、敌人状态机或技能效果执行。

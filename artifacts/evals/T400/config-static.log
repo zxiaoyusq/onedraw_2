@@ -1,0 +1,19 @@
+T400 configuration read-only verification
+date=2026-07-13
+command=Tools/CI/verify-config.sh --skip-unity
+exit_code=0
+result=CONFIG_PIPELINE_PARTIAL_PASS unity=NOT_RUN reason=explicit_skip
+exporter_build=PASS warnings=0 errors=0
+generated_drift=PASS artifacts=3
+dotnet_tests=PASS passed=55 failed=0 skipped=0 total=55
+schema=2
+content=0.2.0-sample
+content_hash=19dc788f890f995adb94458f74894b89514f85f3bfc9429659ddd2421a72f733
+tables=28
+records=647
+json_bytes=168862
+hash_bytes=65
+ids_bytes=23125
+id_sets=27
+id_constants=306
+note=Unity categories and full suites are executed through the already-open Unity 6000.5.1f1 Editor and recorded separately.
