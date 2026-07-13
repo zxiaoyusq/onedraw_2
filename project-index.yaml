@@ -1,7 +1,7 @@
 project: OneStrokeDemon
 project_cn: 一笔镇妖
 plan_generated: 2026-07-11
-current_task: T430
+current_task: T440
 current_task_status: READY
 unity:
   project_root: .
@@ -22,10 +22,10 @@ config:
   generated_json: Assets/_Game/Config/Generated/gameplay_config.json
   generated_hash: Assets/_Game/Config/Generated/gameplay_config.hash
   generated_ids: Assets/_Game/Scripts/Config/Generated/ConfigIds.g.cs
-  schema_version: 3
-  content_version: 0.3.0-sample
-  content_hash: ef7eec3aa29dffb593164526d50eff867e05fabb09fdbcbfc4347d620fb7b3c2
-  workbook_sha256: eb7cd040298bcf9c6b9a86dcc46b971663e4e4698153702f0ead15491e1311e3
+  schema_version: 4
+  content_version: 0.4.0-sample
+  content_hash: 61ed49c024a655a0d97fea7d95d03b973a636177d9e09df9305b1ddfd77351f2
+  workbook_sha256: d3b281c5d1c3131509a6ffd5416a99d22bd92f58ed9a1c3024941a85353b52e8
   mirror_status: byte_identical
   contract_audit: pass
   exporter:
@@ -35,9 +35,9 @@ config:
     status: pass
     test_count: 8
     exported_tables: 28
-    exported_records: 650
-    output_bytes: 169528
-    output_sha256: 4cb5b40f8bd314464c060b638bb1c00f5742466e6e7340783b41d8a1cf51f571
+    exported_records: 653
+    output_bytes: 170196
+    output_sha256: e260143f344f4f8e6e55914f73c114041623262e2fa3edd561b67c2f88bae201
     runtime_snapshot_committed: true
   validator:
     path: Tools/ConfigExporter/Validation
@@ -51,14 +51,14 @@ config:
     status: pass
     json_package: com.unity.nuget.newtonsoft-json@3.2.2
     newtonsoft_version: 13.0.2
-    compatibility: schema_3_content_0_3_x
+    compatibility: schema_4_content_0_4_x
     dto_tables: 28
     dto_fields: 250
-    loaded_records: 650
-    readonly_primary_indexes: 270
+    loaded_records: 653
+    readonly_primary_indexes: 272
     readonly_group_indexes: 49
-    editmode_tests: 117
-    playmode_tests: 29
+    editmode_tests: 122
+    playmode_tests: 30
     bootstrap_smoke: pass
   asset_registry:
     status: pass
@@ -79,19 +79,19 @@ config:
     default_read_only: true
     update_flag: --update
     drift_diagnostic: CFG013
-    generated_json_bytes: 169528
-    generated_json_sha256: 4cb5b40f8bd314464c060b638bb1c00f5742466e6e7340783b41d8a1cf51f571
+    generated_json_bytes: 170196
+    generated_json_sha256: e260143f344f4f8e6e55914f73c114041623262e2fa3edd561b67c2f88bae201
     generated_hash_bytes: 65
-    generated_hash_sha256: 148a9322614d03d12f3416197916f39270848c27640470f6a4c9da83c2514340
-    generated_ids_bytes: 23125
-    generated_ids_sha256: 75001b6e7703003e5be8cf8f4ba054a84f587ee8d51a758e11ccf029c8a38d2b
+    generated_hash_sha256: c4df45bb6f58f728596d169e5d55dbd0dc74531ea65568a79260e9c5630150d6
+    generated_ids_bytes: 23259
+    generated_ids_sha256: 12553f66e017668fef8407a09274c819a058b989baff3139483fa4d5b764d922
     id_sets: 27
-    id_constants: 306
+    id_constants: 308
     dotnet_tests: 56
     config_editmode_tests: 19
     config_playmode_tests: 3
-    full_editmode_tests: 117
-    full_playmode_tests: 29
+    full_editmode_tests: 122
+    full_playmode_tests: 30
     full_command_smoke: pass_via_static_drift_gate_plus_unity_mcp_open_editor
 input:
   status: pass
@@ -112,8 +112,8 @@ input:
   screen_dpi_dependency: false
   pointer_editmode_tests: 5
   pointer_playmode_tests: 7
-  full_editmode_tests: 117
-  full_playmode_tests: 29
+  full_editmode_tests: 122
+  full_playmode_tests: 30
   bootstrap_smoke: pass
 stroke_sampling:
   status: pass
@@ -131,8 +131,8 @@ stroke_sampling:
   completion_allocation: immutable_snapshot_only
   editmode_tests: 9
   playmode_tests: 1
-  full_editmode_tests: 117
-  full_playmode_tests: 29
+  full_editmode_tests: 122
+  full_playmode_tests: 30
 stroke_geometry:
   status: pass
   processor: StrokeGeometry.Process
@@ -148,8 +148,8 @@ stroke_geometry:
   deterministic_replay: pass
   editmode_tests: 12
   playmode_tests: 1
-  full_editmode_tests: 117
-  full_playmode_tests: 29
+  full_editmode_tests: 122
+  full_playmode_tests: 30
 gesture_classification:
   status: pass
   classifier: GestureClassifier
@@ -165,8 +165,8 @@ gesture_classification:
   deterministic_replay: pass
   editmode_tests: 14
   playmode_tests: 1
-  full_editmode_tests: 117
-  full_playmode_tests: 29
+  full_editmode_tests: 122
+  full_playmode_tests: 30
 stroke_trail:
   status: pass
   path_bridge: StrokeTrailPath
@@ -185,8 +185,8 @@ stroke_trail:
   shared_material_only: true
   managed_allocation_after_warmup: zero_for_128_show_and_reclaim_cycles
   playmode_tests: 5
-  full_editmode_tests: 117
-  full_playmode_tests: 29
+  full_editmode_tests: 122
+  full_playmode_tests: 30
 stroke_hit:
   status: pass
   resolver: StrokeHitResolver
@@ -205,8 +205,8 @@ stroke_hit:
   managed_allocation_after_warmup: zero_for_128_real_physics_resolves
   editmode_tests: 6
   playmode_tests: 2
-  full_editmode_tests: 117
-  full_playmode_tests: 29
+  full_editmode_tests: 122
+  full_playmode_tests: 30
 combat_resolution:
   status: pass
   context: immutable_DamageContext
@@ -229,8 +229,8 @@ combat_resolution:
   editmode_tests: 12
   playmode_tests: 1
   player_path_totals: {damage: 61, score: 521, energy: 14}
-  full_editmode_tests: 117
-  full_playmode_tests: 29
+  full_editmode_tests: 122
+  full_playmode_tests: 30
 projectile_interaction:
   status: pass
   rules: immutable_ProjectileRuleSet
@@ -256,8 +256,8 @@ projectile_interaction:
   editmode_tests: 8
   playmode_tests: 2
   player_path: {projectile: proj_ghost_fire, original_enemy: 7001, reflector_player: 101, damage: 8, half_second_displacement_ref_px: 130}
-  full_editmode_tests: 117
-  full_playmode_tests: 29
+  full_editmode_tests: 122
+  full_playmode_tests: 30
 player_combat:
   status: pass
   settings_factory: PlayerCombatSettingsFactory
@@ -282,8 +282,8 @@ player_combat:
   editmode_tests: 8
   playmode_tests: 2
   player_path: {trail_width_ref_px: "18_to_28", damage_formula: "damage_player_default_to_damage_talisman_default", projectile: proj_seal_bolt, projectile_outcome: "stance_mismatch_to_reflected"}
-  full_editmode_tests: 117
-  full_playmode_tests: 29
+  full_editmode_tests: 122
+  full_playmode_tests: 30
 skill_effect_pipeline:
   status: pass
   service: SkillService
@@ -305,8 +305,8 @@ skill_effect_pipeline:
   editmode_tests: 4
   playmode_tests: 1
   player_path: {invalid_energy_after: 100, valid_energy_after: 0, cleared_projectiles: 2, damage_all_enemies: 50, execute_ratio: 0.25, boss_buff_seconds: 2}
-  full_editmode_tests: 117
-  full_playmode_tests: 29
+  full_editmode_tests: 122
+  full_playmode_tests: 30
 enemy_runtime:
   status: pass
   definition_factory: EnemyDefinitionFactory
@@ -333,8 +333,32 @@ enemy_runtime:
   editmode_tests: 7
   playmode_tests: 1
   player_path: {enemy: boss_tomb_king, attack: atk_boss_rockfall, gesture: Diagonal, weakpoint: true, armor: "120_to_119", state: Stun}
-  full_editmode_tests: 117
-  full_playmode_tests: 29
+  full_editmode_tests: 122
+  full_playmode_tests: 30
+enemy_strategy:
+  status: pass
+  movement_registry: MovementStrategyRegistry
+  movement_factory: EnemyMovementDefinitionFactory
+  movement_types: [Linear, Sine, Dive, Hover, Boss]
+  movement_clock: caller_owned_cumulative_seconds
+  movement_effect_policy: [Root_stops_clock, Slow_scales_delta]
+  navigation_dependency: none
+  attack_registry: AttackStrategyRegistry
+  attack_types: [Melee, Projectile, Charge, Support]
+  attack_triggers: [Cooldown, Distance, Support, HpThreshold]
+  attack_selection: configured_order_then_weight_with_injected_unit_selection
+  external_trigger_facts: [distance_satisfied, support_target_id, hp_threshold_satisfied]
+  defense_service: DefenseRuleService
+  telegraph: EnemyAttackTelegraph
+  execution_boundary: T420_Windup_to_Attack_once
+  animation_event_as_source_of_truth: false
+  shield: {buff: buff_shield_50, effect_group: fx_puppet_shield, type: DamageReduction, magnitude: 0.5, duration_seconds: 3}
+  unknown_strategy_policy: fail
+  editmode_tests: 5
+  playmode_tests: 1
+  player_path: {supporter: enemy_soul_puppet, target: enemy_skeleton_wisp, incoming_damage: "10_to_5_then_10_after_3_seconds"}
+  full_editmode_tests: 122
+  full_playmode_tests: 30
 manual_gates:
   unity_editor_smoke: pass
   standard_web_build: pass_with_known_issues
@@ -380,7 +404,7 @@ wechat_conversion:
 execution_order:
   deferred_tasks: [T120, T130]
   deferral_reason: user_prioritized_main_game_content_over_wechat_devtools_device_and_packaging_work
-  next_content_task: T430
+  next_content_task: T440
   resume_platform_before: [T640, T750]
 workflow:
   config_verify_command: Tools/CI/verify-config.sh

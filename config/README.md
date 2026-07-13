@@ -5,13 +5,13 @@
 - `examples/gameplay_config.sample.json`：与工作簿示例数据对应的版本化JSON。
 - 正式工程中的唯一配置源应为 `Design/Config/GameConfig.xlsx`。
 - 运行时仅读取构建期生成的 `gameplay_config.json`。
-- 当前冻结契约为 schema `3` / content `0.3.0-sample`；T410把`Heal`和`ClearProjectiles`加入冻结`EffectType`集合，`Stances.damageFormulaId`和`DamageFormulas.scorePerDamage`属于T360 API，其他ID、空值、外键、排序和hash算法见 `docs/CONFIG_SCHEMA.md`。
+- 当前冻结契约为 schema `4` / content `0.4.0-sample`；T430把`DamageReduction`加入冻结`BuffType`集合并由`buff_shield_50`配置灵偶的50%减伤护盾，T410的`Heal`/`ClearProjectiles`效果、T360的伤害字段及其他ID、空值、外键、排序和hash算法见 `docs/CONFIG_SCHEMA.md`。
 
 本模板当前示例内容：
 
 - 1名玩家、2种架势。
 - 7类敌人（含精英和Boss）。
-- 10种敌人攻击、5种弹幕、5种Buff。
+- 10种敌人攻击、5种弹幕、6种Buff。
 - 3个技能及有序效果链。
 - 3个关卡、9个波次、13个出生条目、3个Boss阶段。
 - 事件驱动教程、文本、音频、VFX和资源清单。

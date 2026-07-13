@@ -1,7 +1,7 @@
 {
-  "schemaVersion": 3,
-  "contentVersion": "0.3.0-sample",
-  "contentHash": "ef7eec3aa29dffb593164526d50eff867e05fabb09fdbcbfc4347d620fb7b3c2",
+  "schemaVersion": 4,
+  "contentVersion": "0.4.0-sample",
+  "contentHash": "61ed49c024a655a0d97fea7d95d03b973a636177d9e09df9305b1ddfd77351f2",
   "global": [
     {
       "key": "battle_countdown_sec",
@@ -26,7 +26,7 @@
     {
       "key": "config_schema_version",
       "valueType": "int",
-      "intValue": 3,
+      "intValue": 4,
       "floatValue": null,
       "stringValue": "",
       "boolValue": null,
@@ -38,7 +38,7 @@
       "valueType": "string",
       "intValue": null,
       "floatValue": null,
-      "stringValue": "0.3.0-sample",
+      "stringValue": "0.4.0-sample",
       "boolValue": null,
       "unit": "semver",
       "description": "内容版本"
@@ -843,6 +843,17 @@
       "textKey": "text_buff_burn"
     },
     {
+      "buffId": "buff_shield_50",
+      "type": "DamageReduction",
+      "durationSec": 3,
+      "maxStacks": 1,
+      "magnitude": 0.5,
+      "tickSec": 0,
+      "refreshPolicy": "Refresh",
+      "vfxKey": "vfx_puppet_shield",
+      "textKey": "text_buff_shield"
+    },
+    {
       "buffId": "buff_slow_30",
       "type": "Slow",
       "durationSec": 2,
@@ -1103,12 +1114,12 @@
     {
       "effectGroupId": "fx_puppet_shield",
       "order": 1,
-      "effectType": "PlayVfx",
+      "effectType": "ApplyBuff",
       "targetType": "Target",
       "value1": 0,
       "value2": 0,
       "durationSec": 0,
-      "buffId": "",
+      "buffId": "buff_shield_50",
       "vfxKey": "vfx_puppet_shield",
       "audioKey": "",
       "condition": ""
@@ -1826,6 +1837,12 @@
       "textKey": "text_buff_burn",
       "zhCN": "灼烧",
       "enUS": "Burn",
+      "context": "Buff"
+    },
+    {
+      "textKey": "text_buff_shield",
+      "zhCN": "护盾",
+      "enUS": "Shield",
       "context": "Buff"
     },
     {
@@ -3167,6 +3184,12 @@
       "value": "DamageOverTime",
       "displayName": "DamageOverTime",
       "description": "代码与配置共享的稳定枚举值"
+    },
+    {
+      "enumType": "BuffType",
+      "value": "DamageReduction",
+      "displayName": "DamageReduction",
+      "description": "降低受到的伤害；magnitude 为减伤比例，叠层后按 1-magnitude×stacks 计算并钳制到非负。"
     },
     {
       "enumType": "BuffType",

@@ -2,7 +2,7 @@
 
 ## 1. 版本与唯一真相源
 
-- 当前冻结版本：`schemaVersion = 3`、`contentVersion = 0.3.0-sample`。
+- 当前冻结版本：`schemaVersion = 4`、`contentVersion = 0.4.0-sample`。
 - 正式内容唯一源：`Design/Config/GameConfig.xlsx`。
 - `config/一笔镇妖_游戏配置表模板.xlsx` 只是随正式源同步的示例镜像，不接受独立内容修改。
 - `Assets/_Game/Config/Generated/gameplay_config.json`和`gameplay_config.hash`由T250导出器生成，是可审查、可构建的只读Runtime快照与hash旁车。
@@ -182,3 +182,11 @@ T360新增的`Stances.damageFormulaId -> DamageFormulas.formulaId`是必填普�
 - 弱点/攻击行没有眩晕持续时间，因此弱点打断进入无限期`Stun`，必须由后续战斗/策略流程显式调用恢复；配置`Buffs.type=Stun`仍使用效果传入或Buff默认的配置时长，并在边界自动恢复。不得以Inspector常量或动画长度猜测替代缺失的配置时长。
 - `EnemyDamageModel`先用`DefenseRules.armorHp`吸收来伤，溢出伤害进入HP；护甲从正数首次降为0时只发布一次该行`breakEffectGroupId`意图。HP首次归零只触发一次死亡，死亡后伤害与治疗不改变状态且治疗不能复活；回收清空HP、护甲、Buff、计数、攻击、弱点、时钟和目标ID后才允许复用。
 - `EnemySkillEffectTarget`在Skills程序集把T410目标端口适配到通用敌人，支持伤害、治疗、Buff、破甲、击退意图、低血处决和计数；Actors不反向依赖Skills。移动/攻击/防御/支援策略实现归T430，对象池归T440，Boss阶段覆盖攻击集/防御/弱点归T460。
+
+## 16. T430敌人移动、攻击、防御与支援策略语义
+
+- 配置合同升级为schema `4` / content `0.4.x`。`BuffType`新增`DamageReduction`；`buff_shield_50`、`fx_puppet_shield`和`text_buff_shield`分别冻结护盾Buff、支援效果与显示文案。该Buff按`max(0, 1 - magnitude * stacks)`组合来伤倍率，当前`magnitude=0.5`即减伤50%；持续时间和叠层只读取Buff/Effect配置，并在配置边界到期。
+- `MovementStrategyRegistry`显式登记`Linear/Sine/Dive/Hover/Boss`，未知类型立即失败。起止归一化坐标投影到`Global.reference_width/reference_height`，基础速度为`Enemies.moveSpeedRefPxSec * MovePatterns.speedMultiplier`；循环路径使用往返进度，`Sine/Hover`只读取配置振幅与频率，`Dive`使用确定性二次缓入。采样器不拥有时间缩放常量，调用方必须在Root时停止推进移动时钟，并按Slow等配置效果缩放外部delta。
+- `AttackStrategyRegistry`显式登记`Cooldown/Distance/Support/HpThreshold`。触发上下文只接收调用方已经判定的距离、支援目标和HP阈值事实，不在策略层猜测表中不存在的距离或比例；候选按配置`order`稳定、按`weight`选择。动作从当前攻击效果与弹体配置推导为近战、投射物、冲撞或支援，投射物伤害必须与攻击伤害合同一致，支援动作必须携带明确目标。
+- `EnemyAttackTelegraph`在`BeginAttack`成功时先公开攻击种类、打断笔势、效果组与预期执行时刻；`EnemyStrategyRuntime`在T420状态机的`Windup -> Attack`边界恰好执行一次动作并关闭预警。动画事件可消费状态做表现，但不是伤害或支援生效的唯一真相。
+- `DefenseRuleService`只把配置的防御笔势、架势门、命中/失败倍率、反伤值和破甲效果映射为不可变结果，不复制T360伤害公式，也不直接结算HP。对象池、敌人内容装配与Boss阶段覆盖仍分别属于T440、T450和T460。

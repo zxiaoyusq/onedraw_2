@@ -66,10 +66,10 @@ namespace OneStrokeDemon.Tests.EditMode.T230
         public void DuplicateJsonPropertyFailsStrictParsing()
         {
             string source = RuntimeConfigTestFixture.LoadJson();
-            const string firstProperty = "\"schemaVersion\": 3,";
+            const string firstProperty = "\"schemaVersion\": 4,";
             string duplicate = source.Replace(
                 firstProperty,
-                firstProperty + "\n  \"schemaVersion\": 3,");
+                firstProperty + "\n  \"schemaVersion\": 4,");
 
             AssertFailure(new GameplayConfigService(), "CFGRT002", duplicate);
         }
@@ -112,7 +112,7 @@ namespace OneStrokeDemon.Tests.EditMode.T230
         [Test]
         public void RootAndGlobalVersionsMustAgreeEvenWhenHashIsValid()
         {
-            string json = RuntimeConfigTestFixture.MutateAndRehash(root => root["contentVersion"] = "0.3.1");
+            string json = RuntimeConfigTestFixture.MutateAndRehash(root => root["contentVersion"] = "0.4.1");
 
             GameplayConfigException exception = AssertFailure(new GameplayConfigService(), "CFGRT004", json);
             Assert.That(exception.Context, Is.EqualTo("Global.content_version"));

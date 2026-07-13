@@ -5,11 +5,11 @@ namespace OneStrokeDemon.Config
 {
     public static class ConfigIds
     {
-        public const int SchemaVersion = 3;
-        public const string ContentVersion = "0.3.0-sample";
-        public const string ContentHash = "ef7eec3aa29dffb593164526d50eff867e05fabb09fdbcbfc4347d620fb7b3c2";
+        public const int SchemaVersion = 4;
+        public const string ContentVersion = "0.4.0-sample";
+        public const string ContentHash = "61ed49c024a655a0d97fea7d95d03b973a636177d9e09df9305b1ddfd77351f2";
         public const int IdSetCount = 27;
-        public const int IdConstantCount = 306;
+        public const int IdConstantCount = 308;
 
         public static class GlobalKeys
         {
@@ -133,6 +133,7 @@ namespace OneStrokeDemon.Config
         {
             public const string BuffBind = "buff_bind";
             public const string BuffBurn = "buff_burn";
+            public const string BuffShield50 = "buff_shield_50";
             public const string BuffSlow30 = "buff_slow_30";
             public const string BuffStun = "buff_stun";
             public const string BuffVulnerable = "buff_vulnerable";
@@ -250,6 +251,7 @@ namespace OneStrokeDemon.Config
             public const string TextBossTombArmorKing = "text_boss_tomb_armor_king";
             public const string TextBuffBind = "text_buff_bind";
             public const string TextBuffBurn = "text_buff_burn";
+            public const string TextBuffShield = "text_buff_shield";
             public const string TextBuffSlow = "text_buff_slow";
             public const string TextBuffStun = "text_buff_stun";
             public const string TextBuffVulnerable = "text_buff_vulnerable";

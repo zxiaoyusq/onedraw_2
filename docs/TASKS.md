@@ -32,8 +32,8 @@
 | T400 | P4 玩家敌人技能 | DONE | T360 | 1.5 | 实现玩家HP、能量、刀/符架势、切换冷却和战斗事件。 |
 | T410 | P4 玩家敌人技能 | DONE | T400, T230 | 3.0 | 实现数据驱动Skill到EffectGroup到有序Effect执行链。 |
 | T420 | P4 玩家敌人技能 | DONE | T360 | 2.0 | 实现通用敌人状态机、Damageable和Weakpoint。 |
-| T430 | P4 玩家敌人技能 | READY | T420, T370 | 3.0 | 实现可组合移动、攻击、防御和支援策略注册表。 |
-| T440 | P4 玩家敌人技能 | BACKLOG | T420 | 1.5 | 建立敌人、投射物、VFX和伤害数字对象池及完整重置。 |
+| T430 | P4 玩家敌人技能 | DONE | T420, T370 | 3.0 | 实现可组合移动、攻击、防御和支援策略注册表。 |
+| T440 | P4 玩家敌人技能 | READY | T420 | 1.5 | 建立敌人、投射物、VFX和伤害数字对象池及完整重置。 |
 | T450 | P4 玩家敌人技能 | BACKLOG | T430, T440 | 2.0 | 只用配置组合5种普通怪和1种精英怪。 |
 | T460 | P4 玩家敌人技能 | BACKLOG | T410, T430 | 3.0 | 实现配置驱动Boss阶段、阈值、技能序列和切换。 |
 | T500 | P5 关卡完整单局 | BACKLOG | T450 | 2.0 | 实现Level/Wave/Spawn时间轴和条件结束。 |
@@ -384,7 +384,7 @@
 
 ### T430 · 实现可组合移动、攻击、防御和支援策略注册表。
 
-- **状态：** `READY`
+- **状态：** `DONE`
 - **依赖：** T420, T370
 - **估算：** 3.0 人日
 - **产出：** MovementStrategyRegistry；AttackStrategyRegistry；DefenseRuleService；Telegraph。
@@ -392,11 +392,11 @@
 - **验收：** 靠近/悬浮/俯冲/冲撞/投射物/护盾可复用；未知策略ID校验失败。
 - **验证：** EnemyStrategyTests；AttackTelegraphPlayModeTests。
 - **证据：** `artifacts/evals/T430/`
-- **提交：** `T430: <imperative summary>`
+- **提交：** `T430: implement configured enemy strategies`
 
 ### T440 · 建立敌人、投射物、VFX和伤害数字对象池及完整重置。
 
-- **状态：** `BACKLOG`
+- **状态：** `READY`
 - **依赖：** T420
 - **估算：** 1.5 人日
 - **产出：** ObjectPoolService；IPoolable；预热配置；泄漏检测。

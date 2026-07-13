@@ -230,12 +230,21 @@ namespace OneStrokeDemon.Actors
                 {
                     multiplier *= 1d + (buff.Magnitude * buff.Stacks);
                 }
+                else if (string.Equals(
+                             buff.Type,
+                             "DamageReduction",
+                             StringComparison.Ordinal))
+                {
+                    multiplier *= Math.Max(
+                        0d,
+                        1d - (buff.Magnitude * buff.Stacks));
+                }
             }
 
             if (double.IsNaN(multiplier) || double.IsInfinity(multiplier) || multiplier < 0d)
             {
                 throw new OverflowException(
-                    "Configured enemy damage-taken buffs produced an invalid multiplier.");
+                    "Configured enemy incoming-damage buffs produced an invalid multiplier.");
             }
 
             return multiplier;
