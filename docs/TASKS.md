@@ -16,8 +16,8 @@
 | T120 | P1 微信平台Spike | BLOCKED | T110 | 2.0 | 完成微信转换、开发者工具和至少一台真机的分级冒烟。 |
 | T130 | P1 微信平台Spike | BACKLOG | T110 | 1.0 | 建立Editor/Web/WeChat平台服务抽象。 |
 | T200 | P2 配置系统 | DONE | T040 | 1.0 | 确认Excel工作簿、字段字典、ID规则和数据所有权。 |
-| T210 | P2 配置系统 | READY | T200 | 2.0 | 实现独立.NET配置导出器：xlsx到稳定JSON。 |
-| T220 | P2 配置系统 | BACKLOG | T210 | 2.0 | 实现结构、范围、枚举、唯一性、外键和跨表语义校验。 |
+| T210 | P2 配置系统 | DONE | T200 | 2.0 | 实现独立.NET配置导出器：xlsx到稳定JSON。 |
+| T220 | P2 配置系统 | READY | T210 | 2.0 | 实现结构、范围、枚举、唯一性、外键和跨表语义校验。 |
 | T230 | P2 配置系统 | BACKLOG | T220 | 2.0 | 实现Unity Runtime配置加载、版本检查和只读索引。 |
 | T240 | P2 配置系统 | BACKLOG | T230 | 1.0 | 建立assetKey到Unity对象的AssetRegistry，且不保存平衡值。 |
 | T250 | P2 配置系统 | BACKLOG | T240 | 1.0 | 把导出、校验、JSON diff和Unity配置测试接入一条命令。 |
@@ -186,7 +186,7 @@
 
 ### T210 · 实现独立.NET配置导出器：xlsx到稳定JSON。
 
-- **状态：** `READY`
+- **状态：** `DONE`
 - **依赖：** T200
 - **估算：** 2.0 人日
 - **产出：** Tools/ConfigExporter；export/validate命令；稳定排序和hash；原子写入。
@@ -198,7 +198,7 @@
 
 ### T220 · 实现结构、范围、枚举、唯一性、外键和跨表语义校验。
 
-- **状态：** `BACKLOG`
+- **状态：** `READY`
 - **依赖：** T210
 - **估算：** 2.0 人日
 - **产出：** ConfigValidator；Sheet/Row/Field定位；错误码；坏配置样例。

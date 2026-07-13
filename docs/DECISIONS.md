@@ -85,3 +85,13 @@
 - 决定：contentHash对排除自身后的完整配置对象计算SHA-256，采用递归Ordinal对象键序、固定数组排序、UTF-8无BOM和紧凑JSON；生成时间不进入内容。
 - 理由：T210导出器和T220校验器需要无歧义的输入、空值、外键、排序及hash合同；先修正与GAME_DESIGN冲突的ID和字段字典必填错误，避免把初始样例缺陷固化到Runtime。
 - 限制：T200的项目内审计脚本只用于冻结证据，不是T210导出器或T220生产校验器；本决定不授权Runtime读取xlsx或Inspector保存数值。
+
+## D-013 · T210独立配置导出器与确定性写入
+
+- 状态：ACCEPTED
+- 决定：配置导出采用独立 `net8.0` 控制台工具 `Tools/ConfigExporter`；xlsx读取固定为 `DocumentFormat.OpenXml 3.5.1`，直接依赖使用精确版本约束并提交NuGet锁文件。Open XML及测试依赖仅存在于Tools，不进入Unity Runtime。
+- 决定：输出顺序和`contentHash`严格执行D-012；所有表显式稳定排序，FieldDictionary按固定Sheet和对应表头序，重复排序键以整行字段作Ordinal/数值兜底，禁止依赖Excel行号、当前区域设置或字典枚举顺序。
+- 决定：`export`先在目标同目录写入`.tmp`并强制落盘，重新读取验证顶层顺序、版本、记录数和hash后才原子替换旧文件；`validate`执行同一读取、建模、序列化与内存自检但不写输出。
+- 理由：相同工作簿在不同机器和重复运行中必须得到字节一致快照，且导出器异常或自检失败不能破坏最后一份有效JSON。
+- 许可证：运行时工具依赖均为MIT；测试依赖为MIT或Apache-2.0，完整版本和上游记录见 `Tools/ConfigExporter/THIRD_PARTY_NOTICES.md`。
+- 限制：T210只证明可导出性、契约对齐与确定性，不执行T220的必填、范围、枚举、唯一性、外键或跨表生产校验，不创建T230/T250负责的Unity Runtime资产。

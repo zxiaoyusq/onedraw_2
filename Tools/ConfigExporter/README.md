@@ -1,12 +1,15 @@
-# ConfigExporter 计划规格
+# ConfigExporter
 
-此目录是独立 `.NET 8` 控制台工具的目标位置。由任务 `T210/T220/T250` 实现。不要把xlsx解析库带入Unity运行时。
+独立 `.NET 8` 控制台工具，将 `Design/Config/GameConfig.xlsx` 导出为稳定 JSON。xlsx 读取依赖只存在于 `Tools/ConfigExporter`，不会进入 Unity Runtime。
 
-## 目标命令
+## 命令
 
 ```bash
 dotnet run --project Tools/ConfigExporter -- \
-  validate --input Design/Config/GameConfig.xlsx --strict
+  validate \
+  --input Design/Config/GameConfig.xlsx \
+  --schema config/schema/gameplay.schema.json \
+  --strict
 
 dotnet run --project Tools/ConfigExporter -- \
   export \
@@ -16,59 +19,24 @@ dotnet run --project Tools/ConfigExporter -- \
   --strict
 ```
 
-Windows与Shell脚本只包装相同命令，不复制业务逻辑。
+`validate` 只读取、建模、序列化并在内存自校验，不写 JSON。`export` 先写同目录 `<output>.tmp`，自校验通过后再原子替换目标文件。成功返回 `0`，参数错误返回 `2`，配置错误返回 `3`，未预期错误返回 `4`。
 
-## 建议项目结构
+## 稳定输出契约
 
-```text
-Tools/ConfigExporter/
-├─ ConfigExporter.csproj
-├─ Program.cs
-├─ Commands/
-├─ Excel/
-├─ Model/
-├─ Validation/
-├─ Serialization/
-└─ Tests/
+- xlsx 需按冻结顺序包含 `README` 和 28 张数据表，数据表第 4 行是精确匹配的表头。
+- 字段类型来自 `FieldDictionary`，字符串 trim，整数、小数和布尔始终用 `InvariantCulture` 解析。
+- 根属性、表、行和行字段按冻结契约排序；输出 UTF-8 无 BOM、2 空格缩进、LF 结尾，不包含时间戳。
+- `contentHash` 是不包含自身字段的规范化 JSON 的 SHA-256。
+- 每份输出在替换前重新解析，检查顶层顺序、元数据、记录数和哈希。
+
+## T210 校验边界
+
+当前 `--strict` 对任何已实现的错误都返回非零值。T210 只负责可读取性、Sheet/表头、基础类型、Schema/表头对齐、排序/哈希确定性和输出自检。主键、必填、范围、枚举、外键和跨表语义由 `T220` 实现。
+
+## 测试
+
+```bash
+dotnet test Tools/ConfigExporter/Tests/ConfigExporter.Tests.csproj
 ```
 
-## 强制规则
-
-1. 使用固定版本的xlsx读取库，并记录许可证。
-2. 不依赖安装Excel。
-3. 所有数值使用InvariantCulture。
-4. Trim字符串；统一布尔、枚举和空值语义。
-5. 表头必须与字段契约精确匹配。
-6. 校验唯一主键、范围、枚举、外键、Boss阈值、关卡星级递增等跨表语义。
-7. 输出按固定表顺序、主键和order稳定排序。
-8. UTF-8、固定缩进、稳定小数格式。
-9. `contentHash`基于规范化内容，不包含生成时间。
-10. 先写`.tmp`，完成自校验后原子替换。
-11. 同一输入连续导出两次必须字节完全相同。
-12. 错误包含sheet、行号、字段、错误码和可读说明。
-13. 严格模式任何错误返回非零退出码。
-14. 生成JSON禁止人工编辑。
-
-## 错误码建议
-
-- `CFG001` 缺少Sheet
-- `CFG002` 表头不匹配
-- `CFG003` 必填为空
-- `CFG004` 类型解析失败
-- `CFG005` 主键重复
-- `CFG006` 枚举非法
-- `CFG007` 数值越界
-- `CFG008` 外键不存在
-- `CFG009` 跨字段关系非法
-- `CFG010` 跨表语义非法
-- `CFG011` Schema版本不兼容
-- `CFG012` 输出不确定
-
-## 必须测试
-
-- 同输入双导出字节相同。
-- 重复ID、缺外键、非法枚举、负时间、Boss阈值乱序。
-- 星级门槛不递增。
-- 空白行与前后空格规范化。
-- 中文与小数区域设置。
-- 临时文件失败时不破坏旧JSON。
+测试覆盖双导出字节一致、冻结哈希/样例语义一致、表头漂移、区域设置无关性、CLI 非零错误码，以及自校验失败时保护旧输出。

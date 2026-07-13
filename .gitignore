@@ -30,3 +30,9 @@ Thumbs.db
 /artifacts/tmp/
 
 # Generated gameplay JSON under Assets is intentionally versioned.
+
+# Standalone .NET tooling lives outside Unity's generated project files.
+**/[Bb]in/
+**/[Oo]bj/
+!/Tools/ConfigExporter/ConfigExporter.csproj
+!/Tools/ConfigExporter/Tests/ConfigExporter.Tests.csproj
