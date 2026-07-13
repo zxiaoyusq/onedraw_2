@@ -1,0 +1,33 @@
+T200_CONTRACT_AUDIT=PASS
+SHEETS=29
+FORMULA_CELLS=14
+SCHEMA_VERSION=1
+CONTENT_VERSION=0.1.1-sample
+CONTENT_HASH=16b64a6f3795cfe0f16dd5f2f092a021b7ef4c07b0b15119296c9da0e22b4b1c
+PASS sheet_order "29 sheets"
+PASS formula_count "14 formula cells"
+PASS formula_contract "README formulas quoted and bounded"
+PASS formula_errors []
+PASS headers_vs_schema []
+PASS field_dictionary_coverage "248/248; "
+PASS field_dictionary_non_recursive "FieldDictionary intentionally does not describe itself"
+PASS field_dictionary_order "fixed sheet order and header order"
+PASS workbook_vs_sample []
+PASS sample_top_level_order ["schemaVersion","contentVersion","contentHash","global","players","stances","strokeRules","damageFormulas","defenseRules","weakpointRules","movePatterns","enemies","enemyAttacks","projectiles","buffs","skills","skillEffects","levels","waves","spawnPoints","enemyModifiers","spawns","bossPhases","rewards","tutorials","texts","audioCues","vfxCues","assetManifest","enums","fieldDictionary"]
+PASS sample_export_order []
+PASS sample_vs_json_schema []
+PASS required_cells []
+PASS field_types []
+PASS declared_ranges []
+PASS trimmed_strings []
+PASS global_typed_union []
+PASS enum_references []
+PASS primary_keys []
+PASS stable_id_pattern []
+PASS wildcard_scope []
+PASS foreign_keys []
+PASS group_orders []
+PASS cross_table_semantics []
+PASS game_design_canonical_ids []
+PASS content_hash "declared=16b64a6f3795cfe0f16dd5f2f092a021b7ef4c07b0b15119296c9da0e22b4b1c; calculated=16b64a6f3795cfe0f16dd5f2f092a021b7ef4c07b0b15119296c9da0e22b4b1c"
+PASS content_metadata "schema=1; content=0.1.1-sample"

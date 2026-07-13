@@ -40,11 +40,11 @@
   "properties": {
     "schemaVersion": {
       "type": "integer",
-      "minimum": 1
+      "const": 1
     },
     "contentVersion": {
       "type": "string",
-      "minLength": 1
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+(?:-[a-z0-9][a-z0-9.-]*)?$"
     },
     "contentHash": {
       "type": "string",
@@ -1688,23 +1688,33 @@
           "type": "string"
         },
         "type": {
-          "type": "string"
+          "type": "string",
+          "enum": [
+            "string",
+            "int",
+            "float",
+            "bool"
+          ]
         },
         "required": {
-          "type": "string"
+          "type": "string",
+          "enum": [
+            "true",
+            "false"
+          ]
         },
         "default": {
           "type": "string"
         },
         "min": {
           "type": [
-            "integer",
+            "number",
             "null"
           ]
         },
         "max": {
           "type": [
-            "integer",
+            "number",
             "null"
           ]
         },

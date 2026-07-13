@@ -1,8 +1,28 @@
 {
   "schemaVersion": 1,
-  "contentVersion": "0.1.0-sample",
-  "contentHash": "ed8ab5789586c1e6b5c82b9f3185052f408cd61b53126cd8ec81b917c738756a",
+  "contentVersion": "0.1.1-sample",
+  "contentHash": "16b64a6f3795cfe0f16dd5f2f092a021b7ef4c07b0b15119296c9da0e22b4b1c",
   "global": [
+    {
+      "key": "battle_countdown_sec",
+      "valueType": "float",
+      "intValue": null,
+      "floatValue": 2.0,
+      "stringValue": "",
+      "boolValue": null,
+      "unit": "sec",
+      "description": "关卡开始倒计时"
+    },
+    {
+      "key": "combo_timeout_sec",
+      "valueType": "float",
+      "intValue": null,
+      "floatValue": 1.8,
+      "stringValue": "",
+      "boolValue": null,
+      "unit": "sec",
+      "description": "连击保持时间"
+    },
     {
       "key": "config_schema_version",
       "valueType": "int",
@@ -18,40 +38,20 @@
       "valueType": "string",
       "intValue": null,
       "floatValue": null,
-      "stringValue": "0.1.0-sample",
+      "stringValue": "0.1.1-sample",
       "boolValue": null,
       "unit": "semver",
       "description": "内容版本"
     },
     {
-      "key": "reference_width",
+      "key": "damage_number_pool_size",
       "valueType": "int",
-      "intValue": 1920,
+      "intValue": 30,
       "floatValue": null,
       "stringValue": "",
       "boolValue": null,
-      "unit": "px",
-      "description": "手势参考分辨率宽"
-    },
-    {
-      "key": "reference_height",
-      "valueType": "int",
-      "intValue": 1080,
-      "floatValue": null,
-      "stringValue": "",
-      "boolValue": null,
-      "unit": "px",
-      "description": "手势参考分辨率高"
-    },
-    {
-      "key": "target_frame_rate",
-      "valueType": "int",
-      "intValue": 60,
-      "floatValue": null,
-      "stringValue": "",
-      "boolValue": null,
-      "unit": "fps",
-      "description": "目标帧率"
+      "unit": "count",
+      "description": "伤害数字池预热"
     },
     {
       "key": "max_active_enemies",
@@ -84,16 +84,6 @@
       "description": "同时存活特效上限"
     },
     {
-      "key": "battle_countdown_sec",
-      "valueType": "float",
-      "intValue": null,
-      "floatValue": 2.0,
-      "stringValue": "",
-      "boolValue": null,
-      "unit": "sec",
-      "description": "关卡开始倒计时"
-    },
-    {
       "key": "pause_on_focus_lost",
       "valueType": "bool",
       "intValue": null,
@@ -104,24 +94,34 @@
       "description": "前后台切换时暂停"
     },
     {
-      "key": "combo_timeout_sec",
-      "valueType": "float",
-      "intValue": null,
-      "floatValue": 1.8,
-      "stringValue": "",
-      "boolValue": null,
-      "unit": "sec",
-      "description": "连击保持时间"
-    },
-    {
-      "key": "damage_number_pool_size",
+      "key": "reference_height",
       "valueType": "int",
-      "intValue": 30,
+      "intValue": 1080,
       "floatValue": null,
       "stringValue": "",
       "boolValue": null,
-      "unit": "count",
-      "description": "伤害数字池预热"
+      "unit": "px",
+      "description": "手势参考分辨率高"
+    },
+    {
+      "key": "reference_width",
+      "valueType": "int",
+      "intValue": 1920,
+      "floatValue": null,
+      "stringValue": "",
+      "boolValue": null,
+      "unit": "px",
+      "description": "手势参考分辨率宽"
+    },
+    {
+      "key": "target_frame_rate",
+      "valueType": "int",
+      "intValue": 60,
+      "floatValue": null,
+      "stringValue": "",
+      "boolValue": null,
+      "unit": "fps",
+      "description": "目标帧率"
     }
   ],
   "players": [
@@ -177,6 +177,66 @@
       "hitRadiusRefPx": 18
     },
     {
+      "ruleId": "stroke_arc",
+      "gestureType": "Arc",
+      "minPointDistanceRefPx": 8,
+      "maxStrokeLengthRefPx": 1500,
+      "rdpEpsilonRefPx": 5,
+      "maxPointCount": 72,
+      "minLengthRefPx": 120,
+      "directionToleranceDeg": 40,
+      "closeDistanceRefPx": 0,
+      "minAreaRefPx2": 0,
+      "minArcCurvature": 0.22,
+      "chargeHoldSec": 0,
+      "hitRadiusRefPx": 24
+    },
+    {
+      "ruleId": "stroke_charged",
+      "gestureType": "Charged",
+      "minPointDistanceRefPx": 8,
+      "maxStrokeLengthRefPx": 1400,
+      "rdpEpsilonRefPx": 5,
+      "maxPointCount": 64,
+      "minLengthRefPx": 100,
+      "directionToleranceDeg": 35,
+      "closeDistanceRefPx": 0,
+      "minAreaRefPx2": 0,
+      "minArcCurvature": 0,
+      "chargeHoldSec": 0.4,
+      "hitRadiusRefPx": 26
+    },
+    {
+      "ruleId": "stroke_circle",
+      "gestureType": "Circle",
+      "minPointDistanceRefPx": 8,
+      "maxStrokeLengthRefPx": 1600,
+      "rdpEpsilonRefPx": 5,
+      "maxPointCount": 80,
+      "minLengthRefPx": 180,
+      "directionToleranceDeg": 45,
+      "closeDistanceRefPx": 75,
+      "minAreaRefPx2": 16000,
+      "minArcCurvature": 0.15,
+      "chargeHoldSec": 0,
+      "hitRadiusRefPx": 28
+    },
+    {
+      "ruleId": "stroke_diagonal",
+      "gestureType": "Diagonal",
+      "minPointDistanceRefPx": 8,
+      "maxStrokeLengthRefPx": 1400,
+      "rdpEpsilonRefPx": 5,
+      "maxPointCount": 64,
+      "minLengthRefPx": 90,
+      "directionToleranceDeg": 20,
+      "closeDistanceRefPx": 0,
+      "minAreaRefPx2": 0,
+      "minArcCurvature": 0,
+      "chargeHoldSec": 0,
+      "hitRadiusRefPx": 18
+    },
+    {
       "ruleId": "stroke_horizontal",
       "gestureType": "Horizontal",
       "minPointDistanceRefPx": 8,
@@ -205,66 +265,6 @@
       "minArcCurvature": 0,
       "chargeHoldSec": 0,
       "hitRadiusRefPx": 20
-    },
-    {
-      "ruleId": "stroke_diagonal",
-      "gestureType": "Diagonal",
-      "minPointDistanceRefPx": 8,
-      "maxStrokeLengthRefPx": 1400,
-      "rdpEpsilonRefPx": 5,
-      "maxPointCount": 64,
-      "minLengthRefPx": 90,
-      "directionToleranceDeg": 20,
-      "closeDistanceRefPx": 0,
-      "minAreaRefPx2": 0,
-      "minArcCurvature": 0,
-      "chargeHoldSec": 0,
-      "hitRadiusRefPx": 18
-    },
-    {
-      "ruleId": "stroke_arc",
-      "gestureType": "Arc",
-      "minPointDistanceRefPx": 8,
-      "maxStrokeLengthRefPx": 1500,
-      "rdpEpsilonRefPx": 5,
-      "maxPointCount": 72,
-      "minLengthRefPx": 120,
-      "directionToleranceDeg": 40,
-      "closeDistanceRefPx": 0,
-      "minAreaRefPx2": 0,
-      "minArcCurvature": 0.22,
-      "chargeHoldSec": 0,
-      "hitRadiusRefPx": 24
-    },
-    {
-      "ruleId": "stroke_circle",
-      "gestureType": "Circle",
-      "minPointDistanceRefPx": 8,
-      "maxStrokeLengthRefPx": 1600,
-      "rdpEpsilonRefPx": 5,
-      "maxPointCount": 80,
-      "minLengthRefPx": 180,
-      "directionToleranceDeg": 45,
-      "closeDistanceRefPx": 75,
-      "minAreaRefPx2": 16000,
-      "minArcCurvature": 0.15,
-      "chargeHoldSec": 0,
-      "hitRadiusRefPx": 28
-    },
-    {
-      "ruleId": "stroke_charged",
-      "gestureType": "Charged",
-      "minPointDistanceRefPx": 8,
-      "maxStrokeLengthRefPx": 1400,
-      "rdpEpsilonRefPx": 5,
-      "maxPointCount": 64,
-      "minLengthRefPx": 100,
-      "directionToleranceDeg": 35,
-      "closeDistanceRefPx": 0,
-      "minAreaRefPx2": 0,
-      "minArcCurvature": 0,
-      "chargeHoldSec": 0.4,
-      "hitRadiusRefPx": 26
     }
   ],
   "damageFormulas": [
@@ -307,6 +307,26 @@
   ],
   "defenseRules": [
     {
+      "defenseRuleId": "defense_boss_pins",
+      "armorHp": 120,
+      "requiredGestureType": "Vertical",
+      "requiredStanceId": "stance_blade",
+      "breakDamageMultiplier": 1.2,
+      "wrongGestureDamageMultiplier": 0.1,
+      "reflectDamage": 4,
+      "breakEffectGroupId": "fx_break_boss_pin"
+    },
+    {
+      "defenseRuleId": "defense_direction_seal",
+      "armorHp": 60,
+      "requiredGestureType": "Horizontal",
+      "requiredStanceId": "",
+      "breakDamageMultiplier": 1.3,
+      "wrongGestureDamageMultiplier": 0.05,
+      "reflectDamage": 2,
+      "breakEffectGroupId": "fx_break_seal"
+    },
+    {
       "defenseRuleId": "defense_none",
       "armorHp": 0,
       "requiredGestureType": "Any",
@@ -325,62 +345,9 @@
       "wrongGestureDamageMultiplier": 0.1,
       "reflectDamage": 0,
       "breakEffectGroupId": "fx_break_armor"
-    },
-    {
-      "defenseRuleId": "defense_direction_seal",
-      "armorHp": 60,
-      "requiredGestureType": "Horizontal",
-      "requiredStanceId": "",
-      "breakDamageMultiplier": 1.3,
-      "wrongGestureDamageMultiplier": 0.05,
-      "reflectDamage": 2,
-      "breakEffectGroupId": "fx_break_seal"
-    },
-    {
-      "defenseRuleId": "defense_boss_pins",
-      "armorHp": 120,
-      "requiredGestureType": "Vertical",
-      "requiredStanceId": "stance_blade",
-      "breakDamageMultiplier": 1.2,
-      "wrongGestureDamageMultiplier": 0.1,
-      "reflectDamage": 4,
-      "breakEffectGroupId": "fx_break_boss_pin"
     }
   ],
   "weakpointRules": [
-    {
-      "weakpointRuleId": "weakpoint_none",
-      "windowStartSec": 0,
-      "windowEndSec": 0,
-      "radiusRefPx": 0,
-      "damageMultiplier": 1.0,
-      "interruptAttack": false,
-      "energyBonus": 0,
-      "scoreBonus": 0,
-      "vfxKey": ""
-    },
-    {
-      "weakpointRuleId": "weakpoint_forehead_talisman",
-      "windowStartSec": 0.35,
-      "windowEndSec": 0.9,
-      "radiusRefPx": 52,
-      "damageMultiplier": 2.0,
-      "interruptAttack": true,
-      "energyBonus": 8,
-      "scoreBonus": 250,
-      "vfxKey": "vfx_weakpoint_hit"
-    },
-    {
-      "weakpointRuleId": "weakpoint_turtle_belly",
-      "windowStartSec": 0.55,
-      "windowEndSec": 1.2,
-      "radiusRefPx": 70,
-      "damageMultiplier": 2.2,
-      "interruptAttack": true,
-      "energyBonus": 10,
-      "scoreBonus": 350,
-      "vfxKey": "vfx_armor_critical"
-    },
     {
       "weakpointRuleId": "weakpoint_bat_dive",
       "windowStartSec": 0.2,
@@ -402,34 +369,54 @@
       "energyBonus": 15,
       "scoreBonus": 600,
       "vfxKey": "vfx_boss_seal_hit"
+    },
+    {
+      "weakpointRuleId": "weakpoint_forehead_talisman",
+      "windowStartSec": 0.35,
+      "windowEndSec": 0.9,
+      "radiusRefPx": 52,
+      "damageMultiplier": 2.0,
+      "interruptAttack": true,
+      "energyBonus": 8,
+      "scoreBonus": 250,
+      "vfxKey": "vfx_weakpoint_hit"
+    },
+    {
+      "weakpointRuleId": "weakpoint_none",
+      "windowStartSec": 0,
+      "windowEndSec": 0,
+      "radiusRefPx": 0,
+      "damageMultiplier": 1.0,
+      "interruptAttack": false,
+      "energyBonus": 0,
+      "scoreBonus": 0,
+      "vfxKey": ""
+    },
+    {
+      "weakpointRuleId": "weakpoint_turtle_belly",
+      "windowStartSec": 0.55,
+      "windowEndSec": 1.2,
+      "radiusRefPx": 70,
+      "damageMultiplier": 2.2,
+      "interruptAttack": true,
+      "energyBonus": 10,
+      "scoreBonus": 350,
+      "vfxKey": "vfx_armor_critical"
     }
   ],
   "movePatterns": [
     {
-      "movePatternId": "move_ground_left",
-      "patternType": "Linear",
-      "speedMultiplier": 1.0,
+      "movePatternId": "move_boss_ground",
+      "patternType": "Boss",
+      "speedMultiplier": 0.5,
       "amplitudeRefPx": 0,
       "frequency": 0,
-      "startXNorm": 0.92,
-      "endXNorm": 0.18,
-      "startYNorm": 0.34,
-      "endYNorm": 0.34,
-      "loop": false,
-      "description": "地面从右向左推进"
-    },
-    {
-      "movePatternId": "move_fly_sine",
-      "patternType": "Sine",
-      "speedMultiplier": 1.0,
-      "amplitudeRefPx": 80,
-      "frequency": 1.4,
-      "startXNorm": 0.95,
-      "endXNorm": 0.2,
-      "startYNorm": 0.68,
-      "endYNorm": 0.55,
-      "loop": false,
-      "description": "空中正弦漂浮"
+      "startXNorm": 0.82,
+      "endXNorm": 0.58,
+      "startYNorm": 0.38,
+      "endYNorm": 0.38,
+      "loop": true,
+      "description": "Boss地面阶段"
     },
     {
       "movePatternId": "move_dive",
@@ -445,6 +432,32 @@
       "description": "锁定后俯冲"
     },
     {
+      "movePatternId": "move_fly_sine",
+      "patternType": "Sine",
+      "speedMultiplier": 1.0,
+      "amplitudeRefPx": 80,
+      "frequency": 1.4,
+      "startXNorm": 0.95,
+      "endXNorm": 0.2,
+      "startYNorm": 0.68,
+      "endYNorm": 0.55,
+      "loop": false,
+      "description": "空中正弦漂浮"
+    },
+    {
+      "movePatternId": "move_ground_left",
+      "patternType": "Linear",
+      "speedMultiplier": 1.0,
+      "amplitudeRefPx": 0,
+      "frequency": 0,
+      "startXNorm": 0.92,
+      "endXNorm": 0.18,
+      "startYNorm": 0.34,
+      "endYNorm": 0.34,
+      "loop": false,
+      "description": "地面从右向左推进"
+    },
+    {
       "movePatternId": "move_hover",
       "patternType": "Hover",
       "speedMultiplier": 0.65,
@@ -456,22 +469,25 @@
       "endYNorm": 0.62,
       "loop": true,
       "description": "精英悬浮支援"
-    },
-    {
-      "movePatternId": "move_boss_ground",
-      "patternType": "Boss",
-      "speedMultiplier": 0.5,
-      "amplitudeRefPx": 0,
-      "frequency": 0,
-      "startXNorm": 0.82,
-      "endXNorm": 0.58,
-      "startYNorm": 0.38,
-      "endYNorm": 0.38,
-      "loop": true,
-      "description": "Boss地面阶段"
     }
   ],
   "enemies": [
+    {
+      "enemyId": "boss_tomb_king",
+      "displayNameKey": "text_boss_tomb_armor_king",
+      "tier": "Boss",
+      "maxHp": 1200,
+      "movePatternId": "move_boss_ground",
+      "moveSpeedRefPxSec": 40,
+      "attackSetId": "attackset_boss_phase1",
+      "defenseRuleId": "defense_boss_pins",
+      "weakpointRuleId": "weakpoint_boss_seal",
+      "stanceVulnerability": "Any",
+      "contactDamage": 30,
+      "scoreValue": 5000,
+      "assetKey": "boss_tomb_armor_king",
+      "poolPrewarm": 1
+    },
     {
       "enemyId": "enemy_fire_fish",
       "displayNameKey": "text_enemy_fire_fish",
@@ -487,38 +503,6 @@
       "scoreValue": 120,
       "assetKey": "enemy_fire_fish",
       "poolPrewarm": 6
-    },
-    {
-      "enemyId": "enemy_wheel_zombie",
-      "displayNameKey": "text_enemy_wheel_zombie",
-      "tier": "Normal",
-      "maxHp": 45,
-      "movePatternId": "move_ground_left",
-      "moveSpeedRefPxSec": 95,
-      "attackSetId": "attackset_wheel_zombie",
-      "defenseRuleId": "defense_none",
-      "weakpointRuleId": "weakpoint_forehead_talisman",
-      "stanceVulnerability": "Blade",
-      "contactDamage": 12,
-      "scoreValue": 150,
-      "assetKey": "enemy_wheel_zombie",
-      "poolPrewarm": 6
-    },
-    {
-      "enemyId": "enemy_stone_turtle",
-      "displayNameKey": "text_enemy_stone_turtle",
-      "tier": "Normal",
-      "maxHp": 100,
-      "movePatternId": "move_ground_left",
-      "moveSpeedRefPxSec": 55,
-      "attackSetId": "attackset_stone_turtle",
-      "defenseRuleId": "defense_turtle_shell",
-      "weakpointRuleId": "weakpoint_turtle_belly",
-      "stanceVulnerability": "Blade",
-      "contactDamage": 18,
-      "scoreValue": 260,
-      "assetKey": "enemy_stone_turtle",
-      "poolPrewarm": 4
     },
     {
       "enemyId": "enemy_skeleton_ghost",
@@ -537,22 +521,6 @@
       "poolPrewarm": 5
     },
     {
-      "enemyId": "enemy_talisman_bat",
-      "displayNameKey": "text_enemy_talisman_bat",
-      "tier": "Normal",
-      "maxHp": 35,
-      "movePatternId": "move_dive",
-      "moveSpeedRefPxSec": 145,
-      "attackSetId": "attackset_talisman_bat",
-      "defenseRuleId": "defense_none",
-      "weakpointRuleId": "weakpoint_bat_dive",
-      "stanceVulnerability": "Blade",
-      "contactDamage": 14,
-      "scoreValue": 180,
-      "assetKey": "enemy_talisman_bat",
-      "poolPrewarm": 6
-    },
-    {
       "enemyId": "enemy_soul_puppet",
       "displayNameKey": "text_enemy_soul_puppet",
       "tier": "Elite",
@@ -569,135 +537,55 @@
       "poolPrewarm": 2
     },
     {
-      "enemyId": "boss_tomb_armor_king",
-      "displayNameKey": "text_boss_tomb_armor_king",
-      "tier": "Boss",
-      "maxHp": 1200,
-      "movePatternId": "move_boss_ground",
-      "moveSpeedRefPxSec": 40,
-      "attackSetId": "attackset_boss_phase1",
-      "defenseRuleId": "defense_boss_pins",
-      "weakpointRuleId": "weakpoint_boss_seal",
-      "stanceVulnerability": "Any",
-      "contactDamage": 30,
-      "scoreValue": 5000,
-      "assetKey": "boss_tomb_armor_king",
-      "poolPrewarm": 1
+      "enemyId": "enemy_stone_turtle",
+      "displayNameKey": "text_enemy_stone_turtle",
+      "tier": "Normal",
+      "maxHp": 100,
+      "movePatternId": "move_ground_left",
+      "moveSpeedRefPxSec": 55,
+      "attackSetId": "attackset_stone_turtle",
+      "defenseRuleId": "defense_turtle_shell",
+      "weakpointRuleId": "weakpoint_turtle_belly",
+      "stanceVulnerability": "Blade",
+      "contactDamage": 18,
+      "scoreValue": 260,
+      "assetKey": "enemy_stone_turtle",
+      "poolPrewarm": 4
+    },
+    {
+      "enemyId": "enemy_talisman_bat",
+      "displayNameKey": "text_enemy_talisman_bat",
+      "tier": "Normal",
+      "maxHp": 35,
+      "movePatternId": "move_dive",
+      "moveSpeedRefPxSec": 145,
+      "attackSetId": "attackset_talisman_bat",
+      "defenseRuleId": "defense_none",
+      "weakpointRuleId": "weakpoint_bat_dive",
+      "stanceVulnerability": "Blade",
+      "contactDamage": 14,
+      "scoreValue": 180,
+      "assetKey": "enemy_talisman_bat",
+      "poolPrewarm": 6
+    },
+    {
+      "enemyId": "enemy_wheel_zombie",
+      "displayNameKey": "text_enemy_wheel_zombie",
+      "tier": "Normal",
+      "maxHp": 45,
+      "movePatternId": "move_ground_left",
+      "moveSpeedRefPxSec": 95,
+      "attackSetId": "attackset_wheel_zombie",
+      "defenseRuleId": "defense_none",
+      "weakpointRuleId": "weakpoint_forehead_talisman",
+      "stanceVulnerability": "Blade",
+      "contactDamage": 12,
+      "scoreValue": 150,
+      "assetKey": "enemy_wheel_zombie",
+      "poolPrewarm": 6
     }
   ],
   "enemyAttacks": [
-    {
-      "attackId": "atk_fire_fish_orb",
-      "attackSetId": "attackset_fire_fish",
-      "order": 1,
-      "triggerType": "Cooldown",
-      "cooldownSec": 2.8,
-      "windupSec": 0.55,
-      "activeSec": 0.25,
-      "damage": 8,
-      "projectileId": "proj_ghost_fire",
-      "gestureInterruptType": "Any",
-      "interruptStartSec": 0.3,
-      "interruptEndSec": 0.7,
-      "effectGroupId": "fx_enemy_cast",
-      "weight": 1.0
-    },
-    {
-      "attackId": "atk_wheel_charge",
-      "attackSetId": "attackset_wheel_zombie",
-      "order": 1,
-      "triggerType": "Distance",
-      "cooldownSec": 3.2,
-      "windupSec": 0.65,
-      "activeSec": 0.5,
-      "damage": 12,
-      "projectileId": "",
-      "gestureInterruptType": "Horizontal",
-      "interruptStartSec": 0.35,
-      "interruptEndSec": 0.9,
-      "effectGroupId": "fx_wheel_charge",
-      "weight": 1.0
-    },
-    {
-      "attackId": "atk_turtle_slam",
-      "attackSetId": "attackset_stone_turtle",
-      "order": 1,
-      "triggerType": "Cooldown",
-      "cooldownSec": 3.8,
-      "windupSec": 0.9,
-      "activeSec": 0.55,
-      "damage": 18,
-      "projectileId": "",
-      "gestureInterruptType": "Vertical",
-      "interruptStartSec": 0.55,
-      "interruptEndSec": 1.2,
-      "effectGroupId": "fx_turtle_slam",
-      "weight": 1.0
-    },
-    {
-      "attackId": "atk_ghost_volley",
-      "attackSetId": "attackset_skeleton_ghost",
-      "order": 1,
-      "triggerType": "Cooldown",
-      "cooldownSec": 3.0,
-      "windupSec": 0.7,
-      "activeSec": 0.4,
-      "damage": 10,
-      "projectileId": "proj_soul_shard",
-      "gestureInterruptType": "Arc",
-      "interruptStartSec": 0.4,
-      "interruptEndSec": 0.95,
-      "effectGroupId": "fx_ghost_volley",
-      "weight": 1.0
-    },
-    {
-      "attackId": "atk_bat_dive",
-      "attackSetId": "attackset_talisman_bat",
-      "order": 1,
-      "triggerType": "Cooldown",
-      "cooldownSec": 2.4,
-      "windupSec": 0.45,
-      "activeSec": 0.55,
-      "damage": 14,
-      "projectileId": "",
-      "gestureInterruptType": "Diagonal",
-      "interruptStartSec": 0.2,
-      "interruptEndSec": 0.65,
-      "effectGroupId": "fx_bat_dive",
-      "weight": 1.0
-    },
-    {
-      "attackId": "atk_puppet_shield",
-      "attackSetId": "attackset_soul_puppet",
-      "order": 1,
-      "triggerType": "Support",
-      "cooldownSec": 4.5,
-      "windupSec": 0.8,
-      "activeSec": 0.5,
-      "damage": 0,
-      "projectileId": "",
-      "gestureInterruptType": "Circle",
-      "interruptStartSec": 0.35,
-      "interruptEndSec": 1.1,
-      "effectGroupId": "fx_puppet_shield",
-      "weight": 0.65
-    },
-    {
-      "attackId": "atk_puppet_bolt",
-      "attackSetId": "attackset_soul_puppet",
-      "order": 2,
-      "triggerType": "Cooldown",
-      "cooldownSec": 3.2,
-      "windupSec": 0.6,
-      "activeSec": 0.35,
-      "damage": 16,
-      "projectileId": "proj_seal_bolt",
-      "gestureInterruptType": "Any",
-      "interruptStartSec": 0.35,
-      "interruptEndSec": 0.85,
-      "effectGroupId": "fx_puppet_bolt",
-      "weight": 0.35
-    },
     {
       "attackId": "atk_boss_rockfall",
       "attackSetId": "attackset_boss_phase1",
@@ -745,6 +633,118 @@
       "interruptEndSec": 1.35,
       "effectGroupId": "fx_boss_charge",
       "weight": 1.0
+    },
+    {
+      "attackId": "atk_fire_fish_orb",
+      "attackSetId": "attackset_fire_fish",
+      "order": 1,
+      "triggerType": "Cooldown",
+      "cooldownSec": 2.8,
+      "windupSec": 0.55,
+      "activeSec": 0.25,
+      "damage": 8,
+      "projectileId": "proj_ghost_fire",
+      "gestureInterruptType": "Any",
+      "interruptStartSec": 0.3,
+      "interruptEndSec": 0.7,
+      "effectGroupId": "fx_enemy_cast",
+      "weight": 1.0
+    },
+    {
+      "attackId": "atk_ghost_volley",
+      "attackSetId": "attackset_skeleton_ghost",
+      "order": 1,
+      "triggerType": "Cooldown",
+      "cooldownSec": 3.0,
+      "windupSec": 0.7,
+      "activeSec": 0.4,
+      "damage": 10,
+      "projectileId": "proj_soul_shard",
+      "gestureInterruptType": "Arc",
+      "interruptStartSec": 0.4,
+      "interruptEndSec": 0.95,
+      "effectGroupId": "fx_ghost_volley",
+      "weight": 1.0
+    },
+    {
+      "attackId": "atk_puppet_shield",
+      "attackSetId": "attackset_soul_puppet",
+      "order": 1,
+      "triggerType": "Support",
+      "cooldownSec": 4.5,
+      "windupSec": 0.8,
+      "activeSec": 0.5,
+      "damage": 0,
+      "projectileId": "",
+      "gestureInterruptType": "Circle",
+      "interruptStartSec": 0.35,
+      "interruptEndSec": 1.1,
+      "effectGroupId": "fx_puppet_shield",
+      "weight": 0.65
+    },
+    {
+      "attackId": "atk_puppet_bolt",
+      "attackSetId": "attackset_soul_puppet",
+      "order": 2,
+      "triggerType": "Cooldown",
+      "cooldownSec": 3.2,
+      "windupSec": 0.6,
+      "activeSec": 0.35,
+      "damage": 16,
+      "projectileId": "proj_seal_bolt",
+      "gestureInterruptType": "Any",
+      "interruptStartSec": 0.35,
+      "interruptEndSec": 0.85,
+      "effectGroupId": "fx_puppet_bolt",
+      "weight": 0.35
+    },
+    {
+      "attackId": "atk_turtle_slam",
+      "attackSetId": "attackset_stone_turtle",
+      "order": 1,
+      "triggerType": "Cooldown",
+      "cooldownSec": 3.8,
+      "windupSec": 0.9,
+      "activeSec": 0.55,
+      "damage": 18,
+      "projectileId": "",
+      "gestureInterruptType": "Vertical",
+      "interruptStartSec": 0.55,
+      "interruptEndSec": 1.2,
+      "effectGroupId": "fx_turtle_slam",
+      "weight": 1.0
+    },
+    {
+      "attackId": "atk_bat_dive",
+      "attackSetId": "attackset_talisman_bat",
+      "order": 1,
+      "triggerType": "Cooldown",
+      "cooldownSec": 2.4,
+      "windupSec": 0.45,
+      "activeSec": 0.55,
+      "damage": 14,
+      "projectileId": "",
+      "gestureInterruptType": "Diagonal",
+      "interruptStartSec": 0.2,
+      "interruptEndSec": 0.65,
+      "effectGroupId": "fx_bat_dive",
+      "weight": 1.0
+    },
+    {
+      "attackId": "atk_wheel_charge",
+      "attackSetId": "attackset_wheel_zombie",
+      "order": 1,
+      "triggerType": "Distance",
+      "cooldownSec": 3.2,
+      "windupSec": 0.65,
+      "activeSec": 0.5,
+      "damage": 12,
+      "projectileId": "",
+      "gestureInterruptType": "Horizontal",
+      "interruptStartSec": 0.35,
+      "interruptEndSec": 0.9,
+      "effectGroupId": "fx_wheel_charge",
+      "weight": 1.0
     }
   ],
   "projectiles": [
@@ -762,17 +762,17 @@
       "vfxKey": "vfx_projectile_cut"
     },
     {
-      "projectileId": "proj_soul_shard",
+      "projectileId": "proj_rockfall",
       "movePatternId": "move_ground_left",
-      "speedRefPxSec": 320,
-      "lifeSec": 3.5,
-      "damage": 10,
+      "speedRefPxSec": 360,
+      "lifeSec": 2.5,
+      "damage": 18,
       "cuttable": true,
       "reflectable": false,
-      "requiredStanceId": "stance_talisman",
-      "hitRadiusRefPx": 22,
-      "assetKey": "proj_soul_shard",
-      "vfxKey": "vfx_projectile_cut"
+      "requiredStanceId": "",
+      "hitRadiusRefPx": 34,
+      "assetKey": "proj_rockfall",
+      "vfxKey": "vfx_rock_break"
     },
     {
       "projectileId": "proj_seal_bolt",
@@ -788,19 +788,6 @@
       "vfxKey": "vfx_projectile_cut"
     },
     {
-      "projectileId": "proj_rockfall",
-      "movePatternId": "move_ground_left",
-      "speedRefPxSec": 360,
-      "lifeSec": 2.5,
-      "damage": 18,
-      "cuttable": true,
-      "reflectable": false,
-      "requiredStanceId": "",
-      "hitRadiusRefPx": 34,
-      "assetKey": "proj_rockfall",
-      "vfxKey": "vfx_rock_break"
-    },
-    {
       "projectileId": "proj_seal_wave",
       "movePatternId": "move_ground_left",
       "speedRefPxSec": 220,
@@ -812,9 +799,44 @@
       "hitRadiusRefPx": 42,
       "assetKey": "proj_seal_wave",
       "vfxKey": "vfx_seal_wave_cut"
+    },
+    {
+      "projectileId": "proj_soul_shard",
+      "movePatternId": "move_ground_left",
+      "speedRefPxSec": 320,
+      "lifeSec": 3.5,
+      "damage": 10,
+      "cuttable": true,
+      "reflectable": false,
+      "requiredStanceId": "stance_talisman",
+      "hitRadiusRefPx": 22,
+      "assetKey": "proj_soul_shard",
+      "vfxKey": "vfx_projectile_cut"
     }
   ],
   "buffs": [
+    {
+      "buffId": "buff_bind",
+      "type": "Root",
+      "durationSec": 1.5,
+      "maxStacks": 1,
+      "magnitude": 1.0,
+      "tickSec": 0,
+      "refreshPolicy": "Refresh",
+      "vfxKey": "vfx_bind",
+      "textKey": "text_buff_bind"
+    },
+    {
+      "buffId": "buff_burn",
+      "type": "DamageOverTime",
+      "durationSec": 3.0,
+      "maxStacks": 3,
+      "magnitude": 3.0,
+      "tickSec": 0.5,
+      "refreshPolicy": "AddStack",
+      "vfxKey": "vfx_burn",
+      "textKey": "text_buff_burn"
+    },
     {
       "buffId": "buff_slow_30",
       "type": "Slow",
@@ -836,28 +858,6 @@
       "refreshPolicy": "Replace",
       "vfxKey": "vfx_stun",
       "textKey": "text_buff_stun"
-    },
-    {
-      "buffId": "buff_burn",
-      "type": "DamageOverTime",
-      "durationSec": 3.0,
-      "maxStacks": 3,
-      "magnitude": 3.0,
-      "tickSec": 0.5,
-      "refreshPolicy": "AddStack",
-      "vfxKey": "vfx_burn",
-      "textKey": "text_buff_burn"
-    },
-    {
-      "buffId": "buff_bind",
-      "type": "Root",
-      "durationSec": 1.5,
-      "maxStacks": 1,
-      "magnitude": 1.0,
-      "tickSec": 0,
-      "refreshPolicy": "Refresh",
-      "vfxKey": "vfx_bind",
-      "textKey": "text_buff_bind"
     },
     {
       "buffId": "buff_vulnerable",
@@ -914,29 +914,16 @@
   ],
   "skillEffects": [
     {
-      "effectGroupId": "fx_switch_to_blade",
+      "effectGroupId": "fx_bat_dive",
       "order": 1,
-      "effectType": "DamageMultiplier",
-      "targetType": "NextStroke",
-      "value1": 1.35,
+      "effectType": "PlayVfx",
+      "targetType": "Target",
+      "value1": 0,
       "value2": 0,
       "durationSec": 0,
       "buffId": "",
-      "vfxKey": "vfx_switch_blade",
-      "audioKey": "sfx_switch",
-      "condition": ""
-    },
-    {
-      "effectGroupId": "fx_switch_to_talisman",
-      "order": 1,
-      "effectType": "Knockback",
-      "targetType": "EnemiesInRadius",
-      "value1": 80,
-      "value2": 0,
-      "durationSec": 0,
-      "buffId": "",
-      "vfxKey": "vfx_switch_talisman",
-      "audioKey": "sfx_switch",
+      "vfxKey": "vfx_bat_dive",
+      "audioKey": "",
       "condition": ""
     },
     {
@@ -951,136 +938,6 @@
       "vfxKey": "vfx_blade_echo",
       "audioKey": "sfx_echo",
       "condition": "comboCount>=3"
-    },
-    {
-      "effectGroupId": "fx_talisman_bind",
-      "order": 1,
-      "effectType": "ApplyBuff",
-      "targetType": "EnemiesInsideGesture",
-      "value1": 0,
-      "value2": 0,
-      "durationSec": 1.5,
-      "buffId": "buff_bind",
-      "vfxKey": "vfx_bind",
-      "audioKey": "sfx_bind",
-      "condition": ""
-    },
-    {
-      "effectGroupId": "fx_talisman_bind",
-      "order": 2,
-      "effectType": "Damage",
-      "targetType": "EnemiesInsideGesture",
-      "value1": 14,
-      "value2": 0,
-      "durationSec": 0,
-      "buffId": "",
-      "vfxKey": "vfx_talisman_burst",
-      "audioKey": "sfx_talisman_hit",
-      "condition": ""
-    },
-    {
-      "effectGroupId": "fx_ultimate_seal",
-      "order": 1,
-      "effectType": "TimeScale",
-      "targetType": "Battle",
-      "value1": 0.25,
-      "value2": 0,
-      "durationSec": 0.8,
-      "buffId": "",
-      "vfxKey": "vfx_ultimate_prepare",
-      "audioKey": "sfx_ultimate_start",
-      "condition": ""
-    },
-    {
-      "effectGroupId": "fx_ultimate_seal",
-      "order": 2,
-      "effectType": "Damage",
-      "targetType": "AllEnemies",
-      "value1": 50,
-      "value2": 0,
-      "durationSec": 0,
-      "buffId": "",
-      "vfxKey": "vfx_ultimate_slash",
-      "audioKey": "sfx_ultimate_hit",
-      "condition": ""
-    },
-    {
-      "effectGroupId": "fx_ultimate_seal",
-      "order": 3,
-      "effectType": "ExecuteBelowHpRatio",
-      "targetType": "NormalEnemies",
-      "value1": 0.25,
-      "value2": 0,
-      "durationSec": 0,
-      "buffId": "",
-      "vfxKey": "vfx_seal_execute",
-      "audioKey": "sfx_seal",
-      "condition": ""
-    },
-    {
-      "effectGroupId": "fx_ultimate_seal",
-      "order": 4,
-      "effectType": "ApplyBuff",
-      "targetType": "Boss",
-      "value1": 0,
-      "value2": 0,
-      "durationSec": 2.0,
-      "buffId": "buff_vulnerable",
-      "vfxKey": "vfx_boss_break",
-      "audioKey": "sfx_break",
-      "condition": ""
-    },
-    {
-      "effectGroupId": "fx_break_armor",
-      "order": 1,
-      "effectType": "RemoveArmor",
-      "targetType": "Target",
-      "value1": 1,
-      "value2": 0,
-      "durationSec": 0,
-      "buffId": "",
-      "vfxKey": "vfx_armor_break",
-      "audioKey": "sfx_armor_break",
-      "condition": ""
-    },
-    {
-      "effectGroupId": "fx_break_seal",
-      "order": 1,
-      "effectType": "RemoveArmor",
-      "targetType": "Target",
-      "value1": 1,
-      "value2": 0,
-      "durationSec": 0,
-      "buffId": "",
-      "vfxKey": "vfx_seal_break",
-      "audioKey": "sfx_seal_break",
-      "condition": ""
-    },
-    {
-      "effectGroupId": "fx_break_boss_pin",
-      "order": 1,
-      "effectType": "IncrementCounter",
-      "targetType": "Boss",
-      "value1": 1,
-      "value2": 4,
-      "durationSec": 0,
-      "buffId": "",
-      "vfxKey": "vfx_boss_pin_break",
-      "audioKey": "sfx_boss_pin",
-      "condition": ""
-    },
-    {
-      "effectGroupId": "fx_bat_dive",
-      "order": 1,
-      "effectType": "PlayVfx",
-      "targetType": "Target",
-      "value1": 0,
-      "value2": 0,
-      "durationSec": 0,
-      "buffId": "",
-      "vfxKey": "vfx_bat_dive",
-      "audioKey": "",
-      "condition": ""
     },
     {
       "effectGroupId": "fx_boss_charge",
@@ -1161,6 +1018,45 @@
       "condition": ""
     },
     {
+      "effectGroupId": "fx_break_armor",
+      "order": 1,
+      "effectType": "RemoveArmor",
+      "targetType": "Target",
+      "value1": 1,
+      "value2": 0,
+      "durationSec": 0,
+      "buffId": "",
+      "vfxKey": "vfx_armor_break",
+      "audioKey": "sfx_armor_break",
+      "condition": ""
+    },
+    {
+      "effectGroupId": "fx_break_boss_pin",
+      "order": 1,
+      "effectType": "IncrementCounter",
+      "targetType": "Boss",
+      "value1": 1,
+      "value2": 4,
+      "durationSec": 0,
+      "buffId": "",
+      "vfxKey": "vfx_boss_pin_break",
+      "audioKey": "sfx_boss_pin",
+      "condition": ""
+    },
+    {
+      "effectGroupId": "fx_break_seal",
+      "order": 1,
+      "effectType": "RemoveArmor",
+      "targetType": "Target",
+      "value1": 1,
+      "value2": 0,
+      "durationSec": 0,
+      "buffId": "",
+      "vfxKey": "vfx_seal_break",
+      "audioKey": "sfx_seal_break",
+      "condition": ""
+    },
+    {
       "effectGroupId": "fx_enemy_cast",
       "order": 1,
       "effectType": "PlayVfx",
@@ -1213,6 +1109,58 @@
       "condition": ""
     },
     {
+      "effectGroupId": "fx_switch_to_blade",
+      "order": 1,
+      "effectType": "DamageMultiplier",
+      "targetType": "NextStroke",
+      "value1": 1.35,
+      "value2": 0,
+      "durationSec": 0,
+      "buffId": "",
+      "vfxKey": "vfx_switch_blade",
+      "audioKey": "sfx_switch",
+      "condition": ""
+    },
+    {
+      "effectGroupId": "fx_switch_to_talisman",
+      "order": 1,
+      "effectType": "Knockback",
+      "targetType": "EnemiesInRadius",
+      "value1": 80,
+      "value2": 0,
+      "durationSec": 0,
+      "buffId": "",
+      "vfxKey": "vfx_switch_talisman",
+      "audioKey": "sfx_switch",
+      "condition": ""
+    },
+    {
+      "effectGroupId": "fx_talisman_bind",
+      "order": 1,
+      "effectType": "ApplyBuff",
+      "targetType": "EnemiesInsideGesture",
+      "value1": 0,
+      "value2": 0,
+      "durationSec": 1.5,
+      "buffId": "buff_bind",
+      "vfxKey": "vfx_bind",
+      "audioKey": "sfx_bind",
+      "condition": ""
+    },
+    {
+      "effectGroupId": "fx_talisman_bind",
+      "order": 2,
+      "effectType": "Damage",
+      "targetType": "EnemiesInsideGesture",
+      "value1": 14,
+      "value2": 0,
+      "durationSec": 0,
+      "buffId": "",
+      "vfxKey": "vfx_talisman_burst",
+      "audioKey": "sfx_talisman_hit",
+      "condition": ""
+    },
+    {
       "effectGroupId": "fx_turtle_slam",
       "order": 1,
       "effectType": "PlayVfx",
@@ -1223,6 +1171,58 @@
       "buffId": "",
       "vfxKey": "vfx_turtle_slam",
       "audioKey": "",
+      "condition": ""
+    },
+    {
+      "effectGroupId": "fx_ultimate_seal",
+      "order": 1,
+      "effectType": "TimeScale",
+      "targetType": "Battle",
+      "value1": 0.25,
+      "value2": 0,
+      "durationSec": 0.8,
+      "buffId": "",
+      "vfxKey": "vfx_ultimate_prepare",
+      "audioKey": "sfx_ultimate_start",
+      "condition": ""
+    },
+    {
+      "effectGroupId": "fx_ultimate_seal",
+      "order": 2,
+      "effectType": "Damage",
+      "targetType": "AllEnemies",
+      "value1": 50,
+      "value2": 0,
+      "durationSec": 0,
+      "buffId": "",
+      "vfxKey": "vfx_ultimate_slash",
+      "audioKey": "sfx_ultimate_hit",
+      "condition": ""
+    },
+    {
+      "effectGroupId": "fx_ultimate_seal",
+      "order": 3,
+      "effectType": "ExecuteBelowHpRatio",
+      "targetType": "NormalEnemies",
+      "value1": 0.25,
+      "value2": 0,
+      "durationSec": 0,
+      "buffId": "",
+      "vfxKey": "vfx_seal_execute",
+      "audioKey": "sfx_seal",
+      "condition": ""
+    },
+    {
+      "effectGroupId": "fx_ultimate_seal",
+      "order": 4,
+      "effectType": "ApplyBuff",
+      "targetType": "Boss",
+      "value1": 0,
+      "value2": 0,
+      "durationSec": 2.0,
+      "buffId": "buff_vulnerable",
+      "vfxKey": "vfx_boss_break",
+      "audioKey": "sfx_break",
       "condition": ""
     },
     {
@@ -1241,12 +1241,12 @@
   ],
   "levels": [
     {
-      "levelId": "level_001",
+      "levelId": "lv_001_tutorial",
       "displayNameKey": "text_level_001",
       "sceneKey": "scene_battle",
       "backgroundAssetKey": "bg_red_cave",
       "durationLimitSec": 180,
-      "nextLevelId": "level_002",
+      "nextLevelId": "lv_002_cave",
       "rewardTableId": "reward_level_001",
       "starScore1": 2500,
       "starScore2": 4200,
@@ -1255,12 +1255,12 @@
       "bossEnemyId": ""
     },
     {
-      "levelId": "level_002",
+      "levelId": "lv_002_cave",
       "displayNameKey": "text_level_002",
       "sceneKey": "scene_battle",
       "backgroundAssetKey": "bg_red_cave",
       "durationLimitSec": 210,
-      "nextLevelId": "level_003",
+      "nextLevelId": "lv_003_boss",
       "rewardTableId": "reward_level_002",
       "starScore1": 3500,
       "starScore2": 5800,
@@ -1269,7 +1269,7 @@
       "bossEnemyId": ""
     },
     {
-      "levelId": "level_003",
+      "levelId": "lv_003_boss",
       "displayNameKey": "text_level_003",
       "sceneKey": "scene_battle",
       "backgroundAssetKey": "bg_red_cave_boss",
@@ -1280,13 +1280,13 @@
       "starScore2": 10000,
       "starScore3": 14000,
       "tutorialId": "tutorial_level_003",
-      "bossEnemyId": "boss_tomb_armor_king"
+      "bossEnemyId": "boss_tomb_king"
     }
   ],
   "waves": [
     {
       "waveId": "wave_001_01",
-      "levelId": "level_001",
+      "levelId": "lv_001_tutorial",
       "order": 1,
       "startTrigger": "LevelStart",
       "startDelaySec": 0.0,
@@ -1297,7 +1297,7 @@
     },
     {
       "waveId": "wave_001_02",
-      "levelId": "level_001",
+      "levelId": "lv_001_tutorial",
       "order": 2,
       "startTrigger": "PreviousWaveEnd",
       "startDelaySec": 0.5,
@@ -1308,7 +1308,7 @@
     },
     {
       "waveId": "wave_001_03",
-      "levelId": "level_001",
+      "levelId": "lv_001_tutorial",
       "order": 3,
       "startTrigger": "PreviousWaveEnd",
       "startDelaySec": 0.5,
@@ -1319,7 +1319,7 @@
     },
     {
       "waveId": "wave_002_01",
-      "levelId": "level_002",
+      "levelId": "lv_002_cave",
       "order": 1,
       "startTrigger": "LevelStart",
       "startDelaySec": 0.0,
@@ -1330,7 +1330,7 @@
     },
     {
       "waveId": "wave_002_02",
-      "levelId": "level_002",
+      "levelId": "lv_002_cave",
       "order": 2,
       "startTrigger": "PreviousWaveEnd",
       "startDelaySec": 0.6,
@@ -1341,7 +1341,7 @@
     },
     {
       "waveId": "wave_002_03",
-      "levelId": "level_002",
+      "levelId": "lv_002_cave",
       "order": 3,
       "startTrigger": "PreviousWaveEnd",
       "startDelaySec": 0.6,
@@ -1352,7 +1352,7 @@
     },
     {
       "waveId": "wave_002_04",
-      "levelId": "level_002",
+      "levelId": "lv_002_cave",
       "order": 4,
       "startTrigger": "PreviousWaveEnd",
       "startDelaySec": 0.6,
@@ -1363,7 +1363,7 @@
     },
     {
       "waveId": "wave_003_01",
-      "levelId": "level_003",
+      "levelId": "lv_003_boss",
       "order": 1,
       "startTrigger": "LevelStart",
       "startDelaySec": 0.0,
@@ -1374,7 +1374,7 @@
     },
     {
       "waveId": "wave_003_02",
-      "levelId": "level_003",
+      "levelId": "lv_003_boss",
       "order": 2,
       "startTrigger": "PreviousWaveEnd",
       "startDelaySec": 0.8,
@@ -1385,17 +1385,6 @@
     }
   ],
   "spawnPoints": [
-    {
-      "spawnPointId": "spawn_ground_right",
-      "levelId": "*",
-      "normalizedX": 0.96,
-      "normalizedY": 0.34,
-      "lane": "Ground",
-      "jitterX": 0.03,
-      "jitterY": 0.02,
-      "facing": "Left",
-      "notes": "通用右侧地面出生点"
-    },
     {
       "spawnPointId": "spawn_air_high",
       "levelId": "*",
@@ -1420,7 +1409,7 @@
     },
     {
       "spawnPointId": "spawn_boss",
-      "levelId": "level_003",
+      "levelId": "lv_003_boss",
       "normalizedX": 0.8,
       "normalizedY": 0.38,
       "lane": "Boss",
@@ -1428,19 +1417,20 @@
       "jitterY": 0,
       "facing": "Left",
       "notes": "Boss固定出生点"
+    },
+    {
+      "spawnPointId": "spawn_ground_right",
+      "levelId": "*",
+      "normalizedX": 0.96,
+      "normalizedY": 0.34,
+      "lane": "Ground",
+      "jitterX": 0.03,
+      "jitterY": 0.02,
+      "facing": "Left",
+      "notes": "通用右侧地面出生点"
     }
   ],
   "enemyModifiers": [
-    {
-      "modifierId": "modifier_none",
-      "displayNameKey": "text_modifier_none",
-      "hpMultiplier": 1.0,
-      "damageMultiplier": 1.0,
-      "speedMultiplier": 1.0,
-      "scoreMultiplier": 1.0,
-      "tintHex": "#FFFFFF",
-      "extraBuffId": ""
-    },
     {
       "modifierId": "modifier_elite",
       "displayNameKey": "text_modifier_elite",
@@ -1450,6 +1440,16 @@
       "scoreMultiplier": 1.8,
       "tintHex": "#E6B84A",
       "extraBuffId": "buff_vulnerable"
+    },
+    {
+      "modifierId": "modifier_none",
+      "displayNameKey": "text_modifier_none",
+      "hpMultiplier": 1.0,
+      "damageMultiplier": 1.0,
+      "speedMultiplier": 1.0,
+      "scoreMultiplier": 1.0,
+      "tintHex": "#FFFFFF",
+      "extraBuffId": ""
     }
   ],
   "spawns": [
@@ -1589,7 +1589,7 @@
       "spawnId": "spawn_003_02_a",
       "waveId": "wave_003_02",
       "spawnTimeSec": 0.0,
-      "enemyId": "boss_tomb_armor_king",
+      "enemyId": "boss_tomb_king",
       "count": 1,
       "intervalSec": 0,
       "spawnPointId": "spawn_boss",
@@ -1600,7 +1600,7 @@
   "bossPhases": [
     {
       "bossPhaseId": "boss_tomb_phase_1",
-      "enemyId": "boss_tomb_armor_king",
+      "enemyId": "boss_tomb_king",
       "order": 1,
       "enterHpRatio": 1.0,
       "exitHpRatio": 0.67,
@@ -1613,7 +1613,7 @@
     },
     {
       "bossPhaseId": "boss_tomb_phase_2",
-      "enemyId": "boss_tomb_armor_king",
+      "enemyId": "boss_tomb_king",
       "order": 2,
       "enterHpRatio": 0.67,
       "exitHpRatio": 0.34,
@@ -1626,7 +1626,7 @@
     },
     {
       "bossPhaseId": "boss_tomb_phase_3",
-      "enemyId": "boss_tomb_armor_king",
+      "enemyId": "boss_tomb_king",
       "order": 3,
       "enterHpRatio": 0.34,
       "exitHpRatio": 0.0,
@@ -1645,7 +1645,7 @@
       "conditionType": "Clear",
       "conditionValue": "1",
       "rewardType": "UnlockLevel",
-      "rewardId": "level_002",
+      "rewardId": "lv_002_cave",
       "amount": 1
     },
     {
@@ -1663,7 +1663,7 @@
       "conditionType": "Clear",
       "conditionValue": "1",
       "rewardType": "UnlockLevel",
-      "rewardId": "level_003",
+      "rewardId": "lv_003_boss",
       "amount": 1
     },
     {
@@ -1775,39 +1775,63 @@
   ],
   "texts": [
     {
-      "textKey": "text_player_moyan",
-      "zhCN": "玄狸·墨砚",
-      "enUS": "Moyan",
-      "context": "玩家名"
+      "textKey": "text_boss_phase1",
+      "zhCN": "破除四枚符钉",
+      "enUS": "Break the four seal pins",
+      "context": "Boss phase"
     },
     {
-      "textKey": "text_stance_blade",
-      "zhCN": "斩妖刀",
-      "enUS": "Demon Blade",
-      "context": "架势名"
+      "textKey": "text_boss_phase2",
+      "zhCN": "按方向斩开腹部封印",
+      "enUS": "Slash the seal in sequence",
+      "context": "Boss phase"
     },
     {
-      "textKey": "text_stance_talisman",
-      "zhCN": "镇魂笔",
-      "enUS": "Soul Talisman",
-      "context": "架势名"
+      "textKey": "text_boss_phase3",
+      "zhCN": "切断法术并阻止冲撞",
+      "enUS": "Cut projectiles and stop the charge",
+      "context": "Boss phase"
+    },
+    {
+      "textKey": "text_boss_tomb_armor_king",
+      "zhCN": "镇墓玄甲王",
+      "enUS": "Tomb Armor King",
+      "context": "Boss名"
+    },
+    {
+      "textKey": "text_buff_bind",
+      "zhCN": "束缚",
+      "enUS": "Bind",
+      "context": "Buff"
+    },
+    {
+      "textKey": "text_buff_burn",
+      "zhCN": "灼烧",
+      "enUS": "Burn",
+      "context": "Buff"
+    },
+    {
+      "textKey": "text_buff_slow",
+      "zhCN": "迟缓",
+      "enUS": "Slow",
+      "context": "Buff"
+    },
+    {
+      "textKey": "text_buff_stun",
+      "zhCN": "眩晕",
+      "enUS": "Stun",
+      "context": "Buff"
+    },
+    {
+      "textKey": "text_buff_vulnerable",
+      "zhCN": "破绽",
+      "enUS": "Vulnerable",
+      "context": "Buff"
     },
     {
       "textKey": "text_enemy_fire_fish",
       "zhCN": "符火鱼妖",
       "enUS": "Talisman Firefish",
-      "context": "敌人名"
-    },
-    {
-      "textKey": "text_enemy_wheel_zombie",
-      "zhCN": "轮车僵妖",
-      "enUS": "Wheel Zombie",
-      "context": "敌人名"
-    },
-    {
-      "textKey": "text_enemy_stone_turtle",
-      "zhCN": "石甲龟妖",
-      "enUS": "Stone Turtle",
       "context": "敌人名"
     },
     {
@@ -1817,22 +1841,28 @@
       "context": "敌人名"
     },
     {
-      "textKey": "text_enemy_talisman_bat",
-      "zhCN": "飞行符蝠",
-      "enUS": "Talisman Bat",
-      "context": "敌人名"
-    },
-    {
       "textKey": "text_enemy_soul_puppet",
       "zhCN": "摄魂道傀",
       "enUS": "Soul Puppet",
       "context": "精英名"
     },
     {
-      "textKey": "text_boss_tomb_armor_king",
-      "zhCN": "镇墓玄甲王",
-      "enUS": "Tomb Armor King",
-      "context": "Boss名"
+      "textKey": "text_enemy_stone_turtle",
+      "zhCN": "石甲龟妖",
+      "enUS": "Stone Turtle",
+      "context": "敌人名"
+    },
+    {
+      "textKey": "text_enemy_talisman_bat",
+      "zhCN": "飞行符蝠",
+      "enUS": "Talisman Bat",
+      "context": "敌人名"
+    },
+    {
+      "textKey": "text_enemy_wheel_zombie",
+      "zhCN": "轮车僵妖",
+      "enUS": "Wheel Zombie",
+      "context": "敌人名"
     },
     {
       "textKey": "text_level_001",
@@ -1853,15 +1883,75 @@
       "context": "关卡名"
     },
     {
-      "textKey": "text_tutorial_swipe",
-      "zhCN": "划过妖怪即可攻击",
-      "enUS": "Swipe through monsters to attack",
-      "context": "教程"
+      "textKey": "text_modifier_elite",
+      "zhCN": "精英",
+      "enUS": "Elite",
+      "context": "Modifier"
     },
     {
-      "textKey": "text_tutorial_weakpoint",
-      "zhCN": "斩中发光弱点可打断并暴击",
-      "enUS": "Hit the glowing weakpoint to interrupt",
+      "textKey": "text_modifier_none",
+      "zhCN": "普通",
+      "enUS": "Normal",
+      "context": "Modifier"
+    },
+    {
+      "textKey": "text_player_moyan",
+      "zhCN": "玄狸·墨砚",
+      "enUS": "Moyan",
+      "context": "玩家名"
+    },
+    {
+      "textKey": "text_skill_blade_echo",
+      "zhCN": "追影刀光",
+      "enUS": "Echo Slash",
+      "context": "技能名"
+    },
+    {
+      "textKey": "text_skill_blade_echo_desc",
+      "zhCN": "连续精准命中后，下一笔产生追击刀光",
+      "enUS": "Creates an echo slash after precise hits",
+      "context": "技能说明"
+    },
+    {
+      "textKey": "text_skill_talisman_bind",
+      "zhCN": "缚妖圈",
+      "enUS": "Demon Binding Circle",
+      "context": "技能名"
+    },
+    {
+      "textKey": "text_skill_talisman_bind_desc",
+      "zhCN": "画出闭合符圈，定身圈内敌人",
+      "enUS": "Draw a closed circle to bind enemies",
+      "context": "技能说明"
+    },
+    {
+      "textKey": "text_skill_ultimate_desc",
+      "zhCN": "画出封印，对全场造成伤害并压制Boss",
+      "enUS": "Draw a seal to damage all enemies",
+      "context": "技能说明"
+    },
+    {
+      "textKey": "text_skill_ultimate_seal",
+      "zhCN": "天地封妖令",
+      "enUS": "Heaven-Earth Seal",
+      "context": "技能名"
+    },
+    {
+      "textKey": "text_stance_blade",
+      "zhCN": "斩妖刀",
+      "enUS": "Demon Blade",
+      "context": "架势名"
+    },
+    {
+      "textKey": "text_stance_talisman",
+      "zhCN": "镇魂笔",
+      "enUS": "Soul Talisman",
+      "context": "架势名"
+    },
+    {
+      "textKey": "text_tutorial_charge",
+      "zhCN": "按住片刻再划动，破开重甲",
+      "enUS": "Hold briefly, then swipe to break armor",
       "context": "教程"
     },
     {
@@ -1877,15 +1967,15 @@
       "context": "教程"
     },
     {
-      "textKey": "text_tutorial_charge",
-      "zhCN": "按住片刻再划动，破开重甲",
-      "enUS": "Hold briefly, then swipe to break armor",
-      "context": "教程"
-    },
-    {
       "textKey": "text_tutorial_stance",
       "zhCN": "切换镇魂笔，对幽魂更有效",
       "enUS": "Switch stance for ghosts",
+      "context": "教程"
+    },
+    {
+      "textKey": "text_tutorial_swipe",
+      "zhCN": "划过妖怪即可攻击",
+      "enUS": "Swipe through monsters to attack",
       "context": "教程"
     },
     {
@@ -1895,103 +1985,33 @@
       "context": "教程"
     },
     {
-      "textKey": "text_skill_blade_echo",
-      "zhCN": "追影刀光",
-      "enUS": "Echo Slash",
-      "context": "技能名"
-    },
-    {
-      "textKey": "text_skill_talisman_bind",
-      "zhCN": "缚妖圈",
-      "enUS": "Demon Binding Circle",
-      "context": "技能名"
-    },
-    {
-      "textKey": "text_skill_ultimate_seal",
-      "zhCN": "天地封妖令",
-      "enUS": "Heaven-Earth Seal",
-      "context": "技能名"
-    },
-    {
-      "textKey": "text_skill_blade_echo_desc",
-      "zhCN": "连续精准命中后，下一笔产生追击刀光",
-      "enUS": "Creates an echo slash after precise hits",
-      "context": "技能说明"
-    },
-    {
-      "textKey": "text_skill_talisman_bind_desc",
-      "zhCN": "画出闭合符圈，定身圈内敌人",
-      "enUS": "Draw a closed circle to bind enemies",
-      "context": "技能说明"
-    },
-    {
-      "textKey": "text_skill_ultimate_desc",
-      "zhCN": "画出封印，对全场造成伤害并压制Boss",
-      "enUS": "Draw a seal to damage all enemies",
-      "context": "技能说明"
-    },
-    {
-      "textKey": "text_buff_slow",
-      "zhCN": "迟缓",
-      "enUS": "Slow",
-      "context": "Buff"
-    },
-    {
-      "textKey": "text_buff_stun",
-      "zhCN": "眩晕",
-      "enUS": "Stun",
-      "context": "Buff"
-    },
-    {
-      "textKey": "text_buff_burn",
-      "zhCN": "灼烧",
-      "enUS": "Burn",
-      "context": "Buff"
-    },
-    {
-      "textKey": "text_buff_bind",
-      "zhCN": "束缚",
-      "enUS": "Bind",
-      "context": "Buff"
-    },
-    {
-      "textKey": "text_buff_vulnerable",
-      "zhCN": "破绽",
-      "enUS": "Vulnerable",
-      "context": "Buff"
-    },
-    {
-      "textKey": "text_modifier_none",
-      "zhCN": "普通",
-      "enUS": "Normal",
-      "context": "Modifier"
-    },
-    {
-      "textKey": "text_modifier_elite",
-      "zhCN": "精英",
-      "enUS": "Elite",
-      "context": "Modifier"
-    },
-    {
-      "textKey": "text_boss_phase1",
-      "zhCN": "破除四枚符钉",
-      "enUS": "Break the four seal pins",
-      "context": "Boss phase"
-    },
-    {
-      "textKey": "text_boss_phase2",
-      "zhCN": "按方向斩开腹部封印",
-      "enUS": "Slash the seal in sequence",
-      "context": "Boss phase"
-    },
-    {
-      "textKey": "text_boss_phase3",
-      "zhCN": "切断法术并阻止冲撞",
-      "enUS": "Cut projectiles and stop the charge",
-      "context": "Boss phase"
+      "textKey": "text_tutorial_weakpoint",
+      "zhCN": "斩中发光弱点可打断并暴击",
+      "enUS": "Hit the glowing weakpoint to interrupt",
+      "context": "教程"
     }
   ],
   "audioCues": [
+    {
+      "audioKey": "bgm_boss",
+      "assetKey": "audio_bgm_boss",
+      "category": "BGM",
+      "volume": 0.8,
+      "pitchMin": 1.0,
+      "pitchMax": 1.0,
+      "maxConcurrent": 1,
+      "cooldownSec": 0
+    },
+    {
+      "audioKey": "bgm_boss_intro",
+      "assetKey": "audio_bgm_boss_intro",
+      "category": "BGM",
+      "volume": 0.75,
+      "pitchMin": 1.0,
+      "pitchMax": 1.0,
+      "maxConcurrent": 1,
+      "cooldownSec": 0
+    },
     {
       "audioKey": "bgm_cave_01",
       "assetKey": "audio_bgm_cave_01",
@@ -2011,76 +2031,6 @@
       "pitchMax": 1.0,
       "maxConcurrent": 1,
       "cooldownSec": 0
-    },
-    {
-      "audioKey": "bgm_boss_intro",
-      "assetKey": "audio_bgm_boss_intro",
-      "category": "BGM",
-      "volume": 0.75,
-      "pitchMin": 1.0,
-      "pitchMax": 1.0,
-      "maxConcurrent": 1,
-      "cooldownSec": 0
-    },
-    {
-      "audioKey": "bgm_boss",
-      "assetKey": "audio_bgm_boss",
-      "category": "BGM",
-      "volume": 0.8,
-      "pitchMin": 1.0,
-      "pitchMax": 1.0,
-      "maxConcurrent": 1,
-      "cooldownSec": 0
-    },
-    {
-      "audioKey": "sfx_slash",
-      "assetKey": "audio_sfx_slash",
-      "category": "SFX",
-      "volume": 0.85,
-      "pitchMin": 0.95,
-      "pitchMax": 1.05,
-      "maxConcurrent": 4,
-      "cooldownSec": 0.03
-    },
-    {
-      "audioKey": "sfx_hit",
-      "assetKey": "audio_sfx_hit",
-      "category": "SFX",
-      "volume": 0.9,
-      "pitchMin": 0.92,
-      "pitchMax": 1.08,
-      "maxConcurrent": 6,
-      "cooldownSec": 0.03
-    },
-    {
-      "audioKey": "sfx_switch",
-      "assetKey": "audio_sfx_switch",
-      "category": "SFX",
-      "volume": 0.8,
-      "pitchMin": 1.0,
-      "pitchMax": 1.0,
-      "maxConcurrent": 2,
-      "cooldownSec": 0.1
-    },
-    {
-      "audioKey": "sfx_ultimate_start",
-      "assetKey": "audio_sfx_ultimate_start",
-      "category": "SFX",
-      "volume": 1.0,
-      "pitchMin": 1.0,
-      "pitchMax": 1.0,
-      "maxConcurrent": 1,
-      "cooldownSec": 0.5
-    },
-    {
-      "audioKey": "sfx_ultimate_hit",
-      "assetKey": "audio_sfx_ultimate_hit",
-      "category": "SFX",
-      "volume": 1.0,
-      "pitchMin": 1.0,
-      "pitchMax": 1.0,
-      "maxConcurrent": 1,
-      "cooldownSec": 0.5
     },
     {
       "audioKey": "sfx_armor_break",
@@ -2133,6 +2083,16 @@
       "cooldownSec": 0.05
     },
     {
+      "audioKey": "sfx_hit",
+      "assetKey": "audio_sfx_hit",
+      "category": "SFX",
+      "volume": 0.9,
+      "pitchMin": 0.92,
+      "pitchMax": 1.08,
+      "maxConcurrent": 6,
+      "cooldownSec": 0.03
+    },
+    {
       "audioKey": "sfx_seal",
       "assetKey": "audio_sfx_seal",
       "category": "SFX",
@@ -2153,6 +2113,26 @@
       "cooldownSec": 0.05
     },
     {
+      "audioKey": "sfx_slash",
+      "assetKey": "audio_sfx_slash",
+      "category": "SFX",
+      "volume": 0.85,
+      "pitchMin": 0.95,
+      "pitchMax": 1.05,
+      "maxConcurrent": 4,
+      "cooldownSec": 0.03
+    },
+    {
+      "audioKey": "sfx_switch",
+      "assetKey": "audio_sfx_switch",
+      "category": "SFX",
+      "volume": 0.8,
+      "pitchMin": 1.0,
+      "pitchMax": 1.0,
+      "maxConcurrent": 2,
+      "cooldownSec": 0.1
+    },
+    {
       "audioKey": "sfx_talisman_hit",
       "assetKey": "audio_sfx_talisman_hit",
       "category": "SFX",
@@ -2161,32 +2141,34 @@
       "pitchMax": 1.04,
       "maxConcurrent": 4,
       "cooldownSec": 0.05
+    },
+    {
+      "audioKey": "sfx_ultimate_hit",
+      "assetKey": "audio_sfx_ultimate_hit",
+      "category": "SFX",
+      "volume": 1.0,
+      "pitchMin": 1.0,
+      "pitchMax": 1.0,
+      "maxConcurrent": 1,
+      "cooldownSec": 0.5
+    },
+    {
+      "audioKey": "sfx_ultimate_start",
+      "assetKey": "audio_sfx_ultimate_start",
+      "category": "SFX",
+      "volume": 1.0,
+      "pitchMin": 1.0,
+      "pitchMax": 1.0,
+      "maxConcurrent": 1,
+      "cooldownSec": 0.5
     }
   ],
   "vfxCues": [
     {
-      "vfxKey": "vfx_slash",
-      "assetKey": "vfx_slash",
-      "lifeSec": 0.3,
-      "poolPrewarm": 12,
-      "followTarget": false,
-      "sortingLayer": "VFX",
-      "sortingOrder": 20
-    },
-    {
-      "vfxKey": "vfx_hit",
-      "assetKey": "vfx_hit",
-      "lifeSec": 0.35,
-      "poolPrewarm": 16,
-      "followTarget": true,
-      "sortingLayer": "VFX",
-      "sortingOrder": 25
-    },
-    {
-      "vfxKey": "vfx_weakpoint_hit",
-      "assetKey": "vfx_weakpoint_hit",
-      "lifeSec": 0.45,
-      "poolPrewarm": 6,
+      "vfxKey": "vfx_air_interrupt",
+      "assetKey": "vfx_air_interrupt",
+      "lifeSec": 0.8,
+      "poolPrewarm": 3,
       "followTarget": true,
       "sortingLayer": "VFX",
       "sortingOrder": 30
@@ -2199,51 +2181,6 @@
       "followTarget": true,
       "sortingLayer": "VFX",
       "sortingOrder": 35
-    },
-    {
-      "vfxKey": "vfx_projectile_cut",
-      "assetKey": "vfx_projectile_cut",
-      "lifeSec": 0.5,
-      "poolPrewarm": 8,
-      "followTarget": false,
-      "sortingLayer": "VFX",
-      "sortingOrder": 30
-    },
-    {
-      "vfxKey": "vfx_bind",
-      "assetKey": "vfx_bind",
-      "lifeSec": 1.6,
-      "poolPrewarm": 3,
-      "followTarget": true,
-      "sortingLayer": "VFX",
-      "sortingOrder": 15
-    },
-    {
-      "vfxKey": "vfx_ultimate_prepare",
-      "assetKey": "vfx_ultimate_prepare",
-      "lifeSec": 1.0,
-      "poolPrewarm": 1,
-      "followTarget": false,
-      "sortingLayer": "VFX",
-      "sortingOrder": 40
-    },
-    {
-      "vfxKey": "vfx_ultimate_slash",
-      "assetKey": "vfx_ultimate_slash",
-      "lifeSec": 1.2,
-      "poolPrewarm": 1,
-      "followTarget": false,
-      "sortingLayer": "VFX",
-      "sortingOrder": 45
-    },
-    {
-      "vfxKey": "vfx_air_interrupt",
-      "assetKey": "vfx_air_interrupt",
-      "lifeSec": 0.8,
-      "poolPrewarm": 3,
-      "followTarget": true,
-      "sortingLayer": "VFX",
-      "sortingOrder": 30
     },
     {
       "vfxKey": "vfx_armor_critical",
@@ -2262,6 +2199,15 @@
       "followTarget": true,
       "sortingLayer": "VFX",
       "sortingOrder": 30
+    },
+    {
+      "vfxKey": "vfx_bind",
+      "assetKey": "vfx_bind",
+      "lifeSec": 1.6,
+      "poolPrewarm": 3,
+      "followTarget": true,
+      "sortingLayer": "VFX",
+      "sortingOrder": 15
     },
     {
       "vfxKey": "vfx_blade_echo",
@@ -2381,6 +2327,24 @@
       "sortingOrder": 30
     },
     {
+      "vfxKey": "vfx_hit",
+      "assetKey": "vfx_hit",
+      "lifeSec": 0.35,
+      "poolPrewarm": 16,
+      "followTarget": true,
+      "sortingLayer": "VFX",
+      "sortingOrder": 25
+    },
+    {
+      "vfxKey": "vfx_projectile_cut",
+      "assetKey": "vfx_projectile_cut",
+      "lifeSec": 0.5,
+      "poolPrewarm": 8,
+      "followTarget": false,
+      "sortingLayer": "VFX",
+      "sortingOrder": 30
+    },
+    {
       "vfxKey": "vfx_puppet_bolt",
       "assetKey": "vfx_puppet_bolt",
       "lifeSec": 0.8,
@@ -2433,6 +2397,15 @@
       "followTarget": true,
       "sortingLayer": "VFX",
       "sortingOrder": 30
+    },
+    {
+      "vfxKey": "vfx_slash",
+      "assetKey": "vfx_slash",
+      "lifeSec": 0.3,
+      "poolPrewarm": 12,
+      "followTarget": false,
+      "sortingLayer": "VFX",
+      "sortingOrder": 20
     },
     {
       "vfxKey": "vfx_slow",
@@ -2489,10 +2462,37 @@
       "sortingOrder": 30
     },
     {
+      "vfxKey": "vfx_ultimate_prepare",
+      "assetKey": "vfx_ultimate_prepare",
+      "lifeSec": 1.0,
+      "poolPrewarm": 1,
+      "followTarget": false,
+      "sortingLayer": "VFX",
+      "sortingOrder": 40
+    },
+    {
+      "vfxKey": "vfx_ultimate_slash",
+      "assetKey": "vfx_ultimate_slash",
+      "lifeSec": 1.2,
+      "poolPrewarm": 1,
+      "followTarget": false,
+      "sortingLayer": "VFX",
+      "sortingOrder": 45
+    },
+    {
       "vfxKey": "vfx_vulnerable",
       "assetKey": "vfx_vulnerable",
       "lifeSec": 0.8,
       "poolPrewarm": 3,
+      "followTarget": true,
+      "sortingLayer": "VFX",
+      "sortingOrder": 30
+    },
+    {
+      "vfxKey": "vfx_weakpoint_hit",
+      "assetKey": "vfx_weakpoint_hit",
+      "lifeSec": 0.45,
+      "poolPrewarm": 6,
       "followTarget": true,
       "sortingLayer": "VFX",
       "sortingOrder": 30
@@ -2508,104 +2508,6 @@
     }
   ],
   "assetManifest": [
-    {
-      "assetKey": "char_moyan_idle",
-      "assetType": "Sprite",
-      "addressOrPath": "Assets/_Game/Art/Characters/Moyan/moyan_idle.png",
-      "requiredInMvp": true,
-      "notes": "PSD导出静态主角"
-    },
-    {
-      "assetKey": "enemy_fire_fish",
-      "assetType": "Sprite",
-      "addressOrPath": "Assets/_Game/Art/Enemies/fire_fish.png",
-      "requiredInMvp": true,
-      "notes": "PSD导出"
-    },
-    {
-      "assetKey": "enemy_wheel_zombie",
-      "assetType": "Sprite",
-      "addressOrPath": "Assets/_Game/Art/Enemies/wheel_zombie.png",
-      "requiredInMvp": true,
-      "notes": "确认来源授权"
-    },
-    {
-      "assetKey": "enemy_stone_turtle",
-      "assetType": "Sprite",
-      "addressOrPath": "Assets/_Game/Art/Enemies/stone_turtle.png",
-      "requiredInMvp": true,
-      "notes": "PSD导出"
-    },
-    {
-      "assetKey": "enemy_skeleton_ghost",
-      "assetType": "Sprite",
-      "addressOrPath": "Assets/_Game/Art/Enemies/skeleton_ghost.png",
-      "requiredInMvp": true,
-      "notes": "PSD导出"
-    },
-    {
-      "assetKey": "enemy_talisman_bat",
-      "assetType": "Sprite",
-      "addressOrPath": "Assets/_Game/Art/Enemies/talisman_bat.png",
-      "requiredInMvp": true,
-      "notes": "PSD导出"
-    },
-    {
-      "assetKey": "enemy_soul_puppet",
-      "assetType": "Prefab",
-      "addressOrPath": "Assets/_Game/Prefabs/Actors/EnemySoulPuppet.prefab",
-      "requiredInMvp": true,
-      "notes": "需要新制"
-    },
-    {
-      "assetKey": "boss_tomb_armor_king",
-      "assetType": "Prefab",
-      "addressOrPath": "Assets/_Game/Prefabs/Actors/BossTombArmorKing.prefab",
-      "requiredInMvp": true,
-      "notes": "需要新制"
-    },
-    {
-      "assetKey": "bg_red_cave",
-      "assetType": "Sprite",
-      "addressOrPath": "Assets/_Game/Art/Backgrounds/bg_red_cave.png",
-      "requiredInMvp": true,
-      "notes": "PSD当前背景"
-    },
-    {
-      "assetKey": "bg_red_cave_boss",
-      "assetType": "Sprite",
-      "addressOrPath": "Assets/_Game/Art/Backgrounds/bg_red_cave_boss.png",
-      "requiredInMvp": true,
-      "notes": "Boss版变体"
-    },
-    {
-      "assetKey": "scene_battle",
-      "assetType": "Scene",
-      "addressOrPath": "Assets/_Game/Scenes/Battle.unity",
-      "requiredInMvp": true,
-      "notes": "通用战斗场景"
-    },
-    {
-      "assetKey": "icon_stance_blade",
-      "assetType": "Sprite",
-      "addressOrPath": "Assets/_Game/Art/UI/icon_stance_blade.png",
-      "requiredInMvp": true,
-      "notes": "需要整理"
-    },
-    {
-      "assetKey": "icon_stance_talisman",
-      "assetType": "Sprite",
-      "addressOrPath": "Assets/_Game/Art/UI/icon_stance_talisman.png",
-      "requiredInMvp": true,
-      "notes": "需要整理"
-    },
-    {
-      "assetKey": "icon_skill_ultimate",
-      "assetType": "Sprite",
-      "addressOrPath": "Assets/_Game/Art/UI/icon_skill_ultimate.png",
-      "requiredInMvp": true,
-      "notes": "PSD按钮可作参考"
-    },
     {
       "assetKey": "audio_bgm_boss",
       "assetType": "AudioClip",
@@ -2726,6 +2628,76 @@
       "notes": "模板占位路径，导入资源后更新"
     },
     {
+      "assetKey": "bg_red_cave",
+      "assetType": "Sprite",
+      "addressOrPath": "Assets/_Game/Art/Backgrounds/bg_red_cave.png",
+      "requiredInMvp": true,
+      "notes": "PSD当前背景"
+    },
+    {
+      "assetKey": "bg_red_cave_boss",
+      "assetType": "Sprite",
+      "addressOrPath": "Assets/_Game/Art/Backgrounds/bg_red_cave_boss.png",
+      "requiredInMvp": true,
+      "notes": "Boss版变体"
+    },
+    {
+      "assetKey": "boss_tomb_armor_king",
+      "assetType": "Prefab",
+      "addressOrPath": "Assets/_Game/Prefabs/Actors/BossTombArmorKing.prefab",
+      "requiredInMvp": true,
+      "notes": "需要新制"
+    },
+    {
+      "assetKey": "char_moyan_idle",
+      "assetType": "Sprite",
+      "addressOrPath": "Assets/_Game/Art/Characters/Moyan/moyan_idle.png",
+      "requiredInMvp": true,
+      "notes": "PSD导出静态主角"
+    },
+    {
+      "assetKey": "enemy_fire_fish",
+      "assetType": "Sprite",
+      "addressOrPath": "Assets/_Game/Art/Enemies/fire_fish.png",
+      "requiredInMvp": true,
+      "notes": "PSD导出"
+    },
+    {
+      "assetKey": "enemy_skeleton_ghost",
+      "assetType": "Sprite",
+      "addressOrPath": "Assets/_Game/Art/Enemies/skeleton_ghost.png",
+      "requiredInMvp": true,
+      "notes": "PSD导出"
+    },
+    {
+      "assetKey": "enemy_soul_puppet",
+      "assetType": "Prefab",
+      "addressOrPath": "Assets/_Game/Prefabs/Actors/EnemySoulPuppet.prefab",
+      "requiredInMvp": true,
+      "notes": "需要新制"
+    },
+    {
+      "assetKey": "enemy_stone_turtle",
+      "assetType": "Sprite",
+      "addressOrPath": "Assets/_Game/Art/Enemies/stone_turtle.png",
+      "requiredInMvp": true,
+      "notes": "PSD导出"
+    },
+    {
+      "assetKey": "enemy_talisman_bat",
+      "assetType": "Sprite",
+      "addressOrPath": "Assets/_Game/Art/Enemies/talisman_bat.png",
+      "requiredInMvp": true,
+      "notes": "PSD导出"
+    },
+    {
+      "assetKey": "enemy_wheel_zombie",
+      "assetType": "Sprite",
+      "addressOrPath": "Assets/_Game/Art/Enemies/wheel_zombie.png",
+      "requiredInMvp": true,
+      "notes": "确认来源授权"
+    },
+    {
       "assetKey": "icon_skill_blade_echo",
       "assetType": "Sprite",
       "addressOrPath": "Assets/_Game/Art/Sprites/icon_skill_blade_echo.png",
@@ -2738,6 +2710,27 @@
       "addressOrPath": "Assets/_Game/Art/Sprites/icon_skill_talisman_bind.png",
       "requiredInMvp": true,
       "notes": "模板占位路径，导入资源后更新"
+    },
+    {
+      "assetKey": "icon_skill_ultimate",
+      "assetType": "Sprite",
+      "addressOrPath": "Assets/_Game/Art/UI/icon_skill_ultimate.png",
+      "requiredInMvp": true,
+      "notes": "PSD按钮可作参考"
+    },
+    {
+      "assetKey": "icon_stance_blade",
+      "assetType": "Sprite",
+      "addressOrPath": "Assets/_Game/Art/UI/icon_stance_blade.png",
+      "requiredInMvp": true,
+      "notes": "需要整理"
+    },
+    {
+      "assetKey": "icon_stance_talisman",
+      "assetType": "Sprite",
+      "addressOrPath": "Assets/_Game/Art/UI/icon_stance_talisman.png",
+      "requiredInMvp": true,
+      "notes": "需要整理"
     },
     {
       "assetKey": "proj_ghost_fire",
@@ -2773,6 +2766,13 @@
       "addressOrPath": "Assets/_Game/Art/Sprites/proj_soul_shard.png",
       "requiredInMvp": true,
       "notes": "模板占位路径，导入资源后更新"
+    },
+    {
+      "assetKey": "scene_battle",
+      "assetType": "Scene",
+      "addressOrPath": "Assets/_Game/Scenes/Battle.unity",
+      "requiredInMvp": true,
+      "notes": "通用战斗场景"
     },
     {
       "assetKey": "vfx_air_interrupt",
@@ -3043,111 +3043,45 @@
   ],
   "enums": [
     {
-      "enumType": "GestureType",
-      "value": "Any",
-      "displayName": "Any",
+      "enumType": "AssetType",
+      "value": "AnimationClip",
+      "displayName": "AnimationClip",
       "description": "代码与配置共享的稳定枚举值"
     },
     {
-      "enumType": "GestureType",
-      "value": "Horizontal",
-      "displayName": "Horizontal",
+      "enumType": "AssetType",
+      "value": "AudioClip",
+      "displayName": "AudioClip",
       "description": "代码与配置共享的稳定枚举值"
     },
     {
-      "enumType": "GestureType",
-      "value": "Vertical",
-      "displayName": "Vertical",
+      "enumType": "AssetType",
+      "value": "Font",
+      "displayName": "Font",
       "description": "代码与配置共享的稳定枚举值"
     },
     {
-      "enumType": "GestureType",
-      "value": "Diagonal",
-      "displayName": "Diagonal",
+      "enumType": "AssetType",
+      "value": "Material",
+      "displayName": "Material",
       "description": "代码与配置共享的稳定枚举值"
     },
     {
-      "enumType": "GestureType",
-      "value": "Arc",
-      "displayName": "Arc",
+      "enumType": "AssetType",
+      "value": "Prefab",
+      "displayName": "Prefab",
       "description": "代码与配置共享的稳定枚举值"
     },
     {
-      "enumType": "GestureType",
-      "value": "Circle",
-      "displayName": "Circle",
+      "enumType": "AssetType",
+      "value": "Scene",
+      "displayName": "Scene",
       "description": "代码与配置共享的稳定枚举值"
     },
     {
-      "enumType": "GestureType",
-      "value": "Charged",
-      "displayName": "Charged",
-      "description": "代码与配置共享的稳定枚举值"
-    },
-    {
-      "enumType": "EnemyTier",
-      "value": "Normal",
-      "displayName": "Normal",
-      "description": "代码与配置共享的稳定枚举值"
-    },
-    {
-      "enumType": "EnemyTier",
-      "value": "Elite",
-      "displayName": "Elite",
-      "description": "代码与配置共享的稳定枚举值"
-    },
-    {
-      "enumType": "EnemyTier",
-      "value": "Boss",
-      "displayName": "Boss",
-      "description": "代码与配置共享的稳定枚举值"
-    },
-    {
-      "enumType": "StanceVulnerability",
-      "value": "Any",
-      "displayName": "Any",
-      "description": "代码与配置共享的稳定枚举值"
-    },
-    {
-      "enumType": "StanceVulnerability",
-      "value": "Blade",
-      "displayName": "Blade",
-      "description": "代码与配置共享的稳定枚举值"
-    },
-    {
-      "enumType": "StanceVulnerability",
-      "value": "Talisman",
-      "displayName": "Talisman",
-      "description": "代码与配置共享的稳定枚举值"
-    },
-    {
-      "enumType": "MovePatternType",
-      "value": "Linear",
-      "displayName": "Linear",
-      "description": "代码与配置共享的稳定枚举值"
-    },
-    {
-      "enumType": "MovePatternType",
-      "value": "Sine",
-      "displayName": "Sine",
-      "description": "代码与配置共享的稳定枚举值"
-    },
-    {
-      "enumType": "MovePatternType",
-      "value": "Dive",
-      "displayName": "Dive",
-      "description": "代码与配置共享的稳定枚举值"
-    },
-    {
-      "enumType": "MovePatternType",
-      "value": "Hover",
-      "displayName": "Hover",
-      "description": "代码与配置共享的稳定枚举值"
-    },
-    {
-      "enumType": "MovePatternType",
-      "value": "Boss",
-      "displayName": "Boss",
+      "enumType": "AssetType",
+      "value": "Sprite",
+      "displayName": "Sprite",
       "description": "代码与配置共享的稳定枚举值"
     },
     {
@@ -3164,230 +3098,14 @@
     },
     {
       "enumType": "AttackTriggerType",
-      "value": "Support",
-      "displayName": "Support",
-      "description": "代码与配置共享的稳定枚举值"
-    },
-    {
-      "enumType": "AttackTriggerType",
       "value": "HpThreshold",
       "displayName": "HpThreshold",
       "description": "代码与配置共享的稳定枚举值"
     },
     {
-      "enumType": "BuffType",
-      "value": "Slow",
-      "displayName": "Slow",
-      "description": "代码与配置共享的稳定枚举值"
-    },
-    {
-      "enumType": "BuffType",
-      "value": "Stun",
-      "displayName": "Stun",
-      "description": "代码与配置共享的稳定枚举值"
-    },
-    {
-      "enumType": "BuffType",
-      "value": "DamageOverTime",
-      "displayName": "DamageOverTime",
-      "description": "代码与配置共享的稳定枚举值"
-    },
-    {
-      "enumType": "BuffType",
-      "value": "Root",
-      "displayName": "Root",
-      "description": "代码与配置共享的稳定枚举值"
-    },
-    {
-      "enumType": "BuffType",
-      "value": "DamageTaken",
-      "displayName": "DamageTaken",
-      "description": "代码与配置共享的稳定枚举值"
-    },
-    {
-      "enumType": "BuffRefreshPolicy",
-      "value": "Refresh",
-      "displayName": "Refresh",
-      "description": "代码与配置共享的稳定枚举值"
-    },
-    {
-      "enumType": "BuffRefreshPolicy",
-      "value": "Replace",
-      "displayName": "Replace",
-      "description": "代码与配置共享的稳定枚举值"
-    },
-    {
-      "enumType": "BuffRefreshPolicy",
-      "value": "AddStack",
-      "displayName": "AddStack",
-      "description": "代码与配置共享的稳定枚举值"
-    },
-    {
-      "enumType": "SkillTriggerType",
-      "value": "Passive",
-      "displayName": "Passive",
-      "description": "代码与配置共享的稳定枚举值"
-    },
-    {
-      "enumType": "SkillTriggerType",
-      "value": "Gesture",
-      "displayName": "Gesture",
-      "description": "代码与配置共享的稳定枚举值"
-    },
-    {
-      "enumType": "SkillTriggerType",
-      "value": "Ultimate",
-      "displayName": "Ultimate",
-      "description": "代码与配置共享的稳定枚举值"
-    },
-    {
-      "enumType": "WaveStartTrigger",
-      "value": "LevelStart",
-      "displayName": "LevelStart",
-      "description": "代码与配置共享的稳定枚举值"
-    },
-    {
-      "enumType": "WaveStartTrigger",
-      "value": "PreviousWaveEnd",
-      "displayName": "PreviousWaveEnd",
-      "description": "代码与配置共享的稳定枚举值"
-    },
-    {
-      "enumType": "WaveStartTrigger",
-      "value": "PlayerConfirmed",
-      "displayName": "PlayerConfirmed",
-      "description": "代码与配置共享的稳定枚举值"
-    },
-    {
-      "enumType": "WaveStartTrigger",
-      "value": "TimeElapsed",
-      "displayName": "TimeElapsed",
-      "description": "代码与配置共享的稳定枚举值"
-    },
-    {
-      "enumType": "WaveEndCondition",
-      "value": "AllEnemiesDefeated",
-      "displayName": "AllEnemiesDefeated",
-      "description": "代码与配置共享的稳定枚举值"
-    },
-    {
-      "enumType": "WaveEndCondition",
-      "value": "BossDefeated",
-      "displayName": "BossDefeated",
-      "description": "代码与配置共享的稳定枚举值"
-    },
-    {
-      "enumType": "WaveEndCondition",
-      "value": "TimeElapsed",
-      "displayName": "TimeElapsed",
-      "description": "代码与配置共享的稳定枚举值"
-    },
-    {
-      "enumType": "WaveEndCondition",
-      "value": "PlayerConfirmed",
-      "displayName": "PlayerConfirmed",
-      "description": "代码与配置共享的稳定枚举值"
-    },
-    {
-      "enumType": "SpawnPattern",
-      "value": "Single",
-      "displayName": "Single",
-      "description": "代码与配置共享的稳定枚举值"
-    },
-    {
-      "enumType": "SpawnPattern",
-      "value": "Line",
-      "displayName": "Line",
-      "description": "代码与配置共享的稳定枚举值"
-    },
-    {
-      "enumType": "SpawnPattern",
-      "value": "Scatter",
-      "displayName": "Scatter",
-      "description": "代码与配置共享的稳定枚举值"
-    },
-    {
-      "enumType": "SpawnPattern",
-      "value": "Stagger",
-      "displayName": "Stagger",
-      "description": "代码与配置共享的稳定枚举值"
-    },
-    {
-      "enumType": "RewardCondition",
-      "value": "Clear",
-      "displayName": "Clear",
-      "description": "代码与配置共享的稳定枚举值"
-    },
-    {
-      "enumType": "RewardCondition",
-      "value": "StarAtLeast",
-      "displayName": "StarAtLeast",
-      "description": "代码与配置共享的稳定枚举值"
-    },
-    {
-      "enumType": "RewardCondition",
-      "value": "ScoreAtLeast",
-      "displayName": "ScoreAtLeast",
-      "description": "代码与配置共享的稳定枚举值"
-    },
-    {
-      "enumType": "RewardType",
-      "value": "UnlockLevel",
-      "displayName": "UnlockLevel",
-      "description": "代码与配置共享的稳定枚举值"
-    },
-    {
-      "enumType": "RewardType",
-      "value": "UnlockFeature",
-      "displayName": "UnlockFeature",
-      "description": "代码与配置共享的稳定枚举值"
-    },
-    {
-      "enumType": "RewardType",
-      "value": "ScoreToken",
-      "displayName": "ScoreToken",
-      "description": "代码与配置共享的稳定枚举值"
-    },
-    {
-      "enumType": "AssetType",
-      "value": "Sprite",
-      "displayName": "Sprite",
-      "description": "代码与配置共享的稳定枚举值"
-    },
-    {
-      "enumType": "AssetType",
-      "value": "Prefab",
-      "displayName": "Prefab",
-      "description": "代码与配置共享的稳定枚举值"
-    },
-    {
-      "enumType": "AssetType",
-      "value": "AudioClip",
-      "displayName": "AudioClip",
-      "description": "代码与配置共享的稳定枚举值"
-    },
-    {
-      "enumType": "AssetType",
-      "value": "Scene",
-      "displayName": "Scene",
-      "description": "代码与配置共享的稳定枚举值"
-    },
-    {
-      "enumType": "AssetType",
-      "value": "Material",
-      "displayName": "Material",
-      "description": "代码与配置共享的稳定枚举值"
-    },
-    {
-      "enumType": "AssetType",
-      "value": "Font",
-      "displayName": "Font",
-      "description": "代码与配置共享的稳定枚举值"
-    },
-    {
-      "enumType": "AssetType",
-      "value": "AnimationClip",
-      "displayName": "AnimationClip",
+      "enumType": "AttackTriggerType",
+      "value": "Support",
+      "displayName": "Support",
       "description": "代码与配置共享的稳定枚举值"
     },
     {
@@ -3409,9 +3127,51 @@
       "description": "代码与配置共享的稳定枚举值"
     },
     {
-      "enumType": "EffectType",
-      "value": "Damage",
-      "displayName": "Damage",
+      "enumType": "BuffRefreshPolicy",
+      "value": "AddStack",
+      "displayName": "AddStack",
+      "description": "代码与配置共享的稳定枚举值"
+    },
+    {
+      "enumType": "BuffRefreshPolicy",
+      "value": "Refresh",
+      "displayName": "Refresh",
+      "description": "代码与配置共享的稳定枚举值"
+    },
+    {
+      "enumType": "BuffRefreshPolicy",
+      "value": "Replace",
+      "displayName": "Replace",
+      "description": "代码与配置共享的稳定枚举值"
+    },
+    {
+      "enumType": "BuffType",
+      "value": "DamageOverTime",
+      "displayName": "DamageOverTime",
+      "description": "代码与配置共享的稳定枚举值"
+    },
+    {
+      "enumType": "BuffType",
+      "value": "DamageTaken",
+      "displayName": "DamageTaken",
+      "description": "代码与配置共享的稳定枚举值"
+    },
+    {
+      "enumType": "BuffType",
+      "value": "Root",
+      "displayName": "Root",
+      "description": "代码与配置共享的稳定枚举值"
+    },
+    {
+      "enumType": "BuffType",
+      "value": "Slow",
+      "displayName": "Slow",
+      "description": "代码与配置共享的稳定枚举值"
+    },
+    {
+      "enumType": "BuffType",
+      "value": "Stun",
+      "displayName": "Stun",
       "description": "代码与配置共享的稳定枚举值"
     },
     {
@@ -3422,14 +3182,44 @@
     },
     {
       "enumType": "EffectType",
-      "value": "RemoveArmor",
-      "displayName": "RemoveArmor",
+      "value": "Damage",
+      "displayName": "Damage",
+      "description": "代码与配置共享的稳定枚举值"
+    },
+    {
+      "enumType": "EffectType",
+      "value": "DamageMultiplier",
+      "displayName": "DamageMultiplier",
+      "description": "代码与配置共享的稳定枚举值"
+    },
+    {
+      "enumType": "EffectType",
+      "value": "ExecuteBelowHpRatio",
+      "displayName": "ExecuteBelowHpRatio",
+      "description": "代码与配置共享的稳定枚举值"
+    },
+    {
+      "enumType": "EffectType",
+      "value": "IncrementCounter",
+      "displayName": "IncrementCounter",
       "description": "代码与配置共享的稳定枚举值"
     },
     {
       "enumType": "EffectType",
       "value": "Knockback",
       "displayName": "Knockback",
+      "description": "代码与配置共享的稳定枚举值"
+    },
+    {
+      "enumType": "EffectType",
+      "value": "PlayVfx",
+      "displayName": "PlayVfx",
+      "description": "代码与配置共享的稳定枚举值"
+    },
+    {
+      "enumType": "EffectType",
+      "value": "RemoveArmor",
+      "displayName": "RemoveArmor",
       "description": "代码与配置共享的稳定枚举值"
     },
     {
@@ -3445,111 +3235,159 @@
       "description": "代码与配置共享的稳定枚举值"
     },
     {
-      "enumType": "EffectType",
-      "value": "ExecuteBelowHpRatio",
-      "displayName": "ExecuteBelowHpRatio",
-      "description": "代码与配置共享的稳定枚举值"
-    },
-    {
-      "enumType": "EffectType",
-      "value": "DamageMultiplier",
-      "displayName": "DamageMultiplier",
-      "description": "代码与配置共享的稳定枚举值"
-    },
-    {
-      "enumType": "EffectType",
-      "value": "IncrementCounter",
-      "displayName": "IncrementCounter",
-      "description": "代码与配置共享的稳定枚举值"
-    },
-    {
-      "enumType": "TargetType",
-      "value": "Target",
-      "displayName": "Target",
-      "description": "代码与配置共享的稳定枚举值"
-    },
-    {
-      "enumType": "TargetType",
-      "value": "NextStroke",
-      "displayName": "NextStroke",
-      "description": "代码与配置共享的稳定枚举值"
-    },
-    {
-      "enumType": "TargetType",
-      "value": "EnemiesInRadius",
-      "displayName": "EnemiesInRadius",
-      "description": "代码与配置共享的稳定枚举值"
-    },
-    {
-      "enumType": "TargetType",
-      "value": "LastStrokeTargets",
-      "displayName": "LastStrokeTargets",
-      "description": "代码与配置共享的稳定枚举值"
-    },
-    {
-      "enumType": "TargetType",
-      "value": "EnemiesInsideGesture",
-      "displayName": "EnemiesInsideGesture",
-      "description": "代码与配置共享的稳定枚举值"
-    },
-    {
-      "enumType": "TargetType",
-      "value": "Battle",
-      "displayName": "Battle",
-      "description": "代码与配置共享的稳定枚举值"
-    },
-    {
-      "enumType": "TargetType",
-      "value": "AllEnemies",
-      "displayName": "AllEnemies",
-      "description": "代码与配置共享的稳定枚举值"
-    },
-    {
-      "enumType": "TargetType",
-      "value": "NormalEnemies",
-      "displayName": "NormalEnemies",
-      "description": "代码与配置共享的稳定枚举值"
-    },
-    {
-      "enumType": "TargetType",
+      "enumType": "EnemyTier",
       "value": "Boss",
       "displayName": "Boss",
       "description": "代码与配置共享的稳定枚举值"
     },
     {
-      "enumType": "EffectType",
-      "value": "PlayVfx",
-      "displayName": "PlayVfx",
+      "enumType": "EnemyTier",
+      "value": "Elite",
+      "displayName": "Elite",
       "description": "代码与配置共享的稳定枚举值"
     },
     {
-      "enumType": "ValueType",
-      "value": "int",
-      "displayName": "int",
+      "enumType": "EnemyTier",
+      "value": "Normal",
+      "displayName": "Normal",
       "description": "代码与配置共享的稳定枚举值"
     },
     {
-      "enumType": "ValueType",
-      "value": "float",
-      "displayName": "float",
+      "enumType": "Facing",
+      "value": "Left",
+      "displayName": "Left",
       "description": "代码与配置共享的稳定枚举值"
     },
     {
-      "enumType": "ValueType",
-      "value": "string",
-      "displayName": "string",
+      "enumType": "Facing",
+      "value": "Right",
+      "displayName": "Right",
       "description": "代码与配置共享的稳定枚举值"
     },
     {
-      "enumType": "ValueType",
-      "value": "bool",
-      "displayName": "bool",
+      "enumType": "GestureType",
+      "value": "Any",
+      "displayName": "Any",
       "description": "代码与配置共享的稳定枚举值"
     },
     {
-      "enumType": "SpawnLane",
-      "value": "Ground",
-      "displayName": "Ground",
+      "enumType": "GestureType",
+      "value": "Arc",
+      "displayName": "Arc",
+      "description": "代码与配置共享的稳定枚举值"
+    },
+    {
+      "enumType": "GestureType",
+      "value": "Charged",
+      "displayName": "Charged",
+      "description": "代码与配置共享的稳定枚举值"
+    },
+    {
+      "enumType": "GestureType",
+      "value": "Circle",
+      "displayName": "Circle",
+      "description": "代码与配置共享的稳定枚举值"
+    },
+    {
+      "enumType": "GestureType",
+      "value": "Diagonal",
+      "displayName": "Diagonal",
+      "description": "代码与配置共享的稳定枚举值"
+    },
+    {
+      "enumType": "GestureType",
+      "value": "Horizontal",
+      "displayName": "Horizontal",
+      "description": "代码与配置共享的稳定枚举值"
+    },
+    {
+      "enumType": "GestureType",
+      "value": "Vertical",
+      "displayName": "Vertical",
+      "description": "代码与配置共享的稳定枚举值"
+    },
+    {
+      "enumType": "MovePatternType",
+      "value": "Boss",
+      "displayName": "Boss",
+      "description": "代码与配置共享的稳定枚举值"
+    },
+    {
+      "enumType": "MovePatternType",
+      "value": "Dive",
+      "displayName": "Dive",
+      "description": "代码与配置共享的稳定枚举值"
+    },
+    {
+      "enumType": "MovePatternType",
+      "value": "Hover",
+      "displayName": "Hover",
+      "description": "代码与配置共享的稳定枚举值"
+    },
+    {
+      "enumType": "MovePatternType",
+      "value": "Linear",
+      "displayName": "Linear",
+      "description": "代码与配置共享的稳定枚举值"
+    },
+    {
+      "enumType": "MovePatternType",
+      "value": "Sine",
+      "displayName": "Sine",
+      "description": "代码与配置共享的稳定枚举值"
+    },
+    {
+      "enumType": "RewardCondition",
+      "value": "Clear",
+      "displayName": "Clear",
+      "description": "代码与配置共享的稳定枚举值"
+    },
+    {
+      "enumType": "RewardCondition",
+      "value": "ScoreAtLeast",
+      "displayName": "ScoreAtLeast",
+      "description": "代码与配置共享的稳定枚举值"
+    },
+    {
+      "enumType": "RewardCondition",
+      "value": "StarAtLeast",
+      "displayName": "StarAtLeast",
+      "description": "代码与配置共享的稳定枚举值"
+    },
+    {
+      "enumType": "RewardType",
+      "value": "ScoreToken",
+      "displayName": "ScoreToken",
+      "description": "代码与配置共享的稳定枚举值"
+    },
+    {
+      "enumType": "RewardType",
+      "value": "UnlockFeature",
+      "displayName": "UnlockFeature",
+      "description": "代码与配置共享的稳定枚举值"
+    },
+    {
+      "enumType": "RewardType",
+      "value": "UnlockLevel",
+      "displayName": "UnlockLevel",
+      "description": "代码与配置共享的稳定枚举值"
+    },
+    {
+      "enumType": "SkillTriggerType",
+      "value": "Gesture",
+      "displayName": "Gesture",
+      "description": "代码与配置共享的稳定枚举值"
+    },
+    {
+      "enumType": "SkillTriggerType",
+      "value": "Passive",
+      "displayName": "Passive",
+      "description": "代码与配置共享的稳定枚举值"
+    },
+    {
+      "enumType": "SkillTriggerType",
+      "value": "Ultimate",
+      "displayName": "Ultimate",
       "description": "代码与配置共享的稳定枚举值"
     },
     {
@@ -3565,15 +3403,177 @@
       "description": "代码与配置共享的稳定枚举值"
     },
     {
-      "enumType": "Facing",
-      "value": "Left",
-      "displayName": "Left",
+      "enumType": "SpawnLane",
+      "value": "Ground",
+      "displayName": "Ground",
       "description": "代码与配置共享的稳定枚举值"
     },
     {
-      "enumType": "Facing",
-      "value": "Right",
-      "displayName": "Right",
+      "enumType": "SpawnPattern",
+      "value": "Line",
+      "displayName": "Line",
+      "description": "代码与配置共享的稳定枚举值"
+    },
+    {
+      "enumType": "SpawnPattern",
+      "value": "Scatter",
+      "displayName": "Scatter",
+      "description": "代码与配置共享的稳定枚举值"
+    },
+    {
+      "enumType": "SpawnPattern",
+      "value": "Single",
+      "displayName": "Single",
+      "description": "代码与配置共享的稳定枚举值"
+    },
+    {
+      "enumType": "SpawnPattern",
+      "value": "Stagger",
+      "displayName": "Stagger",
+      "description": "代码与配置共享的稳定枚举值"
+    },
+    {
+      "enumType": "StanceVulnerability",
+      "value": "Any",
+      "displayName": "Any",
+      "description": "代码与配置共享的稳定枚举值"
+    },
+    {
+      "enumType": "StanceVulnerability",
+      "value": "Blade",
+      "displayName": "Blade",
+      "description": "代码与配置共享的稳定枚举值"
+    },
+    {
+      "enumType": "StanceVulnerability",
+      "value": "Talisman",
+      "displayName": "Talisman",
+      "description": "代码与配置共享的稳定枚举值"
+    },
+    {
+      "enumType": "TargetType",
+      "value": "AllEnemies",
+      "displayName": "AllEnemies",
+      "description": "代码与配置共享的稳定枚举值"
+    },
+    {
+      "enumType": "TargetType",
+      "value": "Battle",
+      "displayName": "Battle",
+      "description": "代码与配置共享的稳定枚举值"
+    },
+    {
+      "enumType": "TargetType",
+      "value": "Boss",
+      "displayName": "Boss",
+      "description": "代码与配置共享的稳定枚举值"
+    },
+    {
+      "enumType": "TargetType",
+      "value": "EnemiesInRadius",
+      "displayName": "EnemiesInRadius",
+      "description": "代码与配置共享的稳定枚举值"
+    },
+    {
+      "enumType": "TargetType",
+      "value": "EnemiesInsideGesture",
+      "displayName": "EnemiesInsideGesture",
+      "description": "代码与配置共享的稳定枚举值"
+    },
+    {
+      "enumType": "TargetType",
+      "value": "LastStrokeTargets",
+      "displayName": "LastStrokeTargets",
+      "description": "代码与配置共享的稳定枚举值"
+    },
+    {
+      "enumType": "TargetType",
+      "value": "NextStroke",
+      "displayName": "NextStroke",
+      "description": "代码与配置共享的稳定枚举值"
+    },
+    {
+      "enumType": "TargetType",
+      "value": "NormalEnemies",
+      "displayName": "NormalEnemies",
+      "description": "代码与配置共享的稳定枚举值"
+    },
+    {
+      "enumType": "TargetType",
+      "value": "Target",
+      "displayName": "Target",
+      "description": "代码与配置共享的稳定枚举值"
+    },
+    {
+      "enumType": "ValueType",
+      "value": "bool",
+      "displayName": "bool",
+      "description": "代码与配置共享的稳定枚举值"
+    },
+    {
+      "enumType": "ValueType",
+      "value": "float",
+      "displayName": "float",
+      "description": "代码与配置共享的稳定枚举值"
+    },
+    {
+      "enumType": "ValueType",
+      "value": "int",
+      "displayName": "int",
+      "description": "代码与配置共享的稳定枚举值"
+    },
+    {
+      "enumType": "ValueType",
+      "value": "string",
+      "displayName": "string",
+      "description": "代码与配置共享的稳定枚举值"
+    },
+    {
+      "enumType": "WaveEndCondition",
+      "value": "AllEnemiesDefeated",
+      "displayName": "AllEnemiesDefeated",
+      "description": "代码与配置共享的稳定枚举值"
+    },
+    {
+      "enumType": "WaveEndCondition",
+      "value": "BossDefeated",
+      "displayName": "BossDefeated",
+      "description": "代码与配置共享的稳定枚举值"
+    },
+    {
+      "enumType": "WaveEndCondition",
+      "value": "PlayerConfirmed",
+      "displayName": "PlayerConfirmed",
+      "description": "代码与配置共享的稳定枚举值"
+    },
+    {
+      "enumType": "WaveEndCondition",
+      "value": "TimeElapsed",
+      "displayName": "TimeElapsed",
+      "description": "代码与配置共享的稳定枚举值"
+    },
+    {
+      "enumType": "WaveStartTrigger",
+      "value": "LevelStart",
+      "displayName": "LevelStart",
+      "description": "代码与配置共享的稳定枚举值"
+    },
+    {
+      "enumType": "WaveStartTrigger",
+      "value": "PlayerConfirmed",
+      "displayName": "PlayerConfirmed",
+      "description": "代码与配置共享的稳定枚举值"
+    },
+    {
+      "enumType": "WaveStartTrigger",
+      "value": "PreviousWaveEnd",
+      "displayName": "PreviousWaveEnd",
+      "description": "代码与配置共享的稳定枚举值"
+    },
+    {
+      "enumType": "WaveStartTrigger",
+      "value": "TimeElapsed",
+      "displayName": "TimeElapsed",
       "description": "代码与配置共享的稳定枚举值"
     }
   ],
@@ -3606,7 +3606,7 @@
       "sheet": "Global",
       "field": "intValue",
       "type": "int",
-      "required": "true",
+      "required": "false",
       "default": "",
       "min": null,
       "max": null,
@@ -3618,7 +3618,7 @@
       "sheet": "Global",
       "field": "floatValue",
       "type": "float",
-      "required": "true",
+      "required": "false",
       "default": "",
       "min": null,
       "max": null,
@@ -3630,7 +3630,7 @@
       "sheet": "Global",
       "field": "stringValue",
       "type": "string",
-      "required": "true",
+      "required": "false",
       "default": "",
       "min": null,
       "max": null,
@@ -3642,7 +3642,7 @@
       "sheet": "Global",
       "field": "boolValue",
       "type": "bool",
-      "required": "true",
+      "required": "false",
       "default": "",
       "min": null,
       "max": null,
@@ -4158,7 +4158,7 @@
       "sheet": "DefenseRules",
       "field": "defenseRuleId",
       "type": "string",
-      "required": "false",
+      "required": "true",
       "default": "",
       "min": null,
       "max": null,
@@ -4254,7 +4254,7 @@
       "sheet": "WeakpointRules",
       "field": "weakpointRuleId",
       "type": "string",
-      "required": "false",
+      "required": "true",
       "default": "",
       "min": null,
       "max": null,
@@ -4830,7 +4830,7 @@
       "sheet": "Projectiles",
       "field": "projectileId",
       "type": "string",
-      "required": "false",
+      "required": "true",
       "default": "",
       "min": null,
       "max": null,
@@ -4962,7 +4962,7 @@
       "sheet": "Buffs",
       "field": "buffId",
       "type": "string",
-      "required": "false",
+      "required": "true",
       "default": "",
       "min": null,
       "max": null,
@@ -5202,7 +5202,7 @@
       "sheet": "SkillEffects",
       "field": "effectGroupId",
       "type": "string",
-      "required": "false",
+      "required": "true",
       "default": "",
       "min": null,
       "max": null,
@@ -5538,7 +5538,7 @@
       "sheet": "Waves",
       "field": "endCondition",
       "type": "string",
-      "required": "false",
+      "required": "true",
       "default": "",
       "min": null,
       "max": null,
@@ -6054,7 +6054,7 @@
       "sheet": "Rewards",
       "field": "conditionType",
       "type": "string",
-      "required": "false",
+      "required": "true",
       "default": "",
       "min": null,
       "max": null,
@@ -6066,7 +6066,7 @@
       "sheet": "Rewards",
       "field": "conditionValue",
       "type": "string",
-      "required": "false",
+      "required": "true",
       "default": "",
       "min": null,
       "max": null,
@@ -6270,7 +6270,7 @@
       "sheet": "AudioCues",
       "field": "audioKey",
       "type": "string",
-      "required": "false",
+      "required": "true",
       "default": "",
       "min": null,
       "max": null,
@@ -6366,7 +6366,7 @@
       "sheet": "VfxCues",
       "field": "vfxKey",
       "type": "string",
-      "required": "false",
+      "required": "true",
       "default": "",
       "min": null,
       "max": null,

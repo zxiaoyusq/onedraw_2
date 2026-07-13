@@ -1,0 +1,210 @@
+{
+  "task": "T200",
+  "scope": "read-only contract audit; not the T210 exporter or T220 production validator",
+  "status": "PASS",
+  "schemaVersion": 1,
+  "contentVersion": "0.1.1-sample",
+  "contentHash": "16b64a6f3795cfe0f16dd5f2f092a021b7ef4c07b0b15119296c9da0e22b4b1c",
+  "sheetCount": 29,
+  "formulaCellCount": 14,
+  "recordCounts": {
+    "Global": 12,
+    "Players": 1,
+    "Stances": 2,
+    "StrokeRules": 7,
+    "DamageFormulas": 3,
+    "DefenseRules": 4,
+    "WeakpointRules": 5,
+    "MovePatterns": 5,
+    "Enemies": 7,
+    "EnemyAttacks": 10,
+    "Projectiles": 5,
+    "Buffs": 5,
+    "Skills": 3,
+    "SkillEffects": 25,
+    "Levels": 3,
+    "Waves": 9,
+    "SpawnPoints": 4,
+    "EnemyModifiers": 2,
+    "Spawns": 13,
+    "BossPhases": 3,
+    "Rewards": 6,
+    "Tutorials": 7,
+    "Texts": 36,
+    "AudioCues": 17,
+    "VfxCues": 38,
+    "AssetManifest": 76,
+    "Enums": 89,
+    "FieldDictionary": 248
+  },
+  "checks": [
+    {
+      "name": "sheet_order",
+      "status": "PASS",
+      "details": "29 sheets"
+    },
+    {
+      "name": "formula_count",
+      "status": "PASS",
+      "details": "14 formula cells"
+    },
+    {
+      "name": "formula_contract",
+      "status": "PASS",
+      "details": "README formulas quoted and bounded"
+    },
+    {
+      "name": "formula_errors",
+      "status": "PASS",
+      "details": []
+    },
+    {
+      "name": "headers_vs_schema",
+      "status": "PASS",
+      "details": []
+    },
+    {
+      "name": "field_dictionary_coverage",
+      "status": "PASS",
+      "details": "248/248; "
+    },
+    {
+      "name": "field_dictionary_non_recursive",
+      "status": "PASS",
+      "details": "FieldDictionary intentionally does not describe itself"
+    },
+    {
+      "name": "field_dictionary_order",
+      "status": "PASS",
+      "details": "fixed sheet order and header order"
+    },
+    {
+      "name": "workbook_vs_sample",
+      "status": "PASS",
+      "details": []
+    },
+    {
+      "name": "sample_top_level_order",
+      "status": "PASS",
+      "details": [
+        "schemaVersion",
+        "contentVersion",
+        "contentHash",
+        "global",
+        "players",
+        "stances",
+        "strokeRules",
+        "damageFormulas",
+        "defenseRules",
+        "weakpointRules",
+        "movePatterns",
+        "enemies",
+        "enemyAttacks",
+        "projectiles",
+        "buffs",
+        "skills",
+        "skillEffects",
+        "levels",
+        "waves",
+        "spawnPoints",
+        "enemyModifiers",
+        "spawns",
+        "bossPhases",
+        "rewards",
+        "tutorials",
+        "texts",
+        "audioCues",
+        "vfxCues",
+        "assetManifest",
+        "enums",
+        "fieldDictionary"
+      ]
+    },
+    {
+      "name": "sample_export_order",
+      "status": "PASS",
+      "details": []
+    },
+    {
+      "name": "sample_vs_json_schema",
+      "status": "PASS",
+      "details": []
+    },
+    {
+      "name": "required_cells",
+      "status": "PASS",
+      "details": []
+    },
+    {
+      "name": "field_types",
+      "status": "PASS",
+      "details": []
+    },
+    {
+      "name": "declared_ranges",
+      "status": "PASS",
+      "details": []
+    },
+    {
+      "name": "trimmed_strings",
+      "status": "PASS",
+      "details": []
+    },
+    {
+      "name": "global_typed_union",
+      "status": "PASS",
+      "details": []
+    },
+    {
+      "name": "enum_references",
+      "status": "PASS",
+      "details": []
+    },
+    {
+      "name": "primary_keys",
+      "status": "PASS",
+      "details": []
+    },
+    {
+      "name": "stable_id_pattern",
+      "status": "PASS",
+      "details": []
+    },
+    {
+      "name": "wildcard_scope",
+      "status": "PASS",
+      "details": []
+    },
+    {
+      "name": "foreign_keys",
+      "status": "PASS",
+      "details": []
+    },
+    {
+      "name": "group_orders",
+      "status": "PASS",
+      "details": []
+    },
+    {
+      "name": "cross_table_semantics",
+      "status": "PASS",
+      "details": []
+    },
+    {
+      "name": "game_design_canonical_ids",
+      "status": "PASS",
+      "details": []
+    },
+    {
+      "name": "content_hash",
+      "status": "PASS",
+      "details": "declared=16b64a6f3795cfe0f16dd5f2f092a021b7ef4c07b0b15119296c9da0e22b4b1c; calculated=16b64a6f3795cfe0f16dd5f2f092a021b7ef4c07b0b15119296c9da0e22b4b1c"
+    },
+    {
+      "name": "content_metadata",
+      "status": "PASS",
+      "details": "schema=1; content=0.1.1-sample"
+    }
+  ],
+  "errors": []
+}

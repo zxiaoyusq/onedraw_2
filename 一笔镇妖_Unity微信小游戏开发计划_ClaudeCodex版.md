@@ -180,7 +180,7 @@ EnemyController
 - `enemy_skeleton_ghost`：漂浮、符架势克制。
 - `enemy_talisman_bat`：高速俯冲、斜斩打断。
 - `enemy_soul_puppet`：精英支援、护盾与符纸顺序。
-- `boss_tomb_armor_king`：符钉、方向封印、冲撞处决。
+- `boss_tomb_king`：符钉、方向封印、冲撞处决。
 
 ### 3.5 对象池
 

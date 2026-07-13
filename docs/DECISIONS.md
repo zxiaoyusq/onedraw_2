@@ -74,3 +74,14 @@
 - 理由：G3/G4需要本机之外的登录工具与设备条件，而P2配置系统到大部分玩法主链不依赖这些运行门；继续主内容可以产生有效进展，同时不伪造平台结论。
 - 限制：这是执行顺序延期，不是范围裁剪。`MVP_SCOPE`中的微信四级验证仍必须完成，T120不得改为DONE，G3/G4不得改为PASS。
 - 恢复条件：具备已登录微信开发者工具和至少一台可用手机后可恢复T120；无论设备何时到位，平台任务最迟在T640或T750开始前恢复并满足其依赖。
+
+## D-012 · T200配置契约冻结
+
+- 状态：ACCEPTED
+- 决定：`Design/Config/GameConfig.xlsx` 为唯一内容源，`config/一笔镇妖_游戏配置表模板.xlsx` 只做字节一致的同步镜像；当前冻结 schema `1` / content `0.1.1-sample`。
+- 决定：稳定ID匹配 `^[a-z][a-z0-9_]*$`；玩法权威ID采用 `lv_001_tutorial`、`lv_002_cave`、`lv_003_boss` 与 `boss_tomb_king`。文案键、奖励/教程分组键和资源键是独立命名空间，不跟随玩法ID自动改名。
+- 决定：Schema `required` 表示JSON属性存在，FieldDictionary `required` 表示Excel单元格非空；可空字符串导出为空字符串，可空数值/布尔导出为null。Global四个值列组成由valueType判别且恰好一项非空的联合。
+- 决定：普通外键使用 `Sheet.field`；分组外键校验目标组存在；`SpawnPoints.levelId="*"` 是唯一通配符；`Rewards.rewardId=conditional` 按UnlockLevel/UnlockFeature/ScoreToken分别校验关卡ID、`feature_`和`token_`命名空间。
+- 决定：contentHash对排除自身后的完整配置对象计算SHA-256，采用递归Ordinal对象键序、固定数组排序、UTF-8无BOM和紧凑JSON；生成时间不进入内容。
+- 理由：T210导出器和T220校验器需要无歧义的输入、空值、外键、排序及hash合同；先修正与GAME_DESIGN冲突的ID和字段字典必填错误，避免把初始样例缺陷固化到Runtime。
+- 限制：T200的项目内审计脚本只用于冻结证据，不是T210导出器或T220生产校验器；本决定不授权Runtime读取xlsx或Inspector保存数值。

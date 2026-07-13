@@ -1,17 +1,21 @@
 # PROGRESS
 
 - 日期：2026-07-13
-- 当前成熟度：T120 已完成 G2 微信转换，G3/G4保持阻塞并按用户决定延期；主内容链转入P2配置系统
-- 当前任务：T200
+- 当前成熟度：T200已冻结配置工作簿、字段字典、ID/外键/所有权和稳定hash契约；P2进入导出器实现
+- 当前任务：T210
 - 状态：READY
 - Unity精确版本：6000.5.1f1（已由ProjectVersion.txt与本机安装核验）
 - 微信SDK来源或版本：官方 `minigame-tuanjie-transform-sdk` v0.1.33 / commit `ed4ad28f433c6b52b5fd3f22a6fa155a0c98c228` / embedded最小补丁
 - Active Scene：Assets/_Game/Scenes/Bootstrap.unity
-- 配置版本：schema 1 / content 0.1.0-sample
+- 配置版本：schema 1 / content 0.1.1-sample / hash `16b64a6f3795cfe0f16dd5f2f092a021b7ef4c07b0b15119296c9da0e22b4b1c`
 
 ## 已完成
 
-- 执行顺序调整：用户明确要求暂时绕过T120及微信开发者工具/打包问题，先完成游戏主要内容；T120保持`BLOCKED`、T130保持`BACKLOG`，不删除MVP平台验收要求，依赖已满足的T200成为唯一`READY`任务。
+- T200：正式源固定为 `Design/Config/GameConfig.xlsx`，`config/一笔镇妖_游戏配置表模板.xlsx` 只做字节一致镜像；最终两文件SHA-256均为 `aa215a1fd5c798da97e5d21a7ab9b71b3ee1dd3f2326c424e17f023ef80ca52a`。
+- T200：按GAME_DESIGN修正关卡玩法ID为 `lv_001_tutorial`、`lv_002_cave`、`lv_003_boss`，Boss玩法ID为 `boss_tomb_king`；所有Level/Wave/Spawn/BossPhase/Reward依赖引用同步，文案键和资源键保持独立命名空间。
+- T200：FieldDictionary保留248条非递归字段记录，修正Global互斥类型列及10个主键/条件字段的必填语义；冻结Schema属性存在与Excel单元格非空的差异、空值转换、普通/分组/通配符/conditional外键和数据所有权。
+- T200：29表、14公式、248字段、Schema/样例、类型/范围/枚举、主键、外键、连续order、关卡-Boss语义和规范化contentHash的只读契约审计全部PASS；29表最终渲染经4张总览拼图复核，无结构或版式异常。
+- 执行顺序调整：用户明确要求暂时绕过T120及微信开发者工具/打包问题，先完成游戏主要内容；T120保持`BLOCKED`、T130保持`BACKLOG`，不删除MVP平台验收要求；T200已按该顺序完成，当前唯一`READY`任务为T210。
 - T120 G2：Unity `6000.5.1f1` 基于固定 embedded WXSDK 成功生成 `Builds/WeChat/T120`；84个文件、总计101,901,218字节，其中`minigame` 12,008,520字节，JSON结构、关键文件、SHA-256清单与敏感占位扫描均通过。
 - T120构建参数：空AppID、横屏、256MB、触摸启用、Development、关闭渲染线程与性能分析、清理构建，并使用SDK受支持的多线程Brotli；可复现入口为`Tools/CI/build-wechat.sh`。
 - T120 G2结论为`PASS WITH KNOWN ISSUES`：默认单线程Brotli在当前macOS Unity安装布局下引用错误路径（BUG-0005，已用配置规避）；转换含93条未匹配替换规则及6条Emscripten warning（BUG-0006），需要G3实际运行判定影响。
@@ -55,7 +59,8 @@
 5. 标准Web存在URP EASU不支持与PlayerPrefs手动同步弃用warning，见BUG-0001/BUG-0002；G1未覆盖TMP中文、后台音频恢复或真机触摸。
 6. 长Web构建后Unity MCP实例桥接未自动恢复，见BUG-0003；Unity batch测试与Web运行未受影响。
 7. PSD主角和怪物大多为单张Sprite；中文字体包体、Web内存和真机触摸延迟仍需后续验证。
+8. T200只冻结并审计配置契约；独立.NET导出器、生产级错误定位/坏配置拒绝和Runtime JSON仍分别属于T210/T220/T230，当前不得把样例JSON当成已接入游戏。
 
 ## 下一步
 
-只执行T200：审查现有`GameConfig.xlsx`、FieldDictionary、Enums、ID规则、数据所有权、外键和样例数据，使配置契约达到可供T210导出器实现的冻结基线。不开始T210，也不在该任务中恢复T120/T130。平台任务最迟在T640/T750前恢复。
+只执行T210：依据已冻结的 `docs/CONFIG_SCHEMA.md` 实现独立.NET 8配置导出器，把xlsx确定性导出为稳定JSON并完成表头与双导出字节一致测试；不提前实现T220跨表生产校验器或T230 Runtime加载，也不恢复T120/T130。平台任务最迟在T640/T750前恢复。

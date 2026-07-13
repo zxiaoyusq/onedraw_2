@@ -1,7 +1,7 @@
 project: OneStrokeDemon
 project_cn: 一笔镇妖
 plan_generated: 2026-07-11
-current_task: T200
+current_task: T210
 current_task_status: READY
 unity:
   project_root: .
@@ -21,7 +21,11 @@ config:
   source: Design/Config/GameConfig.xlsx
   generated_json: Assets/_Game/Config/Generated/gameplay_config.json
   schema_version: 1
-  content_version: 0.1.0-sample
+  content_version: 0.1.1-sample
+  content_hash: 16b64a6f3795cfe0f16dd5f2f092a021b7ef4c07b0b15119296c9da0e22b4b1c
+  workbook_sha256: aa215a1fd5c798da97e5d21a7ab9b71b3ee1dd3f2326c424e17f023ef80ca52a
+  mirror_status: byte_identical
+  contract_audit: pass
 manual_gates:
   unity_editor_smoke: pass
   standard_web_build: pass_with_known_issues
@@ -67,7 +71,7 @@ wechat_conversion:
 execution_order:
   deferred_tasks: [T120, T130]
   deferral_reason: user_prioritized_main_game_content_over_wechat_devtools_device_and_packaging_work
-  next_content_task: T200
+  next_content_task: T210
   resume_platform_before: [T640, T750]
 workflow:
   unity_test_command: Tools/CI/run-unity-tests.sh
