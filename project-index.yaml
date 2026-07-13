@@ -1,7 +1,7 @@
 project: OneStrokeDemon
 project_cn: 一笔镇妖
 plan_generated: 2026-07-11
-current_task: T360
+current_task: T370
 current_task_status: READY
 unity:
   project_root: .
@@ -22,10 +22,10 @@ config:
   generated_json: Assets/_Game/Config/Generated/gameplay_config.json
   generated_hash: Assets/_Game/Config/Generated/gameplay_config.hash
   generated_ids: Assets/_Game/Scripts/Config/Generated/ConfigIds.g.cs
-  schema_version: 1
-  content_version: 0.1.1-sample
-  content_hash: 16b64a6f3795cfe0f16dd5f2f092a021b7ef4c07b0b15119296c9da0e22b4b1c
-  workbook_sha256: aa215a1fd5c798da97e5d21a7ab9b71b3ee1dd3f2326c424e17f023ef80ca52a
+  schema_version: 2
+  content_version: 0.2.0-sample
+  content_hash: 19dc788f890f995adb94458f74894b89514f85f3bfc9429659ddd2421a72f733
+  workbook_sha256: c1c04c57a62681ecef4c912bb34cf1b075eb6a297751029cfb0b622846aedb8f
   mirror_status: byte_identical
   contract_audit: pass
   exporter:
@@ -35,15 +35,15 @@ config:
     status: pass
     test_count: 8
     exported_tables: 28
-    exported_records: 645
-    output_bytes: 168071
-    output_sha256: 91d2c312cd2caead5243ef76ee12b54dc53702dc0ba23d4d34b0726c111a066a
+    exported_records: 647
+    output_bytes: 168862
+    output_sha256: 1b7be3db87c80266ecccf48485505899d8860f9ed8a53674374baee176ea2684
     runtime_snapshot_committed: true
   validator:
     path: Tools/ConfigExporter/Validation
     status: pass
-    test_count: 54
-    invalid_case_count: 37
+    test_count: 55
+    invalid_case_count: 38
     diagnostic_location: Sheet/ExcelRow/Field
     schema_mirror_check: pass
     whole_package_rejection: true
@@ -51,14 +51,14 @@ config:
     status: pass
     json_package: com.unity.nuget.newtonsoft-json@3.2.2
     newtonsoft_version: 13.0.2
-    compatibility: schema_1_content_0_1_x
+    compatibility: schema_2_content_0_2_x
     dto_tables: 28
-    dto_fields: 248
-    loaded_records: 645
+    dto_fields: 250
+    loaded_records: 647
     readonly_primary_indexes: 270
     readonly_group_indexes: 49
-    editmode_tests: 78
-    playmode_tests: 22
+    editmode_tests: 90
+    playmode_tests: 23
     bootstrap_smoke: pass
   asset_registry:
     status: pass
@@ -79,20 +79,20 @@ config:
     default_read_only: true
     update_flag: --update
     drift_diagnostic: CFG013
-    generated_json_bytes: 168071
-    generated_json_sha256: 91d2c312cd2caead5243ef76ee12b54dc53702dc0ba23d4d34b0726c111a066a
+    generated_json_bytes: 168862
+    generated_json_sha256: 1b7be3db87c80266ecccf48485505899d8860f9ed8a53674374baee176ea2684
     generated_hash_bytes: 65
-    generated_hash_sha256: 5d591e73f67f6887452aa6cfddc4f8224a1b8d7bf167105f4420ee8275b71c7a
+    generated_hash_sha256: 45d9bf26097aff95170cb0c9145d4f2beeb751b95c1a82ec5229fd96ea52db96
     generated_ids_bytes: 23125
-    generated_ids_sha256: b5c3b1ba6b088797943e19e1545b60d399c964871719553fdf3ed7a01156b988
+    generated_ids_sha256: 2a03a0a8bc7d06104d94d534c1056e53cbb719a327295fbdf0bac763a7056515
     id_sets: 27
     id_constants: 306
-    dotnet_tests: 54
+    dotnet_tests: 55
     config_editmode_tests: 19
     config_playmode_tests: 3
-    full_editmode_tests: 72
-    full_playmode_tests: 20
-    full_command_smoke: pass
+    full_editmode_tests: 90
+    full_playmode_tests: 23
+    full_command_smoke: pass_via_static_drift_gate_plus_unity_mcp_open_editor
 input:
   status: pass
   package: com.unity.inputsystem@1.19.0
@@ -112,8 +112,8 @@ input:
   screen_dpi_dependency: false
   pointer_editmode_tests: 5
   pointer_playmode_tests: 7
-  full_editmode_tests: 72
-  full_playmode_tests: 20
+  full_editmode_tests: 90
+  full_playmode_tests: 23
   bootstrap_smoke: pass
 stroke_sampling:
   status: pass
@@ -131,8 +131,8 @@ stroke_sampling:
   completion_allocation: immutable_snapshot_only
   editmode_tests: 9
   playmode_tests: 1
-  full_editmode_tests: 72
-  full_playmode_tests: 20
+  full_editmode_tests: 90
+  full_playmode_tests: 23
 stroke_geometry:
   status: pass
   processor: StrokeGeometry.Process
@@ -148,8 +148,8 @@ stroke_geometry:
   deterministic_replay: pass
   editmode_tests: 12
   playmode_tests: 1
-  full_editmode_tests: 72
-  full_playmode_tests: 20
+  full_editmode_tests: 90
+  full_playmode_tests: 23
 gesture_classification:
   status: pass
   classifier: GestureClassifier
@@ -165,8 +165,8 @@ gesture_classification:
   deterministic_replay: pass
   editmode_tests: 14
   playmode_tests: 1
-  full_editmode_tests: 72
-  full_playmode_tests: 20
+  full_editmode_tests: 90
+  full_playmode_tests: 23
 stroke_trail:
   status: pass
   path_bridge: StrokeTrailPath
@@ -185,8 +185,52 @@ stroke_trail:
   shared_material_only: true
   managed_allocation_after_warmup: zero_for_128_show_and_reclaim_cycles
   playmode_tests: 5
-  full_editmode_tests: 72
-  full_playmode_tests: 20
+  full_editmode_tests: 90
+  full_playmode_tests: 23
+stroke_hit:
+  status: pass
+  resolver: StrokeHitResolver
+  target_contract: IHittable
+  result: immutable_HitRecord
+  geometry_source: same_StrokeGeometryData_points_reference
+  query: Physics2DStrokeHitQuery
+  segment_shape: capsule_via_circle_cast
+  config_sources: [StrokeRules.hitRadiusRefPx, Global.max_active_enemies, Global.max_active_projectiles]
+  maximum_unique_targets: 58
+  query_capacity: 117
+  ordering: [first_path_contact_asc, target_id_asc]
+  same_stroke_deduplication: target_id
+  weakpoint_aggregation: any_hitbox_true
+  target_mutation: none
+  managed_allocation_after_warmup: zero_for_128_real_physics_resolves
+  editmode_tests: 6
+  playmode_tests: 2
+  full_editmode_tests: 90
+  full_playmode_tests: 23
+combat_resolution:
+  status: pass
+  context: immutable_DamageContext
+  rules: immutable_DamageRuleSet
+  factory: DamageRuleSetFactory
+  calculator: DamageCalculator
+  combo: ComboService
+  score: ScoreService
+  random_source: injected_IRandomSource
+  formula_mapping: Stances.damageFormulaId_to_DamageFormulas.formulaId
+  damage_factors: [stance, direction, weakpoint, combo, critical]
+  score_factors: [hit, raw_damage, direction, weakpoint, combo]
+  energy_factors: [hit, direction, weakpoint, combo]
+  rounding: MidpointRounding_AwayFromZero_at_final_award
+  combo_timeout_source: Global.combo_timeout_sec
+  combo_timeout_boundary: inclusive
+  same_stroke_multi_target: increments_in_T350_hit_order
+  owns_player_energy_state: false
+  managed_allocation_after_warmup: zero_for_128_calculations
+  editmode_tests: 12
+  playmode_tests: 1
+  player_path_totals: {damage: 61, score: 521, energy: 14}
+  full_editmode_tests: 90
+  full_playmode_tests: 23
 manual_gates:
   unity_editor_smoke: pass
   standard_web_build: pass_with_known_issues
@@ -232,7 +276,7 @@ wechat_conversion:
 execution_order:
   deferred_tasks: [T120, T130]
   deferral_reason: user_prioritized_main_game_content_over_wechat_devtools_device_and_packaging_work
-  next_content_task: T360
+  next_content_task: T370
   resume_platform_before: [T640, T750]
 workflow:
   config_verify_command: Tools/CI/verify-config.sh

@@ -1,13 +1,13 @@
 {
-  "schemaVersion": 1,
-  "contentVersion": "0.1.1-sample",
-  "contentHash": "16b64a6f3795cfe0f16dd5f2f092a021b7ef4c07b0b15119296c9da0e22b4b1c",
+  "schemaVersion": 2,
+  "contentVersion": "0.2.0-sample",
+  "contentHash": "19dc788f890f995adb94458f74894b89514f85f3bfc9429659ddd2421a72f733",
   "global": [
     {
       "key": "battle_countdown_sec",
       "valueType": "float",
       "intValue": null,
-      "floatValue": 2.0,
+      "floatValue": 2,
       "stringValue": "",
       "boolValue": null,
       "unit": "sec",
@@ -26,7 +26,7 @@
     {
       "key": "config_schema_version",
       "valueType": "int",
-      "intValue": 1,
+      "intValue": 2,
       "floatValue": null,
       "stringValue": "",
       "boolValue": null,
@@ -38,7 +38,7 @@
       "valueType": "string",
       "intValue": null,
       "floatValue": null,
-      "stringValue": "0.1.1-sample",
+      "stringValue": "0.2.0-sample",
       "boolValue": null,
       "unit": "semver",
       "description": "内容版本"
@@ -140,22 +140,24 @@
     {
       "stanceId": "stance_blade",
       "displayNameKey": "text_stance_blade",
-      "damageMultiplier": 1.0,
+      "damageFormulaId": "damage_player_default",
+      "damageMultiplier": 1,
       "ghostDamageMultiplier": 0.85,
       "projectileCutMultiplier": 0.8,
       "strokeWidthRefPx": 18,
-      "switchCooldownSec": 1.0,
+      "switchCooldownSec": 1,
       "onSwitchEffectGroupId": "fx_switch_to_blade",
       "assetKey": "icon_stance_blade"
     },
     {
       "stanceId": "stance_talisman",
       "displayNameKey": "text_stance_talisman",
+      "damageFormulaId": "damage_talisman_default",
       "damageMultiplier": 0.82,
       "ghostDamageMultiplier": 1.35,
       "projectileCutMultiplier": 1.4,
       "strokeWidthRefPx": 28,
-      "switchCooldownSec": 1.0,
+      "switchCooldownSec": 1,
       "onSwitchEffectGroupId": "fx_switch_to_talisman",
       "assetKey": "icon_stance_talisman"
     }
@@ -273,12 +275,13 @@
       "baseDamage": 12,
       "criticalChance": 0.08,
       "criticalMultiplier": 1.5,
-      "weakpointMultiplier": 2.0,
+      "weakpointMultiplier": 2,
       "wrongDirectionMultiplier": 0.15,
       "comboStep": 0.1,
       "comboMaxMultiplier": 1.5,
       "energyPerHit": 3,
-      "scorePerHit": 100
+      "scorePerHit": 100,
+      "scorePerDamage": 1
     },
     {
       "formulaId": "damage_talisman_default",
@@ -290,19 +293,21 @@
       "comboStep": 0.08,
       "comboMaxMultiplier": 1.4,
       "energyPerHit": 4,
-      "scorePerHit": 110
+      "scorePerHit": 110,
+      "scorePerDamage": 1
     },
     {
       "formulaId": "damage_ultimate",
       "baseDamage": 50,
-      "criticalChance": 0.0,
-      "criticalMultiplier": 1.0,
-      "weakpointMultiplier": 1.0,
-      "wrongDirectionMultiplier": 1.0,
-      "comboStep": 0.0,
-      "comboMaxMultiplier": 1.0,
+      "criticalChance": 0,
+      "criticalMultiplier": 1,
+      "weakpointMultiplier": 1,
+      "wrongDirectionMultiplier": 1,
+      "comboStep": 0,
+      "comboMaxMultiplier": 1,
       "energyPerHit": 0,
-      "scorePerHit": 1000
+      "scorePerHit": 1000,
+      "scorePerDamage": 1
     }
   ],
   "defenseRules": [
@@ -331,8 +336,8 @@
       "armorHp": 0,
       "requiredGestureType": "Any",
       "requiredStanceId": "",
-      "breakDamageMultiplier": 1.0,
-      "wrongGestureDamageMultiplier": 1.0,
+      "breakDamageMultiplier": 1,
+      "wrongGestureDamageMultiplier": 1,
       "reflectDamage": 0,
       "breakEffectGroupId": ""
     },
@@ -375,7 +380,7 @@
       "windowStartSec": 0.35,
       "windowEndSec": 0.9,
       "radiusRefPx": 52,
-      "damageMultiplier": 2.0,
+      "damageMultiplier": 2,
       "interruptAttack": true,
       "energyBonus": 8,
       "scoreBonus": 250,
@@ -386,7 +391,7 @@
       "windowStartSec": 0,
       "windowEndSec": 0,
       "radiusRefPx": 0,
-      "damageMultiplier": 1.0,
+      "damageMultiplier": 1,
       "interruptAttack": false,
       "energyBonus": 0,
       "scoreBonus": 0,
@@ -434,7 +439,7 @@
     {
       "movePatternId": "move_fly_sine",
       "patternType": "Sine",
-      "speedMultiplier": 1.0,
+      "speedMultiplier": 1,
       "amplitudeRefPx": 80,
       "frequency": 1.4,
       "startXNorm": 0.95,
@@ -447,7 +452,7 @@
     {
       "movePatternId": "move_ground_left",
       "patternType": "Linear",
-      "speedMultiplier": 1.0,
+      "speedMultiplier": 1,
       "amplitudeRefPx": 0,
       "frequency": 0,
       "startXNorm": 0.92,
@@ -598,9 +603,9 @@
       "projectileId": "proj_rockfall",
       "gestureInterruptType": "Any",
       "interruptStartSec": 0.4,
-      "interruptEndSec": 1.0,
+      "interruptEndSec": 1,
       "effectGroupId": "fx_boss_rockfall",
-      "weight": 1.0
+      "weight": 1
     },
     {
       "attackId": "atk_boss_seal_wave",
@@ -614,16 +619,16 @@
       "projectileId": "proj_seal_wave",
       "gestureInterruptType": "Horizontal",
       "interruptStartSec": 0.4,
-      "interruptEndSec": 1.0,
+      "interruptEndSec": 1,
       "effectGroupId": "fx_boss_wave",
-      "weight": 1.0
+      "weight": 1
     },
     {
       "attackId": "atk_boss_charge",
       "attackSetId": "attackset_boss_phase3",
       "order": 1,
       "triggerType": "HpThreshold",
-      "cooldownSec": 4.0,
+      "cooldownSec": 4,
       "windupSec": 1.1,
       "activeSec": 0.8,
       "damage": 30,
@@ -632,7 +637,7 @@
       "interruptStartSec": 0.55,
       "interruptEndSec": 1.35,
       "effectGroupId": "fx_boss_charge",
-      "weight": 1.0
+      "weight": 1
     },
     {
       "attackId": "atk_fire_fish_orb",
@@ -648,14 +653,14 @@
       "interruptStartSec": 0.3,
       "interruptEndSec": 0.7,
       "effectGroupId": "fx_enemy_cast",
-      "weight": 1.0
+      "weight": 1
     },
     {
       "attackId": "atk_ghost_volley",
       "attackSetId": "attackset_skeleton_ghost",
       "order": 1,
       "triggerType": "Cooldown",
-      "cooldownSec": 3.0,
+      "cooldownSec": 3,
       "windupSec": 0.7,
       "activeSec": 0.4,
       "damage": 10,
@@ -664,7 +669,7 @@
       "interruptStartSec": 0.4,
       "interruptEndSec": 0.95,
       "effectGroupId": "fx_ghost_volley",
-      "weight": 1.0
+      "weight": 1
     },
     {
       "attackId": "atk_puppet_shield",
@@ -712,7 +717,7 @@
       "interruptStartSec": 0.55,
       "interruptEndSec": 1.2,
       "effectGroupId": "fx_turtle_slam",
-      "weight": 1.0
+      "weight": 1
     },
     {
       "attackId": "atk_bat_dive",
@@ -728,7 +733,7 @@
       "interruptStartSec": 0.2,
       "interruptEndSec": 0.65,
       "effectGroupId": "fx_bat_dive",
-      "weight": 1.0
+      "weight": 1
     },
     {
       "attackId": "atk_wheel_charge",
@@ -744,7 +749,7 @@
       "interruptStartSec": 0.35,
       "interruptEndSec": 0.9,
       "effectGroupId": "fx_wheel_charge",
-      "weight": 1.0
+      "weight": 1
     }
   ],
   "projectiles": [
@@ -752,7 +757,7 @@
       "projectileId": "proj_ghost_fire",
       "movePatternId": "move_ground_left",
       "speedRefPxSec": 260,
-      "lifeSec": 4.0,
+      "lifeSec": 4,
       "damage": 8,
       "cuttable": true,
       "reflectable": true,
@@ -778,7 +783,7 @@
       "projectileId": "proj_seal_bolt",
       "movePatternId": "move_ground_left",
       "speedRefPxSec": 280,
-      "lifeSec": 4.0,
+      "lifeSec": 4,
       "damage": 16,
       "cuttable": true,
       "reflectable": true,
@@ -820,7 +825,7 @@
       "type": "Root",
       "durationSec": 1.5,
       "maxStacks": 1,
-      "magnitude": 1.0,
+      "magnitude": 1,
       "tickSec": 0,
       "refreshPolicy": "Refresh",
       "vfxKey": "vfx_bind",
@@ -829,9 +834,9 @@
     {
       "buffId": "buff_burn",
       "type": "DamageOverTime",
-      "durationSec": 3.0,
+      "durationSec": 3,
       "maxStacks": 3,
-      "magnitude": 3.0,
+      "magnitude": 3,
       "tickSec": 0.5,
       "refreshPolicy": "AddStack",
       "vfxKey": "vfx_burn",
@@ -840,7 +845,7 @@
     {
       "buffId": "buff_slow_30",
       "type": "Slow",
-      "durationSec": 2.0,
+      "durationSec": 2,
       "maxStacks": 1,
       "magnitude": 0.3,
       "tickSec": 0,
@@ -853,7 +858,7 @@
       "type": "Stun",
       "durationSec": 1.2,
       "maxStacks": 1,
-      "magnitude": 1.0,
+      "magnitude": 1,
       "tickSec": 0,
       "refreshPolicy": "Replace",
       "vfxKey": "vfx_stun",
@@ -862,7 +867,7 @@
     {
       "buffId": "buff_vulnerable",
       "type": "DamageTaken",
-      "durationSec": 2.0,
+      "durationSec": 2,
       "maxStacks": 1,
       "magnitude": 0.3,
       "tickSec": 0,
@@ -891,7 +896,7 @@
       "triggerType": "Gesture",
       "requiredStanceId": "stance_talisman",
       "energyCost": 20,
-      "cooldownSec": 6.0,
+      "cooldownSec": 6,
       "gestureType": "Circle",
       "inputWindowSec": 1.8,
       "effectGroupId": "fx_talisman_bind",
@@ -1219,7 +1224,7 @@
       "targetType": "Boss",
       "value1": 0,
       "value2": 0,
-      "durationSec": 2.0,
+      "durationSec": 2,
       "buffId": "buff_vulnerable",
       "vfxKey": "vfx_boss_break",
       "audioKey": "sfx_break",
@@ -1289,7 +1294,7 @@
       "levelId": "lv_001_tutorial",
       "order": 1,
       "startTrigger": "LevelStart",
-      "startDelaySec": 0.0,
+      "startDelaySec": 0,
       "endCondition": "AllEnemiesDefeated",
       "endDelaySec": 0.8,
       "musicKey": "bgm_cave_01",
@@ -1322,7 +1327,7 @@
       "levelId": "lv_002_cave",
       "order": 1,
       "startTrigger": "LevelStart",
-      "startDelaySec": 0.0,
+      "startDelaySec": 0,
       "endCondition": "AllEnemiesDefeated",
       "endDelaySec": 0.8,
       "musicKey": "bgm_cave_02",
@@ -1366,7 +1371,7 @@
       "levelId": "lv_003_boss",
       "order": 1,
       "startTrigger": "LevelStart",
-      "startDelaySec": 0.0,
+      "startDelaySec": 0,
       "endCondition": "AllEnemiesDefeated",
       "endDelaySec": 0.8,
       "musicKey": "bgm_boss_intro",
@@ -1379,7 +1384,7 @@
       "startTrigger": "PreviousWaveEnd",
       "startDelaySec": 0.8,
       "endCondition": "BossDefeated",
-      "endDelaySec": 0.0,
+      "endDelaySec": 0,
       "musicKey": "bgm_boss",
       "maxAlive": 1
     }
@@ -1444,10 +1449,10 @@
     {
       "modifierId": "modifier_none",
       "displayNameKey": "text_modifier_none",
-      "hpMultiplier": 1.0,
-      "damageMultiplier": 1.0,
-      "speedMultiplier": 1.0,
-      "scoreMultiplier": 1.0,
+      "hpMultiplier": 1,
+      "damageMultiplier": 1,
+      "speedMultiplier": 1,
+      "scoreMultiplier": 1,
       "tintHex": "#FFFFFF",
       "extraBuffId": ""
     }
@@ -1525,7 +1530,7 @@
       "spawnTimeSec": 0.2,
       "enemyId": "enemy_stone_turtle",
       "count": 2,
-      "intervalSec": 1.0,
+      "intervalSec": 1,
       "spawnPointId": "spawn_ground_right",
       "spawnPattern": "Line",
       "modifierId": "modifier_none"
@@ -1588,7 +1593,7 @@
     {
       "spawnId": "spawn_003_02_a",
       "waveId": "wave_003_02",
-      "spawnTimeSec": 0.0,
+      "spawnTimeSec": 0,
       "enemyId": "boss_tomb_king",
       "count": 1,
       "intervalSec": 0,
@@ -1602,7 +1607,7 @@
       "bossPhaseId": "boss_tomb_phase_1",
       "enemyId": "boss_tomb_king",
       "order": 1,
-      "enterHpRatio": 1.0,
+      "enterHpRatio": 1,
       "exitHpRatio": 0.67,
       "movementPatternId": "move_boss_ground",
       "attackSetId": "attackset_boss_phase1",
@@ -1629,7 +1634,7 @@
       "enemyId": "boss_tomb_king",
       "order": 3,
       "enterHpRatio": 0.34,
-      "exitHpRatio": 0.0,
+      "exitHpRatio": 0,
       "movementPatternId": "move_boss_ground",
       "attackSetId": "attackset_boss_phase3",
       "defenseRuleId": "defense_none",
@@ -1997,8 +2002,8 @@
       "assetKey": "audio_bgm_boss",
       "category": "BGM",
       "volume": 0.8,
-      "pitchMin": 1.0,
-      "pitchMax": 1.0,
+      "pitchMin": 1,
+      "pitchMax": 1,
       "maxConcurrent": 1,
       "cooldownSec": 0
     },
@@ -2007,8 +2012,8 @@
       "assetKey": "audio_bgm_boss_intro",
       "category": "BGM",
       "volume": 0.75,
-      "pitchMin": 1.0,
-      "pitchMax": 1.0,
+      "pitchMin": 1,
+      "pitchMax": 1,
       "maxConcurrent": 1,
       "cooldownSec": 0
     },
@@ -2017,8 +2022,8 @@
       "assetKey": "audio_bgm_cave_01",
       "category": "BGM",
       "volume": 0.7,
-      "pitchMin": 1.0,
-      "pitchMax": 1.0,
+      "pitchMin": 1,
+      "pitchMax": 1,
       "maxConcurrent": 1,
       "cooldownSec": 0
     },
@@ -2027,8 +2032,8 @@
       "assetKey": "audio_bgm_cave_02",
       "category": "BGM",
       "volume": 0.7,
-      "pitchMin": 1.0,
-      "pitchMax": 1.0,
+      "pitchMin": 1,
+      "pitchMax": 1,
       "maxConcurrent": 1,
       "cooldownSec": 0
     },
@@ -2127,8 +2132,8 @@
       "assetKey": "audio_sfx_switch",
       "category": "SFX",
       "volume": 0.8,
-      "pitchMin": 1.0,
-      "pitchMax": 1.0,
+      "pitchMin": 1,
+      "pitchMax": 1,
       "maxConcurrent": 2,
       "cooldownSec": 0.1
     },
@@ -2146,9 +2151,9 @@
       "audioKey": "sfx_ultimate_hit",
       "assetKey": "audio_sfx_ultimate_hit",
       "category": "SFX",
-      "volume": 1.0,
-      "pitchMin": 1.0,
-      "pitchMax": 1.0,
+      "volume": 1,
+      "pitchMin": 1,
+      "pitchMax": 1,
       "maxConcurrent": 1,
       "cooldownSec": 0.5
     },
@@ -2156,9 +2161,9 @@
       "audioKey": "sfx_ultimate_start",
       "assetKey": "audio_sfx_ultimate_start",
       "category": "SFX",
-      "volume": 1.0,
-      "pitchMin": 1.0,
-      "pitchMax": 1.0,
+      "volume": 1,
+      "pitchMin": 1,
+      "pitchMax": 1,
       "maxConcurrent": 1,
       "cooldownSec": 0.5
     }
@@ -2464,7 +2469,7 @@
     {
       "vfxKey": "vfx_ultimate_prepare",
       "assetKey": "vfx_ultimate_prepare",
-      "lifeSec": 1.0,
+      "lifeSec": 1,
       "poolPrewarm": 1,
       "followTarget": false,
       "sortingLayer": "VFX",
@@ -3796,6 +3801,18 @@
     },
     {
       "sheet": "Stances",
+      "field": "damageFormulaId",
+      "type": "string",
+      "required": "true",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "DamageFormulas.formulaId",
+      "description": "架势使用的伤害公式外键"
+    },
+    {
+      "sheet": "Stances",
       "field": "damageMultiplier",
       "type": "float",
       "required": "true",
@@ -4153,6 +4170,18 @@
       "enumType": "",
       "foreignKey": "",
       "description": "DamageFormulas 表的 scorePerHit 字段"
+    },
+    {
+      "sheet": "DamageFormulas",
+      "field": "scorePerDamage",
+      "type": "float",
+      "required": "true",
+      "default": "",
+      "min": 0,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "",
+      "description": "每点最终原始伤害计入评分的系数"
     },
     {
       "sheet": "DefenseRules",

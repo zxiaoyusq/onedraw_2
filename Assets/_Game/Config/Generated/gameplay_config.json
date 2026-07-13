@@ -1,7 +1,7 @@
 {
-  "schemaVersion": 1,
-  "contentVersion": "0.1.1-sample",
-  "contentHash": "16b64a6f3795cfe0f16dd5f2f092a021b7ef4c07b0b15119296c9da0e22b4b1c",
+  "schemaVersion": 2,
+  "contentVersion": "0.2.0-sample",
+  "contentHash": "19dc788f890f995adb94458f74894b89514f85f3bfc9429659ddd2421a72f733",
   "global": [
     {
       "key": "battle_countdown_sec",
@@ -26,7 +26,7 @@
     {
       "key": "config_schema_version",
       "valueType": "int",
-      "intValue": 1,
+      "intValue": 2,
       "floatValue": null,
       "stringValue": "",
       "boolValue": null,
@@ -38,7 +38,7 @@
       "valueType": "string",
       "intValue": null,
       "floatValue": null,
-      "stringValue": "0.1.1-sample",
+      "stringValue": "0.2.0-sample",
       "boolValue": null,
       "unit": "semver",
       "description": "内容版本"
@@ -140,6 +140,7 @@
     {
       "stanceId": "stance_blade",
       "displayNameKey": "text_stance_blade",
+      "damageFormulaId": "damage_player_default",
       "damageMultiplier": 1,
       "ghostDamageMultiplier": 0.85,
       "projectileCutMultiplier": 0.8,
@@ -151,6 +152,7 @@
     {
       "stanceId": "stance_talisman",
       "displayNameKey": "text_stance_talisman",
+      "damageFormulaId": "damage_talisman_default",
       "damageMultiplier": 0.82,
       "ghostDamageMultiplier": 1.35,
       "projectileCutMultiplier": 1.4,
@@ -278,7 +280,8 @@
       "comboStep": 0.1,
       "comboMaxMultiplier": 1.5,
       "energyPerHit": 3,
-      "scorePerHit": 100
+      "scorePerHit": 100,
+      "scorePerDamage": 1
     },
     {
       "formulaId": "damage_talisman_default",
@@ -290,7 +293,8 @@
       "comboStep": 0.08,
       "comboMaxMultiplier": 1.4,
       "energyPerHit": 4,
-      "scorePerHit": 110
+      "scorePerHit": 110,
+      "scorePerDamage": 1
     },
     {
       "formulaId": "damage_ultimate",
@@ -302,7 +306,8 @@
       "comboStep": 0,
       "comboMaxMultiplier": 1,
       "energyPerHit": 0,
-      "scorePerHit": 1000
+      "scorePerHit": 1000,
+      "scorePerDamage": 1
     }
   ],
   "defenseRules": [
@@ -3796,6 +3801,18 @@
     },
     {
       "sheet": "Stances",
+      "field": "damageFormulaId",
+      "type": "string",
+      "required": "true",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "DamageFormulas.formulaId",
+      "description": "架势使用的伤害公式外键"
+    },
+    {
+      "sheet": "Stances",
       "field": "damageMultiplier",
       "type": "float",
       "required": "true",
@@ -4153,6 +4170,18 @@
       "enumType": "",
       "foreignKey": "",
       "description": "DamageFormulas 表的 scorePerHit 字段"
+    },
+    {
+      "sheet": "DamageFormulas",
+      "field": "scorePerDamage",
+      "type": "float",
+      "required": "true",
+      "default": "",
+      "min": 0,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "",
+      "description": "每点最终原始伤害计入评分的系数"
     },
     {
       "sheet": "DefenseRules",

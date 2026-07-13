@@ -73,6 +73,15 @@
       ]
     },
     {
+      "id": "stance_damage_formula_foreign_key_missing",
+      "expectedCode": "CFG008",
+      "expectedSheet": "Stances",
+      "expectedField": "damageFormulaId",
+      "mutations": [
+        { "operation": "set", "sheet": "Stances", "match": { "stanceId": "stance_blade" }, "values": { "damageFormulaId": "damage_missing" } }
+      ]
+    },
+    {
       "id": "wildcard_outside_spawn_point_scope",
       "expectedCode": "CFG009",
       "expectedSheet": "Players",

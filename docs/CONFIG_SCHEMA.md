@@ -2,7 +2,7 @@
 
 ## 1. 版本与唯一真相源
 
-- 当前冻结版本：`schemaVersion = 1`、`contentVersion = 0.1.1-sample`。
+- 当前冻结版本：`schemaVersion = 2`、`contentVersion = 0.2.0-sample`。
 - 正式内容唯一源：`Design/Config/GameConfig.xlsx`。
 - `config/一笔镇妖_游戏配置表模板.xlsx` 只是随正式源同步的示例镜像，不接受独立内容修改。
 - `Assets/_Game/Config/Generated/gameplay_config.json`和`gameplay_config.hash`由T250导出器生成，是可审查、可构建的只读Runtime快照与hash旁车。
@@ -27,7 +27,7 @@
 - 每个数据Sheet第1行为标题、第2行为说明、第3行留空、第4行为唯一表头、第5行起为数据。
 - 首字段为空的整行视为空白行并忽略；数据区中间不得插入“看似空白但带业务值”的行。
 - `README!E5:E18` 的14个 `COUNTA` 公式只用于人工摘要，公式引用必须带Sheet单引号且限定 `A5:A1000`；公式与公式结果都不进入JSON。
-- `FieldDictionary` 有248条记录，完整描述其余27个数据Sheet（包括 `Enums`），但不递归描述自身。`FieldDictionaryRow` 的JSON结构由Schema直接定义。
+- `FieldDictionary` 有250条记录，完整描述其余27个数据Sheet（包括 `Enums`），但不递归描述自身。`FieldDictionaryRow` 的JSON结构由Schema直接定义。
 - 表头是API，顺序必须与Schema `$defs/*Row.properties`、`required`及样例JSON对象字段一致。
 
 ## 4. Sheet、主键与分组
@@ -36,7 +36,7 @@
 |---|---|---|---|
 | Global | key | — | 全局阈值、预算、时间、上限 |
 | Players | playerId | — | 玩家基础值与默认架势 |
-| Stances | stanceId | — | 刀/符架势倍率与资源 |
+| Stances | stanceId | `damageFormulaId`引用伤害公式 | 刀/符架势倍率、公式与资源 |
 | StrokeRules | ruleId | — | 笔势阈值与命中半径 |
 | DamageFormulas | formulaId | — | 伤害与连斩公式参数 |
 | DefenseRules | defenseRuleId | — | 护甲、方向、破甲 |
@@ -99,6 +99,8 @@ FieldDictionary `foreignKey` 使用以下三种形式：
 
 外键必须在整份工作簿解析完成后统一校验；任何缺失都阻止整包进入战斗，不能半应用。
 
+T360新增的`Stances.damageFormulaId -> DamageFormulas.formulaId`是必填普通外键。调用方只提供架势ID，Runtime规则工厂必须沿此外键选择公式；禁止在C#维护“刀/符→公式ID”的第二映射。
+
 ## 8. 稳定排序与contentHash
 
 - JSON顶层属性顺序固定为：`schemaVersion`、`contentVersion`、`contentHash`，随后按工作簿中的28个数据Sheet顺序使用lowerCamelCase数组名。
@@ -128,3 +130,15 @@ FieldDictionary `foreignKey` 使用以下三种形式：
 - 业务代码通过 `IConfigProvider.GetEnemy(id)` 等API访问，不直接遍历或修改原始DTO。
 - 启动日志打印配置来源、版本、hash、记录数和校验摘要。
 - 业务代码可使用`ConfigIds`避免魔法字符串，但常量只表达稳定ID，不复制配置数值或对象引用；Runtime仍以JSON索引为内容真相。
+
+## 11. T360命中结算公式
+
+- `DamageContext`只携带一次已排序命中的stroke/target、已识别笔势、架势、弱点标记、连斩数和外部时间戳；不读取`Time`、全局随机或敌人MonoBehaviour状态。
+- 方向成立条件为：`requiredGestureType=Any`或与本笔势相等，并且`requiredStanceId`为空或与当前架势相等。成立倍率取`DefenseRules.breakDamageMultiplier`；失败倍率取`DamageFormulas.wrongDirectionMultiplier × DefenseRules.wrongGestureDamageMultiplier`，同时发布该防御表行的`reflectDamage`。
+- 弱点倍率仅在命中弱点时取`DamageFormulas.weakpointMultiplier × WeakpointRules.damageMultiplier`；弱点能量/评分加值和`interruptAttack`也只在该分支生效。
+- 连斩倍率为`min(1 + (comboCount - 1) × comboStep, comboMaxMultiplier)`。`ComboService`按T350稳定命中顺序逐目标递增，同一笔多目标会形成连续计数；相邻命中间隔小于或等于`Global.combo_timeout_sec`时延续，超过时从1重启。
+- 暴击由注入的`IRandomSource`在`[0,1)`取值并与`criticalChance`比较，只把`criticalMultiplier`乘到伤害；不允许调用Unity全局随机。
+- 原始伤害为`baseDamage × Stances.damageMultiplier × 方向倍率 × 弱点倍率 × 连斩倍率 × 暴击倍率`。
+- 原始评分为`(scorePerHit + 弱点评分加值) × 方向倍率 × 连斩倍率 + 原始伤害 × scorePerDamage`。因此伤害、命中、方向、弱点和同笔多目标都会进入T360评分；弹反、无伤与剩余时间由各自后续任务接入，不能在这里预判。
+- 原始能量收益为`(energyPerHit + 弱点能量加值) × 方向倍率 × 连斩倍率`。T360只累计“已赚取能量”；玩家当前能量、上限和技能消耗归T400。
+- 伤害、评分和能量分别在所有乘法/加法完成后用`MidpointRounding.AwayFromZero`取整为非负`long`；非有限值或溢出必须失败，不允许隐式截断或部分发布。

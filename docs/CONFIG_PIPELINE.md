@@ -93,7 +93,7 @@ dotnet run --project Tools/ConfigExporter -- \
 1. `generate`在完整生产校验通过后才构造三份字节；JSON继续执行`CFG012`结构/hash自检，hash和C#执行精确字节自检，三个输出路径必须互不相同。
 2. `verify`只读重建预期字节并逐文件比较，不更新时间戳或修正文件；缺失、任意字节漂移、C#标识符冲突或输出路径冲突均以`CFG013`失败。
 3. `ConfigIds.g.cs`只包含稳定ID/Key和schema/content/hash元数据，不包含HP、CD、伤害或Unity对象引用；Runtime内容仍由JSON加载。
-4. 一键脚本会在临时目录再次生成并执行`cmp`；漂移时输出受管文件与预期文件的unified diff，验证通过后运行.NET 54项及Unity分类测试。
+4. 一键脚本会在临时目录再次生成并执行`cmp`；漂移时输出受管文件与预期文件的unified diff，验证通过后运行.NET 55项及Unity分类测试。
 5. Unity T250测试断言hash旁车、生成元数据、JSON Runtime hash一致，C#实际编入`OneStrokeDemon.Config.dll`，27组306常量均为稳定ID，并用代表性常量完成类型化配置/Registry查询。
 
 T220坏配置清单位于 `Tools/ConfigExporter/Tests/Fixtures/invalid-config-cases.json`。测试只克隆并修改内存中的原始单元格，不生成或提交派生坏xlsx；每个用例都断言稳定错误码、Sheet、Excel数据行和字段。
@@ -102,7 +102,7 @@ T220坏配置清单位于 `Tools/ConfigExporter/Tests/Fixtures/invalid-config-ca
 
 1. Bootstrap只把受管JSON作为 `TextAsset` 资源引用交给 `GameplayConfigRuntime`，Runtime不读取文件系统，也不解析xlsx。
 2. `GameplayConfigService`每个实例只允许一次加载；使用显式28表DTO严格拒绝注释、未知、缺失、重复和非法null属性，并在局部候选对象上完成全部检查。
-3. 兼容合同固定为schema `1`和content `0.1.x`；根版本必须与Global对应行一致，`contentHash`必须与导出器相同的规范化SHA-256算法吻合。
+3. 兼容合同固定为schema `2`和content `0.2.x`；根版本必须与Global对应行一致，`contentHash`必须与导出器相同的规范化SHA-256算法吻合。
 4. 所有检查通过后才原子发布只读主键字典和分组列表；失败状态不发布部分索引，也不允许同一服务实例重试。
 5. 业务层只依赖 `IConfigProvider` 的显式O(1)查询，不在热路径反序列化，不遍历可变根数组，也不通过反射选择战斗行为。
 6. 启动日志固定输出来源、schema、content、hash、表数、记录数和索引数；不兼容或损坏配置留在Bootstrap并阻断进入MainMenu/Battle。

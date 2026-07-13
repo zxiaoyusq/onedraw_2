@@ -1,0 +1,165 @@
+using System;
+using OneStrokeDemon.Input;
+
+namespace OneStrokeDemon.Combat
+{
+    public static class DamageCalculator
+    {
+        public static DamageResult Calculate(
+            in DamageContext context,
+            in DamageRuleSet rules,
+            IRandomSource randomSource)
+        {
+            if (randomSource == null)
+            {
+                throw new ArgumentNullException(nameof(randomSource));
+            }
+
+            if (!string.Equals(context.StanceId, rules.StanceId, StringComparison.Ordinal))
+            {
+                throw new ArgumentException(
+                    $"Damage context stance '{context.StanceId}' does not match rule stance '{rules.StanceId}'.",
+                    nameof(context));
+            }
+
+            bool directionMatched =
+                (rules.RequiredGestureType == GestureType.Any ||
+                 rules.RequiredGestureType == context.GestureType) &&
+                (string.IsNullOrEmpty(rules.RequiredStanceId) ||
+                 string.Equals(rules.RequiredStanceId, context.StanceId, StringComparison.Ordinal));
+            double directionMultiplier = directionMatched
+                ? rules.MatchingDirectionMultiplier
+                : rules.FormulaWrongDirectionMultiplier * rules.WrongGestureMultiplier;
+            double comboMultiplier = Math.Min(
+                1d + ((context.ComboCount - 1d) * rules.ComboStep),
+                rules.ComboMaximumMultiplier);
+            double weakpointMultiplier = context.IsWeakpoint
+                ? rules.FormulaWeakpointMultiplier * rules.RuleWeakpointMultiplier
+                : 1d;
+            double criticalRoll = randomSource.NextUnitInterval();
+            if (double.IsNaN(criticalRoll) || double.IsInfinity(criticalRoll) ||
+                criticalRoll < 0d || criticalRoll >= 1d)
+            {
+                throw new InvalidOperationException(
+                    $"Random source returned {criticalRoll}; expected a finite value in [0, 1)." );
+            }
+
+            bool isCritical = criticalRoll < rules.CriticalChance;
+            double criticalMultiplier = isCritical ? rules.CriticalMultiplier : 1d;
+            double rawDamage =
+                rules.BaseDamage *
+                rules.StanceDamageMultiplier *
+                directionMultiplier *
+                weakpointMultiplier *
+                comboMultiplier *
+                criticalMultiplier;
+            long baseScore = checked(
+                rules.ScorePerHit + (context.IsWeakpoint ? rules.WeakpointScoreBonus : 0L));
+            long baseEnergy = checked(
+                rules.EnergyPerHit + (context.IsWeakpoint ? rules.WeakpointEnergyBonus : 0L));
+            double rewardMultiplier = directionMultiplier * comboMultiplier;
+
+            return new DamageResult(
+                context.StrokeId,
+                context.TargetId,
+                rules.FormulaId,
+                rules.StanceId,
+                rules.DefenseRuleId,
+                rules.WeakpointRuleId,
+                RoundAward(rawDamage),
+                RoundAward(
+                    (baseScore * rewardMultiplier) +
+                    (rawDamage * rules.ScorePerDamage)),
+                RoundAward(baseEnergy * rewardMultiplier),
+                directionMatched ? 0L : rules.ReflectedDamage,
+                directionMatched,
+                context.IsWeakpoint,
+                isCritical,
+                context.IsWeakpoint && rules.WeakpointInterruptsAttack,
+                directionMultiplier,
+                weakpointMultiplier,
+                comboMultiplier,
+                criticalMultiplier);
+        }
+
+        private static long RoundAward(double value)
+        {
+            if (double.IsNaN(value) || double.IsInfinity(value) || value < 0d)
+            {
+                throw new OverflowException($"Calculated combat award '{value}' is not finite and non-negative.");
+            }
+
+            double rounded = Math.Round(value, 0, MidpointRounding.AwayFromZero);
+            if (rounded > long.MaxValue)
+            {
+                throw new OverflowException($"Calculated combat award '{value}' exceeds Int64 capacity.");
+            }
+
+            return checked((long)rounded);
+        }
+    }
+
+    public readonly struct DamageResult
+    {
+        internal DamageResult(
+            ulong strokeId,
+            int targetId,
+            string formulaId,
+            string stanceId,
+            string defenseRuleId,
+            string weakpointRuleId,
+            long damage,
+            long scoreAward,
+            long energyAward,
+            long reflectedDamage,
+            bool directionMatched,
+            bool isWeakpoint,
+            bool isCritical,
+            bool shouldInterruptAttack,
+            double directionMultiplier,
+            double weakpointMultiplier,
+            double comboMultiplier,
+            double criticalMultiplier)
+        {
+            StrokeId = strokeId;
+            TargetId = targetId;
+            FormulaId = formulaId;
+            StanceId = stanceId;
+            DefenseRuleId = defenseRuleId;
+            WeakpointRuleId = weakpointRuleId;
+            Damage = damage;
+            ScoreAward = scoreAward;
+            EnergyAward = energyAward;
+            ReflectedDamage = reflectedDamage;
+            DirectionMatched = directionMatched;
+            IsWeakpoint = isWeakpoint;
+            IsCritical = isCritical;
+            ShouldInterruptAttack = shouldInterruptAttack;
+            DirectionMultiplier = directionMultiplier;
+            WeakpointMultiplier = weakpointMultiplier;
+            ComboMultiplier = comboMultiplier;
+            CriticalMultiplier = criticalMultiplier;
+            IsResolved = true;
+        }
+
+        public ulong StrokeId { get; }
+        public int TargetId { get; }
+        public string FormulaId { get; }
+        public string StanceId { get; }
+        public string DefenseRuleId { get; }
+        public string WeakpointRuleId { get; }
+        public long Damage { get; }
+        public long ScoreAward { get; }
+        public long EnergyAward { get; }
+        public long ReflectedDamage { get; }
+        public bool DirectionMatched { get; }
+        public bool IsWeakpoint { get; }
+        public bool IsCritical { get; }
+        public bool ShouldInterruptAttack { get; }
+        public double DirectionMultiplier { get; }
+        public double WeakpointMultiplier { get; }
+        public double ComboMultiplier { get; }
+        public double CriticalMultiplier { get; }
+        public bool IsResolved { get; }
+    }
+}

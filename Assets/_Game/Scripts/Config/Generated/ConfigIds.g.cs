@@ -5,9 +5,9 @@ namespace OneStrokeDemon.Config
 {
     public static class ConfigIds
     {
-        public const int SchemaVersion = 1;
-        public const string ContentVersion = "0.1.1-sample";
-        public const string ContentHash = "16b64a6f3795cfe0f16dd5f2f092a021b7ef4c07b0b15119296c9da0e22b4b1c";
+        public const int SchemaVersion = 2;
+        public const string ContentVersion = "0.2.0-sample";
+        public const string ContentHash = "19dc788f890f995adb94458f74894b89514f85f3bfc9429659ddd2421a72f733";
         public const int IdSetCount = 27;
         public const int IdConstantCount = 306;
 

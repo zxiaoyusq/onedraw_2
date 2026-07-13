@@ -6,9 +6,9 @@ namespace OneStrokeDemon.Config
 {
     public static class GameplayConfigCompatibility
     {
-        public const long SupportedSchemaVersion = 1;
+        public const long SupportedSchemaVersion = 2;
         public const int SupportedContentMajor = 0;
-        public const int SupportedContentMinor = 1;
+        public const int SupportedContentMinor = 2;
 
         private static readonly Regex ContentVersionPattern = new Regex(
             "^(?<major>[0-9]+)\\.(?<minor>[0-9]+)\\.(?<patch>[0-9]+)(?:-[a-z0-9][a-z0-9.-]*)?$",

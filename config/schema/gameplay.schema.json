@@ -40,7 +40,7 @@
   "properties": {
     "schemaVersion": {
       "type": "integer",
-      "const": 1
+      "const": 2
     },
     "contentVersion": {
       "type": "string",
@@ -323,6 +323,7 @@
       "required": [
         "stanceId",
         "displayNameKey",
+        "damageFormulaId",
         "damageMultiplier",
         "ghostDamageMultiplier",
         "projectileCutMultiplier",
@@ -336,6 +337,9 @@
           "type": "string"
         },
         "displayNameKey": {
+          "type": "string"
+        },
+        "damageFormulaId": {
           "type": "string"
         },
         "damageMultiplier": {
@@ -450,7 +454,8 @@
         "comboStep",
         "comboMaxMultiplier",
         "energyPerHit",
-        "scorePerHit"
+        "scorePerHit",
+        "scorePerDamage"
       ],
       "properties": {
         "formulaId": {
@@ -486,6 +491,10 @@
         },
         "scorePerHit": {
           "type": "integer"
+        },
+        "scorePerDamage": {
+          "type": "number",
+          "minimum": 0
         }
       }
     },

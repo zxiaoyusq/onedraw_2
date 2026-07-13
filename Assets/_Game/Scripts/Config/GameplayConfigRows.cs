@@ -34,6 +34,7 @@ namespace OneStrokeDemon.Config
     {
         [JsonProperty("stanceId", Required = JsonRequired.Always)] public string StanceId { get; private set; } = string.Empty;
         [JsonProperty("displayNameKey", Required = JsonRequired.Always)] public string DisplayNameKey { get; private set; } = string.Empty;
+        [JsonProperty("damageFormulaId", Required = JsonRequired.Always)] public string DamageFormulaId { get; private set; } = string.Empty;
         [JsonProperty("damageMultiplier", Required = JsonRequired.Always)] public float DamageMultiplier { get; private set; }
         [JsonProperty("ghostDamageMultiplier", Required = JsonRequired.Always)] public float GhostDamageMultiplier { get; private set; }
         [JsonProperty("projectileCutMultiplier", Required = JsonRequired.Always)] public float ProjectileCutMultiplier { get; private set; }
@@ -74,6 +75,7 @@ namespace OneStrokeDemon.Config
         [JsonProperty("comboMaxMultiplier", Required = JsonRequired.Always)] public float ComboMaxMultiplier { get; private set; }
         [JsonProperty("energyPerHit", Required = JsonRequired.Always)] public long EnergyPerHit { get; private set; }
         [JsonProperty("scorePerHit", Required = JsonRequired.Always)] public long ScorePerHit { get; private set; }
+        [JsonProperty("scorePerDamage", Required = JsonRequired.Always)] public float ScorePerDamage { get; private set; }
     }
 
     [JsonObject(MemberSerialization.OptIn)]

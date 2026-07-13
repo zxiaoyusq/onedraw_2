@@ -1,16 +1,21 @@
 # PROGRESS
 
 - 日期：2026-07-13
-- 当前成熟度：T350已完成共享处理点集的分段胶囊命中、顺序排序、同笔去重和弱点区分；P3进入伤害结算
-- 当前任务：T360
+- 当前成熟度：T360已完成配置驱动的伤害、方向/弱点奖励、连斩、评分和能量收益纯规则；P3进入投射物交互
+- 当前任务：T370
 - 状态：READY
 - Unity精确版本：6000.5.1f1（已由ProjectVersion.txt与本机安装核验）
 - 微信SDK来源或版本：官方 `minigame-tuanjie-transform-sdk` v0.1.33 / commit `ed4ad28f433c6b52b5fd3f22a6fa155a0c98c228` / embedded最小补丁
 - Active Scene：Assets/_Game/Scenes/Bootstrap.unity
-- 配置版本：schema 1 / content 0.1.1-sample / hash `16b64a6f3795cfe0f16dd5f2f092a021b7ef4c07b0b15119296c9da0e22b4b1c`
+- 配置版本：schema 2 / content 0.2.0-sample / hash `19dc788f890f995adb94458f74894b89514f85f3bfc9429659ddd2421a72f733`
 
 ## 已完成
 
+- T360：新增`Stances.damageFormulaId -> DamageFormulas.formulaId`必填外键和`DamageFormulas.scorePerDamage`伤害评分系数；配置契约升级为schema 2/content 0.2.x。双工作簿SHA-256均为`c1c04c57...edb8f`，29表渲染与公式扫描通过；受管JSON为168,862字节、647条记录、hash `19dc788f...2f733`，FieldDictionary为250条。
+- T360：`DamageContext`、`DamageRuleSetFactory`和`DamageCalculator`均为无MonoBehaviour依赖纯C#；调用方只传架势/防御/弱点配置ID，公式沿架势外键解析。伤害组合架势、方向、弱点、连斩和注入随机暴击；评分同时组合命中奖励与`原始伤害 × scorePerDamage`；能量只发布本次收益，三项在公式末尾统一`MidpointRounding.AwayFromZero`。
+- T360：方向成立同时检查配置笔势与可选架势，失败组合公式与防御表两级倍率并发布反伤；弱点倍率、能量/评分加值和打断标记仅在弱点命中生效。`ComboService`从`Global.combo_timeout_sec`读取1.8秒窗口，按T350稳定目标顺序逐个计数，等于边界继续、超过重启；`ScoreService`原子累计伤害、评分、已赚取能量和命中维度，不提前拥有T400玩家状态。
+- T360：专项EditMode 12/12、真实Mouse到多目标结算PlayMode 1/1，最终全量EditMode 90/90、PlayMode 23/23；玩家路径首个弱点为48伤害/398分/11能量，第二目标以1.1连斩倍率得到13/123/3，累计61/521/14。配置三生成物无漂移、.NET 55/55，ConfigPipeline分类由全量回归覆盖19/19 EditMode和3/3 PlayMode；最终刷新编译Console Error/Warning为0。
+- T360：未修改场景、Prefab、Input Actions、Packages、ProjectSettings或微信SDK；未扣敌人HP、控制弱点窗口、实现玩家能量上限/消耗，也未提前实现T370投射物、T400玩家状态或T420敌人状态机。
 - T350：`StrokeHitResolver`直接遍历T320 `StrokeGeometryData.Points`的同一只读引用，逐段以所选`StrokeRules.hitRadiusRefPx`执行扫圆形成胶囊命中；解析结果不创建轨迹Collider、不修改目标，也不提前执行T360伤害。
 - T350：`HitRecord`不可变地携带strokeId、`IHittable`目标与稳定targetId、弱点标记、归一化路径参数/参考像素路径距离、完整笔势结果和结束时间；结果按首次路径接触排序，同距离以targetId稳定裁决。
 - T350：固定容量来自配置`max_active_enemies=18`与`max_active_projectiles=40`，得到58个唯一目标和含单体主体/弱点及饱和哨兵的117槽查询缓存；同一targetId跨段、主体和弱点只保留一条记录，保留最早接触并聚合弱点为真。
@@ -78,7 +83,7 @@
 - T200：按GAME_DESIGN修正关卡玩法ID为 `lv_001_tutorial`、`lv_002_cave`、`lv_003_boss`，Boss玩法ID为 `boss_tomb_king`；所有Level/Wave/Spawn/BossPhase/Reward依赖引用同步，文案键和资源键保持独立命名空间。
 - T200：FieldDictionary保留248条非递归字段记录，修正Global互斥类型列及10个主键/条件字段的必填语义；冻结Schema属性存在与Excel单元格非空的差异、空值转换、普通/分组/通配符/conditional外键和数据所有权。
 - T200：29表、14公式、248字段、Schema/样例、类型/范围/枚举、主键、外键、连续order、关卡-Boss语义和规范化contentHash的只读契约审计全部PASS；29表最终渲染经4张总览拼图复核，无结构或版式异常。
-- 执行顺序调整：用户明确要求暂时绕过T120及微信开发者工具/打包问题，先完成游戏主要内容；T120保持`BLOCKED`、T130保持`BACKLOG`，不删除MVP平台验收要求；T210/T220/T230/T240/T250/T300/T310/T320/T330/T340/T350已按该顺序完成，当前唯一`READY`任务为T360。
+- 执行顺序调整：用户明确要求暂时绕过T120及微信开发者工具/打包问题，先完成游戏主要内容；T120保持`BLOCKED`、T130保持`BACKLOG`，不删除MVP平台验收要求；T210/T220/T230/T240/T250/T300/T310/T320/T330/T340/T350/T360已完成，当前唯一`READY`任务为T370。
 - T120 G2：Unity `6000.5.1f1` 基于固定 embedded WXSDK 成功生成 `Builds/WeChat/T120`；84个文件、总计101,901,218字节，其中`minigame` 12,008,520字节，JSON结构、关键文件、SHA-256清单与敏感占位扫描均通过。
 - T120构建参数：空AppID、横屏、256MB、触摸启用、Development、关闭渲染线程与性能分析、清理构建，并使用SDK受支持的多线程Brotli；可复现入口为`Tools/CI/build-wechat.sh`。
 - T120 G2结论为`PASS WITH KNOWN ISSUES`：默认单线程Brotli在当前macOS Unity安装布局下引用错误路径（BUG-0005，已用配置规避）；转换含93条未匹配替换规则及6条Emscripten warning（BUG-0006），需要G3实际运行判定影响。
@@ -125,4 +130,4 @@
 8. T240为尚未到达资源接入阶段的75个非场景键使用按类型共享的受管占位资源；类型与覆盖合同已成立，但正式视觉、音频和逐Prefab内容仍须在T630及相应玩法任务中替换并重新校验。
 ## 下一步
 
-只执行T360：实现配置驱动的伤害公式、方向与弱点奖励、连斩、评分和能量，并保持纯规则层可独立断言；不提前实现T370投射物、T400玩家状态或T420敌人状态机，也不恢复T120/T130。平台任务最迟在T640/T750前恢复。
+只执行T370：实现配置驱动的可切断、不可切断和可反弹敌方投射物，保证反弹归属、伤害来源与回收状态正确；不提前实现T400玩家状态或T420敌人状态机，也不恢复T120/T130。平台任务最迟在T640/T750前恢复。

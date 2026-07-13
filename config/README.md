@@ -5,7 +5,7 @@
 - `examples/gameplay_config.sample.json`：与工作簿示例数据对应的版本化JSON。
 - 正式工程中的唯一配置源应为 `Design/Config/GameConfig.xlsx`。
 - 运行时仅读取构建期生成的 `gameplay_config.json`。
-- 当前冻结契约为 schema `1` / content `0.1.1-sample`；ID、空值、外键、排序和hash算法见 `docs/CONFIG_SCHEMA.md`。
+- 当前冻结契约为 schema `2` / content `0.2.0-sample`；`Stances.damageFormulaId`和`DamageFormulas.scorePerDamage`属于T360新增API，其他ID、空值、外键、排序和hash算法见 `docs/CONFIG_SCHEMA.md`。
 
 本模板当前示例内容：
 
