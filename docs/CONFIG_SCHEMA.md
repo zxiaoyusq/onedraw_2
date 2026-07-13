@@ -216,3 +216,12 @@ T360新增的`Stances.damageFormulaId -> DamageFormulas.formulaId`是必填普�
 - `BossPhaseController`监听`EnemyController`的HP变化并在阶段边界取消旧攻击/眩晕状态，切回`Move`后原子应用新阶段定义。当前HP和HP上限保持不变，护甲按新阶段防御规则重置，弱点规则立即替换，旧策略订阅先释放，再从新攻击集和移动模板创建运行时。
 - `onEnterEffectGroupId`统一经T410 `SkillService.ExecuteEffectGroup`按配置order执行，并把Boss作为明确主目标；Boss阶段事件在配置更新、策略重建和进入效果完成后每阶段只发布一次。切换时刻不读取动画时长，动画仅可消费阶段/状态事件做表现。
 - 当前样例的三段HP区间为`[1,0.67]`、`[0.67,0.34]`、`[0.34,0]`，护甲为`120/60/0`，弱点由无弱点切为封印弱点；这些都是当前配置内容而非C#常量。修改阈值、速度、防御或弱点只需重导配置并通过连续覆盖校验。
+
+## 20. T500关卡、波次与出生时间轴语义
+
+- T500不改变JSON字段形状、schema或content版本。`LevelCatalog`只沿`Levels -> Waves -> Spawns -> SpawnPoints/EnemyModifiers`构造不可变关卡定义；波次必须按关卡内`order`从1连续，第一波不能使用`PreviousWaveEnd`，后续波不能重新使用`LevelStart`，出生点只能属于当前关卡或使用受控通配符`*`。`BossDefeated`波必须生成`Levels.bossEnemyId`指定的Boss。
+- `LevelStart`和`TimeElapsed`的`startDelaySec`都从关卡时钟零点解释；`PreviousWaveEnd`从上一波完成时刻解释；`PlayerConfirmed`必须先收到当前等待门的显式玩家确认，再从确认时刻计算`startDelaySec`。提前确认、暂停期间确认和用于其他波次的旧确认都不能被缓存到未来动作门。
+- `AllEnemiesDefeated`只在本波全部计划出生已成功提交且活动实体为0时成立；`BossDefeated`只在世界端口回报本波配置Boss实体死亡时成立；二者和`PlayerConfirmed`成立后再等待`endDelaySec`。由于Waves没有独立持续时间字段，`TimeElapsed`下的`endDelaySec`明确解释为从本波开始到结束的持续时间，不再叠加第二段结束延迟。
+- 每个出生时刻为`spawnTimeSec + occurrenceIndex × intervalSec`，跨多行按到期时刻、`spawnId` Ordinal和行内序号稳定排序。`maxAlive`形成背压：容量满或世界端口暂时拒绝时保留当前请求，槽位释放后重试，不跳过、不重排；世界接受后必须返回正且当前唯一的实体ID。
+- `Single/Line/Scatter/Stagger`只决定如何在配置的`normalizedX/Y ± jitterX/Y`矩形内取点；最终坐标夹在`[0,1]`，保持`lane/facing`并不读取设备DPI。Scatter使用`spawnId + occurrenceIndex`确定性采样，回放相同配置得到相同位置；出生请求完整携带`EnemyModifiers`的HP、伤害、速度、评分、染色和额外Buff，具体敌人世界适配器不得忽略或另写数值。
+- `LevelRunner`只由调用方delta推进单调关卡时钟；暂停时delta、出生、波次条件和玩家确认都不推进。`Levels.durationLimitSec`只公开为到时事实，Countdown、暂停/失焦策略、Victory/Defeat互斥和清场属于T510，不由T500时间轴提前裁决。

@@ -23,6 +23,7 @@
 - `PoolResetTests`
 - `EnemyArchetypeConfigTests`
 - `BossPhaseTests`
+- `SpawnTimelineTests`
 - `ConfigValidationTests`
 - `SaveMigrationTests`
 

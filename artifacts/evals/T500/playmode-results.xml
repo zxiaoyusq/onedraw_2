@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="2" result="Passed" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-07-13 20:01:12Z" end-time="2026-07-13 20:01:13Z" duration="0.8954551">
+  <test-suite type="TestSuite" id="1284" name="onedraw_2" fullname="onedraw_2" runstate="Runnable" testcasecount="35" result="Passed" start-time="2026-07-13 20:01:12Z" end-time="2026-07-13 20:01:13Z" duration="0.895455" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="PlayMode" />
+    </properties>
+    <test-suite type="Assembly" id="1259" name="OneStrokeDemon.Tests.PlayMode.dll" fullname="/Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/Library/ScriptAssemblies/OneStrokeDemon.Tests.PlayMode.dll" runstate="Runnable" testcasecount="35" result="Passed" start-time="2026-07-13 20:01:12Z" end-time="2026-07-13 20:01:13Z" duration="0.893730" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="20653" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="PlayMode" />
+        <property name="EditorOnly" value="False" />
+      </properties>
+      <test-suite type="TestSuite" id="1260" name="OneStrokeDemon" fullname="OneStrokeDemon" runstate="Runnable" testcasecount="35" result="Passed" start-time="2026-07-13 20:01:12Z" end-time="2026-07-13 20:01:13Z" duration="0.892646" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1261" name="Tests" fullname="OneStrokeDemon.Tests" runstate="Runnable" testcasecount="35" result="Passed" start-time="2026-07-13 20:01:12Z" end-time="2026-07-13 20:01:13Z" duration="0.891567" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestSuite" id="1262" name="PlayMode" fullname="OneStrokeDemon.Tests.PlayMode" runstate="Runnable" testcasecount="35" result="Passed" start-time="2026-07-13 20:01:12Z" end-time="2026-07-13 20:01:13Z" duration="0.890549" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-suite type="TestSuite" id="1263" name="T500" fullname="OneStrokeDemon.Tests.PlayMode.T500" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-07-13 20:01:12Z" end-time="2026-07-13 20:01:13Z" duration="0.889433" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-suite type="TestFixture" id="1207" name="WaveRunnerPlayModeTests" fullname="OneStrokeDemon.Tests.PlayMode.T500.WaveRunnerPlayModeTests" classname="OneStrokeDemon.Tests.PlayMode.T500.WaveRunnerPlayModeTests" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-07-13 20:01:12Z" end-time="2026-07-13 20:01:13Z" duration="0.888864" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+                <properties>
+                  <property name="Category" value="T500" />
+                </properties>
+                <test-case id="1209" name="BossLevelCompletesOnlyAfterConfiguredBossEntityIsDefeated" fullname="OneStrokeDemon.Tests.PlayMode.T500.WaveRunnerPlayModeTests.BossLevelCompletesOnlyAfterConfiguredBossEntityIsDefeated" methodname="BossLevelCompletesOnlyAfterConfiguredBossEntityIsDefeated" classname="OneStrokeDemon.Tests.PlayMode.T500.WaveRunnerPlayModeTests" runstate="Runnable" seed="341389113" result="Passed" start-time="2026-07-13 20:01:12Z" end-time="2026-07-13 20:01:12Z" duration="0.503448" asserts="0">
+                  <properties>
+                    <property name="_JOINTYPE" value="UnityCombinatorial" />
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                  <output><![CDATA[CONFIG_RUNTIME_READY source=TextAsset:gameplay_config schema=4 content=0.5.1-sample hash=95c42832e54163b63d14f5fc8510453b4b5551e500909eaa9fdb1069f3f4be4b tables=28 records=662 primaryIndexes=279 groupIndexes=49
+ASSET_REGISTRY_READY source=AssetRegistry:asset_registry configHash=95c42832e54163b63d14f5fc8510453b4b5551e500909eaa9fdb1069f3f4be4b entries=76 prefabs=40 sprites=18 audioClips=17 scenes=1
+POINTER_INPUT_READY source=InputSystem modes=Mouse,Touch reference=1920x1080 safeArea=dynamic uiBeginBlock=true maxActivePointers=1
+]]></output>
+                </test-case>
+                <test-case id="1208" name="TutorialRunsThreeConfiguredWavesAndPauseFreezesEverything" fullname="OneStrokeDemon.Tests.PlayMode.T500.WaveRunnerPlayModeTests.TutorialRunsThreeConfiguredWavesAndPauseFreezesEverything" methodname="TutorialRunsThreeConfiguredWavesAndPauseFreezesEverything" classname="OneStrokeDemon.Tests.PlayMode.T500.WaveRunnerPlayModeTests" runstate="Runnable" seed="1804285108" result="Passed" start-time="2026-07-13 20:01:12Z" end-time="2026-07-13 20:01:13Z" duration="0.384067" asserts="0">
+                  <properties>
+                    <property name="_JOINTYPE" value="UnityCombinatorial" />
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                  <output><![CDATA[CONFIG_RUNTIME_READY source=TextAsset:gameplay_config schema=4 content=0.5.1-sample hash=95c42832e54163b63d14f5fc8510453b4b5551e500909eaa9fdb1069f3f4be4b tables=28 records=662 primaryIndexes=279 groupIndexes=49
+ASSET_REGISTRY_READY source=AssetRegistry:asset_registry configHash=95c42832e54163b63d14f5fc8510453b4b5551e500909eaa9fdb1069f3f4be4b entries=76 prefabs=40 sprites=18 audioClips=17 scenes=1
+POINTER_INPUT_READY source=InputSystem modes=Mouse,Touch reference=1920x1080 safeArea=dynamic uiBeginBlock=true maxActivePointers=1
+<b><color=#2EA3FF>MCP-FOR-UNITY</color></b>: [TestRunnerNoThrottle] Restored Interaction Mode after test run.
+Saving results to: /Users/cqmizhangxiaoyu2/Library/Application Support/DefaultCompany/onedraw_2/TestResults.xml
+]]></output>
+                </test-case>
+              </test-suite>
+            </test-suite>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

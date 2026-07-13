@@ -36,8 +36,8 @@
 | T440 | P4 玩家敌人技能 | DONE | T420 | 1.5 | 建立敌人、投射物、VFX和伤害数字对象池及完整重置。 |
 | T450 | P4 玩家敌人技能 | DONE | T430, T440 | 2.0 | 只用配置组合5种普通怪和1种精英怪。 |
 | T460 | P4 玩家敌人技能 | DONE | T410, T430 | 3.0 | 实现配置驱动Boss阶段、阈值、技能序列和切换。 |
-| T500 | P5 关卡完整单局 | READY | T450 | 2.0 | 实现Level/Wave/Spawn时间轴和条件结束。 |
-| T510 | P5 关卡完整单局 | BACKLOG | T500, T400 | 1.5 | 实现Countdown/Playing/UltimateDrawing/Paused/Victory/Defeat状态机。 |
+| T500 | P5 关卡完整单局 | DONE | T450 | 2.0 | 实现Level/Wave/Spawn时间轴和条件结束。 |
+| T510 | P5 关卡完整单局 | READY | T500, T400 | 1.5 | 实现Countdown/Playing/UltimateDrawing/Paused/Victory/Defeat状态机。 |
 | T520 | P5 关卡完整单局 | BACKLOG | T510 | 2.0 | 完成幽菌古道教学关：普通斩、连斩、切弹、架势和终极。 |
 | T530 | P5 关卡完整单局 | BACKLOG | T520 | 2.0 | 完成混合怪物普通关，验证战术组合和难度曲线。 |
 | T540 | P5 关卡完整单局 | BACKLOG | T460, T530 | 2.5 | 完成Boss关和镇墓玄甲王三阶段战斗。 |
@@ -435,7 +435,7 @@
 
 ### T500 · 实现Level/Wave/Spawn时间轴和条件结束。
 
-- **状态：** `READY`
+- **状态：** `DONE`
 - **依赖：** T450
 - **估算：** 2.0 人日
 - **产出：** LevelRunner；WaveRunner；SpawnScheduler；归一化出生区域。
@@ -443,11 +443,11 @@
 - **验收：** 波次和刷怪完全来自表；AllDefeated/TimeElapsed/BossDefeated可用；暂停不推进。
 - **验证：** SpawnTimelineTests；WaveRunnerPlayModeTests。
 - **证据：** `artifacts/evals/T500/`
-- **提交：** `T500: <imperative summary>`
+- **提交：** `T500: implement configured level timelines`
 
 ### T510 · 实现Countdown/Playing/UltimateDrawing/Paused/Victory/Defeat状态机。
 
-- **状态：** `BACKLOG`
+- **状态：** `READY`
 - **依赖：** T500, T400
 - **估算：** 1.5 人日
 - **产出：** BattleFlowStateMachine；事件门；统一时间源。

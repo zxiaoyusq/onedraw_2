@@ -1,0 +1,690 @@
+using System;
+using System.Collections.Generic;
+using OneStrokeDemon.Config;
+
+namespace OneStrokeDemon.Levels
+{
+    public enum WaveStartTrigger
+    {
+        None = 0,
+        LevelStart = 1,
+        PlayerConfirmed = 2,
+        PreviousWaveEnd = 3,
+        TimeElapsed = 4,
+    }
+
+    public enum WaveEndCondition
+    {
+        None = 0,
+        AllEnemiesDefeated = 1,
+        BossDefeated = 2,
+        PlayerConfirmed = 3,
+        TimeElapsed = 4,
+    }
+
+    public enum SpawnPattern
+    {
+        None = 0,
+        Line = 1,
+        Scatter = 2,
+        Single = 3,
+        Stagger = 4,
+    }
+
+    public enum SpawnLane
+    {
+        None = 0,
+        Air = 1,
+        Boss = 2,
+        Ground = 3,
+    }
+
+    public enum SpawnFacing
+    {
+        None = 0,
+        Left = 1,
+        Right = 2,
+    }
+
+    public readonly struct NormalizedSpawnPosition
+    {
+        internal NormalizedSpawnPosition(double x, double y)
+        {
+            X = Clamp01(x);
+            Y = Clamp01(y);
+        }
+
+        public double X { get; }
+
+        public double Y { get; }
+
+        public bool IsNormalized =>
+            IsFinite(X) &&
+            IsFinite(Y) &&
+            X >= 0d && X <= 1d &&
+            Y >= 0d && Y <= 1d;
+
+        private static double Clamp01(double value)
+        {
+            if (value < 0d)
+            {
+                return 0d;
+            }
+
+            return value > 1d ? 1d : value;
+        }
+
+        private static bool IsFinite(double value)
+        {
+            return !double.IsNaN(value) && !double.IsInfinity(value);
+        }
+    }
+
+    public readonly struct SpawnPointDefinition
+    {
+        internal SpawnPointDefinition(
+            string spawnPointId,
+            string levelId,
+            double normalizedX,
+            double normalizedY,
+            SpawnLane lane,
+            double jitterX,
+            double jitterY,
+            SpawnFacing facing)
+        {
+            SpawnPointId = spawnPointId;
+            LevelId = levelId;
+            NormalizedX = normalizedX;
+            NormalizedY = normalizedY;
+            Lane = lane;
+            JitterX = jitterX;
+            JitterY = jitterY;
+            Facing = facing;
+            IsConfigured = true;
+        }
+
+        public string SpawnPointId { get; }
+
+        public string LevelId { get; }
+
+        public double NormalizedX { get; }
+
+        public double NormalizedY { get; }
+
+        public SpawnLane Lane { get; }
+
+        public double JitterX { get; }
+
+        public double JitterY { get; }
+
+        public SpawnFacing Facing { get; }
+
+        public bool IsConfigured { get; }
+    }
+
+    public readonly struct EnemyModifierDefinition
+    {
+        internal EnemyModifierDefinition(
+            string modifierId,
+            string displayNameKey,
+            double hpMultiplier,
+            double damageMultiplier,
+            double speedMultiplier,
+            double scoreMultiplier,
+            string tintHex,
+            string extraBuffId)
+        {
+            ModifierId = modifierId;
+            DisplayNameKey = displayNameKey;
+            HpMultiplier = hpMultiplier;
+            DamageMultiplier = damageMultiplier;
+            SpeedMultiplier = speedMultiplier;
+            ScoreMultiplier = scoreMultiplier;
+            TintHex = tintHex;
+            ExtraBuffId = extraBuffId;
+            IsConfigured = true;
+        }
+
+        public string ModifierId { get; }
+
+        public string DisplayNameKey { get; }
+
+        public double HpMultiplier { get; }
+
+        public double DamageMultiplier { get; }
+
+        public double SpeedMultiplier { get; }
+
+        public double ScoreMultiplier { get; }
+
+        public string TintHex { get; }
+
+        public string ExtraBuffId { get; }
+
+        public bool IsConfigured { get; }
+    }
+
+    public sealed class SpawnDefinition
+    {
+        internal SpawnDefinition(
+            string spawnId,
+            string waveId,
+            double spawnTimeSeconds,
+            string enemyId,
+            bool isBoss,
+            int count,
+            double intervalSeconds,
+            in SpawnPointDefinition spawnPoint,
+            SpawnPattern pattern,
+            in EnemyModifierDefinition modifier)
+        {
+            SpawnId = spawnId;
+            WaveId = waveId;
+            SpawnTimeSeconds = spawnTimeSeconds;
+            EnemyId = enemyId;
+            IsBoss = isBoss;
+            Count = count;
+            IntervalSeconds = intervalSeconds;
+            SpawnPoint = spawnPoint;
+            Pattern = pattern;
+            Modifier = modifier;
+        }
+
+        public string SpawnId { get; }
+
+        public string WaveId { get; }
+
+        public double SpawnTimeSeconds { get; }
+
+        public string EnemyId { get; }
+
+        public bool IsBoss { get; }
+
+        public int Count { get; }
+
+        public double IntervalSeconds { get; }
+
+        public SpawnPointDefinition SpawnPoint { get; }
+
+        public SpawnPattern Pattern { get; }
+
+        public EnemyModifierDefinition Modifier { get; }
+    }
+
+    public sealed class WaveDefinition
+    {
+        internal WaveDefinition(
+            string waveId,
+            string levelId,
+            int order,
+            WaveStartTrigger startTrigger,
+            double startDelaySeconds,
+            WaveEndCondition endCondition,
+            double endDelaySeconds,
+            string musicKey,
+            int maxAlive,
+            IReadOnlyList<SpawnDefinition> spawns)
+        {
+            WaveId = waveId;
+            LevelId = levelId;
+            Order = order;
+            StartTrigger = startTrigger;
+            StartDelaySeconds = startDelaySeconds;
+            EndCondition = endCondition;
+            EndDelaySeconds = endDelaySeconds;
+            MusicKey = musicKey;
+            MaxAlive = maxAlive;
+            Spawns = spawns;
+        }
+
+        public string WaveId { get; }
+
+        public string LevelId { get; }
+
+        public int Order { get; }
+
+        public WaveStartTrigger StartTrigger { get; }
+
+        public double StartDelaySeconds { get; }
+
+        public WaveEndCondition EndCondition { get; }
+
+        public double EndDelaySeconds { get; }
+
+        public string MusicKey { get; }
+
+        public int MaxAlive { get; }
+
+        public IReadOnlyList<SpawnDefinition> Spawns { get; }
+    }
+
+    public sealed class LevelDefinition
+    {
+        internal LevelDefinition(
+            string levelId,
+            string displayNameKey,
+            string sceneKey,
+            string backgroundAssetKey,
+            double durationLimitSeconds,
+            string bossEnemyId,
+            IReadOnlyList<WaveDefinition> waves)
+        {
+            LevelId = levelId;
+            DisplayNameKey = displayNameKey;
+            SceneKey = sceneKey;
+            BackgroundAssetKey = backgroundAssetKey;
+            DurationLimitSeconds = durationLimitSeconds;
+            BossEnemyId = bossEnemyId;
+            Waves = waves;
+        }
+
+        public string LevelId { get; }
+
+        public string DisplayNameKey { get; }
+
+        public string SceneKey { get; }
+
+        public string BackgroundAssetKey { get; }
+
+        public double DurationLimitSeconds { get; }
+
+        public string BossEnemyId { get; }
+
+        public IReadOnlyList<WaveDefinition> Waves { get; }
+    }
+
+    public static class LevelCatalog
+    {
+        public static LevelDefinition Create(IConfigProvider configProvider, string levelId)
+        {
+            if (configProvider == null)
+            {
+                throw new ArgumentNullException(nameof(configProvider));
+            }
+
+            LevelConfig level = configProvider.GetLevel(levelId);
+            RequireNonEmpty(level.LevelId, "levelId");
+            RequirePositive(level.DurationLimitSec, level.LevelId, "durationLimitSec");
+
+            IReadOnlyList<WaveConfig> configuredWaves = configProvider.GetWaves(level.LevelId);
+            if (configuredWaves.Count == 0)
+            {
+                throw Invalid(level.LevelId, "level must contain at least one wave");
+            }
+
+            var rows = new WaveConfig[configuredWaves.Count];
+            for (int index = 0; index < rows.Length; index++)
+            {
+                rows[index] = configuredWaves[index] ??
+                    throw Invalid(level.LevelId, "wave row cannot be null");
+            }
+
+            Array.Sort(rows, WaveOrderComparer.Instance);
+            var waves = new WaveDefinition[rows.Length];
+            for (int index = 0; index < rows.Length; index++)
+            {
+                WaveConfig row = rows[index];
+                int expectedOrder = index + 1;
+                if (!string.Equals(row.LevelId, level.LevelId, StringComparison.Ordinal) ||
+                    row.Order != expectedOrder)
+                {
+                    throw Invalid(
+                        level.LevelId,
+                        "waves must have matching ownership and contiguous order starting at 1");
+                }
+
+                WaveStartTrigger startTrigger = ParseStartTrigger(row.StartTrigger, row.WaveId);
+                if (index == 0 && startTrigger == WaveStartTrigger.PreviousWaveEnd)
+                {
+                    throw Invalid(row.WaveId, "first wave cannot use PreviousWaveEnd");
+                }
+
+                if (index > 0 && startTrigger == WaveStartTrigger.LevelStart)
+                {
+                    throw Invalid(row.WaveId, "only the first wave may use LevelStart");
+                }
+
+                WaveEndCondition endCondition = ParseEndCondition(row.EndCondition, row.WaveId);
+                RequireFiniteNonNegative(row.StartDelaySec, row.WaveId, "startDelaySec");
+                RequireFiniteNonNegative(row.EndDelaySec, row.WaveId, "endDelaySec");
+                RequirePositive(row.MaxAlive, row.WaveId, "maxAlive");
+                if (row.MaxAlive > int.MaxValue)
+                {
+                    throw Invalid(row.WaveId, "maxAlive exceeds Int32 range");
+                }
+
+                IReadOnlyList<SpawnDefinition> spawns = CreateSpawns(
+                    configProvider,
+                    level,
+                    row);
+                if (endCondition == WaveEndCondition.BossDefeated)
+                {
+                    ValidateBossWave(level, row, spawns);
+                }
+
+                waves[index] = new WaveDefinition(
+                    row.WaveId,
+                    row.LevelId,
+                    expectedOrder,
+                    startTrigger,
+                    row.StartDelaySec,
+                    endCondition,
+                    row.EndDelaySec,
+                    row.MusicKey,
+                    (int)row.MaxAlive,
+                    spawns);
+            }
+
+            return new LevelDefinition(
+                level.LevelId,
+                level.DisplayNameKey,
+                level.SceneKey,
+                level.BackgroundAssetKey,
+                level.DurationLimitSec,
+                level.BossEnemyId,
+                Array.AsReadOnly(waves));
+        }
+
+        private static IReadOnlyList<SpawnDefinition> CreateSpawns(
+            IConfigProvider configProvider,
+            LevelConfig level,
+            WaveConfig wave)
+        {
+            IReadOnlyList<SpawnConfig> configured = configProvider.GetSpawns(wave.WaveId);
+            if (configured.Count == 0)
+            {
+                throw Invalid(wave.WaveId, "wave must contain at least one spawn row");
+            }
+
+            var definitions = new SpawnDefinition[configured.Count];
+            var ids = new HashSet<string>(StringComparer.Ordinal);
+            for (int index = 0; index < configured.Count; index++)
+            {
+                SpawnConfig row = configured[index] ??
+                    throw Invalid(wave.WaveId, "spawn row cannot be null");
+                if (!string.Equals(row.WaveId, wave.WaveId, StringComparison.Ordinal))
+                {
+                    throw Invalid(row.SpawnId, "spawn wave ownership does not match");
+                }
+
+                RequireNonEmpty(row.SpawnId, "spawnId");
+                if (!ids.Add(row.SpawnId))
+                {
+                    throw Invalid(row.SpawnId, "duplicate spawn id");
+                }
+
+                RequireFiniteNonNegative(row.SpawnTimeSec, row.SpawnId, "spawnTimeSec");
+                RequireFiniteNonNegative(row.IntervalSec, row.SpawnId, "intervalSec");
+                RequirePositive(row.Count, row.SpawnId, "count");
+                if (row.Count > int.MaxValue)
+                {
+                    throw Invalid(row.SpawnId, "count exceeds Int32 range");
+                }
+
+                EnemyConfig enemy = configProvider.GetEnemy(row.EnemyId);
+                SpawnPointDefinition point = CreateSpawnPoint(
+                    configProvider.GetSpawnPoint(row.SpawnPointId),
+                    level.LevelId,
+                    row.SpawnId);
+                EnemyModifierDefinition modifier = CreateModifier(
+                    configProvider,
+                    configProvider.GetEnemyModifier(row.ModifierId),
+                    row.SpawnId);
+                definitions[index] = new SpawnDefinition(
+                    row.SpawnId,
+                    row.WaveId,
+                    row.SpawnTimeSec,
+                    enemy.EnemyId,
+                    string.Equals(enemy.Tier, "Boss", StringComparison.Ordinal),
+                    (int)row.Count,
+                    row.IntervalSec,
+                    point,
+                    ParseSpawnPattern(row.SpawnPattern, row.SpawnId),
+                    modifier);
+            }
+
+            Array.Sort(definitions, SpawnDefinitionComparer.Instance);
+            return Array.AsReadOnly(definitions);
+        }
+
+        private static SpawnPointDefinition CreateSpawnPoint(
+            SpawnPointConfig row,
+            string levelId,
+            string spawnId)
+        {
+            if (!string.Equals(row.LevelId, "*", StringComparison.Ordinal) &&
+                !string.Equals(row.LevelId, levelId, StringComparison.Ordinal))
+            {
+                throw Invalid(
+                    spawnId,
+                    $"spawn point '{row.SpawnPointId}' is not scoped to level '{levelId}'");
+            }
+
+            RequireUnit(row.NormalizedX, row.SpawnPointId, "normalizedX");
+            RequireUnit(row.NormalizedY, row.SpawnPointId, "normalizedY");
+            RequireUnit(row.JitterX, row.SpawnPointId, "jitterX");
+            RequireUnit(row.JitterY, row.SpawnPointId, "jitterY");
+            return new SpawnPointDefinition(
+                row.SpawnPointId,
+                row.LevelId,
+                row.NormalizedX,
+                row.NormalizedY,
+                ParseLane(row.Lane, row.SpawnPointId),
+                row.JitterX,
+                row.JitterY,
+                ParseFacing(row.Facing, row.SpawnPointId));
+        }
+
+        private static EnemyModifierDefinition CreateModifier(
+            IConfigProvider configProvider,
+            EnemyModifierConfig row,
+            string spawnId)
+        {
+            RequirePositiveFinite(row.HpMultiplier, row.ModifierId, "hpMultiplier");
+            RequirePositiveFinite(row.DamageMultiplier, row.ModifierId, "damageMultiplier");
+            RequirePositiveFinite(row.SpeedMultiplier, row.ModifierId, "speedMultiplier");
+            RequirePositiveFinite(row.ScoreMultiplier, row.ModifierId, "scoreMultiplier");
+            if (!IsHexColor(row.TintHex))
+            {
+                throw Invalid(row.ModifierId, "tintHex must be #RRGGBB");
+            }
+
+            if (!string.IsNullOrEmpty(row.ExtraBuffId))
+            {
+                configProvider.GetBuff(row.ExtraBuffId);
+            }
+
+            return new EnemyModifierDefinition(
+                row.ModifierId,
+                row.DisplayNameKey,
+                row.HpMultiplier,
+                row.DamageMultiplier,
+                row.SpeedMultiplier,
+                row.ScoreMultiplier,
+                row.TintHex,
+                row.ExtraBuffId);
+        }
+
+        private static void ValidateBossWave(
+            LevelConfig level,
+            WaveConfig wave,
+            IReadOnlyList<SpawnDefinition> spawns)
+        {
+            if (string.IsNullOrWhiteSpace(level.BossEnemyId))
+            {
+                throw Invalid(wave.WaveId, "BossDefeated requires level.bossEnemyId");
+            }
+
+            for (int index = 0; index < spawns.Count; index++)
+            {
+                if (spawns[index].IsBoss &&
+                    string.Equals(
+                        spawns[index].EnemyId,
+                        level.BossEnemyId,
+                        StringComparison.Ordinal))
+                {
+                    return;
+                }
+            }
+
+            throw Invalid(
+                wave.WaveId,
+                $"BossDefeated wave must spawn configured boss '{level.BossEnemyId}'");
+        }
+
+        private static WaveStartTrigger ParseStartTrigger(string value, string ownerId)
+        {
+            if (Enum.TryParse(value, false, out WaveStartTrigger parsed) &&
+                parsed != WaveStartTrigger.None &&
+                string.Equals(parsed.ToString(), value, StringComparison.Ordinal))
+            {
+                return parsed;
+            }
+
+            throw Invalid(ownerId, $"unsupported startTrigger '{value}'");
+        }
+
+        private static WaveEndCondition ParseEndCondition(string value, string ownerId)
+        {
+            if (Enum.TryParse(value, false, out WaveEndCondition parsed) &&
+                parsed != WaveEndCondition.None &&
+                string.Equals(parsed.ToString(), value, StringComparison.Ordinal))
+            {
+                return parsed;
+            }
+
+            throw Invalid(ownerId, $"unsupported endCondition '{value}'");
+        }
+
+        private static SpawnPattern ParseSpawnPattern(string value, string ownerId)
+        {
+            if (Enum.TryParse(value, false, out SpawnPattern parsed) &&
+                parsed != SpawnPattern.None &&
+                string.Equals(parsed.ToString(), value, StringComparison.Ordinal))
+            {
+                return parsed;
+            }
+
+            throw Invalid(ownerId, $"unsupported spawnPattern '{value}'");
+        }
+
+        private static SpawnLane ParseLane(string value, string ownerId)
+        {
+            if (Enum.TryParse(value, false, out SpawnLane parsed) &&
+                parsed != SpawnLane.None &&
+                string.Equals(parsed.ToString(), value, StringComparison.Ordinal))
+            {
+                return parsed;
+            }
+
+            throw Invalid(ownerId, $"unsupported lane '{value}'");
+        }
+
+        private static SpawnFacing ParseFacing(string value, string ownerId)
+        {
+            if (Enum.TryParse(value, false, out SpawnFacing parsed) &&
+                parsed != SpawnFacing.None &&
+                string.Equals(parsed.ToString(), value, StringComparison.Ordinal))
+            {
+                return parsed;
+            }
+
+            throw Invalid(ownerId, $"unsupported facing '{value}'");
+        }
+
+        private static bool IsHexColor(string value)
+        {
+            if (string.IsNullOrEmpty(value) || value.Length != 7 || value[0] != '#')
+            {
+                return false;
+            }
+
+            for (int index = 1; index < value.Length; index++)
+            {
+                char character = value[index];
+                bool digit = character >= '0' && character <= '9';
+                bool upper = character >= 'A' && character <= 'F';
+                bool lower = character >= 'a' && character <= 'f';
+                if (!digit && !upper && !lower)
+                {
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
+        private static void RequireNonEmpty(string value, string field)
+        {
+            if (string.IsNullOrWhiteSpace(value))
+            {
+                throw Invalid(field, "value must be non-empty");
+            }
+        }
+
+        private static void RequirePositive(long value, string ownerId, string field)
+        {
+            if (value <= 0L)
+            {
+                throw Invalid(ownerId, $"{field} must be positive");
+            }
+        }
+
+        private static void RequireFiniteNonNegative(double value, string ownerId, string field)
+        {
+            if (!IsFinite(value) || value < 0d)
+            {
+                throw Invalid(ownerId, $"{field} must be finite and non-negative");
+            }
+        }
+
+        private static void RequirePositiveFinite(double value, string ownerId, string field)
+        {
+            if (!IsFinite(value) || value <= 0d)
+            {
+                throw Invalid(ownerId, $"{field} must be finite and positive");
+            }
+        }
+
+        private static void RequireUnit(double value, string ownerId, string field)
+        {
+            if (!IsFinite(value) || value < 0d || value > 1d)
+            {
+                throw Invalid(ownerId, $"{field} must be within [0,1]");
+            }
+        }
+
+        private static bool IsFinite(double value)
+        {
+            return !double.IsNaN(value) && !double.IsInfinity(value);
+        }
+
+        private static ArgumentException Invalid(string ownerId, string message)
+        {
+            return new ArgumentException($"Level config '{ownerId}': {message}.");
+        }
+
+        private sealed class WaveOrderComparer : IComparer<WaveConfig>
+        {
+            public static readonly WaveOrderComparer Instance = new WaveOrderComparer();
+
+            public int Compare(WaveConfig left, WaveConfig right)
+            {
+                int order = left.Order.CompareTo(right.Order);
+                return order != 0 ? order : string.CompareOrdinal(left.WaveId, right.WaveId);
+            }
+        }
+
+        private sealed class SpawnDefinitionComparer : IComparer<SpawnDefinition>
+        {
+            public static readonly SpawnDefinitionComparer Instance =
+                new SpawnDefinitionComparer();
+
+            public int Compare(SpawnDefinition left, SpawnDefinition right)
+            {
+                int time = left.SpawnTimeSeconds.CompareTo(right.SpawnTimeSeconds);
+                return time != 0 ? time : string.CompareOrdinal(left.SpawnId, right.SpawnId);
+            }
+        }
+    }
+}
