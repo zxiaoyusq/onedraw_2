@@ -1,7 +1,7 @@
 project: OneStrokeDemon
 project_cn: 一笔镇妖
 plan_generated: 2026-07-11
-current_task: T340
+current_task: T350
 current_task_status: READY
 unity:
   project_root: .
@@ -58,7 +58,7 @@ config:
     readonly_primary_indexes: 270
     readonly_group_indexes: 49
     editmode_tests: 72
-    playmode_tests: 15
+    playmode_tests: 20
     bootstrap_smoke: pass
   asset_registry:
     status: pass
@@ -91,7 +91,7 @@ config:
     config_editmode_tests: 19
     config_playmode_tests: 3
     full_editmode_tests: 72
-    full_playmode_tests: 15
+    full_playmode_tests: 20
     full_command_smoke: pass
 input:
   status: pass
@@ -113,7 +113,7 @@ input:
   pointer_editmode_tests: 5
   pointer_playmode_tests: 7
   full_editmode_tests: 72
-  full_playmode_tests: 15
+  full_playmode_tests: 20
   bootstrap_smoke: pass
 stroke_sampling:
   status: pass
@@ -132,7 +132,7 @@ stroke_sampling:
   editmode_tests: 9
   playmode_tests: 1
   full_editmode_tests: 72
-  full_playmode_tests: 15
+  full_playmode_tests: 20
 stroke_geometry:
   status: pass
   processor: StrokeGeometry.Process
@@ -149,7 +149,7 @@ stroke_geometry:
   editmode_tests: 12
   playmode_tests: 1
   full_editmode_tests: 72
-  full_playmode_tests: 15
+  full_playmode_tests: 20
 gesture_classification:
   status: pass
   classifier: GestureClassifier
@@ -166,7 +166,27 @@ gesture_classification:
   editmode_tests: 14
   playmode_tests: 1
   full_editmode_tests: 72
-  full_playmode_tests: 15
+  full_playmode_tests: 20
+stroke_trail:
+  status: pass
+  path_bridge: StrokeTrailPath
+  view: StrokeTrailView
+  pool: StrokeTrailPool
+  renderer: LineRenderer
+  geometry_source: same_StrokeGeometryData_points_reference
+  config_sources: [Stances.strokeWidthRefPx, StrokeRules.maxPointCount, VfxCues.lifeSec, VfxCues.poolPrewarm, VfxCues.sortingLayer, VfxCues.sortingOrder]
+  stance_widths_reference_pixels: {blade: 18, talisman: 28}
+  pool_capacity: 12
+  maximum_active_trails: 3
+  maximum_points: 80
+  fade_lifetime_seconds: 0.3
+  sorting_layer: VFX
+  sorting_order: 20
+  shared_material_only: true
+  managed_allocation_after_warmup: zero_for_128_show_and_reclaim_cycles
+  playmode_tests: 5
+  full_editmode_tests: 72
+  full_playmode_tests: 20
 manual_gates:
   unity_editor_smoke: pass
   standard_web_build: pass_with_known_issues
@@ -212,7 +232,7 @@ wechat_conversion:
 execution_order:
   deferred_tasks: [T120, T130]
   deferral_reason: user_prioritized_main_game_content_over_wechat_devtools_device_and_packaging_work
-  next_content_task: T340
+  next_content_task: T350
   resume_platform_before: [T640, T750]
 workflow:
   config_verify_command: Tools/CI/verify-config.sh
