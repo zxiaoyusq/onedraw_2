@@ -1,7 +1,7 @@
 project: OneStrokeDemon
 project_cn: 一笔镇妖
 plan_generated: 2026-07-11
-current_task: T350
+current_task: T360
 current_task_status: READY
 unity:
   project_root: .
@@ -57,8 +57,8 @@ config:
     loaded_records: 645
     readonly_primary_indexes: 270
     readonly_group_indexes: 49
-    editmode_tests: 72
-    playmode_tests: 20
+    editmode_tests: 78
+    playmode_tests: 22
     bootstrap_smoke: pass
   asset_registry:
     status: pass
@@ -232,7 +232,7 @@ wechat_conversion:
 execution_order:
   deferred_tasks: [T120, T130]
   deferral_reason: user_prioritized_main_game_content_over_wechat_devtools_device_and_packaging_work
-  next_content_task: T350
+  next_content_task: T360
   resume_platform_before: [T640, T750]
 workflow:
   config_verify_command: Tools/CI/verify-config.sh

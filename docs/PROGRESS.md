@@ -1,8 +1,8 @@
 # PROGRESS
 
 - 日期：2026-07-13
-- 当前成熟度：T340已完成共享处理点集的低分配轨迹显示、淡出和固定池；P3进入分段胶囊命中
-- 当前任务：T350
+- 当前成熟度：T350已完成共享处理点集的分段胶囊命中、顺序排序、同笔去重和弱点区分；P3进入伤害结算
+- 当前任务：T360
 - 状态：READY
 - Unity精确版本：6000.5.1f1（已由ProjectVersion.txt与本机安装核验）
 - 微信SDK来源或版本：官方 `minigame-tuanjie-transform-sdk` v0.1.33 / commit `ed4ad28f433c6b52b5fd3f22a6fa155a0c98c228` / embedded最小补丁
@@ -11,6 +11,12 @@
 
 ## 已完成
 
+- T350：`StrokeHitResolver`直接遍历T320 `StrokeGeometryData.Points`的同一只读引用，逐段以所选`StrokeRules.hitRadiusRefPx`执行扫圆形成胶囊命中；解析结果不创建轨迹Collider、不修改目标，也不提前执行T360伤害。
+- T350：`HitRecord`不可变地携带strokeId、`IHittable`目标与稳定targetId、弱点标记、归一化路径参数/参考像素路径距离、完整笔势结果和结束时间；结果按首次路径接触排序，同距离以targetId稳定裁决。
+- T350：固定容量来自配置`max_active_enemies=18`与`max_active_projectiles=40`，得到58个唯一目标和含单体主体/弱点及饱和哨兵的117槽查询缓存；同一targetId跨段、主体和弱点只保留一条记录，保留最早接触并聚合弱点为真。
+- T350：Unity 6000.5.1f1使用`Physics2D.CircleCast`数组重载和长期复用缓冲；预热后连续128次真实物理查询与解析的当前线程托管分配增量为0，未使用LINQ、闭包、线程或每段对象。
+- T350：专项EditMode 6/6、PlayMode 2/2，最终全量EditMode 78/78、PlayMode 22/22；真实Mouse经Bootstrap配置、T300/T310/T320/T330/T340后，以视觉同一Points引用按路径命中两个Collider2D目标，主体/弱点同体去重；脚本导入编译隔离检查Console Error/Warning为0。
+- T350：配置三生成物无漂移、.NET 54/54；未修改xlsx、FieldDictionary、Schema、导出器、JSON/hash/ConfigIds、DTO、场景、Prefab、Input Actions、Packages、ProjectSettings或微信SDK，也未提前实现T360伤害或T370投射物。
 - T340：`StrokeTrailPath.FromGeometry`只保存T320 `StrokeGeometryData.Points`的同一只读引用，不复制或重新简化点集；`StrokeTrailView`只负责LineRenderer显示和淡出，不包含分类、碰撞或命中决策。
 - T340：`StrokeTrailSettingsFactory`从调用方指定的`StanceConfig`和`VfxCueConfig`映射宽度、寿命、预热数与排序，从全部`StrokeRules.maxPointCount`取运行上限；当前真实配置得到刀18、符28参考像素、寿命0.3秒、预热12和最大80点，未建立Inspector第二数值库。
 - T340：`StrokeTrailPool`初始化时一次性创建固定数组和12个视图，最多保持技术规范规定的3条活动残留；第四笔稳定回收激活序列最旧者，回收会清除strokeId、架势、源点引用、位置数、宽度、颜色、排序和Transform状态，同时保留唯一共享材质。
@@ -72,7 +78,7 @@
 - T200：按GAME_DESIGN修正关卡玩法ID为 `lv_001_tutorial`、`lv_002_cave`、`lv_003_boss`，Boss玩法ID为 `boss_tomb_king`；所有Level/Wave/Spawn/BossPhase/Reward依赖引用同步，文案键和资源键保持独立命名空间。
 - T200：FieldDictionary保留248条非递归字段记录，修正Global互斥类型列及10个主键/条件字段的必填语义；冻结Schema属性存在与Excel单元格非空的差异、空值转换、普通/分组/通配符/conditional外键和数据所有权。
 - T200：29表、14公式、248字段、Schema/样例、类型/范围/枚举、主键、外键、连续order、关卡-Boss语义和规范化contentHash的只读契约审计全部PASS；29表最终渲染经4张总览拼图复核，无结构或版式异常。
-- 执行顺序调整：用户明确要求暂时绕过T120及微信开发者工具/打包问题，先完成游戏主要内容；T120保持`BLOCKED`、T130保持`BACKLOG`，不删除MVP平台验收要求；T210/T220/T230/T240/T250/T300/T310/T320/T330/T340已按该顺序完成，当前唯一`READY`任务为T350。
+- 执行顺序调整：用户明确要求暂时绕过T120及微信开发者工具/打包问题，先完成游戏主要内容；T120保持`BLOCKED`、T130保持`BACKLOG`，不删除MVP平台验收要求；T210/T220/T230/T240/T250/T300/T310/T320/T330/T340/T350已按该顺序完成，当前唯一`READY`任务为T360。
 - T120 G2：Unity `6000.5.1f1` 基于固定 embedded WXSDK 成功生成 `Builds/WeChat/T120`；84个文件、总计101,901,218字节，其中`minigame` 12,008,520字节，JSON结构、关键文件、SHA-256清单与敏感占位扫描均通过。
 - T120构建参数：空AppID、横屏、256MB、触摸启用、Development、关闭渲染线程与性能分析、清理构建，并使用SDK受支持的多线程Brotli；可复现入口为`Tools/CI/build-wechat.sh`。
 - T120 G2结论为`PASS WITH KNOWN ISSUES`：默认单线程Brotli在当前macOS Unity安装布局下引用错误路径（BUG-0005，已用配置规避）；转换含93条未匹配替换规则及6条Emscripten warning（BUG-0006），需要G3实际运行判定影响。
@@ -119,4 +125,4 @@
 8. T240为尚未到达资源接入阶段的75个非场景键使用按类型共享的受管占位资源；类型与覆盖合同已成立，但正式视觉、音频和逐Prefab内容仍须在T630及相应玩法任务中替换并重新校验。
 ## 下一步
 
-只执行T350：实现分段胶囊命中、路径参数排序、同笔去重和弱点命中，并让碰撞消费与T340视觉相同的T320处理点集；不提前实现T360伤害或T370投射物，也不恢复T120/T130。平台任务最迟在T640/T750前恢复。
+只执行T360：实现配置驱动的伤害公式、方向与弱点奖励、连斩、评分和能量，并保持纯规则层可独立断言；不提前实现T370投射物、T400玩家状态或T420敌人状态机，也不恢复T120/T130。平台任务最迟在T640/T750前恢复。
