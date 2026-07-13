@@ -56,3 +56,21 @@
 - 许可证：SDK根许可证为 MIT；随包保留 Brotli MIT-style 与 Binaryen 103.0.0 Apache-2.0 许可证。
 - 移除条件：官方不可变版本修复该调用，并在 Unity 6000.5.1f1 通过 T110 同等编译与测试矩阵后，删除 embedded 包并恢复纯 Git 依赖。
 - 限制：该决定不确认 G2转换、G3 DevTools、G4真机，也不授权迁移 Unity。
+
+## D-010 · T120 可重复微信转换入口与Brotli策略
+
+- 状态：ACCEPTED
+- 决定：G2统一通过项目自有 `WechatBuildEntry` 与 `Tools/CI/build-wechat.sh` 调用固定SDK的 `WXConvertCore.DoExport`；输出限定在忽略目录 `Builds/WeChat/**`，Spike配置使用空AppID、横屏、256MB、关闭渲染线程和性能分析。
+- 决定：macOS Unity `6000.5.1f1` 使用SDK公开的 `brotliMT=true` 路径。默认单线程路径因错误定位 `Unity.app/PlaybackEngines` 无法运行；这不是新增SDK源码差异。
+- 决定：构建包装器在运行前备份、退出后恢复ProjectSettings、embedded SDK配置/元数据、URP构建期字段和SDK临时Assets，避免平台Spike污染可审查基线。
+- 理由：第一次完整转换证明默认Brotli路径阻断G2；启用随SDK提供的压缩实现后，Builder、Converter、JSON、产物清单和 `.br` 均通过，并且仓库无平台设置残留。
+- 限制：G2为 `PASS WITH KNOWN ISSUES`，不替代G3/G4；93条未匹配替换规则保持BUG-0006，只有实际DevTools和真机可以缩小风险。
+- 移除条件：官方固定版本修复macOS路径并在同一Unity版本通过完整G2～G4后，可恢复默认压缩路径并删除兼容策略。
+
+## D-011 · 平台阻塞期间优先推进主内容链
+
+- 状态：ACCEPTED
+- 决定：按用户明确指示，T120保持`BLOCKED`并保留现有G2证据，T130保持`BACKLOG`；暂不处理微信开发者工具、真机和打包问题，依赖T040且可独立执行的T200成为唯一`READY`任务。
+- 理由：G3/G4需要本机之外的登录工具与设备条件，而P2配置系统到大部分玩法主链不依赖这些运行门；继续主内容可以产生有效进展，同时不伪造平台结论。
+- 限制：这是执行顺序延期，不是范围裁剪。`MVP_SCOPE`中的微信四级验证仍必须完成，T120不得改为DONE，G3/G4不得改为PASS。
+- 恢复条件：具备已登录微信开发者工具和至少一台可用手机后可恢复T120；无论设备何时到位，平台任务最迟在T640或T750开始前恢复并满足其依赖。

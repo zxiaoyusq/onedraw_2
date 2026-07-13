@@ -60,6 +60,36 @@
 - 回归测试：SDKImportCompile、全量EditMode warning扫描。
 - 证据：`artifacts/evals/T110/warnings-summary.log`、`artifacts/tmp/T110-editmode-unity.log`。
 
+## BUG-0005 · WXSDK单线程Brotli路径不兼容macOS Unity 6000.5安装布局
+
+- 状态：OPEN
+- 严重度：S2
+- 发现版本或commit：Unity `6000.5.1f1` / WXSDK `v0.1.33` commit `ed4ad28f433c6b52b5fd3f22a6fa155a0c98c228`
+- 配置hash：不适用
+- 环境：macOS batchmode，T120 G2转换
+- 复现步骤：使用SDK默认 `brotliMT=false` 完成WebGL Player构建和框架转换。
+- 期望：SDK找到Unity或随包Brotli并生成小游戏 `.br` 文件。
+- 实际：SDK尝试执行不存在的 `Unity.app/PlaybackEngines/WebGLSupport/BuildTools/Brotli/macos/brotli`，随后因目标 `.br` 缺失抛出 `FileNotFoundException`；本机PlaybackEngines实际位于Unity Editor根目录，不在 `.app` 内。
+- 可证伪假设：问题只影响SDK的单线程压缩路径；启用SDK公开配置 `brotliMT=true` 后，随包 `BrotliEnc` 成功生成相同职责的产物并完成G2。
+- 最小修复范围：T120构建策略固定 `brotliMT=true`，不新增第二处SDK源码补丁；等待上游修复路径解析后重新验证默认路径。
+- 回归测试：`WechatBuildEntryTests`断言多线程Brotli策略；完整 `build-wechat.sh` 断言 `.br` 和转换终态。
+- 证据：`artifacts/evals/T120/g2-attempt-3-unity-brotli-path.log`、`g2-conversion-unity.log`、`g2-summary.log`。
+
+## BUG-0006 · Unity 6000.5转换出现大量未匹配WXReplaceRules
+
+- 状态：BLOCKED
+- 严重度：S1
+- 发现版本或commit：Unity `6000.5.1f1` / WXSDK `v0.1.33` commit `ed4ad28f433c6b52b5fd3f22a6fa155a0c98c228`
+- 配置hash：不适用
+- 环境：macOS batchmode，T120 G2 Development转换
+- 复现步骤：运行 `Tools/CI/build-wechat.sh --development`，检查框架适配日志。
+- 期望：适用于当前Unity生成代码的替换规则全部命中，或对可选规则给出可机器区分的无害说明。
+- 实际：SDK报告93条 `UnMatched WXReplaceRules rule`，另有Emscripten undefined `WX_SyncFunction_tnnt` 等warning；转换仍返回 `All done` 并生成完整结构。
+- 可证伪假设：部分规则属于旧Unity或未启用功能，可能不影响当前灰盒；但在G3实际启动、输入、音频、存储和生命周期运行前不能认定无害。
+- 最小修复范围：先在微信开发者工具复现并把首个运行失败映射到具体规则；若为真实不兼容，向固定上游版本反馈并只在独立任务中评估最小补丁或SDK升级。
+- 回归测试：G3 DevTools Console、启动/交互冒烟，以及转换日志未匹配规则计数。
+- 证据：`artifacts/evals/T120/g2-conversion-unity.log`、`warnings-summary.log`、`g3-devtools-probe.log`。
+
 ## 缺陷模板
 
 ### BUG-XXXX · 标题

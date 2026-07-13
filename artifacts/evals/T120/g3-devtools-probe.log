@@ -1,0 +1,16 @@
+G3_STATUS=BLOCKED_MISSING_DEVTOOLS
+DATE=2026-07-13
+
+Filesystem probes:
+- No `wechatwebdevtools.app`, `微信开发者工具.app`, or matching WeChat DevTools application under `/Applications` or `~/Applications`.
+- Spotlight returned no `com.tencent.wechat.devtools` bundle.
+- No executable at the common WeChat DevTools CLI paths.
+- Homebrew was unavailable, so no cask result was inferred.
+
+Computer Use application inventory:
+- Found `com.tencent.xinWeChat` (微信) and `com.tencent.weread` (微信读书).
+- Found no WeChat Developer Tools application.
+
+Required user/external action:
+- Install the official WeChat Developer Tools, sign in, and import `Builds/WeChat/T120/minigame`.
+- If the tool refuses an empty AppID, select its local test/no-AppID mode or enter a test AppID locally. Do not commit credentials or private project settings.

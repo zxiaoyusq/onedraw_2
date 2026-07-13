@@ -1,0 +1,16 @@
+G4_STATUS=BLOCKED_MISSING_DEVICE_AND_G3
+DATE=2026-07-13
+
+Android probe:
+- Used Unity 6000.5.1f1 bundled `platform-tools/adb`.
+- `adb devices -l` returned an empty device list.
+- The probe-started adb server was stopped afterward.
+
+iOS probe:
+- `idevice_id` is unavailable.
+- `xcrun`/`devicectl` device tooling is unavailable.
+
+USB class-name probe:
+- `system_profiler SPUSBDataType` contained no iPhone, iPad, Android, Pixel, Huawei, Honor, Xiaomi, Redmi, OPPO, vivo, OnePlus, or Samsung device heading.
+
+G4 also depends on G3 preview/QR capability. At least one WeChat-capable phone and a logged-in Developer Tools session are required before touch, audio, foreground/background, and storage can be executed honestly.

@@ -1,7 +1,7 @@
 project: OneStrokeDemon
 project_cn: 一笔镇妖
 plan_generated: 2026-07-11
-current_task: T120
+current_task: T200
 current_task_status: READY
 unity:
   project_root: .
@@ -26,8 +26,9 @@ manual_gates:
   unity_editor_smoke: pass
   standard_web_build: pass_with_known_issues
   wechat_sdk_source_verified: pass_with_local_patch
-  wechat_conversion: pending
-  wechat_devtools: pending
+  wechat_conversion: pass_with_known_issues
+  wechat_devtools: blocked_missing_tool
+  wechat_phone_smoke: blocked_missing_device_and_devtools
   android_phone_smoke: pending
   ios_phone_smoke: pending
 evidence_root: artifacts/evals
@@ -50,9 +51,28 @@ wechat_sdk:
   compatibility: docs/WECHAT_SDK_COMPATIBILITY.md
   upstream_record: docs/UPSTREAM.md
   known_issues: [BUG-0004]
+wechat_conversion:
+  unity_version: 6000.5.1f1
+  sdk_release: v0.1.33
+  sdk_commit: ed4ad28f433c6b52b5fd3f22a6fa155a0c98c228
+  output: Builds/WeChat/T120
+  appid: empty
+  orientation: landscape
+  status: pass_with_known_issues
+  output_files: 84
+  output_bytes: 101901218
+  minigame_bytes: 12008520
+  manifest_sha256: ccb494d55c022c561685d176ff7be5edf9ec1435126aebe61feb0d2f9b93fc32
+  known_issues: [BUG-0005, BUG-0006]
+execution_order:
+  deferred_tasks: [T120, T130]
+  deferral_reason: user_prioritized_main_game_content_over_wechat_devtools_device_and_packaging_work
+  next_content_task: T200
+  resume_platform_before: [T640, T750]
 workflow:
   unity_test_command: Tools/CI/run-unity-tests.sh
   web_build_command: Tools/CI/build-web.sh
+  wechat_build_command: Tools/CI/build-wechat.sh
   evidence_init_command: Tools/CI/new-task-evidence.sh
   verification_template: templates/verification.md
   change_whitelist_template: templates/change-whitelist.md

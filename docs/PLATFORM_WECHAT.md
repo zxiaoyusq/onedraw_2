@@ -31,9 +31,32 @@
 | Gate | 状态 | 证据 |
 |---|---|---|
 | G1 Unity Web Build | PASS WITH KNOWN ISSUES | `docs/WEB_BUILD_BASELINE.md`、`artifacts/evals/T100/` |
-| G2 微信转换 | NOT RUN | T110只完成SDK导入；T120尚未执行转换 |
-| G3 开发者工具 | NOT RUN | T120尚未执行 |
-| G4 真机 | NOT RUN | T120尚未执行 |
+| G2 微信转换 | PASS WITH KNOWN ISSUES | `artifacts/evals/T120/g2-conversion-unity.log`、`g2-output-manifest.sha256`；见BUG-0005/BUG-0006 |
+| G3 开发者工具 | BLOCKED | 本机未安装微信开发者工具；见`artifacts/evals/T120/g3-devtools-probe.log` |
+| G4 真机 | BLOCKED | 未发现已连接手机，且依赖G3预览能力；见`artifacts/evals/T120/g4-device-probe.log` |
+
+### T120 G2 可复现转换
+
+```bash
+Tools/CI/build-wechat.sh --development --log artifacts/tmp/T120-wechat-unity.log
+```
+
+- 输入固定为Unity `6000.5.1f1`、WXSDK `v0.1.33` / `ed4ad28f...`和Build Settings中启用的场景；Bootstrap必须为首场景。
+- Spike参数固定为空AppID、横屏、256MB、触摸启用、Development、关闭渲染线程、关闭性能分析、清理构建；使用SDK公开的多线程Brotli设置，规避BUG-0005。
+- 输出只允许位于`Builds/WeChat/**`，T120默认路径为`Builds/WeChat/T120`。本次生成84个文件、101,901,218字节；`minigame`为12,008,520字节。
+- 构建封装会在退出时恢复`ProjectSettings`、SDK配置和SDK生成的受管Assets路径；本次验证后这些路径无受管残留差异。目标输出目录会被本次结果替换。
+- `PASS WITH KNOWN ISSUES`只证明固定SDK生成了结构完整的小游戏工程。93条未匹配替换规则与6条Emscripten warning已登记为BUG-0006，必须通过G3实际启动判断影响。
+
+### 解除当前阻塞
+
+1. 安装并登录官方微信开发者工具，导入`Builds/WeChat/T120/minigame`，保存启动结果、Console日志与截图。若空AppID被拒绝，只在本机选择无AppID测试模式或填写测试AppID，不提交私有配置。
+2. 连接至少一台可运行微信的手机，通过预览/二维码执行单指触摸、首次交互音频、前后台切换和版本化存储读写，并保存设备/工具版本及日志。
+3. G3和G4均取得真实证据后才能把T120从`BLOCKED`推进；转换成功不能代替这两级门。
+
+### 执行顺序延期
+
+- 2026-07-13用户明确要求暂时绕过T120以及微信开发者工具、真机和打包问题，优先完成游戏主要内容。T120的G3/G4状态仍为`BLOCKED`，T130保持`BACKLOG`，当前主内容任务切换为T200。
+- 延期只改变执行顺序，不改变MVP完成标准，也不把任何未执行平台门写为PASS。平台链最迟在依赖T120的T640或发布验收T750前恢复。
 
 ## 3. 最小平台Spike内容
 

@@ -1,0 +1,8 @@
+T120 G2 attempt history, Unity 6000.5.1f1 / WXSDK ed4ad28f433c6b52b5fd3f22a6fa155a0c98c228
+
+1. INTERRUPTED: external turn interruption stopped the first WebGL build while MainMenu was opening. No SDK failure was inferred. Raw SHA-256: 7e35faaadbf251c1f0f3ed037ce134c065cac670e0a5aed552d8d75203ad486c.
+2. ENVIRONMENT REJECTED: retry found the GUI Unity Editor open and exited before build. Raw SHA-256: b63f144381d98524950eeda128a15c36120268538cf119e51e902aa106ce6d9b.
+3. FAIL: WebGL Player and framework adaptation completed, but WXSDK's single-thread path tried missing `/Unity.app/PlaybackEngines/WebGLSupport/BuildTools/Brotli/macos/brotli`; the expected `.br` file was therefore absent. Raw SHA-256: c7f1725680c6fc90513ad1f7582824a5161d13b06dd782ea75435042f0f208a9.
+4. PASS WITH KNOWN ISSUES: project policy enabled the SDK-supported `brotliMT` path. Builder Done, Converter All done, and WECHAT_CONVERSION_PASS were present. Raw SHA-256: 8837b2048454a0b0f26d97b19f854a302e1947d30ab6b91c224af85f5eb17507.
+
+Every attempt used an empty AppID. The wrapper restored ProjectSettings, embedded SDK metadata/config, URP generated values, and transient generated Assets after Unity exited.

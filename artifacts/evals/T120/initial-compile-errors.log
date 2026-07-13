@@ -1,0 +1,7 @@
+Unity 6000.5.1f1 MCP compile after first T120 build-entry draft:
+
+Assets/_Game/Tests/EditMode/T120/WechatBuildEntryTests.cs(32,58): error CS0246: The type or namespace name 'WXEditorScriptObject' could not be found (are you missing a using directive or an assembly reference?)
+Assets/_Game/Tests/EditMode/T120/WechatBuildEntryTests.cs(36,17): error CS0012: The type 'WXEditorScriptObject' is defined in an assembly that is not referenced. You must add a reference to assembly 'wx-editor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null'.
+Assets/_Game/Tests/EditMode/T120/WechatBuildEntryTests.cs(40,72): error CS0103: The name 'WXScreenOritation' does not exist in the current context
+
+Resolution: keep WXSDK types private to OneStrokeDemon.Editor and expose a project-owned WechatBuildPolicy for EditMode assertions. The test assembly does not reference wx-editor.dll directly.

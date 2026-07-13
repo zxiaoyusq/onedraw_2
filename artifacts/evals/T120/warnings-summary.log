@@ -1,0 +1,9 @@
+T120 successful G2 raw log warning/error-shaped output:
+
+- 6 unique WXSDK compile warnings, already tracked by BUG-0004.
+- 93 `UnMatched WXReplaceRules rule` warnings during Unity 6000.5 framework adaptation; tracked by BUG-0006. Conversion still emitted `[Converter] All done!`, but G3 runtime impact is unverified.
+- 6 Emscripten warnings, including undefined `WX_SyncFunction_tnnt`, deprecated `$stackTrace`, and `_main` export commentary; retained in the raw log for G3 correlation.
+- 3 Unity Licensing Client handshake/access-token error lines at batch startup. The licensed Player build completed and the batch exited 0; no platform PASS is inferred from them.
+- The first complete attempt failed on the missing Unity single-thread Brotli executable. The final attempt uses SDK-supported `brotliMT=true`; tracked by BUG-0005.
+
+Raw log: artifacts/evals/T120/g2-conversion-unity.log

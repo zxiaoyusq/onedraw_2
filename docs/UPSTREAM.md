@@ -59,6 +59,13 @@ WXRuntimeExtDef.cs(135,28): error CS0619: 'Object.GetInstanceID()' is obsolete: 
 
 补丁仅在 `UNITY_6000_5_OR_NEWER` 使用 Unity 6000.5 提供的 `Object.GetEntityId()` 和 `EntityId.ToULong()`；早期 Unity 继续执行上游 `GetInstanceID()`。补丁后全工程编译、EditMode 10/10、PlayMode 2/2 通过，Console Error/Exception 为0。包内 `UPSTREAM.md`带有相同来源与移除条件。
 
+## T120 转换期上游行为
+
+- SDK默认 `brotliMT=false` 在macOS Unity 6000.5.1f1错误查找 `Unity.app/PlaybackEngines/.../brotli`，导致第一次完整G2在压缩阶段失败。项目未修改SDK源码，而是采用其公开的 `brotliMT=true` 配置，随包Brotli成功输出 `.br`；见BUG-0005和D-010。
+- 最终G2生成84个文件，小游戏目录12,008,520字节，`project.config.json` AppID为空，`game.json`为横屏；完整清单见 `artifacts/evals/T120/g2-output-manifest.sha256`。
+- 框架转换同时报告93条未匹配 `WXReplaceRules`。SDK返回 `All done` 只能证明生成完成，不能证明运行正确；该风险登记BUG-0006并等待G3验证。
+- 以上均为固定commit在精确Unity版本的实测记录，不改变T110所定义的上游源码差异白名单。
+
 ## 升级与补丁策略
 
 1. 升级前重新核验官方仓库、发布分支、commit、许可证和变更记录。
