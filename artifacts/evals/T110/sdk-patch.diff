@@ -1,0 +1,11 @@
+--- upstream/Runtime/WXRuntimeExtDef.cs
++++ embedded/Runtime/WXRuntimeExtDef.cs
+@@
+                 if (args is UnityEngine.Object unityObject)
+                 {
++#if UNITY_6000_5_OR_NEWER
++                    return UnityEngine.EntityId.ToULong(unityObject.GetEntityId());
++#else
+                     return unityObject.GetInstanceID();
++#endif
+                 }

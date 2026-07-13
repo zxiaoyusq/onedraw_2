@@ -1,0 +1,17 @@
+T110 SDK import original compile result
+Observed: 2026-07-13
+Unity: 6000.5.1f1 (0d9463e84828)
+SDK source before patch: Library/PackageCache/com.qq.weixin.minigame@ed4ad28f433c
+SDK base commit: ed4ad28f433c6b52b5fd3f22a6fa155a0c98c228
+
+ROOT ERROR
+Library/PackageCache/com.qq.weixin.minigame@ed4ad28f433c/Runtime/WXRuntimeExtDef.cs(135,28): error CS0619: 'Object.GetInstanceID()' is obsolete: 'GetInstanceID is deprecated. Use GetEntityId instead. This will be removed in a future version.'
+
+CASCADE ERROR
+Failed to find entry-points:
+Mono.Cecil.AssemblyResolutionException: Failed to resolve assembly: 'WxEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null'
+While compiling job:
+
+Interpretation: Wx failed first on CS0619, so WxEditor was not generated and Burst then reported the missing editor assembly. The second entry is treated as a cascade, not an independent root cause.
+
+The original Editor process log remains in ignored `Logs/Editor.log`; the exact Console entries were also read through Unity MCP before patching.

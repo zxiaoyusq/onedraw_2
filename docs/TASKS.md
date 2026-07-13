@@ -12,8 +12,8 @@
 | T030 | P0 合同与Harness | DONE | T020 | 1.0 | 建立目录、asmdef和Bootstrap/MainMenu/Battle三场景骨架。 |
 | T040 | P0 合同与Harness | DONE | T030 | 1.0 | 建立构建、测试、证据和一任务一提交工作流。 |
 | T100 | P1 微信平台Spike | DONE | T040 | 1.0 | 先验证标准Unity Web构建，不接微信转换。 |
-| T110 | P1 微信平台Spike | READY | T100 | 2.0 | 确认当前官方微信Unity转换方案并做Unity/SDK兼容矩阵。 |
-| T120 | P1 微信平台Spike | BACKLOG | T110 | 2.0 | 完成微信转换、开发者工具和至少一台真机的分级冒烟。 |
+| T110 | P1 微信平台Spike | DONE | T100 | 2.0 | 确认当前官方微信Unity转换方案并做Unity/SDK兼容矩阵。 |
+| T120 | P1 微信平台Spike | READY | T110 | 2.0 | 完成微信转换、开发者工具和至少一台真机的分级冒烟。 |
 | T130 | P1 微信平台Spike | BACKLOG | T110 | 1.0 | 建立Editor/Web/WeChat平台服务抽象。 |
 | T200 | P2 配置系统 | BACKLOG | T040 | 1.0 | 确认Excel工作簿、字段字典、ID规则和数据所有权。 |
 | T210 | P2 配置系统 | BACKLOG | T200 | 2.0 | 实现独立.NET配置导出器：xlsx到稳定JSON。 |
@@ -135,7 +135,7 @@
 
 ### T110 · 确认当前官方微信Unity转换方案并做Unity/SDK兼容矩阵。
 
-- **状态：** `READY`
+- **状态：** `DONE`
 - **依赖：** T100
 - **估算：** 2.0 人日
 - **产出：** SDK来源/版本/commit/许可证；兼容矩阵；UPSTREAM.md；补丁决策。
@@ -147,7 +147,7 @@
 
 ### T120 · 完成微信转换、开发者工具和至少一台真机的分级冒烟。
 
-- **状态：** `BACKLOG`
+- **状态：** `READY`
 - **依赖：** T110
 - **估算：** 2.0 人日
 - **产出：** 转换输出；DevTools日志/截图；真机触摸/音频/前后台/存储结果。

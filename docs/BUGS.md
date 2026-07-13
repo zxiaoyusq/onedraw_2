@@ -45,6 +45,21 @@
 - 回归测试：Editor重启三次后instances均为1，active instance可读Console。
 - 证据：`artifacts/evals/T100/verification.md`。
 
+## BUG-0004 · WXSDK在Unity 6000.5仍产生弃用API编译warning
+
+- 状态：OPEN
+- 严重度：S3
+- 发现版本或commit：Unity `6000.5.1f1` / WXSDK `v0.1.33` commit `ed4ad28f433c6b52b5fd3f22a6fa155a0c98c228`
+- 配置hash：不适用
+- 环境：macOS Editor，embedded SDK最小补丁后全量EditMode编译
+- 复现步骤：导入固定SDK并运行全量EditMode。
+- 期望：SDK在Unity 6000.5无编译warning。
+- 实际：编译通过，但报告6个唯一warning：`GraphicsDeviceType.OpenGLES2`弃用，`PlayerSettings.Get/SetScriptingDefineSymbolsForGroup`共4处弃用，以及1个未使用字段；批处理日志中的第二组为同次重编译重复输出。
+- 可证伪假设：这些 API 在6000.5仍可调用，当前不阻断导入和现有测试；未来 Unity 删除 API 时会升级为编译错误。
+- 最小修复范围：等待官方SDK升级；若后续升级为阻断错误，再按 `docs/UPSTREAM.md` 的embedded补丁流程逐项处理。T110不扩大上游补丁。
+- 回归测试：SDKImportCompile、全量EditMode warning扫描。
+- 证据：`artifacts/evals/T110/warnings-summary.log`、`artifacts/tmp/T110-editmode-unity.log`。
+
 ## 缺陷模板
 
 ### BUG-XXXX · 标题

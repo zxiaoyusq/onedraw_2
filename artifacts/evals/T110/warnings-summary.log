@@ -1,0 +1,10 @@
+T110 patched compile unique warnings: 6 (non-blocking, BUG-0004)
+
+1. WXConvertCore.cs:783 CS0618 GraphicsDeviceType.OpenGLES2 is obsolete.
+2. WXEditorSettingHelper.cs:1195 CS0618 GetScriptingDefineSymbolsForGroup is obsolete.
+3. WXEditorSettingHelper.cs:1213 CS0618 SetScriptingDefineSymbolsForGroup is obsolete.
+4. WXEditorSettingHelper.cs:1222 CS0618 SetScriptingDefineSymbolsForGroup is obsolete.
+5. WXConvertCore.cs:903 CS0618 GetScriptingDefineSymbolsForGroup is obsolete.
+6. WXPlayableEditorSettingHelper.cs:19 CS0414 m_EnablePerfTool is assigned but never used.
+
+The EditMode batch log prints the same six warnings twice during recompilation. No warning was promoted to an error after the single GetInstanceID compatibility patch.

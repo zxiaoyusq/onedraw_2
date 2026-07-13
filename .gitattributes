@@ -10,3 +10,6 @@
 *.md text eol=lf
 *.yaml text eol=lf
 *.yml text eol=lf
+
+# Preserve the byte-exact embedded WXSDK vendor snapshot, including upstream whitespace.
+Packages/com.qq.weixin.minigame/** -whitespace

@@ -3,9 +3,17 @@
 ## 1. 版本原则
 
 - 当前工程固定使用Unity `6000.5.1f1`；T110必须以该精确版本验证微信转换方案，未经决策不得迁移版本。
-- 微信转换SDK必须从项目开始时可核验的官方渠道取得，记录来源、版本或commit、许可证和校验值。
-- 不引用浮动分支。平台包若做本地补丁，必须embedded、最小化、带版本条件、`UPSTREAM.md`和移除条件。
-- 截至本计划生成日，旧的 `wechat-miniprogram/minigame-unity-webgl-transform` GitHub仓库页面显示已被禁用，因此T110必须重新确认当前官方分发渠道，不能把旧链接当作安装源。
+- 当前官方来源固定为 `wechat-miniprogram/minigame-tuanjie-transform-sdk`，发布线 `v0.1.33`，commit `ed4ad28f433c6b52b5fd3f22a6fa155a0c98c228`；许可证及校验见 `docs/UPSTREAM.md`。
+- manifest 保留完整 commit，实际使用 Package Manager embedded 快照。Unity 6000.5 的唯一逻辑补丁位于 `Runtime/WXRuntimeExtDef.cs`，带 `UNITY_6000_5_OR_NEWER` 条件和移除条件。
+- 不引用浮动分支。平台包本地补丁必须embedded、最小化、带版本条件、`UPSTREAM.md`和移除条件；本项目不得新增未记录的 SDK 差异。
+- 旧的 `wechat-miniprogram/minigame-unity-webgl-transform` GitHub仓库仍被禁用，不作为安装源。
+
+### 当前 SDK 导入基线（T110）
+
+- 未修改官方 commit：Unity 6000.5.1f1 编译 `FAIL`，根因为 `Object.GetInstanceID()` 的 CS0619。
+- embedded 单点补丁后：全工程编译 PASS；EditMode 10/10、PlayMode 2/2；Console Error/Exception 0。
+- SDK仍产生6条非阻断编译 warning，见 BUG-0004。
+- 以上只证明依赖与导入兼容；不证明转换、DevTools或真机。
 
 ## 2. 四级平台门
 
@@ -23,7 +31,7 @@
 | Gate | 状态 | 证据 |
 |---|---|---|
 | G1 Unity Web Build | PASS WITH KNOWN ISSUES | `docs/WEB_BUILD_BASELINE.md`、`artifacts/evals/T100/` |
-| G2 微信转换 | NOT RUN | T110/T120尚未执行 |
+| G2 微信转换 | NOT RUN | T110只完成SDK导入；T120尚未执行转换 |
 | G3 开发者工具 | NOT RUN | T120尚未执行 |
 | G4 真机 | NOT RUN | T120尚未执行 |
 
