@@ -1,0 +1,10 @@
+Build warnings (non-blocking):
+- Unity WebGPU library warns that Firefox before version 149 has known WebGPU issues.
+- Emscripten reports deprecated $stackTrace JS library symbol usage.
+
+Browser warnings (non-blocking, repeated once after reload):
+- PlayerPrefs Save triggers Unity's manual persistentDataPath sync deprecation warning; tracked as BUG-0002.
+- URP Edge Adaptive Spatial Upsampling shader is unsupported on this WebGL runtime; tracked as BUG-0001.
+
+Browser Console Error count: 0
+Unity final EditMode/PlayMode compiler error count: 0

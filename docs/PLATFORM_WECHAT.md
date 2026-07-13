@@ -18,6 +18,15 @@
 
 每一级单独记录PASS、REVIEW、BLOCKED或KNOWN ISSUE。
 
+### 当前门状态（2026-07-13）
+
+| Gate | 状态 | 证据 |
+|---|---|---|
+| G1 Unity Web Build | PASS WITH KNOWN ISSUES | `docs/WEB_BUILD_BASELINE.md`、`artifacts/evals/T100/` |
+| G2 微信转换 | NOT RUN | T110/T120尚未执行 |
+| G3 开发者工具 | NOT RUN | T120尚未执行 |
+| G4 真机 | NOT RUN | T120尚未执行 |
+
 ## 3. 最小平台Spike内容
 
 - URP 2D Sprite和TMP中文。

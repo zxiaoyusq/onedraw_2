@@ -1,0 +1,65 @@
+{
+  "url": "http://127.0.0.1:8123/",
+  "title": "Unity Web Player | onedraw_2",
+  "initial": {
+    "canvas": {
+      "height": 1200,
+      "width": 1920
+    },
+    "panelText": "T100 Web Smoke\nruntime=ready\nscene=MainMenu\ninput=waiting\naudio=waiting\nstorage=pass run=1\nchinese=标准网页中文",
+    "smoke": null
+  },
+  "afterFirstClick": {
+    "audio": "pass",
+    "input": "pass",
+    "scene": "MainMenu",
+    "storage": "pass",
+    "storageRun": "1",
+    "text": "T100 Web Smoke\nruntime=ready\nscene=MainMenu\ninput=pass\naudio=pass\nstorage=pass run=1\nchinese=标准网页中文"
+  },
+  "afterReload": {
+    "audio": "waiting",
+    "input": "waiting",
+    "runtime": "ready",
+    "scene": "MainMenu",
+    "storage": "pass",
+    "storageRun": "2",
+    "text": "T100 Web Smoke\nruntime=ready\nscene=MainMenu\ninput=waiting\naudio=waiting\nstorage=pass run=2\nchinese=标准网页中文"
+  },
+  "final": {
+    "audio": "pass",
+    "input": "pass",
+    "runtime": "ready",
+    "scene": "MainMenu",
+    "storage": "pass",
+    "storageRun": "2",
+    "text": "T100 Web Smoke\nruntime=ready\nscene=MainMenu\ninput=pass\naudio=pass\nstorage=pass run=2\nchinese=标准网页中文"
+  },
+  "consoleErrors": [],
+  "consoleWarnings": [
+    {
+      "level": "warn",
+      "message": "Manual synchronization of Unity Application.persistentDataPath via JS_FileSystem_Sync() is deprecated and will be later removed in a future Unity version. The persistent data directory will be automatically synchronized instead on file modification. Pass config.autoSyncPersistentDataPath = true; to configuration in createUnityInstance() to opt in to the new behavior.",
+      "timestamp": "2026-07-13T03:27:00.433Z",
+      "url": "http://127.0.0.1:8123/Build/WebGL.framework.js.br"
+    },
+    {
+      "level": "warn",
+      "message": "Shader 'Hidden/Universal Render Pipeline/Edge Adaptive Spatial Upsampling' is not supported (in 'Blit FSR Upscaling'). PostProcessing render passes will not execute.\n",
+      "timestamp": "2026-07-13T03:27:02.561Z",
+      "url": "http://127.0.0.1:8123/Build/WebGL.framework.js.br"
+    },
+    {
+      "level": "warn",
+      "message": "Manual synchronization of Unity Application.persistentDataPath via JS_FileSystem_Sync() is deprecated and will be later removed in a future Unity version. The persistent data directory will be automatically synchronized instead on file modification. Pass config.autoSyncPersistentDataPath = true; to configuration in createUnityInstance() to opt in to the new behavior.",
+      "timestamp": "2026-07-13T03:28:02.275Z",
+      "url": "http://127.0.0.1:8123/Build/WebGL.framework.js.br"
+    },
+    {
+      "level": "warn",
+      "message": "Shader 'Hidden/Universal Render Pipeline/Edge Adaptive Spatial Upsampling' is not supported (in 'Blit FSR Upscaling'). PostProcessing render passes will not execute.\n",
+      "timestamp": "2026-07-13T03:28:04.362Z",
+      "url": "http://127.0.0.1:8123/Build/WebGL.framework.js.br"
+    }
+  ]
+}

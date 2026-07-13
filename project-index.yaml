@@ -1,7 +1,7 @@
 project: OneStrokeDemon
 project_cn: 一笔镇妖
 plan_generated: 2026-07-11
-current_task: T100
+current_task: T110
 current_task_status: READY
 unity:
   project_root: .
@@ -24,13 +24,20 @@ config:
   content_version: 0.1.0-sample
 manual_gates:
   unity_editor_smoke: pass
-  standard_web_build: pending
+  standard_web_build: pass_with_known_issues
   wechat_sdk_source_verified: pending
   wechat_conversion: pending
   wechat_devtools: pending
   android_phone_smoke: pending
   ios_phone_smoke: pending
 evidence_root: artifacts/evals
+standard_web:
+  baseline: docs/WEB_BUILD_BASELINE.md
+  build_target: WebGL
+  unity_version: 6000.5.1f1
+  build_report_bytes: 12433772
+  browser_smoke: pass
+  known_issues: [BUG-0001, BUG-0002, BUG-0003]
 workflow:
   unity_test_command: Tools/CI/run-unity-tests.sh
   web_build_command: Tools/CI/build-web.sh

@@ -13,11 +13,12 @@ namespace OneStrokeDemon.Editor.Build
     {
         public const string DefaultOutputPath = "Builds/WebGL";
         public const string BootstrapScenePath = "Assets/_Game/Scenes/Bootstrap.unity";
+        public const string WebSmokeDefine = "T100_WEB_SMOKE";
 
         [MenuItem("One Stroke Demon/Build/Standard WebGL")]
         public static void BuildFromMenu()
         {
-            Build(DefaultOutputPath, false);
+            Build(DefaultOutputPath, false, false);
         }
 
         public static void BuildFromCommandLine()
@@ -25,10 +26,14 @@ namespace OneStrokeDemon.Editor.Build
             string[] arguments = Environment.GetCommandLineArgs();
             string outputPath = ReadArgument(arguments, "-buildOutput") ?? DefaultOutputPath;
             bool development = arguments.Contains("-developmentBuild");
-            Build(outputPath, development);
+            bool webSmoke = arguments.Contains("-webSmoke");
+            Build(outputPath, development, webSmoke);
         }
 
-        public static BuildPlayerOptions CreateBuildOptions(string outputPath, bool development)
+        public static BuildPlayerOptions CreateBuildOptions(
+            string outputPath,
+            bool development,
+            bool webSmoke = false)
         {
             if (string.IsNullOrWhiteSpace(outputPath))
             {
@@ -59,13 +64,14 @@ namespace OneStrokeDemon.Editor.Build
                 scenes = scenes,
                 locationPathName = absoluteOutput,
                 target = BuildTarget.WebGL,
-                options = development ? BuildOptions.Development : BuildOptions.None
+                options = development ? BuildOptions.Development : BuildOptions.None,
+                extraScriptingDefines = webSmoke ? new[] { WebSmokeDefine } : Array.Empty<string>()
             };
         }
 
-        private static void Build(string outputPath, bool development)
+        private static void Build(string outputPath, bool development, bool webSmoke)
         {
-            BuildPlayerOptions options = CreateBuildOptions(outputPath, development);
+            BuildPlayerOptions options = CreateBuildOptions(outputPath, development, webSmoke);
             Directory.CreateDirectory(options.locationPathName);
             BuildReport report = BuildPipeline.BuildPlayer(options);
             if (report.summary.result != BuildResult.Succeeded)
@@ -77,7 +83,8 @@ namespace OneStrokeDemon.Editor.Build
 
             Debug.Log(
                 $"WEB_BUILD_PASS output={options.locationPathName} " +
-                $"size={report.summary.totalSize} duration={report.summary.totalTime}");
+                $"size={report.summary.totalSize} duration={report.summary.totalTime} " +
+                $"smoke={webSmoke}");
         }
 
         private static string ReadArgument(string[] arguments, string name)

@@ -1,8 +1,8 @@
 # PROGRESS
 
 - 日期：2026-07-13
-- 当前成熟度：T040 批处理测试、Web构建入口和证据工作流已建立
-- 当前任务：T100
+- 当前成熟度：T100 标准Unity Web构建与浏览器核心冒烟已通过（含已知问题）
+- 当前任务：T110
 - 状态：READY
 - Unity精确版本：6000.5.1f1（已由ProjectVersion.txt与本机安装核验）
 - 微信SDK来源或版本：PENDING_VERIFICATION
@@ -11,6 +11,10 @@
 
 ## 已完成
 
+- T100：Unity 6000.5.1f1标准WebGL构建PASS，耗时9分9秒，总输出12,433,772字节；Brotli产物、SHA-256和HTTP headers已归档。
+- T100浏览器：MainMenu canvas实际运行；Input System点击、AudioSource播放启动、中文UTF-8 interop均PASS；PlayerPrefs重载计数1→2；Console Error 0。
+- T100回归：专项EditMode 2/2、最终全量EditMode 8/8、PlayMode 2/2通过；初次7/8失败及修复已记录。
+- T100只证明G1；G2微信转换、G3 DevTools、G4真机仍为NOT RUN。Web warning与MCP桥接问题登记为BUG-0001至BUG-0003。
 - T040：EditMode/PlayMode批处理命令可独立生成NUnit XML，并由结果检查器把失败、零测试和损坏XML转换为非零退出码。
 - T040：标准WebGL构建入口已编译并通过参数合同测试；实际Web构建明确留给T100，未生成Builds/WebGL。
 - T040：verification/白名单模板、Git基线记录、防覆盖证据初始化、日志卫生和一任务一提交流程已文档化。
@@ -34,8 +38,10 @@
 ## 当前风险
 
 1. 当前官方微信Unity转换SDK分发渠道和Unity 6000.5.1f1兼容性尚未验证。
-2. PSD主角和怪物大多为单张Sprite；中文字体包体、Web内存和真机触摸延迟仍需后续验证。
+2. 标准Web存在URP EASU不支持与PlayerPrefs手动同步弃用warning，见BUG-0001/BUG-0002；G1未覆盖TMP中文、后台音频恢复或真机触摸。
+3. 长Web构建后Unity MCP实例桥接未自动恢复，见BUG-0003；Unity batch测试与Web运行未受影响。
+4. PSD主角和怪物大多为单张Sprite；中文字体包体、Web内存和真机触摸延迟仍需后续验证。
 
 ## 下一步
 
-只执行T100：使用已建立入口验证标准Unity Web构建和浏览器冒烟，不接微信转换，不开始T110。
+只执行T110：确认当前官方微信Unity转换方案来源、固定版本/commit、许可证和Unity 6000.5.1f1兼容矩阵。不要执行T120的DevTools或真机门。

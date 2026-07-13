@@ -14,6 +14,7 @@ Options:
   --output PATH      WebGL output directory (default: Builds/WebGL)
   --log PATH         Unity log output (default: artifacts/tmp/web-build-unity.log)
   --development      Enable Development build option
+  --smoke            Include the T100 Web runtime smoke probe
   --project PATH     Unity project root (default: repository root)
   --unity PATH       Unity executable or .app (default: UNITY_EDITOR or ProjectVersion lookup)
   -h, --help         Show this help
@@ -49,6 +50,7 @@ LOG_FILE="artifacts/tmp/web-build-unity.log"
 PROJECT_ROOT="$REPO_ROOT"
 UNITY_PATH=""
 DEVELOPMENT=0
+SMOKE=0
 
 while [[ $# -gt 0 ]]; do
   case "$1" in
@@ -63,6 +65,7 @@ while [[ $# -gt 0 ]]; do
       shift 2
       ;;
     --development) DEVELOPMENT=1; shift ;;
+    --smoke) SMOKE=1; shift ;;
     -h|--help) usage; exit 0 ;;
     *) echo "Unknown argument: $1" >&2; usage >&2; exit 64 ;;
   esac
@@ -93,8 +96,11 @@ COMMAND=(
 if [[ $DEVELOPMENT -eq 1 ]]; then
   COMMAND+=( -developmentBuild )
 fi
+if [[ $SMOKE -eq 1 ]]; then
+  COMMAND+=( -webSmoke )
+fi
 
-echo "UNITY_WEB_BUILD_START output=$OUTPUT log=$LOG_FILE development=$DEVELOPMENT"
+echo "UNITY_WEB_BUILD_START output=$OUTPUT log=$LOG_FILE development=$DEVELOPMENT smoke=$SMOKE"
 "${COMMAND[@]}"
 STATUS=$?
 if [[ $STATUS -ne 0 ]]; then

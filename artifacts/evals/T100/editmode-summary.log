@@ -1,0 +1,9 @@
+Unity Editor: 6000.5.1f1
+Result: Passed
+Tests: 8; Passed: 8; Failed: 0; Skipped: 0
+XML: artifacts/evals/T100/editmode-results.xml
+Raw log: artifacts/tmp/T100-editmode-unity.log (ignored, not committed)
+
+Initial feedback: 7/8, AssemblyDependencyTests failed because it compared external package references with the project assembly graph.
+Fix: compare only OneStrokeDemon.* references; external Unity package dependencies remain covered by task-specific tests.
+Final process exit: 0

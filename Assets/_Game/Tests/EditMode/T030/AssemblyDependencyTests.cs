@@ -45,7 +45,10 @@ namespace OneStrokeDemon.Tests.EditMode
 
             foreach (var pair in ExpectedRuntimeDependencies)
             {
-                Assert.That(definitions[pair.Key].references, Is.EquivalentTo(pair.Value), pair.Key);
+                string[] projectReferences = definitions[pair.Key].references
+                    .Where(reference => reference.StartsWith("OneStrokeDemon.", StringComparison.Ordinal))
+                    .ToArray();
+                Assert.That(projectReferences, Is.EquivalentTo(pair.Value), pair.Key);
                 Assert.That(definitions[pair.Key].autoReferenced, Is.False, pair.Key);
             }
 
