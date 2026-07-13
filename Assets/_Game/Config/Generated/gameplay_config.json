@@ -1,7 +1,7 @@
 {
   "schemaVersion": 4,
-  "contentVersion": "0.5.3-sample",
-  "contentHash": "50ff7874f59f60092fe9eae71a8184c88828e78a6dd66cf04ea4abc066c611fe",
+  "contentVersion": "0.5.4-sample",
+  "contentHash": "9fbd5fa97b812cb965eff60104cbf16ef5f3699480298a4e8e96c566cfd717a0",
   "global": [
     {
       "key": "battle_countdown_sec",
@@ -38,7 +38,7 @@
       "valueType": "string",
       "intValue": null,
       "floatValue": null,
-      "stringValue": "0.5.3-sample",
+      "stringValue": "0.5.4-sample",
       "boolValue": null,
       "unit": "semver",
       "description": "内容版本"
@@ -1378,12 +1378,12 @@
       "displayNameKey": "text_level_003",
       "sceneKey": "scene_battle",
       "backgroundAssetKey": "bg_red_cave_boss",
-      "durationLimitSec": 300,
+      "durationLimitSec": 240,
       "nextLevelId": "",
       "rewardTableId": "reward_level_003",
-      "starScore1": 7000,
-      "starScore2": 10000,
-      "starScore3": 14000,
+      "starScore1": 8000,
+      "starScore2": 12000,
+      "starScore3": 17000,
       "tutorialId": "tutorial_level_003",
       "bossEnemyId": "boss_tomb_king"
     }
@@ -1550,16 +1550,16 @@
       "startTrigger": "LevelStart",
       "startDelaySec": 0,
       "endCondition": "AllEnemiesDefeated",
-      "endDelaySec": 0.8,
+      "endDelaySec": 1.2,
       "musicKey": "bgm_boss_intro",
-      "maxAlive": 8
+      "maxAlive": 11
     },
     {
       "waveId": "wave_003_02",
       "levelId": "lv_003_boss",
       "order": 2,
       "startTrigger": "PreviousWaveEnd",
-      "startDelaySec": 0.8,
+      "startDelaySec": 1.5,
       "endCondition": "BossDefeated",
       "endDelaySec": 0,
       "musicKey": "bgm_boss",
@@ -1960,7 +1960,7 @@
       "spawnTimeSec": 0.2,
       "enemyId": "enemy_fire_fish",
       "count": 3,
-      "intervalSec": 0.5,
+      "intervalSec": 0.65,
       "spawnPointId": "spawn_air_mid",
       "spawnPattern": "Line",
       "modifierId": "modifier_none"
@@ -1968,13 +1968,46 @@
     {
       "spawnId": "spawn_003_01_b",
       "waveId": "wave_003_01",
-      "spawnTimeSec": 0.6,
+      "spawnTimeSec": 1.4,
       "enemyId": "enemy_talisman_bat",
       "count": 3,
       "intervalSec": 0.6,
       "spawnPointId": "spawn_air_high",
       "spawnPattern": "Stagger",
       "modifierId": "modifier_none"
+    },
+    {
+      "spawnId": "spawn_003_01_c",
+      "waveId": "wave_003_01",
+      "spawnTimeSec": 2.8,
+      "enemyId": "enemy_stone_turtle",
+      "count": 2,
+      "intervalSec": 1,
+      "spawnPointId": "spawn_ground_right",
+      "spawnPattern": "Line",
+      "modifierId": "modifier_none"
+    },
+    {
+      "spawnId": "spawn_003_01_d",
+      "waveId": "wave_003_01",
+      "spawnTimeSec": 4,
+      "enemyId": "enemy_skeleton_ghost",
+      "count": 2,
+      "intervalSec": 0.8,
+      "spawnPointId": "spawn_air_mid",
+      "spawnPattern": "Scatter",
+      "modifierId": "modifier_none"
+    },
+    {
+      "spawnId": "spawn_003_01_e",
+      "waveId": "wave_003_01",
+      "spawnTimeSec": 5.2,
+      "enemyId": "enemy_soul_puppet",
+      "count": 1,
+      "intervalSec": 0,
+      "spawnPointId": "spawn_air_mid",
+      "spawnPattern": "Single",
+      "modifierId": "modifier_elite"
     },
     {
       "spawnId": "spawn_003_02_a",
@@ -2190,8 +2223,8 @@
     },
     {
       "textKey": "text_boss_phase3",
-      "zhCN": "切断法术并阻止冲撞",
-      "enUS": "Cut projectiles and stop the charge",
+      "zhCN": "斜斩打断冲撞，随后处决玄甲王",
+      "enUS": "Interrupt the charge with a diagonal slash, then execute the Tomb King",
       "context": "Boss phase"
     },
     {

@@ -134,7 +134,7 @@ namespace OneStrokeDemon.Tests.PlayMode.T500
             Append(events, runner.Advance(0d));
             Assert.That(runner.State, Is.EqualTo(LevelRunnerState.Completed));
             Assert.That(Count(events, LevelRuntimeEventKind.LevelCompleted), Is.EqualTo(1));
-            Assert.That(world.TotalSpawned, Is.EqualTo(7));
+            Assert.That(world.TotalSpawned, Is.EqualTo(12));
             yield return null;
         }
 

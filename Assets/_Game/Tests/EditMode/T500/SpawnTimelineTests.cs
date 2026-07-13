@@ -35,8 +35,8 @@ namespace OneStrokeDemon.Tests.EditMode.T500
             Assert.That(tutorial.Waves.Count, Is.EqualTo(6));
             Assert.That(cave.Waves.Count, Is.EqualTo(8));
             Assert.That(boss.Waves.Count, Is.EqualTo(2));
-            Assert.That(CountSpawnRows(tutorial, cave, boss), Is.EqualTo(32));
-            Assert.That(CountScheduledEnemies(tutorial, cave, boss), Is.EqualTo(67));
+            Assert.That(CountSpawnRows(tutorial, cave, boss), Is.EqualTo(35));
+            Assert.That(CountScheduledEnemies(tutorial, cave, boss), Is.EqualTo(72));
 
             WaveDefinition eliteWave = cave.Waves[4];
             SpawnDefinition elite = FindSpawn(

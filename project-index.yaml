@@ -1,7 +1,7 @@
 project: OneStrokeDemon
 project_cn: 一笔镇妖
 plan_generated: 2026-07-11
-current_task: T540
+current_task: T550
 current_task_status: READY
 unity:
   project_root: .
@@ -23,9 +23,9 @@ config:
   generated_hash: Assets/_Game/Config/Generated/gameplay_config.hash
   generated_ids: Assets/_Game/Scripts/Config/Generated/ConfigIds.g.cs
   schema_version: 4
-  content_version: 0.5.3-sample
-  content_hash: 50ff7874f59f60092fe9eae71a8184c88828e78a6dd66cf04ea4abc066c611fe
-  workbook_sha256: c97eda688c060b55cf49dbedab89246bd971f73d17f18cf58e9bf7b585401bdc
+  content_version: 0.5.4-sample
+  content_hash: 9fbd5fa97b812cb965eff60104cbf16ef5f3699480298a4e8e96c566cfd717a0
+  workbook_sha256: 71fc222d94e86057d47b57a47dccbf19186156529b1d096e56b703607b2f36c5
   mirror_status: byte_identical
   contract_audit: pass
   exporter:
@@ -35,9 +35,9 @@ config:
     status: pass
     test_count: 8
     exported_tables: 28
-    exported_records: 689
-    output_bytes: 180658
-    output_sha256: fca5ee3b8b3553b362bf3461eea9ad336759c1a9bb5444bf56f5510b404b7666
+    exported_records: 692
+    output_bytes: 181598
+    output_sha256: 4638c3fce65efbbdd7fc79edd47b9e7ecf43f119cc6c4fc1fc7825f3e0a77c78
     runtime_snapshot_committed: true
   validator:
     path: Tools/ConfigExporter/Validation
@@ -54,11 +54,11 @@ config:
     compatibility: schema_4_content_0_5_x
     dto_tables: 28
     dto_fields: 250
-    loaded_records: 689
-    readonly_primary_indexes: 305
+    loaded_records: 692
+    readonly_primary_indexes: 308
     readonly_group_indexes: 56
-    editmode_tests: 155
-    playmode_tests: 38
+    editmode_tests: 162
+    playmode_tests: 41
     bootstrap_smoke: pass
   asset_registry:
     status: pass
@@ -79,20 +79,20 @@ config:
     default_read_only: true
     update_flag: --update
     drift_diagnostic: CFG013
-    generated_json_bytes: 180658
-    generated_json_sha256: fca5ee3b8b3553b362bf3461eea9ad336759c1a9bb5444bf56f5510b404b7666
+    generated_json_bytes: 181598
+    generated_json_sha256: 4638c3fce65efbbdd7fc79edd47b9e7ecf43f119cc6c4fc1fc7825f3e0a77c78
     generated_hash_bytes: 65
-    generated_hash_sha256: bd9e4687e2e7e217b01a1ae588a9fbe7c619d8a2c863132254d483c09123dbb6
-    generated_ids_bytes: 25514
-    generated_ids_sha256: 5237389b8cd4a7659962dd58e857c94aa71abbf5527ff9897ac02c4b76a4ef09
+    generated_hash_sha256: 8b8c2575fbfb17891461305d44345a71cbd05427ff178c6e9e7db287329f34cd
+    generated_ids_bytes: 25706
+    generated_ids_sha256: 9984d453495742e8bb85e9d02cb319e59529a81b9feb13c90b267c2b68123f31
     id_sets: 27
-    id_constants: 341
+    id_constants: 344
     dotnet_tests: 56
     config_editmode_tests: 19
     config_playmode_tests: 3
-    full_editmode_tests: 159
-    full_playmode_tests: 39
-    full_command_smoke: pass_via_static_drift_gate_plus_unity_mcp_open_editor
+    full_editmode_tests: 162
+    full_playmode_tests: 41
+    full_command_smoke: pass_via_static_drift_gate_plus_isolated_unity_batch_project
 input:
   status: pass
   package: com.unity.inputsystem@1.19.0
@@ -112,8 +112,8 @@ input:
   screen_dpi_dependency: false
   pointer_editmode_tests: 5
   pointer_playmode_tests: 7
-  full_editmode_tests: 159
-  full_playmode_tests: 39
+  full_editmode_tests: 162
+  full_playmode_tests: 41
   bootstrap_smoke: pass
 stroke_sampling:
   status: pass
@@ -131,8 +131,8 @@ stroke_sampling:
   completion_allocation: immutable_snapshot_only
   editmode_tests: 9
   playmode_tests: 1
-  full_editmode_tests: 159
-  full_playmode_tests: 39
+  full_editmode_tests: 162
+  full_playmode_tests: 41
 stroke_geometry:
   status: pass
   processor: StrokeGeometry.Process
@@ -148,8 +148,8 @@ stroke_geometry:
   deterministic_replay: pass
   editmode_tests: 12
   playmode_tests: 1
-  full_editmode_tests: 159
-  full_playmode_tests: 39
+  full_editmode_tests: 162
+  full_playmode_tests: 41
 gesture_classification:
   status: pass
   classifier: GestureClassifier
@@ -165,8 +165,8 @@ gesture_classification:
   deterministic_replay: pass
   editmode_tests: 14
   playmode_tests: 1
-  full_editmode_tests: 159
-  full_playmode_tests: 39
+  full_editmode_tests: 162
+  full_playmode_tests: 41
 stroke_trail:
   status: pass
   path_bridge: StrokeTrailPath
@@ -185,8 +185,8 @@ stroke_trail:
   shared_material_only: true
   managed_allocation_after_warmup: zero_for_128_show_and_reclaim_cycles
   playmode_tests: 5
-  full_editmode_tests: 159
-  full_playmode_tests: 39
+  full_editmode_tests: 162
+  full_playmode_tests: 41
 stroke_hit:
   status: pass
   resolver: StrokeHitResolver
@@ -205,8 +205,8 @@ stroke_hit:
   managed_allocation_after_warmup: zero_for_128_real_physics_resolves
   editmode_tests: 6
   playmode_tests: 2
-  full_editmode_tests: 159
-  full_playmode_tests: 39
+  full_editmode_tests: 162
+  full_playmode_tests: 41
 combat_resolution:
   status: pass
   context: immutable_DamageContext
@@ -229,8 +229,8 @@ combat_resolution:
   editmode_tests: 12
   playmode_tests: 1
   player_path_totals: {damage: 61, score: 521, energy: 14}
-  full_editmode_tests: 159
-  full_playmode_tests: 39
+  full_editmode_tests: 162
+  full_playmode_tests: 41
 projectile_interaction:
   status: pass
   rules: immutable_ProjectileRuleSet
@@ -256,8 +256,8 @@ projectile_interaction:
   editmode_tests: 8
   playmode_tests: 2
   player_path: {projectile: proj_ghost_fire, original_enemy: 7001, reflector_player: 101, damage: 8, half_second_displacement_ref_px: 130}
-  full_editmode_tests: 159
-  full_playmode_tests: 39
+  full_editmode_tests: 162
+  full_playmode_tests: 41
 player_combat:
   status: pass
   settings_factory: PlayerCombatSettingsFactory
@@ -282,8 +282,8 @@ player_combat:
   editmode_tests: 8
   playmode_tests: 2
   player_path: {trail_width_ref_px: "18_to_28", damage_formula: "damage_player_default_to_damage_talisman_default", projectile: proj_seal_bolt, projectile_outcome: "stance_mismatch_to_reflected"}
-  full_editmode_tests: 159
-  full_playmode_tests: 39
+  full_editmode_tests: 162
+  full_playmode_tests: 41
 skill_effect_pipeline:
   status: pass
   service: SkillService
@@ -305,8 +305,8 @@ skill_effect_pipeline:
   editmode_tests: 4
   playmode_tests: 1
   player_path: {invalid_energy_after: 100, valid_energy_after: 0, cleared_projectiles: 2, damage_all_enemies: 50, execute_ratio: 0.25, boss_buff_seconds: 2}
-  full_editmode_tests: 159
-  full_playmode_tests: 39
+  full_editmode_tests: 162
+  full_playmode_tests: 41
 enemy_runtime:
   status: pass
   definition_factory: EnemyDefinitionFactory
@@ -333,8 +333,8 @@ enemy_runtime:
   editmode_tests: 7
   playmode_tests: 1
   player_path: {enemy: boss_tomb_king, attack: atk_boss_rockfall, gesture: Diagonal, weakpoint: true, armor: "120_to_119", state: Stun}
-  full_editmode_tests: 159
-  full_playmode_tests: 39
+  full_editmode_tests: 162
+  full_playmode_tests: 41
 enemy_strategy:
   status: pass
   movement_registry: MovementStrategyRegistry
@@ -357,8 +357,8 @@ enemy_strategy:
   editmode_tests: 5
   playmode_tests: 1
   player_path: {supporter: enemy_soul_puppet, target: enemy_skeleton_wisp, incoming_damage: "10_to_5_then_10_after_3_seconds"}
-  full_editmode_tests: 159
-  full_playmode_tests: 39
+  full_editmode_tests: 162
+  full_playmode_tests: 41
 object_pool:
   status: pass
   service: ObjectPoolService
@@ -380,8 +380,8 @@ object_pool:
   restart_cycles: 3
   prewarmed_objects_in_player_path: 44
   player_path: {enemy: enemy_skeleton_ghost, projectile: proj_ghost_fire, vfx: vfx_ultimate_prepare, active_leaks_after_each_restart: 0}
-  full_editmode_tests: 159
-  full_playmode_tests: 39
+  full_editmode_tests: 162
+  full_playmode_tests: 41
 enemy_archetypes:
   status: pass
   catalog: EnemyArchetypeCatalog
@@ -407,8 +407,8 @@ enemy_archetypes:
   editmode_tests: 3
   playmode_tests: 1
   player_path: {spawned_simultaneously: 6, actions: {projectile: 2, charge: 1, melee: 2, support: 1}, active_leaks_after_release: 0}
-  full_editmode_tests: 159
-  full_playmode_tests: 39
+  full_editmode_tests: 162
+  full_playmode_tests: 41
 boss_phases:
   status: pass
   catalog: BossPhaseCatalog
@@ -438,8 +438,8 @@ boss_phases:
   editmode_tests: 4
   playmode_tests: 1
   player_path: {phase_events: 3, entry_vfx: 3, attacks: [atk_boss_rockfall, atk_boss_seal_wave, atk_boss_charge]}
-  full_editmode_tests: 159
-  full_playmode_tests: 39
+  full_editmode_tests: 162
+  full_playmode_tests: 41
 level_timeline:
   status: pass
   catalog: LevelCatalog
@@ -450,8 +450,8 @@ level_timeline:
   config_tables: [Levels, Waves, Spawns, SpawnPoints, EnemyModifiers]
   configured_levels: 3
   configured_waves: 16
-  configured_spawn_rows: 32
-  configured_enemy_occurrences: 67
+  configured_spawn_rows: 35
+  configured_enemy_occurrences: 72
   start_triggers: [LevelStart, PreviousWaveEnd, PlayerConfirmed, TimeElapsed]
   end_conditions: [AllEnemiesDefeated, BossDefeated, PlayerConfirmed, TimeElapsed]
   spawn_patterns: [Line, Scatter, Single, Stagger]
@@ -464,9 +464,9 @@ level_timeline:
   duration_limit_policy: exposed_fact_for_T510
   editmode_tests: 8
   playmode_tests: 2
-  player_path: {tutorial_waves: 6, tutorial_enemies: 15, normal_waves: 8, normal_enemies: 45, boss_intro_enemies: 6, boss_enemies: 1}
-  full_editmode_tests: 159
-  full_playmode_tests: 39
+  player_path: {tutorial_waves: 6, tutorial_enemies: 15, normal_waves: 8, normal_enemies: 45, boss_intro_enemies: 11, boss_enemies: 1}
+  full_editmode_tests: 162
+  full_playmode_tests: 41
 normal_level:
   status: pass
   configured_level: lv_002_cave
@@ -486,8 +486,29 @@ normal_level:
   editmode_tests: 4
   playmode_tests: 1
   player_path: {spawned_enemies: 45, defeated_enemies: 45, attacks: {projectile: 2, charge: 1, melee: 2, support: 1}, elite_modifier_requests: 3, settlement: Victory, active_pool_leaks: 0}
-  full_editmode_tests: 159
-  full_playmode_tests: 39
+  full_editmode_tests: 162
+  full_playmode_tests: 41
+boss_level:
+  status: pass
+  configured_level: lv_003_boss
+  coordinator: BossLevelCoordinator
+  world_port: IBossLevelWorld
+  config_sources: [Levels, Waves, Spawns, EnemyModifiers, BossPhases, Enemies, EnemyAttacks, DefenseRules, WeakpointRules, SkillEffects, Texts]
+  duration_limit_seconds: 240
+  star_scores: [8000, 12000, 17000]
+  configured_waves: 2
+  configured_spawn_rows: 6
+  configured_enemy_occurrences: 12
+  intro: {enemy_occurrences: 11, archetypes: 5, elite_modifier_requests: 1, max_alive: 11}
+  boss: {enemy: boss_tomb_king, phases: 3, execution_prompt_configured: true}
+  live_boss_defeat_notification: rejected
+  settlement_cleanup: dispose_phase_runtime_and_subscriptions
+  retry_policy: fresh_coordinator_and_world_after_defeat
+  editmode_tests: 3
+  playmode_tests: 2
+  player_path: {phase_events: 3, entry_vfx: 3, attacks: [atk_boss_rockfall, atk_boss_seal_wave, atk_boss_charge], settlements: [Defeat, Victory], active_pool_leaks: 0}
+  full_editmode_tests: 162
+  full_playmode_tests: 41
 battle_flow:
   status: pass
   settings_factory: BattleFlowSettingsFactory
@@ -514,8 +535,8 @@ battle_flow:
   editmode_tests: 8
   playmode_tests: 2
   player_path: {countdown_seconds: 2, paused_advance_seconds: 30, paused_gameplay_delta: 0, invalid_ultimate_energy: 100, valid_ultimate_energy: 0, scaled_delta: "0.8_to_0.2"}
-  full_editmode_tests: 159
-  full_playmode_tests: 39
+  full_editmode_tests: 162
+  full_playmode_tests: 41
 tutorial_flow:
   status: pass
   definition_factory: TutorialDefinitionFactory
@@ -541,8 +562,8 @@ tutorial_flow:
   editmode_tests: 5
   playmode_tests: 1
   player_path: {step_started: 6, step_completed: 6, tutorial_completed: 1, spawned_enemies: 15, stance_switches: 1, ultimate_targets_defeated: 4, settlement: Victory}
-  full_editmode_tests: 159
-  full_playmode_tests: 39
+  full_editmode_tests: 162
+  full_playmode_tests: 41
 manual_gates:
   unity_editor_smoke: pass
   standard_web_build: pass_with_known_issues
@@ -588,7 +609,7 @@ wechat_conversion:
 execution_order:
   deferred_tasks: [T120, T130]
   deferral_reason: user_prioritized_main_game_content_over_wechat_devtools_device_and_packaging_work
-  next_content_task: T540
+  next_content_task: T550
   resume_platform_before: [T640, T750]
 workflow:
   config_verify_command: Tools/CI/verify-config.sh

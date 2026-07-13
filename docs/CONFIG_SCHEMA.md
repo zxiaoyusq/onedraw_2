@@ -2,7 +2,7 @@
 
 ## 1. 版本与唯一真相源
 
-- 当前冻结版本：`schemaVersion = 4`、`contentVersion = 0.5.2-sample`。
+- 当前冻结版本：`schemaVersion = 4`、`contentVersion = 0.5.4-sample`。
 - 正式内容唯一源：`Design/Config/GameConfig.xlsx`。
 - `config/一笔镇妖_游戏配置表模板.xlsx` 只是随正式源同步的示例镜像，不接受独立内容修改。
 - `Assets/_Game/Config/Generated/gameplay_config.json`和`gameplay_config.hash`由T250导出器生成，是可审查、可构建的只读Runtime快照与hash旁车。
@@ -249,3 +249,10 @@ T360新增的`Stances.damageFormulaId -> DamageFormulas.formulaId`是必填普�
 - 八波按四个双波战术段递进：先建立基础近战/投射物混合，再加入耐久前排，然后引入精英支援，最后组合六种原型。第5、7、8波的摄魂道傀出生行引用既有精英修饰器；修饰器由T500请求透传到世界端口，关卡表不复制敌人基础属性。
 - `maxAlive`按波次从5递进到8，并不得低于该波配置可能达到的合理并发需求；容量满时继续服从T500背压合同，不吞怪。需要不同架势处理的危险目标，其配置出生时刻至少错开当前最大架势切换冷却1秒，避免把同时互斥输入制造成不可解组合。
 - 当前普通关时限为210秒，星级阈值为6500/9500/13000。波次起止延迟、出生时间、数量、间隔、组合、修饰器、容量、时限和评分阈值都只允许在工作簿调整；重新导出并加载同一运行时代码后必须产生对应的新节奏和人口结果。
+
+## 24. T540三阶段Boss整关编排语义
+
+- T540不改变JSON字段形状或schema，content升级为`0.5.4-sample`。`lv_003_boss`完全沿既有`Levels -> Waves -> Spawns -> EnemyModifiers`与`BossPhases -> Enemies/EnemyAttacks/DefenseRules/WeakpointRules/SkillEffects/Texts`合同编排为2波、6条出生行和12个敌人实例；产品C#不得列出关卡、Boss、阶段、攻击或文案ID。
+- 第一波是11个敌人的混合前置门，覆盖5种普通原型并包含1次精英修饰请求，`maxAlive=11`；第二波只生成配置Boss。Boss未死亡时不得接受`BossDefeated`事实，防止阶段未完成便提前结算；Boss实际出生后才创建并绑定阶段控制器。
+- 镇墓玄甲王沿T460既有三阶段合同执行配置攻击集、进入效果、防御与弱点切换。三段提示必须分别表达起手应对、封印弱点和最终打断/处决意图；当前第三段中英文文案明确要求斜斩打断冲撞后处决，不得由场景组件或Inspector覆盖。
+- 当前Boss关时限为240秒，星级阈值为8000/12000/17000。关卡达到Victory、Defeat或被显式释放时，阶段攻击运行时、效果订阅和Boss HP订阅必须一起释放；失败重试创建新的协调器与世界实例，不跨局复用终态、实体租约或阶段事件计数。T540只形成胜败/重试原型回路，T550结算奖励、存档和面向玩家的重开入口仍在后续任务。
