@@ -179,6 +179,8 @@ namespace OneStrokeDemon.Levels
 
         public bool IsPaused { get; private set; }
 
+        public bool IsProgressBlocked { get; private set; }
+
         public bool DurationLimitReached =>
             ElapsedSeconds >= definition.DurationLimitSeconds;
 
@@ -187,6 +189,14 @@ namespace OneStrokeDemon.Levels
             if (State != LevelRunnerState.Completed)
             {
                 IsPaused = paused;
+            }
+        }
+
+        public void SetProgressBlocked(bool blocked)
+        {
+            if (State != LevelRunnerState.Completed)
+            {
+                IsProgressBlocked = blocked;
             }
         }
 
@@ -220,7 +230,11 @@ namespace OneStrokeDemon.Levels
             ElapsedSeconds += deltaSeconds;
             while (State == LevelRunnerState.Running)
             {
-                currentWave.Advance(ElapsedSeconds, world, events);
+                currentWave.Advance(
+                    ElapsedSeconds,
+                    world,
+                    events,
+                    IsProgressBlocked);
                 if (!currentWave.IsCompleted)
                 {
                     break;
@@ -230,6 +244,7 @@ namespace OneStrokeDemon.Levels
                 {
                     State = LevelRunnerState.Completed;
                     IsPaused = false;
+                    IsProgressBlocked = false;
                     events.Add(LevelRuntimeEvent.LevelCompleted(
                         definition,
                         currentWave.CompletedAtLevelSeconds));

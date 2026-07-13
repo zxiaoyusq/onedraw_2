@@ -102,7 +102,8 @@ namespace OneStrokeDemon.Levels
         internal void Advance(
             double levelElapsedSeconds,
             ILevelSpawnWorld world,
-            List<LevelRuntimeEvent> events)
+            List<LevelRuntimeEvent> events,
+            bool completionBlocked)
         {
             ValidateTime(levelElapsedSeconds, nameof(levelElapsedSeconds));
             if (world == null)
@@ -127,7 +128,10 @@ namespace OneStrokeDemon.Levels
             {
                 double waveElapsedSeconds = levelElapsedSeconds - StartedAtLevelSeconds;
                 SpawnDue(levelElapsedSeconds, waveElapsedSeconds, world, events);
-                EvaluateEndCondition(levelElapsedSeconds, waveElapsedSeconds);
+                if (!completionBlocked)
+                {
+                    EvaluateEndCondition(levelElapsedSeconds, waveElapsedSeconds);
+                }
             }
 
             if (State == WaveRunnerState.Completing &&

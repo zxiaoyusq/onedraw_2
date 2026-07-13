@@ -32,11 +32,11 @@ namespace OneStrokeDemon.Tests.EditMode.T500
                 config,
                 ConfigIds.Levels.Lv003Boss);
 
-            Assert.That(tutorial.Waves.Count, Is.EqualTo(3));
+            Assert.That(tutorial.Waves.Count, Is.EqualTo(6));
             Assert.That(cave.Waves.Count, Is.EqualTo(4));
             Assert.That(boss.Waves.Count, Is.EqualTo(2));
-            Assert.That(CountSpawnRows(tutorial, cave, boss), Is.EqualTo(13));
-            Assert.That(CountScheduledEnemies(tutorial, cave, boss), Is.EqualTo(35));
+            Assert.That(CountSpawnRows(tutorial, cave, boss), Is.EqualTo(15));
+            Assert.That(CountScheduledEnemies(tutorial, cave, boss), Is.EqualTo(40));
 
             WaveDefinition eliteWave = cave.Waves[3];
             SpawnDefinition elite = FindSpawn(
@@ -63,12 +63,12 @@ namespace OneStrokeDemon.Tests.EditMode.T500
             LevelDefinition level = LevelCatalog.Create(
                 config,
                 ConfigIds.Levels.Lv001Tutorial);
-            var scheduler = new SpawnScheduler(level.Waves[2]);
+            var scheduler = new SpawnScheduler(level.Waves[3]);
 
-            Assert.That(scheduler.ScheduledCount, Is.EqualTo(3));
+            Assert.That(scheduler.ScheduledCount, Is.EqualTo(2));
             Assert.That(scheduler.TryGetNextDue(0.19d, out _), Is.False);
             Assert.That(scheduler.TryGetNextDue(0.2d, out LevelSpawnRequest first), Is.True);
-            Assert.That(first.SpawnId, Is.EqualTo(ConfigIds.Spawns.Spawn00103A));
+            Assert.That(first.SpawnId, Is.EqualTo(ConfigIds.Spawns.Spawn00104A));
             Assert.That(first.OccurrenceIndex, Is.Zero);
             Assert.That(first.ScheduleSequence, Is.EqualTo(1));
 
@@ -76,14 +76,11 @@ namespace OneStrokeDemon.Tests.EditMode.T500
             Assert.That(uncommitted.ScheduleSequence, Is.EqualTo(first.ScheduleSequence));
             scheduler.Commit(first);
 
-            Assert.That(scheduler.TryGetNextDue(0.59d, out _), Is.False);
-            Assert.That(scheduler.TryGetNextDue(0.6d, out LevelSpawnRequest second), Is.True);
-            Assert.That(second.SpawnId, Is.EqualTo(ConfigIds.Spawns.Spawn00103B));
+            Assert.That(scheduler.TryGetNextDue(0.849d, out _), Is.False);
+            Assert.That(scheduler.TryGetNextDue(0.85d, out LevelSpawnRequest second), Is.True);
+            Assert.That(second.SpawnId, Is.EqualTo(ConfigIds.Spawns.Spawn00104A));
+            Assert.That(second.OccurrenceIndex, Is.EqualTo(1));
             scheduler.Commit(second);
-            Assert.That(scheduler.TryGetNextDue(0.8d, out LevelSpawnRequest third), Is.True);
-            Assert.That(third.SpawnId, Is.EqualTo(ConfigIds.Spawns.Spawn00103A));
-            Assert.That(third.OccurrenceIndex, Is.EqualTo(1));
-            scheduler.Commit(third);
             Assert.That(scheduler.IsComplete, Is.True);
         }
 
@@ -179,13 +176,13 @@ namespace OneStrokeDemon.Tests.EditMode.T500
             runner.Advance(10d);
             Assert.That(world.Requests.Count, Is.EqualTo(1));
             Assert.That(runner.CurrentWave.ActiveCount, Is.EqualTo(1));
-            Assert.That(runner.CurrentWave.Scheduler.RemainingCount, Is.EqualTo(2));
+            Assert.That(runner.CurrentWave.Scheduler.RemainingCount, Is.EqualTo(1));
 
             Assert.That(runner.NotifyEnemyDefeated(1L), Is.True);
             runner.Advance(0d);
             Assert.That(world.Requests.Count, Is.EqualTo(2));
             Assert.That(runner.CurrentWave.ActiveCount, Is.EqualTo(1));
-            Assert.That(runner.CurrentWave.Scheduler.RemainingCount, Is.EqualTo(1));
+            Assert.That(runner.CurrentWave.Scheduler.RemainingCount, Is.Zero);
         }
 
         [Test]

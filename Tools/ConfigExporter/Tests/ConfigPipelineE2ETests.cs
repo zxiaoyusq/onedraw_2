@@ -7,7 +7,7 @@ namespace OneStrokeDemon.ConfigExporter.Tests;
 public sealed class ConfigPipelineE2ETests
 {
     private const string ExpectedContentHash =
-        "95c42832e54163b63d14f5fc8510453b4b5551e500909eaa9fdb1069f3f4be4b";
+        "f666feb2c6a94439b0bdeee0c8f939b61728d04a04ec5ed62a23bdf100a98e92";
 
     [Fact]
     public void GeneratedJsonHashAndIdsAreDeterministicAndMatchTrackedArtifacts()
@@ -41,7 +41,7 @@ public sealed class ConfigPipelineE2ETests
         Assert.Equal(firstResult.ContentHash, secondResult.ContentHash);
         Assert.Equal(firstResult.ContentHash, trackedResult.ContentHash);
         Assert.Equal(27, firstResult.ConfigIdSetCount);
-        Assert.Equal(315, firstResult.ConfigIdConstantCount);
+        Assert.Equal(320, firstResult.ConfigIdConstantCount);
         Assert.Equal(File.ReadAllBytes(first.Json), File.ReadAllBytes(second.Json));
         Assert.Equal(File.ReadAllBytes(first.Hash), File.ReadAllBytes(second.Hash));
         Assert.Equal(File.ReadAllBytes(first.Ids), File.ReadAllBytes(second.Ids));

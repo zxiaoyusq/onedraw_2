@@ -56,14 +56,14 @@ namespace OneStrokeDemon.Tests.EditMode.T230
 
             Assert.That(service.State, Is.EqualTo(GameplayConfigServiceState.Ready));
             Assert.That(summary.SchemaVersion, Is.EqualTo(4));
-            Assert.That(summary.ContentVersion, Is.EqualTo("0.5.1-sample"));
-            Assert.That(summary.ContentHash, Is.EqualTo("95c42832e54163b63d14f5fc8510453b4b5551e500909eaa9fdb1069f3f4be4b"));
+            Assert.That(summary.ContentVersion, Is.EqualTo("0.5.2-sample"));
+            Assert.That(summary.ContentHash, Is.EqualTo("f666feb2c6a94439b0bdeee0c8f939b61728d04a04ec5ed62a23bdf100a98e92"));
             Assert.That(summary.TableCount, Is.EqualTo(28));
-            Assert.That(summary.RecordCount, Is.EqualTo(662));
+            Assert.That(summary.RecordCount, Is.EqualTo(668));
             Assert.That(summary.PrimaryIndexCount, Is.GreaterThan(0));
             Assert.That(summary.GroupIndexCount, Is.GreaterThan(0));
             Assert.That(summary.ToLogMessage(), Does.Contain("source=test:generated-gameplay-config"));
-            Assert.That(summary.ToLogMessage(), Does.Contain("records=662"));
+            Assert.That(summary.ToLogMessage(), Does.Contain("records=668"));
 
             Assert.That(service.GetGlobal("reference_width").IntValue, Is.EqualTo(1920));
             Assert.That(service.GetStance("stance_blade").DamageFormulaId, Is.EqualTo("damage_player_default"));
@@ -74,7 +74,7 @@ namespace OneStrokeDemon.Tests.EditMode.T230
             Assert.That(
                 service.GetSkillEffects("fx_ultimate_seal")[1].EffectType,
                 Is.EqualTo("ClearProjectiles"));
-            Assert.That(service.GetWaves("lv_001_tutorial").Count, Is.EqualTo(3));
+            Assert.That(service.GetWaves("lv_001_tutorial").Count, Is.EqualTo(6));
             Assert.That(service.GetBossPhases("boss_tomb_king").Count, Is.EqualTo(3));
             Assert.That(service.GetRewards("reward_level_001"), Is.Not.Empty);
             Assert.That(service.GetTutorialSteps("tutorial_level_001"), Is.Not.Empty);

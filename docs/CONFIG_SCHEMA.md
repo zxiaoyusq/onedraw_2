@@ -2,7 +2,7 @@
 
 ## 1. 版本与唯一真相源
 
-- 当前冻结版本：`schemaVersion = 4`、`contentVersion = 0.5.1-sample`。
+- 当前冻结版本：`schemaVersion = 4`、`contentVersion = 0.5.2-sample`。
 - 正式内容唯一源：`Design/Config/GameConfig.xlsx`。
 - `config/一笔镇妖_游戏配置表模板.xlsx` 只是随正式源同步的示例镜像，不接受独立内容修改。
 - `Assets/_Game/Config/Generated/gameplay_config.json`和`gameplay_config.hash`由T250导出器生成，是可审查、可构建的只读Runtime快照与hash旁车。
@@ -234,3 +234,11 @@ T360新增的`Stances.damageFormulaId -> DamageFormulas.formulaId`是必填普�
 - UltimateDrawing先用`CanAcceptUltimateGestureEvent`拒绝零值、旧值或非当前绘制事件，再把通过门的单调`gestureEventId`交给T410；只有相同事件对应当前`Players.ultimateSkillId`的`SkillActivationResult.Activated`才发布成功并回到Playing。同一笔迹事件不能跨绘制重放；无效笔势、超窗、冷却、架势、能量或死亡拒绝均只取消本次绘制。等于`Skills.inputWindowSec`的有效事件仍可接受，严格超过才超时。
 - `pause_on_focus_lost=true`时FocusLost与ApplicationPaused是可叠加原因：首次进入暂停发布一次活动笔迹取消请求，全部原因解除后才恢复。暂停Countdown保留已走时间；暂停UltimateDrawing取消当前笔迹并以Playing为恢复目标，不能恢复过期的终极输入。
 - 同一次结算事实中PlayerDied或`Levels.durationLimitSec`到时优先于LevelCompleted，结果为Defeat；否则LevelCompleted为Victory。首次进入终态后冻结流程并拒绝后续结算，因此Victory/Defeat互斥且`Settled`每局最多一次。T510不负责T550奖励/存档或T600结算UI。
+
+## 22. T520事件驱动教学步骤与关卡门控语义
+
+- T520不改变JSON字段形状或schema，只把content升级为`0.5.2-sample`。`lv_001_tutorial`固定从`Levels.tutorialId -> Tutorials`取得教学组，从`Texts`取得提示文案；当前内容为6个连续步骤、6波、6条出生行、15个敌人和180秒配置上限。波次、敌人、提示、最短展示、触发事件、完成事件、手势及是否阻塞均不得复制到Inspector或产品C#。
+- `triggerEvent`与`completeEvent`使用显式协议注册表；当前支持战斗就绪、弱点出现、多目标波、投射物、重甲、幽魂和终极就绪等触发，以及有效笔迹、弱点命中、命中数阈值、切弹、破甲、架势切换和终极成功等完成事件。阈值语法只允许`event>=positiveInteger`，当前`StrokeHitCount>=3`在值2时拒绝、值3时成立；未知事件、未知手势或非法阈值在创建运行时定义时失败。
+- 每一步先处于`WaitingForTrigger`，只接受当前配置触发；触发后进入`Active`并开始累计未暂停的玩法展示时间。只有当前配置完成事件和手势匹配才锁存完成事实；若玩家动作早于`minDisplaySec`，事实保持锁存并在达到边界时完成，不要求玩家重复。单独推进任意长时间、错误事件或未来步骤事件都不能完成当前步骤。
+- `blockProgress=true`只在步骤已经触发且仍为Active时阻止当前波次结算，不冻结关卡时钟、出生、敌人或战斗输入；步骤完成并等待下个触发时立即解除。这样教学提示可以观察真实玩法事件，又不会让计时器或清空敌人跨过尚未完成的动作。暂停时T510提供的玩法未缩放delta为0，教学展示时间也不推进；慢动作只缩放战斗世界，不延长配置的真实展示下限。
+- 最后一波使用`PlayerConfirmed`结束条件，但只有整个教学序列因配置终极技能的有效Circle结果完成后，协调器才向T500当前门发送一次确认。终极仍必须先通过T510单调gestureEventId门和T410技能/能量/输入窗门；教学事件不能伪造技能成功。T520只实现纯编排与原型玩家路径，不制作T650正式遮罩、手势示意、跳过/回看或复杂剧情。

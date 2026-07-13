@@ -1,0 +1,20 @@
+T520 final staged whitelist review
+Date: 2026-07-14 Asia/Shanghai
+Baseline: d9a4f456010e7d723a9f9fd38b1b4104e21c1eb9
+
+Result: PASS
+- git status --short: 71 staged paths; 0 unstaged paths; 0 untracked paths outside the staged set.
+- git diff --cached --check: PASS (no output).
+- Staged paths reviewed against change-whitelist.md: PASS.
+- Forbidden path audit: no .unity, .prefab, ProjectSettings, Packages, WeChat SDK, Builds, T530/T540/T550, or formal T600/T650 UI changes.
+- Conditional whitelist audit: no schema, field dictionary, DTO, exporter rule, asmdef, or project setting changes were required.
+
+Reviewed staged groups:
+- 3 managed config outputs and 2 byte-identical workbooks plus the sample JSON mirror.
+- 7 level/runtime source or meta paths, limited to the tutorial flow and T500/T510 completion-gate adaptation.
+- 12 Unity test source/meta paths, limited to T520 coverage and frozen-value/path updates in affected tests.
+- 4 ConfigExporter frozen-test/fixture paths; exporter implementation and validation rules unchanged.
+- 6 task/schema/decision/test-plan/index documentation paths.
+- 36 T520 evidence paths under artifacts/evals/T520 before this review file; this file is the 37th evidence path and 72nd final staged path.
+
+Final recheck after staging this review file and completed checklist: PASS; 72 staged paths, 0 unstaged paths, 0 untracked paths, cached diff check clean, project-index YAML parsed, both workbook and JSON mirrors remained byte-identical.

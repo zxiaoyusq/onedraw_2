@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="19" result="Passed" total="19" passed="19" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-07-13 21:15:21Z" end-time="2026-07-13 21:15:23Z" duration="2.3689679">
+  <test-suite type="TestSuite" id="1000" name="onedraw_2" fullname="onedraw_2" runstate="Runnable" testcasecount="155" result="Passed" start-time="2026-07-13 21:15:21Z" end-time="2026-07-13 21:15:23Z" duration="2.368968" total="19" passed="19" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="EditMode" />
+    </properties>
+    <test-suite type="Assembly" id="1187" name="OneStrokeDemon.Tests.EditMode.dll" fullname="/Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/Library/ScriptAssemblies/OneStrokeDemon.Tests.EditMode.dll" runstate="Runnable" testcasecount="155" result="Passed" start-time="2026-07-13 21:15:21Z" end-time="2026-07-13 21:15:23Z" duration="2.251394" total="19" passed="19" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="20653" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="EditMode" />
+        <property name="EditorOnly" value="True" />
+      </properties>
+      <test-suite type="TestSuite" id="1188" name="OneStrokeDemon" fullname="OneStrokeDemon" runstate="Runnable" testcasecount="155" result="Passed" start-time="2026-07-13 21:15:21Z" end-time="2026-07-13 21:15:23Z" duration="2.077004" total="19" passed="19" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1189" name="Tests" fullname="OneStrokeDemon.Tests" runstate="Runnable" testcasecount="155" result="Passed" start-time="2026-07-13 21:15:21Z" end-time="2026-07-13 21:15:23Z" duration="1.976188" total="19" passed="19" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestSuite" id="1190" name="EditMode" fullname="OneStrokeDemon.Tests.EditMode" runstate="Runnable" testcasecount="155" result="Passed" start-time="2026-07-13 21:15:21Z" end-time="2026-07-13 21:15:23Z" duration="1.775293" total="19" passed="19" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-suite type="TestSuite" id="1210" name="T230" fullname="OneStrokeDemon.Tests.EditMode.T230" runstate="Runnable" testcasecount="12" result="Passed" start-time="2026-07-13 21:15:22Z" end-time="2026-07-13 21:15:23Z" duration="0.946878" total="12" passed="12" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-suite type="TestFixture" id="1173" name="InvalidConfigTests" fullname="OneStrokeDemon.Tests.EditMode.T230.InvalidConfigTests" classname="OneStrokeDemon.Tests.EditMode.T230.InvalidConfigTests" runstate="Runnable" testcasecount="9" result="Passed" start-time="2026-07-13 21:15:22Z" end-time="2026-07-13 21:15:22Z" duration="0.605872" total="9" passed="9" failed="0" inconclusive="0" skipped="0" asserts="0">
+                <properties>
+                  <property name="Category" value="ConfigPipeline" />
+                </properties>
+                <test-case id="1178" name="DuplicateJsonPropertyFailsStrictParsing" fullname="OneStrokeDemon.Tests.EditMode.T230.InvalidConfigTests.DuplicateJsonPropertyFailsStrictParsing" methodname="DuplicateJsonPropertyFailsStrictParsing" classname="OneStrokeDemon.Tests.EditMode.T230.InvalidConfigTests" runstate="Runnable" seed="1124828133" result="Passed" start-time="2026-07-13 21:15:22Z" end-time="2026-07-13 21:15:22Z" duration="0.043739" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1174" name="EmptyJsonFailsAndServiceCannotRetryOrPublishPartialState" fullname="OneStrokeDemon.Tests.EditMode.T230.InvalidConfigTests.EmptyJsonFailsAndServiceCannotRetryOrPublishPartialState" methodname="EmptyJsonFailsAndServiceCannotRetryOrPublishPartialState" classname="OneStrokeDemon.Tests.EditMode.T230.InvalidConfigTests" runstate="Runnable" seed="570912042" result="Passed" start-time="2026-07-13 21:15:22Z" end-time="2026-07-13 21:15:22Z" duration="0.000685" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1180" name="EmptyOrDuplicateRuntimeIndexKeyRejectsWholeDocument" fullname="OneStrokeDemon.Tests.EditMode.T230.InvalidConfigTests.EmptyOrDuplicateRuntimeIndexKeyRejectsWholeDocument" methodname="EmptyOrDuplicateRuntimeIndexKeyRejectsWholeDocument" classname="OneStrokeDemon.Tests.EditMode.T230.InvalidConfigTests" runstate="Runnable" seed="932707781" result="Passed" start-time="2026-07-13 21:15:22Z" end-time="2026-07-13 21:15:22Z" duration="0.186890" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1176" name="IncompatibleAndMalformedContentVersionsFail" fullname="OneStrokeDemon.Tests.EditMode.T230.InvalidConfigTests.IncompatibleAndMalformedContentVersionsFail" methodname="IncompatibleAndMalformedContentVersionsFail" classname="OneStrokeDemon.Tests.EditMode.T230.InvalidConfigTests" runstate="Runnable" seed="560728955" result="Passed" start-time="2026-07-13 21:15:22Z" end-time="2026-07-13 21:15:22Z" duration="0.054156" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1179" name="JsonCommentsFailStrictParsing" fullname="OneStrokeDemon.Tests.EditMode.T230.InvalidConfigTests.JsonCommentsFailStrictParsing" methodname="JsonCommentsFailStrictParsing" classname="OneStrokeDemon.Tests.EditMode.T230.InvalidConfigTests" runstate="Runnable" seed="232012867" result="Passed" start-time="2026-07-13 21:15:22Z" end-time="2026-07-13 21:15:22Z" duration="0.000698" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1177" name="MissingNullAndUnknownMembersFailStrictJsonContract" fullname="OneStrokeDemon.Tests.EditMode.T230.InvalidConfigTests.MissingNullAndUnknownMembersFailStrictJsonContract" methodname="MissingNullAndUnknownMembersFailStrictJsonContract" classname="OneStrokeDemon.Tests.EditMode.T230.InvalidConfigTests" runstate="Runnable" seed="1550087557" result="Passed" start-time="2026-07-13 21:15:22Z" end-time="2026-07-13 21:15:22Z" duration="0.082585" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1182" name="RootAndGlobalVersionsMustAgreeEvenWhenHashIsValid" fullname="OneStrokeDemon.Tests.EditMode.T230.InvalidConfigTests.RootAndGlobalVersionsMustAgreeEvenWhenHashIsValid" methodname="RootAndGlobalVersionsMustAgreeEvenWhenHashIsValid" classname="OneStrokeDemon.Tests.EditMode.T230.InvalidConfigTests" runstate="Runnable" seed="927068695" result="Passed" start-time="2026-07-13 21:15:22Z" end-time="2026-07-13 21:15:22Z" duration="0.034805" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1181" name="TamperedContentAndMalformedHashFailHashVerification" fullname="OneStrokeDemon.Tests.EditMode.T230.InvalidConfigTests.TamperedContentAndMalformedHashFailHashVerification" methodname="TamperedContentAndMalformedHashFailHashVerification" classname="OneStrokeDemon.Tests.EditMode.T230.InvalidConfigTests" runstate="Runnable" seed="1318039307" result="Passed" start-time="2026-07-13 21:15:22Z" end-time="2026-07-13 21:15:22Z" duration="0.064779" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1175" name="UnsupportedSchemaVersionFailsBeforePublication" fullname="OneStrokeDemon.Tests.EditMode.T230.InvalidConfigTests.UnsupportedSchemaVersionFailsBeforePublication" methodname="UnsupportedSchemaVersionFailsBeforePublication" classname="OneStrokeDemon.Tests.EditMode.T230.InvalidConfigTests" runstate="Runnable" seed="1399865564" result="Passed" start-time="2026-07-13 21:15:22Z" end-time="2026-07-13 21:15:22Z" duration="0.033169" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+              </test-suite>
+              <test-suite type="TestFixture" id="1183" name="RuntimeConfigLoadTests" fullname="OneStrokeDemon.Tests.EditMode.T230.RuntimeConfigLoadTests" classname="OneStrokeDemon.Tests.EditMode.T230.RuntimeConfigLoadTests" runstate="Runnable" testcasecount="3" result="Passed" start-time="2026-07-13 21:15:22Z" end-time="2026-07-13 21:15:23Z" duration="0.141314" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+                <properties>
+                  <property name="Category" value="ConfigPipeline" />
+                </properties>
+                <test-case id="1184" name="GeneratedSnapshotLoadsOnceAndBuildsReadOnlyIndexes" fullname="OneStrokeDemon.Tests.EditMode.T230.RuntimeConfigLoadTests.GeneratedSnapshotLoadsOnceAndBuildsReadOnlyIndexes" methodname="GeneratedSnapshotLoadsOnceAndBuildsReadOnlyIndexes" classname="OneStrokeDemon.Tests.EditMode.T230.RuntimeConfigLoadTests" runstate="Runnable" seed="37660285" result="Passed" start-time="2026-07-13 21:15:23Z" end-time="2026-07-13 21:15:23Z" duration="0.027944" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1186" name="RuntimeDtosExactlyMatchFrozenJsonSchemaAndExposeNoPublicSetters" fullname="OneStrokeDemon.Tests.EditMode.T230.RuntimeConfigLoadTests.RuntimeDtosExactlyMatchFrozenJsonSchemaAndExposeNoPublicSetters" methodname="RuntimeDtosExactlyMatchFrozenJsonSchemaAndExposeNoPublicSetters" classname="OneStrokeDemon.Tests.EditMode.T230.RuntimeConfigLoadTests" runstate="Runnable" seed="1716006225" result="Passed" start-time="2026-07-13 21:15:23Z" end-time="2026-07-13 21:15:23Z" duration="0.006655" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1185" name="UnknownLookupFailsWithTableFieldAndRequestedId" fullname="OneStrokeDemon.Tests.EditMode.T230.RuntimeConfigLoadTests.UnknownLookupFailsWithTableFieldAndRequestedId" methodname="UnknownLookupFailsWithTableFieldAndRequestedId" classname="OneStrokeDemon.Tests.EditMode.T230.RuntimeConfigLoadTests" runstate="Runnable" seed="1965293233" result="Passed" start-time="2026-07-13 21:15:23Z" end-time="2026-07-13 21:15:23Z" duration="0.012518" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+              </test-suite>
+            </test-suite>
+            <test-suite type="TestSuite" id="1209" name="T240" fullname="OneStrokeDemon.Tests.EditMode.T240" runstate="Runnable" testcasecount="5" result="Passed" start-time="2026-07-13 21:15:23Z" end-time="2026-07-13 21:15:23Z" duration="0.379706" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-suite type="TestFixture" id="1167" name="AssetRegistryValidationTests" fullname="OneStrokeDemon.Tests.EditMode.T240.AssetRegistryValidationTests" classname="OneStrokeDemon.Tests.EditMode.T240.AssetRegistryValidationTests" runstate="Runnable" testcasecount="5" result="Passed" start-time="2026-07-13 21:15:23Z" end-time="2026-07-13 21:15:23Z" duration="0.327816" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
+                <properties>
+                  <property name="Category" value="ConfigPipeline" />
+                </properties>
+                <test-case id="1170" name="BuildGateConvertsInvalidRegistryIntoBuildFailure" fullname="OneStrokeDemon.Tests.EditMode.T240.AssetRegistryValidationTests.BuildGateConvertsInvalidRegistryIntoBuildFailure" methodname="BuildGateConvertsInvalidRegistryIntoBuildFailure" classname="OneStrokeDemon.Tests.EditMode.T240.AssetRegistryValidationTests" runstate="Runnable" seed="1865187457" result="Passed" start-time="2026-07-13 21:15:23Z" end-time="2026-07-13 21:15:23Z" duration="0.035664" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1168" name="CanonicalRegistryCoversEveryManifestKeyWithPersistentTypedAssets" fullname="OneStrokeDemon.Tests.EditMode.T240.AssetRegistryValidationTests.CanonicalRegistryCoversEveryManifestKeyWithPersistentTypedAssets" methodname="CanonicalRegistryCoversEveryManifestKeyWithPersistentTypedAssets" classname="OneStrokeDemon.Tests.EditMode.T240.AssetRegistryValidationTests" runstate="Runnable" seed="1326247759" result="Passed" start-time="2026-07-13 21:15:23Z" end-time="2026-07-13 21:15:23Z" duration="0.052752" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1169" name="EmptyNullDuplicateMissingExtraAndWrongTypeEntriesRejectWholeRegistry" fullname="OneStrokeDemon.Tests.EditMode.T240.AssetRegistryValidationTests.EmptyNullDuplicateMissingExtraAndWrongTypeEntriesRejectWholeRegistry" methodname="EmptyNullDuplicateMissingExtraAndWrongTypeEntriesRejectWholeRegistry" classname="OneStrokeDemon.Tests.EditMode.T240.AssetRegistryValidationTests" runstate="Runnable" seed="1625955115" result="Passed" start-time="2026-07-13 21:15:23Z" end-time="2026-07-13 21:15:23Z" duration="0.012375" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1172" name="RegistrySerializedFieldsContainOnlyKeysObjectAndSceneReference" fullname="OneStrokeDemon.Tests.EditMode.T240.AssetRegistryValidationTests.RegistrySerializedFieldsContainOnlyKeysObjectAndSceneReference" methodname="RegistrySerializedFieldsContainOnlyKeysObjectAndSceneReference" classname="OneStrokeDemon.Tests.EditMode.T240.AssetRegistryValidationTests" runstate="Runnable" seed="511727047" result="Passed" start-time="2026-07-13 21:15:23Z" end-time="2026-07-13 21:15:23Z" duration="0.012758" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1171" name="ReplacingObjectKeepsStableConfigIdAndTypedLookup" fullname="OneStrokeDemon.Tests.EditMode.T240.AssetRegistryValidationTests.ReplacingObjectKeepsStableConfigIdAndTypedLookup" methodname="ReplacingObjectKeepsStableConfigIdAndTypedLookup" classname="OneStrokeDemon.Tests.EditMode.T240.AssetRegistryValidationTests" runstate="Runnable" seed="1629039026" result="Passed" start-time="2026-07-13 21:15:23Z" end-time="2026-07-13 21:15:23Z" duration="0.013146" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+              </test-suite>
+            </test-suite>
+            <test-suite type="TestSuite" id="1208" name="T250" fullname="OneStrokeDemon.Tests.EditMode.T250" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-07-13 21:15:23Z" end-time="2026-07-13 21:15:23Z" duration="0.248664" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-suite type="TestFixture" id="1164" name="GeneratedConfigPipelineTests" fullname="OneStrokeDemon.Tests.EditMode.T250.GeneratedConfigPipelineTests" classname="OneStrokeDemon.Tests.EditMode.T250.GeneratedConfigPipelineTests" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-07-13 21:15:23Z" end-time="2026-07-13 21:15:23Z" duration="0.176623" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+                <properties>
+                  <property name="Category" value="ConfigPipeline" />
+                </properties>
+                <test-case id="1166" name="GeneratedConstantsCoverStableIdsAndDriveTypedConfigLookups" fullname="OneStrokeDemon.Tests.EditMode.T250.GeneratedConfigPipelineTests.GeneratedConstantsCoverStableIdsAndDriveTypedConfigLookups" methodname="GeneratedConstantsCoverStableIdsAndDriveTypedConfigLookups" classname="OneStrokeDemon.Tests.EditMode.T250.GeneratedConfigPipelineTests" runstate="Runnable" seed="1474320101" result="Passed" start-time="2026-07-13 21:15:23Z" end-time="2026-07-13 21:15:23Z" duration="0.055250" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1165" name="GeneratedHashMetadataAndAssemblyMatchRuntimeSnapshot" fullname="OneStrokeDemon.Tests.EditMode.T250.GeneratedConfigPipelineTests.GeneratedHashMetadataAndAssemblyMatchRuntimeSnapshot" methodname="GeneratedHashMetadataAndAssemblyMatchRuntimeSnapshot" classname="OneStrokeDemon.Tests.EditMode.T250.GeneratedConfigPipelineTests" runstate="Runnable" seed="1520057089" result="Passed" start-time="2026-07-13 21:15:23Z" end-time="2026-07-13 21:15:23Z" duration="0.019904" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                  <output><![CDATA[<b><color=#2EA3FF>MCP-FOR-UNITY</color></b>: [TestRunnerNoThrottle] Restored Interaction Mode after test run.
+Saving results to: /Users/cqmizhangxiaoyu2/Library/Application Support/DefaultCompany/onedraw_2/TestResults.xml
+]]></output>
+                </test-case>
+              </test-suite>
+            </test-suite>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

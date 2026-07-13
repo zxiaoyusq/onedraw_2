@@ -1,7 +1,7 @@
 {
   "schemaVersion": 4,
-  "contentVersion": "0.5.1-sample",
-  "contentHash": "95c42832e54163b63d14f5fc8510453b4b5551e500909eaa9fdb1069f3f4be4b",
+  "contentVersion": "0.5.2-sample",
+  "contentHash": "f666feb2c6a94439b0bdeee0c8f939b61728d04a04ec5ed62a23bdf100a98e92",
   "global": [
     {
       "key": "battle_countdown_sec",
@@ -38,7 +38,7 @@
       "valueType": "string",
       "intValue": null,
       "floatValue": null,
-      "stringValue": "0.5.1-sample",
+      "stringValue": "0.5.2-sample",
       "boolValue": null,
       "unit": "semver",
       "description": "内容版本"
@@ -1396,9 +1396,9 @@
       "startTrigger": "LevelStart",
       "startDelaySec": 0,
       "endCondition": "AllEnemiesDefeated",
-      "endDelaySec": 0.8,
+      "endDelaySec": 0.5,
       "musicKey": "bgm_cave_01",
-      "maxAlive": 6
+      "maxAlive": 2
     },
     {
       "waveId": "wave_001_02",
@@ -1407,9 +1407,9 @@
       "startTrigger": "PreviousWaveEnd",
       "startDelaySec": 0.5,
       "endCondition": "AllEnemiesDefeated",
-      "endDelaySec": 0.8,
+      "endDelaySec": 0.5,
       "musicKey": "bgm_cave_01",
-      "maxAlive": 7
+      "maxAlive": 1
     },
     {
       "waveId": "wave_001_03",
@@ -1420,7 +1420,40 @@
       "endCondition": "AllEnemiesDefeated",
       "endDelaySec": 0.5,
       "musicKey": "bgm_cave_01",
-      "maxAlive": 8
+      "maxAlive": 3
+    },
+    {
+      "waveId": "wave_001_04",
+      "levelId": "lv_001_tutorial",
+      "order": 4,
+      "startTrigger": "PreviousWaveEnd",
+      "startDelaySec": 0.5,
+      "endCondition": "AllEnemiesDefeated",
+      "endDelaySec": 0.5,
+      "musicKey": "bgm_cave_01",
+      "maxAlive": 2
+    },
+    {
+      "waveId": "wave_001_05",
+      "levelId": "lv_001_tutorial",
+      "order": 5,
+      "startTrigger": "PreviousWaveEnd",
+      "startDelaySec": 0.5,
+      "endCondition": "AllEnemiesDefeated",
+      "endDelaySec": 0.5,
+      "musicKey": "bgm_cave_01",
+      "maxAlive": 3
+    },
+    {
+      "waveId": "wave_001_06",
+      "levelId": "lv_001_tutorial",
+      "order": 6,
+      "startTrigger": "PreviousWaveEnd",
+      "startDelaySec": 0.5,
+      "endCondition": "PlayerConfirmed",
+      "endDelaySec": 0.2,
+      "musicKey": "bgm_cave_01",
+      "maxAlive": 4
     },
     {
       "waveId": "wave_002_01",
@@ -1563,7 +1596,7 @@
       "waveId": "wave_001_01",
       "spawnTimeSec": 0.2,
       "enemyId": "enemy_fire_fish",
-      "count": 3,
+      "count": 2,
       "intervalSec": 0.7,
       "spawnPointId": "spawn_air_mid",
       "spawnPattern": "Line",
@@ -1573,33 +1606,55 @@
       "spawnId": "spawn_001_02_a",
       "waveId": "wave_001_02",
       "spawnTimeSec": 0.2,
-      "enemyId": "enemy_wheel_zombie",
-      "count": 4,
-      "intervalSec": 0.65,
-      "spawnPointId": "spawn_ground_right",
-      "spawnPattern": "Line",
+      "enemyId": "enemy_talisman_bat",
+      "count": 1,
+      "intervalSec": 0,
+      "spawnPointId": "spawn_air_high",
+      "spawnPattern": "Single",
       "modifierId": "modifier_none"
     },
     {
       "spawnId": "spawn_001_03_a",
       "waveId": "wave_001_03",
       "spawnTimeSec": 0.2,
-      "enemyId": "enemy_fire_fish",
-      "count": 2,
-      "intervalSec": 0.6,
-      "spawnPointId": "spawn_air_high",
+      "enemyId": "enemy_wheel_zombie",
+      "count": 3,
+      "intervalSec": 0,
+      "spawnPointId": "spawn_ground_right",
       "spawnPattern": "Line",
       "modifierId": "modifier_none"
     },
     {
-      "spawnId": "spawn_001_03_b",
-      "waveId": "wave_001_03",
-      "spawnTimeSec": 0.6,
-      "enemyId": "enemy_stone_turtle",
-      "count": 1,
+      "spawnId": "spawn_001_04_a",
+      "waveId": "wave_001_04",
+      "spawnTimeSec": 0.2,
+      "enemyId": "enemy_fire_fish",
+      "count": 2,
+      "intervalSec": 0.65,
+      "spawnPointId": "spawn_air_mid",
+      "spawnPattern": "Line",
+      "modifierId": "modifier_none"
+    },
+    {
+      "spawnId": "spawn_001_05_a",
+      "waveId": "wave_001_05",
+      "spawnTimeSec": 0.2,
+      "enemyId": "enemy_skeleton_ghost",
+      "count": 3,
+      "intervalSec": 0.7,
+      "spawnPointId": "spawn_air_mid",
+      "spawnPattern": "Scatter",
+      "modifierId": "modifier_none"
+    },
+    {
+      "spawnId": "spawn_001_06_a",
+      "waveId": "wave_001_06",
+      "spawnTimeSec": 0,
+      "enemyId": "enemy_fire_fish",
+      "count": 4,
       "intervalSec": 0,
-      "spawnPointId": "spawn_ground_right",
-      "spawnPattern": "Single",
+      "spawnPointId": "spawn_air_mid",
+      "spawnPattern": "Line",
       "modifierId": "modifier_none"
     },
     {
@@ -1845,6 +1900,28 @@
       "gestureType": "Any"
     },
     {
+      "tutorialId": "tutorial_level_001",
+      "order": 5,
+      "triggerEvent": "GhostSpawned",
+      "blockProgress": true,
+      "minDisplaySec": 0.5,
+      "completeEvent": "StanceChanged",
+      "textKey": "text_tutorial_stance",
+      "highlightTarget": "SwitchButton",
+      "gestureType": "Any"
+    },
+    {
+      "tutorialId": "tutorial_level_001",
+      "order": 6,
+      "triggerEvent": "UltimateReady",
+      "blockProgress": true,
+      "minDisplaySec": 0.5,
+      "completeEvent": "UltimateSucceeded",
+      "textKey": "text_tutorial_ultimate",
+      "highlightTarget": "UltimateButton",
+      "gestureType": "Circle"
+    },
+    {
       "tutorialId": "tutorial_level_002",
       "order": 1,
       "triggerEvent": "ArmoredEnemySpawned",
@@ -1854,17 +1931,6 @@
       "textKey": "text_tutorial_charge",
       "highlightTarget": "Enemy",
       "gestureType": "Charged"
-    },
-    {
-      "tutorialId": "tutorial_level_002",
-      "order": 2,
-      "triggerEvent": "GhostSpawned",
-      "blockProgress": true,
-      "minDisplaySec": 0.5,
-      "completeEvent": "StanceChanged",
-      "textKey": "text_tutorial_stance",
-      "highlightTarget": "SwitchButton",
-      "gestureType": "Any"
     },
     {
       "tutorialId": "tutorial_level_003",

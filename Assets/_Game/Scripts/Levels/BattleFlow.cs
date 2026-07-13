@@ -56,11 +56,13 @@ namespace OneStrokeDemon.Levels
             double countdownDurationSeconds,
             bool pauseOnFocusLost,
             string ultimateSkillId,
+            string ultimateGestureType,
             double ultimateInputWindowSeconds)
         {
             CountdownDurationSeconds = countdownDurationSeconds;
             PauseOnFocusLost = pauseOnFocusLost;
             UltimateSkillId = ultimateSkillId;
+            UltimateGestureType = ultimateGestureType;
             UltimateInputWindowSeconds = ultimateInputWindowSeconds;
         }
 
@@ -69,6 +71,8 @@ namespace OneStrokeDemon.Levels
         public bool PauseOnFocusLost { get; }
 
         public string UltimateSkillId { get; }
+
+        public string UltimateGestureType { get; }
 
         public double UltimateInputWindowSeconds { get; }
     }
@@ -126,6 +130,7 @@ namespace OneStrokeDemon.Levels
                 countdown,
                 pauseOnFocusLost,
                 ultimate.SkillId,
+                ultimate.GestureType,
                 ultimate.InputWindowSec);
         }
 

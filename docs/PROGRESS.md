@@ -1,16 +1,21 @@
 # PROGRESS
 
 - 日期：2026-07-14
-- 当前成熟度：P3手势战斗核心与P4玩家/敌人技能均已完成，P5配置化关卡时间轴与战斗流程状态机完成并进入教学关编排
-- 当前任务：T520
+- 当前成熟度：P3手势战斗核心与P4玩家/敌人技能均已完成，P5配置化关卡时间轴、战斗流程状态机及首关事件驱动教学已完成并进入普通关内容编排
+- 当前任务：T530
 - 状态：READY
 - Unity精确版本：6000.5.1f1（已由ProjectVersion.txt与本机安装核验）
 - 微信SDK来源或版本：官方 `minigame-tuanjie-transform-sdk` v0.1.33 / commit `ed4ad28f433c6b52b5fd3f22a6fa155a0c98c228` / embedded最小补丁
 - Active Scene：Assets/_Game/Scenes/Bootstrap.unity
-- 配置版本：schema 4 / content 0.5.1-sample / hash `95c42832e54163b63d14f5fc8510453b4b5551e500909eaa9fdb1069f3f4be4b`
+- 配置版本：schema 4 / content 0.5.2-sample / hash `f666feb2c6a94439b0bdeee0c8f939b61728d04a04ec5ed62a23bdf100a98e92`
 
 ## 已完成
 
+- T520：正式工作簿把`lv_001_tutorial`扩为6波、6条出生行和15个敌人，6个连续Tutorial步骤覆盖普通斩、弱点、同笔三目标、切弹、符架势和Circle终极；关卡上限180秒。全部触发、完成条件、阈值、最短展示、文案、手势和阻塞开关来自表，content升级为`0.5.2-sample`，未改schema/FieldDictionary/DTO。
+- T520：新增无`MonoBehaviour`依赖的`TutorialDefinitionFactory/TutorialSequence`与`TutorialLevelCoordinator`。步骤只接受当前显式事件协议，`StrokeHitCount>=3`按包含边界解析；计时器不能完成动作，正确动作早到会锁存到配置最短展示边界。`blockProgress`只在Active步骤门控波次结算，Waiting不阻塞且不冻结敌人/出生/输入；最终PlayerConfirmed只由整个教程在T510/T410有效终极结果后确认。
+- T520：双工作簿保持字节一致，SHA-256均为`e4d6d382...ff02`；受管JSON为174,474字节/668条/content hash `f666feb2...e92`，27组320个ID常量与样例同源。29个Sheet均由工作簿工具重渲染并视觉复核，README/Global版本一致，公式错误0；严格导出、三生成物漂移门、ConfigExporter构建0 warning/0 error与.NET 56/56通过。
+- T520：专项EditMode 5/5、PlayMode 1/1，受影响T500-T520回归EditMode 21/21、PlayMode 5/5，ConfigPipeline EditMode 19/19、PlayMode 3/3，最终全量EditMode 155/155、PlayMode 38/38。Bootstrap真实配置路径以六次玩家动作完成6步、出生15怪、实际切换符架势、配置终极击败末波4目标并Victory；任意长计时、错误/未来事件和命中数2均不能越门。最终Unity 6000.5.1f1刷新编译与Console Error/Warning为0，测试临时EditorSettings差异已用Unity API恢复。
+- T520：未修改Schema、FieldDictionary、配置DTO/导出规则、场景、Prefab、Registry、Input Actions、Packages、ProjectSettings或微信SDK；未提前实现T530/T540/T550/T600/T650正式教程UI，也未恢复T120/T130平台工作。
 - T510：新增无`MonoBehaviour`依赖的`BattleFlowStateMachine/BattleTimeSource/BattleFlowCoordinator`，配置映射只沿Global倒计时/失焦开关与Players终极外键读取Skills输入窗；Countdown、Playing、UltimateDrawing、Paused、Victory、Defeat边界明确，产品C#不含内容ID或玩法数值。
 - T510：统一时间源分离未暂停流程、未缩放战斗和受配置Effect缩放的战斗时间；Countdown精确切分跨界delta，Playing/UltimateDrawing向T500传同一战斗delta，Paused/终态冻结。暂停倒计时保留进度；FocusLost/ApplicationPaused叠加全部解除后才恢复，终极笔迹取消后只恢复Playing。
 - T510：终极只接受本局单调非零且未消费的gestureEventId与T410配置终极Activated结果，旧事件不能跨绘制重放；2.5秒配置边界有效，严格超过只取消且100能量不变。PlayerConfirmed只在Playing转发；死亡/时限与完成同帧时Defeat优先，胜负互斥且Settled仅一次；配置0.25倍/0.8秒效果产生0.2秒战斗delta。
@@ -133,7 +138,7 @@
 - T200：按GAME_DESIGN修正关卡玩法ID为 `lv_001_tutorial`、`lv_002_cave`、`lv_003_boss`，Boss玩法ID为 `boss_tomb_king`；所有Level/Wave/Spawn/BossPhase/Reward依赖引用同步，文案键和资源键保持独立命名空间。
 - T200：FieldDictionary保留248条非递归字段记录，修正Global互斥类型列及10个主键/条件字段的必填语义；冻结Schema属性存在与Excel单元格非空的差异、空值转换、普通/分组/通配符/conditional外键和数据所有权。
 - T200：29表、14公式、248字段、Schema/样例、类型/范围/枚举、主键、外键、连续order、关卡-Boss语义和规范化contentHash的只读契约审计全部PASS；29表最终渲染经4张总览拼图复核，无结构或版式异常。
-- 执行顺序调整：用户明确要求暂时绕过T120及微信开发者工具/打包问题，先完成游戏主要内容；T120保持`BLOCKED`、T130保持`BACKLOG`，不删除MVP平台验收要求；主内容已推进至T500完成，当前首个依赖满足的`READY`任务为T510。
+- 执行顺序调整：用户明确要求暂时绕过T120及微信开发者工具/打包问题，先完成游戏主要内容；T120保持`BLOCKED`、T130保持`BACKLOG`，不删除MVP平台验收要求；主内容已推进至T520完成，当前首个依赖满足的`READY`任务为T530。
 - T120 G2：Unity `6000.5.1f1` 基于固定 embedded WXSDK 成功生成 `Builds/WeChat/T120`；84个文件、总计101,901,218字节，其中`minigame` 12,008,520字节，JSON结构、关键文件、SHA-256清单与敏感占位扫描均通过。
 - T120构建参数：空AppID、横屏、256MB、触摸启用、Development、关闭渲染线程与性能分析、清理构建，并使用SDK受支持的多线程Brotli；可复现入口为`Tools/CI/build-wechat.sh`。
 - T120 G2结论为`PASS WITH KNOWN ISSUES`：默认单线程Brotli在当前macOS Unity安装布局下引用错误路径（BUG-0005，已用配置规避）；转换含93条未匹配替换规则及6条Emscripten warning（BUG-0006），需要G3实际运行判定影响。
@@ -178,7 +183,7 @@
 6. 长Web构建后Unity MCP实例桥接未自动恢复，见BUG-0003；Unity batch测试与Web运行未受影响。
 7. PSD主角和怪物大多为单张Sprite；中文字体包体、Web内存和真机触摸延迟仍需后续验证。
 8. T450已能按AssetManifest类型装配六怪，但T240的75个非场景键仍使用按类型共享的受管占位资源；类型与覆盖合同已成立，正式视觉、音频、身体碰撞形状和逐Prefab内容仍须在T630及相应玩法任务中替换并重新校验。
-9. T460 Boss阶段、T500波次所有权与T510胜败/暂停流程均已独立验证，但尚未由T520/T530/T540组装为完整三关；当前PlayMode证据不能外推为约3分钟教学、四分钟Boss实战、清场策略或正式演出完成。
+9. T520已把第一关6步教学与T500/T510/T410串成可完成的原型玩家路径，但T650正式遮罩/手势示意、T600 HUD和T630正式资源尚未实现；当前证据不能外推为最终用户可读性、正式演出或真机约3分钟体验。T530/T540仍需完成普通关和Boss整关。
 ## 下一步
 
-只执行T520：完成幽菌古道教学关的普通斩、连斩、切弹、架势和终极事件编排，使玩家动作而非固定计时推动教程；不提前实现T530普通关、T540完整Boss关、T550结算、T600 HUD或T630正式资源，也不恢复T120/T130。平台任务最迟在T640/T750前恢复。
+只执行T530：扩展`lv_002_cave`为约8波的混合怪物普通关，只用配置组合普通怪、精英与危险目标并验证节奏/难度曲线；不提前实现T540完整Boss关、T550结算、T600 HUD、T630正式资源或T650教程UI，也不恢复T120/T130。平台任务最迟在T640/T750前恢复。

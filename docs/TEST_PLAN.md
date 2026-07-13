@@ -25,6 +25,7 @@
 - `BossPhaseTests`
 - `SpawnTimelineTests`
 - `BattleFlowTests`
+- `TutorialFlowTests`
 - `ConfigValidationTests`
 - `SaveMigrationTests`
 
@@ -43,6 +44,8 @@
 - `BossBattlePlayModeTests`
 
 T510专项必须覆盖：配置倒计时到Playing的delta切分；统一时间缩放精确到期；Countdown暂停保留进度；FocusLost/ApplicationPaused叠加后完整恢复；Ultimate输入窗包含边界、严格超时只取消、旧gestureEventId不能重放；大delta不能跨PlayerConfirmed；同帧死亡/到时/完成只产生一次互斥结算。PlayMode从Bootstrap真实配置路径验证生命周期与有效终极事件，不能只构造表外设置。
+
+T520专项必须覆盖：正式配置映射6步/6波/15怪与180秒上限；错误触发、未来完成事件和计时器单独推进均不改变步骤；正确动作可在最短展示前锁存并于边界完成；`StrokeHitCount>=3`严格拒绝2并接受3；Active步骤阻止波次结算而Waiting步骤不阻塞。PlayMode必须从Bootstrap真实配置走完普通斩、弱点、同笔三目标、切弹、实际架势切换及配置Circle终极，断言6次开始、6次完成、1次教程完成、15次出生、能量实际扣除和最终Victory。
 
 ## 证据模板
 

@@ -38,7 +38,7 @@ namespace OneStrokeDemon.Tests.PlayMode.T500
         }
 
         [UnityTest]
-        public IEnumerator TutorialRunsThreeConfiguredWavesAndPauseFreezesEverything()
+        public IEnumerator TutorialRunsSixConfiguredWavesAndPauseFreezesEverything()
         {
             yield return LoadRuntimeConfiguration();
             root = new GameObject("T500 Tutorial Level World");
@@ -61,15 +61,35 @@ namespace OneStrokeDemon.Tests.PlayMode.T500
             Assert.That(runner.CurrentWave.Definition.WaveId, Is.EqualTo(ConfigIds.Waves.Wave00101));
             Assert.That(runner.CurrentWave.Definition.MusicKey, Is.EqualTo("bgm_cave_01"));
 
-            CompleteAllDefeatedWave(runner, world, events);
-            CompleteAllDefeatedWave(runner, world, events);
-            CompleteAllDefeatedWave(runner, world, events);
+            for (int waveIndex = 0; waveIndex < 5; waveIndex++)
+            {
+                CompleteAllDefeatedWave(runner, world, events);
+            }
+
+            WaveDefinition finalWave = runner.CurrentWave.Definition;
+            Assert.That(finalWave.Order, Is.EqualTo(6));
+            Assert.That(finalWave.EndCondition, Is.EqualTo(WaveEndCondition.PlayerConfirmed));
+            Append(events, runner.Advance(finalWave.StartDelaySeconds));
+            Assert.That(world.ActiveCount, Is.EqualTo(4));
+            Append(events, runner.Advance(30d));
+            Assert.That(runner.State, Is.EqualTo(LevelRunnerState.Running));
+            Assert.That(runner.CurrentWaveIndex, Is.EqualTo(5));
+
+            long[] finalEnemies = world.ActiveEntityIds;
+            for (int index = 0; index < finalEnemies.Length; index++)
+            {
+                Assert.That(runner.NotifyEnemyDefeated(finalEnemies[index]), Is.True);
+                world.Release(finalEnemies[index]);
+            }
+
+            Assert.That(runner.ConfirmPlayerAction(), Is.True);
+            Append(events, runner.Advance(finalWave.EndDelaySeconds));
 
             Assert.That(runner.State, Is.EqualTo(LevelRunnerState.Completed));
-            Assert.That(world.TotalSpawned, Is.EqualTo(10));
-            Assert.That(Count(events, LevelRuntimeEventKind.WaveStarted), Is.EqualTo(3));
-            Assert.That(Count(events, LevelRuntimeEventKind.EnemySpawned), Is.EqualTo(10));
-            Assert.That(Count(events, LevelRuntimeEventKind.WaveCompleted), Is.EqualTo(3));
+            Assert.That(world.TotalSpawned, Is.EqualTo(15));
+            Assert.That(Count(events, LevelRuntimeEventKind.WaveStarted), Is.EqualTo(6));
+            Assert.That(Count(events, LevelRuntimeEventKind.EnemySpawned), Is.EqualTo(15));
+            Assert.That(Count(events, LevelRuntimeEventKind.WaveCompleted), Is.EqualTo(6));
             Assert.That(Count(events, LevelRuntimeEventKind.LevelCompleted), Is.EqualTo(1));
             Assert.That(world.ActiveCount, Is.Zero);
 

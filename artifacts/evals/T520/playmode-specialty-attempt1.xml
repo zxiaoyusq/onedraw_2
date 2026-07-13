@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="1" result="Failed(Child)" total="1" passed="0" failed="1" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-07-13 21:05:37Z" end-time="2026-07-13 21:05:37Z" duration="0.545239">
+  <test-suite type="TestSuite" id="1308" name="onedraw_2" fullname="onedraw_2" runstate="Runnable" testcasecount="38" result="Failed" site="Child" start-time="2026-07-13 21:05:37Z" end-time="2026-07-13 21:05:37Z" duration="0.545239" total="1" passed="0" failed="1" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="PlayMode" />
+    </properties>
+    <failure>
+      <message><![CDATA[One or more child tests had errors]]></message>
+    </failure>
+    <test-suite type="Assembly" id="1281" name="OneStrokeDemon.Tests.PlayMode.dll" fullname="/Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/Library/ScriptAssemblies/OneStrokeDemon.Tests.PlayMode.dll" runstate="Runnable" testcasecount="38" result="Failed" site="Child" start-time="2026-07-13 21:05:37Z" end-time="2026-07-13 21:05:37Z" duration="0.543124" total="1" passed="0" failed="1" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="20653" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="PlayMode" />
+        <property name="EditorOnly" value="False" />
+      </properties>
+      <failure>
+        <message><![CDATA[One or more child tests had errors]]></message>
+      </failure>
+      <test-suite type="TestSuite" id="1282" name="OneStrokeDemon" fullname="OneStrokeDemon" runstate="Runnable" testcasecount="38" result="Failed" site="Child" start-time="2026-07-13 21:05:37Z" end-time="2026-07-13 21:05:37Z" duration="0.537344" total="1" passed="0" failed="1" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <failure>
+          <message><![CDATA[One or more child tests had errors]]></message>
+        </failure>
+        <test-suite type="TestSuite" id="1283" name="Tests" fullname="OneStrokeDemon.Tests" runstate="Runnable" testcasecount="38" result="Failed" site="Child" start-time="2026-07-13 21:05:37Z" end-time="2026-07-13 21:05:37Z" duration="0.531747" total="1" passed="0" failed="1" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <failure>
+            <message><![CDATA[One or more child tests had errors]]></message>
+          </failure>
+          <test-suite type="TestSuite" id="1284" name="PlayMode" fullname="OneStrokeDemon.Tests.PlayMode" runstate="Runnable" testcasecount="38" result="Failed" site="Child" start-time="2026-07-13 21:05:37Z" end-time="2026-07-13 21:05:37Z" duration="0.530195" total="1" passed="0" failed="1" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <failure>
+              <message><![CDATA[One or more child tests had errors]]></message>
+            </failure>
+            <test-suite type="TestSuite" id="1285" name="T520" fullname="OneStrokeDemon.Tests.PlayMode.T520" runstate="Runnable" testcasecount="1" result="Failed" site="Child" start-time="2026-07-13 21:05:37Z" end-time="2026-07-13 21:05:37Z" duration="0.528608" total="1" passed="0" failed="1" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <failure>
+                <message><![CDATA[One or more child tests had errors]]></message>
+              </failure>
+              <test-suite type="TestFixture" id="1224" name="TutorialLevelE2EPlayModeTests" fullname="OneStrokeDemon.Tests.PlayMode.T520.TutorialLevelE2EPlayModeTests" classname="OneStrokeDemon.Tests.PlayMode.T520.TutorialLevelE2EPlayModeTests" runstate="Runnable" testcasecount="1" result="Failed" site="Child" start-time="2026-07-13 21:05:37Z" end-time="2026-07-13 21:05:37Z" duration="0.527972" total="1" passed="0" failed="1" inconclusive="0" skipped="0" asserts="0">
+                <properties>
+                  <property name="Category" value="T520" />
+                </properties>
+                <failure>
+                  <message><![CDATA[One or more child tests had errors]]></message>
+                </failure>
+                <test-case id="1225" name="SixConfiguredActionsDriveTutorialToVictoryWithoutTimerShortcuts" fullname="OneStrokeDemon.Tests.PlayMode.T520.TutorialLevelE2EPlayModeTests.SixConfiguredActionsDriveTutorialToVictoryWithoutTimerShortcuts" methodname="SixConfiguredActionsDriveTutorialToVictoryWithoutTimerShortcuts" classname="OneStrokeDemon.Tests.PlayMode.T520.TutorialLevelE2EPlayModeTests" runstate="Runnable" seed="175526384" result="Failed" start-time="2026-07-13 21:05:37Z" end-time="2026-07-13 21:05:37Z" duration="0.526220" asserts="0">
+                  <properties>
+                    <property name="_JOINTYPE" value="UnityCombinatorial" />
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                  <failure>
+                    <message><![CDATA[  Expected: True
+  But was:  False
+]]></message>
+                    <stack-trace><![CDATA[at OneStrokeDemon.Tests.PlayMode.T520.TutorialLevelE2EPlayModeTests.CompleteAction (OneStrokeDemon.Levels.TutorialLevelCoordinator coordinator, OneStrokeDemon.Levels.TutorialEventType eventType, OneStrokeDemon.Levels.TutorialGestureType gestureType) [0x00013] in /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/Assets/_Game/Tests/PlayMode/T520/TutorialLevelE2EPlayModeTests.cs:199
+at OneStrokeDemon.Tests.PlayMode.T520.TutorialLevelE2EPlayModeTests+<SixConfiguredActionsDriveTutorialToVictoryWithoutTimerShortcuts>d__3.MoveNext () [0x002c1] in /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/Assets/_Game/Tests/PlayMode/T520/TutorialLevelE2EPlayModeTests.cs:105
+at UnityEngine.TestTools.TestEnumerator+<Execute>d__7.MoveNext () [0x0003a] in ./Library/PackageCache/com.unity.test-framework@f3e6c9a02477/UnityEngine.TestRunner/NUnitExtensions/Attributes/TestEnumerator.cs:44
+]]></stack-trace>
+                  </failure>
+                  <output><![CDATA[CONFIG_RUNTIME_READY source=TextAsset:gameplay_config schema=4 content=0.5.2-sample hash=f666feb2c6a94439b0bdeee0c8f939b61728d04a04ec5ed62a23bdf100a98e92 tables=28 records=668 primaryIndexes=284 groupIndexes=52
+ASSET_REGISTRY_READY source=AssetRegistry:asset_registry configHash=f666feb2c6a94439b0bdeee0c8f939b61728d04a04ec5ed62a23bdf100a98e92 entries=76 prefabs=40 sprites=18 audioClips=17 scenes=1
+POINTER_INPUT_READY source=InputSystem modes=Mouse,Touch reference=1920x1080 safeArea=dynamic uiBeginBlock=true maxActivePointers=1
+<b><color=#2EA3FF>MCP-FOR-UNITY</color></b>: [TestRunnerNoThrottle] Restored Interaction Mode after test run.
+Saving results to: /Users/cqmizhangxiaoyu2/Library/Application Support/DefaultCompany/onedraw_2/TestResults.xml
+]]></output>
+                </test-case>
+              </test-suite>
+            </test-suite>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

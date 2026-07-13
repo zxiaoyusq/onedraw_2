@@ -6,10 +6,10 @@ namespace OneStrokeDemon.Config
     public static class ConfigIds
     {
         public const int SchemaVersion = 4;
-        public const string ContentVersion = "0.5.1-sample";
-        public const string ContentHash = "95c42832e54163b63d14f5fc8510453b4b5551e500909eaa9fdb1069f3f4be4b";
+        public const string ContentVersion = "0.5.2-sample";
+        public const string ContentHash = "f666feb2c6a94439b0bdeee0c8f939b61728d04a04ec5ed62a23bdf100a98e92";
         public const int IdSetCount = 27;
-        public const int IdConstantCount = 315;
+        public const int IdConstantCount = 320;
 
         public static class GlobalKeys
         {
@@ -190,6 +190,9 @@ namespace OneStrokeDemon.Config
             public const string Wave00101 = "wave_001_01";
             public const string Wave00102 = "wave_001_02";
             public const string Wave00103 = "wave_001_03";
+            public const string Wave00104 = "wave_001_04";
+            public const string Wave00105 = "wave_001_05";
+            public const string Wave00106 = "wave_001_06";
             public const string Wave00201 = "wave_002_01";
             public const string Wave00202 = "wave_002_02";
             public const string Wave00203 = "wave_002_03";
@@ -217,7 +220,9 @@ namespace OneStrokeDemon.Config
             public const string Spawn00101A = "spawn_001_01_a";
             public const string Spawn00102A = "spawn_001_02_a";
             public const string Spawn00103A = "spawn_001_03_a";
-            public const string Spawn00103B = "spawn_001_03_b";
+            public const string Spawn00104A = "spawn_001_04_a";
+            public const string Spawn00105A = "spawn_001_05_a";
+            public const string Spawn00106A = "spawn_001_06_a";
             public const string Spawn00201A = "spawn_002_01_a";
             public const string Spawn00202A = "spawn_002_02_a";
             public const string Spawn00203A = "spawn_002_03_a";
