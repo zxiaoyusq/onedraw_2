@@ -6,10 +6,10 @@ namespace OneStrokeDemon.Config
     public static class ConfigIds
     {
         public const int SchemaVersion = 4;
-        public const string ContentVersion = "0.5.0-sample";
-        public const string ContentHash = "d524ffcda4693c9cb65e5e21d5ab753472a14b2233b2ae670ecc4b81f1251ee8";
+        public const string ContentVersion = "0.5.1-sample";
+        public const string ContentHash = "95c42832e54163b63d14f5fc8510453b4b5551e500909eaa9fdb1069f3f4be4b";
         public const int IdSetCount = 27;
-        public const int IdConstantCount = 313;
+        public const int IdConstantCount = 315;
 
         public static class GlobalKeys
         {
@@ -81,6 +81,8 @@ namespace OneStrokeDemon.Config
         public static class MovePatterns
         {
             public const string MoveBossGround = "move_boss_ground";
+            public const string MoveBossPhase2 = "move_boss_phase2";
+            public const string MoveBossPhase3 = "move_boss_phase3";
             public const string MoveDive = "move_dive";
             public const string MoveFlySine = "move_fly_sine";
             public const string MoveGroundLeft = "move_ground_left";

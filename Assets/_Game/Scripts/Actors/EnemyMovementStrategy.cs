@@ -188,7 +188,27 @@ namespace OneStrokeDemon.Actors
                 throw new ArgumentNullException(nameof(configProvider));
             }
 
-            EnemyConfig enemy = configProvider.GetEnemy(enemyId);
+            EnemyDefinition enemy = EnemyDefinitionFactory.Create(configProvider, enemyId);
+            return Create(configProvider, enemy, registry);
+        }
+
+        public static EnemyMovementDefinition Create(
+            IConfigProvider configProvider,
+            in EnemyDefinition enemy,
+            MovementStrategyRegistry registry = null)
+        {
+            if (configProvider == null)
+            {
+                throw new ArgumentNullException(nameof(configProvider));
+            }
+
+            if (!enemy.IsConfigured)
+            {
+                throw new ArgumentException(
+                    "Enemy definition must be configured.",
+                    nameof(enemy));
+            }
+
             MovePatternConfig pattern = configProvider.GetMovePattern(enemy.MovePatternId);
             (registry ?? MovementStrategyRegistry.CreateDefault()).Get(pattern.PatternType);
 
@@ -201,7 +221,12 @@ namespace OneStrokeDemon.Actors
             RequireNormalized(pattern.MovePatternId, nameof(pattern.EndXNorm), pattern.EndXNorm);
             RequireNormalized(pattern.MovePatternId, nameof(pattern.StartYNorm), pattern.StartYNorm);
             RequireNormalized(pattern.MovePatternId, nameof(pattern.EndYNorm), pattern.EndYNorm);
-            RequireFiniteRange(enemy.EnemyId, nameof(enemy.MoveSpeedRefPxSec), enemy.MoveSpeedRefPxSec, 0d, double.MaxValue);
+            RequireFiniteRange(
+                enemy.EnemyId,
+                nameof(enemy.MoveSpeedReferencePixelsPerSecond),
+                enemy.MoveSpeedReferencePixelsPerSecond,
+                0d,
+                double.MaxValue);
 
             return new EnemyMovementDefinition(
                 pattern.MovePatternId,
@@ -210,7 +235,7 @@ namespace OneStrokeDemon.Actors
                 pattern.StartYNorm * referenceHeight,
                 pattern.EndXNorm * referenceWidth,
                 pattern.EndYNorm * referenceHeight,
-                enemy.MoveSpeedRefPxSec * pattern.SpeedMultiplier,
+                enemy.MoveSpeedReferencePixelsPerSecond * pattern.SpeedMultiplier,
                 pattern.AmplitudeRefPx,
                 pattern.Frequency,
                 pattern.Loop);

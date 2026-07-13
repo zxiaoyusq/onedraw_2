@@ -51,7 +51,7 @@ namespace OneStrokeDemon.Actors
                 AttackStrategyRegistry.CreateDefault();
             movement = EnemyMovementDefinitionFactory.Create(
                 configProvider,
-                controller.Definition.EnemyId,
+                controller.Definition,
                 movementRegistry);
             attacks = EnemyAttackDefinitionFactory.Create(
                 configProvider,

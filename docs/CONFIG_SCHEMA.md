@@ -2,7 +2,7 @@
 
 ## 1. 版本与唯一真相源
 
-- 当前冻结版本：`schemaVersion = 4`、`contentVersion = 0.5.0-sample`。
+- 当前冻结版本：`schemaVersion = 4`、`contentVersion = 0.5.1-sample`。
 - 正式内容唯一源：`Design/Config/GameConfig.xlsx`。
 - `config/一笔镇妖_游戏配置表模板.xlsx` 只是随正式源同步的示例镜像，不接受独立内容修改。
 - `Assets/_Game/Config/Generated/gameplay_config.json`和`gameplay_config.hash`由T250导出器生成，是可审查、可构建的只读Runtime快照与hash旁车。
@@ -207,3 +207,12 @@ T360新增的`Stances.damageFormulaId -> DamageFormulas.formulaId`是必填普�
 - `EnemyArchetypePool`为目录中每个原型注册T440敌人池，预热仍只读`Enemies.poolPrewarm`。`AssetManifest.assetType=Sprite`时在通用容器上绑定Registry Sprite，`Prefab`时实例化Registry Prefab；两条路径都只补齐通用`Damageable/EnemyController/EnemyArchetypeActor`和配置需要的弱点组件，不把HP、速度、攻击或半径写入Inspector。
 - `EnemyArchetypeActor`在获取精确池租约后才能Spawn，由同一原型快照创建`EnemyStrategyRuntime`并把移动样本写入调用方参考空间。回收/重开/最旧复用先释放策略订阅，再委托`EnemyController.ReleaseToPool`完整清空运行态；旧租约不能释放重用后实例。
 - 当前五个Sprite键和一个Prefab键继续使用T240的类型正确占位引用；T450只证明内容规则与运行时装配，不把占位资源伪报为正式动画/美术。Boss阶段覆盖属于T460，刷怪时间轴与触发事实属于T500，正式原型资源替换属于T630。
+
+## 19. T460配置驱动Boss阶段与切换语义
+
+- T460不改变JSON字段形状或schema，content升级为`0.5.1-sample`。`BossPhaseCatalog`只从`BossPhases`及其移动、攻击、防御、弱点、进入效果和文案外键构造不可变阶段；所属敌人必须是`tier=Boss`，order必须从1连续，首阶段从HP比例1进入、末阶段退出到0，相邻阶段阈值必须精确相接且严格下降。
+- 每个阶段通过`EnemyDefinitionFactory.CreateBossPhase`覆盖`movementPatternId/attackSetId/defenseRuleId/weakpointRuleId`，同时保留同一Boss的HP上限、基础速度、资源和层级。当前镇墓玄甲王三阶段分别使用`move_boss_ground/move_boss_phase2/move_boss_phase3`，表内速度倍率为`0.5/0.8/1.2`；最终参考速度由`Enemies.moveSpeedRefPxSec × MovePatterns.speedMultiplier`计算，不在Boss代码或Inspector复制。
+- `BossPhaseStateMachine`是无`MonoBehaviour`依赖的纯规则，只比较调用方传入的当前HP比例与表内退出阈值。等于边界时进入下一阶段；重复观察或HP回升不重复事件；一次非致死伤害跨越多个阈值时仍按配置顺序逐阶段发布进入事件，不能跳过中间进入动作；致死伤害直接进入死亡语义，不在尸体上执行后续阶段动作。
+- `BossPhaseController`监听`EnemyController`的HP变化并在阶段边界取消旧攻击/眩晕状态，切回`Move`后原子应用新阶段定义。当前HP和HP上限保持不变，护甲按新阶段防御规则重置，弱点规则立即替换，旧策略订阅先释放，再从新攻击集和移动模板创建运行时。
+- `onEnterEffectGroupId`统一经T410 `SkillService.ExecuteEffectGroup`按配置order执行，并把Boss作为明确主目标；Boss阶段事件在配置更新、策略重建和进入效果完成后每阶段只发布一次。切换时刻不读取动画时长，动画仅可消费阶段/状态事件做表现。
+- 当前样例的三段HP区间为`[1,0.67]`、`[0.67,0.34]`、`[0.34,0]`，护甲为`120/60/0`，弱点由无弱点切为封印弱点；这些都是当前配置内容而非C#常量。修改阈值、速度、防御或弱点只需重导配置并通过连续覆盖校验。

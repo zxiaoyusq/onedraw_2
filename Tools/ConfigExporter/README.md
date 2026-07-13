@@ -56,7 +56,7 @@ Tools/CI/verify-config.sh --update  # 显式重生成受管文件后执行同一
 - `contentHash` 是不包含自身字段的规范化 JSON 的 SHA-256。
 - 每份输出在替换前重新解析，检查顶层顺序、元数据、记录数和哈希。
 - `gameplay_config.hash`只包含64位小写`contentHash`及一个LF；当前为65字节。
-- `ConfigIds.g.cs`位于`OneStrokeDemon.Config` asmdef作用域，按27组稳定键生成当前313个Ordinal排序常量，并嵌入schema/content/hash；UTF-8无BOM、LF结尾、无时间戳。
+- `ConfigIds.g.cs`位于`OneStrokeDemon.Config` asmdef作用域，按27组稳定键生成当前315个Ordinal排序常量，并嵌入schema/content/hash；UTF-8无BOM、LF结尾、无时间戳。
 - C#标识符由稳定ID确定性转换；同组不同ID若产生同名标识符，生成以`CFG013`失败，不静默改名。
 
 ## 生产校验合同

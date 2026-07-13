@@ -1,7 +1,7 @@
 {
   "schemaVersion": 4,
-  "contentVersion": "0.5.0-sample",
-  "contentHash": "d524ffcda4693c9cb65e5e21d5ab753472a14b2233b2ae670ecc4b81f1251ee8",
+  "contentVersion": "0.5.1-sample",
+  "contentHash": "95c42832e54163b63d14f5fc8510453b4b5551e500909eaa9fdb1069f3f4be4b",
   "global": [
     {
       "key": "battle_countdown_sec",
@@ -38,7 +38,7 @@
       "valueType": "string",
       "intValue": null,
       "floatValue": null,
-      "stringValue": "0.5.0-sample",
+      "stringValue": "0.5.1-sample",
       "boolValue": null,
       "unit": "semver",
       "description": "内容版本"
@@ -472,6 +472,32 @@
       "endYNorm": 0.38,
       "loop": true,
       "description": "Boss地面阶段"
+    },
+    {
+      "movePatternId": "move_boss_phase2",
+      "patternType": "Boss",
+      "speedMultiplier": 0.8,
+      "amplitudeRefPx": 0,
+      "frequency": 0,
+      "startXNorm": 0.82,
+      "endXNorm": 0.58,
+      "startYNorm": 0.38,
+      "endYNorm": 0.38,
+      "loop": true,
+      "description": "Boss二阶段加速"
+    },
+    {
+      "movePatternId": "move_boss_phase3",
+      "patternType": "Boss",
+      "speedMultiplier": 1.2,
+      "amplitudeRefPx": 0,
+      "frequency": 0,
+      "startXNorm": 0.82,
+      "endXNorm": 0.58,
+      "startYNorm": 0.38,
+      "endYNorm": 0.38,
+      "loop": true,
+      "description": "Boss三阶段高速"
     },
     {
       "movePatternId": "move_dive",
@@ -1696,7 +1722,7 @@
       "order": 2,
       "enterHpRatio": 0.67,
       "exitHpRatio": 0.34,
-      "movementPatternId": "move_boss_ground",
+      "movementPatternId": "move_boss_phase2",
       "attackSetId": "attackset_boss_phase2",
       "defenseRuleId": "defense_direction_seal",
       "weakpointRuleId": "weakpoint_boss_seal",
@@ -1709,7 +1735,7 @@
       "order": 3,
       "enterHpRatio": 0.34,
       "exitHpRatio": 0,
-      "movementPatternId": "move_boss_ground",
+      "movementPatternId": "move_boss_phase3",
       "attackSetId": "attackset_boss_phase3",
       "defenseRuleId": "defense_none",
       "weakpointRuleId": "weakpoint_boss_seal",

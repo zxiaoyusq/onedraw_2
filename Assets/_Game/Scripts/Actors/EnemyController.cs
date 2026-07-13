@@ -19,7 +19,8 @@ namespace OneStrokeDemon.Actors
         KnockbackRequested = 7,
         CounterChanged = 8,
         Died = 9,
-        Released = 10
+        Released = 10,
+        PhaseChanged = 11
     }
 
     public enum EnemyReleaseReason
@@ -274,6 +275,78 @@ namespace OneStrokeDemon.Actors
             bool completed = stateMachine.CompleteSpawn(timestamp);
             UpdateWeakpoint(timestamp);
             return completed;
+        }
+
+        public EnemyPhaseProfileResult ApplyBossPhaseProfile(
+            in EnemyDefinition phaseDefinition,
+            string bossPhaseId,
+            double timestamp)
+        {
+            RequireAliveCombatState();
+            if (string.IsNullOrWhiteSpace(bossPhaseId))
+            {
+                throw new ArgumentException(
+                    "Boss phase id must be non-empty.",
+                    nameof(bossPhaseId));
+            }
+
+            if (!phaseDefinition.IsConfigured ||
+                phaseDefinition.Tier != EnemyTier.Boss ||
+                definition.Tier != EnemyTier.Boss ||
+                !string.Equals(
+                    definition.EnemyId,
+                    phaseDefinition.EnemyId,
+                    StringComparison.Ordinal))
+            {
+                throw new ArgumentException(
+                    "Boss phase profile must preserve the active Boss identity.",
+                    nameof(phaseDefinition));
+            }
+
+            if (phaseDefinition.Weakpoint.HasHitbox && weakpoint == null)
+            {
+                throw new InvalidOperationException(
+                    $"Boss phase '{bossPhaseId}' requires a WeakpointController child.");
+            }
+
+            if (!stateMachine.ChangePhase(timestamp))
+            {
+                throw new InvalidOperationException(
+                    $"Boss phase '{bossPhaseId}' cannot be applied in state '{State.State}'.");
+            }
+
+            EnemyPhaseProfileResult result =
+                damageable.ApplyPhaseProfile(phaseDefinition);
+            definition = phaseDefinition;
+            if (weakpoint != null)
+            {
+                weakpoint.Configure(definition.Weakpoint, damageable);
+            }
+
+            if (result.ArmorChanged)
+            {
+                Publish(
+                    EnemyCombatEventType.ArmorChanged,
+                    bossPhaseId,
+                    result.ArmorDelta,
+                    0d,
+                    0d,
+                    string.Empty,
+                    string.Empty,
+                    timestamp);
+            }
+
+            Publish(
+                EnemyCombatEventType.PhaseChanged,
+                bossPhaseId,
+                0L,
+                result.State.HpRatio,
+                0d,
+                string.Empty,
+                string.Empty,
+                timestamp);
+            UpdateWeakpoint(timestamp);
+            return result;
         }
 
         public bool BeginAttack(string attackId, double timestamp)

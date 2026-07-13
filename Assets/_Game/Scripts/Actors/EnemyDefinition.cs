@@ -171,8 +171,69 @@ namespace OneStrokeDemon.Actors
             }
 
             EnemyConfig enemy = configProvider.GetEnemy(enemyId);
-            DefenseRuleConfig defense = configProvider.GetDefenseRule(enemy.DefenseRuleId);
-            WeakpointRuleConfig weakpoint = configProvider.GetWeakpointRule(enemy.WeakpointRuleId);
+            return Create(
+                configProvider,
+                enemy,
+                enemy.MovePatternId,
+                enemy.AttackSetId,
+                enemy.DefenseRuleId,
+                enemy.WeakpointRuleId);
+        }
+
+        public static EnemyDefinition CreateBossPhase(
+            IConfigProvider configProvider,
+            string enemyId,
+            string movePatternId,
+            string attackSetId,
+            string defenseRuleId,
+            string weakpointRuleId)
+        {
+            if (configProvider == null)
+            {
+                throw new ArgumentNullException(nameof(configProvider));
+            }
+
+            EnemyConfig enemy = configProvider.GetEnemy(enemyId);
+            if (ParseTier(enemy.EnemyId, enemy.Tier) != EnemyTier.Boss)
+            {
+                throw new ArgumentException(
+                    $"Enemy '{enemy.EnemyId}' must be tier Boss before applying a phase profile.",
+                    nameof(enemyId));
+            }
+
+            return Create(
+                configProvider,
+                enemy,
+                movePatternId,
+                attackSetId,
+                defenseRuleId,
+                weakpointRuleId);
+        }
+
+        private static EnemyDefinition Create(
+            IConfigProvider configProvider,
+            EnemyConfig enemy,
+            string movePatternId,
+            string attackSetId,
+            string defenseRuleId,
+            string weakpointRuleId)
+        {
+            RequireNonEmpty(enemy.EnemyId, nameof(movePatternId), movePatternId);
+            RequireNonEmpty(enemy.EnemyId, nameof(attackSetId), attackSetId);
+            RequireNonEmpty(enemy.EnemyId, nameof(defenseRuleId), defenseRuleId);
+            RequireNonEmpty(enemy.EnemyId, nameof(weakpointRuleId), weakpointRuleId);
+            configProvider.GetMovePattern(movePatternId);
+            if (configProvider.GetEnemyAttacks(attackSetId).Count == 0)
+            {
+                throw Invalid(
+                    enemy.EnemyId,
+                    nameof(attackSetId),
+                    attackSetId,
+                    "Configured attack set must contain at least one attack.");
+            }
+
+            DefenseRuleConfig defense = configProvider.GetDefenseRule(defenseRuleId);
+            WeakpointRuleConfig weakpoint = configProvider.GetWeakpointRule(weakpointRuleId);
 
             RequireNonEmpty(enemy.EnemyId, nameof(enemy.EnemyId), enemy.EnemyId);
             RequirePositive(enemy.EnemyId, nameof(enemy.MaxHp), enemy.MaxHp);
@@ -223,9 +284,9 @@ namespace OneStrokeDemon.Actors
                 enemy.DisplayNameKey,
                 ParseTier(enemy.EnemyId, enemy.Tier),
                 enemy.MaxHp,
-                enemy.MovePatternId,
+                movePatternId,
                 enemy.MoveSpeedRefPxSec,
-                enemy.AttackSetId,
+                attackSetId,
                 new EnemyDefenseDefinition(
                     defense.DefenseRuleId,
                     defense.ArmorHp,

@@ -179,6 +179,32 @@ namespace OneStrokeDemon.Actors
         public bool DeathTriggered => Status == EnemyExecuteStatus.Executed;
     }
 
+    public readonly struct EnemyPhaseProfileResult
+    {
+        internal EnemyPhaseProfileResult(
+            long previousArmor,
+            long currentArmor,
+            EnemyDamageSnapshot state)
+        {
+            PreviousArmor = previousArmor;
+            CurrentArmor = currentArmor;
+            State = state;
+            IsValid = true;
+        }
+
+        public long PreviousArmor { get; }
+
+        public long CurrentArmor { get; }
+
+        public long ArmorDelta => CurrentArmor - PreviousArmor;
+
+        public EnemyDamageSnapshot State { get; }
+
+        public bool IsValid { get; }
+
+        public bool ArmorChanged => PreviousArmor != CurrentArmor;
+    }
+
     public sealed class EnemyDamageModel
     {
         private EnemyDefinition definition;
@@ -226,6 +252,40 @@ namespace OneStrokeDemon.Actors
             currentHp = definition.MaximumHp;
             currentArmor = definition.Defense.MaximumArmor;
             isActive = true;
+        }
+
+        public EnemyPhaseProfileResult ApplyPhaseProfile(
+            in EnemyDefinition configuredDefinition)
+        {
+            if (!configuredDefinition.IsConfigured)
+            {
+                throw new ArgumentException(
+                    "Enemy phase definition must be configured.",
+                    nameof(configuredDefinition));
+            }
+
+            if (!isActive || currentHp == 0L)
+            {
+                throw new InvalidOperationException(
+                    "Only an active living enemy can apply a phase profile.");
+            }
+
+            if (!string.Equals(
+                    definition.EnemyId,
+                    configuredDefinition.EnemyId,
+                    StringComparison.Ordinal) ||
+                definition.MaximumHp != configuredDefinition.MaximumHp ||
+                definition.Tier != configuredDefinition.Tier)
+            {
+                throw new ArgumentException(
+                    "A phase profile cannot replace enemy identity, tier, or maximum HP.",
+                    nameof(configuredDefinition));
+            }
+
+            long previousArmor = currentArmor;
+            definition = configuredDefinition;
+            currentArmor = definition.Defense.MaximumArmor;
+            return new EnemyPhaseProfileResult(previousArmor, currentArmor, Current);
         }
 
         public EnemyDamageResult ApplyDamage(long amount)
@@ -468,6 +528,12 @@ namespace OneStrokeDemon.Actors
         internal void SetStrokeHitEnabled(bool enabled)
         {
             strokeHitEnabled = enabled && Current.IsActive && !Current.IsDead;
+        }
+
+        internal EnemyPhaseProfileResult ApplyPhaseProfile(
+            in EnemyDefinition definition)
+        {
+            return model.ApplyPhaseProfile(definition);
         }
 
         public EnemyDamageResult ApplyResolvedDamage(in DamageResult damage)

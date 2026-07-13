@@ -38,6 +38,7 @@
 - `BossLevelE2EPlayModeTests`
 - `RestartThreeTimesPlayModeTests`
 - `EnemyGalleryPlayModeTests`
+- `BossBattlePlayModeTests`
 
 ## 证据模板
 

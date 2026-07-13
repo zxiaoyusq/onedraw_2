@@ -27,7 +27,8 @@ namespace OneStrokeDemon.Actors
         TimedStunApplied = 8,
         StunCompleted = 9,
         Killed = 10,
-        Released = 11
+        Released = 11,
+        PhaseChanged = 12
     }
 
     public enum EnemyInterruptStatus
@@ -230,6 +231,28 @@ namespace OneStrokeDemon.Actors
                 EnemyTransitionReason.SpawnCompleted,
                 timestamp,
                 string.Empty);
+            return true;
+        }
+
+        public bool ChangePhase(double timestamp)
+        {
+            ObserveTimestamp(timestamp, nameof(timestamp));
+            if (state == EnemyState.None || state == EnemyState.Dead)
+            {
+                return false;
+            }
+
+            string interruptedAttack = activeAttack.IsConfigured
+                ? activeAttack.AttackId
+                : string.Empty;
+            activeAttack = default;
+            attackStartedAt = 0d;
+            stunUntil = double.PositiveInfinity;
+            TransitionTo(
+                EnemyState.Move,
+                EnemyTransitionReason.PhaseChanged,
+                timestamp,
+                interruptedAttack);
             return true;
         }
 
