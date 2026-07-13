@@ -22,3 +22,21 @@
 - 角色敌人、UI、背景、VFX分别进入SpriteAtlas。
 - 原型可用单帧位移、缩放、闪白表达动作；正式动画另开拆件任务。
 - 资源通过 `AssetRegistrySO` 的 `assetKey` 引用，配置表不写路径或GUID。
+
+## T240 Registry基线
+
+- Canonical资源：`Assets/_Game/Config/Registry/AssetRegistry.asset`。
+- 当前覆盖：76个AssetManifest键，其中Prefab 40、Sprite 18、AudioClip 17、Scene 1；Editor菜单和构建前门会拒绝空、重复、缺失、额外、错型或非持久化引用。
+- Registry条目只序列化`assetKey`和Unity对象；Scene使用`AssetSceneReference`保存明确场景引用。HP、CD、伤害、冷却、关卡和文案等仍只来自配置表。
+- Runtime和Editor绑定不消费AssetManifest的`addressOrPath`，Prefab/Sprite/Audio不通过路径或GUID查找。资源文件移动或替换不要求修改配置ID。
+
+## 占位与替换流程
+
+当前尚未导入正式美术、音频和逐对象Prefab，因此所有Sprite键复用一个洋红占位Sprite、所有AudioClip键复用一个静音占位AudioClip、所有Prefab键复用一个含占位SpriteRenderer的Prefab；`scene_battle`直接引用Build Settings中的Battle场景。这些资源只用于建立完整类型和覆盖合同，不代表正式表现完成。
+
+替换单项资源时：
+
+1. 按本文件的命名、导入预设和授权要求导入正式Unity资产。
+2. 在Canonical Registry中把对应稳定`assetKey`的对象引用替换为同类型资产；不要修改Excel中的配置ID，也不要新增路径/GUID绑定。
+3. 运行 `One Stroke Demon/Config/Validate Asset Registry`；缺失或错型引用会立即失败，正式构建也会执行同一门禁。
+4. 可再次运行 `One Stroke Demon/Config/Create or Repair Asset Registry` 补齐新键；工具会保留已有合法类型引用，只为缺失或错型项回填占位。

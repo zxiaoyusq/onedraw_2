@@ -62,6 +62,15 @@ T220坏配置清单位于 `Tools/ConfigExporter/Tests/Fixtures/invalid-config-ca
 5. 业务层只依赖 `IConfigProvider` 的显式O(1)查询，不在热路径反序列化，不遍历可变根数组，也不通过反射选择战斗行为。
 6. 启动日志固定输出来源、schema、content、hash、表数、记录数和索引数；不兼容或损坏配置留在Bootstrap并阻断进入MainMenu/Battle。
 
+## AssetRegistry绑定阶段
+
+1. T240由`IConfigProvider.GetAssetManifest()`暴露加载后只读清单；`AssetRegistryService`按Ordinal键精确核对Canonical `Assets/_Game/Config/Registry/AssetRegistry.asset`，全部通过后才发布只读对象索引。
+2. Registry条目只保存`assetKey`和Unity对象引用；Prefab、Sprite、AudioClip和Scene分别做类型检查，Scene使用`AssetSceneReference`包装明确场景引用。SO、Inspector和代码不得保存玩法平衡值。
+3. 运行时和Editor作者工具不读取AssetManifest的`addressOrPath`，不通过GUID或路径完成Prefab/Sprite/Audio绑定；资源替换只改Registry引用，稳定配置ID不变。
+4. `One Stroke Demon/Config/Validate Asset Registry`检查76键覆盖、持久化资产、Prefab和启用场景；同一校验由`IPreprocessBuildWithReport`在构建前执行，缺失、重复、额外、空或错型键均阻断构建。
+5. 当前正式资源未接入的键按类型共享受管占位Sprite、AudioClip和Prefab，`scene_battle`引用Battle场景；作者工具保留合法的既有引用，允许后续逐键替换。占位不代表表现验收完成。
+6. Bootstrap先通过Runtime配置检查，再初始化Registry；两者的摘要都成功输出后才进入MainMenu，任一失败均不发布可用Registry或继续场景流。
+
 ## 配置改动完成定义
 
 - [ ] 只修改 `Design/Config/GameConfig.xlsx`，模板镜像由受控同步步骤更新。

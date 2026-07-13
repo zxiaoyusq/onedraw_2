@@ -1,7 +1,7 @@
 project: OneStrokeDemon
 project_cn: 一笔镇妖
 plan_generated: 2026-07-11
-current_task: T240
+current_task: T250
 current_task_status: READY
 unity:
   project_root: .
@@ -55,8 +55,21 @@ config:
     loaded_records: 645
     readonly_primary_indexes: 270
     readonly_group_indexes: 49
-    editmode_tests: 25
-    playmode_tests: 4
+    editmode_tests: 30
+    playmode_tests: 5
+    bootstrap_smoke: pass
+  asset_registry:
+    status: pass
+    path: Assets/_Game/Config/Registry/AssetRegistry.asset
+    manifest_entries: 76
+    prefabs: 40
+    sprites: 18
+    audio_clips: 17
+    scenes: 1
+    scene_reference: Assets/_Game/Scenes/Battle.unity
+    placeholder_strategy: one_managed_asset_per_runtime_type
+    address_or_path_lookup: disabled
+    build_preprocessor: enabled
     bootstrap_smoke: pass
 manual_gates:
   unity_editor_smoke: pass
@@ -103,7 +116,7 @@ wechat_conversion:
 execution_order:
   deferred_tasks: [T120, T130]
   deferral_reason: user_prioritized_main_game_content_over_wechat_devtools_device_and_packaging_work
-  next_content_task: T240
+  next_content_task: T250
   resume_platform_before: [T640, T750]
 workflow:
   unity_test_command: Tools/CI/run-unity-tests.sh

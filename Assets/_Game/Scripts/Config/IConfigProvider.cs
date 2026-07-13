@@ -36,5 +36,6 @@ namespace OneStrokeDemon.Config
         AudioCueConfig GetAudioCue(string audioKey);
         VfxCueConfig GetVfxCue(string vfxKey);
         AssetManifestConfig GetAsset(string assetKey);
+        IReadOnlyList<AssetManifestConfig> GetAssetManifest();
     }
 }

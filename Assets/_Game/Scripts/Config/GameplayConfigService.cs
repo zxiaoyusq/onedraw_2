@@ -90,6 +90,7 @@ namespace OneStrokeDemon.Config
         public AudioCueConfig GetAudioCue(string audioKey) => Get(RequireSnapshot().AudioCues, "AudioCues", "audioKey", audioKey);
         public VfxCueConfig GetVfxCue(string vfxKey) => Get(RequireSnapshot().VfxCues, "VfxCues", "vfxKey", vfxKey);
         public AssetManifestConfig GetAsset(string assetKey) => Get(RequireSnapshot().Assets, "AssetManifest", "assetKey", assetKey);
+        public IReadOnlyList<AssetManifestConfig> GetAssetManifest() => RequireSnapshot().AssetManifestEntries;
 
         private static void ValidateRootGlobalVersions(GameplayConfigSnapshot candidate, string source)
         {

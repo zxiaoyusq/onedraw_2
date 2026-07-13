@@ -32,6 +32,8 @@ namespace OneStrokeDemon.Config
             AudioCues = BuildIndex(document.AudioCueRows, row => row.AudioKey, "AudioCues", "audioKey", source);
             VfxCues = BuildIndex(document.VfxCueRows, row => row.VfxKey, "VfxCues", "vfxKey", source);
             Assets = BuildIndex(document.AssetManifestRows, row => row.AssetKey, "AssetManifest", "assetKey", source);
+            AssetManifestEntries = new ReadOnlyCollection<AssetManifestConfig>(
+                (AssetManifestConfig[])document.AssetManifestRows.Clone());
 
             AttacksBySet = BuildGroups(document.EnemyAttackRows, row => row.AttackSetId, "EnemyAttacks", "attackSetId", source);
             EffectsByGroup = BuildGroups(document.SkillEffectRows, row => row.EffectGroupId, "SkillEffects", "effectGroupId", source);
@@ -105,6 +107,7 @@ namespace OneStrokeDemon.Config
         public IReadOnlyDictionary<string, AudioCueConfig> AudioCues { get; }
         public IReadOnlyDictionary<string, VfxCueConfig> VfxCues { get; }
         public IReadOnlyDictionary<string, AssetManifestConfig> Assets { get; }
+        public IReadOnlyList<AssetManifestConfig> AssetManifestEntries { get; }
         public IReadOnlyDictionary<string, IReadOnlyList<EnemyAttackConfig>> AttacksBySet { get; }
         public IReadOnlyDictionary<string, IReadOnlyList<SkillEffectConfig>> EffectsByGroup { get; }
         public IReadOnlyDictionary<string, IReadOnlyList<WaveConfig>> WavesByLevel { get; }

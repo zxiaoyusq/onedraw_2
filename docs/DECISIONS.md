@@ -114,3 +114,13 @@
 - 理由：坏包必须在进入MainMenu/Battle前整包失败，正常启动只付出一次解析成本，并为后续玩法提供稳定O(1)配置读取。
 - 许可证：Unity包封装使用Unity Companion License；包内列出的第三方Json组件为MIT，版本和边界见 `docs/PACKAGE_BASELINE.md`。
 - 限制：T230提交初始JSON快照但不生成hash旁车或ConfigIds，也不实现AssetRegistry；T240/T250分别负责这些后续边界。
+
+## D-016 · T240 AssetRegistry对象引用、占位与构建门
+
+- 状态：ACCEPTED
+- 决定：Canonical `AssetRegistrySO`只序列化`assetKey`和`UnityEngine.Object`，Runtime一次校验后发布Ordinal只读索引；场景通过独立`AssetSceneReference`保存明确场景引用。Registry、Inspector和C#均不得复制HP、CD、伤害或其他平衡值。
+- 决定：AssetManifest定义76个稳定ID及预期类型；运行时和Editor绑定不使用其中的`addressOrPath`，不以路径或GUID查找资源。替换Sprite、AudioClip或Prefab只修改Registry对象引用，不修改配置ID；场景路径仅存在于明确的Unity场景引用包装中。
+- 决定：缺少正式资源的当前阶段按类型复用三个受管占位资产（Sprite、AudioClip、Prefab），`scene_battle`直接引用Build Settings中的Battle场景。作者工具重跑时保留每个键已有的合法类型引用，因此后续可逐项替换而不被占位生成覆盖。
+- 决定：Editor菜单和`IPreprocessBuildWithReport`在构建前核对空键、空对象、重复、缺失、额外、类型、持久化Prefab及启用场景；任何失败转换为构建失败。Bootstrap仅在Runtime配置与Registry均通过后进入MainMenu。
+- 理由：配置ID需要与Unity资源位置和替换解耦，同时在资源尚未齐备时建立可编译、可测试、可逐项替换的完整绑定合同。
+- 限制：共享占位只证明引用覆盖与类型合同，不代表正式表现完成；正式资源接入和视觉验收仍属于各玩法任务及T630，T250只负责配置生成流水线。
