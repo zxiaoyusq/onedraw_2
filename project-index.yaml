@@ -1,7 +1,7 @@
 project: OneStrokeDemon
 project_cn: 一笔镇妖
 plan_generated: 2026-07-11
-current_task: T310
+current_task: T320
 current_task_status: READY
 unity:
   project_root: .
@@ -57,8 +57,8 @@ config:
     loaded_records: 645
     readonly_primary_indexes: 270
     readonly_group_indexes: 49
-    editmode_tests: 37
-    playmode_tests: 12
+    editmode_tests: 46
+    playmode_tests: 13
     bootstrap_smoke: pass
   asset_registry:
     status: pass
@@ -90,8 +90,8 @@ config:
     dotnet_tests: 54
     config_editmode_tests: 19
     config_playmode_tests: 3
-    full_editmode_tests: 37
-    full_playmode_tests: 12
+    full_editmode_tests: 46
+    full_playmode_tests: 13
     full_command_smoke: pass
 input:
   status: pass
@@ -112,9 +112,27 @@ input:
   screen_dpi_dependency: false
   pointer_editmode_tests: 5
   pointer_playmode_tests: 7
-  full_editmode_tests: 37
-  full_playmode_tests: 12
+  full_editmode_tests: 46
+  full_playmode_tests: 13
   bootstrap_smoke: pass
+stroke_sampling:
+  status: pass
+  sampler: StrokeSampler
+  input_bridge: StrokeInputCollector
+  data: immutable_StrokeData
+  config_mapping: StrokeSamplingSettingsFactory
+  config_source: selected_StrokeRules_row
+  config_fields: [minPointDistanceRefPx, maxStrokeLengthRefPx, maxPointCount]
+  minimum_distance: filter_against_last_accepted_point
+  maximum_length: exact_segment_interpolation
+  maximum_points: complete_on_last_accepted_capacity_point
+  cancellation: discard_without_StrokeData
+  managed_allocation: zero_on_accepted_point_hot_path
+  completion_allocation: immutable_snapshot_only
+  editmode_tests: 9
+  playmode_tests: 1
+  full_editmode_tests: 46
+  full_playmode_tests: 13
 manual_gates:
   unity_editor_smoke: pass
   standard_web_build: pass_with_known_issues
@@ -160,7 +178,7 @@ wechat_conversion:
 execution_order:
   deferred_tasks: [T120, T130]
   deferral_reason: user_prioritized_main_game_content_over_wechat_devtools_device_and_packaging_work
-  next_content_task: T310
+  next_content_task: T320
   resume_platform_before: [T640, T750]
 workflow:
   config_verify_command: Tools/CI/verify-config.sh
