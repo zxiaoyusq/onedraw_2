@@ -21,6 +21,10 @@ if "$SCRIPT_DIR/run-unity-tests.sh" --results; then
   echo "Missing test argument value unexpectedly returned zero." >&2
   exit 1
 fi
+if "$SCRIPT_DIR/run-unity-tests.sh" --category; then
+  echo "Missing category argument value unexpectedly returned zero." >&2
+  exit 1
+fi
 if "$SCRIPT_DIR/build-web.sh" --unknown; then
   echo "Unknown Web build argument unexpectedly returned zero." >&2
   exit 1
@@ -29,6 +33,11 @@ if "$SCRIPT_DIR/build-web.sh" --output; then
   echo "Missing build argument value unexpectedly returned zero." >&2
   exit 1
 fi
+if "$SCRIPT_DIR/verify-config.sh" --unknown; then
+  echo "Unknown config verification argument unexpectedly returned zero." >&2
+  exit 1
+fi
+"$SCRIPT_DIR/verify-config.sh" --help >/dev/null
 
 "$SCRIPT_DIR/new-task-evidence.sh" T999 --output-root "$TEMP_ROOT"
 test -s "$TEMP_ROOT/T999/verification.md"

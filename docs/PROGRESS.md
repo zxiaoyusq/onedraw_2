@@ -1,8 +1,8 @@
 # PROGRESS
 
 - 日期：2026-07-13
-- 当前成熟度：T240已完成assetKey到Unity对象的只读Registry、Editor校验和构建门；P2进入配置流水线闭环
-- 当前任务：T250
+- 当前成熟度：T250已闭合xlsx→校验→JSON/hash/ConfigIds→Unity测试的一键配置流水线；P2完成并进入P3手势战斗核心
+- 当前任务：T300
 - 状态：READY
 - Unity精确版本：6000.5.1f1（已由ProjectVersion.txt与本机安装核验）
 - 微信SDK来源或版本：官方 `minigame-tuanjie-transform-sdk` v0.1.33 / commit `ed4ad28f433c6b52b5fd3f22a6fa155a0c98c228` / embedded最小补丁
@@ -11,6 +11,11 @@
 
 ## 已完成
 
+- T250：`Tools/CI/verify-config.sh`默认只读地完成导出器构建、临时生成、三生成物逐字节漂移检查、.NET测试及Unity `ConfigPipeline` EditMode/PlayMode；`--update`是唯一显式刷新入口，`--skip-unity`只报告`PARTIAL`，不会伪报全绿。
+- T250：同一个已解析并完整校验的`PreparedExport`确定性生成168,071字节JSON、65字节hash旁车和23,125字节`ConfigIds.g.cs`；JSON保持T230字节不变，三者SHA-256分别为`91d2c312...1a066a`、`5d591e73...b71c7a`、`b5c3b1ba...6b988`。
+- T250：生成ID位于`OneStrokeDemon.Config`程序集作用域，覆盖27个ID集合与306个稳定字符串常量，只含配置ID和生成元数据，不复制HP/CD/伤害等玩法数值；缺失、字节漂移、非法ID或标识符碰撞统一以`CFG013`失败。
+- T250：受控修改hash旁车后只读命令以退出码3和统一diff检出，随后由`--update`恢复；ConfigPipelineE2E与CLI测试使.NET全套达到54/54，Unity分类EditMode 19/19、PlayMode 3/3，全量EditMode 32/32、PlayMode 5/5。
+- T250：真实Bootstrap→MainMenu再次记录配置28表645条、Registry 76键，Console Error/Warning为0；隔离工程副本中的完整默认一键入口最终输出`CONFIG_PIPELINE_PASS dotnet=PASS drift=PASS editmode=PASS playmode=PASS`。
 - T240：Canonical `AssetRegistrySO`精确覆盖AssetManifest的76个键：Prefab 40、Sprite 18、AudioClip 17、Scene 1；条目只序列化`assetKey`和Unity对象引用，场景仅使用独立`AssetSceneReference`保存明确场景引用，不保存HP/CD/伤害等平衡值。
 - T240：`AssetRegistryService`一次性校验空键、空对象、重复、缺失、额外和错型后才原子发布Ordinal只读索引；提供Prefab/Sprite/AudioClip/Scene类型化查询，未知ID和错型查询返回稳定`ARREG`错误码。
 - T240：Editor作者工具可创建或修复Canonical Registry，并在重跑时保留每个键已有的合法类型引用；当前正式资源尚未接入，因此40个Prefab、18个Sprite和17个AudioClip键分别复用一个受管占位资源，`scene_battle`明确引用Build Settings中的Battle场景。
@@ -35,7 +40,7 @@
 - T200：按GAME_DESIGN修正关卡玩法ID为 `lv_001_tutorial`、`lv_002_cave`、`lv_003_boss`，Boss玩法ID为 `boss_tomb_king`；所有Level/Wave/Spawn/BossPhase/Reward依赖引用同步，文案键和资源键保持独立命名空间。
 - T200：FieldDictionary保留248条非递归字段记录，修正Global互斥类型列及10个主键/条件字段的必填语义；冻结Schema属性存在与Excel单元格非空的差异、空值转换、普通/分组/通配符/conditional外键和数据所有权。
 - T200：29表、14公式、248字段、Schema/样例、类型/范围/枚举、主键、外键、连续order、关卡-Boss语义和规范化contentHash的只读契约审计全部PASS；29表最终渲染经4张总览拼图复核，无结构或版式异常。
-- 执行顺序调整：用户明确要求暂时绕过T120及微信开发者工具/打包问题，先完成游戏主要内容；T120保持`BLOCKED`、T130保持`BACKLOG`，不删除MVP平台验收要求；T210/T220/T230/T240已按该顺序完成，当前唯一`READY`任务为T250。
+- 执行顺序调整：用户明确要求暂时绕过T120及微信开发者工具/打包问题，先完成游戏主要内容；T120保持`BLOCKED`、T130保持`BACKLOG`，不删除MVP平台验收要求；T210/T220/T230/T240/T250已按该顺序完成，当前唯一`READY`任务为T300。
 - T120 G2：Unity `6000.5.1f1` 基于固定 embedded WXSDK 成功生成 `Builds/WeChat/T120`；84个文件、总计101,901,218字节，其中`minigame` 12,008,520字节，JSON结构、关键文件、SHA-256清单与敏感占位扫描均通过。
 - T120构建参数：空AppID、横屏、256MB、触摸启用、Development、关闭渲染线程与性能分析、清理构建，并使用SDK受支持的多线程Brotli；可复现入口为`Tools/CI/build-wechat.sh`。
 - T120 G2结论为`PASS WITH KNOWN ISSUES`：默认单线程Brotli在当前macOS Unity安装布局下引用错误路径（BUG-0005，已用配置规避）；转换含93条未匹配替换规则及6条Emscripten warning（BUG-0006），需要G3实际运行判定影响。
@@ -80,8 +85,6 @@
 6. 长Web构建后Unity MCP实例桥接未自动恢复，见BUG-0003；Unity batch测试与Web运行未受影响。
 7. PSD主角和怪物大多为单张Sprite；中文字体包体、Web内存和真机触摸延迟仍需后续验证。
 8. T240为尚未到达资源接入阶段的75个非场景键使用按类型共享的受管占位资源；类型与覆盖合同已成立，但正式视觉、音频和逐Prefab内容仍须在T630及相应玩法任务中替换并重新校验。
-9. T230已提交并接入初始Runtime JSON；T250的一键生成、hash旁车、ConfigIds和CI漂移检查尚未实现，配置改动前仍必须显式运行导出器并审查快照。
-
 ## 下一步
 
-只执行T250：把导出、生产校验、JSON/hash/ConfigIds生成物漂移检查和Unity配置测试接入一条命令；不提前实现T300手势输入，也不恢复T120/T130。平台任务最迟在T640/T750前恢复。
+只执行T300：实现统一指针输入、UI阻挡、Safe Area和参考像素坐标；不提前实现T310笔迹采样，也不恢复T120/T130。平台任务最迟在T640/T750前恢复。

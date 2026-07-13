@@ -5,7 +5,8 @@
 - 当前冻结版本：`schemaVersion = 1`、`contentVersion = 0.1.1-sample`。
 - 正式内容唯一源：`Design/Config/GameConfig.xlsx`。
 - `config/一笔镇妖_游戏配置表模板.xlsx` 只是随正式源同步的示例镜像，不接受独立内容修改。
-- `Assets/_Game/Config/Generated/gameplay_config.json` 是后续导出器生成、可审查和可构建的只读快照；T200不生成该Runtime产物。
+- `Assets/_Game/Config/Generated/gameplay_config.json`和`gameplay_config.hash`由T250导出器生成，是可审查、可构建的只读Runtime快照与hash旁车。
+- `Assets/_Game/Scripts/Config/Generated/ConfigIds.g.cs`由同一模型生成，并位于`OneStrokeDemon.Config`程序集作用域；生成文件不得手工编辑。
 - Unity Runtime只读取JSON，不解析xlsx。Inspector、ScriptableObject和C#都不能保存第二套平衡数据。
 - Unity对象引用由后续 `AssetRegistrySO` 按 `assetKey` 提供；配置只保存稳定键，不保存GUID、资源路径或对象引用。
 
@@ -106,6 +107,8 @@ FieldDictionary `foreignKey` 使用以下三种形式：
 - Enums按 `enumType, value`；FieldDictionary按固定Sheet顺序和该Sheet表头顺序。排序不得依赖当前Excel行号、系统区域设置或字典遍历顺序。
 - `contentHash` 为小写64位SHA-256，输入是排除 `contentHash` 属性后的完整配置对象：对象键递归按Ordinal升序、数组保持上述稳定导出顺序、UTF-8无BOM、紧凑JSON无多余空白、Unicode直接写入UTF-8并只做JSON必要转义、数字使用不带区域格式的最短合法表示。
 - 生成时间只写日志，不写入内容或hash。相同输入连续两次导出必须字节完全相同。
+- hash旁车固定为64位小写`contentHash`加单个LF，不带BOM或其他元数据。
+- `ConfigIds.g.cs`固定由配置定义表的稳定主键/Key及四类分组ID生成；集合和值均按Ordinal排序，标识符冲突必须失败。文件同时嵌入schema/content/hash和当前ID组/常量计数，使Unity编译测试可核对三生成物同源。
 
 ## 9. 必须校验
 
@@ -124,3 +127,4 @@ FieldDictionary `foreignKey` 使用以下三种形式：
 - `GameplayConfigService` 启动时一次性反序列化、校验版本并构建只读索引。
 - 业务代码通过 `IConfigProvider.GetEnemy(id)` 等API访问，不直接遍历或修改原始DTO。
 - 启动日志打印配置来源、版本、hash、记录数和校验摘要。
+- 业务代码可使用`ConfigIds`避免魔法字符串，但常量只表达稳定ID，不复制配置数值或对象引用；Runtime仍以JSON索引为内容真相。

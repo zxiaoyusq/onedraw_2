@@ -5,6 +5,7 @@ using OneStrokeDemon.Config;
 
 namespace OneStrokeDemon.Tests.EditMode.T230
 {
+    [Category("ConfigPipeline")]
     public sealed class InvalidConfigTests
     {
         [SetUp]

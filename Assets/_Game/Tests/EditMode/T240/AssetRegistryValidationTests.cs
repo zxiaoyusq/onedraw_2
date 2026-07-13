@@ -12,6 +12,7 @@ using UnityObject = UnityEngine.Object;
 
 namespace OneStrokeDemon.Tests.EditMode.T240
 {
+    [Category("ConfigPipeline")]
     public sealed class AssetRegistryValidationTests
     {
         private readonly List<UnityObject> temporaryObjects = new List<UnityObject>();

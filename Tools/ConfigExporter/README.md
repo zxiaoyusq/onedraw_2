@@ -17,9 +17,36 @@ dotnet run --project Tools/ConfigExporter -- \
   --output Assets/_Game/Config/Generated/gameplay_config.json \
   --schema config/schema/gameplay.schema.json \
   --strict
+
+dotnet run --project Tools/ConfigExporter -- \
+  generate \
+  --input Design/Config/GameConfig.xlsx \
+  --output Assets/_Game/Config/Generated/gameplay_config.json \
+  --hash-output Assets/_Game/Config/Generated/gameplay_config.hash \
+  --ids-output Assets/_Game/Scripts/Config/Generated/ConfigIds.g.cs \
+  --schema config/schema/gameplay.schema.json \
+  --strict
+
+dotnet run --project Tools/ConfigExporter -- \
+  verify \
+  --input Design/Config/GameConfig.xlsx \
+  --output Assets/_Game/Config/Generated/gameplay_config.json \
+  --hash-output Assets/_Game/Config/Generated/gameplay_config.hash \
+  --ids-output Assets/_Game/Scripts/Config/Generated/ConfigIds.g.cs \
+  --schema config/schema/gameplay.schema.json \
+  --strict
 ```
 
-`validate` 只读取、建模、序列化并在内存自校验，不写 JSON。`export` 先写同目录 `<output>.tmp`，自校验通过后再原子替换目标文件。成功返回 `0`，参数错误返回 `2`，配置错误返回 `3`，未预期错误返回 `4`。
+`validate`只读取、建模、序列化并在内存自校验，不写文件；`export`保留单JSON兼容入口。`generate`从同一个已校验模型生成JSON、hash旁车和`ConfigIds.g.cs`，每个文件先写同目录`<output>.tmp`并自检后替换；`verify`只读重建预期字节并拒绝任一受管文件漂移。成功返回`0`，参数错误返回`2`，配置/生成物漂移返回`3`，未预期错误返回`4`。
+
+仓库闭环入口：
+
+```bash
+Tools/CI/verify-config.sh           # 只读验证，默认还运行ConfigPipeline Unity EditMode/PlayMode
+Tools/CI/verify-config.sh --update  # 显式重生成受管文件后执行同一完整验证
+```
+
+`--skip-unity`只用于Editor已打开时的局部反馈，会输出`CONFIG_PIPELINE_PARTIAL_PASS unity=NOT_RUN`，绝不输出完整PASS。
 
 ## 稳定输出契约
 
@@ -28,6 +55,9 @@ dotnet run --project Tools/ConfigExporter -- \
 - 根属性、表、行和行字段按冻结契约排序；输出 UTF-8 无 BOM、2 空格缩进、LF 结尾，不包含时间戳。
 - `contentHash` 是不包含自身字段的规范化 JSON 的 SHA-256。
 - 每份输出在替换前重新解析，检查顶层顺序、元数据、记录数和哈希。
+- `gameplay_config.hash`只包含64位小写`contentHash`及一个LF；当前为65字节。
+- `ConfigIds.g.cs`位于`OneStrokeDemon.Config` asmdef作用域，按27组稳定键生成当前306个Ordinal排序常量，并嵌入schema/content/hash；UTF-8无BOM、LF结尾、无时间戳。
+- C#标识符由稳定ID确定性转换；同组不同ID若产生同名标识符，生成以`CFG013`失败，不静默改名。
 
 ## 生产校验合同
 
@@ -41,7 +71,7 @@ dotnet run --project Tools/ConfigExporter -- \
 - Boss阶段从1连续覆盖到0、阈值严格下降且无缝相接，Boss关卡结束条件与实际出生一致。
 - `MovePatternType`和`AttackTriggerType`必须与代码登记的策略集合精确一致。
 
-配置诊断格式为 `CODE [sheet=..., row=..., field=...]: message`。稳定错误码按类别划分：`CFG001/CFG002`结构合同、`CFG003`必填、`CFG004`类型、`CFG005`唯一性、`CFG006`枚举/策略、`CFG007`范围、`CFG008`外键、`CFG009`行内语义、`CFG010`跨表/Boss、`CFG011`版本、`CFG012`输出自检。
+配置诊断格式为 `CODE [sheet=..., row=..., field=...]: message`。稳定错误码按类别划分：`CFG001/CFG002`结构合同、`CFG003`必填、`CFG004`类型、`CFG005`唯一性、`CFG006`枚举/策略、`CFG007`范围、`CFG008`外键、`CFG009`行内语义、`CFG010`跨表/Boss、`CFG011`版本、`CFG012`JSON输出自检、`CFG013`多生成物/路径/字节漂移。
 
 ## 测试
 
@@ -49,4 +79,4 @@ dotnet run --project Tools/ConfigExporter -- \
 dotnet test Tools/ConfigExporter/Tests/ConfigExporter.Tests.csproj
 ```
 
-测试覆盖双导出字节一致、冻结哈希/样例语义一致、表头漂移、区域设置无关性、CLI非零错误码、自校验失败保护旧输出，以及37类只修改内存副本的坏配置。坏配置断言精确错误码、Sheet、Excel行和字段；正式xlsx在测试中保持只读。
+当前54项测试覆盖三生成物双生成字节一致、受管文件精确匹配、JSON/hash/C#三类漂移、冻结哈希/样例语义一致、表头漂移、区域设置无关性、CLI非零错误码、自校验失败保护旧输出，以及37类只修改内存副本的坏配置。坏配置断言精确错误码、Sheet、Excel行和字段；正式xlsx在测试中保持只读。

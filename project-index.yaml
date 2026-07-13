@@ -1,7 +1,7 @@
 project: OneStrokeDemon
 project_cn: 一笔镇妖
 plan_generated: 2026-07-11
-current_task: T250
+current_task: T300
 current_task_status: READY
 unity:
   project_root: .
@@ -20,6 +20,8 @@ unity:
 config:
   source: Design/Config/GameConfig.xlsx
   generated_json: Assets/_Game/Config/Generated/gameplay_config.json
+  generated_hash: Assets/_Game/Config/Generated/gameplay_config.hash
+  generated_ids: Assets/_Game/Scripts/Config/Generated/ConfigIds.g.cs
   schema_version: 1
   content_version: 0.1.1-sample
   content_hash: 16b64a6f3795cfe0f16dd5f2f092a021b7ef4c07b0b15119296c9da0e22b4b1c
@@ -40,7 +42,7 @@ config:
   validator:
     path: Tools/ConfigExporter/Validation
     status: pass
-    test_count: 46
+    test_count: 54
     invalid_case_count: 37
     diagnostic_location: Sheet/ExcelRow/Field
     schema_mirror_check: pass
@@ -55,7 +57,7 @@ config:
     loaded_records: 645
     readonly_primary_indexes: 270
     readonly_group_indexes: 49
-    editmode_tests: 30
+    editmode_tests: 32
     playmode_tests: 5
     bootstrap_smoke: pass
   asset_registry:
@@ -71,6 +73,26 @@ config:
     address_or_path_lookup: disabled
     build_preprocessor: enabled
     bootstrap_smoke: pass
+  pipeline:
+    status: pass
+    command: Tools/CI/verify-config.sh
+    default_read_only: true
+    update_flag: --update
+    drift_diagnostic: CFG013
+    generated_json_bytes: 168071
+    generated_json_sha256: 91d2c312cd2caead5243ef76ee12b54dc53702dc0ba23d4d34b0726c111a066a
+    generated_hash_bytes: 65
+    generated_hash_sha256: 5d591e73f67f6887452aa6cfddc4f8224a1b8d7bf167105f4420ee8275b71c7a
+    generated_ids_bytes: 23125
+    generated_ids_sha256: b5c3b1ba6b088797943e19e1545b60d399c964871719553fdf3ed7a01156b988
+    id_sets: 27
+    id_constants: 306
+    dotnet_tests: 54
+    config_editmode_tests: 19
+    config_playmode_tests: 3
+    full_editmode_tests: 32
+    full_playmode_tests: 5
+    full_command_smoke: pass
 manual_gates:
   unity_editor_smoke: pass
   standard_web_build: pass_with_known_issues
@@ -116,9 +138,10 @@ wechat_conversion:
 execution_order:
   deferred_tasks: [T120, T130]
   deferral_reason: user_prioritized_main_game_content_over_wechat_devtools_device_and_packaging_work
-  next_content_task: T250
+  next_content_task: T300
   resume_platform_before: [T640, T750]
 workflow:
+  config_verify_command: Tools/CI/verify-config.sh
   unity_test_command: Tools/CI/run-unity-tests.sh
   web_build_command: Tools/CI/build-web.sh
   wechat_build_command: Tools/CI/build-wechat.sh

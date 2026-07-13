@@ -97,3 +97,17 @@ public sealed record ExportResult(
     string ContentVersion,
     IReadOnlyDictionary<string, int> RecordCounts,
     int OutputBytes);
+
+public sealed record GeneratedArtifactResult(
+    string JsonPath,
+    string HashPath,
+    string ConfigIdsPath,
+    string ContentHash,
+    long SchemaVersion,
+    string ContentVersion,
+    IReadOnlyDictionary<string, int> RecordCounts,
+    int JsonBytes,
+    int HashBytes,
+    int ConfigIdsBytes,
+    int ConfigIdSetCount,
+    int ConfigIdConstantCount);

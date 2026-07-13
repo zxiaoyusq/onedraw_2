@@ -4,12 +4,16 @@ internal enum ExporterCommand
 {
     Validate,
     Export,
+    Generate,
+    Verify,
 }
 
 internal sealed record CliOptions(
     ExporterCommand Command,
     string InputPath,
     string? OutputPath,
+    string? HashOutputPath,
+    string? ConfigIdsOutputPath,
     string? SchemaPath,
     bool Strict)
 {
@@ -17,13 +21,15 @@ internal sealed record CliOptions(
     {
         if (args.Count == 0)
         {
-            throw new CliParseException("A command is required: validate or export.");
+            throw new CliParseException("A command is required: validate, export, generate, or verify.");
         }
 
         var command = args[0] switch
         {
             "validate" => ExporterCommand.Validate,
             "export" => ExporterCommand.Export,
+            "generate" => ExporterCommand.Generate,
+            "verify" => ExporterCommand.Verify,
             _ => throw new CliParseException($"Unknown command '{args[0]}'."),
         };
         var values = new Dictionary<string, string>(StringComparer.Ordinal);
@@ -38,7 +44,8 @@ internal sealed record CliOptions(
                 continue;
             }
 
-            if (argument is not ("--input" or "--output" or "--schema"))
+            if (argument is not (
+                "--input" or "--output" or "--hash-output" or "--ids-output" or "--schema"))
             {
                 throw new CliParseException($"Unknown option '{argument}'.");
             }
@@ -62,13 +69,37 @@ internal sealed record CliOptions(
         }
 
         values.TryGetValue("--output", out var outputPath);
+        values.TryGetValue("--hash-output", out var hashOutputPath);
+        values.TryGetValue("--ids-output", out var configIdsOutputPath);
         values.TryGetValue("--schema", out var schemaPath);
         if (command == ExporterCommand.Export && string.IsNullOrWhiteSpace(outputPath))
         {
             throw new CliParseException("export requires --output.");
         }
 
-        return new CliOptions(command, inputPath, outputPath, schemaPath, strict);
+        if (command is ExporterCommand.Generate or ExporterCommand.Verify &&
+            (string.IsNullOrWhiteSpace(outputPath) ||
+             string.IsNullOrWhiteSpace(hashOutputPath) ||
+             string.IsNullOrWhiteSpace(configIdsOutputPath)))
+        {
+            throw new CliParseException(
+                $"{args[0]} requires --output, --hash-output, and --ids-output.");
+        }
+
+        if (command is ExporterCommand.Validate or ExporterCommand.Export &&
+            (!string.IsNullOrWhiteSpace(hashOutputPath) || !string.IsNullOrWhiteSpace(configIdsOutputPath)))
+        {
+            throw new CliParseException($"{args[0]} does not accept generated artifact output options.");
+        }
+
+        return new CliOptions(
+            command,
+            inputPath,
+            outputPath,
+            hashOutputPath,
+            configIdsOutputPath,
+            schemaPath,
+            strict);
     }
 }
 

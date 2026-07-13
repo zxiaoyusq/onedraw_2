@@ -9,6 +9,7 @@ using UnityEngine.TestTools;
 
 namespace OneStrokeDemon.Tests.PlayMode.T240
 {
+    [Category("ConfigPipeline")]
     public sealed class AssetRegistryBootstrapPlayModeTests
     {
         [SetUp]

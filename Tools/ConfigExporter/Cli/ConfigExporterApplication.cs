@@ -28,15 +28,14 @@ internal sealed class ConfigExporterApplication
         try
         {
             var options = CliOptions.Parse(args);
-            var result = options.Command switch
+            if (options.Command is ExporterCommand.Generate or ExporterCommand.Verify)
             {
-                ExporterCommand.Validate => _service.Validate(options.InputPath, options.SchemaPath),
-                ExporterCommand.Export => _service.Export(
-                    options.InputPath,
-                    options.OutputPath!,
-                    options.SchemaPath),
-                _ => throw new InvalidOperationException($"Unsupported command {options.Command}."),
-            };
+                return RunGenerated(options, standardOutput);
+            }
+
+            var result = options.Command == ExporterCommand.Validate
+                ? _service.Validate(options.InputPath, options.SchemaPath)
+                : _service.Export(options.InputPath, options.OutputPath!, options.SchemaPath);
 
             var recordCount = result.RecordCounts.Values.Sum();
             standardOutput.WriteLine(
@@ -71,13 +70,48 @@ internal sealed class ConfigExporterApplication
         }
     }
 
+    private int RunGenerated(CliOptions options, TextWriter standardOutput)
+    {
+        var result = options.Command == ExporterCommand.Generate
+            ? _service.Generate(
+                options.InputPath,
+                options.OutputPath!,
+                options.HashOutputPath!,
+                options.ConfigIdsOutputPath!,
+                options.SchemaPath)
+            : _service.VerifyGenerated(
+                options.InputPath,
+                options.OutputPath!,
+                options.HashOutputPath!,
+                options.ConfigIdsOutputPath!,
+                options.SchemaPath);
+        var recordCount = result.RecordCounts.Values.Sum();
+        standardOutput.WriteLine(
+            options.Command == ExporterCommand.Generate
+                ? $"CONFIG_GENERATION_PASS json={result.JsonPath} hash={result.HashPath} ids={result.ConfigIdsPath}"
+                : $"CONFIG_GENERATED_VERIFY_PASS json={result.JsonPath} hash={result.HashPath} ids={result.ConfigIdsPath}");
+        standardOutput.WriteLine(
+            $"schema={result.SchemaVersion} content={result.ContentVersion} hash={result.ContentHash} " +
+            $"tables={result.RecordCounts.Count} records={recordCount} strict={options.Strict}");
+        standardOutput.WriteLine(
+            $"jsonBytes={result.JsonBytes} hashBytes={result.HashBytes} idsBytes={result.ConfigIdsBytes} " +
+            $"idSets={result.ConfigIdSetCount} idConstants={result.ConfigIdConstantCount}");
+        standardOutput.WriteLine("GENERATED_SCOPE=T250_JSON_HASH_CONFIG_IDS");
+        return SuccessExitCode;
+    }
+
     public const string Usage = """
         OneStrokeDemon ConfigExporter
 
         validate --input <GameConfig.xlsx> [--schema <gameplay.schema.json>] [--strict]
         export   --input <GameConfig.xlsx> --output <gameplay_config.json> [--schema <gameplay.schema.json>] [--strict]
+        generate --input <GameConfig.xlsx> --output <gameplay_config.json> --hash-output <gameplay_config.hash>
+                 --ids-output <ConfigIds.g.cs> [--schema <gameplay.schema.json>] [--strict]
+        verify   --input <GameConfig.xlsx> --output <gameplay_config.json> --hash-output <gameplay_config.hash>
+                 --ids-output <ConfigIds.g.cs> [--schema <gameplay.schema.json>] [--strict]
 
         Validation covers fixed structure, required values, types, ranges, enums, IDs, uniqueness,
         foreign keys, group order, level/wave/spawn completeness, boss coverage, and output determinism.
+        Generate writes all managed artifacts from one validated model; verify is read-only and rejects byte drift.
         """;
 }

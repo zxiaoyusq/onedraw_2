@@ -32,7 +32,23 @@ EditMode和PlayMode必须分开执行并各自产生非空NUnit XML。`check-uni
 
 原始Unity日志可能包含本机路径、License会话或机器信息，只保存在已忽略的`artifacts/tmp/`。提交证据前生成过滤摘要，不提交包含凭据的原始日志。
 
-## 3. 标准Web构建入口
+## 3. 配置闭环入口
+
+```bash
+Tools/CI/verify-config.sh
+```
+
+默认只读执行.NET导出器构建、临时三生成物、受管JSON/hash/ConfigIds字节diff、ConfigExporter测试，以及`ConfigPipeline`分类的Unity EditMode/PlayMode。任一层失败返回非零，完整成功才输出`CONFIG_PIPELINE_PASS`。
+
+配置工作簿经过审查的修改需要更新生成物时执行：
+
+```bash
+Tools/CI/verify-config.sh --update
+```
+
+随后必须审查并同时提交三份生成物。`--skip-unity`只用于已打开Unity Editor时缩短局部反馈，输出明确PARTIAL，不得代替最终完整门；当前会话也可用Unity MCP执行同一`ConfigPipeline`分类并在证据中记录结构化job。
+
+## 4. 标准Web构建入口
 
 ```bash
 Tools/CI/build-web.sh --output Builds/WebGL
@@ -42,7 +58,7 @@ Tools/CI/build-web.sh --output Builds/WebGL
 
 T040只建立并编译此入口，不执行Web构建。标准Web实际构建、运行和证据属于T100；微信转换、DevTools和真机必须继续分别记录，不能由标准Web结果代替。
 
-## 4. 最小反馈环
+## 5. 最小反馈环
 
 ```text
 小范围修改
@@ -61,7 +77,7 @@ T040只建立并编译此入口，不执行Web构建。标准Web实际构建、�
 
 不需要某一层时在verification中写`NOT RUN`和原因；缺Editor、SDK、DevTools或真机时写`BLOCKED`或`KNOWN ISSUE`，不得伪造PASS。
 
-## 5. Harness自检
+## 6. Harness自检
 
 ```bash
 Tools/CI/test-harness-smoke.sh
@@ -69,7 +85,7 @@ Tools/CI/test-harness-smoke.sh
 
 自检不启动Unity：它验证通过/失败XML退出码、非法参数、证据初始化和防覆盖行为。Unity测试命令仍必须按任务要求真实运行，不能用该自检替代。
 
-## 6. 收尾清单
+## 7. 收尾清单
 
 1. 运行专项验证和必要回归，保存XML及过滤摘要。
 2. 从真实入口执行玩家路径；记录可断言的场景、状态或数值。

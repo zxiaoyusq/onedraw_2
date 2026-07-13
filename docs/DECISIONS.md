@@ -124,3 +124,13 @@
 - 决定：Editor菜单和`IPreprocessBuildWithReport`在构建前核对空键、空对象、重复、缺失、额外、类型、持久化Prefab及启用场景；任何失败转换为构建失败。Bootstrap仅在Runtime配置与Registry均通过后进入MainMenu。
 - 理由：配置ID需要与Unity资源位置和替换解耦，同时在资源尚未齐备时建立可编译、可测试、可逐项替换的完整绑定合同。
 - 限制：共享占位只证明引用覆盖与类型合同，不代表正式表现完成；正式资源接入和视觉验收仍属于各玩法任务及T630，T250只负责配置生成流水线。
+
+## D-017 · T250 同源三生成物与只读漂移门
+
+- 状态：ACCEPTED
+- 决定：T250的`generate`必须复用T210/T220的`PreparedExport`，一次生产校验后从同一`ConfigDocument`/`SerializedConfig`生成`gameplay_config.json`、64位contentHash+LF旁车和`ConfigIds.g.cs`；不得新增第二套xlsx解析、排序、hash或数值模型。
+- 决定：`ConfigIds.g.cs`放在`Assets/_Game/Scripts/Config/Generated/`，确保实际编入`OneStrokeDemon.Config.dll`；当前按27个定义/分组ID集合生成306个Ordinal常量，并嵌入schema/content/hash。它只消除魔法字符串，不替代JSON内容索引，也不保存平衡值或Unity对象引用。
+- 决定：默认`verify`和`Tools/CI/verify-config.sh`只读重建预期字节，任何JSON/hash/C#缺失或单字节漂移以`CFG013`非零失败；只有显式`--update`允许重生成受管文件。脚本在漂移时给出unified diff，不静默修正。
+- 决定：一键完整门包含ConfigExporter全套测试及`ConfigPipeline`分类的Unity EditMode/PlayMode；`--skip-unity`只输出PARTIAL。Unity Editor已打开的交互会话可由MCP执行同一分类，但证据必须同时保留脚本的.NET/漂移层和MCP job计数，不能把局部脚本输出伪报为完整一键PASS。
+- 理由：代码、Runtime配置与提交快照必须对同一工作簿形成可审查闭环；把生成C#放入正确asmdef并使漂移默认失败，才能在进入玩法开发前阻止“只改Excel”“手改JSON”或遗漏旁车/常量。
+- 限制：T250不实现通用全项目CI、Web/微信构建或玩法逻辑；这些分别属于T740、T750和T300以后任务。

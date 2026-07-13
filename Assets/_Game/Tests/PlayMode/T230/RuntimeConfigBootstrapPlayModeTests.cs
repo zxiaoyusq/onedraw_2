@@ -11,6 +11,7 @@ using UnityEngine.TestTools;
 
 namespace OneStrokeDemon.Tests.PlayMode.T230
 {
+    [Category("ConfigPipeline")]
     public sealed class RuntimeConfigBootstrapPlayModeTests
     {
         private const string IncompatibleSchemaJson =

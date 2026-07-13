@@ -15,6 +15,31 @@ internal sealed class TestRepository
 
     public string SamplePath => Path.Combine(RootPath, "config", "examples", "gameplay_config.sample.json");
 
+    public string RuntimeJsonPath => Path.Combine(
+        RootPath,
+        "Assets",
+        "_Game",
+        "Config",
+        "Generated",
+        "gameplay_config.json");
+
+    public string RuntimeHashPath => Path.Combine(
+        RootPath,
+        "Assets",
+        "_Game",
+        "Config",
+        "Generated",
+        "gameplay_config.hash");
+
+    public string ConfigIdsPath => Path.Combine(
+        RootPath,
+        "Assets",
+        "_Game",
+        "Scripts",
+        "Config",
+        "Generated",
+        "ConfigIds.g.cs");
+
     public string InvalidConfigCasesPath => Path.Combine(
         RootPath,
         "Tools",

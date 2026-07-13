@@ -14,6 +14,7 @@ Options:
   --results PATH       NUnit XML output (default: artifacts/tmp/<mode>-results.xml)
   --log PATH           Unity log output (default: artifacts/tmp/<mode>-unity.log)
   --test-filter NAME   Optional Unity test filter
+  --category NAMES     Optional comma-separated NUnit categories
   --assembly NAMES     Optional comma-separated assembly names
   --project PATH       Unity project root (default: repository root)
   --unity PATH         Unity executable or .app (default: UNITY_EDITOR or ProjectVersion lookup)
@@ -62,18 +63,20 @@ RESULTS=""
 LOG_FILE=""
 TEST_FILTER=""
 ASSEMBLY_NAMES=""
+CATEGORY_NAMES=""
 PROJECT_ROOT="$REPO_ROOT"
 UNITY_PATH=""
 
 while [[ $# -gt 0 ]]; do
   case "$1" in
-    --mode|--results|--log|--test-filter|--assembly|--project|--unity)
+    --mode|--results|--log|--test-filter|--category|--assembly|--project|--unity)
       [[ $# -ge 2 ]] || { echo "Missing value for $1" >&2; exit 64; }
       case "$1" in
         --mode) MODE="$2" ;;
         --results) RESULTS="$2" ;;
         --log) LOG_FILE="$2" ;;
         --test-filter) TEST_FILTER="$2" ;;
+        --category) CATEGORY_NAMES="$2" ;;
         --assembly) ASSEMBLY_NAMES="$2" ;;
         --project) PROJECT_ROOT="$2" ;;
         --unity) UNITY_PATH="$2" ;;
@@ -115,6 +118,9 @@ COMMAND=(
 )
 if [[ -n "$TEST_FILTER" ]]; then
   COMMAND+=( -testFilter "$TEST_FILTER" )
+fi
+if [[ -n "$CATEGORY_NAMES" ]]; then
+  COMMAND+=( -testCategory "$CATEGORY_NAMES" )
 fi
 if [[ -n "$ASSEMBLY_NAMES" ]]; then
   COMMAND+=( -assemblyNames "$ASSEMBLY_NAMES" )
