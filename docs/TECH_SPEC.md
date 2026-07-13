@@ -102,6 +102,9 @@ Tests.EditMode / Tests.PlayMode
 ## 6. 手势实现细节
 
 - 输入在Safe Area内转换为1920×1080参考像素，算法测试不依赖设备分辨率。
+- T300由Bootstrap从配置`Global.reference_width/reference_height`初始化`PointerInputRuntime`，不得在Input程序集或Inspector保存另一套参考分辨率；`Screen.safeArea`在事件转换时动态读取，不缓存设备绝对边距。
+- `IPointerInput`统一Mouse与Touch的Began/Moved/Ended/Canceled事件；MVP只锁定第一个活动物理指针，其他指针在其结束或取消前不会接管。Safe Area外起笔无效，合法笔迹移出Safe Area后夹紧到参考边界以保留终止事件。
+- uGUI命中只在起笔时阻断：UI上起笔不会形成笔迹，合法起笔后的移动不因跨过UI而截断。失焦、应用暂停、禁用、系统取消或活动设备断开必须产生至多一次带原因的Canceled事件。
 - 采样先按最小距离过滤，再按最大长度裁剪，最后RDP与最大点数重采样。
 - `GestureClassifier`输出类型、置信度、长度、速度、角度、曲率和闭合比。
 - 命中用每段胶囊NonAlloc查询或等价低分配实现；不为轨迹生成大量Collider。

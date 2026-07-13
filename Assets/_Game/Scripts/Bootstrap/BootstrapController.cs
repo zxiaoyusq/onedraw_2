@@ -1,5 +1,6 @@
 using System;
 using OneStrokeDemon.Config;
+using OneStrokeDemon.Input;
 using UnityEngine;
 
 namespace OneStrokeDemon.Bootstrap
@@ -41,22 +42,57 @@ namespace OneStrokeDemon.Bootstrap
                 return;
             }
 
+            AssetRegistryLoadSummary registrySummary;
             try
             {
-                AssetRegistryLoadSummary registrySummary = AssetRegistryRuntime.IsReady
+                registrySummary = AssetRegistryRuntime.IsReady
                     ? AssetRegistryRuntime.CurrentSummary
                     : AssetRegistryRuntime.Initialize(
                         assetRegistry,
                         GameplayConfigRuntime.Current,
                         registrySource);
-                Debug.Log(configSummary.ToLogMessage());
-                Debug.Log(registrySummary.ToLogMessage());
-                new SceneFlowService().LoadMainMenu();
             }
             catch (Exception exception)
             {
                 Debug.LogError($"ASSET_REGISTRY_FAILED error={exception.Message}");
+                return;
             }
+
+            PointerInputRuntimeSummary pointerSummary;
+            try
+            {
+                pointerSummary = PointerInputRuntime.Initialize(ReadReferenceResolution());
+            }
+            catch (Exception exception)
+            {
+                Debug.LogError($"POINTER_INPUT_FAILED error={exception.Message}");
+                return;
+            }
+
+            Debug.Log(configSummary.ToLogMessage());
+            Debug.Log(registrySummary.ToLogMessage());
+            Debug.Log(pointerSummary.ToLogMessage());
+            new SceneFlowService().LoadMainMenu();
+        }
+
+        private static Vector2 ReadReferenceResolution()
+        {
+            float width = ReadPositiveIntegerGlobal(ConfigIds.GlobalKeys.ReferenceWidth);
+            float height = ReadPositiveIntegerGlobal(ConfigIds.GlobalKeys.ReferenceHeight);
+            return new Vector2(width, height);
+        }
+
+        private static float ReadPositiveIntegerGlobal(string key)
+        {
+            GlobalConfig value = GameplayConfigRuntime.Current.GetGlobal(key);
+            if (!string.Equals(value.ValueType, "int", StringComparison.Ordinal) ||
+                !value.IntValue.HasValue || value.IntValue.Value <= 0)
+            {
+                throw new InvalidOperationException(
+                    $"Global '{key}' must provide a positive int reference-pixel value.");
+            }
+
+            return value.IntValue.Value;
         }
     }
 }

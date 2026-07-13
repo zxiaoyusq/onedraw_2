@@ -1,8 +1,8 @@
 # PROGRESS
 
 - 日期：2026-07-13
-- 当前成熟度：T250已闭合xlsx→校验→JSON/hash/ConfigIds→Unity测试的一键配置流水线；P2完成并进入P3手势战斗核心
-- 当前任务：T300
+- 当前成熟度：T300已建立配置参考像素、动态Safe Area、UI起笔门和生命周期取消的一体化单指输入；P3进入笔迹采样
+- 当前任务：T310
 - 状态：READY
 - Unity精确版本：6000.5.1f1（已由ProjectVersion.txt与本机安装核验）
 - 微信SDK来源或版本：官方 `minigame-tuanjie-transform-sdk` v0.1.33 / commit `ed4ad28f433c6b52b5fd3f22a6fa155a0c98c228` / embedded最小补丁
@@ -11,6 +11,12 @@
 
 ## 已完成
 
+- T300：`IPointerInput`以同一`PointerInputEvent`合同发布Mouse/Touch的Began/Moved/Ended/Canceled，事件同时携带屏幕坐标、参考像素坐标、时间、来源、pointerId和明确取消原因；处理器只允许一个活动指针，第二根手指和同时鼠标不会接管或延长当前笔。
+- T300：`ReferencePixelConverter`使用Bootstrap从配置`reference_width/reference_height`读取的1920×1080作为参考空间，并在每次事件读取动态`Screen.safeArea`；Safe Area外起笔被拒绝，合法笔迹移出后坐标夹紧到参考边界，代码不读取`Screen.dpi`。
+- T300：`EventSystemPointerUiBlocker`在起笔时执行真实uGUI Raycast；UI上起笔不会发布Began，按住后移出UI也不会变成笔迹，而从非UI区域合法起笔后跨过UI仍保持连续。
+- T300：`InputSystemPointerAdapter`锁定首个物理TouchControl或Mouse，失焦、应用暂停、适配器禁用、系统取消和设备断开均最多发布一次Canceled；Bootstrap成功加载配置与Registry后创建跨场景Runtime，输入初始化失败会阻断MainMenu并输出`POINTER_INPUT_FAILED`。
+- T300：最终PointerInput专项EditMode 5/5、PlayMode 7/7，全量EditMode 37/37、PlayMode 12/12；真实Bootstrap→MainMenu输出`POINTER_INPUT_READY ... reference=1920x1080 safeArea=dynamic uiBeginBlock=true maxActivePointers=1`，Console Error/Warning为0。
+- T300：配置只读门继续保持三生成物无漂移和.NET 54/54；未修改xlsx、Schema、JSON/hash/ConfigIds、Input Actions、ProjectSettings、场景或Prefab，也未实现T310采样规则。
 - T250：`Tools/CI/verify-config.sh`默认只读地完成导出器构建、临时生成、三生成物逐字节漂移检查、.NET测试及Unity `ConfigPipeline` EditMode/PlayMode；`--update`是唯一显式刷新入口，`--skip-unity`只报告`PARTIAL`，不会伪报全绿。
 - T250：同一个已解析并完整校验的`PreparedExport`确定性生成168,071字节JSON、65字节hash旁车和23,125字节`ConfigIds.g.cs`；JSON保持T230字节不变，三者SHA-256分别为`91d2c312...1a066a`、`5d591e73...b71c7a`、`b5c3b1ba...6b988`。
 - T250：生成ID位于`OneStrokeDemon.Config`程序集作用域，覆盖27个ID集合与306个稳定字符串常量，只含配置ID和生成元数据，不复制HP/CD/伤害等玩法数值；缺失、字节漂移、非法ID或标识符碰撞统一以`CFG013`失败。
@@ -40,7 +46,7 @@
 - T200：按GAME_DESIGN修正关卡玩法ID为 `lv_001_tutorial`、`lv_002_cave`、`lv_003_boss`，Boss玩法ID为 `boss_tomb_king`；所有Level/Wave/Spawn/BossPhase/Reward依赖引用同步，文案键和资源键保持独立命名空间。
 - T200：FieldDictionary保留248条非递归字段记录，修正Global互斥类型列及10个主键/条件字段的必填语义；冻结Schema属性存在与Excel单元格非空的差异、空值转换、普通/分组/通配符/conditional外键和数据所有权。
 - T200：29表、14公式、248字段、Schema/样例、类型/范围/枚举、主键、外键、连续order、关卡-Boss语义和规范化contentHash的只读契约审计全部PASS；29表最终渲染经4张总览拼图复核，无结构或版式异常。
-- 执行顺序调整：用户明确要求暂时绕过T120及微信开发者工具/打包问题，先完成游戏主要内容；T120保持`BLOCKED`、T130保持`BACKLOG`，不删除MVP平台验收要求；T210/T220/T230/T240/T250已按该顺序完成，当前唯一`READY`任务为T300。
+- 执行顺序调整：用户明确要求暂时绕过T120及微信开发者工具/打包问题，先完成游戏主要内容；T120保持`BLOCKED`、T130保持`BACKLOG`，不删除MVP平台验收要求；T210/T220/T230/T240/T250/T300已按该顺序完成，当前唯一`READY`任务为T310。
 - T120 G2：Unity `6000.5.1f1` 基于固定 embedded WXSDK 成功生成 `Builds/WeChat/T120`；84个文件、总计101,901,218字节，其中`minigame` 12,008,520字节，JSON结构、关键文件、SHA-256清单与敏感占位扫描均通过。
 - T120构建参数：空AppID、横屏、256MB、触摸启用、Development、关闭渲染线程与性能分析、清理构建，并使用SDK受支持的多线程Brotli；可复现入口为`Tools/CI/build-wechat.sh`。
 - T120 G2结论为`PASS WITH KNOWN ISSUES`：默认单线程Brotli在当前macOS Unity安装布局下引用错误路径（BUG-0005，已用配置规避）；转换含93条未匹配替换规则及6条Emscripten warning（BUG-0006），需要G3实际运行判定影响。
@@ -87,4 +93,4 @@
 8. T240为尚未到达资源接入阶段的75个非场景键使用按类型共享的受管占位资源；类型与覆盖合同已成立，但正式视觉、音频和逐Prefab内容仍须在T630及相应玩法任务中替换并重新校验。
 ## 下一步
 
-只执行T300：实现统一指针输入、UI阻挡、Safe Area和参考像素坐标；不提前实现T310笔迹采样，也不恢复T120/T130。平台任务最迟在T640/T750前恢复。
+只执行T310：实现配置驱动的笔迹采样、最小距离、最大点数和最大长度精确裁剪；不提前实现T320几何算法，也不恢复T120/T130。平台任务最迟在T640/T750前恢复。

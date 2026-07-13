@@ -1,7 +1,7 @@
 project: OneStrokeDemon
 project_cn: 一笔镇妖
 plan_generated: 2026-07-11
-current_task: T300
+current_task: T310
 current_task_status: READY
 unity:
   project_root: .
@@ -57,8 +57,8 @@ config:
     loaded_records: 645
     readonly_primary_indexes: 270
     readonly_group_indexes: 49
-    editmode_tests: 32
-    playmode_tests: 5
+    editmode_tests: 37
+    playmode_tests: 12
     bootstrap_smoke: pass
   asset_registry:
     status: pass
@@ -90,9 +90,31 @@ config:
     dotnet_tests: 54
     config_editmode_tests: 19
     config_playmode_tests: 3
-    full_editmode_tests: 32
-    full_playmode_tests: 5
+    full_editmode_tests: 37
+    full_playmode_tests: 12
     full_command_smoke: pass
+input:
+  status: pass
+  package: com.unity.inputsystem@1.19.0
+  api: IPointerInput
+  adapter: InputSystemPointerAdapter
+  runtime: PointerInputRuntime
+  bootstrap_initialized: true
+  reference_resolution_source: Global.reference_width_and_reference_height
+  reference_resolution: 1920x1080
+  safe_area_source: dynamic_Screen.safeArea
+  outside_begin: rejected
+  active_outside_motion: clamped_to_reference_bounds
+  ui_policy: block_only_on_begin_via_ugui_raycast
+  supported_sources: [Mouse, Touch]
+  max_active_pointers: 1
+  cancellation: [focus_lost, application_paused, adapter_disabled, device_disconnected, system_canceled]
+  screen_dpi_dependency: false
+  pointer_editmode_tests: 5
+  pointer_playmode_tests: 7
+  full_editmode_tests: 37
+  full_playmode_tests: 12
+  bootstrap_smoke: pass
 manual_gates:
   unity_editor_smoke: pass
   standard_web_build: pass_with_known_issues
@@ -138,7 +160,7 @@ wechat_conversion:
 execution_order:
   deferred_tasks: [T120, T130]
   deferral_reason: user_prioritized_main_game_content_over_wechat_devtools_device_and_packaging_work
-  next_content_task: T300
+  next_content_task: T310
   resume_platform_before: [T640, T750]
 workflow:
   config_verify_command: Tools/CI/verify-config.sh

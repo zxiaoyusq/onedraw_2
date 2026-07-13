@@ -134,3 +134,12 @@
 - 决定：一键完整门包含ConfigExporter全套测试及`ConfigPipeline`分类的Unity EditMode/PlayMode；`--skip-unity`只输出PARTIAL。Unity Editor已打开的交互会话可由MCP执行同一分类，但证据必须同时保留脚本的.NET/漂移层和MCP job计数，不能把局部脚本输出伪报为完整一键PASS。
 - 理由：代码、Runtime配置与提交快照必须对同一工作簿形成可审查闭环；把生成C#放入正确asmdef并使漂移默认失败，才能在进入玩法开发前阻止“只改Excel”“手改JSON”或遗漏旁车/常量。
 - 限制：T250不实现通用全项目CI、Web/微信构建或玩法逻辑；这些分别属于T740、T750和T300以后任务。
+
+## D-018 · T300 单活动指针、Safe Area参考空间与UI起笔门
+
+- 状态：ACCEPTED
+- 决定：`IPointerInput`只发布一个统一的Mouse/Touch事件流；事件包含屏幕/参考坐标、来源、pointerId、时间、阶段与取消原因。MVP锁定首个物理TouchControl或Mouse，其他触点在当前指针终止前全部忽略，不做多指手势。
+- 决定：参考宽高只由Bootstrap读取已验证配置`Global.reference_width/reference_height`并注入Input Runtime；Safe Area来自每次转换时的`Screen.safeArea`。Safe Area外不能起笔，合法起笔移出后夹紧到参考边界，绝不读取`Screen.dpi`。
+- 决定：UI门使用当前EventSystem的uGUI Raycast且只在Began前检查；UI上起笔永不转换为战斗笔迹，从非UI起笔后经过UI仍连续。失焦、应用暂停、适配器禁用、系统取消或活动设备断开都发布一次明确Canceled，后续重复生命周期通知幂等。
+- 理由：后续采样、识别、命中和视觉必须消费同一个设备无关、分辨率无关且可回放的输入真相；在入口固定单指所有权、坐标空间和取消语义，可避免UI误攻击、刘海偏移与后台残留笔迹。
+- 限制：T300不实现采样距离、点数/长度裁剪、识别、轨迹或命中；这些从T310开始。真机Safe Area形状、触摸延迟和平台暂停仍由T120/T640/T710独立验证。
