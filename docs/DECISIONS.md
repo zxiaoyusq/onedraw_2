@@ -104,3 +104,13 @@
 - 决定：`MovePatternType`与`AttackTriggerType`属于代码拥有的算法合同，当前由导出器登记精确集合；T430实现Runtime策略注册表时必须复用或同步该合同，不能把策略选择变成第二套玩法数值库。
 - 测试策略：坏配置样例采用可审查JSON变更清单，只修改正式工作簿读取后的内存副本；37类反例逐一断言错误码、Sheet、Excel数据行和字段，正式xlsx及其镜像、Schema、样例JSON保持只读。
 - 限制：T220不生成Unity Runtime快照、DTO、加载服务或AssetRegistry；这些仍分别属于T230、T240和T250。
+
+## D-015 · T230 Runtime一次加载与只读发布
+
+- 状态：ACCEPTED
+- 决定：Bootstrap把工具生成的 `gameplay_config.json` 作为 `TextAsset` 交给 `GameplayConfigService`；每个服务实例只解析一次，在局部候选快照上完成严格JSON、schema/content、根与Global版本一致性、contentHash、空键/重复键和组合键检查，全部通过后才发布静态Runtime引用。
+- 决定：Runtime兼容线固定为schema `1`和content `0.1.x`。所有业务读取通过 `IConfigProvider` 的显式只读主键/分组索引完成；不公开可变表数组，不在热路径反序列化，不用反射驱动战斗。
+- 决定：Unity Runtime直接固定 `com.unity.nuget.newtonsoft-json 3.2.2`（上游 Newtonsoft.Json `13.0.2`）。可空数值/布尔及严格缺失/null语义不能由 `JsonUtility` 无损表达，运行时依赖不得偶然来自开发期Unity MCP的传递依赖。
+- 理由：坏包必须在进入MainMenu/Battle前整包失败，正常启动只付出一次解析成本，并为后续玩法提供稳定O(1)配置读取。
+- 许可证：Unity包封装使用Unity Companion License；包内列出的第三方Json组件为MIT，版本和边界见 `docs/PACKAGE_BASELINE.md`。
+- 限制：T230提交初始JSON快照但不生成hash旁车或ConfigIds，也不实现AssetRegistry；T240/T250分别负责这些后续边界。

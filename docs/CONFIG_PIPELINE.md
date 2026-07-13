@@ -10,12 +10,12 @@ config/examples/gameplay_config.sample.json   # 与工作簿同步的审查样�
 Tools/ConfigExporter/                         # T210导出器与T220生产校验器
 Build/Config/gameplay_config.json.tmp         # 临时输出
 Assets/_Game/Config/Generated/
-  gameplay_config.json
-  gameplay_config.hash
-  ConfigIds.g.cs
+  gameplay_config.json                       # T230已提交的初始Runtime快照
+  gameplay_config.hash                       # T250生成
+  ConfigIds.g.cs                              # T250生成
 ```
 
-Runtime不解析xlsx；生成目录只由工具写入。T210/T220已实现独立.NET 8确定性导出和生产级内容校验，但不创建受管Runtime JSON快照；T230接入Runtime，T250再建立一键生成与受管快照。
+Runtime不解析xlsx；生成目录只由工具写入。T210/T220实现独立.NET 8确定性导出和生产级内容校验；T230提交初始受管JSON快照并接入Runtime一次性加载；T250再建立一键生成、hash旁车、ID常量和漂移检查。
 
 ## 已实现命令
 
@@ -52,6 +52,15 @@ dotnet run --project Tools/ConfigExporter -- \
 10. 同一输入连续两次导出并比较全部生成文件，必须字节完全相同；测试还会反转源数据行，证明稳定排序不依赖Excel行号。
 
 T220坏配置清单位于 `Tools/ConfigExporter/Tests/Fixtures/invalid-config-cases.json`。测试只克隆并修改内存中的原始单元格，不生成或提交派生坏xlsx；每个用例都断言稳定错误码、Sheet、Excel数据行和字段。
+
+## Runtime加载阶段
+
+1. Bootstrap只把受管JSON作为 `TextAsset` 资源引用交给 `GameplayConfigRuntime`，Runtime不读取文件系统，也不解析xlsx。
+2. `GameplayConfigService`每个实例只允许一次加载；使用显式28表DTO严格拒绝注释、未知、缺失、重复和非法null属性，并在局部候选对象上完成全部检查。
+3. 兼容合同固定为schema `1`和content `0.1.x`；根版本必须与Global对应行一致，`contentHash`必须与导出器相同的规范化SHA-256算法吻合。
+4. 所有检查通过后才原子发布只读主键字典和分组列表；失败状态不发布部分索引，也不允许同一服务实例重试。
+5. 业务层只依赖 `IConfigProvider` 的显式O(1)查询，不在热路径反序列化，不遍历可变根数组，也不通过反射选择战斗行为。
+6. 启动日志固定输出来源、schema、content、hash、表数、记录数和索引数；不兼容或损坏配置留在Bootstrap并阻断进入MainMenu/Battle。
 
 ## 配置改动完成定义
 

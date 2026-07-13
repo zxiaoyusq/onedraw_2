@@ -11,7 +11,7 @@
 - Bootstrap/Harness任务：T000、T010、T020、T030、T040（DONE）
 - 标准Web G1：T100（PASS WITH KNOWN ISSUES）
 - 配置契约：T200（DONE）
-- 当前任务：T230（READY；T120/T130按用户决定延期）
+- 当前任务：T240（READY；T120/T130按用户决定延期）
 
 ## 配置契约
 
@@ -49,7 +49,7 @@
 - 独立 `net8.0` CLI位于 `Tools/ConfigExporter`，使用精确固定并锁定的 `DocumentFormat.OpenXml 3.5.1`；依赖未进入 `Assets/` 或Unity程序集。
 - `validate/export --input ... --schema ... --strict` 已读取29个Sheet、导出28张表共645条记录，版本为schema `1` / content `0.1.1-sample`，规范化内容hash保持 `16b64a6f...b4b1c`。
 - 同一输入两次输出均为168,071字节，文件SHA-256均为 `91d2c312cd2caead5243ef76ee12b54dc53702dc0ba23d4d34b0726c111a066a`；自动测试同时覆盖反转源行、区域设置、表头漂移、CLI错误码和原子写保护。
-- T210的确定性输出边界由T220生产校验链补全；受管Runtime JSON仍属于T230/T250。
+- T210的确定性输出边界由T220生产校验链补全；T230已提交初始受管Runtime JSON，T250再补齐一键生成与漂移检查。
 - T210结论：DONE；锁定还原、0 warning/0 error编译、专项.NET测试8/8及真实CLI双导出全部PASS，证据位于 `artifacts/evals/T210/`。
 
 ## T220生产校验基线
@@ -59,6 +59,14 @@
 - 37类内存坏配置覆盖重复ID、缺外键、负时间、Boss阈值乱序等路径，并逐项断言稳定错误码、Sheet、Excel数据行和字段；正式xlsx、镜像、Schema和样例未修改。
 - Release锁定还原和编译0 warning/0 error，格式检查通过，全套.NET测试46/46通过。正式CLI校验28表645条记录通过，两次导出均为168,071字节且文件SHA-256均为`91d2c312...1a066a`。
 - T220结论：DONE；证据位于 `artifacts/evals/T220/`。本任务未生成Runtime JSON，也未运行无改动关联的Unity场景/平台门。
+
+## T230 Runtime配置基线
+
+- 初始受管快照位于 `Assets/_Game/Config/Generated/gameplay_config.json`：28表、645条、168,071字节；contentHash为`16b64a6f...b4b1c`，文件SHA-256为`91d2c312...1a066a`，与正式工作簿重新导出结果字节一致。
+- 28张表DTO与冻结Schema的248字段通过反射测试精确对齐；严格解析、schema `1` / content `0.1.x`兼容、根/Global版本一致、规范化hash、主键/组合键和只读索引均在发布前检查，失败不进入MainMenu。
+- Runtime直接固定Unity官方 `com.unity.nuget.newtonsoft-json 3.2.2`（Newtonsoft.Json `13.0.2`）；Unity Companion License与包内第三方MIT边界已记录。
+- 专项EditMode 12/12、专项PlayMode 2/2、全量EditMode 25/25、全量PlayMode 4/4及ConfigExporter .NET 46/46通过。真实Bootstrap路径记录28表/645条并进入MainMenu，Console新增Error/Warning为0。
+- T230结论：DONE；证据位于 `artifacts/evals/T230/`。本任务未实现T240 AssetRegistry、T250 hash旁车/ConfigIds/一键漂移检查，也未恢复延期的平台门。
 
 ## 平台说明
 

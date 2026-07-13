@@ -3,6 +3,7 @@
   "rootNamespace": "OneStrokeDemon.Tests.EditMode",
   "references": [
     "OneStrokeDemon.Editor",
+    "OneStrokeDemon.Config",
     "Unity.InputSystem",
     "Unity.RenderPipelines.Core.Runtime",
     "Unity.RenderPipelines.Universal.Runtime",
@@ -14,8 +15,10 @@
   ],
   "excludePlatforms": [],
   "allowUnsafeCode": false,
-  "overrideReferences": false,
-  "precompiledReferences": [],
+  "overrideReferences": true,
+  "precompiledReferences": [
+    "Newtonsoft.Json.dll"
+  ],
   "autoReferenced": false,
   "defineConstraints": [],
   "versionDefines": [],
