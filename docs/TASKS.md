@@ -9,8 +9,8 @@
 | T000 | P0 合同与Harness | DONE | — | 0.5 | 统一玩法、MVP范围、技术基线、配置唯一真相源和完成定义。 |
 | T010 | P0 合同与Harness | DONE | T000 | 1.0 | 验收并纳管仓库根目录现有Unity 6000.5.1f1 2D工程基线。 |
 | T020 | P0 合同与Harness | DONE | T010 | 1.0 | 固定URP 2D、Input System、TMP、Test Framework和质量档。 |
-| T030 | P0 合同与Harness | READY | T020 | 1.0 | 建立目录、asmdef和Bootstrap/MainMenu/Battle三场景骨架。 |
-| T040 | P0 合同与Harness | BACKLOG | T030 | 1.0 | 建立构建、测试、证据和一任务一提交工作流。 |
+| T030 | P0 合同与Harness | DONE | T020 | 1.0 | 建立目录、asmdef和Bootstrap/MainMenu/Battle三场景骨架。 |
+| T040 | P0 合同与Harness | READY | T030 | 1.0 | 建立构建、测试、证据和一任务一提交工作流。 |
 | T100 | P1 微信平台Spike | BACKLOG | T040 | 1.0 | 先验证标准Unity Web构建，不接微信转换。 |
 | T110 | P1 微信平台Spike | BACKLOG | T100 | 2.0 | 确认当前官方微信Unity转换方案并做Unity/SDK兼容矩阵。 |
 | T120 | P1 微信平台Spike | BACKLOG | T110 | 2.0 | 完成微信转换、开发者工具和至少一台真机的分级冒烟。 |
@@ -96,7 +96,7 @@
 
 ### T030 · 建立目录、asmdef和Bootstrap/MainMenu/Battle三场景骨架。
 
-- **状态：** `READY`
+- **状态：** `DONE`
 - **依赖：** T020
 - **估算：** 1.0 人日
 - **产出：** 模块目录；Runtime/Editor/EditMode/PlayMode asmdef；Bootstrap场景；场景流接口。
@@ -108,7 +108,7 @@
 
 ### T040 · 建立构建、测试、证据和一任务一提交工作流。
 
-- **状态：** `BACKLOG`
+- **状态：** `READY`
 - **依赖：** T030
 - **估算：** 1.0 人日
 - **产出：** 批处理测试命令；Web构建入口；verification模板；改动白名单流程。

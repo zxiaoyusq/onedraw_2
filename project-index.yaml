@@ -1,7 +1,7 @@
 project: OneStrokeDemon
 project_cn: 一笔镇妖
 plan_generated: 2026-07-11
-current_task: T030
+current_task: T040
 current_task_status: READY
 unity:
   project_root: .
@@ -11,6 +11,10 @@ unity:
   input: Input_System
   quality_profiles: [Low, High]
   package_baseline: docs/PACKAGE_BASELINE.md
+  bootstrap_scene: Assets/_Game/Scenes/Bootstrap.unity
+  main_menu_scene: Assets/_Game/Scenes/MainMenu.unity
+  battle_scene: Assets/_Game/Scenes/Battle.unity
+  active_scene: Assets/_Game/Scenes/Bootstrap.unity
   orientation: landscape
   reference_resolution: 1920x1080
 config:
