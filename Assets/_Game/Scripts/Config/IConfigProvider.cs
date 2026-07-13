@@ -14,6 +14,7 @@ namespace OneStrokeDemon.Config
         PlayerConfig GetPlayer(string playerId);
         StanceConfig GetStance(string stanceId);
         StrokeRuleConfig GetStrokeRule(string ruleId);
+        IReadOnlyList<StrokeRuleConfig> GetStrokeRules();
         DamageFormulaConfig GetDamageFormula(string formulaId);
         DefenseRuleConfig GetDefenseRule(string defenseRuleId);
         WeakpointRuleConfig GetWeakpointRule(string weakpointRuleId);

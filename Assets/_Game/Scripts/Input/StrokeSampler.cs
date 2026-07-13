@@ -28,6 +28,8 @@ namespace OneStrokeDemon.Input
         private ulong strokeId;
         private float totalLength;
         private double startedAt;
+        private double initialHoldDuration;
+        private bool hasAcceptedMovement;
         private StrokeData completedStroke;
 
         public StrokeSampler(StrokeSamplingSettings settings)
@@ -67,6 +69,8 @@ namespace OneStrokeDemon.Input
             pointCount = 1;
             totalLength = 0f;
             startedAt = timestamp;
+            initialHoldDuration = 0d;
+            hasAcceptedMovement = false;
             completedStroke = null;
             State = StrokeSamplingState.Sampling;
         }
@@ -93,12 +97,14 @@ namespace OneStrokeDemon.Input
             float remainingLength = Settings.MaximumStrokeLengthReferencePixels - totalLength;
             if (segmentLength >= remainingLength)
             {
+                RecordInitialHold(timestamp);
                 Vector2 cutoffPoint = lastPoint + segment * (remainingLength / segmentLength);
                 Append(cutoffPoint, Settings.MaximumStrokeLengthReferencePixels);
                 Complete(timestamp, StrokeCompletionReason.MaximumLength);
                 return StrokeSampleResult.CompletedMaximumLength;
             }
 
+            RecordInitialHold(timestamp);
             Append(referencePosition, totalLength + segmentLength);
             if (pointCount == pointBuffer.Length)
             {
@@ -142,7 +148,20 @@ namespace OneStrokeDemon.Input
             completedStroke = null;
             pointCount = 0;
             totalLength = 0f;
+            initialHoldDuration = 0d;
+            hasAcceptedMovement = false;
             return true;
+        }
+
+        private void RecordInitialHold(double timestamp)
+        {
+            if (hasAcceptedMovement)
+            {
+                return;
+            }
+
+            initialHoldDuration = Math.Max(0d, timestamp - startedAt);
+            hasAcceptedMovement = true;
         }
 
         private void Append(Vector2 point, float newTotalLength)
@@ -154,6 +173,11 @@ namespace OneStrokeDemon.Input
 
         private void Complete(double timestamp, StrokeCompletionReason completionReason)
         {
+            if (!hasAcceptedMovement)
+            {
+                initialHoldDuration = Math.Max(0d, timestamp - startedAt);
+            }
+
             var frozenPoints = new Vector2[pointCount];
             Array.Copy(pointBuffer, frozenPoints, pointCount);
             completedStroke = new StrokeData(
@@ -162,6 +186,7 @@ namespace OneStrokeDemon.Input
                 totalLength,
                 startedAt,
                 timestamp,
+                initialHoldDuration,
                 completionReason);
             State = StrokeSamplingState.Completed;
         }

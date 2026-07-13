@@ -1,0 +1,10 @@
+T330 configuration read-only verification
+command: Tools/CI/verify-config.sh --skip-unity
+result: CONFIG_PIPELINE_PARTIAL_PASS unity=NOT_RUN reason=explicit_skip
+exporter build: PASS, 0 warnings, 0 errors
+generated verification: PASS
+schema=1 content=0.1.1-sample hash=16b64a6f3795cfe0f16dd5f2f092a021b7ef4c07b0b15119296c9da0e22b4b1c tables=28 records=645 strict=True
+jsonBytes=168071 hashBytes=65 idsBytes=23125 idSets=27 idConstants=306
+generated drift: PASS, artifacts=3
+ConfigExporter.Tests: 54 passed, 0 failed, 0 skipped
+Unity portion: intentionally NOT RUN in this command because the project was open in the verified 6000.5.1f1 Editor; Unity coverage is recorded separately in unity-test-jobs.md.

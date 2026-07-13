@@ -68,6 +68,7 @@ namespace OneStrokeDemon.Config
         public PlayerConfig GetPlayer(string playerId) => Get(RequireSnapshot().Players, "Players", "playerId", playerId);
         public StanceConfig GetStance(string stanceId) => Get(RequireSnapshot().Stances, "Stances", "stanceId", stanceId);
         public StrokeRuleConfig GetStrokeRule(string ruleId) => Get(RequireSnapshot().StrokeRules, "StrokeRules", "ruleId", ruleId);
+        public IReadOnlyList<StrokeRuleConfig> GetStrokeRules() => RequireSnapshot().StrokeRuleEntries;
         public DamageFormulaConfig GetDamageFormula(string formulaId) => Get(RequireSnapshot().DamageFormulas, "DamageFormulas", "formulaId", formulaId);
         public DefenseRuleConfig GetDefenseRule(string defenseRuleId) => Get(RequireSnapshot().DefenseRules, "DefenseRules", "defenseRuleId", defenseRuleId);
         public WeakpointRuleConfig GetWeakpointRule(string weakpointRuleId) => Get(RequireSnapshot().WeakpointRules, "WeakpointRules", "weakpointRuleId", weakpointRuleId);

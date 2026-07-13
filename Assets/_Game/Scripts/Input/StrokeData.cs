@@ -22,6 +22,7 @@ namespace OneStrokeDemon.Input
             float totalLengthReferencePixels,
             double startedAt,
             double endedAt,
+            double initialHoldDuration,
             StrokeCompletionReason completionReason)
         {
             if (ownedPoints == null)
@@ -34,6 +35,7 @@ namespace OneStrokeDemon.Input
             TotalLengthReferencePixels = totalLengthReferencePixels;
             StartedAt = startedAt;
             EndedAt = endedAt;
+            InitialHoldDuration = Math.Max(0d, initialHoldDuration);
             CompletionReason = completionReason;
         }
 
@@ -50,6 +52,8 @@ namespace OneStrokeDemon.Input
         public double EndedAt { get; }
 
         public double Duration => Math.Max(0d, EndedAt - StartedAt);
+
+        public double InitialHoldDuration { get; }
 
         public StrokeCompletionReason CompletionReason { get; }
     }

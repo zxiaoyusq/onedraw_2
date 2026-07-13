@@ -1,8 +1,8 @@
 # PROGRESS
 
 - 日期：2026-07-13
-- 当前成熟度：T320已建立确定性RDP、弧长重采样和统一几何指标的不可变处理点集；P3进入配置驱动笔势识别
-- 当前任务：T330
+- 当前成熟度：T330已完成配置驱动的七类笔势识别、确定性置信度与几何摘要；P3进入低分配笔迹视觉
+- 当前任务：T340
 - 状态：READY
 - Unity精确版本：6000.5.1f1（已由ProjectVersion.txt与本机安装核验）
 - 微信SDK来源或版本：官方 `minigame-tuanjie-transform-sdk` v0.1.33 / commit `ed4ad28f433c6b52b5fd3f22a6fa155a0c98c228` / embedded最小补丁
@@ -11,6 +11,14 @@
 
 ## 已完成
 
+- T330：`GestureClassifier`是无MonoBehaviour、`Time`、线程、反射或全局状态依赖的纯规则层；从同一份`StrokeGeometryData`识别Any、Horizontal、Vertical、Diagonal、Arc、Circle和Charged，输入相同会得到完全相同的规则ID、类型、置信度和摘要。
+- T330：`GestureRuleSetFactory`通过`IConfigProvider.GetStrokeRules()`一次性映射只读全表；最小长度、方向容差、闭合距离、最小面积、最小归一化曲率和蓄力停留全部来自`StrokeRules`，未知类型、空规则和重复规则ID显式失败，Input程序集不反向依赖Config。
+- T330：方向角按首尾位移归一化到无向`[0,180)`，Horizontal/Vertical/两条Diagonal共享配置容差语义；Circle依次验证配置闭合/面积/曲率，Arc验证配置曲率，Charged验证配置停留，Any只作为配置最小长度兜底。
+- T330：多规则同时命中时固定按Circle→Charged→Arc→方向类→Any的玩法语义选择，同优先级按置信度再按Ordinal规则ID裁决；置信度冻结为0～1的阈值余量摘要，结果同时携带长度、平均速度、角度、曲率、闭合比/距离、面积和首段停留。
+- T330：为避免把“慢慢画完整笔”误判成蓄力，`StrokeSampler`在不改变T310过滤、裁剪、点数和分配合同的前提下记录起笔到首个有效采样点的时长；阈值内微抖不会提前结束停留，元数据经不可变`StrokeData`/`StrokeGeometryData`传递。
+- T330：横/竖/正反向斜线、四分之一弧、大圆、首段停留蓄力、Any兜底、过短无匹配、23度近水平线、小面积闭环、直线非弧、未知类型和确定性回放均有回归；专项EditMode 14/14、PlayMode 1/1，最终全量EditMode 72/72、PlayMode 15/15。
+- T330：真实Mouse→统一输入→配置采样→配置几何→配置规则分类得到`stroke_horizontal`，Bootstrap配置/Registry/1920×1080输入日志正常；配置三生成物无漂移、.NET 54/54，脚本Refresh编译后Console Error/Warning为0。
+- T330：未修改xlsx、FieldDictionary、Schema、导出器、JSON/hash/ConfigIds、Input Actions、Packages、ProjectSettings、场景、Prefab或微信SDK，也未提前实现T340轨迹或T350命中。
 - T320：`StrokeGeometry`是无MonoBehaviour、`Time`、线程或全局状态依赖的纯规则层；`Process`先按配置`rdpEpsilonRefPx`执行保留首尾的RDP，再仅在超出配置`maxPointCount`时按累计弧长等距重采样并精确保留首尾。
 - T320：`StrokeGeometryData`持有供后续识别、视觉和命中共享的单一不可变处理点集，并只从该点集计算路径长度、参考像素包围盒、有向/绝对面积、首尾闭合距离、闭合比、有向转角、总绝对转角和`总转角/π`归一化曲率；原始`strokeId`、时间和终止原因可追溯。
 - T320：RDP容差语义冻结为点到线段距离小于或等于epsilon即删除；面积使用首尾隐式闭合的鞋带公式；曲率忽略零长度段并按路径相邻非零段转角计算，因此尺度不影响归一化值，左右转方向与S形总弯曲可分别表达。
@@ -59,7 +67,7 @@
 - T200：按GAME_DESIGN修正关卡玩法ID为 `lv_001_tutorial`、`lv_002_cave`、`lv_003_boss`，Boss玩法ID为 `boss_tomb_king`；所有Level/Wave/Spawn/BossPhase/Reward依赖引用同步，文案键和资源键保持独立命名空间。
 - T200：FieldDictionary保留248条非递归字段记录，修正Global互斥类型列及10个主键/条件字段的必填语义；冻结Schema属性存在与Excel单元格非空的差异、空值转换、普通/分组/通配符/conditional外键和数据所有权。
 - T200：29表、14公式、248字段、Schema/样例、类型/范围/枚举、主键、外键、连续order、关卡-Boss语义和规范化contentHash的只读契约审计全部PASS；29表最终渲染经4张总览拼图复核，无结构或版式异常。
-- 执行顺序调整：用户明确要求暂时绕过T120及微信开发者工具/打包问题，先完成游戏主要内容；T120保持`BLOCKED`、T130保持`BACKLOG`，不删除MVP平台验收要求；T210/T220/T230/T240/T250/T300/T310/T320已按该顺序完成，当前唯一`READY`任务为T330。
+- 执行顺序调整：用户明确要求暂时绕过T120及微信开发者工具/打包问题，先完成游戏主要内容；T120保持`BLOCKED`、T130保持`BACKLOG`，不删除MVP平台验收要求；T210/T220/T230/T240/T250/T300/T310/T320/T330已按该顺序完成，当前唯一`READY`任务为T340。
 - T120 G2：Unity `6000.5.1f1` 基于固定 embedded WXSDK 成功生成 `Builds/WeChat/T120`；84个文件、总计101,901,218字节，其中`minigame` 12,008,520字节，JSON结构、关键文件、SHA-256清单与敏感占位扫描均通过。
 - T120构建参数：空AppID、横屏、256MB、触摸启用、Development、关闭渲染线程与性能分析、清理构建，并使用SDK受支持的多线程Brotli；可复现入口为`Tools/CI/build-wechat.sh`。
 - T120 G2结论为`PASS WITH KNOWN ISSUES`：默认单线程Brotli在当前macOS Unity安装布局下引用错误路径（BUG-0005，已用配置规避）；转换含93条未匹配替换规则及6条Emscripten warning（BUG-0006），需要G3实际运行判定影响。
@@ -106,4 +114,4 @@
 8. T240为尚未到达资源接入阶段的75个非场景键使用按类型共享的受管占位资源；类型与覆盖合同已成立，但正式视觉、音频和逐Prefab内容仍须在T630及相应玩法任务中替换并重新校验。
 ## 下一步
 
-只执行T330：使用StrokeRules配置驱动识别Any、Horizontal、Vertical、Diagonal、Arc、Circle和Charged，输出类型、置信度及几何摘要并覆盖误识别回归；不提前实现T340轨迹或T350命中，也不恢复T120/T130。平台任务最迟在T640/T750前恢复。
+只执行T340：实现低分配笔迹视觉、淡出和池化，并让视觉消费T320的同一处理点集但不决定分类或命中；不提前实现T350命中，也不恢复T120/T130。平台任务最迟在T640/T750前恢复。

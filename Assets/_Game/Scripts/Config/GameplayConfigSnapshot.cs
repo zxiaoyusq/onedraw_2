@@ -13,6 +13,8 @@ namespace OneStrokeDemon.Config
             Players = BuildIndex(document.PlayerRows, row => row.PlayerId, "Players", "playerId", source);
             Stances = BuildIndex(document.StanceRows, row => row.StanceId, "Stances", "stanceId", source);
             StrokeRules = BuildIndex(document.StrokeRuleRows, row => row.RuleId, "StrokeRules", "ruleId", source);
+            StrokeRuleEntries = new ReadOnlyCollection<StrokeRuleConfig>(
+                (StrokeRuleConfig[])document.StrokeRuleRows.Clone());
             DamageFormulas = BuildIndex(document.DamageFormulaRows, row => row.FormulaId, "DamageFormulas", "formulaId", source);
             DefenseRules = BuildIndex(document.DefenseRuleRows, row => row.DefenseRuleId, "DefenseRules", "defenseRuleId", source);
             WeakpointRules = BuildIndex(document.WeakpointRuleRows, row => row.WeakpointRuleId, "WeakpointRules", "weakpointRuleId", source);
@@ -88,6 +90,7 @@ namespace OneStrokeDemon.Config
         public IReadOnlyDictionary<string, PlayerConfig> Players { get; }
         public IReadOnlyDictionary<string, StanceConfig> Stances { get; }
         public IReadOnlyDictionary<string, StrokeRuleConfig> StrokeRules { get; }
+        public IReadOnlyList<StrokeRuleConfig> StrokeRuleEntries { get; }
         public IReadOnlyDictionary<string, DamageFormulaConfig> DamageFormulas { get; }
         public IReadOnlyDictionary<string, DefenseRuleConfig> DefenseRules { get; }
         public IReadOnlyDictionary<string, WeakpointRuleConfig> WeakpointRules { get; }

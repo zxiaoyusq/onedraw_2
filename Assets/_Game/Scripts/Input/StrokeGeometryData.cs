@@ -70,6 +70,8 @@ namespace OneStrokeDemon.Input
 
         public double Duration => Source.Duration;
 
+        public double InitialHoldDuration => Source.InitialHoldDuration;
+
         public StrokeCompletionReason CompletionReason => Source.CompletionReason;
     }
 }
