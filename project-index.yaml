@@ -1,7 +1,7 @@
 project: OneStrokeDemon
 project_cn: 一笔镇妖
 plan_generated: 2026-07-11
-current_task: T370
+current_task: T400
 current_task_status: READY
 unity:
   project_root: .
@@ -57,8 +57,8 @@ config:
     loaded_records: 647
     readonly_primary_indexes: 270
     readonly_group_indexes: 49
-    editmode_tests: 90
-    playmode_tests: 23
+    editmode_tests: 98
+    playmode_tests: 25
     bootstrap_smoke: pass
   asset_registry:
     status: pass
@@ -90,8 +90,8 @@ config:
     dotnet_tests: 55
     config_editmode_tests: 19
     config_playmode_tests: 3
-    full_editmode_tests: 90
-    full_playmode_tests: 23
+    full_editmode_tests: 98
+    full_playmode_tests: 25
     full_command_smoke: pass_via_static_drift_gate_plus_unity_mcp_open_editor
 input:
   status: pass
@@ -112,8 +112,8 @@ input:
   screen_dpi_dependency: false
   pointer_editmode_tests: 5
   pointer_playmode_tests: 7
-  full_editmode_tests: 90
-  full_playmode_tests: 23
+  full_editmode_tests: 98
+  full_playmode_tests: 25
   bootstrap_smoke: pass
 stroke_sampling:
   status: pass
@@ -131,8 +131,8 @@ stroke_sampling:
   completion_allocation: immutable_snapshot_only
   editmode_tests: 9
   playmode_tests: 1
-  full_editmode_tests: 90
-  full_playmode_tests: 23
+  full_editmode_tests: 98
+  full_playmode_tests: 25
 stroke_geometry:
   status: pass
   processor: StrokeGeometry.Process
@@ -148,8 +148,8 @@ stroke_geometry:
   deterministic_replay: pass
   editmode_tests: 12
   playmode_tests: 1
-  full_editmode_tests: 90
-  full_playmode_tests: 23
+  full_editmode_tests: 98
+  full_playmode_tests: 25
 gesture_classification:
   status: pass
   classifier: GestureClassifier
@@ -165,8 +165,8 @@ gesture_classification:
   deterministic_replay: pass
   editmode_tests: 14
   playmode_tests: 1
-  full_editmode_tests: 90
-  full_playmode_tests: 23
+  full_editmode_tests: 98
+  full_playmode_tests: 25
 stroke_trail:
   status: pass
   path_bridge: StrokeTrailPath
@@ -185,8 +185,8 @@ stroke_trail:
   shared_material_only: true
   managed_allocation_after_warmup: zero_for_128_show_and_reclaim_cycles
   playmode_tests: 5
-  full_editmode_tests: 90
-  full_playmode_tests: 23
+  full_editmode_tests: 98
+  full_playmode_tests: 25
 stroke_hit:
   status: pass
   resolver: StrokeHitResolver
@@ -205,8 +205,8 @@ stroke_hit:
   managed_allocation_after_warmup: zero_for_128_real_physics_resolves
   editmode_tests: 6
   playmode_tests: 2
-  full_editmode_tests: 90
-  full_playmode_tests: 23
+  full_editmode_tests: 98
+  full_playmode_tests: 25
 combat_resolution:
   status: pass
   context: immutable_DamageContext
@@ -229,8 +229,35 @@ combat_resolution:
   editmode_tests: 12
   playmode_tests: 1
   player_path_totals: {damage: 61, score: 521, energy: 14}
-  full_editmode_tests: 90
-  full_playmode_tests: 23
+  full_editmode_tests: 98
+  full_playmode_tests: 25
+projectile_interaction:
+  status: pass
+  rules: immutable_ProjectileRuleSet
+  factory: ProjectileRuleSetFactory
+  resolver: ProjectileCutResolver
+  controller: ProjectileController
+  stroke_target: ProjectileHitTarget
+  ownership: ProjectileOwnership
+  damage_source: ProjectileDamageSource
+  config_source: Projectiles_row_by_projectileId
+  config_fields: [movePatternId, speedRefPxSec, lifeSec, damage, cuttable, reflectable, requiredStanceId, hitRadiusRefPx, assetKey, vfxKey]
+  interaction_precedence: [required_stance_gate, reflectable, cuttable, uncuttable]
+  both_flags_true: reflect
+  ownership_transition: enemy_current_to_player_current_preserve_original_enemy
+  friendly_stroke_after_reflect: ignored
+  target_filter: current_owner_faction
+  movement: deterministic_reference_pixel_transform
+  direction_source: explicit_spawn_unit_direction
+  reflection_direction: negate_current_direction
+  rigidbody_force_dependency: none
+  release_reasons: [cut, impact, lifetime_expired, manual]
+  reset_fields: [rules, ownership, reference_space, position, direction, elapsed_time, hit_target_id, collider, transform, active_state]
+  editmode_tests: 8
+  playmode_tests: 2
+  player_path: {projectile: proj_ghost_fire, original_enemy: 7001, reflector_player: 101, damage: 8, half_second_displacement_ref_px: 130}
+  full_editmode_tests: 98
+  full_playmode_tests: 25
 manual_gates:
   unity_editor_smoke: pass
   standard_web_build: pass_with_known_issues
@@ -276,7 +303,7 @@ wechat_conversion:
 execution_order:
   deferred_tasks: [T120, T130]
   deferral_reason: user_prioritized_main_game_content_over_wechat_devtools_device_and_packaging_work
-  next_content_task: T370
+  next_content_task: T400
   resume_platform_before: [T640, T750]
 workflow:
   config_verify_command: Tools/CI/verify-config.sh

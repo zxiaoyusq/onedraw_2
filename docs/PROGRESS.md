@@ -1,8 +1,8 @@
 # PROGRESS
 
 - 日期：2026-07-13
-- 当前成熟度：T360已完成配置驱动的伤害、方向/弱点奖励、连斩、评分和能量收益纯规则；P3进入投射物交互
-- 当前任务：T370
+- 当前成熟度：P3手势战斗核心已完成；T370具备配置驱动的投射物切断、免疫、反弹、伤害归属和确定性回收，进入P4玩家战斗状态
+- 当前任务：T400
 - 状态：READY
 - Unity精确版本：6000.5.1f1（已由ProjectVersion.txt与本机安装核验）
 - 微信SDK来源或版本：官方 `minigame-tuanjie-transform-sdk` v0.1.33 / commit `ed4ad28f433c6b52b5fd3f22a6fa155a0c98c228` / embedded最小补丁
@@ -11,6 +11,12 @@
 
 ## 已完成
 
+- T370：`ProjectileRuleSetFactory`从现有`Projectiles`表完整映射移动策略ID、参考像素速度、寿命、伤害、切断/反弹开关、所需架势、命中半径和资源键；未修改xlsx、Schema、导出器或三生成物，也未在Prefab/Inspector/C#复制玩法数值。
+- T370：`ProjectileCutResolver`冻结架势门→反弹→切断→不可切断优先级；`reflectable=true`时优先反弹，只有`cuttable=true`时回收，两者都false时保持弹体。反弹把当前归属切为玩家并反转显式方向，同时保留原敌方实体与反弹次数；同阵营笔迹和碰撞均不会错误消费弹体。
+- T370：`ProjectileController`在参考像素空间按配置速度/寿命与外部delta做确定性Transform位移，不使用Rigidbody力；`ProjectileHitTarget`直接接入T350 `IHittable/HitRecord`。切断、敌方命中、寿命到期和显式释放均先保留快照，再清空规则、归属、参考空间、位置、方向、时间、命中ID、Collider和Transform并停用，同对象复用由新配置/来源完整覆盖。
+- T370：`ProjectileDamageSource`同时携带配置`projectileId/damage`、当前归属、原始归属与反弹次数。真实Mouse横划命中`proj_ghost_fire`后由敌方7001切换到玩家101，方向左→右，0.5秒按260参考像素/秒移动130像素，再命中原敌方并以配置8点伤害归因给玩家；复用为`proj_rockfall`时旧归属/反弹/时间/半径均未残留。
+- T370：专项EditMode 8/8、专项PlayMode 2/2，最终全量EditMode 98/98、PlayMode 25/25；配置三生成物无漂移、.NET 55/55，最终脚本刷新编译Console Error/Warning为0。首次PlayMode只因Unity把禁用Collider的零半径钳制为0.0001而产生错误断言，修正为验证Collider禁用与新配置覆盖后稳定通过。
+- T370：未修改场景、Prefab、Input Actions、Packages、ProjectSettings或微信SDK；未实现T400玩家HP/当前能量/架势状态、T420敌人HP/状态机、T430攻击策略或T440通用对象池。
 - T360：新增`Stances.damageFormulaId -> DamageFormulas.formulaId`必填外键和`DamageFormulas.scorePerDamage`伤害评分系数；配置契约升级为schema 2/content 0.2.x。双工作簿SHA-256均为`c1c04c57...edb8f`，29表渲染与公式扫描通过；受管JSON为168,862字节、647条记录、hash `19dc788f...2f733`，FieldDictionary为250条。
 - T360：`DamageContext`、`DamageRuleSetFactory`和`DamageCalculator`均为无MonoBehaviour依赖纯C#；调用方只传架势/防御/弱点配置ID，公式沿架势外键解析。伤害组合架势、方向、弱点、连斩和注入随机暴击；评分同时组合命中奖励与`原始伤害 × scorePerDamage`；能量只发布本次收益，三项在公式末尾统一`MidpointRounding.AwayFromZero`。
 - T360：方向成立同时检查配置笔势与可选架势，失败组合公式与防御表两级倍率并发布反伤；弱点倍率、能量/评分加值和打断标记仅在弱点命中生效。`ComboService`从`Global.combo_timeout_sec`读取1.8秒窗口，按T350稳定目标顺序逐个计数，等于边界继续、超过重启；`ScoreService`原子累计伤害、评分、已赚取能量和命中维度，不提前拥有T400玩家状态。
@@ -83,7 +89,7 @@
 - T200：按GAME_DESIGN修正关卡玩法ID为 `lv_001_tutorial`、`lv_002_cave`、`lv_003_boss`，Boss玩法ID为 `boss_tomb_king`；所有Level/Wave/Spawn/BossPhase/Reward依赖引用同步，文案键和资源键保持独立命名空间。
 - T200：FieldDictionary保留248条非递归字段记录，修正Global互斥类型列及10个主键/条件字段的必填语义；冻结Schema属性存在与Excel单元格非空的差异、空值转换、普通/分组/通配符/conditional外键和数据所有权。
 - T200：29表、14公式、248字段、Schema/样例、类型/范围/枚举、主键、外键、连续order、关卡-Boss语义和规范化contentHash的只读契约审计全部PASS；29表最终渲染经4张总览拼图复核，无结构或版式异常。
-- 执行顺序调整：用户明确要求暂时绕过T120及微信开发者工具/打包问题，先完成游戏主要内容；T120保持`BLOCKED`、T130保持`BACKLOG`，不删除MVP平台验收要求；T210/T220/T230/T240/T250/T300/T310/T320/T330/T340/T350/T360已完成，当前唯一`READY`任务为T370。
+- 执行顺序调整：用户明确要求暂时绕过T120及微信开发者工具/打包问题，先完成游戏主要内容；T120保持`BLOCKED`、T130保持`BACKLOG`，不删除MVP平台验收要求；T210/T220/T230/T240/T250/T300/T310/T320/T330/T340/T350/T360/T370已完成，当前唯一`READY`任务为T400。
 - T120 G2：Unity `6000.5.1f1` 基于固定 embedded WXSDK 成功生成 `Builds/WeChat/T120`；84个文件、总计101,901,218字节，其中`minigame` 12,008,520字节，JSON结构、关键文件、SHA-256清单与敏感占位扫描均通过。
 - T120构建参数：空AppID、横屏、256MB、触摸启用、Development、关闭渲染线程与性能分析、清理构建，并使用SDK受支持的多线程Brotli；可复现入口为`Tools/CI/build-wechat.sh`。
 - T120 G2结论为`PASS WITH KNOWN ISSUES`：默认单线程Brotli在当前macOS Unity安装布局下引用错误路径（BUG-0005，已用配置规避）；转换含93条未匹配替换规则及6条Emscripten warning（BUG-0006），需要G3实际运行判定影响。
@@ -130,4 +136,4 @@
 8. T240为尚未到达资源接入阶段的75个非场景键使用按类型共享的受管占位资源；类型与覆盖合同已成立，但正式视觉、音频和逐Prefab内容仍须在T630及相应玩法任务中替换并重新校验。
 ## 下一步
 
-只执行T370：实现配置驱动的可切断、不可切断和可反弹敌方投射物，保证反弹归属、伤害来源与回收状态正确；不提前实现T400玩家状态或T420敌人状态机，也不恢复T120/T130。平台任务最迟在T640/T750前恢复。
+只执行T400：实现配置驱动的玩家HP、当前能量、刀/符架势、切换冷却和战斗事件；不提前实现T410技能效果链或T420敌人状态机，也不恢复T120/T130。平台任务最迟在T640/T750前恢复。

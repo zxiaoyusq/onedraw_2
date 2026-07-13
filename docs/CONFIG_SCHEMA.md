@@ -142,3 +142,13 @@ T360新增的`Stances.damageFormulaId -> DamageFormulas.formulaId`是必填普�
 - 原始评分为`(scorePerHit + 弱点评分加值) × 方向倍率 × 连斩倍率 + 原始伤害 × scorePerDamage`。因此伤害、命中、方向、弱点和同笔多目标都会进入T360评分；弹反、无伤与剩余时间由各自后续任务接入，不能在这里预判。
 - 原始能量收益为`(energyPerHit + 弱点能量加值) × 方向倍率 × 连斩倍率`。T360只累计“已赚取能量”；玩家当前能量、上限和技能消耗归T400。
 - 伤害、评分和能量分别在所有乘法/加法完成后用`MidpointRounding.AwayFromZero`取整为非负`long`；非有限值或溢出必须失败，不允许隐式截断或部分发布。
+
+## 12. T370敌方投射物运行时语义
+
+- `ProjectileRuleSetFactory`只通过`IConfigProvider.GetProjectile(projectileId)`映射`Projectiles`现有字段；速度、寿命、伤害、命中半径、切断/反弹开关、所需架势、移动策略ID和资源键均不得在Prefab、Inspector或控制器中复制。
+- 玩家笔迹先检查`requiredStanceId`：为空时任意架势可交互，非空时必须与当前架势Ordinal相等。架势不匹配只发布`RequiredStanceMismatch`，投射物继续保持原归属、方向、寿命和伤害来源。
+- 架势通过后按固定优先级解释两个独立布尔量：`reflectable=true`为反弹；否则`cuttable=true`为切断；两者都为false为不可切断。两者都为true时反弹优先，避免同一次笔迹既反弹又回收。
+- 初始归属由生成攻击的运行时实体传入；来源保存`currentOwner`与不可变`originalOwner`。反弹把`currentOwner`切到划动玩家、保留原敌方实体并递增反弹次数，同时把显式运动方向取反；反弹后的玩家归属投射物不再接受同阵营笔迹。
+- 伤害来源由`projectileId`、表内`damage`、当前归属、原始归属和反弹次数共同组成。敌方投射物只能伤玩家阵营；反弹后只能伤敌方阵营，命中同阵营不消费投射物。
+- `ProjectileController`只按调用方给出的参考像素位置/单位方向、表内`speedRefPxSec`与外部`deltaSeconds`做确定性Transform位移，不使用`Rigidbody2D.AddForce`或随机物理力；达到`lifeSec`边界时回收。
+- 切断、有效碰撞、寿命到期或显式回收都先生成不可变快照，再清空规则、归属、参考空间、位置、方向、已过时间与`ProjectileHitTarget` ID，禁用并清空Stroke Collider状态，重置Transform并停用GameObject。再次生成必须由新配置和新初始归属完整覆盖；通用池容量、预热与泄漏检测仍属于T440。
