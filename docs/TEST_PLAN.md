@@ -21,6 +21,7 @@
 - `SkillEffectPipelineTests`
 - `EnemyStateMachineTests`
 - `PoolResetTests`
+- `EnemyArchetypeConfigTests`
 - `BossPhaseTests`
 - `ConfigValidationTests`
 - `SaveMigrationTests`
@@ -36,6 +37,7 @@
 - `TutorialLevelE2EPlayModeTests`
 - `BossLevelE2EPlayModeTests`
 - `RestartThreeTimesPlayModeTests`
+- `EnemyGalleryPlayModeTests`
 
 ## 证据模板
 

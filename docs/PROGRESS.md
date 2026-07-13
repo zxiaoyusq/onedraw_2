@@ -1,8 +1,8 @@
 # PROGRESS
 
 - 日期：2026-07-14
-- 当前成熟度：P3手势战斗核心已完成；P4已具备配置驱动玩家、技能、通用敌人状态、可复用策略及四类通用对象池，进入敌人内容装配
-- 当前任务：T450
+- 当前成熟度：P3手势战斗核心已完成；P4已完成玩家、技能、通用敌人、策略、对象池和六种非Boss敌人内容装配，进入Boss阶段实现
+- 当前任务：T460
 - 状态：READY
 - Unity精确版本：6000.5.1f1（已由ProjectVersion.txt与本机安装核验）
 - 微信SDK来源或版本：官方 `minigame-tuanjie-transform-sdk` v0.1.33 / commit `ed4ad28f433c6b52b5fd3f22a6fa155a0c98c228` / embedded最小补丁
@@ -11,6 +11,11 @@
 
 ## 已完成
 
+- T450：新增只读`IConfigProvider.GetEnemies()`和`EnemyArchetypeCatalog`，从现有七条`Enemies`中自动排除Boss并按ID稳定聚合定义、移动、攻击、防御、弱点、中英文文案和资源类型；当前结果为5普通+1精英，产品C#中没有六怪ID列表或每怪业务子类。
+- T450：用层级、移动、架势易伤、防御笔势/架势、弱点窗、攻击动作/打断和弹体交互生成不含ID与数值的教学特征，六怪摘要全部唯一。所有攻击均有正前摇且打断窗跨过执行边界；符火鱼妖可切可弹火符、轮车僵妖横斩打断、石甲龟妖蓄力破甲、骷髅幽魂符术/弧线克制、飞行符蝠斜斩俯冲、摄魂道傀护盾支援分别可断言。
+- T450：`EnemyArchetypePool/Actor`按AssetManifest的5个Sprite键和1个Prefab键路由T240 Registry资源，为六怪建立T440配置池并预热共29个实例。Actor只在精确租约内Spawn和拥有T430策略运行时，回收先释放Telegraph/事件订阅再完整重置`EnemyController`；仍诚实使用T240类型占位，未伪报正式动画、美术或身体碰撞形状。
+- T450：配置变体证明修改符火鱼妖HP 30→47、速度110→137、攻击/弹体伤害8→13不需改产品C#。专项EditMode 3/3、PlayMode 1/1，最终全量EditMode 130/130、PlayMode 32/32；ConfigExporter .NET 56/56、只读生成/漂移门、Unity 6000.5.1f1刷新编译均通过。真实Bootstrap路径同时生成六怪，执行2投射物/1冲撞/2近战/1支援后全部回收，活动泄漏为0。
+- T450：未修改xlsx、FieldDictionary、Schema、导出器、受管JSON/hash/ConfigIds、场景、Prefab、AssetRegistry、Packages、ProjectSettings或微信SDK；未提前实现T460/T500/T510/T630。
 - T440：新增无Unity依赖的`ObjectPoolService`、`IPoolable`、租约/重开generation、共享family容量、泄漏报告和确定性耗尽策略。`Reject`在容量满时保持池状态不变，`ReuseOldest`按family激活序号完整回收最旧对象；旧租约、重复释放和未知对象不会释放当前租约，`activeSelf`不作为容量真相。
 - T440：`ObjectPoolConfiguration`把敌人/投射物/VFX/伤害数字容量、预热和耗尽策略全部映射自配置。配置保持schema 4并升级content 0.5.x，新增每类耗尽策略和投射物每类型预热；双工作簿SHA-256均为`cc5e9b11...c42`，受管JSON 172,045字节/660条/hash `d524ffcd...1ee8`，27组313个ID常量与样例保持同源。
 - T440：`EnemyController`与`ProjectileController`接入显式池租约并恢复池父节点；敌人回收额外清除外部战斗事件订阅/序号、HP/护甲/Buff/计数/攻击/弱点/时钟/目标，投射物清除规则/归属/参考空间/位置方向/时间/命中与Collider。新增配置驱动`VfxPoolItem`和无表外寿命常量的`DamageNumberPoolItem`，均完整清空运行态与Transform。
@@ -115,7 +120,7 @@
 - T200：按GAME_DESIGN修正关卡玩法ID为 `lv_001_tutorial`、`lv_002_cave`、`lv_003_boss`，Boss玩法ID为 `boss_tomb_king`；所有Level/Wave/Spawn/BossPhase/Reward依赖引用同步，文案键和资源键保持独立命名空间。
 - T200：FieldDictionary保留248条非递归字段记录，修正Global互斥类型列及10个主键/条件字段的必填语义；冻结Schema属性存在与Excel单元格非空的差异、空值转换、普通/分组/通配符/conditional外键和数据所有权。
 - T200：29表、14公式、248字段、Schema/样例、类型/范围/枚举、主键、外键、连续order、关卡-Boss语义和规范化contentHash的只读契约审计全部PASS；29表最终渲染经4张总览拼图复核，无结构或版式异常。
-- 执行顺序调整：用户明确要求暂时绕过T120及微信开发者工具/打包问题，先完成游戏主要内容；T120保持`BLOCKED`、T130保持`BACKLOG`，不删除MVP平台验收要求；主内容已推进至T440完成，当前唯一`READY`任务为T450。
+- 执行顺序调整：用户明确要求暂时绕过T120及微信开发者工具/打包问题，先完成游戏主要内容；T120保持`BLOCKED`、T130保持`BACKLOG`，不删除MVP平台验收要求；主内容已推进至T450完成，当前唯一`READY`任务为T460。
 - T120 G2：Unity `6000.5.1f1` 基于固定 embedded WXSDK 成功生成 `Builds/WeChat/T120`；84个文件、总计101,901,218字节，其中`minigame` 12,008,520字节，JSON结构、关键文件、SHA-256清单与敏感占位扫描均通过。
 - T120构建参数：空AppID、横屏、256MB、触摸启用、Development、关闭渲染线程与性能分析、清理构建，并使用SDK受支持的多线程Brotli；可复现入口为`Tools/CI/build-wechat.sh`。
 - T120 G2结论为`PASS WITH KNOWN ISSUES`：默认单线程Brotli在当前macOS Unity安装布局下引用错误路径（BUG-0005，已用配置规避）；转换含93条未匹配替换规则及6条Emscripten warning（BUG-0006），需要G3实际运行判定影响。
@@ -159,7 +164,7 @@
 5. 标准Web存在URP EASU不支持与PlayerPrefs手动同步弃用warning，见BUG-0001/BUG-0002；G1未覆盖TMP中文、后台音频恢复或真机触摸。
 6. 长Web构建后Unity MCP实例桥接未自动恢复，见BUG-0003；Unity batch测试与Web运行未受影响。
 7. PSD主角和怪物大多为单张Sprite；中文字体包体、Web内存和真机触摸延迟仍需后续验证。
-8. T240为尚未到达资源接入阶段的75个非场景键使用按类型共享的受管占位资源；类型与覆盖合同已成立，但正式视觉、音频和逐Prefab内容仍须在T630及相应玩法任务中替换并重新校验。
+8. T450已能按AssetManifest类型装配六怪，但T240的75个非场景键仍使用按类型共享的受管占位资源；类型与覆盖合同已成立，正式视觉、音频、身体碰撞形状和逐Prefab内容仍须在T630及相应玩法任务中替换并重新校验。
 ## 下一步
 
-只执行T450：只用配置和既有策略/对象池组合5种普通怪与1种精英怪；不提前实现T460 Boss阶段、T500关卡时间轴或T510战斗流程，也不恢复T120/T130。平台任务最迟在T640/T750前恢复。
+只执行T460：实现配置驱动Boss阶段、阈值、技能序列和切换；不提前实现T500关卡时间轴、T510战斗流程或T630正式资源，也不恢复T120/T130。平台任务最迟在T640/T750前恢复。

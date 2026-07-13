@@ -199,3 +199,11 @@ T360新增的`Stances.damageFormulaId -> DamageFormulas.formulaId`是必填普�
 - `Reject`在family达到活动容量时不创建、不激活也不回收任何对象；`ReuseOldest`按family内激活序号确定性选择最旧对象，先执行其完整`ReleaseToPool`，再从请求的目标ID池获取。容量判断不以`GameObject.activeSelf`代替租约状态；弹体自行因命中/寿命停用后，拥有者仍必须把对应租约交还服务，才算释放family容量。
 - 敌人回收清空配置定义、HP/护甲、Buff、计数、攻击/弱点/时钟/目标ID、外部`CombatEventPublished`订阅、事件序号和Transform；投射物回收清空规则、归属、参考空间、位置/方向/时间、命中ID、Collider和Transform。二者都恢复到捕获的池父节点并停用，下一次获取后必须由新生成参数完整覆盖。
 - `VfxPoolItem`只保留由`VfxCues`确定的不可变池配置，回收清空目标、播放/完成状态、计时和Transform；`DamageNumberPoolItem`回收清空金额、目标、来源、可见状态和Transform。VFX生命期、跟随与排序仍只从配置读取；T440不实现T620反馈编排，也不装配T450敌人内容、T460 Boss阶段或T500关卡流程。
+
+## 18. T450敌人原型目录与内容装配语义
+
+- T450不修改JSON字段形状或内容版本。`IConfigProvider.GetEnemies()`以只读快照枚举`Enemies`；`EnemyArchetypeCatalog`排除`tier=Boss`后按`enemyId` Ordinal稳定排序，并沿外键聚合`EnemyDefinition`、移动策略、有序攻击、防御、弱点、中英文名称和资源类型。业务层不维护六怪ID列表或每怪子类。
+- 非Boss原型必须至少有一个攻击；每个攻击必须有正前摇，且配置打断窗必须跨过`Windup -> Attack`执行边界。教学特征摘要只组合层级、移动类型、架势易伤、防御笔势/架势、弱点窗和攻击/弹体交互语义，不包含敌人/攻击ID或数值；当前非Boss目录中重复摘要会拒绝装配，防止只换名称的重复内容。
+- `EnemyArchetypePool`为目录中每个原型注册T440敌人池，预热仍只读`Enemies.poolPrewarm`。`AssetManifest.assetType=Sprite`时在通用容器上绑定Registry Sprite，`Prefab`时实例化Registry Prefab；两条路径都只补齐通用`Damageable/EnemyController/EnemyArchetypeActor`和配置需要的弱点组件，不把HP、速度、攻击或半径写入Inspector。
+- `EnemyArchetypeActor`在获取精确池租约后才能Spawn，由同一原型快照创建`EnemyStrategyRuntime`并把移动样本写入调用方参考空间。回收/重开/最旧复用先释放策略订阅，再委托`EnemyController.ReleaseToPool`完整清空运行态；旧租约不能释放重用后实例。
+- 当前五个Sprite键和一个Prefab键继续使用T240的类型正确占位引用；T450只证明内容规则与运行时装配，不把占位资源伪报为正式动画/美术。Boss阶段覆盖属于T460，刷怪时间轴与触发事实属于T500，正式原型资源替换属于T630。

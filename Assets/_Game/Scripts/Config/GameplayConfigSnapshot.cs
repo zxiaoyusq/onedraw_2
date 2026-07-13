@@ -20,6 +20,8 @@ namespace OneStrokeDemon.Config
             WeakpointRules = BuildIndex(document.WeakpointRuleRows, row => row.WeakpointRuleId, "WeakpointRules", "weakpointRuleId", source);
             MovePatterns = BuildIndex(document.MovePatternRows, row => row.MovePatternId, "MovePatterns", "movePatternId", source);
             Enemies = BuildIndex(document.EnemyRows, row => row.EnemyId, "Enemies", "enemyId", source);
+            EnemyEntries = new ReadOnlyCollection<EnemyConfig>(
+                (EnemyConfig[])document.EnemyRows.Clone());
             EnemyAttacks = BuildIndex(document.EnemyAttackRows, row => row.AttackId, "EnemyAttacks", "attackId", source);
             Projectiles = BuildIndex(document.ProjectileRows, row => row.ProjectileId, "Projectiles", "projectileId", source);
             Buffs = BuildIndex(document.BuffRows, row => row.BuffId, "Buffs", "buffId", source);
@@ -96,6 +98,7 @@ namespace OneStrokeDemon.Config
         public IReadOnlyDictionary<string, WeakpointRuleConfig> WeakpointRules { get; }
         public IReadOnlyDictionary<string, MovePatternConfig> MovePatterns { get; }
         public IReadOnlyDictionary<string, EnemyConfig> Enemies { get; }
+        public IReadOnlyList<EnemyConfig> EnemyEntries { get; }
         public IReadOnlyDictionary<string, EnemyAttackConfig> EnemyAttacks { get; }
         public IReadOnlyDictionary<string, ProjectileConfig> Projectiles { get; }
         public IReadOnlyDictionary<string, BuffConfig> Buffs { get; }

@@ -20,6 +20,7 @@ namespace OneStrokeDemon.Config
         WeakpointRuleConfig GetWeakpointRule(string weakpointRuleId);
         MovePatternConfig GetMovePattern(string movePatternId);
         EnemyConfig GetEnemy(string enemyId);
+        IReadOnlyList<EnemyConfig> GetEnemies();
         IReadOnlyList<EnemyAttackConfig> GetEnemyAttacks(string attackSetId);
         ProjectileConfig GetProjectile(string projectileId);
         BuffConfig GetBuff(string buffId);

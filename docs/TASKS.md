@@ -34,8 +34,8 @@
 | T420 | P4 玩家敌人技能 | DONE | T360 | 2.0 | 实现通用敌人状态机、Damageable和Weakpoint。 |
 | T430 | P4 玩家敌人技能 | DONE | T420, T370 | 3.0 | 实现可组合移动、攻击、防御和支援策略注册表。 |
 | T440 | P4 玩家敌人技能 | DONE | T420 | 1.5 | 建立敌人、投射物、VFX和伤害数字对象池及完整重置。 |
-| T450 | P4 玩家敌人技能 | READY | T430, T440 | 2.0 | 只用配置组合5种普通怪和1种精英怪。 |
-| T460 | P4 玩家敌人技能 | BACKLOG | T410, T430 | 3.0 | 实现配置驱动Boss阶段、阈值、技能序列和切换。 |
+| T450 | P4 玩家敌人技能 | DONE | T430, T440 | 2.0 | 只用配置组合5种普通怪和1种精英怪。 |
+| T460 | P4 玩家敌人技能 | READY | T410, T430 | 3.0 | 实现配置驱动Boss阶段、阈值、技能序列和切换。 |
 | T500 | P5 关卡完整单局 | BACKLOG | T450 | 2.0 | 实现Level/Wave/Spawn时间轴和条件结束。 |
 | T510 | P5 关卡完整单局 | BACKLOG | T500, T400 | 1.5 | 实现Countdown/Playing/UltimateDrawing/Paused/Victory/Defeat状态机。 |
 | T520 | P5 关卡完整单局 | BACKLOG | T510 | 2.0 | 完成幽菌古道教学关：普通斩、连斩、切弹、架势和终极。 |
@@ -408,7 +408,7 @@
 
 ### T450 · 只用配置组合5种普通怪和1种精英怪。
 
-- **状态：** `READY`
+- **状态：** `DONE`
 - **依赖：** T430, T440
 - **估算：** 2.0 人日
 - **产出：** 符火鱼妖；轮车僵妖；石甲龟妖；骷髅幽魂；飞行符蝠；摄魂道傀。
@@ -416,11 +416,11 @@
 - **验收：** 每怪有独立教学点与清晰前摇；改HP/速度/攻击无需改C#。
 - **验证：** EnemyArchetypeConfigTests；EnemyGalleryPlayModeTests。
 - **证据：** `artifacts/evals/T450/`
-- **提交：** `T450: <imperative summary>`
+- **提交：** `T450: assemble configured enemy archetypes`
 
 ### T460 · 实现配置驱动Boss阶段、阈值、技能序列和切换。
 
-- **状态：** `BACKLOG`
+- **状态：** `READY`
 - **依赖：** T410, T430
 - **估算：** 3.0 人日
 - **产出：** BossPhaseController；阶段条件/进入动作；镇墓玄甲王三阶段。

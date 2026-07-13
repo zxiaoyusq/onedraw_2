@@ -1,7 +1,7 @@
 project: OneStrokeDemon
 project_cn: 一笔镇妖
 plan_generated: 2026-07-11
-current_task: T450
+current_task: T460
 current_task_status: READY
 unity:
   project_root: .
@@ -57,8 +57,8 @@ config:
     loaded_records: 660
     readonly_primary_indexes: 277
     readonly_group_indexes: 49
-    editmode_tests: 127
-    playmode_tests: 31
+    editmode_tests: 130
+    playmode_tests: 32
     bootstrap_smoke: pass
   asset_registry:
     status: pass
@@ -90,8 +90,8 @@ config:
     dotnet_tests: 56
     config_editmode_tests: 19
     config_playmode_tests: 3
-    full_editmode_tests: 127
-    full_playmode_tests: 31
+    full_editmode_tests: 130
+    full_playmode_tests: 32
     full_command_smoke: pass_via_static_drift_gate_plus_unity_mcp_open_editor
 input:
   status: pass
@@ -112,8 +112,8 @@ input:
   screen_dpi_dependency: false
   pointer_editmode_tests: 5
   pointer_playmode_tests: 7
-  full_editmode_tests: 127
-  full_playmode_tests: 31
+  full_editmode_tests: 130
+  full_playmode_tests: 32
   bootstrap_smoke: pass
 stroke_sampling:
   status: pass
@@ -131,8 +131,8 @@ stroke_sampling:
   completion_allocation: immutable_snapshot_only
   editmode_tests: 9
   playmode_tests: 1
-  full_editmode_tests: 127
-  full_playmode_tests: 31
+  full_editmode_tests: 130
+  full_playmode_tests: 32
 stroke_geometry:
   status: pass
   processor: StrokeGeometry.Process
@@ -148,8 +148,8 @@ stroke_geometry:
   deterministic_replay: pass
   editmode_tests: 12
   playmode_tests: 1
-  full_editmode_tests: 127
-  full_playmode_tests: 31
+  full_editmode_tests: 130
+  full_playmode_tests: 32
 gesture_classification:
   status: pass
   classifier: GestureClassifier
@@ -165,8 +165,8 @@ gesture_classification:
   deterministic_replay: pass
   editmode_tests: 14
   playmode_tests: 1
-  full_editmode_tests: 127
-  full_playmode_tests: 31
+  full_editmode_tests: 130
+  full_playmode_tests: 32
 stroke_trail:
   status: pass
   path_bridge: StrokeTrailPath
@@ -185,8 +185,8 @@ stroke_trail:
   shared_material_only: true
   managed_allocation_after_warmup: zero_for_128_show_and_reclaim_cycles
   playmode_tests: 5
-  full_editmode_tests: 127
-  full_playmode_tests: 31
+  full_editmode_tests: 130
+  full_playmode_tests: 32
 stroke_hit:
   status: pass
   resolver: StrokeHitResolver
@@ -205,8 +205,8 @@ stroke_hit:
   managed_allocation_after_warmup: zero_for_128_real_physics_resolves
   editmode_tests: 6
   playmode_tests: 2
-  full_editmode_tests: 127
-  full_playmode_tests: 31
+  full_editmode_tests: 130
+  full_playmode_tests: 32
 combat_resolution:
   status: pass
   context: immutable_DamageContext
@@ -229,8 +229,8 @@ combat_resolution:
   editmode_tests: 12
   playmode_tests: 1
   player_path_totals: {damage: 61, score: 521, energy: 14}
-  full_editmode_tests: 127
-  full_playmode_tests: 31
+  full_editmode_tests: 130
+  full_playmode_tests: 32
 projectile_interaction:
   status: pass
   rules: immutable_ProjectileRuleSet
@@ -256,8 +256,8 @@ projectile_interaction:
   editmode_tests: 8
   playmode_tests: 2
   player_path: {projectile: proj_ghost_fire, original_enemy: 7001, reflector_player: 101, damage: 8, half_second_displacement_ref_px: 130}
-  full_editmode_tests: 127
-  full_playmode_tests: 31
+  full_editmode_tests: 130
+  full_playmode_tests: 32
 player_combat:
   status: pass
   settings_factory: PlayerCombatSettingsFactory
@@ -282,8 +282,8 @@ player_combat:
   editmode_tests: 8
   playmode_tests: 2
   player_path: {trail_width_ref_px: "18_to_28", damage_formula: "damage_player_default_to_damage_talisman_default", projectile: proj_seal_bolt, projectile_outcome: "stance_mismatch_to_reflected"}
-  full_editmode_tests: 127
-  full_playmode_tests: 31
+  full_editmode_tests: 130
+  full_playmode_tests: 32
 skill_effect_pipeline:
   status: pass
   service: SkillService
@@ -305,8 +305,8 @@ skill_effect_pipeline:
   editmode_tests: 4
   playmode_tests: 1
   player_path: {invalid_energy_after: 100, valid_energy_after: 0, cleared_projectiles: 2, damage_all_enemies: 50, execute_ratio: 0.25, boss_buff_seconds: 2}
-  full_editmode_tests: 127
-  full_playmode_tests: 31
+  full_editmode_tests: 130
+  full_playmode_tests: 32
 enemy_runtime:
   status: pass
   definition_factory: EnemyDefinitionFactory
@@ -333,8 +333,8 @@ enemy_runtime:
   editmode_tests: 7
   playmode_tests: 1
   player_path: {enemy: boss_tomb_king, attack: atk_boss_rockfall, gesture: Diagonal, weakpoint: true, armor: "120_to_119", state: Stun}
-  full_editmode_tests: 127
-  full_playmode_tests: 31
+  full_editmode_tests: 130
+  full_playmode_tests: 32
 enemy_strategy:
   status: pass
   movement_registry: MovementStrategyRegistry
@@ -357,8 +357,8 @@ enemy_strategy:
   editmode_tests: 5
   playmode_tests: 1
   player_path: {supporter: enemy_soul_puppet, target: enemy_skeleton_wisp, incoming_damage: "10_to_5_then_10_after_3_seconds"}
-  full_editmode_tests: 127
-  full_playmode_tests: 31
+  full_editmode_tests: 130
+  full_playmode_tests: 32
 object_pool:
   status: pass
   service: ObjectPoolService
@@ -380,8 +380,35 @@ object_pool:
   restart_cycles: 3
   prewarmed_objects_in_player_path: 44
   player_path: {enemy: enemy_skeleton_ghost, projectile: proj_ghost_fire, vfx: vfx_ultimate_prepare, active_leaks_after_each_restart: 0}
-  full_editmode_tests: 127
-  full_playmode_tests: 31
+  full_editmode_tests: 130
+  full_playmode_tests: 32
+enemy_archetypes:
+  status: pass
+  catalog: EnemyArchetypeCatalog
+  runtime_actor: EnemyArchetypeActor
+  pool: EnemyArchetypePool
+  config_enumeration: IConfigProvider.GetEnemies_readonly
+  config_sources: [Enemies, MovePatterns, EnemyAttacks, DefenseRules, WeakpointRules, Projectiles, Texts, AssetManifest]
+  roster_filter: non_Boss_tier
+  roster_order: enemy_id_ordinal
+  roster: {normal: 5, elite: 1, boss: 0}
+  enemy_ids: [enemy_fire_fish, enemy_skeleton_ghost, enemy_soul_puppet, enemy_stone_turtle, enemy_talisman_bat, enemy_wheel_zombie]
+  teaching_signature_sources: [tier, movement_type, stance_vulnerability, defense_gesture_and_stance, weakpoint_window, attack_trigger_action_and_interrupt, projectile_interaction]
+  duplicate_teaching_signature_policy: fail
+  telegraph_contract: positive_windup_and_interrupt_window_spans_execution_boundary
+  asset_routes: {Sprite: 5, Prefab: 1}
+  current_asset_quality: T240_managed_type_placeholders
+  formal_animation_and_body_hitbox_authoring: deferred_to_T630
+  per_enemy_business_subclasses: none
+  pool_prewarm_source: Enemies.poolPrewarm
+  prewarmed_enemy_objects: 29
+  strategy_lifetime: exact_pool_lease
+  release_order: [dispose_strategy_subscription, reset_enemy_controller, restore_pool_transform]
+  editmode_tests: 3
+  playmode_tests: 1
+  player_path: {spawned_simultaneously: 6, actions: {projectile: 2, charge: 1, melee: 2, support: 1}, active_leaks_after_release: 0}
+  full_editmode_tests: 130
+  full_playmode_tests: 32
 manual_gates:
   unity_editor_smoke: pass
   standard_web_build: pass_with_known_issues
@@ -427,7 +454,7 @@ wechat_conversion:
 execution_order:
   deferred_tasks: [T120, T130]
   deferral_reason: user_prioritized_main_game_content_over_wechat_devtools_device_and_packaging_work
-  next_content_task: T450
+  next_content_task: T460
   resume_platform_before: [T640, T750]
 workflow:
   config_verify_command: Tools/CI/verify-config.sh

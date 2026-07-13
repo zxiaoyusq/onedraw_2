@@ -1,0 +1,967 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="130" result="Passed" total="130" passed="130" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-07-13 18:45:59Z" end-time="2026-07-13 18:46:07Z" duration="7.9962126">
+  <test-suite type="TestSuite" id="1000" name="onedraw_2" fullname="onedraw_2" runstate="Runnable" testcasecount="130" result="Passed" start-time="2026-07-13 18:45:59Z" end-time="2026-07-13 18:46:07Z" duration="7.996213" total="130" passed="130" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="EditMode" />
+    </properties>
+    <test-suite type="Assembly" id="1157" name="OneStrokeDemon.Tests.EditMode.dll" fullname="/Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/Library/ScriptAssemblies/OneStrokeDemon.Tests.EditMode.dll" runstate="Runnable" testcasecount="130" result="Passed" start-time="2026-07-13 18:45:59Z" end-time="2026-07-13 18:46:07Z" duration="7.888721" total="130" passed="130" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="20653" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="EditMode" />
+        <property name="EditorOnly" value="True" />
+      </properties>
+      <test-suite type="TestSuite" id="1158" name="OneStrokeDemon" fullname="OneStrokeDemon" runstate="Runnable" testcasecount="130" result="Passed" start-time="2026-07-13 18:46:00Z" end-time="2026-07-13 18:46:07Z" duration="7.706345" total="130" passed="130" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1159" name="Tests" fullname="OneStrokeDemon.Tests" runstate="Runnable" testcasecount="130" result="Passed" start-time="2026-07-13 18:46:00Z" end-time="2026-07-13 18:46:07Z" duration="7.605658" total="130" passed="130" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestSuite" id="1160" name="EditMode" fullname="OneStrokeDemon.Tests.EditMode" runstate="Runnable" testcasecount="130" result="Passed" start-time="2026-07-13 18:46:00Z" end-time="2026-07-13 18:46:07Z" duration="7.505517" total="130" passed="130" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-suite type="TestFixture" id="1006" name="AssemblyDependencyTests" fullname="OneStrokeDemon.Tests.EditMode.AssemblyDependencyTests" classname="OneStrokeDemon.Tests.EditMode.AssemblyDependencyTests" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-07-13 18:46:00Z" end-time="2026-07-13 18:46:00Z" duration="0.246780" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1007" name="RuntimeAssemblyDefinitionsMatchTechnicalDependencyGraphWithoutCycles" fullname="OneStrokeDemon.Tests.EditMode.AssemblyDependencyTests.RuntimeAssemblyDefinitionsMatchTechnicalDependencyGraphWithoutCycles" methodname="RuntimeAssemblyDefinitionsMatchTechnicalDependencyGraphWithoutCycles" classname="OneStrokeDemon.Tests.EditMode.AssemblyDependencyTests" runstate="Runnable" seed="1908606526" result="Passed" start-time="2026-07-13 18:46:00Z" end-time="2026-07-13 18:46:00Z" duration="0.040462" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+            </test-suite>
+            <test-suite type="TestFixture" id="1002" name="RenderPipelineBaselineTests" fullname="OneStrokeDemon.Tests.EditMode.RenderPipelineBaselineTests" classname="OneStrokeDemon.Tests.EditMode.RenderPipelineBaselineTests" runstate="Runnable" testcasecount="3" result="Passed" start-time="2026-07-13 18:46:00Z" end-time="2026-07-13 18:46:00Z" duration="0.073324" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1003" name="GraphicsAndLowHighQualityProfilesUseUrp2DRenderer" fullname="OneStrokeDemon.Tests.EditMode.RenderPipelineBaselineTests.GraphicsAndLowHighQualityProfilesUseUrp2DRenderer" methodname="GraphicsAndLowHighQualityProfilesUseUrp2DRenderer" classname="OneStrokeDemon.Tests.EditMode.RenderPipelineBaselineTests" runstate="Runnable" seed="282559075" result="Passed" start-time="2026-07-13 18:46:00Z" end-time="2026-07-13 18:46:00Z" duration="0.013052" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1004" name="InputActionsDeclareMouseAndTouchPointerBindings" fullname="OneStrokeDemon.Tests.EditMode.RenderPipelineBaselineTests.InputActionsDeclareMouseAndTouchPointerBindings" methodname="InputActionsDeclareMouseAndTouchPointerBindings" classname="OneStrokeDemon.Tests.EditMode.RenderPipelineBaselineTests" runstate="Runnable" seed="1276744869" result="Passed" start-time="2026-07-13 18:46:00Z" end-time="2026-07-13 18:46:00Z" duration="0.003024" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1005" name="TmpAndTestFrameworkAssembliesAreLoaded" fullname="OneStrokeDemon.Tests.EditMode.RenderPipelineBaselineTests.TmpAndTestFrameworkAssembliesAreLoaded" methodname="TmpAndTestFrameworkAssembliesAreLoaded" classname="OneStrokeDemon.Tests.EditMode.RenderPipelineBaselineTests" runstate="Runnable" seed="1159702542" result="Passed" start-time="2026-07-13 18:46:00Z" end-time="2026-07-13 18:46:00Z" duration="0.006682" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+            </test-suite>
+            <test-suite type="TestSuite" id="1176" name="T230" fullname="OneStrokeDemon.Tests.EditMode.T230" runstate="Runnable" testcasecount="12" result="Passed" start-time="2026-07-13 18:46:00Z" end-time="2026-07-13 18:46:01Z" duration="0.924546" total="12" passed="12" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-suite type="TestFixture" id="1143" name="InvalidConfigTests" fullname="OneStrokeDemon.Tests.EditMode.T230.InvalidConfigTests" classname="OneStrokeDemon.Tests.EditMode.T230.InvalidConfigTests" runstate="Runnable" testcasecount="9" result="Passed" start-time="2026-07-13 18:46:01Z" end-time="2026-07-13 18:46:01Z" duration="0.667104" total="9" passed="9" failed="0" inconclusive="0" skipped="0" asserts="0">
+                <properties>
+                  <property name="Category" value="ConfigPipeline" />
+                </properties>
+                <test-case id="1148" name="DuplicateJsonPropertyFailsStrictParsing" fullname="OneStrokeDemon.Tests.EditMode.T230.InvalidConfigTests.DuplicateJsonPropertyFailsStrictParsing" methodname="DuplicateJsonPropertyFailsStrictParsing" classname="OneStrokeDemon.Tests.EditMode.T230.InvalidConfigTests" runstate="Runnable" seed="1021699762" result="Passed" start-time="2026-07-13 18:46:01Z" end-time="2026-07-13 18:46:01Z" duration="0.015179" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1144" name="EmptyJsonFailsAndServiceCannotRetryOrPublishPartialState" fullname="OneStrokeDemon.Tests.EditMode.T230.InvalidConfigTests.EmptyJsonFailsAndServiceCannotRetryOrPublishPartialState" methodname="EmptyJsonFailsAndServiceCannotRetryOrPublishPartialState" classname="OneStrokeDemon.Tests.EditMode.T230.InvalidConfigTests" runstate="Runnable" seed="1957251432" result="Passed" start-time="2026-07-13 18:46:01Z" end-time="2026-07-13 18:46:01Z" duration="0.003185" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1150" name="EmptyOrDuplicateRuntimeIndexKeyRejectsWholeDocument" fullname="OneStrokeDemon.Tests.EditMode.T230.InvalidConfigTests.EmptyOrDuplicateRuntimeIndexKeyRejectsWholeDocument" methodname="EmptyOrDuplicateRuntimeIndexKeyRejectsWholeDocument" classname="OneStrokeDemon.Tests.EditMode.T230.InvalidConfigTests" runstate="Runnable" seed="250133645" result="Passed" start-time="2026-07-13 18:46:01Z" end-time="2026-07-13 18:46:01Z" duration="0.119335" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1146" name="IncompatibleAndMalformedContentVersionsFail" fullname="OneStrokeDemon.Tests.EditMode.T230.InvalidConfigTests.IncompatibleAndMalformedContentVersionsFail" methodname="IncompatibleAndMalformedContentVersionsFail" classname="OneStrokeDemon.Tests.EditMode.T230.InvalidConfigTests" runstate="Runnable" seed="1105160429" result="Passed" start-time="2026-07-13 18:46:01Z" end-time="2026-07-13 18:46:01Z" duration="0.126806" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1149" name="JsonCommentsFailStrictParsing" fullname="OneStrokeDemon.Tests.EditMode.T230.InvalidConfigTests.JsonCommentsFailStrictParsing" methodname="JsonCommentsFailStrictParsing" classname="OneStrokeDemon.Tests.EditMode.T230.InvalidConfigTests" runstate="Runnable" seed="470254592" result="Passed" start-time="2026-07-13 18:46:01Z" end-time="2026-07-13 18:46:01Z" duration="0.000586" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1147" name="MissingNullAndUnknownMembersFailStrictJsonContract" fullname="OneStrokeDemon.Tests.EditMode.T230.InvalidConfigTests.MissingNullAndUnknownMembersFailStrictJsonContract" methodname="MissingNullAndUnknownMembersFailStrictJsonContract" classname="OneStrokeDemon.Tests.EditMode.T230.InvalidConfigTests" runstate="Runnable" seed="1261431610" result="Passed" start-time="2026-07-13 18:46:01Z" end-time="2026-07-13 18:46:01Z" duration="0.079690" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1152" name="RootAndGlobalVersionsMustAgreeEvenWhenHashIsValid" fullname="OneStrokeDemon.Tests.EditMode.T230.InvalidConfigTests.RootAndGlobalVersionsMustAgreeEvenWhenHashIsValid" methodname="RootAndGlobalVersionsMustAgreeEvenWhenHashIsValid" classname="OneStrokeDemon.Tests.EditMode.T230.InvalidConfigTests" runstate="Runnable" seed="1546312421" result="Passed" start-time="2026-07-13 18:46:01Z" end-time="2026-07-13 18:46:01Z" duration="0.028456" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1151" name="TamperedContentAndMalformedHashFailHashVerification" fullname="OneStrokeDemon.Tests.EditMode.T230.InvalidConfigTests.TamperedContentAndMalformedHashFailHashVerification" methodname="TamperedContentAndMalformedHashFailHashVerification" classname="OneStrokeDemon.Tests.EditMode.T230.InvalidConfigTests" runstate="Runnable" seed="1945865587" result="Passed" start-time="2026-07-13 18:46:01Z" end-time="2026-07-13 18:46:01Z" duration="0.058524" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1145" name="UnsupportedSchemaVersionFailsBeforePublication" fullname="OneStrokeDemon.Tests.EditMode.T230.InvalidConfigTests.UnsupportedSchemaVersionFailsBeforePublication" methodname="UnsupportedSchemaVersionFailsBeforePublication" classname="OneStrokeDemon.Tests.EditMode.T230.InvalidConfigTests" runstate="Runnable" seed="851493992" result="Passed" start-time="2026-07-13 18:46:01Z" end-time="2026-07-13 18:46:01Z" duration="0.033404" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+              </test-suite>
+              <test-suite type="TestFixture" id="1153" name="RuntimeConfigLoadTests" fullname="OneStrokeDemon.Tests.EditMode.T230.RuntimeConfigLoadTests" classname="OneStrokeDemon.Tests.EditMode.T230.RuntimeConfigLoadTests" runstate="Runnable" testcasecount="3" result="Passed" start-time="2026-07-13 18:46:01Z" end-time="2026-07-13 18:46:01Z" duration="0.079830" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+                <properties>
+                  <property name="Category" value="ConfigPipeline" />
+                </properties>
+                <test-case id="1154" name="GeneratedSnapshotLoadsOnceAndBuildsReadOnlyIndexes" fullname="OneStrokeDemon.Tests.EditMode.T230.RuntimeConfigLoadTests.GeneratedSnapshotLoadsOnceAndBuildsReadOnlyIndexes" methodname="GeneratedSnapshotLoadsOnceAndBuildsReadOnlyIndexes" classname="OneStrokeDemon.Tests.EditMode.T230.RuntimeConfigLoadTests" runstate="Runnable" seed="400397415" result="Passed" start-time="2026-07-13 18:46:01Z" end-time="2026-07-13 18:46:01Z" duration="0.021608" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1156" name="RuntimeDtosExactlyMatchFrozenJsonSchemaAndExposeNoPublicSetters" fullname="OneStrokeDemon.Tests.EditMode.T230.RuntimeConfigLoadTests.RuntimeDtosExactlyMatchFrozenJsonSchemaAndExposeNoPublicSetters" methodname="RuntimeDtosExactlyMatchFrozenJsonSchemaAndExposeNoPublicSetters" classname="OneStrokeDemon.Tests.EditMode.T230.RuntimeConfigLoadTests" runstate="Runnable" seed="1176331505" result="Passed" start-time="2026-07-13 18:46:01Z" end-time="2026-07-13 18:46:01Z" duration="0.012264" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1155" name="UnknownLookupFailsWithTableFieldAndRequestedId" fullname="OneStrokeDemon.Tests.EditMode.T230.RuntimeConfigLoadTests.UnknownLookupFailsWithTableFieldAndRequestedId" methodname="UnknownLookupFailsWithTableFieldAndRequestedId" classname="OneStrokeDemon.Tests.EditMode.T230.RuntimeConfigLoadTests" runstate="Runnable" seed="1350009093" result="Passed" start-time="2026-07-13 18:46:01Z" end-time="2026-07-13 18:46:01Z" duration="0.012523" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+              </test-suite>
+            </test-suite>
+            <test-suite type="TestSuite" id="1175" name="T240" fullname="OneStrokeDemon.Tests.EditMode.T240" runstate="Runnable" testcasecount="5" result="Passed" start-time="2026-07-13 18:46:01Z" end-time="2026-07-13 18:46:02Z" duration="0.481729" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-suite type="TestFixture" id="1137" name="AssetRegistryValidationTests" fullname="OneStrokeDemon.Tests.EditMode.T240.AssetRegistryValidationTests" classname="OneStrokeDemon.Tests.EditMode.T240.AssetRegistryValidationTests" runstate="Runnable" testcasecount="5" result="Passed" start-time="2026-07-13 18:46:01Z" end-time="2026-07-13 18:46:02Z" duration="0.329267" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
+                <properties>
+                  <property name="Category" value="ConfigPipeline" />
+                </properties>
+                <test-case id="1140" name="BuildGateConvertsInvalidRegistryIntoBuildFailure" fullname="OneStrokeDemon.Tests.EditMode.T240.AssetRegistryValidationTests.BuildGateConvertsInvalidRegistryIntoBuildFailure" methodname="BuildGateConvertsInvalidRegistryIntoBuildFailure" classname="OneStrokeDemon.Tests.EditMode.T240.AssetRegistryValidationTests" runstate="Runnable" seed="115400984" result="Passed" start-time="2026-07-13 18:46:02Z" end-time="2026-07-13 18:46:02Z" duration="0.039713" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1138" name="CanonicalRegistryCoversEveryManifestKeyWithPersistentTypedAssets" fullname="OneStrokeDemon.Tests.EditMode.T240.AssetRegistryValidationTests.CanonicalRegistryCoversEveryManifestKeyWithPersistentTypedAssets" methodname="CanonicalRegistryCoversEveryManifestKeyWithPersistentTypedAssets" classname="OneStrokeDemon.Tests.EditMode.T240.AssetRegistryValidationTests" runstate="Runnable" seed="1063558005" result="Passed" start-time="2026-07-13 18:46:02Z" end-time="2026-07-13 18:46:02Z" duration="0.052578" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1139" name="EmptyNullDuplicateMissingExtraAndWrongTypeEntriesRejectWholeRegistry" fullname="OneStrokeDemon.Tests.EditMode.T240.AssetRegistryValidationTests.EmptyNullDuplicateMissingExtraAndWrongTypeEntriesRejectWholeRegistry" methodname="EmptyNullDuplicateMissingExtraAndWrongTypeEntriesRejectWholeRegistry" classname="OneStrokeDemon.Tests.EditMode.T240.AssetRegistryValidationTests" runstate="Runnable" seed="619124668" result="Passed" start-time="2026-07-13 18:46:02Z" end-time="2026-07-13 18:46:02Z" duration="0.011701" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1142" name="RegistrySerializedFieldsContainOnlyKeysObjectAndSceneReference" fullname="OneStrokeDemon.Tests.EditMode.T240.AssetRegistryValidationTests.RegistrySerializedFieldsContainOnlyKeysObjectAndSceneReference" methodname="RegistrySerializedFieldsContainOnlyKeysObjectAndSceneReference" classname="OneStrokeDemon.Tests.EditMode.T240.AssetRegistryValidationTests" runstate="Runnable" seed="352493362" result="Passed" start-time="2026-07-13 18:46:02Z" end-time="2026-07-13 18:46:02Z" duration="0.011458" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1141" name="ReplacingObjectKeepsStableConfigIdAndTypedLookup" fullname="OneStrokeDemon.Tests.EditMode.T240.AssetRegistryValidationTests.ReplacingObjectKeepsStableConfigIdAndTypedLookup" methodname="ReplacingObjectKeepsStableConfigIdAndTypedLookup" classname="OneStrokeDemon.Tests.EditMode.T240.AssetRegistryValidationTests" runstate="Runnable" seed="213259810" result="Passed" start-time="2026-07-13 18:46:02Z" end-time="2026-07-13 18:46:02Z" duration="0.012043" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+              </test-suite>
+            </test-suite>
+            <test-suite type="TestSuite" id="1174" name="T250" fullname="OneStrokeDemon.Tests.EditMode.T250" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-07-13 18:46:02Z" end-time="2026-07-13 18:46:02Z" duration="0.230172" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-suite type="TestFixture" id="1134" name="GeneratedConfigPipelineTests" fullname="OneStrokeDemon.Tests.EditMode.T250.GeneratedConfigPipelineTests" classname="OneStrokeDemon.Tests.EditMode.T250.GeneratedConfigPipelineTests" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-07-13 18:46:02Z" end-time="2026-07-13 18:46:02Z" duration="0.159655" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+                <properties>
+                  <property name="Category" value="ConfigPipeline" />
+                </properties>
+                <test-case id="1136" name="GeneratedConstantsCoverStableIdsAndDriveTypedConfigLookups" fullname="OneStrokeDemon.Tests.EditMode.T250.GeneratedConfigPipelineTests.GeneratedConstantsCoverStableIdsAndDriveTypedConfigLookups" methodname="GeneratedConstantsCoverStableIdsAndDriveTypedConfigLookups" classname="OneStrokeDemon.Tests.EditMode.T250.GeneratedConfigPipelineTests" runstate="Runnable" seed="267930406" result="Passed" start-time="2026-07-13 18:46:02Z" end-time="2026-07-13 18:46:02Z" duration="0.042281" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1135" name="GeneratedHashMetadataAndAssemblyMatchRuntimeSnapshot" fullname="OneStrokeDemon.Tests.EditMode.T250.GeneratedConfigPipelineTests.GeneratedHashMetadataAndAssemblyMatchRuntimeSnapshot" methodname="GeneratedHashMetadataAndAssemblyMatchRuntimeSnapshot" classname="OneStrokeDemon.Tests.EditMode.T250.GeneratedConfigPipelineTests" runstate="Runnable" seed="419658750" result="Passed" start-time="2026-07-13 18:46:02Z" end-time="2026-07-13 18:46:02Z" duration="0.016760" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+              </test-suite>
+            </test-suite>
+            <test-suite type="TestSuite" id="1173" name="T300" fullname="OneStrokeDemon.Tests.EditMode.T300" runstate="Runnable" testcasecount="5" result="Passed" start-time="2026-07-13 18:46:02Z" end-time="2026-07-13 18:46:02Z" duration="0.251657" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-suite type="TestFixture" id="1128" name="PointerInputTests" fullname="OneStrokeDemon.Tests.EditMode.T300.PointerInputTests" classname="OneStrokeDemon.Tests.EditMode.T300.PointerInputTests" runstate="Runnable" testcasecount="5" result="Passed" start-time="2026-07-13 18:46:02Z" end-time="2026-07-13 18:46:02Z" duration="0.110969" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
+                <properties>
+                  <property name="Category" value="PointerInput" />
+                </properties>
+                <test-case id="1133" name="CancellationIsTerminalExplicitAndIdempotent" fullname="OneStrokeDemon.Tests.EditMode.T300.PointerInputTests.CancellationIsTerminalExplicitAndIdempotent" methodname="CancellationIsTerminalExplicitAndIdempotent" classname="OneStrokeDemon.Tests.EditMode.T300.PointerInputTests" runstate="Runnable" seed="1111451094" result="Passed" start-time="2026-07-13 18:46:02Z" end-time="2026-07-13 18:46:02Z" duration="0.004458" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1132" name="ProcessorAllowsOnlyOneActivePointer" fullname="OneStrokeDemon.Tests.EditMode.T300.PointerInputTests.ProcessorAllowsOnlyOneActivePointer" methodname="ProcessorAllowsOnlyOneActivePointer" classname="OneStrokeDemon.Tests.EditMode.T300.PointerInputTests" runstate="Runnable" seed="228622967" result="Passed" start-time="2026-07-13 18:46:02Z" end-time="2026-07-13 18:46:02Z" duration="0.000840" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1131" name="ProcessorBlocksUiOnlyAtBeginAndKeepsAcceptedPointerContinuous" fullname="OneStrokeDemon.Tests.EditMode.T300.PointerInputTests.ProcessorBlocksUiOnlyAtBeginAndKeepsAcceptedPointerContinuous" methodname="ProcessorBlocksUiOnlyAtBeginAndKeepsAcceptedPointerContinuous" classname="OneStrokeDemon.Tests.EditMode.T300.PointerInputTests" runstate="Runnable" seed="1050827322" result="Passed" start-time="2026-07-13 18:46:02Z" end-time="2026-07-13 18:46:02Z" duration="0.002935" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1129" name="ReferencePixelConverterMapsSafeAreaToConfiguredReferencePixels" fullname="OneStrokeDemon.Tests.EditMode.T300.PointerInputTests.ReferencePixelConverterMapsSafeAreaToConfiguredReferencePixels" methodname="ReferencePixelConverterMapsSafeAreaToConfiguredReferencePixels" classname="OneStrokeDemon.Tests.EditMode.T300.PointerInputTests" runstate="Runnable" seed="696532352" result="Passed" start-time="2026-07-13 18:46:02Z" end-time="2026-07-13 18:46:02Z" duration="0.000370" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1130" name="ReferencePixelConverterRejectsOutsideBeginsAndClampsActiveMotion" fullname="OneStrokeDemon.Tests.EditMode.T300.PointerInputTests.ReferencePixelConverterRejectsOutsideBeginsAndClampsActiveMotion" methodname="ReferencePixelConverterRejectsOutsideBeginsAndClampsActiveMotion" classname="OneStrokeDemon.Tests.EditMode.T300.PointerInputTests" runstate="Runnable" seed="1480166988" result="Passed" start-time="2026-07-13 18:46:02Z" end-time="2026-07-13 18:46:02Z" duration="0.000447" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+              </test-suite>
+            </test-suite>
+            <test-suite type="TestSuite" id="1172" name="T310" fullname="OneStrokeDemon.Tests.EditMode.T310" runstate="Runnable" testcasecount="9" result="Passed" start-time="2026-07-13 18:46:02Z" end-time="2026-07-13 18:46:03Z" duration="0.334617" total="9" passed="9" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-suite type="TestFixture" id="1118" name="StrokeSamplerBoundaryTests" fullname="OneStrokeDemon.Tests.EditMode.T310.StrokeSamplerBoundaryTests" classname="OneStrokeDemon.Tests.EditMode.T310.StrokeSamplerBoundaryTests" runstate="Runnable" testcasecount="9" result="Passed" start-time="2026-07-13 18:46:02Z" end-time="2026-07-13 18:46:03Z" duration="0.144878" total="9" passed="9" failed="0" inconclusive="0" skipped="0" asserts="0">
+                <properties>
+                  <property name="Category" value="StrokeSampling" />
+                </properties>
+                <test-case id="1127" name="AcceptedPointHotPathDoesNotAllocateManagedMemory" fullname="OneStrokeDemon.Tests.EditMode.T310.StrokeSamplerBoundaryTests.AcceptedPointHotPathDoesNotAllocateManagedMemory" methodname="AcceptedPointHotPathDoesNotAllocateManagedMemory" classname="OneStrokeDemon.Tests.EditMode.T310.StrokeSamplerBoundaryTests" runstate="Runnable" seed="867979082" result="Passed" start-time="2026-07-13 18:46:03Z" end-time="2026-07-13 18:46:03Z" duration="0.002677" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1124" name="CollectorConvertsPointerEndAndCancellationIntoDistinctStrokeEvents" fullname="OneStrokeDemon.Tests.EditMode.T310.StrokeSamplerBoundaryTests.CollectorConvertsPointerEndAndCancellationIntoDistinctStrokeEvents" methodname="CollectorConvertsPointerEndAndCancellationIntoDistinctStrokeEvents" classname="OneStrokeDemon.Tests.EditMode.T310.StrokeSamplerBoundaryTests" runstate="Runnable" seed="129109107" result="Passed" start-time="2026-07-13 18:46:03Z" end-time="2026-07-13 18:46:03Z" duration="0.009807" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1125" name="CollectorPublishesAnAutomaticallyClippedStrokeOnlyOnce" fullname="OneStrokeDemon.Tests.EditMode.T310.StrokeSamplerBoundaryTests.CollectorPublishesAnAutomaticallyClippedStrokeOnlyOnce" methodname="CollectorPublishesAnAutomaticallyClippedStrokeOnlyOnce" classname="OneStrokeDemon.Tests.EditMode.T310.StrokeSamplerBoundaryTests" runstate="Runnable" seed="362702051" result="Passed" start-time="2026-07-13 18:46:03Z" end-time="2026-07-13 18:46:03Z" duration="0.002440" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1122" name="CompletedDataIsImmutableAndUnaffectedBySamplerReuse" fullname="OneStrokeDemon.Tests.EditMode.T310.StrokeSamplerBoundaryTests.CompletedDataIsImmutableAndUnaffectedBySamplerReuse" methodname="CompletedDataIsImmutableAndUnaffectedBySamplerReuse" classname="OneStrokeDemon.Tests.EditMode.T310.StrokeSamplerBoundaryTests" runstate="Runnable" seed="1417346" result="Passed" start-time="2026-07-13 18:46:03Z" end-time="2026-07-13 18:46:03Z" duration="0.001104" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1126" name="InvalidSamplingLimitsAreRejectedBeforeCapture" fullname="OneStrokeDemon.Tests.EditMode.T310.StrokeSamplerBoundaryTests.InvalidSamplingLimitsAreRejectedBeforeCapture" methodname="InvalidSamplingLimitsAreRejectedBeforeCapture" classname="OneStrokeDemon.Tests.EditMode.T310.StrokeSamplerBoundaryTests" runstate="Runnable" seed="1501738096" result="Passed" start-time="2026-07-13 18:46:03Z" end-time="2026-07-13 18:46:03Z" duration="0.000773" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1121" name="MaximumPointCountCompletesOnceAtTheLastAcceptedPoint" fullname="OneStrokeDemon.Tests.EditMode.T310.StrokeSamplerBoundaryTests.MaximumPointCountCompletesOnceAtTheLastAcceptedPoint" methodname="MaximumPointCountCompletesOnceAtTheLastAcceptedPoint" classname="OneStrokeDemon.Tests.EditMode.T310.StrokeSamplerBoundaryTests" runstate="Runnable" seed="183279978" result="Passed" start-time="2026-07-13 18:46:03Z" end-time="2026-07-13 18:46:03Z" duration="0.000946" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1123" name="RuntimeSettingsAreMappedFromTheSelectedStrokeRule" fullname="OneStrokeDemon.Tests.EditMode.T310.StrokeSamplerBoundaryTests.RuntimeSettingsAreMappedFromTheSelectedStrokeRule" methodname="RuntimeSettingsAreMappedFromTheSelectedStrokeRule" classname="OneStrokeDemon.Tests.EditMode.T310.StrokeSamplerBoundaryTests" runstate="Runnable" seed="145399437" result="Passed" start-time="2026-07-13 18:46:03Z" end-time="2026-07-13 18:46:03Z" duration="0.023881" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1120" name="SegmentCrossingMaximumLengthIsClippedAtExactPathDistance" fullname="OneStrokeDemon.Tests.EditMode.T310.StrokeSamplerBoundaryTests.SegmentCrossingMaximumLengthIsClippedAtExactPathDistance" methodname="SegmentCrossingMaximumLengthIsClippedAtExactPathDistance" classname="OneStrokeDemon.Tests.EditMode.T310.StrokeSamplerBoundaryTests" runstate="Runnable" seed="1639650884" result="Passed" start-time="2026-07-13 18:46:03Z" end-time="2026-07-13 18:46:03Z" duration="0.000904" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1119" name="ShortJitterIsFilteredAndThresholdDistanceIsAccepted" fullname="OneStrokeDemon.Tests.EditMode.T310.StrokeSamplerBoundaryTests.ShortJitterIsFilteredAndThresholdDistanceIsAccepted" methodname="ShortJitterIsFilteredAndThresholdDistanceIsAccepted" classname="OneStrokeDemon.Tests.EditMode.T310.StrokeSamplerBoundaryTests" runstate="Runnable" seed="1242559246" result="Passed" start-time="2026-07-13 18:46:03Z" end-time="2026-07-13 18:46:03Z" duration="0.000267" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+              </test-suite>
+            </test-suite>
+            <test-suite type="TestSuite" id="1171" name="T320" fullname="OneStrokeDemon.Tests.EditMode.T320" runstate="Runnable" testcasecount="12" result="Passed" start-time="2026-07-13 18:46:03Z" end-time="2026-07-13 18:46:03Z" duration="0.295609" total="12" passed="12" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-suite type="TestFixture" id="1105" name="StrokeGeometryTests" fullname="OneStrokeDemon.Tests.EditMode.T320.StrokeGeometryTests" classname="OneStrokeDemon.Tests.EditMode.T320.StrokeGeometryTests" runstate="Runnable" testcasecount="12" result="Passed" start-time="2026-07-13 18:46:03Z" end-time="2026-07-13 18:46:03Z" duration="0.240846" total="12" passed="12" failed="0" inconclusive="0" skipped="0" asserts="0">
+                <properties>
+                  <property name="Category" value="StrokeGeometry" />
+                </properties>
+                <test-case id="1113" name="CircleMetricsRemainStableAndReplayableAfterProcessing" fullname="OneStrokeDemon.Tests.EditMode.T320.StrokeGeometryTests.CircleMetricsRemainStableAndReplayableAfterProcessing" methodname="CircleMetricsRemainStableAndReplayableAfterProcessing" classname="OneStrokeDemon.Tests.EditMode.T320.StrokeGeometryTests" runstate="Runnable" seed="1009254897" result="Passed" start-time="2026-07-13 18:46:03Z" end-time="2026-07-13 18:46:03Z" duration="0.006201" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1111" name="CurvatureSeparatesDirectionFromTotalTurning" fullname="OneStrokeDemon.Tests.EditMode.T320.StrokeGeometryTests.CurvatureSeparatesDirectionFromTotalTurning" methodname="CurvatureSeparatesDirectionFromTotalTurning" classname="OneStrokeDemon.Tests.EditMode.T320.StrokeGeometryTests" runstate="Runnable" seed="1954703994" result="Passed" start-time="2026-07-13 18:46:03Z" end-time="2026-07-13 18:46:03Z" duration="0.000840" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1114" name="EmptyDuplicateAndSinglePointInputsHaveDefinedDegenerateResults" fullname="OneStrokeDemon.Tests.EditMode.T320.StrokeGeometryTests.EmptyDuplicateAndSinglePointInputsHaveDefinedDegenerateResults" methodname="EmptyDuplicateAndSinglePointInputsHaveDefinedDegenerateResults" classname="OneStrokeDemon.Tests.EditMode.T320.StrokeGeometryTests" runstate="Runnable" seed="638489130" result="Passed" start-time="2026-07-13 18:46:03Z" end-time="2026-07-13 18:46:03Z" duration="0.002979" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1116" name="GeometrySettingsAreMappedFromTheSelectedStrokeRule" fullname="OneStrokeDemon.Tests.EditMode.T320.StrokeGeometryTests.GeometrySettingsAreMappedFromTheSelectedStrokeRule" methodname="GeometrySettingsAreMappedFromTheSelectedStrokeRule" classname="OneStrokeDemon.Tests.EditMode.T320.StrokeGeometryTests" runstate="Runnable" seed="1907818918" result="Passed" start-time="2026-07-13 18:46:03Z" end-time="2026-07-13 18:46:03Z" duration="0.026543" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1117" name="InvalidToleranceCountsAndCoordinatesFailExplicitly" fullname="OneStrokeDemon.Tests.EditMode.T320.StrokeGeometryTests.InvalidToleranceCountsAndCoordinatesFailExplicitly" methodname="InvalidToleranceCountsAndCoordinatesFailExplicitly" classname="OneStrokeDemon.Tests.EditMode.T320.StrokeGeometryTests" runstate="Runnable" seed="2003111824" result="Passed" start-time="2026-07-13 18:46:03Z" end-time="2026-07-13 18:46:03Z" duration="0.000834" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1115" name="ProcessedPointsAreImmutableAndPreserveSourceMetadata" fullname="OneStrokeDemon.Tests.EditMode.T320.StrokeGeometryTests.ProcessedPointsAreImmutableAndPreserveSourceMetadata" methodname="ProcessedPointsAreImmutableAndPreserveSourceMetadata" classname="OneStrokeDemon.Tests.EditMode.T320.StrokeGeometryTests" runstate="Runnable" seed="2460063" result="Passed" start-time="2026-07-13 18:46:03Z" end-time="2026-07-13 18:46:03Z" duration="0.000496" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1109" name="ProcessSimplifiesThenCapsPointsWithArcLengthResampling" fullname="OneStrokeDemon.Tests.EditMode.T320.StrokeGeometryTests.ProcessSimplifiesThenCapsPointsWithArcLengthResampling" methodname="ProcessSimplifiesThenCapsPointsWithArcLengthResampling" classname="OneStrokeDemon.Tests.EditMode.T320.StrokeGeometryTests" runstate="Runnable" seed="686211485" result="Passed" start-time="2026-07-13 18:46:03Z" end-time="2026-07-13 18:46:03Z" duration="0.000416" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1112" name="QuarterArcCurvatureIsStableAcrossReferencePixelScale" fullname="OneStrokeDemon.Tests.EditMode.T320.StrokeGeometryTests.QuarterArcCurvatureIsStableAcrossReferencePixelScale" methodname="QuarterArcCurvatureIsStableAcrossReferencePixelScale" classname="OneStrokeDemon.Tests.EditMode.T320.StrokeGeometryTests" runstate="Runnable" seed="1337252612" result="Passed" start-time="2026-07-13 18:46:03Z" end-time="2026-07-13 18:46:03Z" duration="0.000222" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1106" name="RdpSimplifiesACollinearStrokeAndPreservesItsEndpoints" fullname="OneStrokeDemon.Tests.EditMode.T320.StrokeGeometryTests.RdpSimplifiesACollinearStrokeAndPreservesItsEndpoints" methodname="RdpSimplifiesACollinearStrokeAndPreservesItsEndpoints" classname="OneStrokeDemon.Tests.EditMode.T320.StrokeGeometryTests" runstate="Runnable" seed="465956792" result="Passed" start-time="2026-07-13 18:46:03Z" end-time="2026-07-13 18:46:03Z" duration="0.000127" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1107" name="RdpUsesAnInclusiveToleranceAndKeepsAnOutsideCorner" fullname="OneStrokeDemon.Tests.EditMode.T320.StrokeGeometryTests.RdpUsesAnInclusiveToleranceAndKeepsAnOutsideCorner" methodname="RdpUsesAnInclusiveToleranceAndKeepsAnOutsideCorner" classname="OneStrokeDemon.Tests.EditMode.T320.StrokeGeometryTests" runstate="Runnable" seed="2105057488" result="Passed" start-time="2026-07-13 18:46:03Z" end-time="2026-07-13 18:46:03Z" duration="0.000125" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1110" name="RectangleMetricsUseTheSameClosedPointSet" fullname="OneStrokeDemon.Tests.EditMode.T320.StrokeGeometryTests.RectangleMetricsUseTheSameClosedPointSet" methodname="RectangleMetricsUseTheSameClosedPointSet" classname="OneStrokeDemon.Tests.EditMode.T320.StrokeGeometryTests" runstate="Runnable" seed="213197068" result="Passed" start-time="2026-07-13 18:46:03Z" end-time="2026-07-13 18:46:03Z" duration="0.000382" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1108" name="ResamplePlacesPointsAtUniformPathDistancesAcrossACorner" fullname="OneStrokeDemon.Tests.EditMode.T320.StrokeGeometryTests.ResamplePlacesPointsAtUniformPathDistancesAcrossACorner" methodname="ResamplePlacesPointsAtUniformPathDistancesAcrossACorner" classname="OneStrokeDemon.Tests.EditMode.T320.StrokeGeometryTests" runstate="Runnable" seed="1251147216" result="Passed" start-time="2026-07-13 18:46:03Z" end-time="2026-07-13 18:46:03Z" duration="0.000186" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+              </test-suite>
+            </test-suite>
+            <test-suite type="TestSuite" id="1170" name="T330" fullname="OneStrokeDemon.Tests.EditMode.T330" runstate="Runnable" testcasecount="14" result="Passed" start-time="2026-07-13 18:46:03Z" end-time="2026-07-13 18:46:03Z" duration="0.580167" total="14" passed="14" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-suite type="TestFixture" id="1089" name="GestureClassifierTests" fullname="OneStrokeDemon.Tests.EditMode.T330.GestureClassifierTests" classname="OneStrokeDemon.Tests.EditMode.T330.GestureClassifierTests" runstate="Runnable" testcasecount="14" result="Passed" start-time="2026-07-13 18:46:03Z" end-time="2026-07-13 18:46:03Z" duration="0.521667" total="14" passed="14" failed="0" inconclusive="0" skipped="0" asserts="0">
+                <properties>
+                  <property name="Category" value="GestureClassifier" />
+                </properties>
+                <test-case id="1101" name="AnyIsOnlyAConfiguredFallbackAndTooShortStrokeDoesNotMatch" fullname="OneStrokeDemon.Tests.EditMode.T330.GestureClassifierTests.AnyIsOnlyAConfiguredFallbackAndTooShortStrokeDoesNotMatch" methodname="AnyIsOnlyAConfiguredFallbackAndTooShortStrokeDoesNotMatch" classname="OneStrokeDemon.Tests.EditMode.T330.GestureClassifierTests" runstate="Runnable" seed="1835115185" result="Passed" start-time="2026-07-13 18:46:03Z" end-time="2026-07-13 18:46:03Z" duration="0.031007" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1100" name="ChargeUsesInitialHoldInsteadOfWholeSlowDrawingDuration" fullname="OneStrokeDemon.Tests.EditMode.T330.GestureClassifierTests.ChargeUsesInitialHoldInsteadOfWholeSlowDrawingDuration" methodname="ChargeUsesInitialHoldInsteadOfWholeSlowDrawingDuration" classname="OneStrokeDemon.Tests.EditMode.T330.GestureClassifierTests" runstate="Runnable" seed="1497425377" result="Passed" start-time="2026-07-13 18:46:03Z" end-time="2026-07-13 18:46:03Z" duration="0.021306" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1099" name="LargeClosedLoopMatchesCircleBeforeArc" fullname="OneStrokeDemon.Tests.EditMode.T330.GestureClassifierTests.LargeClosedLoopMatchesCircleBeforeArc" methodname="LargeClosedLoopMatchesCircleBeforeArc" classname="OneStrokeDemon.Tests.EditMode.T330.GestureClassifierTests" runstate="Runnable" seed="165122259" result="Passed" start-time="2026-07-13 18:46:03Z" end-time="2026-07-13 18:46:03Z" duration="0.020217" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1098" name="OpenArcMatchesArcBeforeItsDiagonalChord" fullname="OneStrokeDemon.Tests.EditMode.T330.GestureClassifierTests.OpenArcMatchesArcBeforeItsDiagonalChord" methodname="OpenArcMatchesArcBeforeItsDiagonalChord" classname="OneStrokeDemon.Tests.EditMode.T330.GestureClassifierTests" runstate="Runnable" seed="892625665" result="Passed" start-time="2026-07-13 18:46:03Z" end-time="2026-07-13 18:46:03Z" duration="0.014929" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1103" name="ReplayProducesExactlyTheSameClassificationAndSummary" fullname="OneStrokeDemon.Tests.EditMode.T330.GestureClassifierTests.ReplayProducesExactlyTheSameClassificationAndSummary" methodname="ReplayProducesExactlyTheSameClassificationAndSummary" classname="OneStrokeDemon.Tests.EditMode.T330.GestureClassifierTests" runstate="Runnable" seed="757760987" result="Passed" start-time="2026-07-13 18:46:03Z" end-time="2026-07-13 18:46:03Z" duration="0.036752" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1090" name="RuntimeStrokeRulesMapAllRecognitionThresholdsIntoReadOnlyRules" fullname="OneStrokeDemon.Tests.EditMode.T330.GestureClassifierTests.RuntimeStrokeRulesMapAllRecognitionThresholdsIntoReadOnlyRules" methodname="RuntimeStrokeRulesMapAllRecognitionThresholdsIntoReadOnlyRules" classname="OneStrokeDemon.Tests.EditMode.T330.GestureClassifierTests" runstate="Runnable" seed="1569121289" result="Passed" start-time="2026-07-13 18:46:03Z" end-time="2026-07-13 18:46:03Z" duration="0.012487" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-suite type="ParameterizedMethod" id="1097" name="StraightStrokesUseUndirectedConfiguredAngleClasses" fullname="OneStrokeDemon.Tests.EditMode.T330.GestureClassifierTests.StraightStrokesUseUndirectedConfiguredAngleClasses" classname="OneStrokeDemon.Tests.EditMode.T330.GestureClassifierTests" runstate="Runnable" testcasecount="6" result="Passed" start-time="2026-07-13 18:46:03Z" end-time="2026-07-13 18:46:03Z" duration="0.134762" total="6" passed="6" failed="0" inconclusive="0" skipped="0" asserts="0">
+                  <properties />
+                  <test-case id="1091" name="StraightStrokesUseUndirectedConfiguredAngleClasses(200.0f,0.0f,Horizontal,0.0f)" fullname="OneStrokeDemon.Tests.EditMode.T330.GestureClassifierTests.StraightStrokesUseUndirectedConfiguredAngleClasses(200.0f,0.0f,Horizontal,0.0f)" methodname="StraightStrokesUseUndirectedConfiguredAngleClasses" classname="OneStrokeDemon.Tests.EditMode.T330.GestureClassifierTests" runstate="Runnable" seed="723547084" result="Passed" start-time="2026-07-13 18:46:03Z" end-time="2026-07-13 18:46:03Z" duration="0.014316" asserts="0">
+                    <properties>
+                      <property name="retryIteration" value="0" />
+                      <property name="repeatIteration" value="0" />
+                    </properties>
+                  </test-case>
+                  <test-case id="1092" name="StraightStrokesUseUndirectedConfiguredAngleClasses(-200.0f,0.0f,Horizontal,0.0f)" fullname="OneStrokeDemon.Tests.EditMode.T330.GestureClassifierTests.StraightStrokesUseUndirectedConfiguredAngleClasses(-200.0f,0.0f,Horizontal,0.0f)" methodname="StraightStrokesUseUndirectedConfiguredAngleClasses" classname="OneStrokeDemon.Tests.EditMode.T330.GestureClassifierTests" runstate="Runnable" seed="1543322308" result="Passed" start-time="2026-07-13 18:46:03Z" end-time="2026-07-13 18:46:03Z" duration="0.012638" asserts="0">
+                    <properties>
+                      <property name="retryIteration" value="0" />
+                      <property name="repeatIteration" value="0" />
+                    </properties>
+                  </test-case>
+                  <test-case id="1093" name="StraightStrokesUseUndirectedConfiguredAngleClasses(0.0f,200.0f,Vertical,90.0f)" fullname="OneStrokeDemon.Tests.EditMode.T330.GestureClassifierTests.StraightStrokesUseUndirectedConfiguredAngleClasses(0.0f,200.0f,Vertical,90.0f)" methodname="StraightStrokesUseUndirectedConfiguredAngleClasses" classname="OneStrokeDemon.Tests.EditMode.T330.GestureClassifierTests" runstate="Runnable" seed="1495545581" result="Passed" start-time="2026-07-13 18:46:03Z" end-time="2026-07-13 18:46:03Z" duration="0.011590" asserts="0">
+                    <properties>
+                      <property name="retryIteration" value="0" />
+                      <property name="repeatIteration" value="0" />
+                    </properties>
+                  </test-case>
+                  <test-case id="1094" name="StraightStrokesUseUndirectedConfiguredAngleClasses(0.0f,-200.0f,Vertical,90.0f)" fullname="OneStrokeDemon.Tests.EditMode.T330.GestureClassifierTests.StraightStrokesUseUndirectedConfiguredAngleClasses(0.0f,-200.0f,Vertical,90.0f)" methodname="StraightStrokesUseUndirectedConfiguredAngleClasses" classname="OneStrokeDemon.Tests.EditMode.T330.GestureClassifierTests" runstate="Runnable" seed="75058922" result="Passed" start-time="2026-07-13 18:46:03Z" end-time="2026-07-13 18:46:03Z" duration="0.011079" asserts="0">
+                    <properties>
+                      <property name="retryIteration" value="0" />
+                      <property name="repeatIteration" value="0" />
+                    </properties>
+                  </test-case>
+                  <test-case id="1095" name="StraightStrokesUseUndirectedConfiguredAngleClasses(200.0f,200.0f,Diagonal,45.0f)" fullname="OneStrokeDemon.Tests.EditMode.T330.GestureClassifierTests.StraightStrokesUseUndirectedConfiguredAngleClasses(200.0f,200.0f,Diagonal,45.0f)" methodname="StraightStrokesUseUndirectedConfiguredAngleClasses" classname="OneStrokeDemon.Tests.EditMode.T330.GestureClassifierTests" runstate="Runnable" seed="1886258882" result="Passed" start-time="2026-07-13 18:46:03Z" end-time="2026-07-13 18:46:03Z" duration="0.011302" asserts="0">
+                    <properties>
+                      <property name="retryIteration" value="0" />
+                      <property name="repeatIteration" value="0" />
+                    </properties>
+                  </test-case>
+                  <test-case id="1096" name="StraightStrokesUseUndirectedConfiguredAngleClasses(-200.0f,200.0f,Diagonal,135.0f)" fullname="OneStrokeDemon.Tests.EditMode.T330.GestureClassifierTests.StraightStrokesUseUndirectedConfiguredAngleClasses(-200.0f,200.0f,Diagonal,135.0f)" methodname="StraightStrokesUseUndirectedConfiguredAngleClasses" classname="OneStrokeDemon.Tests.EditMode.T330.GestureClassifierTests" runstate="Runnable" seed="1502245680" result="Passed" start-time="2026-07-13 18:46:03Z" end-time="2026-07-13 18:46:03Z" duration="0.011278" asserts="0">
+                    <properties>
+                      <property name="retryIteration" value="0" />
+                      <property name="repeatIteration" value="0" />
+                    </properties>
+                  </test-case>
+                </test-suite>
+                <test-case id="1102" name="TableBoundariesPreventNearHorizontalAndSmallLoopMisclassification" fullname="OneStrokeDemon.Tests.EditMode.T330.GestureClassifierTests.TableBoundariesPreventNearHorizontalAndSmallLoopMisclassification" methodname="TableBoundariesPreventNearHorizontalAndSmallLoopMisclassification" classname="OneStrokeDemon.Tests.EditMode.T330.GestureClassifierTests" runstate="Runnable" seed="1108683162" result="Passed" start-time="2026-07-13 18:46:03Z" end-time="2026-07-13 18:46:03Z" duration="0.011459" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1104" name="UnknownConfiguredTypeAndDuplicatePureRuleIdsFailExplicitly" fullname="OneStrokeDemon.Tests.EditMode.T330.GestureClassifierTests.UnknownConfiguredTypeAndDuplicatePureRuleIdsFailExplicitly" methodname="UnknownConfiguredTypeAndDuplicatePureRuleIdsFailExplicitly" classname="OneStrokeDemon.Tests.EditMode.T330.GestureClassifierTests" runstate="Runnable" seed="875847128" result="Passed" start-time="2026-07-13 18:46:03Z" end-time="2026-07-13 18:46:03Z" duration="0.037467" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+              </test-suite>
+            </test-suite>
+            <test-suite type="TestSuite" id="1169" name="T350" fullname="OneStrokeDemon.Tests.EditMode.T350" runstate="Runnable" testcasecount="6" result="Passed" start-time="2026-07-13 18:46:03Z" end-time="2026-07-13 18:46:04Z" duration="0.380663" total="6" passed="6" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-suite type="TestFixture" id="1082" name="StrokeHitResolverTests" fullname="OneStrokeDemon.Tests.EditMode.T350.StrokeHitResolverTests" classname="OneStrokeDemon.Tests.EditMode.T350.StrokeHitResolverTests" runstate="Runnable" testcasecount="6" result="Passed" start-time="2026-07-13 18:46:04Z" end-time="2026-07-13 18:46:04Z" duration="0.302418" total="6" passed="6" failed="0" inconclusive="0" skipped="0" asserts="0">
+                <properties>
+                  <property name="Category" value="StrokeHitResolver" />
+                </properties>
+                <test-case id="1085" name="DisabledTargetsAreSkippedAndEqualPathUsesStableTargetIdOrder" fullname="OneStrokeDemon.Tests.EditMode.T350.StrokeHitResolverTests.DisabledTargetsAreSkippedAndEqualPathUsesStableTargetIdOrder" methodname="DisabledTargetsAreSkippedAndEqualPathUsesStableTargetIdOrder" classname="OneStrokeDemon.Tests.EditMode.T350.StrokeHitResolverTests" runstate="Runnable" seed="449683554" result="Passed" start-time="2026-07-13 18:46:04Z" end-time="2026-07-13 18:46:04Z" duration="0.032397" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1086" name="NoGestureDoesNotQueryAndMismatchedRuleOrSmallBufferFails" fullname="OneStrokeDemon.Tests.EditMode.T350.StrokeHitResolverTests.NoGestureDoesNotQueryAndMismatchedRuleOrSmallBufferFails" methodname="NoGestureDoesNotQueryAndMismatchedRuleOrSmallBufferFails" classname="OneStrokeDemon.Tests.EditMode.T350.StrokeHitResolverTests" runstate="Runnable" seed="2047707622" result="Passed" start-time="2026-07-13 18:46:04Z" end-time="2026-07-13 18:46:04Z" duration="0.019405" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1087" name="ReplayProducesSameSortedRecordsWithoutRetainingInternalTargets" fullname="OneStrokeDemon.Tests.EditMode.T350.StrokeHitResolverTests.ReplayProducesSameSortedRecordsWithoutRetainingInternalTargets" methodname="ReplayProducesSameSortedRecordsWithoutRetainingInternalTargets" classname="OneStrokeDemon.Tests.EditMode.T350.StrokeHitResolverTests" runstate="Runnable" seed="1897104888" result="Passed" start-time="2026-07-13 18:46:04Z" end-time="2026-07-13 18:46:04Z" duration="0.014285" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1084" name="ResolveSortsByFirstPathContactAndAggregatesWeakpointPerTarget" fullname="OneStrokeDemon.Tests.EditMode.T350.StrokeHitResolverTests.ResolveSortsByFirstPathContactAndAggregatesWeakpointPerTarget" methodname="ResolveSortsByFirstPathContactAndAggregatesWeakpointPerTarget" classname="OneStrokeDemon.Tests.EditMode.T350.StrokeHitResolverTests" runstate="Runnable" seed="317385594" result="Passed" start-time="2026-07-13 18:46:04Z" end-time="2026-07-13 18:46:04Z" duration="0.012736" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1083" name="RuntimeConfigMapsRuleRadiusAndActiveTargetCapacity" fullname="OneStrokeDemon.Tests.EditMode.T350.StrokeHitResolverTests.RuntimeConfigMapsRuleRadiusAndActiveTargetCapacity" methodname="RuntimeConfigMapsRuleRadiusAndActiveTargetCapacity" classname="OneStrokeDemon.Tests.EditMode.T350.StrokeHitResolverTests" runstate="Runnable" seed="1499767110" result="Passed" start-time="2026-07-13 18:46:04Z" end-time="2026-07-13 18:46:04Z" duration="0.011390" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1088" name="WarmResolveHotPathAllocatesNoManagedMemory" fullname="OneStrokeDemon.Tests.EditMode.T350.StrokeHitResolverTests.WarmResolveHotPathAllocatesNoManagedMemory" methodname="WarmResolveHotPathAllocatesNoManagedMemory" classname="OneStrokeDemon.Tests.EditMode.T350.StrokeHitResolverTests" runstate="Runnable" seed="651347167" result="Passed" start-time="2026-07-13 18:46:04Z" end-time="2026-07-13 18:46:04Z" duration="0.011160" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+              </test-suite>
+            </test-suite>
+            <test-suite type="TestSuite" id="1168" name="T360" fullname="OneStrokeDemon.Tests.EditMode.T360" runstate="Runnable" testcasecount="12" result="Passed" start-time="2026-07-13 18:46:04Z" end-time="2026-07-13 18:46:04Z" duration="0.488025" total="12" passed="12" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-suite type="TestFixture" id="1068" name="ComboScoreTests" fullname="OneStrokeDemon.Tests.EditMode.T360.ComboScoreTests" classname="OneStrokeDemon.Tests.EditMode.T360.ComboScoreTests" runstate="Runnable" testcasecount="4" result="Passed" start-time="2026-07-13 18:46:04Z" end-time="2026-07-13 18:46:04Z" duration="0.276960" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+                <properties>
+                  <property name="Category" value="ComboScore" />
+                </properties>
+                <test-case id="1069" name="ComboTimeoutComesFromGlobalAndBoundaryIsInclusive" fullname="OneStrokeDemon.Tests.EditMode.T360.ComboScoreTests.ComboTimeoutComesFromGlobalAndBoundaryIsInclusive" methodname="ComboTimeoutComesFromGlobalAndBoundaryIsInclusive" classname="OneStrokeDemon.Tests.EditMode.T360.ComboScoreTests" runstate="Runnable" seed="1482934410" result="Passed" start-time="2026-07-13 18:46:04Z" end-time="2026-07-13 18:46:04Z" duration="0.027978" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1072" name="ResetAndMonotonicGuardsPreventStaleStatePublication" fullname="OneStrokeDemon.Tests.EditMode.T360.ComboScoreTests.ResetAndMonotonicGuardsPreventStaleStatePublication" methodname="ResetAndMonotonicGuardsPreventStaleStatePublication" classname="OneStrokeDemon.Tests.EditMode.T360.ComboScoreTests" runstate="Runnable" seed="1387948847" result="Passed" start-time="2026-07-13 18:46:04Z" end-time="2026-07-13 18:46:04Z" duration="0.021273" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1070" name="SameStrokeTargetsAdvanceComboAndConfiguredMultiplierCaps" fullname="OneStrokeDemon.Tests.EditMode.T360.ComboScoreTests.SameStrokeTargetsAdvanceComboAndConfiguredMultiplierCaps" methodname="SameStrokeTargetsAdvanceComboAndConfiguredMultiplierCaps" classname="OneStrokeDemon.Tests.EditMode.T360.ComboScoreTests" runstate="Runnable" seed="1373225367" result="Passed" start-time="2026-07-13 18:46:04Z" end-time="2026-07-13 18:46:04Z" duration="0.014477" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1071" name="ScoreServiceAggregatesDamageScoreEnergyAndHitDimensions" fullname="OneStrokeDemon.Tests.EditMode.T360.ComboScoreTests.ScoreServiceAggregatesDamageScoreEnergyAndHitDimensions" methodname="ScoreServiceAggregatesDamageScoreEnergyAndHitDimensions" classname="OneStrokeDemon.Tests.EditMode.T360.ComboScoreTests" runstate="Runnable" seed="20368685" result="Passed" start-time="2026-07-13 18:46:04Z" end-time="2026-07-13 18:46:04Z" duration="0.012608" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+              </test-suite>
+              <test-suite type="TestFixture" id="1073" name="DamageFormulaTests" fullname="OneStrokeDemon.Tests.EditMode.T360.DamageFormulaTests" classname="OneStrokeDemon.Tests.EditMode.T360.DamageFormulaTests" runstate="Runnable" testcasecount="8" result="Passed" start-time="2026-07-13 18:46:04Z" end-time="2026-07-13 18:46:04Z" duration="0.113618" total="8" passed="8" failed="0" inconclusive="0" skipped="0" asserts="0">
+                <properties>
+                  <property name="Category" value="DamageFormula" />
+                </properties>
+                <test-case id="1075" name="BodyHitUsesBaseAndStanceTablesWithAwayFromZeroRounding" fullname="OneStrokeDemon.Tests.EditMode.T360.DamageFormulaTests.BodyHitUsesBaseAndStanceTablesWithAwayFromZeroRounding" methodname="BodyHitUsesBaseAndStanceTablesWithAwayFromZeroRounding" classname="OneStrokeDemon.Tests.EditMode.T360.DamageFormulaTests" runstate="Runnable" seed="2037696327" result="Passed" start-time="2026-07-13 18:46:04Z" end-time="2026-07-13 18:46:04Z" duration="0.012953" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1079" name="CriticalThresholdIsDeterministicAndAddsConfiguredDamageScore" fullname="OneStrokeDemon.Tests.EditMode.T360.DamageFormulaTests.CriticalThresholdIsDeterministicAndAddsConfiguredDamageScore" methodname="CriticalThresholdIsDeterministicAndAddsConfiguredDamageScore" classname="OneStrokeDemon.Tests.EditMode.T360.DamageFormulaTests" runstate="Runnable" seed="443922263" result="Passed" start-time="2026-07-13 18:46:04Z" end-time="2026-07-13 18:46:04Z" duration="0.011737" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1077" name="DirectionMatchAndMissUseBothConfiguredDefenseBranches" fullname="OneStrokeDemon.Tests.EditMode.T360.DamageFormulaTests.DirectionMatchAndMissUseBothConfiguredDefenseBranches" methodname="DirectionMatchAndMissUseBothConfiguredDefenseBranches" classname="OneStrokeDemon.Tests.EditMode.T360.DamageFormulaTests" runstate="Runnable" seed="2135027133" result="Passed" start-time="2026-07-13 18:46:04Z" end-time="2026-07-13 18:46:04Z" duration="0.011096" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1080" name="InvalidContextRandomAndStanceMismatchFailBeforePublication" fullname="OneStrokeDemon.Tests.EditMode.T360.DamageFormulaTests.InvalidContextRandomAndStanceMismatchFailBeforePublication" methodname="InvalidContextRandomAndStanceMismatchFailBeforePublication" classname="OneStrokeDemon.Tests.EditMode.T360.DamageFormulaTests" runstate="Runnable" seed="1197184378" result="Passed" start-time="2026-07-13 18:46:04Z" end-time="2026-07-13 18:46:04Z" duration="0.011495" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1078" name="RequiredStanceParticipatesInDirectionMatch" fullname="OneStrokeDemon.Tests.EditMode.T360.DamageFormulaTests.RequiredStanceParticipatesInDirectionMatch" methodname="RequiredStanceParticipatesInDirectionMatch" classname="OneStrokeDemon.Tests.EditMode.T360.DamageFormulaTests" runstate="Runnable" seed="818509426" result="Passed" start-time="2026-07-13 18:46:04Z" end-time="2026-07-13 18:46:04Z" duration="0.010765" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1074" name="StanceSelectsDamageFormulaThroughRequiredConfigForeignKey" fullname="OneStrokeDemon.Tests.EditMode.T360.DamageFormulaTests.StanceSelectsDamageFormulaThroughRequiredConfigForeignKey" methodname="StanceSelectsDamageFormulaThroughRequiredConfigForeignKey" classname="OneStrokeDemon.Tests.EditMode.T360.DamageFormulaTests" runstate="Runnable" seed="1945687295" result="Passed" start-time="2026-07-13 18:46:04Z" end-time="2026-07-13 18:46:04Z" duration="0.010919" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1081" name="WarmCalculationHotPathAllocatesNoManagedMemory" fullname="OneStrokeDemon.Tests.EditMode.T360.DamageFormulaTests.WarmCalculationHotPathAllocatesNoManagedMemory" methodname="WarmCalculationHotPathAllocatesNoManagedMemory" classname="OneStrokeDemon.Tests.EditMode.T360.DamageFormulaTests" runstate="Runnable" seed="214812014" result="Passed" start-time="2026-07-13 18:46:04Z" end-time="2026-07-13 18:46:04Z" duration="0.010765" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1076" name="WeakpointMultipliersAndBonusesAreIndependentlyAssertable" fullname="OneStrokeDemon.Tests.EditMode.T360.DamageFormulaTests.WeakpointMultipliersAndBonusesAreIndependentlyAssertable" methodname="WeakpointMultipliersAndBonusesAreIndependentlyAssertable" classname="OneStrokeDemon.Tests.EditMode.T360.DamageFormulaTests" runstate="Runnable" seed="319281468" result="Passed" start-time="2026-07-13 18:46:04Z" end-time="2026-07-13 18:46:04Z" duration="0.010874" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+              </test-suite>
+            </test-suite>
+            <test-suite type="TestSuite" id="1167" name="T370" fullname="OneStrokeDemon.Tests.EditMode.T370" runstate="Runnable" testcasecount="8" result="Passed" start-time="2026-07-13 18:46:04Z" end-time="2026-07-13 18:46:05Z" duration="0.392151" total="8" passed="8" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-suite type="TestFixture" id="1059" name="ProjectileCutTests" fullname="OneStrokeDemon.Tests.EditMode.T370.ProjectileCutTests" classname="OneStrokeDemon.Tests.EditMode.T370.ProjectileCutTests" runstate="Runnable" testcasecount="8" result="Passed" start-time="2026-07-13 18:46:04Z" end-time="2026-07-13 18:46:05Z" duration="0.383035" total="8" passed="8" failed="0" inconclusive="0" skipped="0" asserts="0">
+                <properties>
+                  <property name="Category" value="ProjectileCut" />
+                </properties>
+                <test-case id="1063" name="BothInteractionFlagsFalseProducesConfiguredUncuttableBranch" fullname="OneStrokeDemon.Tests.EditMode.T370.ProjectileCutTests.BothInteractionFlagsFalseProducesConfiguredUncuttableBranch" methodname="BothInteractionFlagsFalseProducesConfiguredUncuttableBranch" classname="OneStrokeDemon.Tests.EditMode.T370.ProjectileCutTests" runstate="Runnable" seed="67002511" result="Passed" start-time="2026-07-13 18:46:05Z" end-time="2026-07-13 18:46:05Z" duration="0.064635" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1062" name="CuttableNonReflectableRuleReleasesProjectile" fullname="OneStrokeDemon.Tests.EditMode.T370.ProjectileCutTests.CuttableNonReflectableRuleReleasesProjectile" methodname="CuttableNonReflectableRuleReleasesProjectile" classname="OneStrokeDemon.Tests.EditMode.T370.ProjectileCutTests" runstate="Runnable" seed="1662545054" result="Passed" start-time="2026-07-13 18:46:05Z" end-time="2026-07-13 18:46:05Z" duration="0.019771" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1060" name="FactoryMapsEveryRuntimeValueFromProjectileTable" fullname="OneStrokeDemon.Tests.EditMode.T370.ProjectileCutTests.FactoryMapsEveryRuntimeValueFromProjectileTable" methodname="FactoryMapsEveryRuntimeValueFromProjectileTable" classname="OneStrokeDemon.Tests.EditMode.T370.ProjectileCutTests" runstate="Runnable" seed="1956894806" result="Passed" start-time="2026-07-13 18:46:05Z" end-time="2026-07-13 18:46:05Z" duration="0.013915" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1066" name="InvalidOwnershipStanceAndReflectionAreRejectedWithoutFallback" fullname="OneStrokeDemon.Tests.EditMode.T370.ProjectileCutTests.InvalidOwnershipStanceAndReflectionAreRejectedWithoutFallback" methodname="InvalidOwnershipStanceAndReflectionAreRejectedWithoutFallback" classname="OneStrokeDemon.Tests.EditMode.T370.ProjectileCutTests" runstate="Runnable" seed="46205444" result="Passed" start-time="2026-07-13 18:46:05Z" end-time="2026-07-13 18:46:05Z" duration="0.036574" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1061" name="ReflectableRuleTakesPrecedenceAndPreservesOriginalEnemySource" fullname="OneStrokeDemon.Tests.EditMode.T370.ProjectileCutTests.ReflectableRuleTakesPrecedenceAndPreservesOriginalEnemySource" methodname="ReflectableRuleTakesPrecedenceAndPreservesOriginalEnemySource" classname="OneStrokeDemon.Tests.EditMode.T370.ProjectileCutTests" runstate="Runnable" seed="1670666126" result="Passed" start-time="2026-07-13 18:46:05Z" end-time="2026-07-13 18:46:05Z" duration="0.012089" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1065" name="ReflectedFriendlyProjectileCannotBeProcessedBySameFactionAgain" fullname="OneStrokeDemon.Tests.EditMode.T370.ProjectileCutTests.ReflectedFriendlyProjectileCannotBeProcessedBySameFactionAgain" methodname="ReflectedFriendlyProjectileCannotBeProcessedBySameFactionAgain" classname="OneStrokeDemon.Tests.EditMode.T370.ProjectileCutTests" runstate="Runnable" seed="690493133" result="Passed" start-time="2026-07-13 18:46:05Z" end-time="2026-07-13 18:46:05Z" duration="0.011366" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1064" name="RequiredStanceGatesBothCutAndReflectionBeforeFlags" fullname="OneStrokeDemon.Tests.EditMode.T370.ProjectileCutTests.RequiredStanceGatesBothCutAndReflectionBeforeFlags" methodname="RequiredStanceGatesBothCutAndReflectionBeforeFlags" classname="OneStrokeDemon.Tests.EditMode.T370.ProjectileCutTests" runstate="Runnable" seed="2042609673" result="Passed" start-time="2026-07-13 18:46:05Z" end-time="2026-07-13 18:46:05Z" duration="0.011475" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1067" name="WarmCutResolutionPathAllocatesNoManagedMemory" fullname="OneStrokeDemon.Tests.EditMode.T370.ProjectileCutTests.WarmCutResolutionPathAllocatesNoManagedMemory" methodname="WarmCutResolutionPathAllocatesNoManagedMemory" classname="OneStrokeDemon.Tests.EditMode.T370.ProjectileCutTests" runstate="Runnable" seed="942495068" result="Passed" start-time="2026-07-13 18:46:05Z" end-time="2026-07-13 18:46:05Z" duration="0.011415" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+              </test-suite>
+            </test-suite>
+            <test-suite type="TestSuite" id="1166" name="T400" fullname="OneStrokeDemon.Tests.EditMode.T400" runstate="Runnable" testcasecount="8" result="Passed" start-time="2026-07-13 18:46:05Z" end-time="2026-07-13 18:46:05Z" duration="0.223714" total="8" passed="8" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-suite type="TestFixture" id="1050" name="PlayerCombatTests" fullname="OneStrokeDemon.Tests.EditMode.T400.PlayerCombatTests" classname="OneStrokeDemon.Tests.EditMode.T400.PlayerCombatTests" runstate="Runnable" testcasecount="8" result="Passed" start-time="2026-07-13 18:46:05Z" end-time="2026-07-13 18:46:05Z" duration="0.206980" total="8" passed="8" failed="0" inconclusive="0" skipped="0" asserts="0">
+                <properties>
+                  <property name="Category" value="PlayerCombat" />
+                </properties>
+                <test-case id="1053" name="ControllerPublishesOrderedHpAndSingleDeathEvents" fullname="OneStrokeDemon.Tests.EditMode.T400.PlayerCombatTests.ControllerPublishesOrderedHpAndSingleDeathEvents" methodname="ControllerPublishesOrderedHpAndSingleDeathEvents" classname="OneStrokeDemon.Tests.EditMode.T400.PlayerCombatTests" runstate="Runnable" seed="1851881775" result="Passed" start-time="2026-07-13 18:46:05Z" end-time="2026-07-13 18:46:05Z" duration="0.020971" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1057" name="CurrentStanceExposesAllConfiguredCombatAndPresentationModifiers" fullname="OneStrokeDemon.Tests.EditMode.T400.PlayerCombatTests.CurrentStanceExposesAllConfiguredCombatAndPresentationModifiers" methodname="CurrentStanceExposesAllConfiguredCombatAndPresentationModifiers" classname="OneStrokeDemon.Tests.EditMode.T400.PlayerCombatTests" runstate="Runnable" seed="835771639" result="Passed" start-time="2026-07-13 18:46:05Z" end-time="2026-07-13 18:46:05Z" duration="0.014580" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1054" name="DamageEnergyAwardSaturatesAtConfiguredCapacityWithoutOverflow" fullname="OneStrokeDemon.Tests.EditMode.T400.PlayerCombatTests.DamageEnergyAwardSaturatesAtConfiguredCapacityWithoutOverflow" methodname="DamageEnergyAwardSaturatesAtConfiguredCapacityWithoutOverflow" classname="OneStrokeDemon.Tests.EditMode.T400.PlayerCombatTests" runstate="Runnable" seed="2121004563" result="Passed" start-time="2026-07-13 18:46:05Z" end-time="2026-07-13 18:46:05Z" duration="0.012750" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1052" name="DamageUsesConfiguredInvulnerabilityAndDeathTransitionsOnce" fullname="OneStrokeDemon.Tests.EditMode.T400.PlayerCombatTests.DamageUsesConfiguredInvulnerabilityAndDeathTransitionsOnce" methodname="DamageUsesConfiguredInvulnerabilityAndDeathTransitionsOnce" classname="OneStrokeDemon.Tests.EditMode.T400.PlayerCombatTests" runstate="Runnable" seed="1679507700" result="Passed" start-time="2026-07-13 18:46:05Z" end-time="2026-07-13 18:46:05Z" duration="0.012039" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1051" name="FactoryMapsPlayerAndDefaultStanceWithoutInspectorValues" fullname="OneStrokeDemon.Tests.EditMode.T400.PlayerCombatTests.FactoryMapsPlayerAndDefaultStanceWithoutInspectorValues" methodname="FactoryMapsPlayerAndDefaultStanceWithoutInspectorValues" classname="OneStrokeDemon.Tests.EditMode.T400.PlayerCombatTests" runstate="Runnable" seed="2062926413" result="Passed" start-time="2026-07-13 18:46:05Z" end-time="2026-07-13 18:46:05Z" duration="0.011369" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1058" name="InvalidAmountsAndBackwardsTimestampsFailBeforeStateMutation" fullname="OneStrokeDemon.Tests.EditMode.T400.PlayerCombatTests.InvalidAmountsAndBackwardsTimestampsFailBeforeStateMutation" methodname="InvalidAmountsAndBackwardsTimestampsFailBeforeStateMutation" classname="OneStrokeDemon.Tests.EditMode.T400.PlayerCombatTests" runstate="Runnable" seed="620646118" result="Passed" start-time="2026-07-13 18:46:05Z" end-time="2026-07-13 18:46:05Z" duration="0.011472" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1055" name="SkillEnergyCostAndRequiredStanceComeFromSkillRows" fullname="OneStrokeDemon.Tests.EditMode.T400.PlayerCombatTests.SkillEnergyCostAndRequiredStanceComeFromSkillRows" methodname="SkillEnergyCostAndRequiredStanceComeFromSkillRows" classname="OneStrokeDemon.Tests.EditMode.T400.PlayerCombatTests" runstate="Runnable" seed="1047682970" result="Passed" start-time="2026-07-13 18:46:05Z" end-time="2026-07-13 18:46:05Z" duration="0.011805" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1056" name="StanceSwitchUsesDestinationCooldownAndPublishesConfiguredEffectIntent" fullname="OneStrokeDemon.Tests.EditMode.T400.PlayerCombatTests.StanceSwitchUsesDestinationCooldownAndPublishesConfiguredEffectIntent" methodname="StanceSwitchUsesDestinationCooldownAndPublishesConfiguredEffectIntent" classname="OneStrokeDemon.Tests.EditMode.T400.PlayerCombatTests" runstate="Runnable" seed="1069683353" result="Passed" start-time="2026-07-13 18:46:05Z" end-time="2026-07-13 18:46:05Z" duration="0.011214" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+              </test-suite>
+            </test-suite>
+            <test-suite type="TestSuite" id="1165" name="T410" fullname="OneStrokeDemon.Tests.EditMode.T410" runstate="Runnable" testcasecount="4" result="Passed" start-time="2026-07-13 18:46:05Z" end-time="2026-07-13 18:46:05Z" duration="0.391542" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-suite type="TestFixture" id="1045" name="SkillEffectPipelineTests" fullname="OneStrokeDemon.Tests.EditMode.T410.SkillEffectPipelineTests" classname="OneStrokeDemon.Tests.EditMode.T410.SkillEffectPipelineTests" runstate="Runnable" testcasecount="4" result="Passed" start-time="2026-07-13 18:46:05Z" end-time="2026-07-13 18:46:05Z" duration="0.298323" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+                <properties>
+                  <property name="Category" value="T410" />
+                </properties>
+                <test-case id="1048" name="ConfigConditionControlsExistingRepeatStrokeExecutor" fullname="OneStrokeDemon.Tests.EditMode.T410.SkillEffectPipelineTests.ConfigConditionControlsExistingRepeatStrokeExecutor" methodname="ConfigConditionControlsExistingRepeatStrokeExecutor" classname="OneStrokeDemon.Tests.EditMode.T410.SkillEffectPipelineTests" runstate="Runnable" seed="1597632748" result="Passed" start-time="2026-07-13 18:46:05Z" end-time="2026-07-13 18:46:05Z" duration="0.037719" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1047" name="InvalidGestureExpiredWindowAndCooldownNeverPartiallySpendEnergy" fullname="OneStrokeDemon.Tests.EditMode.T410.SkillEffectPipelineTests.InvalidGestureExpiredWindowAndCooldownNeverPartiallySpendEnergy" methodname="InvalidGestureExpiredWindowAndCooldownNeverPartiallySpendEnergy" classname="OneStrokeDemon.Tests.EditMode.T410.SkillEffectPipelineTests" runstate="Runnable" seed="1131120403" result="Passed" start-time="2026-07-13 18:46:05Z" end-time="2026-07-13 18:46:05Z" duration="0.017894" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1049" name="NewHealSkillNeedsOnlyConfigRowsAndCannotResurrectPlayer" fullname="OneStrokeDemon.Tests.EditMode.T410.SkillEffectPipelineTests.NewHealSkillNeedsOnlyConfigRowsAndCannotResurrectPlayer" methodname="NewHealSkillNeedsOnlyConfigRowsAndCannotResurrectPlayer" classname="OneStrokeDemon.Tests.EditMode.T410.SkillEffectPipelineTests" runstate="Runnable" seed="2003749625" result="Passed" start-time="2026-07-13 18:46:05Z" end-time="2026-07-13 18:46:05Z" duration="0.029730" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1046" name="UltimateExecutesStableConfiguredOrderAndTargetFilters" fullname="OneStrokeDemon.Tests.EditMode.T410.SkillEffectPipelineTests.UltimateExecutesStableConfiguredOrderAndTargetFilters" methodname="UltimateExecutesStableConfiguredOrderAndTargetFilters" classname="OneStrokeDemon.Tests.EditMode.T410.SkillEffectPipelineTests" runstate="Runnable" seed="1597902094" result="Passed" start-time="2026-07-13 18:46:05Z" end-time="2026-07-13 18:46:05Z" duration="0.011929" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+              </test-suite>
+            </test-suite>
+            <test-suite type="TestSuite" id="1164" name="T420" fullname="OneStrokeDemon.Tests.EditMode.T420" runstate="Runnable" testcasecount="7" result="Passed" start-time="2026-07-13 18:46:05Z" end-time="2026-07-13 18:46:06Z" duration="0.320960" total="7" passed="7" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-suite type="TestFixture" id="1037" name="EnemyStateMachineTests" fullname="OneStrokeDemon.Tests.EditMode.T420.EnemyStateMachineTests" classname="OneStrokeDemon.Tests.EditMode.T420.EnemyStateMachineTests" runstate="Runnable" testcasecount="7" result="Passed" start-time="2026-07-13 18:46:05Z" end-time="2026-07-13 18:46:06Z" duration="0.218803" total="7" passed="7" failed="0" inconclusive="0" skipped="0" asserts="0">
+                <properties>
+                  <property name="Category" value="T420" />
+                </properties>
+                <test-case id="1039" name="AttackTimelineCrossesEveryStateAtConfiguredInclusiveBoundaries" fullname="OneStrokeDemon.Tests.EditMode.T420.EnemyStateMachineTests.AttackTimelineCrossesEveryStateAtConfiguredInclusiveBoundaries" methodname="AttackTimelineCrossesEveryStateAtConfiguredInclusiveBoundaries" classname="OneStrokeDemon.Tests.EditMode.T420.EnemyStateMachineTests" runstate="Runnable" seed="2081288126" result="Passed" start-time="2026-07-13 18:46:06Z" end-time="2026-07-13 18:46:06Z" duration="0.032591" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1043" name="ControllerAppliesResolvedWeakpointDamageAndPublishesOneDeathAndRelease" fullname="OneStrokeDemon.Tests.EditMode.T420.EnemyStateMachineTests.ControllerAppliesResolvedWeakpointDamageAndPublishesOneDeathAndRelease" methodname="ControllerAppliesResolvedWeakpointDamageAndPublishesOneDeathAndRelease" classname="OneStrokeDemon.Tests.EditMode.T420.EnemyStateMachineTests" runstate="Runnable" seed="1203192847" result="Passed" start-time="2026-07-13 18:46:06Z" end-time="2026-07-13 18:46:06Z" duration="0.023897" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1042" name="DamageModelConsumesArmorThenHpAndResetsAcrossReuse" fullname="OneStrokeDemon.Tests.EditMode.T420.EnemyStateMachineTests.DamageModelConsumesArmorThenHpAndResetsAcrossReuse" methodname="DamageModelConsumesArmorThenHpAndResetsAcrossReuse" classname="OneStrokeDemon.Tests.EditMode.T420.EnemyStateMachineTests" runstate="Runnable" seed="925371138" result="Passed" start-time="2026-07-13 18:46:06Z" end-time="2026-07-13 18:46:06Z" duration="0.013570" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1041" name="DeathAndReleaseAreIdempotentAndReuseResetsTheClock" fullname="OneStrokeDemon.Tests.EditMode.T420.EnemyStateMachineTests.DeathAndReleaseAreIdempotentAndReuseResetsTheClock" methodname="DeathAndReleaseAreIdempotentAndReuseResetsTheClock" classname="OneStrokeDemon.Tests.EditMode.T420.EnemyStateMachineTests" runstate="Runnable" seed="1437491490" result="Passed" start-time="2026-07-13 18:46:06Z" end-time="2026-07-13 18:46:06Z" duration="0.012278" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1038" name="DefinitionMapsEnemyDefenseAndWeakpointWithoutInspectorValues" fullname="OneStrokeDemon.Tests.EditMode.T420.EnemyStateMachineTests.DefinitionMapsEnemyDefenseAndWeakpointWithoutInspectorValues" methodname="DefinitionMapsEnemyDefenseAndWeakpointWithoutInspectorValues" classname="OneStrokeDemon.Tests.EditMode.T420.EnemyStateMachineTests" runstate="Runnable" seed="656888715" result="Passed" start-time="2026-07-13 18:46:06Z" end-time="2026-07-13 18:46:06Z" duration="0.011475" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1040" name="InterruptRequiresConfiguredGestureAndWindowAndIsIdempotent" fullname="OneStrokeDemon.Tests.EditMode.T420.EnemyStateMachineTests.InterruptRequiresConfiguredGestureAndWindowAndIsIdempotent" methodname="InterruptRequiresConfiguredGestureAndWindowAndIsIdempotent" classname="OneStrokeDemon.Tests.EditMode.T420.EnemyStateMachineTests" runstate="Runnable" seed="905442719" result="Passed" start-time="2026-07-13 18:46:06Z" end-time="2026-07-13 18:46:06Z" duration="0.010863" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1044" name="SkillAdapterAppliesConfiguredBuffDamageArmorKnockbackAndCounter" fullname="OneStrokeDemon.Tests.EditMode.T420.EnemyStateMachineTests.SkillAdapterAppliesConfiguredBuffDamageArmorKnockbackAndCounter" methodname="SkillAdapterAppliesConfiguredBuffDamageArmorKnockbackAndCounter" classname="OneStrokeDemon.Tests.EditMode.T420.EnemyStateMachineTests" runstate="Runnable" seed="529305096" result="Passed" start-time="2026-07-13 18:46:06Z" end-time="2026-07-13 18:46:06Z" duration="0.012562" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+              </test-suite>
+            </test-suite>
+            <test-suite type="TestSuite" id="1163" name="T430" fullname="OneStrokeDemon.Tests.EditMode.T430" runstate="Runnable" testcasecount="5" result="Passed" start-time="2026-07-13 18:46:06Z" end-time="2026-07-13 18:46:06Z" duration="0.268261" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-suite type="TestFixture" id="1031" name="EnemyStrategyTests" fullname="OneStrokeDemon.Tests.EditMode.T430.EnemyStrategyTests" classname="OneStrokeDemon.Tests.EditMode.T430.EnemyStrategyTests" runstate="Runnable" testcasecount="5" result="Passed" start-time="2026-07-13 18:46:06Z" end-time="2026-07-13 18:46:06Z" duration="0.187850" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
+                <properties>
+                  <property name="Category" value="T430" />
+                </properties>
+                <test-case id="1033" name="ApproachHoverAndDiveUseOnlyConfiguredPathValues" fullname="OneStrokeDemon.Tests.EditMode.T430.EnemyStrategyTests.ApproachHoverAndDiveUseOnlyConfiguredPathValues" methodname="ApproachHoverAndDiveUseOnlyConfiguredPathValues" classname="OneStrokeDemon.Tests.EditMode.T430.EnemyStrategyTests" runstate="Runnable" seed="1483022797" result="Passed" start-time="2026-07-13 18:46:06Z" end-time="2026-07-13 18:46:06Z" duration="0.025647" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1034" name="AttackRegistrySelectsConfiguredProjectileChargeMeleeAndSupportActions" fullname="OneStrokeDemon.Tests.EditMode.T430.EnemyStrategyTests.AttackRegistrySelectsConfiguredProjectileChargeMeleeAndSupportActions" methodname="AttackRegistrySelectsConfiguredProjectileChargeMeleeAndSupportActions" classname="OneStrokeDemon.Tests.EditMode.T430.EnemyStrategyTests" runstate="Runnable" seed="110533818" result="Passed" start-time="2026-07-13 18:46:06Z" end-time="2026-07-13 18:46:06Z" duration="0.025669" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1036" name="DamageReductionBuffUsesConfiguredMagnitudeAndExpiresAtConfiguredBoundary" fullname="OneStrokeDemon.Tests.EditMode.T430.EnemyStrategyTests.DamageReductionBuffUsesConfiguredMagnitudeAndExpiresAtConfiguredBoundary" methodname="DamageReductionBuffUsesConfiguredMagnitudeAndExpiresAtConfiguredBoundary" classname="OneStrokeDemon.Tests.EditMode.T430.EnemyStrategyTests" runstate="Runnable" seed="1016135830" result="Passed" start-time="2026-07-13 18:46:06Z" end-time="2026-07-13 18:46:06Z" duration="0.012514" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1035" name="DefenseServiceReusesConfiguredGestureStanceMultipliersAndReflection" fullname="OneStrokeDemon.Tests.EditMode.T430.EnemyStrategyTests.DefenseServiceReusesConfiguredGestureStanceMultipliersAndReflection" methodname="DefenseServiceReusesConfiguredGestureStanceMultipliersAndReflection" classname="OneStrokeDemon.Tests.EditMode.T430.EnemyStrategyTests" runstate="Runnable" seed="712971589" result="Passed" start-time="2026-07-13 18:46:06Z" end-time="2026-07-13 18:46:06Z" duration="0.011811" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1032" name="MovementRegistryMapsEveryConfiguredPatternAndRejectsUnknownType" fullname="OneStrokeDemon.Tests.EditMode.T430.EnemyStrategyTests.MovementRegistryMapsEveryConfiguredPatternAndRejectsUnknownType" methodname="MovementRegistryMapsEveryConfiguredPatternAndRejectsUnknownType" classname="OneStrokeDemon.Tests.EditMode.T430.EnemyStrategyTests" runstate="Runnable" seed="395456563" result="Passed" start-time="2026-07-13 18:46:06Z" end-time="2026-07-13 18:46:06Z" duration="0.011027" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+              </test-suite>
+            </test-suite>
+            <test-suite type="TestSuite" id="1162" name="T440" fullname="OneStrokeDemon.Tests.EditMode.T440" runstate="Runnable" testcasecount="5" result="Passed" start-time="2026-07-13 18:46:06Z" end-time="2026-07-13 18:46:06Z" duration="0.313618" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-suite type="TestFixture" id="1025" name="PoolResetTests" fullname="OneStrokeDemon.Tests.EditMode.T440.PoolResetTests" classname="OneStrokeDemon.Tests.EditMode.T440.PoolResetTests" runstate="Runnable" testcasecount="5" result="Passed" start-time="2026-07-13 18:46:06Z" end-time="2026-07-13 18:46:06Z" duration="0.301333" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
+                <properties>
+                  <property name="Category" value="T440" />
+                </properties>
+                <test-case id="1030" name="ConfigurationMapsAllFourFamiliesAndConfiguredPrewarmValues" fullname="OneStrokeDemon.Tests.EditMode.T440.PoolResetTests.ConfigurationMapsAllFourFamiliesAndConfiguredPrewarmValues" methodname="ConfigurationMapsAllFourFamiliesAndConfiguredPrewarmValues" classname="OneStrokeDemon.Tests.EditMode.T440.PoolResetTests" runstate="Runnable" seed="86468118" result="Passed" start-time="2026-07-13 18:46:06Z" end-time="2026-07-13 18:46:06Z" duration="0.029185" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1029" name="LeakReportNamesActiveLeasesAndRestartInvalidatesAllOfThem" fullname="OneStrokeDemon.Tests.EditMode.T440.PoolResetTests.LeakReportNamesActiveLeasesAndRestartInvalidatesAllOfThem" methodname="LeakReportNamesActiveLeasesAndRestartInvalidatesAllOfThem" classname="OneStrokeDemon.Tests.EditMode.T440.PoolResetTests" runstate="Runnable" seed="365521231" result="Passed" start-time="2026-07-13 18:46:06Z" end-time="2026-07-13 18:46:06Z" duration="0.022751" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1026" name="RejectPolicyPrewarmsAndNeverExceedsSharedFamilyCapacity" fullname="OneStrokeDemon.Tests.EditMode.T440.PoolResetTests.RejectPolicyPrewarmsAndNeverExceedsSharedFamilyCapacity" methodname="RejectPolicyPrewarmsAndNeverExceedsSharedFamilyCapacity" classname="OneStrokeDemon.Tests.EditMode.T440.PoolResetTests" runstate="Runnable" seed="449857675" result="Passed" start-time="2026-07-13 18:46:06Z" end-time="2026-07-13 18:46:06Z" duration="0.014573" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1028" name="ReleaseRejectsStaleAndDoubleLeaseWithoutTouchingCurrentItem" fullname="OneStrokeDemon.Tests.EditMode.T440.PoolResetTests.ReleaseRejectsStaleAndDoubleLeaseWithoutTouchingCurrentItem" methodname="ReleaseRejectsStaleAndDoubleLeaseWithoutTouchingCurrentItem" classname="OneStrokeDemon.Tests.EditMode.T440.PoolResetTests" runstate="Runnable" seed="240194683" result="Passed" start-time="2026-07-13 18:46:06Z" end-time="2026-07-13 18:46:06Z" duration="0.018550" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1027" name="ReuseOldestPolicyFullyReleasesOldestAcrossFamilyBeforeAcquire" fullname="OneStrokeDemon.Tests.EditMode.T440.PoolResetTests.ReuseOldestPolicyFullyReleasesOldestAcrossFamilyBeforeAcquire" methodname="ReuseOldestPolicyFullyReleasesOldestAcrossFamilyBeforeAcquire" classname="OneStrokeDemon.Tests.EditMode.T440.PoolResetTests" runstate="Runnable" seed="1403561982" result="Passed" start-time="2026-07-13 18:46:06Z" end-time="2026-07-13 18:46:06Z" duration="0.015159" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+              </test-suite>
+            </test-suite>
+            <test-suite type="TestSuite" id="1161" name="T450" fullname="OneStrokeDemon.Tests.EditMode.T450" runstate="Runnable" testcasecount="3" result="Passed" start-time="2026-07-13 18:46:06Z" end-time="2026-07-13 18:46:07Z" duration="0.435781" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-suite type="TestFixture" id="1021" name="EnemyArchetypeConfigTests" fullname="OneStrokeDemon.Tests.EditMode.T450.EnemyArchetypeConfigTests" classname="OneStrokeDemon.Tests.EditMode.T450.EnemyArchetypeConfigTests" runstate="Runnable" testcasecount="3" result="Passed" start-time="2026-07-13 18:46:06Z" end-time="2026-07-13 18:46:07Z" duration="0.336875" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+                <properties>
+                  <property name="Category" value="T450" />
+                </properties>
+                <test-case id="1023" name="EveryEnemyHasUniqueConfiguredTeachingPointAndClearTelegraph" fullname="OneStrokeDemon.Tests.EditMode.T450.EnemyArchetypeConfigTests.EveryEnemyHasUniqueConfiguredTeachingPointAndClearTelegraph" methodname="EveryEnemyHasUniqueConfiguredTeachingPointAndClearTelegraph" classname="OneStrokeDemon.Tests.EditMode.T450.EnemyArchetypeConfigTests" runstate="Runnable" seed="1175085591" result="Passed" start-time="2026-07-13 18:46:07Z" end-time="2026-07-13 18:46:07Z" duration="0.054741" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1024" name="HpSpeedAndAttackChangesFlowThroughReloadedConfigWithoutRuntimeBranches" fullname="OneStrokeDemon.Tests.EditMode.T450.EnemyArchetypeConfigTests.HpSpeedAndAttackChangesFlowThroughReloadedConfigWithoutRuntimeBranches" methodname="HpSpeedAndAttackChangesFlowThroughReloadedConfigWithoutRuntimeBranches" classname="OneStrokeDemon.Tests.EditMode.T450.EnemyArchetypeConfigTests" runstate="Runnable" seed="1682406593" result="Passed" start-time="2026-07-13 18:46:07Z" end-time="2026-07-13 18:46:07Z" duration="0.067762" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1022" name="RosterComesFromConfigAsFiveNormalEnemiesAndOneElite" fullname="OneStrokeDemon.Tests.EditMode.T450.EnemyArchetypeConfigTests.RosterComesFromConfigAsFiveNormalEnemiesAndOneElite" methodname="RosterComesFromConfigAsFiveNormalEnemiesAndOneElite" classname="OneStrokeDemon.Tests.EditMode.T450.EnemyArchetypeConfigTests" runstate="Runnable" seed="524850883" result="Passed" start-time="2026-07-13 18:46:07Z" end-time="2026-07-13 18:46:07Z" duration="0.011836" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+              </test-suite>
+            </test-suite>
+            <test-suite type="TestFixture" id="1011" name="WebBuildSmokeTests" fullname="OneStrokeDemon.Tests.EditMode.WebBuildSmokeTests" classname="OneStrokeDemon.Tests.EditMode.WebBuildSmokeTests" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-07-13 18:46:07Z" end-time="2026-07-13 18:46:07Z" duration="0.066498" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1012" name="WebSmokeDefineIsIncludedOnlyWhenExplicitlyRequested" fullname="OneStrokeDemon.Tests.EditMode.WebBuildSmokeTests.WebSmokeDefineIsIncludedOnlyWhenExplicitlyRequested" methodname="WebSmokeDefineIsIncludedOnlyWhenExplicitlyRequested" classname="OneStrokeDemon.Tests.EditMode.WebBuildSmokeTests" runstate="Runnable" seed="1044261998" result="Passed" start-time="2026-07-13 18:46:07Z" end-time="2026-07-13 18:46:07Z" duration="0.001326" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1013" name="WebSmokeProbeAndBridgeRemainTestBuildOnly" fullname="OneStrokeDemon.Tests.EditMode.WebBuildSmokeTests.WebSmokeProbeAndBridgeRemainTestBuildOnly" methodname="WebSmokeProbeAndBridgeRemainTestBuildOnly" classname="OneStrokeDemon.Tests.EditMode.WebBuildSmokeTests" runstate="Runnable" seed="1826794533" result="Passed" start-time="2026-07-13 18:46:07Z" end-time="2026-07-13 18:46:07Z" duration="0.002419" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+            </test-suite>
+            <test-suite type="TestFixture" id="1017" name="WechatBuildEntryTests" fullname="OneStrokeDemon.Tests.EditMode.WechatBuildEntryTests" classname="OneStrokeDemon.Tests.EditMode.WechatBuildEntryTests" runstate="Runnable" testcasecount="3" result="Passed" start-time="2026-07-13 18:46:07Z" end-time="2026-07-13 18:46:07Z" duration="0.201614" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1018" name="DefaultOutputIsIsolatedUnderWechatBuildDirectory" fullname="OneStrokeDemon.Tests.EditMode.WechatBuildEntryTests.DefaultOutputIsIsolatedUnderWechatBuildDirectory" methodname="DefaultOutputIsIsolatedUnderWechatBuildDirectory" classname="OneStrokeDemon.Tests.EditMode.WechatBuildEntryTests" runstate="Runnable" seed="1492650610" result="Passed" start-time="2026-07-13 18:46:07Z" end-time="2026-07-13 18:46:07Z" duration="0.002047" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1019" name="OutputOutsideWechatBuildDirectoryIsRejected" fullname="OneStrokeDemon.Tests.EditMode.WechatBuildEntryTests.OutputOutsideWechatBuildDirectoryIsRejected" methodname="OutputOutsideWechatBuildDirectoryIsRejected" classname="OneStrokeDemon.Tests.EditMode.WechatBuildEntryTests" runstate="Runnable" seed="79136552" result="Passed" start-time="2026-07-13 18:46:07Z" end-time="2026-07-13 18:46:07Z" duration="0.001031" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1020" name="SpikeConfigurationContainsNoAppIdAndUsesLandscapeMultiThreadedBrotli" fullname="OneStrokeDemon.Tests.EditMode.WechatBuildEntryTests.SpikeConfigurationContainsNoAppIdAndUsesLandscapeMultiThreadedBrotli" methodname="SpikeConfigurationContainsNoAppIdAndUsesLandscapeMultiThreadedBrotli" classname="OneStrokeDemon.Tests.EditMode.WechatBuildEntryTests" runstate="Runnable" seed="800584132" result="Passed" start-time="2026-07-13 18:46:07Z" end-time="2026-07-13 18:46:07Z" duration="0.000754" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+            </test-suite>
+            <test-suite type="TestFixture" id="1014" name="WechatSdkIntegrationTests" fullname="OneStrokeDemon.Tests.EditMode.WechatSdkIntegrationTests" classname="OneStrokeDemon.Tests.EditMode.WechatSdkIntegrationTests" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-07-13 18:46:07Z" end-time="2026-07-13 18:46:07Z" duration="0.204970" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1016" name="ImportedWechatSdkMatchesReviewedReleaseAndLoadsAssemblies" fullname="OneStrokeDemon.Tests.EditMode.WechatSdkIntegrationTests.ImportedWechatSdkMatchesReviewedReleaseAndLoadsAssemblies" methodname="ImportedWechatSdkMatchesReviewedReleaseAndLoadsAssemblies" classname="OneStrokeDemon.Tests.EditMode.WechatSdkIntegrationTests" runstate="Runnable" seed="1053044576" result="Passed" start-time="2026-07-13 18:46:07Z" end-time="2026-07-13 18:46:07Z" duration="0.008133" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1015" name="OfficialWechatSdkDependencyIsPinnedToReviewedCommit" fullname="OneStrokeDemon.Tests.EditMode.WechatSdkIntegrationTests.OfficialWechatSdkDependencyIsPinnedToReviewedCommit" methodname="OfficialWechatSdkDependencyIsPinnedToReviewedCommit" classname="OneStrokeDemon.Tests.EditMode.WechatSdkIntegrationTests" runstate="Runnable" seed="792225835" result="Passed" start-time="2026-07-13 18:46:07Z" end-time="2026-07-13 18:46:07Z" duration="0.001233" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+            </test-suite>
+            <test-suite type="TestFixture" id="1008" name="WorkflowContractTests" fullname="OneStrokeDemon.Tests.EditMode.WorkflowContractTests" classname="OneStrokeDemon.Tests.EditMode.WorkflowContractTests" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-07-13 18:46:07Z" end-time="2026-07-13 18:46:07Z" duration="0.195268" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1009" name="WebBuildEntryUsesEnabledScenesAndWebGlWithoutMutatingSettings" fullname="OneStrokeDemon.Tests.EditMode.WorkflowContractTests.WebBuildEntryUsesEnabledScenesAndWebGlWithoutMutatingSettings" methodname="WebBuildEntryUsesEnabledScenesAndWebGlWithoutMutatingSettings" classname="OneStrokeDemon.Tests.EditMode.WorkflowContractTests" runstate="Runnable" seed="1401850167" result="Passed" start-time="2026-07-13 18:46:07Z" end-time="2026-07-13 18:46:07Z" duration="0.001503" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1010" name="WorkflowFilesExposeTestEvidenceAndWhitelistContracts" fullname="OneStrokeDemon.Tests.EditMode.WorkflowContractTests.WorkflowFilesExposeTestEvidenceAndWhitelistContracts" methodname="WorkflowFilesExposeTestEvidenceAndWhitelistContracts" classname="OneStrokeDemon.Tests.EditMode.WorkflowContractTests" runstate="Runnable" seed="1440955935" result="Passed" start-time="2026-07-13 18:46:07Z" end-time="2026-07-13 18:46:07Z" duration="0.002910" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[<b><color=#2EA3FF>MCP-FOR-UNITY</color></b>: [TestRunnerNoThrottle] Restored Interaction Mode after test run.
+Saving results to: /Users/cqmizhangxiaoyu2/Library/Application Support/DefaultCompany/onedraw_2/TestResults.xml
+]]></output>
+              </test-case>
+            </test-suite>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

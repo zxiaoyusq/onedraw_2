@@ -74,6 +74,7 @@ namespace OneStrokeDemon.Config
         public WeakpointRuleConfig GetWeakpointRule(string weakpointRuleId) => Get(RequireSnapshot().WeakpointRules, "WeakpointRules", "weakpointRuleId", weakpointRuleId);
         public MovePatternConfig GetMovePattern(string movePatternId) => Get(RequireSnapshot().MovePatterns, "MovePatterns", "movePatternId", movePatternId);
         public EnemyConfig GetEnemy(string enemyId) => Get(RequireSnapshot().Enemies, "Enemies", "enemyId", enemyId);
+        public IReadOnlyList<EnemyConfig> GetEnemies() => RequireSnapshot().EnemyEntries;
         public IReadOnlyList<EnemyAttackConfig> GetEnemyAttacks(string attackSetId) => GetGroup(RequireSnapshot().AttacksBySet, "EnemyAttacks", "attackSetId", attackSetId);
         public ProjectileConfig GetProjectile(string projectileId) => Get(RequireSnapshot().Projectiles, "Projectiles", "projectileId", projectileId);
         public BuffConfig GetBuff(string buffId) => Get(RequireSnapshot().Buffs, "Buffs", "buffId", buffId);
