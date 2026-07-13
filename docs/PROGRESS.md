@@ -1,16 +1,21 @@
 # PROGRESS
 
 - 日期：2026-07-14
-- 当前成熟度：P3手势战斗核心已完成；P4已具备配置驱动玩家、技能、通用敌人状态及可复用移动/攻击/防御/支援策略，进入通用对象池
-- 当前任务：T440
+- 当前成熟度：P3手势战斗核心已完成；P4已具备配置驱动玩家、技能、通用敌人状态、可复用策略及四类通用对象池，进入敌人内容装配
+- 当前任务：T450
 - 状态：READY
 - Unity精确版本：6000.5.1f1（已由ProjectVersion.txt与本机安装核验）
 - 微信SDK来源或版本：官方 `minigame-tuanjie-transform-sdk` v0.1.33 / commit `ed4ad28f433c6b52b5fd3f22a6fa155a0c98c228` / embedded最小补丁
 - Active Scene：Assets/_Game/Scenes/Bootstrap.unity
-- 配置版本：schema 4 / content 0.4.0-sample / hash `61ed49c024a655a0d97fea7d95d03b973a636177d9e09df9305b1ddfd77351f2`
+- 配置版本：schema 4 / content 0.5.0-sample / hash `d524ffcda4693c9cb65e5e21d5ab753472a14b2233b2ae670ecc4b81f1251ee8`
 
 ## 已完成
 
+- T440：新增无Unity依赖的`ObjectPoolService`、`IPoolable`、租约/重开generation、共享family容量、泄漏报告和确定性耗尽策略。`Reject`在容量满时保持池状态不变，`ReuseOldest`按family激活序号完整回收最旧对象；旧租约、重复释放和未知对象不会释放当前租约，`activeSelf`不作为容量真相。
+- T440：`ObjectPoolConfiguration`把敌人/投射物/VFX/伤害数字容量、预热和耗尽策略全部映射自配置。配置保持schema 4并升级content 0.5.x，新增每类耗尽策略和投射物每类型预热；双工作簿SHA-256均为`cc5e9b11...c42`，受管JSON 172,045字节/660条/hash `d524ffcd...1ee8`，27组313个ID常量与样例保持同源。
+- T440：`EnemyController`与`ProjectileController`接入显式池租约并恢复池父节点；敌人回收额外清除外部战斗事件订阅/序号、HP/护甲/Buff/计数/攻击/弱点/时钟/目标，投射物清除规则/归属/参考空间/位置方向/时间/命中与Collider。新增配置驱动`VfxPoolItem`和无表外寿命常量的`DamageNumberPoolItem`，均完整清空运行态与Transform。
+- T440：PlayMode真实加载Bootstrap配置后预热44个对象，以`enemy_skeleton_ghost`、`proj_ghost_fire`、`vfx_ultimate_prepare`和伤害数字连续执行3轮生成、Buff/计数污染、击杀、弹体/VFX/数字污染、清场与重开；每轮复用同一四个实例、旧敌人事件监听计数不再变化、活动泄漏归零、generation最终为4。
+- T440：专项EditMode 5/5、PlayMode 1/1，最终全量EditMode 127/127、PlayMode 31/31；ConfigExporter .NET 56/56、配置只读生成/漂移门、Unity 6000.5.1f1刷新编译均通过，最终Console Error/Warning为0。Unity测试造成的`ProjectSettings/EditorSettings.asset`临时变化已恢复；未修改场景、Prefab、Packages或微信SDK，未提前实现T450/T460/T500/T620。
 - T430：新增无`MonoBehaviour`依赖的`MovementStrategyRegistry`，显式覆盖Linear/Sine/Dive/Hover/Boss；路径、参考分辨率、速度、循环、振幅与频率只从配置映射，未知类型失败。移动采样使用调用方累计时钟，Root/Slow由外部按配置效果控制时钟推进，不引入NavMesh/A*或隐藏阈值。
 - T430：新增显式`AttackStrategyRegistry`，覆盖Cooldown/Distance/Support/HpThreshold，按配置order/weight稳定选取，并从效果/投射物合同生成近战、投射物、冲撞或支援动作；`DefenseRuleService`公开配置笔势、架势、倍率、反伤与破甲意图，不复制T360公式。
 - T430：`EnemyStrategyRuntime`在T420 `BeginAttack`时先打开Telegraph，并在`Windup→Attack`状态边界恰好执行一次动作；恢复、眩晕、死亡和回收关闭/清空预警，动画事件不承担唯一伤害真相。支援路径通过T410真实效果链给骷髅盟友施加配置护盾，10点来伤变5，配置3秒到期后恢复为10。
@@ -110,7 +115,7 @@
 - T200：按GAME_DESIGN修正关卡玩法ID为 `lv_001_tutorial`、`lv_002_cave`、`lv_003_boss`，Boss玩法ID为 `boss_tomb_king`；所有Level/Wave/Spawn/BossPhase/Reward依赖引用同步，文案键和资源键保持独立命名空间。
 - T200：FieldDictionary保留248条非递归字段记录，修正Global互斥类型列及10个主键/条件字段的必填语义；冻结Schema属性存在与Excel单元格非空的差异、空值转换、普通/分组/通配符/conditional外键和数据所有权。
 - T200：29表、14公式、248字段、Schema/样例、类型/范围/枚举、主键、外键、连续order、关卡-Boss语义和规范化contentHash的只读契约审计全部PASS；29表最终渲染经4张总览拼图复核，无结构或版式异常。
-- 执行顺序调整：用户明确要求暂时绕过T120及微信开发者工具/打包问题，先完成游戏主要内容；T120保持`BLOCKED`、T130保持`BACKLOG`，不删除MVP平台验收要求；主内容已推进至T430完成，当前唯一`READY`任务为T440。
+- 执行顺序调整：用户明确要求暂时绕过T120及微信开发者工具/打包问题，先完成游戏主要内容；T120保持`BLOCKED`、T130保持`BACKLOG`，不删除MVP平台验收要求；主内容已推进至T440完成，当前唯一`READY`任务为T450。
 - T120 G2：Unity `6000.5.1f1` 基于固定 embedded WXSDK 成功生成 `Builds/WeChat/T120`；84个文件、总计101,901,218字节，其中`minigame` 12,008,520字节，JSON结构、关键文件、SHA-256清单与敏感占位扫描均通过。
 - T120构建参数：空AppID、横屏、256MB、触摸启用、Development、关闭渲染线程与性能分析、清理构建，并使用SDK受支持的多线程Brotli；可复现入口为`Tools/CI/build-wechat.sh`。
 - T120 G2结论为`PASS WITH KNOWN ISSUES`：默认单线程Brotli在当前macOS Unity安装布局下引用错误路径（BUG-0005，已用配置规避）；转换含93条未匹配替换规则及6条Emscripten warning（BUG-0006），需要G3实际运行判定影响。
@@ -157,4 +162,4 @@
 8. T240为尚未到达资源接入阶段的75个非场景键使用按类型共享的受管占位资源；类型与覆盖合同已成立，但正式视觉、音频和逐Prefab内容仍须在T630及相应玩法任务中替换并重新校验。
 ## 下一步
 
-只执行T440：建立敌人、投射物、VFX和伤害数字对象池及完整重置；不提前实现T450敌人装配、T460 Boss阶段或T510战斗流程，也不恢复T120/T130。平台任务最迟在T640/T750前恢复。
+只执行T450：只用配置和既有策略/对象池组合5种普通怪与1种精英怪；不提前实现T460 Boss阶段、T500关卡时间轴或T510战斗流程，也不恢复T120/T130。平台任务最迟在T640/T750前恢复。

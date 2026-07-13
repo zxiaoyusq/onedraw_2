@@ -20,6 +20,7 @@
 - `DamageFormulaTests`
 - `SkillEffectPipelineTests`
 - `EnemyStateMachineTests`
+- `PoolResetTests`
 - `BossPhaseTests`
 - `ConfigValidationTests`
 - `SaveMigrationTests`
@@ -30,7 +31,6 @@
 - `MultiTargetHitPlayModeTests`
 - `ProjectileReflectPlayModeTests`
 - `StanceSwitchPlayModeTests`
-- `PoolResetTests`
 - `WaveRunnerPlayModeTests`
 - `NoAdvanceBeforePlayerActionTests`
 - `TutorialLevelE2EPlayModeTests`

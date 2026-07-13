@@ -6,10 +6,10 @@ namespace OneStrokeDemon.Config
     public static class ConfigIds
     {
         public const int SchemaVersion = 4;
-        public const string ContentVersion = "0.4.0-sample";
-        public const string ContentHash = "61ed49c024a655a0d97fea7d95d03b973a636177d9e09df9305b1ddfd77351f2";
+        public const string ContentVersion = "0.5.0-sample";
+        public const string ContentHash = "d524ffcda4693c9cb65e5e21d5ab753472a14b2233b2ae670ecc4b81f1251ee8";
         public const int IdSetCount = 27;
-        public const int IdConstantCount = 308;
+        public const int IdConstantCount = 313;
 
         public static class GlobalKeys
         {
@@ -17,14 +17,19 @@ namespace OneStrokeDemon.Config
             public const string ComboTimeoutSec = "combo_timeout_sec";
             public const string ConfigSchemaVersion = "config_schema_version";
             public const string ContentVersion = "content_version";
+            public const string DamageNumberPoolExhaustionPolicy = "damage_number_pool_exhaustion_policy";
             public const string DamageNumberPoolSize = "damage_number_pool_size";
+            public const string EnemyPoolExhaustionPolicy = "enemy_pool_exhaustion_policy";
             public const string MaxActiveEnemies = "max_active_enemies";
             public const string MaxActiveProjectiles = "max_active_projectiles";
             public const string MaxActiveVfx = "max_active_vfx";
             public const string PauseOnFocusLost = "pause_on_focus_lost";
+            public const string ProjectilePoolExhaustionPolicy = "projectile_pool_exhaustion_policy";
+            public const string ProjectilePoolPrewarmPerType = "projectile_pool_prewarm_per_type";
             public const string ReferenceHeight = "reference_height";
             public const string ReferenceWidth = "reference_width";
             public const string TargetFrameRate = "target_frame_rate";
+            public const string VfxPoolExhaustionPolicy = "vfx_pool_exhaustion_policy";
         }
 
         public static class Players

@@ -5,7 +5,7 @@
 - `examples/gameplay_config.sample.json`：与工作簿示例数据对应的版本化JSON。
 - 正式工程中的唯一配置源应为 `Design/Config/GameConfig.xlsx`。
 - 运行时仅读取构建期生成的 `gameplay_config.json`。
-- 当前冻结契约为 schema `4` / content `0.4.0-sample`；T430把`DamageReduction`加入冻结`BuffType`集合并由`buff_shield_50`配置灵偶的50%减伤护盾，T410的`Heal`/`ClearProjectiles`效果、T360的伤害字段及其他ID、空值、外键、排序和hash算法见 `docs/CONFIG_SCHEMA.md`。
+- 当前冻结契约为 schema `4` / content `0.5.0-sample`；T440新增投射物预热数量及敌人/投射物/VFX/伤害数字四类池耗尽策略，T430的`DamageReduction`护盾、T410的`Heal`/`ClearProjectiles`效果、T360的伤害字段及其他ID、空值、外键、排序和hash算法见 `docs/CONFIG_SCHEMA.md`。
 
 本模板当前示例内容：
 

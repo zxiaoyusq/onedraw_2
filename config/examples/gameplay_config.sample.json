@@ -1,7 +1,7 @@
 {
   "schemaVersion": 4,
-  "contentVersion": "0.4.0-sample",
-  "contentHash": "61ed49c024a655a0d97fea7d95d03b973a636177d9e09df9305b1ddfd77351f2",
+  "contentVersion": "0.5.0-sample",
+  "contentHash": "d524ffcda4693c9cb65e5e21d5ab753472a14b2233b2ae670ecc4b81f1251ee8",
   "global": [
     {
       "key": "battle_countdown_sec",
@@ -38,10 +38,20 @@
       "valueType": "string",
       "intValue": null,
       "floatValue": null,
-      "stringValue": "0.4.0-sample",
+      "stringValue": "0.5.0-sample",
       "boolValue": null,
       "unit": "semver",
       "description": "内容版本"
+    },
+    {
+      "key": "damage_number_pool_exhaustion_policy",
+      "valueType": "string",
+      "intValue": null,
+      "floatValue": null,
+      "stringValue": "ReuseOldest",
+      "boolValue": null,
+      "unit": "enum",
+      "description": "伤害数字池耗尽时复用最早活动项"
     },
     {
       "key": "damage_number_pool_size",
@@ -52,6 +62,16 @@
       "boolValue": null,
       "unit": "count",
       "description": "伤害数字池预热"
+    },
+    {
+      "key": "enemy_pool_exhaustion_policy",
+      "valueType": "string",
+      "intValue": null,
+      "floatValue": null,
+      "stringValue": "Reject",
+      "boolValue": null,
+      "unit": "enum",
+      "description": "敌人池耗尽时拒绝本次生成"
     },
     {
       "key": "max_active_enemies",
@@ -94,6 +114,26 @@
       "description": "前后台切换时暂停"
     },
     {
+      "key": "projectile_pool_exhaustion_policy",
+      "valueType": "string",
+      "intValue": null,
+      "floatValue": null,
+      "stringValue": "Reject",
+      "boolValue": null,
+      "unit": "enum",
+      "description": "投射物池耗尽时拒绝本次生成"
+    },
+    {
+      "key": "projectile_pool_prewarm_per_type",
+      "valueType": "int",
+      "intValue": 8,
+      "floatValue": null,
+      "stringValue": "",
+      "boolValue": null,
+      "unit": "count",
+      "description": "每种投射物池预热数量"
+    },
+    {
       "key": "reference_height",
       "valueType": "int",
       "intValue": 1080,
@@ -122,6 +162,16 @@
       "boolValue": null,
       "unit": "fps",
       "description": "目标帧率"
+    },
+    {
+      "key": "vfx_pool_exhaustion_policy",
+      "valueType": "string",
+      "intValue": null,
+      "floatValue": null,
+      "stringValue": "ReuseOldest",
+      "boolValue": null,
+      "unit": "enum",
+      "description": "VFX池耗尽时复用最早活动项"
     }
   ],
   "players": [
@@ -3388,6 +3438,18 @@
       "value": "Sine",
       "displayName": "Sine",
       "description": "代码与配置共享的稳定枚举值"
+    },
+    {
+      "enumType": "PoolExhaustionPolicy",
+      "value": "Reject",
+      "displayName": "Reject",
+      "description": "达到配置活动容量时拒绝本次租用，不扩容也不回收活动玩法对象。"
+    },
+    {
+      "enumType": "PoolExhaustionPolicy",
+      "value": "ReuseOldest",
+      "displayName": "ReuseOldest",
+      "description": "达到配置活动容量时先完整回收最早活动项，再服务本次租用。"
     },
     {
       "enumType": "RewardCondition",

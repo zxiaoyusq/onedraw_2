@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using OneStrokeDemon.Combat;
 using OneStrokeDemon.Config;
+using OneStrokeDemon.Core;
 using UnityEngine;
 
 namespace OneStrokeDemon.Actors
@@ -145,7 +146,7 @@ namespace OneStrokeDemon.Actors
 
     [DisallowMultipleComponent]
     [RequireComponent(typeof(Damageable))]
-    public sealed class EnemyController : MonoBehaviour
+    public sealed class EnemyController : MonoBehaviour, IPoolable
     {
         private readonly EnemyStateMachine stateMachine = new EnemyStateMachine();
         private readonly EnemyBuffContainer buffContainer = new EnemyBuffContainer();
@@ -155,13 +156,18 @@ namespace OneStrokeDemon.Actors
         private WeakpointController weakpoint;
         private IConfigProvider configProvider;
         private EnemyDefinition definition;
+        private Transform poolParent;
+        private PoolLease poolLease;
         private ulong nextEventSequence = 1UL;
+        private bool hasPoolParent;
         private bool stateEventsAttached;
         private bool isSpawned;
 
         public event Action<EnemyCombatEvent> CombatEventPublished;
 
         public bool IsSpawned => isSpawned;
+
+        public bool IsPoolActive => poolLease.IsValid;
 
         public bool IsAlive => isSpawned && stateMachine.Current.IsAlive;
 
@@ -609,7 +615,85 @@ namespace OneStrokeDemon.Actors
                 gameObject.SetActive(false);
             }
 
+            CombatEventPublished = null;
+            nextEventSequence = 1UL;
+
             return snapshot;
+        }
+
+        public void AcquireFromPool(in PoolLease lease)
+        {
+            if (!lease.IsValid)
+            {
+                throw new ArgumentException("A valid pool lease is required.", nameof(lease));
+            }
+
+            if (poolLease.IsValid || isSpawned)
+            {
+                throw new InvalidOperationException(
+                    "Enemy must be fully released before acquiring another pool lease.");
+            }
+
+            poolParent = transform.parent;
+            hasPoolParent = true;
+            poolLease = lease;
+            CombatEventPublished = null;
+            nextEventSequence = 1UL;
+            ResetPoolTransform();
+            if (!gameObject.activeSelf)
+            {
+                gameObject.SetActive(true);
+            }
+        }
+
+        public void ReleaseToPool(in PoolReleaseContext context)
+        {
+            if (!hasPoolParent)
+            {
+                poolParent = transform.parent;
+                hasPoolParent = true;
+            }
+
+            if (context.Lease.IsValid && poolLease.IsValid && context.Lease != poolLease)
+            {
+                throw new InvalidOperationException("Enemy pool release used a stale lease.");
+            }
+
+            if (isSpawned)
+            {
+                double timestamp = stateMachine.Current.HasClock
+                    ? stateMachine.Current.LastTimestamp
+                    : 0d;
+                EnemyReleaseReason reason = context.Reason == PoolReleaseReason.Manual
+                    ? EnemyReleaseReason.Manual
+                    : EnemyReleaseReason.Cleared;
+                Release(reason, timestamp);
+            }
+
+            weakpoint?.Release();
+            damageable?.Release();
+            buffContainer.Release();
+            counters.Clear();
+            configProvider = null;
+            definition = default;
+            weakpoint = null;
+            isSpawned = false;
+            CombatEventPublished = null;
+            nextEventSequence = 1UL;
+            poolLease = default;
+            ResetPoolTransform();
+            if (gameObject.activeSelf)
+            {
+                gameObject.SetActive(false);
+            }
+        }
+
+        private void ResetPoolTransform()
+        {
+            transform.SetParent(hasPoolParent ? poolParent : null, false);
+            transform.localPosition = Vector3.zero;
+            transform.localRotation = Quaternion.identity;
+            transform.localScale = Vector3.one;
         }
 
         private void EnsureComponents()

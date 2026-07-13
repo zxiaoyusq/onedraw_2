@@ -2,7 +2,7 @@
 
 ## 1. 版本与唯一真相源
 
-- 当前冻结版本：`schemaVersion = 4`、`contentVersion = 0.4.0-sample`。
+- 当前冻结版本：`schemaVersion = 4`、`contentVersion = 0.5.0-sample`。
 - 正式内容唯一源：`Design/Config/GameConfig.xlsx`。
 - `config/一笔镇妖_游戏配置表模板.xlsx` 只是随正式源同步的示例镜像，不接受独立内容修改。
 - `Assets/_Game/Config/Generated/gameplay_config.json`和`gameplay_config.hash`由T250导出器生成，是可审查、可构建的只读Runtime快照与hash旁车。
@@ -151,7 +151,7 @@ T360新增的`Stances.damageFormulaId -> DamageFormulas.formulaId`是必填普�
 - 初始归属由生成攻击的运行时实体传入；来源保存`currentOwner`与不可变`originalOwner`。反弹把`currentOwner`切到划动玩家、保留原敌方实体并递增反弹次数，同时把显式运动方向取反；反弹后的玩家归属投射物不再接受同阵营笔迹。
 - 伤害来源由`projectileId`、表内`damage`、当前归属、原始归属和反弹次数共同组成。敌方投射物只能伤玩家阵营；反弹后只能伤敌方阵营，命中同阵营不消费投射物。
 - `ProjectileController`只按调用方给出的参考像素位置/单位方向、表内`speedRefPxSec`与外部`deltaSeconds`做确定性Transform位移，不使用`Rigidbody2D.AddForce`或随机物理力；达到`lifeSec`边界时回收。
-- 切断、有效碰撞、寿命到期或显式回收都先生成不可变快照，再清空规则、归属、参考空间、位置、方向、已过时间与`ProjectileHitTarget` ID，禁用并清空Stroke Collider状态，重置Transform并停用GameObject。再次生成必须由新配置和新初始归属完整覆盖；通用池容量、预热与泄漏检测仍属于T440。
+- 切断、有效碰撞、寿命到期或显式回收都先生成不可变快照，再清空规则、归属、参考空间、位置、方向、已过时间与`ProjectileHitTarget` ID，禁用并清空Stroke Collider状态，重置Transform并停用GameObject。再次生成必须由新配置和新初始归属完整覆盖；通用池容量、预热与泄漏检测见第17节。
 
 ## 13. T400玩家战斗状态与架势切换语义
 
@@ -172,7 +172,7 @@ T360新增的`Stances.damageFormulaId -> DamageFormulas.formulaId`是必填普�
 - 显式`IEffectExecutor`注册表冻结12类：`Damage`、`Heal`、`ApplyBuff`、`RemoveArmor`、`Knockback`、`RepeatStroke`、`TimeScale`、`ExecuteBelowHpRatio`、`DamageMultiplier`、`IncrementCounter`、`PlayVfx`、`ClearProjectiles`。`ApplyBuff.durationSec > 0`覆盖Buff默认持续时间，否则读取`Buffs.durationSec`；其他伤害、倍率、时长、Buff/VFX/Audio键均只来自当前效果行。
 - `condition`为空时执行；非空只允许`identifier`加`>=`、`<=`、`==`、`!=`、`>`或`<`和InvariantCulture数值（当前内容为`comboCount>=3`）。缺少调用方变量时条件不成立；语法非法必须在扣能前失败。
 - `PlayerCombatModel.Heal`把存活玩家HP封顶到配置`Players.maxHp`并发布正数`HpChanged`；HP为0时返回`AlreadyDead`，治疗执行器不能复活。复活若进入范围必须另立配置和状态机合同。
-- 当前终极`fx_ultimate_seal`顺序冻结为：`TimeScale(Battle)`→`ClearProjectiles(Battle)`→`Damage(AllEnemies)`→`ExecuteBelowHpRatio(NormalEnemies)`→`ApplyBuff(Boss)`。T410只提供执行管线和有效笔势入口；T420敌人适配、T440实际弹池、T510 `UltimateDrawing`流程与T600 HUD分别后续接入。
+- 当前终极`fx_ultimate_seal`顺序冻结为：`TimeScale(Battle)`→`ClearProjectiles(Battle)`→`Damage(AllEnemies)`→`ExecuteBelowHpRatio(NormalEnemies)`→`ApplyBuff(Boss)`。T410只提供执行管线和有效笔势入口；T420敌人适配与T440实际弹池已经提供，T510 `UltimateDrawing`流程与T600 HUD分别后续接入。
 
 ## 15. T420通用敌人状态、伤害与弱点运行时语义
 
@@ -181,7 +181,7 @@ T360新增的`Stances.damageFormulaId -> DamageFormulas.formulaId`是必填普�
 - 弱点窗和攻击打断窗都以当前攻击开始时刻为零点，起止边界均包含。弱点Collider只在`WeakpointRules.windowStartSec <= elapsed <= windowEndSec`且状态为Windup/Attack时启用；一次T360弱点命中只有同时满足`interruptAttack=true`、当前攻击的`gestureInterruptType`和`interruptStartSec/interruptEndSec`才打断。
 - 弱点/攻击行没有眩晕持续时间，因此弱点打断进入无限期`Stun`，必须由后续战斗/策略流程显式调用恢复；配置`Buffs.type=Stun`仍使用效果传入或Buff默认的配置时长，并在边界自动恢复。不得以Inspector常量或动画长度猜测替代缺失的配置时长。
 - `EnemyDamageModel`先用`DefenseRules.armorHp`吸收来伤，溢出伤害进入HP；护甲从正数首次降为0时只发布一次该行`breakEffectGroupId`意图。HP首次归零只触发一次死亡，死亡后伤害与治疗不改变状态且治疗不能复活；回收清空HP、护甲、Buff、计数、攻击、弱点、时钟和目标ID后才允许复用。
-- `EnemySkillEffectTarget`在Skills程序集把T410目标端口适配到通用敌人，支持伤害、治疗、Buff、破甲、击退意图、低血处决和计数；Actors不反向依赖Skills。移动/攻击/防御/支援策略实现归T430，对象池归T440，Boss阶段覆盖攻击集/防御/弱点归T460。
+- `EnemySkillEffectTarget`在Skills程序集把T410目标端口适配到通用敌人，支持伤害、治疗、Buff、破甲、击退意图、低血处决和计数；Actors不反向依赖Skills。移动/攻击/防御/支援策略见T430，对象池见第17节，Boss阶段覆盖攻击集/防御/弱点归T460。
 
 ## 16. T430敌人移动、攻击、防御与支援策略语义
 
@@ -189,4 +189,13 @@ T360新增的`Stances.damageFormulaId -> DamageFormulas.formulaId`是必填普�
 - `MovementStrategyRegistry`显式登记`Linear/Sine/Dive/Hover/Boss`，未知类型立即失败。起止归一化坐标投影到`Global.reference_width/reference_height`，基础速度为`Enemies.moveSpeedRefPxSec * MovePatterns.speedMultiplier`；循环路径使用往返进度，`Sine/Hover`只读取配置振幅与频率，`Dive`使用确定性二次缓入。采样器不拥有时间缩放常量，调用方必须在Root时停止推进移动时钟，并按Slow等配置效果缩放外部delta。
 - `AttackStrategyRegistry`显式登记`Cooldown/Distance/Support/HpThreshold`。触发上下文只接收调用方已经判定的距离、支援目标和HP阈值事实，不在策略层猜测表中不存在的距离或比例；候选按配置`order`稳定、按`weight`选择。动作从当前攻击效果与弹体配置推导为近战、投射物、冲撞或支援，投射物伤害必须与攻击伤害合同一致，支援动作必须携带明确目标。
 - `EnemyAttackTelegraph`在`BeginAttack`成功时先公开攻击种类、打断笔势、效果组与预期执行时刻；`EnemyStrategyRuntime`在T420状态机的`Windup -> Attack`边界恰好执行一次动作并关闭预警。动画事件可消费状态做表现，但不是伤害或支援生效的唯一真相。
-- `DefenseRuleService`只把配置的防御笔势、架势门、命中/失败倍率、反伤值和破甲效果映射为不可变结果，不复制T360伤害公式，也不直接结算HP。对象池、敌人内容装配与Boss阶段覆盖仍分别属于T440、T450和T460。
+- `DefenseRuleService`只把配置的防御笔势、架势门、命中/失败倍率、反伤值和破甲效果映射为不可变结果，不复制T360伤害公式，也不直接结算HP。对象池合同见第17节；敌人内容装配与Boss阶段覆盖仍分别属于T450和T460。
+
+## 17. T440通用对象池、预热、耗尽与完整重置语义
+
+- T440不改变JSON字段形状，保持schema `4`并把content升级为`0.5.x`。四类池的共享活动容量分别读取`Global.max_active_enemies`、`max_active_projectiles`、`max_active_vfx`和`damage_number_pool_size`；耗尽策略分别读取新增的`enemy_pool_exhaustion_policy`、`projectile_pool_exhaustion_policy`、`vfx_pool_exhaustion_policy`和`damage_number_pool_exhaustion_policy`，值只能是Enums登记的`Reject`或`ReuseOldest`。
+- 敌人每ID预热数读取`Enemies.poolPrewarm`，VFX每Key预热数读取`VfxCues.poolPrewarm`，投射物每ID统一读取新增的`Global.projectile_pool_prewarm_per_type`，伤害数字默认池按`damage_number_pool_size`完整预热。预热只分配并彻底回收对象，不占活动容量；同一family下的不同ID池共享活动上限。
+- `ObjectPoolService`与`IPoolable`位于无`MonoBehaviour`依赖的Core程序集。每次成功获取都发出包含pool/family、generation和单调激活序号的租约；显式释放验证对象所有权与精确租约，重复释放、未知对象和旧租约均不得影响当前对象。重开先回收全部活动租约再递增generation，泄漏报告只列出仍持有活动租约的对象。
+- `Reject`在family达到活动容量时不创建、不激活也不回收任何对象；`ReuseOldest`按family内激活序号确定性选择最旧对象，先执行其完整`ReleaseToPool`，再从请求的目标ID池获取。容量判断不以`GameObject.activeSelf`代替租约状态；弹体自行因命中/寿命停用后，拥有者仍必须把对应租约交还服务，才算释放family容量。
+- 敌人回收清空配置定义、HP/护甲、Buff、计数、攻击/弱点/时钟/目标ID、外部`CombatEventPublished`订阅、事件序号和Transform；投射物回收清空规则、归属、参考空间、位置/方向/时间、命中ID、Collider和Transform。二者都恢复到捕获的池父节点并停用，下一次获取后必须由新生成参数完整覆盖。
+- `VfxPoolItem`只保留由`VfxCues`确定的不可变池配置，回收清空目标、播放/完成状态、计时和Transform；`DamageNumberPoolItem`回收清空金额、目标、来源、可见状态和Transform。VFX生命期、跟随与排序仍只从配置读取；T440不实现T620反馈编排，也不装配T450敌人内容、T460 Boss阶段或T500关卡流程。

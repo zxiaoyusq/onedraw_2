@@ -33,8 +33,8 @@
 | T410 | P4 玩家敌人技能 | DONE | T400, T230 | 3.0 | 实现数据驱动Skill到EffectGroup到有序Effect执行链。 |
 | T420 | P4 玩家敌人技能 | DONE | T360 | 2.0 | 实现通用敌人状态机、Damageable和Weakpoint。 |
 | T430 | P4 玩家敌人技能 | DONE | T420, T370 | 3.0 | 实现可组合移动、攻击、防御和支援策略注册表。 |
-| T440 | P4 玩家敌人技能 | READY | T420 | 1.5 | 建立敌人、投射物、VFX和伤害数字对象池及完整重置。 |
-| T450 | P4 玩家敌人技能 | BACKLOG | T430, T440 | 2.0 | 只用配置组合5种普通怪和1种精英怪。 |
+| T440 | P4 玩家敌人技能 | DONE | T420 | 1.5 | 建立敌人、投射物、VFX和伤害数字对象池及完整重置。 |
+| T450 | P4 玩家敌人技能 | READY | T430, T440 | 2.0 | 只用配置组合5种普通怪和1种精英怪。 |
 | T460 | P4 玩家敌人技能 | BACKLOG | T410, T430 | 3.0 | 实现配置驱动Boss阶段、阈值、技能序列和切换。 |
 | T500 | P5 关卡完整单局 | BACKLOG | T450 | 2.0 | 实现Level/Wave/Spawn时间轴和条件结束。 |
 | T510 | P5 关卡完整单局 | BACKLOG | T500, T400 | 1.5 | 实现Countdown/Playing/UltimateDrawing/Paused/Victory/Defeat状态机。 |
@@ -396,7 +396,7 @@
 
 ### T440 · 建立敌人、投射物、VFX和伤害数字对象池及完整重置。
 
-- **状态：** `READY`
+- **状态：** `DONE`
 - **依赖：** T420
 - **估算：** 1.5 人日
 - **产出：** ObjectPoolService；IPoolable；预热配置；泄漏检测。
@@ -404,11 +404,11 @@
 - **验收：** 连续生成/击杀/清场/重开3次无旧状态；池不足策略可配。
 - **验证：** PoolResetTests；RestartThreeTimesPlayModeTests。
 - **证据：** `artifacts/evals/T440/`
-- **提交：** `T440: <imperative summary>`
+- **提交：** `T440: implement configured object pools`
 
 ### T450 · 只用配置组合5种普通怪和1种精英怪。
 
-- **状态：** `BACKLOG`
+- **状态：** `READY`
 - **依赖：** T430, T440
 - **估算：** 2.0 人日
 - **产出：** 符火鱼妖；轮车僵妖；石甲龟妖；骷髅幽魂；飞行符蝠；摄魂道傀。

@@ -1,4 +1,5 @@
 using System;
+using OneStrokeDemon.Core;
 using UnityEngine;
 
 namespace OneStrokeDemon.Combat
@@ -116,19 +117,24 @@ namespace OneStrokeDemon.Combat
 
     [DisallowMultipleComponent]
     [RequireComponent(typeof(ProjectileHitTarget), typeof(CircleCollider2D))]
-    public sealed class ProjectileController : MonoBehaviour
+    public sealed class ProjectileController : MonoBehaviour, IPoolable
     {
         private ProjectileHitTarget hitTarget;
         private CircleCollider2D hitCollider;
         private ProjectileRuleSet rules;
         private ProjectileOwnership ownership;
+        private Transform poolParent;
         private Transform referenceSpace;
         private Vector2 referencePosition;
         private Vector2 travelDirection;
         private float elapsedSeconds;
+        private PoolLease poolLease;
+        private bool hasPoolParent;
         private bool isActive;
 
         public bool IsActive => isActive;
+
+        public bool IsPoolActive => poolLease.IsValid;
 
         public bool CanReceiveStrokeHit =>
             isActive && ownership.CurrentOwner.Faction == ProjectileFaction.Enemy;
@@ -331,6 +337,55 @@ namespace OneStrokeDemon.Combat
             return snapshot;
         }
 
+        public void AcquireFromPool(in PoolLease lease)
+        {
+            if (!lease.IsValid)
+            {
+                throw new ArgumentException("A valid pool lease is required.", nameof(lease));
+            }
+
+            if (poolLease.IsValid || isActive)
+            {
+                throw new InvalidOperationException(
+                    "Projectile must be fully released before acquiring another pool lease.");
+            }
+
+            poolParent = transform.parent;
+            hasPoolParent = true;
+            poolLease = lease;
+            ClearRuntimeState(resetTransform: true);
+            if (!gameObject.activeSelf)
+            {
+                gameObject.SetActive(true);
+            }
+        }
+
+        public void ReleaseToPool(in PoolReleaseContext context)
+        {
+            if (!hasPoolParent)
+            {
+                poolParent = transform.parent;
+                hasPoolParent = true;
+            }
+
+            if (context.Lease.IsValid && poolLease.IsValid && context.Lease != poolLease)
+            {
+                throw new InvalidOperationException("Projectile pool release used a stale lease.");
+            }
+
+            if (isActive)
+            {
+                Release(ProjectileReleaseReason.Manual);
+            }
+
+            ClearRuntimeState(resetTransform: true);
+            poolLease = default;
+            if (gameObject.activeSelf)
+            {
+                gameObject.SetActive(false);
+            }
+        }
+
         internal ProjectileStrokeResult ResolveStroke(
             ulong strokeId,
             int hitTargetId,
@@ -439,7 +494,7 @@ namespace OneStrokeDemon.Combat
 
             if (resetTransform)
             {
-                transform.SetParent(null, false);
+                transform.SetParent(hasPoolParent ? poolParent : null, false);
                 transform.localPosition = Vector3.zero;
                 transform.localRotation = Quaternion.identity;
                 transform.localScale = Vector3.one;
