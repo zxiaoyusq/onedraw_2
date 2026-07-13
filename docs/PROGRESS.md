@@ -1,8 +1,8 @@
 # PROGRESS
 
 - 日期：2026-07-13
-- 当前成熟度：T310已建立配置阈值驱动、边界精确且热路径零托管分配的笔迹采样管线；P3进入笔迹几何处理
-- 当前任务：T320
+- 当前成熟度：T320已建立确定性RDP、弧长重采样和统一几何指标的不可变处理点集；P3进入配置驱动笔势识别
+- 当前任务：T330
 - 状态：READY
 - Unity精确版本：6000.5.1f1（已由ProjectVersion.txt与本机安装核验）
 - 微信SDK来源或版本：官方 `minigame-tuanjie-transform-sdk` v0.1.33 / commit `ed4ad28f433c6b52b5fd3f22a6fa155a0c98c228` / embedded最小补丁
@@ -11,6 +11,13 @@
 
 ## 已完成
 
+- T320：`StrokeGeometry`是无MonoBehaviour、`Time`、线程或全局状态依赖的纯规则层；`Process`先按配置`rdpEpsilonRefPx`执行保留首尾的RDP，再仅在超出配置`maxPointCount`时按累计弧长等距重采样并精确保留首尾。
+- T320：`StrokeGeometryData`持有供后续识别、视觉和命中共享的单一不可变处理点集，并只从该点集计算路径长度、参考像素包围盒、有向/绝对面积、首尾闭合距离、闭合比、有向转角、总绝对转角和`总转角/π`归一化曲率；原始`strokeId`、时间和终止原因可追溯。
+- T320：RDP容差语义冻结为点到线段距离小于或等于epsilon即删除；面积使用首尾隐式闭合的鞋带公式；曲率忽略零长度段并按路径相邻非零段转角计算，因此尺度不影响归一化值，左右转方向与S形总弯曲可分别表达。
+- T320：空集合、连续重复点、单点和零长度输入均有确定结果；非有限坐标、负容差和非法目标点数显式失败。直线、折线拐角、矩形、四分之一弧和圆均有稳定回放断言，处理不会修改输入或旧结果。
+- T320：`StrokeGeometrySettingsFactory`从调用方选中的任意`StrokeRuleConfig`映射RDP epsilon与最大处理点数，Input程序集不依赖Config且不硬编码规则ID或阈值；圆规则真实映射为epsilon 5参考像素、最大80点。
+- T320：最终StrokeGeometry专项EditMode 12/12、PlayMode 1/1，全量EditMode 58/58、PlayMode 14/14；真实Mouse→统一输入→采样→几何处理只发布1份共享结果，Bootstrap→MainMenu日志正常且新增Console Error/Warning为0。
+- T320：配置只读检查继续保持三生成物无漂移和.NET 54/54；未修改xlsx、Schema、导出器、JSON/hash/ConfigIds、T310采样合同、Input Actions、Packages、ProjectSettings、场景或Prefab，也未提前实现T330识别或T340轨迹。
 - T310：`StrokeSampler`是无MonoBehaviour、`Time`或全局状态依赖的纯规则对象；构造时按配置点数上限一次性分配固定缓冲，连续合法收点不创建List/GameObject，专项测试测得100次热路径收点托管分配增量为0。
 - T310：采样以最后一个已接受点执行`minPointDistanceRefPx`过滤；接受段跨越`maxStrokeLengthRefPx`时沿该段插值到剩余路径长度，最终`StrokeData.TotalLengthReferencePixels`精确等于配置上限；收满`maxPointCount`时在最后一个合法点稳定终止并只发布一次。
 - T310：完成时才复制为只读`StrokeData`快照，包含单调非零`strokeId`、处理后点、总长、起止时间和明确终止原因；采样器复用不会改写旧结果，生命周期取消只发布`StrokeCanceledEvent`且不生成可命中笔迹。
@@ -52,7 +59,7 @@
 - T200：按GAME_DESIGN修正关卡玩法ID为 `lv_001_tutorial`、`lv_002_cave`、`lv_003_boss`，Boss玩法ID为 `boss_tomb_king`；所有Level/Wave/Spawn/BossPhase/Reward依赖引用同步，文案键和资源键保持独立命名空间。
 - T200：FieldDictionary保留248条非递归字段记录，修正Global互斥类型列及10个主键/条件字段的必填语义；冻结Schema属性存在与Excel单元格非空的差异、空值转换、普通/分组/通配符/conditional外键和数据所有权。
 - T200：29表、14公式、248字段、Schema/样例、类型/范围/枚举、主键、外键、连续order、关卡-Boss语义和规范化contentHash的只读契约审计全部PASS；29表最终渲染经4张总览拼图复核，无结构或版式异常。
-- 执行顺序调整：用户明确要求暂时绕过T120及微信开发者工具/打包问题，先完成游戏主要内容；T120保持`BLOCKED`、T130保持`BACKLOG`，不删除MVP平台验收要求；T210/T220/T230/T240/T250/T300/T310已按该顺序完成，当前唯一`READY`任务为T320。
+- 执行顺序调整：用户明确要求暂时绕过T120及微信开发者工具/打包问题，先完成游戏主要内容；T120保持`BLOCKED`、T130保持`BACKLOG`，不删除MVP平台验收要求；T210/T220/T230/T240/T250/T300/T310/T320已按该顺序完成，当前唯一`READY`任务为T330。
 - T120 G2：Unity `6000.5.1f1` 基于固定 embedded WXSDK 成功生成 `Builds/WeChat/T120`；84个文件、总计101,901,218字节，其中`minigame` 12,008,520字节，JSON结构、关键文件、SHA-256清单与敏感占位扫描均通过。
 - T120构建参数：空AppID、横屏、256MB、触摸启用、Development、关闭渲染线程与性能分析、清理构建，并使用SDK受支持的多线程Brotli；可复现入口为`Tools/CI/build-wechat.sh`。
 - T120 G2结论为`PASS WITH KNOWN ISSUES`：默认单线程Brotli在当前macOS Unity安装布局下引用错误路径（BUG-0005，已用配置规避）；转换含93条未匹配替换规则及6条Emscripten warning（BUG-0006），需要G3实际运行判定影响。
@@ -99,4 +106,4 @@
 8. T240为尚未到达资源接入阶段的75个非场景键使用按类型共享的受管占位资源；类型与覆盖合同已成立，但正式视觉、音频和逐Prefab内容仍须在T630及相应玩法任务中替换并重新校验。
 ## 下一步
 
-只执行T320：实现纯C#的RDP简化、重采样、长度、包围盒、面积、闭合和曲率，并处理重复点与极短输入；不提前实现T330识别或T340轨迹，也不恢复T120/T130。平台任务最迟在T640/T750前恢复。
+只执行T330：使用StrokeRules配置驱动识别Any、Horizontal、Vertical、Diagonal、Arc、Circle和Charged，输出类型、置信度及几何摘要并覆盖误识别回归；不提前实现T340轨迹或T350命中，也不恢复T120/T130。平台任务最迟在T640/T750前恢复。
