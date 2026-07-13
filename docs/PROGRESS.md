@@ -1,16 +1,21 @@
 # PROGRESS
 
 - 日期：2026-07-13
-- 当前成熟度：P3手势战斗核心已完成；T400具备配置驱动的玩家HP、当前能量、刀/符架势、冷却和一次性死亡事件，进入P4技能效果链
-- 当前任务：T410
+- 当前成熟度：P3手势战斗核心已完成；P4已具备配置驱动玩家状态与通用技能效果链，进入通用敌人状态机
+- 当前任务：T420
 - 状态：READY
 - Unity精确版本：6000.5.1f1（已由ProjectVersion.txt与本机安装核验）
 - 微信SDK来源或版本：官方 `minigame-tuanjie-transform-sdk` v0.1.33 / commit `ed4ad28f433c6b52b5fd3f22a6fa155a0c98c228` / embedded最小补丁
 - Active Scene：Assets/_Game/Scenes/Bootstrap.unity
-- 配置版本：schema 2 / content 0.2.0-sample / hash `19dc788f890f995adb94458f74894b89514f85f3bfc9429659ddd2421a72f733`
+- 配置版本：schema 3 / content 0.3.0-sample / hash `ef7eec3aa29dffb593164526d50eff867e05fabb09fdbcbfc4347d620fb7b3c2`
 
 ## 已完成
 
+- T410：`SkillService`统一执行`Skills`触发类型、有效笔势/输入窗、T400架势/能量和每技能CD门，再按`SkillEffects.order`稳定调用显式`IEffectExecutor`；`ExecuteEffectGroup`也消费T400发布的`onSwitchEffectGroupId`意图并复用同一路径。无效、超时、冷却、架势错误、能量不足或死亡均不部分扣能。`comboCount>=3`由受限比较表达式执行，未知语法在扣能前失败。
+- T410：显式注册Damage/Heal/Buff/破甲/击退/重复笔迹/慢动作/低血处决/下笔倍率/计数/VFX/清弹12类效果，不用反射或每技能MonoBehaviour；`TargetType`覆盖主目标、世界、半径、上笔、手势区域、全敌、非Boss和Boss，并保持调用方目标顺序。配置行克隆出的`skill_test_heal`无需产品C#分支即可生效，治疗封顶且不复活。
+- T410：配置闭环升级为schema 3/content 0.3.x；Enums/Schema/导出器注册表补齐`Heal`和`ClearProjectiles`，终极链冻结为减速→清弹→全敌50伤害→普通敌25%低血处决→Boss 2秒易伤。双工作簿SHA-256均为`eb7cd040...311e3`，受管JSON 169,528字节/650条/hash `ef7eec3a...b3c2`，JSON/hash/IDs与样例同源。
+- T410：无效终极笔势保持100能量且零效果；有效Circle事件在2.5秒输入窗边界完成后清2枚弹并按5步执行。专项EditMode 4/4、PlayMode 1/1，ConfigExporter .NET 56/56，ConfigPipeline Unity 19/19 + 3/3，最终全量EditMode 110/110、PlayMode 28/28；最终脚本刷新编译与清理预期测试日志后Console Error/Warning为0。
+- T410：未修改场景、Prefab、Input Actions、Packages、Combat实现或微信SDK；T420敌人适配、T440实际弹池、T510完整`UltimateDrawing`流程、T600 HUD和T620表现仍按任务边界后续接入。
 - T400：`PlayerCombatSettingsFactory`沿`Players`映射HP/能量上限、默认架势、终极技能和受击无敌，并沿`ultimateSkillId`读取`Skills.energyCost`；`PlayerCombatModel`初始满HP/空能量，伤害夹到0，配置无敌窗在精确边界恢复，同帧重复致死不会重复标记。
 - T400：T360 `DamageResult.energyAward`进入当前能量时按配置上限无溢出饱和；技能扣能直接读取`Skills.energyCost/requiredStanceId`，架势不符、能量不足或死亡均不部分扣除。终极100能量、符术20能量等值未复制到Inspector或产品代码。
 - T400：`StanceService`把目标`Stances`行完整映射为不可变快照，成功切入目标后按该目标的`switchCooldownSec`计算冷却，等于边界可再次切换；同架势/冷却内/死亡请求均不发布事件。成功切换携带配置`onSwitchEffectGroupId`意图，实际EffectGroup执行留给T410。
@@ -95,7 +100,7 @@
 - T200：按GAME_DESIGN修正关卡玩法ID为 `lv_001_tutorial`、`lv_002_cave`、`lv_003_boss`，Boss玩法ID为 `boss_tomb_king`；所有Level/Wave/Spawn/BossPhase/Reward依赖引用同步，文案键和资源键保持独立命名空间。
 - T200：FieldDictionary保留248条非递归字段记录，修正Global互斥类型列及10个主键/条件字段的必填语义；冻结Schema属性存在与Excel单元格非空的差异、空值转换、普通/分组/通配符/conditional外键和数据所有权。
 - T200：29表、14公式、248字段、Schema/样例、类型/范围/枚举、主键、外键、连续order、关卡-Boss语义和规范化contentHash的只读契约审计全部PASS；29表最终渲染经4张总览拼图复核，无结构或版式异常。
-- 执行顺序调整：用户明确要求暂时绕过T120及微信开发者工具/打包问题，先完成游戏主要内容；T120保持`BLOCKED`、T130保持`BACKLOG`，不删除MVP平台验收要求；T210/T220/T230/T240/T250/T300/T310/T320/T330/T340/T350/T360/T370已完成，当前唯一`READY`任务为T400。
+- 执行顺序调整：用户明确要求暂时绕过T120及微信开发者工具/打包问题，先完成游戏主要内容；T120保持`BLOCKED`、T130保持`BACKLOG`，不删除MVP平台验收要求；主内容已推进至T410完成，当前唯一`READY`任务为T420。
 - T120 G2：Unity `6000.5.1f1` 基于固定 embedded WXSDK 成功生成 `Builds/WeChat/T120`；84个文件、总计101,901,218字节，其中`minigame` 12,008,520字节，JSON结构、关键文件、SHA-256清单与敏感占位扫描均通过。
 - T120构建参数：空AppID、横屏、256MB、触摸启用、Development、关闭渲染线程与性能分析、清理构建，并使用SDK受支持的多线程Brotli；可复现入口为`Tools/CI/build-wechat.sh`。
 - T120 G2结论为`PASS WITH KNOWN ISSUES`：默认单线程Brotli在当前macOS Unity安装布局下引用错误路径（BUG-0005，已用配置规避）；转换含93条未匹配替换规则及6条Emscripten warning（BUG-0006），需要G3实际运行判定影响。
@@ -142,4 +147,4 @@
 8. T240为尚未到达资源接入阶段的75个非场景键使用按类型共享的受管占位资源；类型与覆盖合同已成立，但正式视觉、音频和逐Prefab内容仍须在T630及相应玩法任务中替换并重新校验。
 ## 下一步
 
-只执行T410：实现配置驱动的Skill→EffectGroup→有序Effect执行链；不提前实现T420敌人状态机、T430策略注册表或T510战斗流程，也不恢复T120/T130。平台任务最迟在T640/T750前恢复。
+只执行T420：实现通用敌人状态机、Damageable和Weakpoint；不提前实现T430策略注册表、T440对象池或T510战斗流程，也不恢复T120/T130。平台任务最迟在T640/T750前恢复。

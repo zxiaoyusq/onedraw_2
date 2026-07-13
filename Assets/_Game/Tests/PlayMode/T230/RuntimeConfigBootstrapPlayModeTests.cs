@@ -15,7 +15,7 @@ namespace OneStrokeDemon.Tests.PlayMode.T230
     public sealed class RuntimeConfigBootstrapPlayModeTests
     {
         private const string IncompatibleSchemaJson =
-            "{\"schemaVersion\":999,\"contentVersion\":\"0.2.0-sample\"," +
+            "{\"schemaVersion\":999,\"contentVersion\":\"0.3.0-sample\"," +
             "\"contentHash\":\"0000000000000000000000000000000000000000000000000000000000000000\"," +
             "\"global\":[],\"players\":[],\"stances\":[],\"strokeRules\":[]," +
             "\"damageFormulas\":[],\"defenseRules\":[],\"weakpointRules\":[],\"movePatterns\":[]," +
@@ -35,15 +35,15 @@ namespace OneStrokeDemon.Tests.PlayMode.T230
         {
             LogAssert.Expect(
                 LogType.Log,
-                new Regex("CONFIG_RUNTIME_READY.*schema=2.*content=0\\.2\\.0-sample.*tables=28.*records=647"));
+                new Regex("CONFIG_RUNTIME_READY.*schema=3.*content=0\\.3\\.0-sample.*tables=28.*records=650"));
 
             yield return SceneManager.LoadSceneAsync(SceneNames.Bootstrap, LoadSceneMode.Single);
             yield return WaitForScene(SceneNames.MainMenu);
 
             Assert.That(GameplayConfigRuntime.IsReady, Is.True);
-            Assert.That(GameplayConfigRuntime.CurrentSummary.RecordCount, Is.EqualTo(647));
+            Assert.That(GameplayConfigRuntime.CurrentSummary.RecordCount, Is.EqualTo(650));
             Assert.That(GameplayConfigRuntime.Current.ContentHash, Is.EqualTo(
-                "19dc788f890f995adb94458f74894b89514f85f3bfc9429659ddd2421a72f733"));
+                "ef7eec3aa29dffb593164526d50eff867e05fabb09fdbcbfc4347d620fb7b3c2"));
             Assert.That(GameplayConfigRuntime.Current.GetEnemy("boss_tomb_king").Tier, Is.EqualTo("Boss"));
         }
 

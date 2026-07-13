@@ -2,7 +2,7 @@
 
 ## 1. 版本与唯一真相源
 
-- 当前冻结版本：`schemaVersion = 2`、`contentVersion = 0.2.0-sample`。
+- 当前冻结版本：`schemaVersion = 3`、`contentVersion = 0.3.0-sample`。
 - 正式内容唯一源：`Design/Config/GameConfig.xlsx`。
 - `config/一笔镇妖_游戏配置表模板.xlsx` 只是随正式源同步的示例镜像，不接受独立内容修改。
 - `Assets/_Game/Config/Generated/gameplay_config.json`和`gameplay_config.hash`由T250导出器生成，是可审查、可构建的只读Runtime快照与hash旁车。
@@ -120,7 +120,7 @@ T360新增的`Stances.damageFormulaId -> DamageFormulas.formulaId`是必填普�
 - SkillEffects、EnemyAttacks、Waves、Rewards、Tutorials和BossPhases的组内order从1连续且不重复。
 - Level → Wave → Spawn完整；时间非负；星级阈值严格递增。
 - Boss阶段覆盖1到0，阈值严格递减、前后相接且无重叠/空洞。
-- 敌人引用的策略ID由代码注册；文案、音频、VFX和资源键存在。
+- 敌人引用的策略ID、`EffectType`执行器和`TargetType`选择器由代码显式注册；工作簿Enums、JSON Schema和导出器注册集合必须精确一致；文案、音频、VFX和资源键存在。
 - 任意错误都阻止整份配置进入战斗；错误必须定位Sheet、Excel行、字段和稳定错误码。
 
 ## 10. Runtime约定
@@ -162,3 +162,14 @@ T360新增的`Stances.damageFormulaId -> DamageFormulas.formulaId`是必填普�
 - 成功切换立即更新唯一当前架势，并发布带`onSwitchEffectGroupId`的`StanceChanged`意图；T410只消费该意图执行配置效果链，不得在T400控制器中硬编码即时效果。玩家死亡后不能再切换架势。
 - 当前架势ID必须直接传给T340 `StrokeTrailSettingsFactory`、T360 `DamageRuleSetFactory`和T370 `ProjectileCutResolver`。因此同一玩家状态切换后，轨迹宽度、伤害公式/倍率、`projectileCutMultiplier`快照及投射物`requiredStanceId`门在同一次调用后立即生效，不维护刀/符第二映射。
 - `PlayerCombatController`只把纯模型结果转换为单调序号的`HpChanged`、`EnergyChanged`、`StanceChanged`和`Died`战斗事件；致死顺序固定为HP变化后死亡，同一玩家生命周期最多发布一次死亡事件。T400不修改场景/Prefab，也不实现自由移动、HUD、敌人状态机或技能效果执行。
+
+## 14. T410技能与效果链运行时语义
+
+- `SkillService`只从`Skills`读取触发类型、所需架势、能量、CD、笔势、输入窗和`effectGroupId`，再从`SkillEffects`读取组内连续`order`；执行前按order稳定排序并再次拒绝空组、断号、未知执行器/目标选择器和非法条件语法。`ExecuteEffectGroup`消费T400 `onSwitchEffectGroupId`等已经产生的非Skill效果组意图，并复用同一排序、校验和执行路径。新增由现有效果组成的技能只增加配置行，不新增技能专属`MonoBehaviour`或C#分支。
+- `Gesture`和`Ultimate`触发必须收到调用方明确传入的有效笔势事件：配置笔势非`Any`时还必须Ordinal相等，`inputElapsedSeconds <= inputWindowSec`的边界有效。无效、超时、触发类型错误、冷却、架势错误、能量不足或玩家死亡都不部分扣能、不执行任何Effect；计时器不能代替有效笔势。
+- 成功激活在效果前通过T400原子扣能；相同技能在`timestamp < activatedAt + cooldownSec`时冷却，等于边界允许。效果异常视为配置/运行时致命错误，不静默跳过未知类型。
+- `TargetType`解释固定为：`Target`取显式主目标；`NextStroke`与`Battle`为世界作用域；`EnemiesInRadius`、`LastStrokeTargets`、`EnemiesInsideGesture`使用调用方预计算标记；`AllEnemies`取存活敌方；`NormalEnemies`取非Boss敌方（含普通/精英）；`Boss`只取Boss。目标保持世界提供的稳定顺序，不按Unity对象遍历或反射重排。
+- 显式`IEffectExecutor`注册表冻结12类：`Damage`、`Heal`、`ApplyBuff`、`RemoveArmor`、`Knockback`、`RepeatStroke`、`TimeScale`、`ExecuteBelowHpRatio`、`DamageMultiplier`、`IncrementCounter`、`PlayVfx`、`ClearProjectiles`。`ApplyBuff.durationSec > 0`覆盖Buff默认持续时间，否则读取`Buffs.durationSec`；其他伤害、倍率、时长、Buff/VFX/Audio键均只来自当前效果行。
+- `condition`为空时执行；非空只允许`identifier`加`>=`、`<=`、`==`、`!=`、`>`或`<`和InvariantCulture数值（当前内容为`comboCount>=3`）。缺少调用方变量时条件不成立；语法非法必须在扣能前失败。
+- `PlayerCombatModel.Heal`把存活玩家HP封顶到配置`Players.maxHp`并发布正数`HpChanged`；HP为0时返回`AlreadyDead`，治疗执行器不能复活。复活若进入范围必须另立配置和状态机合同。
+- 当前终极`fx_ultimate_seal`顺序冻结为：`TimeScale(Battle)`→`ClearProjectiles(Battle)`→`Damage(AllEnemies)`→`ExecuteBelowHpRatio(NormalEnemies)`→`ApplyBuff(Boss)`。T410只提供执行管线和有效笔势入口；T420敌人适配、T440实际弹池、T510 `UltimateDrawing`流程与T600 HUD分别后续接入。

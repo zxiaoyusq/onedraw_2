@@ -90,6 +90,43 @@ namespace OneStrokeDemon.Actors
         public bool ChangedHp => AppliedDamage > 0;
     }
 
+    public enum PlayerHealStatus
+    {
+        None = 0,
+        Applied = 1,
+        NoHealing = 2,
+        AtMaximum = 3,
+        AlreadyDead = 4
+    }
+
+    public readonly struct PlayerHealResult
+    {
+        internal PlayerHealResult(
+            PlayerHealStatus status,
+            long requestedHealing,
+            long appliedHealing,
+            in PlayerCombatSnapshot state)
+        {
+            Status = status;
+            RequestedHealing = requestedHealing;
+            AppliedHealing = appliedHealing;
+            State = state;
+            IsValid = true;
+        }
+
+        public PlayerHealStatus Status { get; }
+
+        public long RequestedHealing { get; }
+
+        public long AppliedHealing { get; }
+
+        public PlayerCombatSnapshot State { get; }
+
+        public bool IsValid { get; }
+
+        public bool ChangedHp => AppliedHealing > 0;
+    }
+
     public enum PlayerEnergyStatus
     {
         None = 0,
@@ -279,6 +316,36 @@ namespace OneStrokeDemon.Actors
             return EnergyResult(PlayerEnergyStatus.Gained, amount, applied);
         }
 
+        public PlayerHealResult Heal(long amount)
+        {
+            if (amount < 0)
+            {
+                throw new ArgumentOutOfRangeException(
+                    nameof(amount),
+                    "Player healing must be non-negative.");
+            }
+
+            if (currentHp == 0)
+            {
+                return HealResult(PlayerHealStatus.AlreadyDead, amount, 0L);
+            }
+
+            if (amount == 0)
+            {
+                return HealResult(PlayerHealStatus.NoHealing, amount, 0L);
+            }
+
+            long missingHp = settings.MaximumHp - currentHp;
+            if (missingHp == 0)
+            {
+                return HealResult(PlayerHealStatus.AtMaximum, amount, 0L);
+            }
+
+            long applied = Math.Min(amount, missingHp);
+            currentHp += applied;
+            return HealResult(PlayerHealStatus.Applied, amount, applied);
+        }
+
         public PlayerEnergyResult GainEnergy(in DamageResult damageResult)
         {
             if (!damageResult.IsResolved)
@@ -355,6 +422,14 @@ namespace OneStrokeDemon.Actors
             long applied)
         {
             return new PlayerEnergyResult(status, requested, applied, Current);
+        }
+
+        private PlayerHealResult HealResult(
+            PlayerHealStatus status,
+            long requested,
+            long applied)
+        {
+            return new PlayerHealResult(status, requested, applied, Current);
         }
 
         private void ValidateDamageTimestamp(double timestamp)

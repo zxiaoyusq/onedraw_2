@@ -40,7 +40,7 @@ namespace OneStrokeDemon.Tests.EditMode.T250
             Assert.That(ConfigIds.SchemaVersion, Is.EqualTo(service.SchemaVersion));
             Assert.That(ConfigIds.ContentVersion, Is.EqualTo(service.ContentVersion));
             Assert.That(ConfigIds.ContentHash, Is.EqualTo(service.ContentHash));
-            Assert.That(summary.RecordCount, Is.EqualTo(647));
+            Assert.That(summary.RecordCount, Is.EqualTo(650));
             Assert.That(ConfigIds.IdSetCount, Is.EqualTo(27));
             Assert.That(ConfigIds.IdConstantCount, Is.EqualTo(306));
         }

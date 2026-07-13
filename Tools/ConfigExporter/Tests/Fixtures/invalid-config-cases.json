@@ -192,6 +192,16 @@
       ]
     },
     {
+      "id": "effect_enum_not_registered_by_code",
+      "expectedCode": "CFG006",
+      "expectedSheet": "Enums",
+      "expectedField": "value",
+      "mutations": [
+        { "operation": "copy", "sheet": "Enums", "match": { "enumType": "EffectType", "value": "Damage" }, "values": { "value": "TeleportTargets", "displayName": "传送目标", "description": "测试未注册效果执行器" } },
+        { "operation": "set", "sheet": "SkillEffects", "match": { "effectGroupId": "fx_talisman_bind", "order": "2" }, "values": { "effectType": "TeleportTargets" } }
+      ]
+    },
+    {
       "id": "wave_has_no_spawn",
       "expectedCode": "CFG010",
       "expectedSheet": "Waves",

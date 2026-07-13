@@ -96,6 +96,22 @@ internal static class ConfigContract
             ["AttackTriggerType"] = new HashSet<string>(
                 new[] { "Cooldown", "Distance", "HpThreshold", "Support" },
                 StringComparer.Ordinal),
+            ["EffectType"] = new HashSet<string>(
+                new[]
+                {
+                    "ApplyBuff", "ClearProjectiles", "Damage", "DamageMultiplier",
+                    "ExecuteBelowHpRatio", "Heal", "IncrementCounter", "Knockback",
+                    "PlayVfx", "RemoveArmor", "RepeatStroke", "TimeScale",
+                },
+                StringComparer.Ordinal),
+            ["TargetType"] = new HashSet<string>(
+                new[]
+                {
+                    "AllEnemies", "Battle", "Boss", "EnemiesInRadius",
+                    "EnemiesInsideGesture", "LastStrokeTargets", "NextStroke",
+                    "NormalEnemies", "Target",
+                },
+                StringComparer.Ordinal),
         };
 
     public static SheetContract GetDataSheet(string sheetName)

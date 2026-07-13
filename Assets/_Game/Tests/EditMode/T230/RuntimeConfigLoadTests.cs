@@ -55,22 +55,25 @@ namespace OneStrokeDemon.Tests.EditMode.T230
                 RuntimeConfigTestFixture.Source);
 
             Assert.That(service.State, Is.EqualTo(GameplayConfigServiceState.Ready));
-            Assert.That(summary.SchemaVersion, Is.EqualTo(2));
-            Assert.That(summary.ContentVersion, Is.EqualTo("0.2.0-sample"));
-            Assert.That(summary.ContentHash, Is.EqualTo("19dc788f890f995adb94458f74894b89514f85f3bfc9429659ddd2421a72f733"));
+            Assert.That(summary.SchemaVersion, Is.EqualTo(3));
+            Assert.That(summary.ContentVersion, Is.EqualTo("0.3.0-sample"));
+            Assert.That(summary.ContentHash, Is.EqualTo("ef7eec3aa29dffb593164526d50eff867e05fabb09fdbcbfc4347d620fb7b3c2"));
             Assert.That(summary.TableCount, Is.EqualTo(28));
-            Assert.That(summary.RecordCount, Is.EqualTo(647));
+            Assert.That(summary.RecordCount, Is.EqualTo(650));
             Assert.That(summary.PrimaryIndexCount, Is.GreaterThan(0));
             Assert.That(summary.GroupIndexCount, Is.GreaterThan(0));
             Assert.That(summary.ToLogMessage(), Does.Contain("source=test:generated-gameplay-config"));
-            Assert.That(summary.ToLogMessage(), Does.Contain("records=647"));
+            Assert.That(summary.ToLogMessage(), Does.Contain("records=650"));
 
             Assert.That(service.GetGlobal("reference_width").IntValue, Is.EqualTo(1920));
             Assert.That(service.GetStance("stance_blade").DamageFormulaId, Is.EqualTo("damage_player_default"));
             Assert.That(service.GetEnemy("boss_tomb_king").Tier, Is.EqualTo("Boss"));
             Assert.That(service.GetLevel("lv_003_boss").BossEnemyId, Is.EqualTo("boss_tomb_king"));
             Assert.That(service.GetEnemyAttacks("attackset_boss_phase1"), Is.Not.Empty);
-            Assert.That(service.GetSkillEffects("fx_ultimate_seal"), Is.Not.Empty);
+            Assert.That(service.GetSkillEffects("fx_ultimate_seal").Count, Is.EqualTo(5));
+            Assert.That(
+                service.GetSkillEffects("fx_ultimate_seal")[1].EffectType,
+                Is.EqualTo("ClearProjectiles"));
             Assert.That(service.GetWaves("lv_001_tutorial").Count, Is.EqualTo(3));
             Assert.That(service.GetBossPhases("boss_tomb_king").Count, Is.EqualTo(3));
             Assert.That(service.GetRewards("reward_level_001"), Is.Not.Empty);

@@ -30,8 +30,8 @@
 | T360 | P3 手势战斗核心 | DONE | T350, T230 | 1.5 | 实现伤害公式、方向奖励、连斩、评分和能量。 |
 | T370 | P3 手势战斗核心 | DONE | T350 | 1.5 | 实现可切断、不可切断和可反弹的敌方投射物。 |
 | T400 | P4 玩家敌人技能 | DONE | T360 | 1.5 | 实现玩家HP、能量、刀/符架势、切换冷却和战斗事件。 |
-| T410 | P4 玩家敌人技能 | READY | T400, T230 | 3.0 | 实现数据驱动Skill到EffectGroup到有序Effect执行链。 |
-| T420 | P4 玩家敌人技能 | BACKLOG | T360 | 2.0 | 实现通用敌人状态机、Damageable和Weakpoint。 |
+| T410 | P4 玩家敌人技能 | DONE | T400, T230 | 3.0 | 实现数据驱动Skill到EffectGroup到有序Effect执行链。 |
+| T420 | P4 玩家敌人技能 | READY | T360 | 2.0 | 实现通用敌人状态机、Damageable和Weakpoint。 |
 | T430 | P4 玩家敌人技能 | BACKLOG | T420, T370 | 3.0 | 实现可组合移动、攻击、防御和支援策略注册表。 |
 | T440 | P4 玩家敌人技能 | BACKLOG | T420 | 1.5 | 建立敌人、投射物、VFX和伤害数字对象池及完整重置。 |
 | T450 | P4 玩家敌人技能 | BACKLOG | T430, T440 | 2.0 | 只用配置组合5种普通怪和1种精英怪。 |
@@ -360,7 +360,7 @@
 
 ### T410 · 实现数据驱动Skill到EffectGroup到有序Effect执行链。
 
-- **状态：** `READY`
+- **状态：** `DONE`
 - **依赖：** T400, T230
 - **估算：** 3.0 人日
 - **产出：** SkillService；IEffectExecutor；伤害/治疗/Buff/击退/清弹/慢动作等。
@@ -372,7 +372,7 @@
 
 ### T420 · 实现通用敌人状态机、Damageable和Weakpoint。
 
-- **状态：** `BACKLOG`
+- **状态：** `READY`
 - **依赖：** T360
 - **估算：** 2.0 人日
 - **产出：** EnemyController；EnemyStateMachine；Damageable；WeakpointController。

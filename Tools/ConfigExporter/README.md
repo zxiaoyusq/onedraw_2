@@ -69,7 +69,7 @@ Tools/CI/verify-config.sh --update  # 显式重生成受管文件后执行同一
 - 普通、分组、唯一通配符及conditional外键，资源、文案、音频和VFX引用。
 - 六类分组连续order、Global联合、星级阈值、Level→Wave→Spawn完整性和出生点作用域。
 - Boss阶段从1连续覆盖到0、阈值严格下降且无缝相接，Boss关卡结束条件与实际出生一致。
-- `MovePatternType`和`AttackTriggerType`必须与代码登记的策略集合精确一致。
+- `MovePatternType`、`AttackTriggerType`、`EffectType`和`TargetType`必须与代码登记的策略/执行器/选择器集合精确一致。
 
 配置诊断格式为 `CODE [sheet=..., row=..., field=...]: message`。稳定错误码按类别划分：`CFG001/CFG002`结构合同、`CFG003`必填、`CFG004`类型、`CFG005`唯一性、`CFG006`枚举/策略、`CFG007`范围、`CFG008`外键、`CFG009`行内语义、`CFG010`跨表/Boss、`CFG011`版本、`CFG012`JSON输出自检、`CFG013`多生成物/路径/字节漂移。
 
@@ -79,4 +79,4 @@ Tools/CI/verify-config.sh --update  # 显式重生成受管文件后执行同一
 dotnet test Tools/ConfigExporter/Tests/ConfigExporter.Tests.csproj
 ```
 
-当前54项测试覆盖三生成物双生成字节一致、受管文件精确匹配、JSON/hash/C#三类漂移、冻结哈希/样例语义一致、表头漂移、区域设置无关性、CLI非零错误码、自校验失败保护旧输出，以及37类只修改内存副本的坏配置。坏配置断言精确错误码、Sheet、Excel行和字段；正式xlsx在测试中保持只读。
+当前56项测试覆盖三生成物双生成字节一致、受管文件精确匹配、JSON/hash/C#三类漂移、冻结哈希/样例语义一致、表头漂移、区域设置无关性、CLI非零错误码、自校验失败保护旧输出，以及39类只修改内存副本的坏配置。坏配置断言精确错误码、Sheet、Excel行和字段；正式xlsx在测试中保持只读。

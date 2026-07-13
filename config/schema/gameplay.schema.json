@@ -40,7 +40,7 @@
   "properties": {
     "schemaVersion": {
       "type": "integer",
-      "const": 2
+      "const": 3
     },
     "contentVersion": {
       "type": "string",
@@ -1036,7 +1036,9 @@
             "ExecuteBelowHpRatio",
             "DamageMultiplier",
             "IncrementCounter",
-            "PlayVfx"
+            "PlayVfx",
+            "Heal",
+            "ClearProjectiles"
           ]
         },
         "targetType": {

@@ -192,6 +192,29 @@ namespace OneStrokeDemon.Actors
             return result;
         }
 
+        public PlayerHealResult Heal(
+            long amount,
+            double timestamp,
+            string sourceId = "")
+        {
+            ValidateTimestamp(timestamp);
+            PlayerHealResult result = Model.Heal(amount);
+            if (result.ChangedHp)
+            {
+                Publish(
+                    PlayerCombatEventType.HpChanged,
+                    result.State,
+                    sourceId,
+                    result.AppliedHealing,
+                    string.Empty,
+                    result.State.StanceId,
+                    string.Empty,
+                    timestamp);
+            }
+
+            return result;
+        }
+
         public PlayerEnergyResult GainEnergy(
             long amount,
             double timestamp,
