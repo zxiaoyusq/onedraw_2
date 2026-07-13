@@ -1,16 +1,20 @@
 # PROGRESS
 
 - 日期：2026-07-14
-- 当前成熟度：P3手势战斗核心与P4玩家/敌人技能均已完成，P5教学关、混合怪物普通关和三阶段Boss整关均已完成，进入结算、进度与重开闭环
-- 当前任务：T550
+- 当前成熟度：P3手势战斗核心、P4玩家/敌人技能与P5完整单局闭环均已完成，下一阶段进入P6 HUD与结算表现
+- 当前任务：T600
 - 状态：READY
 - Unity精确版本：6000.5.1f1（已由ProjectVersion.txt与本机安装核验）
 - 微信SDK来源或版本：官方 `minigame-tuanjie-transform-sdk` v0.1.33 / commit `ed4ad28f433c6b52b5fd3f22a6fa155a0c98c228` / embedded最小补丁
 - Active Scene：Assets/_Game/Scenes/Bootstrap.unity
-- 配置版本：schema 4 / content 0.5.4-sample / hash `9fbd5fa97b812cb965eff60104cbf16ef5f3699480298a4e8e96c566cfd717a0`
+- 配置版本：schema 4 / content 0.5.5-sample / hash `aa391c48c8c9478113937b2372cbc78ab90ee2f4448732ed0329068fddf25bb1`
 
 ## 已完成
 
+- T550：新增无`MonoBehaviour`依赖的`ResultScoring/ResultService`。最终分数以T360战斗分为基底，并只从Global读取每次弹反150分、胜利无伤1000分和每个剩余整秒20分；星级读取当前Levels三阈值。胜利奖励按Rewards的Clear/ScoreAtLeast/StarAtLeast与UnlockLevel/UnlockFeature/ScoreToken协议顺序执行，Defeat不发胜利奖励。
+- T550：新增`ProgressSave` v1、确定性JSON编解码、`IProgressSaveMigration`与注入式`IProgressSaveStore`。初始解锁从完整Levels nextLevel图自动求根；缺失存档正常初始化，畸形/未知目录ID回退，未来版本或缺迁移链安全拒绝。结算ID全局持久化去重，重复回调不重复写盘、加币、解锁或增加通关次数；存储写入成功后才原子发布新快照。
+- T550：新增`BattleResultNavigation`会话所有权边界，Restart释放旧会话后以同关新建，NextLevel只接受当前胜利且奖励已解锁的配置后继关。Bootstrap真实配置PlayMode连续重开3次再进入`lv_002_cave`，共5个会话全部释放，旧GameObject销毁、活动池租约为0，generation为5。
+- T550：工作簿升级为content `0.5.5-sample`，双工作簿SHA-256均为`fb4033d5...80f2`；受管JSON为182,404字节/695条/content hash `aa391c48...5bb1`，运行时311个主索引、56个组索引，27组347个ID常量。29个Sheet全部重渲染并视觉复核、公式错误0，严格导出/漂移门与.NET 56/56通过；ConfigPipeline EditMode 19/19、PlayMode 3/3，T550专项EditMode 12/12、PlayMode 1/1，最终全量EditMode 174/174、PlayMode 42/42。未改Schema、FieldDictionary、DTO、导出规则、场景、Prefab、Registry、Packages、ProjectSettings或微信SDK，也未实现PlayerPrefs/微信存储适配、云存档、付费货币或T600 UI。
 - T540：正式工作簿把`lv_003_boss`编排为240秒、2波、6条出生行和12个敌人实例；前置混合波包含5种普通原型共11怪及1次精英修饰，随后只生成镇墓玄甲王。星级阈值8000/12000/17000，三阶段攻击、进入效果与提示均沿既有配置外键取得，第三阶段提示明确斜斩打断冲撞后处决。
 - T540：新增无关卡/Boss ID分支的`BossLevelCoordinator`与`IBossLevelWorld`，组合T500时间轴、T510胜负流程、T460阶段控制器和T410效果链；只在配置Boss实际出生后绑定阶段运行时，拒绝存活Boss的错误击败通知，并在Victory、Defeat或Dispose时释放阶段策略和全部订阅。失败后以全新协调器和世界重试，避免跨局状态泄漏。
 - T540：双工作簿保持字节一致，SHA-256均为`71fc222d...f36c5`；受管JSON为181,598字节/692条/content hash `9fbd5fa9...17a0`，27组344个ID常量与样例同源。29个Sheet均由工作簿工具重渲染并视觉复核，公式错误0；严格导出、三生成物漂移门、ConfigExporter构建0 warning/0 error与.NET 56/56通过。
@@ -146,7 +150,7 @@
 - T200：按GAME_DESIGN修正关卡玩法ID为 `lv_001_tutorial`、`lv_002_cave`、`lv_003_boss`，Boss玩法ID为 `boss_tomb_king`；所有Level/Wave/Spawn/BossPhase/Reward依赖引用同步，文案键和资源键保持独立命名空间。
 - T200：FieldDictionary保留248条非递归字段记录，修正Global互斥类型列及10个主键/条件字段的必填语义；冻结Schema属性存在与Excel单元格非空的差异、空值转换、普通/分组/通配符/conditional外键和数据所有权。
 - T200：29表、14公式、248字段、Schema/样例、类型/范围/枚举、主键、外键、连续order、关卡-Boss语义和规范化contentHash的只读契约审计全部PASS；29表最终渲染经4张总览拼图复核，无结构或版式异常。
-- 执行顺序调整：用户明确要求暂时绕过T120及微信开发者工具/打包问题，先完成游戏主要内容；T120保持`BLOCKED`、T130保持`BACKLOG`，不删除MVP平台验收要求；主内容已推进至T540完成，当前首个依赖满足的`READY`任务为T550。
+- 执行顺序调整：用户明确要求暂时绕过T120及微信开发者工具/打包问题，先完成游戏主要内容；T120保持`BLOCKED`、T130保持`BACKLOG`，不删除MVP平台验收要求；P5已推进至T550完成，当前首个依赖满足的`READY`任务为T600。
 - T120 G2：Unity `6000.5.1f1` 基于固定 embedded WXSDK 成功生成 `Builds/WeChat/T120`；84个文件、总计101,901,218字节，其中`minigame` 12,008,520字节，JSON结构、关键文件、SHA-256清单与敏感占位扫描均通过。
 - T120构建参数：空AppID、横屏、256MB、触摸启用、Development、关闭渲染线程与性能分析、清理构建，并使用SDK受支持的多线程Brotli；可复现入口为`Tools/CI/build-wechat.sh`。
 - T120 G2结论为`PASS WITH KNOWN ISSUES`：默认单线程Brotli在当前macOS Unity安装布局下引用错误路径（BUG-0005，已用配置规避）；转换含93条未匹配替换规则及6条Emscripten warning（BUG-0006），需要G3实际运行判定影响。
@@ -191,7 +195,7 @@
 6. 长Web构建后Unity MCP实例桥接未自动恢复，见BUG-0003；Unity batch测试与Web运行未受影响。
 7. PSD主角和怪物大多为单张Sprite；中文字体包体、Web内存和真机触摸延迟仍需后续验证。
 8. T450已能按AssetManifest类型装配六怪，但T240的75个非场景键仍使用按类型共享的受管占位资源；类型与覆盖合同已成立，正式视觉、音频、身体碰撞形状和逐Prefab内容仍须在T630及相应玩法任务中替换并重新校验。
-9. 三个MVP关卡的配置化原型玩家路径均已闭环，含6步教学、8波混合怪普通关和三阶段Boss胜败/重试；但T550结算/进度/重开、T650正式教程遮罩、T600 HUD和T630正式资源尚未实现，当前证据不能外推为最终用户可读性、正式演出或真机体验。
+9. 三个MVP关卡及T550结算/进度/重开原型路径已闭环；但T600 HUD、T650正式教程遮罩和T630正式资源尚未实现，`IProgressSaveStore`也仍待T130平台适配，因此当前证据不能外推为最终用户可读性、正式演出、平台持久化或真机体验。
 ## 下一步
 
-只执行T550：实现结算、星级/评分、解锁、重开和最小进度保存，验证重复结算幂等、坏存档回退与连续重开3次无泄漏；不提前实现T600 HUD、T620表现、T630正式资源或T650教程UI，也不恢复T120/T130。平台任务最迟在T640/T750前恢复。
+只执行T600：实现生命、能量、连斩、评分、架势、终极、暂停和结算HUD的只读Presenter/View绑定；不把业务逻辑或配置文案写进View，不提前实现T610/T620/T630/T650，也不恢复T120/T130。平台任务最迟在T640/T750前恢复。

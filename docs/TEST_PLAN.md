@@ -52,6 +52,8 @@ T530专项必须覆盖：正式配置映射`lv_002_cave`的8波、23条出生行
 
 T540专项必须覆盖：正式配置映射`lv_003_boss`的240秒上限、2波、6条出生行、11个混合前置敌人和1个Boss，以及三阶段提示、攻击、进入效果和最终处决意图。EditMode必须用内存配置变体证明关卡时限、波次、出生、阶段阈值和提示只改表即可改变重载结果；PlayMode必须从Bootstrap真实配置经T500/T510/T460/T410完成前置门、三阶段和处决Victory，并独立验证玩家死亡Defeat后阶段运行时停止、全新协调器重试可Victory、终态事件不跨局且活动池租约为0。
 
+T550专项必须覆盖：最终分数按配置拆分T360战斗分、弹反、无伤与剩余整秒，Victory使用Levels阈值得星并按Rewards顺序执行解锁/非付费积分，Defeat不发胜利奖励；相同settlementId重复结算不得再次写盘、加币、解锁或增加通关次数，写盘异常不得发布候选快照。SaveMigrationTests必须覆盖缺失、确定性往返、畸形JSON、未来版本、显式v0→v1迁移及未知配置ID回退。PlayMode必须从Bootstrap真实配置连续Restart三次再用胜利结果进入配置后继关，断言旧会话、GameObject和活动池租约全部释放。
+
 ## 证据模板
 
 每个任务写`artifacts/evals/TASK-ID/verification.md`。模板真相源为`templates/verification.md`和`templates/change-whitelist.md`，可用下列命令初始化且不会覆盖已有证据：

@@ -56,19 +56,25 @@ namespace OneStrokeDemon.Tests.EditMode.T230
 
             Assert.That(service.State, Is.EqualTo(GameplayConfigServiceState.Ready));
             Assert.That(summary.SchemaVersion, Is.EqualTo(4));
-            Assert.That(summary.ContentVersion, Is.EqualTo("0.5.4-sample"));
-            Assert.That(summary.ContentHash, Is.EqualTo("9fbd5fa97b812cb965eff60104cbf16ef5f3699480298a4e8e96c566cfd717a0"));
+            Assert.That(summary.ContentVersion, Is.EqualTo("0.5.5-sample"));
+            Assert.That(summary.ContentHash, Is.EqualTo("aa391c48c8c9478113937b2372cbc78ab90ee2f4448732ed0329068fddf25bb1"));
             Assert.That(summary.TableCount, Is.EqualTo(28));
-            Assert.That(summary.RecordCount, Is.EqualTo(692));
+            Assert.That(summary.RecordCount, Is.EqualTo(695));
             Assert.That(summary.PrimaryIndexCount, Is.GreaterThan(0));
             Assert.That(summary.GroupIndexCount, Is.GreaterThan(0));
             Assert.That(summary.ToLogMessage(), Does.Contain("source=test:generated-gameplay-config"));
-            Assert.That(summary.ToLogMessage(), Does.Contain("records=692"));
+            Assert.That(summary.ToLogMessage(), Does.Contain("records=695"));
 
             Assert.That(service.GetGlobal("reference_width").IntValue, Is.EqualTo(1920));
             Assert.That(service.GetStance("stance_blade").DamageFormulaId, Is.EqualTo("damage_player_default"));
             Assert.That(service.GetEnemy("boss_tomb_king").Tier, Is.EqualTo("Boss"));
             Assert.That(service.GetLevel("lv_003_boss").BossEnemyId, Is.EqualTo("boss_tomb_king"));
+            IReadOnlyList<LevelConfig> levels = service.GetLevels();
+            Assert.That(levels.Count, Is.EqualTo(3));
+            var mutableLevels = levels as IList<LevelConfig>;
+            Assert.That(mutableLevels, Is.Not.Null);
+            Assert.That(mutableLevels.IsReadOnly, Is.True);
+            Assert.Throws<NotSupportedException>(() => mutableLevels.Add(levels[0]));
             Assert.That(service.GetEnemyAttacks("attackset_boss_phase1"), Is.Not.Empty);
             Assert.That(service.GetSkillEffects("fx_ultimate_seal").Count, Is.EqualTo(5));
             Assert.That(

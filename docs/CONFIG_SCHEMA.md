@@ -2,7 +2,7 @@
 
 ## 1. 版本与唯一真相源
 
-- 当前冻结版本：`schemaVersion = 4`、`contentVersion = 0.5.4-sample`。
+- 当前冻结版本：`schemaVersion = 4`、`contentVersion = 0.5.5-sample`。
 - 正式内容唯一源：`Design/Config/GameConfig.xlsx`。
 - `config/一笔镇妖_游戏配置表模板.xlsx` 只是随正式源同步的示例镜像，不接受独立内容修改。
 - `Assets/_Game/Config/Generated/gameplay_config.json`和`gameplay_config.hash`由T250导出器生成，是可审查、可构建的只读Runtime快照与hash旁车。
@@ -256,3 +256,11 @@ T360新增的`Stances.damageFormulaId -> DamageFormulas.formulaId`是必填普�
 - 第一波是11个敌人的混合前置门，覆盖5种普通原型并包含1次精英修饰请求，`maxAlive=11`；第二波只生成配置Boss。Boss未死亡时不得接受`BossDefeated`事实，防止阶段未完成便提前结算；Boss实际出生后才创建并绑定阶段控制器。
 - 镇墓玄甲王沿T460既有三阶段合同执行配置攻击集、进入效果、防御与弱点切换。三段提示必须分别表达起手应对、封印弱点和最终打断/处决意图；当前第三段中英文文案明确要求斜斩打断冲撞后处决，不得由场景组件或Inspector覆盖。
 - 当前Boss关时限为240秒，星级阈值为8000/12000/17000。关卡达到Victory、Defeat或被显式释放时，阶段攻击运行时、效果订阅和Boss HP订阅必须一起释放；失败重试创建新的协调器与世界实例，不跨局复用终态、实体租约或阶段事件计数。T540只形成胜败/重试原型回路，T550结算奖励、存档和面向玩家的重开入口仍在后续任务。
+
+## 25. T550结算评分、奖励与最小进度语义
+
+- T550不改变JSON字段形状、FieldDictionary或schema，只把content升级为`0.5.5-sample`。最终评分增加三个Global整数：`result_score_per_reflect=150`、`result_score_no_damage_bonus=1000`、`result_score_per_remaining_second=20`；均须为非负整数。最终分数以T360战斗分为基底，仅Victory叠加成功弹反、未受伤和`floor(max(0, durationLimitSec-gameplayElapsedSec))`个剩余整秒奖励；Defeat保留战斗分展示但星级固定0且不发胜利奖励。
+- 星级继续只读取当前`Levels.starScore1/2/3`。奖励只沿`Levels.rewardTableId -> Rewards`按order求值：`Clear`在Victory满足，`ScoreAtLeast`比较最终分数，`StarAtLeast`比较最终星级；`UnlockLevel`目标必须存在于Levels，`UnlockFeature`写入功能解锁，`ScoreToken`累加最小非付费积分。奖励、阈值、数量、后继关和功能ID不得复制到Inspector或产品C#。
+- 初始可玩关由完整`Levels.nextLevelId`有向图中未被任何后继引用的根自动得到，不在代码列关卡ID。存档为版本化JSON v1，保存revision、非付费积分、逐关最佳分/星/通关次数、已解锁关卡/功能及已应用结算ID；所有集合按Ordinal排序后编码。畸形结构、重复/空ID、非法范围或配置目录不存在的关卡ID整包回退初始进度；未来版本和缺失迁移链标为不兼容。迁移只能经`IProgressSaveMigration`逐版本显式注册，完整迁移且配置目录兼容后立即以当前v1确定性格式写回。
+- 每次结算必须携带非空稳定settlementId。首次写入先构造完整候选快照并完成JSON编码/存储，写成功后才发布；相同ID重复回调不再次写盘、加分币、解锁或增加通关次数。`IProgressSaveStore`是唯一存储端口，T550不直接使用PlayerPrefs或微信SDK；具体Editor/Web/WeChat适配仍归T130。
+- Restart必须释放当前战斗会话后以相同配置levelId创建全新会话；NextLevel只接受当前关Victory、配置后继非空且结算奖励后的进度已解锁该后继。旧会话的对象池租约、GameObject和事件所有权不得进入新会话。T550只交付规则和生命周期入口，不制作T600结算HUD、云存档、付费货币或平台同步。

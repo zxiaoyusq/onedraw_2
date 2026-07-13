@@ -6,10 +6,10 @@ namespace OneStrokeDemon.Config
     public static class ConfigIds
     {
         public const int SchemaVersion = 4;
-        public const string ContentVersion = "0.5.4-sample";
-        public const string ContentHash = "9fbd5fa97b812cb965eff60104cbf16ef5f3699480298a4e8e96c566cfd717a0";
+        public const string ContentVersion = "0.5.5-sample";
+        public const string ContentHash = "aa391c48c8c9478113937b2372cbc78ab90ee2f4448732ed0329068fddf25bb1";
         public const int IdSetCount = 27;
-        public const int IdConstantCount = 344;
+        public const int IdConstantCount = 347;
 
         public static class GlobalKeys
         {
@@ -28,6 +28,9 @@ namespace OneStrokeDemon.Config
             public const string ProjectilePoolPrewarmPerType = "projectile_pool_prewarm_per_type";
             public const string ReferenceHeight = "reference_height";
             public const string ReferenceWidth = "reference_width";
+            public const string ResultScoreNoDamageBonus = "result_score_no_damage_bonus";
+            public const string ResultScorePerReflect = "result_score_per_reflect";
+            public const string ResultScorePerRemainingSecond = "result_score_per_remaining_second";
             public const string TargetFrameRate = "target_frame_rate";
             public const string VfxPoolExhaustionPolicy = "vfx_pool_exhaustion_policy";
         }

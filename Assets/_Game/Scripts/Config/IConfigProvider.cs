@@ -27,6 +27,7 @@ namespace OneStrokeDemon.Config
         SkillConfig GetSkill(string skillId);
         IReadOnlyList<SkillEffectConfig> GetSkillEffects(string effectGroupId);
         LevelConfig GetLevel(string levelId);
+        IReadOnlyList<LevelConfig> GetLevels();
         IReadOnlyList<WaveConfig> GetWaves(string levelId);
         SpawnPointConfig GetSpawnPoint(string spawnPointId);
         EnemyModifierConfig GetEnemyModifier(string modifierId);

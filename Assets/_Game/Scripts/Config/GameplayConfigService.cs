@@ -81,6 +81,7 @@ namespace OneStrokeDemon.Config
         public SkillConfig GetSkill(string skillId) => Get(RequireSnapshot().Skills, "Skills", "skillId", skillId);
         public IReadOnlyList<SkillEffectConfig> GetSkillEffects(string effectGroupId) => GetGroup(RequireSnapshot().EffectsByGroup, "SkillEffects", "effectGroupId", effectGroupId);
         public LevelConfig GetLevel(string levelId) => Get(RequireSnapshot().Levels, "Levels", "levelId", levelId);
+        public IReadOnlyList<LevelConfig> GetLevels() => RequireSnapshot().LevelEntries;
         public IReadOnlyList<WaveConfig> GetWaves(string levelId) => GetGroup(RequireSnapshot().WavesByLevel, "Waves", "levelId", levelId);
         public SpawnPointConfig GetSpawnPoint(string spawnPointId) => Get(RequireSnapshot().SpawnPoints, "SpawnPoints", "spawnPointId", spawnPointId);
         public EnemyModifierConfig GetEnemyModifier(string modifierId) => Get(RequireSnapshot().EnemyModifiers, "EnemyModifiers", "modifierId", modifierId);

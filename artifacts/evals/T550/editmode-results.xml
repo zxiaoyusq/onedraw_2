@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="12" result="Passed" total="12" passed="12" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-07-13 23:20:57Z" end-time="2026-07-13 23:20:57Z" duration="0.3184636">
+  <test-suite type="TestSuite" id="1000" name="onedraw_2" fullname="onedraw_2" runstate="Runnable" testcasecount="174" result="Passed" start-time="2026-07-13 23:20:57Z" end-time="2026-07-13 23:20:57Z" duration="0.318464" total="12" passed="12" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="EditMode" />
+    </properties>
+    <test-suite type="Assembly" id="1210" name="OneStrokeDemon.Tests.EditMode.dll" fullname="/Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T550-unity-project/Library/ScriptAssemblies/OneStrokeDemon.Tests.EditMode.dll" runstate="Runnable" testcasecount="174" result="Passed" start-time="2026-07-13 23:20:57Z" end-time="2026-07-13 23:20:57Z" duration="0.313530" total="12" passed="12" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="95509" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="EditMode" />
+        <property name="EditorOnly" value="True" />
+      </properties>
+      <test-suite type="TestSuite" id="1211" name="OneStrokeDemon" fullname="OneStrokeDemon" runstate="Runnable" testcasecount="174" result="Passed" start-time="2026-07-13 23:20:57Z" end-time="2026-07-13 23:20:57Z" duration="0.311665" total="12" passed="12" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1212" name="Tests" fullname="OneStrokeDemon.Tests" runstate="Runnable" testcasecount="174" result="Passed" start-time="2026-07-13 23:20:57Z" end-time="2026-07-13 23:20:57Z" duration="0.310027" total="12" passed="12" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestSuite" id="1213" name="EditMode" fullname="OneStrokeDemon.Tests.EditMode" runstate="Runnable" testcasecount="174" result="Passed" start-time="2026-07-13 23:20:57Z" end-time="2026-07-13 23:20:57Z" duration="0.308344" total="12" passed="12" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-suite type="TestSuite" id="1214" name="T550" fullname="OneStrokeDemon.Tests.EditMode.T550" runstate="Runnable" testcasecount="12" result="Passed" start-time="2026-07-13 23:20:57Z" end-time="2026-07-13 23:20:57Z" duration="0.305807" total="12" passed="12" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-suite type="TestFixture" id="1021" name="ResultTests" fullname="OneStrokeDemon.Tests.EditMode.T550.ResultTests" classname="OneStrokeDemon.Tests.EditMode.T550.ResultTests" runstate="Runnable" testcasecount="6" result="Passed" start-time="2026-07-13 23:20:57Z" end-time="2026-07-13 23:20:57Z" duration="0.206968" total="6" passed="6" failed="0" inconclusive="0" skipped="0" asserts="0">
+                <properties>
+                  <property name="Category" value="T550" />
+                </properties>
+                <test-case id="1027" name="ChangedGlobalValuesChangeScoreWithoutCodeChanges" fullname="OneStrokeDemon.Tests.EditMode.T550.ResultTests.ChangedGlobalValuesChangeScoreWithoutCodeChanges" methodname="ChangedGlobalValuesChangeScoreWithoutCodeChanges" classname="OneStrokeDemon.Tests.EditMode.T550.ResultTests" runstate="Runnable" seed="243097902" result="Passed" start-time="2026-07-13 23:20:57Z" end-time="2026-07-13 23:20:57Z" duration="0.115834" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1023" name="DefeatKeepsCombatScoreButDoesNotGrantVictoryBonusesOrStars" fullname="OneStrokeDemon.Tests.EditMode.T550.ResultTests.DefeatKeepsCombatScoreButDoesNotGrantVictoryBonusesOrStars" methodname="DefeatKeepsCombatScoreButDoesNotGrantVictoryBonusesOrStars" classname="OneStrokeDemon.Tests.EditMode.T550.ResultTests" runstate="Runnable" seed="2076093520" result="Passed" start-time="2026-07-13 23:20:57Z" end-time="2026-07-13 23:20:57Z" duration="0.014915" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1025" name="DuplicateSettlementDoesNotWriteOrApplyRewardsAgain" fullname="OneStrokeDemon.Tests.EditMode.T550.ResultTests.DuplicateSettlementDoesNotWriteOrApplyRewardsAgain" methodname="DuplicateSettlementDoesNotWriteOrApplyRewardsAgain" classname="OneStrokeDemon.Tests.EditMode.T550.ResultTests" runstate="Runnable" seed="1354177857" result="Passed" start-time="2026-07-13 23:20:57Z" end-time="2026-07-13 23:20:57Z" duration="0.023204" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1026" name="FailedSaveDoesNotPublishPartiallyAppliedProgress" fullname="OneStrokeDemon.Tests.EditMode.T550.ResultTests.FailedSaveDoesNotPublishPartiallyAppliedProgress" methodname="FailedSaveDoesNotPublishPartiallyAppliedProgress" classname="OneStrokeDemon.Tests.EditMode.T550.ResultTests" runstate="Runnable" seed="405662176" result="Passed" start-time="2026-07-13 23:20:57Z" end-time="2026-07-13 23:20:57Z" duration="0.015590" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1024" name="VictoryAppliesConfiguredRewardsAndUnlocksNextLevel" fullname="OneStrokeDemon.Tests.EditMode.T550.ResultTests.VictoryAppliesConfiguredRewardsAndUnlocksNextLevel" methodname="VictoryAppliesConfiguredRewardsAndUnlocksNextLevel" classname="OneStrokeDemon.Tests.EditMode.T550.ResultTests" runstate="Runnable" seed="1718899887" result="Passed" start-time="2026-07-13 23:20:57Z" end-time="2026-07-13 23:20:57Z" duration="0.016247" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1022" name="VictoryScoreUsesConfiguredReflectNoDamageAndRemainingTimeValues" fullname="OneStrokeDemon.Tests.EditMode.T550.ResultTests.VictoryScoreUsesConfiguredReflectNoDamageAndRemainingTimeValues" methodname="VictoryScoreUsesConfiguredReflectNoDamageAndRemainingTimeValues" classname="OneStrokeDemon.Tests.EditMode.T550.ResultTests" runstate="Runnable" seed="1987150332" result="Passed" start-time="2026-07-13 23:20:57Z" end-time="2026-07-13 23:20:57Z" duration="0.014576" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+              </test-suite>
+              <test-suite type="TestFixture" id="1028" name="SaveMigrationTests" fullname="OneStrokeDemon.Tests.EditMode.T550.SaveMigrationTests" classname="OneStrokeDemon.Tests.EditMode.T550.SaveMigrationTests" runstate="Runnable" testcasecount="6" result="Passed" start-time="2026-07-13 23:20:57Z" end-time="2026-07-13 23:20:57Z" duration="0.098210" total="6" passed="6" failed="0" inconclusive="0" skipped="0" asserts="0">
+                <properties>
+                  <property name="Category" value="T550" />
+                </properties>
+                <test-case id="1032" name="FutureVersionFallsBackAsIncompatible" fullname="OneStrokeDemon.Tests.EditMode.T550.SaveMigrationTests.FutureVersionFallsBackAsIncompatible" methodname="FutureVersionFallsBackAsIncompatible" classname="OneStrokeDemon.Tests.EditMode.T550.SaveMigrationTests" runstate="Runnable" seed="1312459789" result="Passed" start-time="2026-07-13 23:20:57Z" end-time="2026-07-13 23:20:57Z" duration="0.018023" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1031" name="MalformedJsonFallsBackWithoutOverwritingSource" fullname="OneStrokeDemon.Tests.EditMode.T550.SaveMigrationTests.MalformedJsonFallsBackWithoutOverwritingSource" methodname="MalformedJsonFallsBackWithoutOverwritingSource" classname="OneStrokeDemon.Tests.EditMode.T550.SaveMigrationTests" runstate="Runnable" seed="1622444168" result="Passed" start-time="2026-07-13 23:20:57Z" end-time="2026-07-13 23:20:57Z" duration="0.015668" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1029" name="MissingSaveStartsAtConfiguredLevelGraphRoot" fullname="OneStrokeDemon.Tests.EditMode.T550.SaveMigrationTests.MissingSaveStartsAtConfiguredLevelGraphRoot" methodname="MissingSaveStartsAtConfiguredLevelGraphRoot" classname="OneStrokeDemon.Tests.EditMode.T550.SaveMigrationTests" runstate="Runnable" seed="1386199891" result="Passed" start-time="2026-07-13 23:20:57Z" end-time="2026-07-13 23:20:57Z" duration="0.014529" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1030" name="SavedProgressRoundTripsDeterministically" fullname="OneStrokeDemon.Tests.EditMode.T550.SaveMigrationTests.SavedProgressRoundTripsDeterministically" methodname="SavedProgressRoundTripsDeterministically" classname="OneStrokeDemon.Tests.EditMode.T550.SaveMigrationTests" runstate="Runnable" seed="1414440775" result="Passed" start-time="2026-07-13 23:20:57Z" end-time="2026-07-13 23:20:57Z" duration="0.017125" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1034" name="UnknownCatalogIdsAreRejectedAndRecovered" fullname="OneStrokeDemon.Tests.EditMode.T550.SaveMigrationTests.UnknownCatalogIdsAreRejectedAndRecovered" methodname="UnknownCatalogIdsAreRejectedAndRecovered" classname="OneStrokeDemon.Tests.EditMode.T550.SaveMigrationTests" runstate="Runnable" seed="28823699" result="Passed" start-time="2026-07-13 23:20:57Z" end-time="2026-07-13 23:20:57Z" duration="0.015873" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1033" name="VersionZeroUsesRegisteredMigration" fullname="OneStrokeDemon.Tests.EditMode.T550.SaveMigrationTests.VersionZeroUsesRegisteredMigration" methodname="VersionZeroUsesRegisteredMigration" classname="OneStrokeDemon.Tests.EditMode.T550.SaveMigrationTests" runstate="Runnable" seed="537645757" result="Passed" start-time="2026-07-13 23:20:57Z" end-time="2026-07-13 23:20:57Z" duration="0.015695" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                  <output><![CDATA[<b><color=#2EA3FF>MCP-FOR-UNITY</color></b>: [TestRunnerNoThrottle] Restored Interaction Mode after test run.
+Saving results to: /Users/cqmizhangxiaoyu2/Library/Application Support/DefaultCompany/onedraw_2/TestResults.xml
+]]></output>
+                </test-case>
+              </test-suite>
+            </test-suite>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

@@ -1,7 +1,7 @@
 project: OneStrokeDemon
 project_cn: 一笔镇妖
 plan_generated: 2026-07-11
-current_task: T550
+current_task: T600
 current_task_status: READY
 unity:
   project_root: .
@@ -23,9 +23,9 @@ config:
   generated_hash: Assets/_Game/Config/Generated/gameplay_config.hash
   generated_ids: Assets/_Game/Scripts/Config/Generated/ConfigIds.g.cs
   schema_version: 4
-  content_version: 0.5.4-sample
-  content_hash: 9fbd5fa97b812cb965eff60104cbf16ef5f3699480298a4e8e96c566cfd717a0
-  workbook_sha256: 71fc222d94e86057d47b57a47dccbf19186156529b1d096e56b703607b2f36c5
+  content_version: 0.5.5-sample
+  content_hash: aa391c48c8c9478113937b2372cbc78ab90ee2f4448732ed0329068fddf25bb1
+  workbook_sha256: fb4033d5cdf4dddf7d90800f300f25066ae950b58377029fd92a75f8feb580f2
   mirror_status: byte_identical
   contract_audit: pass
   exporter:
@@ -35,9 +35,9 @@ config:
     status: pass
     test_count: 8
     exported_tables: 28
-    exported_records: 692
-    output_bytes: 181598
-    output_sha256: 4638c3fce65efbbdd7fc79edd47b9e7ecf43f119cc6c4fc1fc7825f3e0a77c78
+    exported_records: 695
+    output_bytes: 182404
+    output_sha256: d0e8d1f34a66eaeaf4eb9737f42c88222a84c68a6434e78d5871e73deb89c9d5
     runtime_snapshot_committed: true
   validator:
     path: Tools/ConfigExporter/Validation
@@ -54,11 +54,11 @@ config:
     compatibility: schema_4_content_0_5_x
     dto_tables: 28
     dto_fields: 250
-    loaded_records: 692
-    readonly_primary_indexes: 308
+    loaded_records: 695
+    readonly_primary_indexes: 311
     readonly_group_indexes: 56
-    editmode_tests: 162
-    playmode_tests: 41
+    editmode_tests: 174
+    playmode_tests: 42
     bootstrap_smoke: pass
   asset_registry:
     status: pass
@@ -79,20 +79,55 @@ config:
     default_read_only: true
     update_flag: --update
     drift_diagnostic: CFG013
-    generated_json_bytes: 181598
-    generated_json_sha256: 4638c3fce65efbbdd7fc79edd47b9e7ecf43f119cc6c4fc1fc7825f3e0a77c78
+    generated_json_bytes: 182404
+    generated_json_sha256: d0e8d1f34a66eaeaf4eb9737f42c88222a84c68a6434e78d5871e73deb89c9d5
     generated_hash_bytes: 65
-    generated_hash_sha256: 8b8c2575fbfb17891461305d44345a71cbd05427ff178c6e9e7db287329f34cd
-    generated_ids_bytes: 25706
-    generated_ids_sha256: 9984d453495742e8bb85e9d02cb319e59529a81b9feb13c90b267c2b68123f31
+    generated_hash_sha256: e9dc7decbb854758550c46e12a0018ea92595532ecd9c21697f6de32e11a5712
+    generated_ids_bytes: 25982
+    generated_ids_sha256: 07560c8e87b217cfc2edad4ea644339ea055cfbb690526605ada2df62b50f8ad
     id_sets: 27
-    id_constants: 344
+    id_constants: 347
     dotnet_tests: 56
     config_editmode_tests: 19
     config_playmode_tests: 3
-    full_editmode_tests: 162
-    full_playmode_tests: 41
+    full_editmode_tests: 174
+    full_playmode_tests: 42
     full_command_smoke: pass_via_static_drift_gate_plus_isolated_unity_batch_project
+result_progress:
+  status: pass
+  scoring:
+    combat_score_source: T360_ScoreService
+    reflect_score_source: Global.result_score_per_reflect
+    no_damage_score_source: Global.result_score_no_damage_bonus
+    remaining_time_score_source: Global.result_score_per_remaining_second
+    star_threshold_source: Levels.starScore1_starScore2_starScore3
+    reward_source: Levels.rewardTableId_to_Rewards
+  settlement:
+    idempotency_key: settlementId
+    duplicate_side_effects: none
+    publication_order: encode_then_store_then_publish
+  save:
+    version: 1
+    format: deterministic_json
+    storage_port: IProgressSaveStore
+    platform_adapter: deferred_to_T130
+    migration_port: IProgressSaveMigration
+    corrupt_policy: fallback_to_configured_level_roots
+    future_version_policy: recovered_incompatible
+  navigation:
+    owner: BattleResultNavigation
+    session_port: IBattleSession
+    restart: dispose_then_recreate_same_level
+    next_level: victory_and_configured_unlocked_successor
+    tested_restarts: 3
+    leaked_sessions_or_pool_leases: 0
+  tests:
+    editmode_focused: 12
+    playmode_focused: 1
+    config_editmode: 19
+    config_playmode: 3
+    full_editmode: 174
+    full_playmode: 42
 input:
   status: pass
   package: com.unity.inputsystem@1.19.0

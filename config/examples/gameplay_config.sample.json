@@ -1,7 +1,7 @@
 {
   "schemaVersion": 4,
-  "contentVersion": "0.5.4-sample",
-  "contentHash": "9fbd5fa97b812cb965eff60104cbf16ef5f3699480298a4e8e96c566cfd717a0",
+  "contentVersion": "0.5.5-sample",
+  "contentHash": "aa391c48c8c9478113937b2372cbc78ab90ee2f4448732ed0329068fddf25bb1",
   "global": [
     {
       "key": "battle_countdown_sec",
@@ -38,7 +38,7 @@
       "valueType": "string",
       "intValue": null,
       "floatValue": null,
-      "stringValue": "0.5.4-sample",
+      "stringValue": "0.5.5-sample",
       "boolValue": null,
       "unit": "semver",
       "description": "内容版本"
@@ -152,6 +152,36 @@
       "boolValue": null,
       "unit": "px",
       "description": "手势参考分辨率宽"
+    },
+    {
+      "key": "result_score_no_damage_bonus",
+      "valueType": "int",
+      "intValue": 1000,
+      "floatValue": null,
+      "stringValue": "",
+      "boolValue": null,
+      "unit": "score",
+      "description": "胜利且未受伤时的结算评分"
+    },
+    {
+      "key": "result_score_per_reflect",
+      "valueType": "int",
+      "intValue": 150,
+      "floatValue": null,
+      "stringValue": "",
+      "boolValue": null,
+      "unit": "score",
+      "description": "每次成功弹反的结算评分"
+    },
+    {
+      "key": "result_score_per_remaining_second",
+      "valueType": "int",
+      "intValue": 20,
+      "floatValue": null,
+      "stringValue": "",
+      "boolValue": null,
+      "unit": "score/sec",
+      "description": "胜利时每个剩余整秒的结算评分"
     },
     {
       "key": "target_frame_rate",

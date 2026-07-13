@@ -27,6 +27,8 @@ namespace OneStrokeDemon.Config
             Buffs = BuildIndex(document.BuffRows, row => row.BuffId, "Buffs", "buffId", source);
             Skills = BuildIndex(document.SkillRows, row => row.SkillId, "Skills", "skillId", source);
             Levels = BuildIndex(document.LevelRows, row => row.LevelId, "Levels", "levelId", source);
+            LevelEntries = new ReadOnlyCollection<LevelConfig>(
+                (LevelConfig[])document.LevelRows.Clone());
             Waves = BuildIndex(document.WaveRows, row => row.WaveId, "Waves", "waveId", source);
             SpawnPoints = BuildIndex(document.SpawnPointRows, row => row.SpawnPointId, "SpawnPoints", "spawnPointId", source);
             EnemyModifiers = BuildIndex(document.EnemyModifierRows, row => row.ModifierId, "EnemyModifiers", "modifierId", source);
@@ -104,6 +106,7 @@ namespace OneStrokeDemon.Config
         public IReadOnlyDictionary<string, BuffConfig> Buffs { get; }
         public IReadOnlyDictionary<string, SkillConfig> Skills { get; }
         public IReadOnlyDictionary<string, LevelConfig> Levels { get; }
+        public IReadOnlyList<LevelConfig> LevelEntries { get; }
         public IReadOnlyDictionary<string, WaveConfig> Waves { get; }
         public IReadOnlyDictionary<string, SpawnPointConfig> SpawnPoints { get; }
         public IReadOnlyDictionary<string, EnemyModifierConfig> EnemyModifiers { get; }
