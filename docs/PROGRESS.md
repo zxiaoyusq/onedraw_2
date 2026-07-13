@@ -1,8 +1,8 @@
 # PROGRESS
 
 - 日期：2026-07-13
-- 当前成熟度：T030 目录、程序集边界与三场景启动骨架已建立
-- 当前任务：T040
+- 当前成熟度：T040 批处理测试、Web构建入口和证据工作流已建立
+- 当前任务：T100
 - 状态：READY
 - Unity精确版本：6000.5.1f1（已由ProjectVersion.txt与本机安装核验）
 - 微信SDK来源或版本：PENDING_VERIFICATION
@@ -11,6 +11,10 @@
 
 ## 已完成
 
+- T040：EditMode/PlayMode批处理命令可独立生成NUnit XML，并由结果检查器把失败、零测试和损坏XML转换为非零退出码。
+- T040：标准WebGL构建入口已编译并通过参数合同测试；实际Web构建明确留给T100，未生成Builds/WebGL。
+- T040：verification/白名单模板、Git基线记录、防覆盖证据初始化、日志卫生和一任务一提交流程已文档化。
+- T040专项2/2、批处理全量EditMode 6/6、批处理全量PlayMode 2/2通过；真实Bootstrap→MainMenu路径与最终Console Error 0均已复核。
 - T030：目标目录、十个Runtime asmdef、Editor asmdef和现有EditMode/PlayMode测试程序集边界已建立，依赖图无环。
 - T030：Bootstrap、MainMenu、Battle由Unity MCP创建并保存；Build Settings固定为三场景，Bootstrap可自动进入MainMenu并通过场景流接口进入Battle。
 - T030专项与回归：AssemblyDependencyTests 1/1、SceneFlowSmokePlayModeTests 1/1、全量EditMode 4/4、全量PlayMode 2/2均通过；场景校验和最终Console Error为0。
@@ -34,4 +38,4 @@
 
 ## 下一步
 
-只执行T040：建立构建、测试、证据和一任务一提交工作流。不要开始T100或业务玩法。
+只执行T100：使用已建立入口验证标准Unity Web构建和浏览器冒烟，不接微信转换，不开始T110。

@@ -39,25 +39,23 @@
 
 ## 证据模板
 
-每个任务写 `artifacts/evals/TASK-ID/verification.md`：
+每个任务写`artifacts/evals/TASK-ID/verification.md`。模板真相源为`templates/verification.md`和`templates/change-whitelist.md`，可用下列命令初始化且不会覆盖已有证据：
+
+```bash
+Tools/CI/new-task-evidence.sh TASK-ID
+```
+
+Unity测试必须用`Tools/CI/run-unity-tests.sh`分别执行EditMode和PlayMode，并各自保存NUnit XML。脚本会解析XML并把测试失败、零测试、缺失或损坏结果转换为非零退出码。完整命令、日志卫生、标准Web入口和提交步骤见`docs/WORKFLOW.md`。
+
+verification至少覆盖：
 
 ```markdown
 # TASK-ID Verification
-- 日期：
-- Git commit/branch：
-- Unity精确版本：
-- SDK/DevTools/设备：
-- 范围与明确不做：
-- 修改文件白名单：
-- 配置版本/hash：
-- EditMode：总数/通过/失败：
-- PlayMode：总数/通过/失败：
-- 玩家路径与观察值：
-- Console新增Error/Warning：
-- 性能/包体：
-- 截图/日志：
-- 已知问题：
-- 结论：PASS / REVIEW / BLOCKED / KNOWN ISSUE
+- Git与Unity追溯、任务范围和明确不做
+- 预计白名单、实际改动和用户已有改动保护
+- EditMode/PlayMode总数、通过、失败和XML路径
+- 玩家路径、可断言值、Console和平台分层结论
+- 已知问题及PASS / REVIEW / BLOCKED / KNOWN ISSUE结论
 ```
 
 证据包含可断言值，例如HP变化、命中数、阶段、配置hash和帧率，不只写“看起来正常”。
