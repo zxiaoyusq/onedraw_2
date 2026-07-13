@@ -225,3 +225,12 @@ T360新增的`Stances.damageFormulaId -> DamageFormulas.formulaId`是必填普�
 - 每个出生时刻为`spawnTimeSec + occurrenceIndex × intervalSec`，跨多行按到期时刻、`spawnId` Ordinal和行内序号稳定排序。`maxAlive`形成背压：容量满或世界端口暂时拒绝时保留当前请求，槽位释放后重试，不跳过、不重排；世界接受后必须返回正且当前唯一的实体ID。
 - `Single/Line/Scatter/Stagger`只决定如何在配置的`normalizedX/Y ± jitterX/Y`矩形内取点；最终坐标夹在`[0,1]`，保持`lane/facing`并不读取设备DPI。Scatter使用`spawnId + occurrenceIndex`确定性采样，回放相同配置得到相同位置；出生请求完整携带`EnemyModifiers`的HP、伤害、速度、评分、染色和额外Buff，具体敌人世界适配器不得忽略或另写数值。
 - `LevelRunner`只由调用方delta推进单调关卡时钟；暂停时delta、出生、波次条件和玩家确认都不推进。`Levels.durationLimitSec`只公开为到时事实，Countdown、暂停/失焦策略、Victory/Defeat互斥和清场属于T510，不由T500时间轴提前裁决。
+
+## 21. T510战斗流程、时间域与玩家事件门语义
+
+- T510不改变JSON字段形状、schema或content版本。`BattleFlowSettingsFactory`只读取`Global.battle_countdown_sec`、`Global.pause_on_focus_lost`，再沿调用方`playerId -> Players.ultimateSkillId -> Skills`取得终极ID、`triggerType`、`gestureType`和`inputWindowSec`；终极必须是`Ultimate`触发、配置非空笔势和正输入窗。流程代码、Inspector和场景不复制倒计时、时间缩放或输入窗数值。
+- `BattleTimeSource`统一维护未暂停流程时间、未缩放战斗时间和受效果缩放的战斗时间。Countdown只推进流程时间；Playing与UltimateDrawing把同一个受缩放delta交给LevelRunner及后续战斗消费者；Paused和Victory/Defeat不推进任何时间。`SkillEffects.TimeScale.value1/durationSec`由T410世界端口显式传入并在配置持续时间后恢复1倍，暂停期间不消耗持续时间。
+- `PlayerConfirmed`只允许在Playing由显式调用转发到T500当前门。Countdown、UltimateDrawing、Paused、终态和提前确认都不能锁存或跨过未来门。倒计时允许用计时器转入Playing；终极输入窗超过边界只能取消，不能发布成功或替代玩家有效笔势事件。
+- UltimateDrawing先用`CanAcceptUltimateGestureEvent`拒绝零值、旧值或非当前绘制事件，再把通过门的单调`gestureEventId`交给T410；只有相同事件对应当前`Players.ultimateSkillId`的`SkillActivationResult.Activated`才发布成功并回到Playing。同一笔迹事件不能跨绘制重放；无效笔势、超窗、冷却、架势、能量或死亡拒绝均只取消本次绘制。等于`Skills.inputWindowSec`的有效事件仍可接受，严格超过才超时。
+- `pause_on_focus_lost=true`时FocusLost与ApplicationPaused是可叠加原因：首次进入暂停发布一次活动笔迹取消请求，全部原因解除后才恢复。暂停Countdown保留已走时间；暂停UltimateDrawing取消当前笔迹并以Playing为恢复目标，不能恢复过期的终极输入。
+- 同一次结算事实中PlayerDied或`Levels.durationLimitSec`到时优先于LevelCompleted，结果为Defeat；否则LevelCompleted为Victory。首次进入终态后冻结流程并拒绝后续结算，因此Victory/Defeat互斥且`Settled`每局最多一次。T510不负责T550奖励/存档或T600结算UI。

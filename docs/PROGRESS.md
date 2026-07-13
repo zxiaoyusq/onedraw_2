@@ -1,8 +1,8 @@
 # PROGRESS
 
 - 日期：2026-07-14
-- 当前成熟度：P3手势战斗核心与P4玩家/敌人技能均已完成，P5配置化关卡时间轴完成并进入战斗流程状态机
-- 当前任务：T510
+- 当前成熟度：P3手势战斗核心与P4玩家/敌人技能均已完成，P5配置化关卡时间轴与战斗流程状态机完成并进入教学关编排
+- 当前任务：T520
 - 状态：READY
 - Unity精确版本：6000.5.1f1（已由ProjectVersion.txt与本机安装核验）
 - 微信SDK来源或版本：官方 `minigame-tuanjie-transform-sdk` v0.1.33 / commit `ed4ad28f433c6b52b5fd3f22a6fa155a0c98c228` / embedded最小补丁
@@ -11,6 +11,10 @@
 
 ## 已完成
 
+- T510：新增无`MonoBehaviour`依赖的`BattleFlowStateMachine/BattleTimeSource/BattleFlowCoordinator`，配置映射只沿Global倒计时/失焦开关与Players终极外键读取Skills输入窗；Countdown、Playing、UltimateDrawing、Paused、Victory、Defeat边界明确，产品C#不含内容ID或玩法数值。
+- T510：统一时间源分离未暂停流程、未缩放战斗和受配置Effect缩放的战斗时间；Countdown精确切分跨界delta，Playing/UltimateDrawing向T500传同一战斗delta，Paused/终态冻结。暂停倒计时保留进度；FocusLost/ApplicationPaused叠加全部解除后才恢复，终极笔迹取消后只恢复Playing。
+- T510：终极只接受本局单调非零且未消费的gestureEventId与T410配置终极Activated结果，旧事件不能跨绘制重放；2.5秒配置边界有效，严格超过只取消且100能量不变。PlayerConfirmed只在Playing转发；死亡/时限与完成同帧时Defeat优先，胜负互斥且Settled仅一次；配置0.25倍/0.8秒效果产生0.2秒战斗delta。
+- T510：配置只读生成/漂移门与ConfigExporter .NET 56/56通过；专项EditMode 8/8、PlayMode 2/2，最终全量EditMode 150/150、PlayMode 37/37。Bootstrap真实路径验证暂停30秒零推进、重叠生命周期恢复、终极超时0成功及有效Circle成功1次；测试临时EditorSettings差异已用Unity API恢复。未改xlsx、Schema、DTO、场景、Prefab、Registry、Packages、ProjectSettings或微信SDK，未提前实现T520/T540/T550/T600。
 - T500：新增无`MonoBehaviour`依赖的`LevelCatalog/SpawnScheduler/WaveRunner/LevelRunner`，只沿Levels/Waves/Spawns/SpawnPoints/EnemyModifiers构造3关、9波、13条出生行和35个敌人时间点；关卡/波次连续order、出生点作用域、枚举、归一化区域和Boss结束所有权均在运行时再次校验，产品C#不列内容ID。
 - T500：时间线按到期时刻、spawnId和行内序号稳定展开，Single/Line/Scatter/Stagger在表内归一化矩形取点；maxAlive及世界拒绝都保留当前请求重试，只有世界回执正且唯一实体ID后提交。请求完整携带lane/facing及精英HP/伤害/速度/评分/染色/额外Buff修饰，Level层不直接依赖敌人池或Inspector数值。
 - T500：AllEnemiesDefeated要求计划提交完且活动为0，BossDefeated要求配置Boss实体死亡，TimeElapsed使用本波唯一endDelay作为持续时间；PlayerConfirmed只消费当前门，提前/暂停确认不锁存。暂停冻结关卡时钟、波次、出生和确认；durationLimit只公开事实并留给T510裁决。
@@ -174,7 +178,7 @@
 6. 长Web构建后Unity MCP实例桥接未自动恢复，见BUG-0003；Unity batch测试与Web运行未受影响。
 7. PSD主角和怪物大多为单张Sprite；中文字体包体、Web内存和真机触摸延迟仍需后续验证。
 8. T450已能按AssetManifest类型装配六怪，但T240的75个非场景键仍使用按类型共享的受管占位资源；类型与覆盖合同已成立，正式视觉、音频、身体碰撞形状和逐Prefab内容仍须在T630及相应玩法任务中替换并重新校验。
-9. T460 Boss阶段与T500波次所有权均已独立验证，但尚未由T510统一胜败/暂停流程或T540完整Boss关接线；当前PlayMode证据不能外推为四分钟Boss实战、清场策略或正式演出完成。
+9. T460 Boss阶段、T500波次所有权与T510胜败/暂停流程均已独立验证，但尚未由T520/T530/T540组装为完整三关；当前PlayMode证据不能外推为约3分钟教学、四分钟Boss实战、清场策略或正式演出完成。
 ## 下一步
 
-只执行T510：实现Countdown/Playing/UltimateDrawing/Paused/Victory/Defeat状态机、事件门和统一时间源；不提前实现T520教学关、T530普通关、T540完整Boss关、T600 HUD或T630正式资源，也不恢复T120/T130。平台任务最迟在T640/T750前恢复。
+只执行T520：完成幽菌古道教学关的普通斩、连斩、切弹、架势和终极事件编排，使玩家动作而非固定计时推动教程；不提前实现T530普通关、T540完整Boss关、T550结算、T600 HUD或T630正式资源，也不恢复T120/T130。平台任务最迟在T640/T750前恢复。

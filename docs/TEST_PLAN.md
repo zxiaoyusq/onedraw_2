@@ -24,6 +24,7 @@
 - `EnemyArchetypeConfigTests`
 - `BossPhaseTests`
 - `SpawnTimelineTests`
+- `BattleFlowTests`
 - `ConfigValidationTests`
 - `SaveMigrationTests`
 
@@ -40,6 +41,8 @@
 - `RestartThreeTimesPlayModeTests`
 - `EnemyGalleryPlayModeTests`
 - `BossBattlePlayModeTests`
+
+T510专项必须覆盖：配置倒计时到Playing的delta切分；统一时间缩放精确到期；Countdown暂停保留进度；FocusLost/ApplicationPaused叠加后完整恢复；Ultimate输入窗包含边界、严格超时只取消、旧gestureEventId不能重放；大delta不能跨PlayerConfirmed；同帧死亡/到时/完成只产生一次互斥结算。PlayMode从Bootstrap真实配置路径验证生命周期与有效终极事件，不能只构造表外设置。
 
 ## 证据模板
 

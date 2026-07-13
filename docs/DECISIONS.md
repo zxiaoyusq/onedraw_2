@@ -237,3 +237,13 @@
 - 决定：玩家确认只消费当前正等待的`PlayerConfirmed`开始/结束门，暂停和提前事件不锁存。非动作门可用大delta追赶，动作门不能被计时器跨越；暂停时关卡时钟、波次、出生和确认全部冻结。`TimeElapsed`结束把唯一可用的`endDelaySec`解释为本波持续时间，其余结束条件把该字段解释为条件成立后的延迟。
 - 理由：先移动时间线游标再请求对象池会在容量耗尽时永久吞怪；把确认保存为全局布尔值会让早到事件自动跨过未来教程门；在Level层直接依赖敌人Prefab/池又会把关卡规则和实例化生命周期绑定。显式回执、当前门消费和世界端口让同一纯规则可在EditMode回放，也能由后续T510/T520接入实际战斗世界。
 - 限制：T500公开`durationLimitSec`到时事实但不判Victory/Defeat，不实现Countdown/UltimateDrawing/Paused流程、具体关卡教学、完整Boss关、HUD、清场策略或正式资源；这些仍属于T510及后续任务。
+
+## D-029 · T510统一时间源、叠加暂停与一次性胜负裁决
+
+- 状态：ACCEPTED
+- 决定：T510不升级配置版本。流程设置只沿`Global.battle_countdown_sec`、`Global.pause_on_focus_lost`和`Players.ultimateSkillId -> Skills`映射；统一时间源区分未暂停流程、未缩放战斗和受配置Effect缩放的战斗时间。Countdown不推进关卡，Playing/UltimateDrawing使用同一战斗delta，Paused与终态完全冻结；暂停恢复保留倒计时进度。
+- 决定：终极按钮只把Playing切到UltimateDrawing。成功同时要求非零且本局单调递增的`gestureEventId`和T410对配置终极产生的`SkillActivationResult.Activated`，旧笔迹事件不能跨绘制重放；等于配置输入窗边界有效，严格超过只取消。无效、超时、暂停或主动取消都不能由计时器升级为成功，也不能绕过T410能量/架势/死亡原子门。
+- 决定：FocusLost、ApplicationPaused和玩家暂停使用独立位原因。首次暂停统一请求取消当前笔迹，重叠原因全部解除后才恢复；若从UltimateDrawing暂停，本次绘制取消且恢复目标固定为Playing，避免后台旧输入继续生效。
+- 决定：`BattleFlowCoordinator`把T500 LevelCompleted/durationLimit事实与玩家死亡在同一裁决点消费；同帧死亡或到时优先于关卡完成，得到Defeat。终态后拒绝所有后续裁决，Victory/Defeat互斥且Settled事件只发布一次。
+- 理由：若各系统各读Unity Time，慢动作、暂停和关卡时限会漂移；若用单布尔暂停，失焦与系统暂停回调顺序会提前恢复；若胜负按回调先后直接结算，同帧事件会产生双结算或平台相关结果。统一切片、暂停原因集合和单点事实裁决使流程可回放并保持玩家动作门。
+- 限制：T510只提供纯流程/时间/事件合同和T500协调器，不制作T520教学编排、T540完整Boss关、T550结果/存档、T600 HUD、清场演出或场景/Prefab接线。

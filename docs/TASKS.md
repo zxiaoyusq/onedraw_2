@@ -37,8 +37,8 @@
 | T450 | P4 玩家敌人技能 | DONE | T430, T440 | 2.0 | 只用配置组合5种普通怪和1种精英怪。 |
 | T460 | P4 玩家敌人技能 | DONE | T410, T430 | 3.0 | 实现配置驱动Boss阶段、阈值、技能序列和切换。 |
 | T500 | P5 关卡完整单局 | DONE | T450 | 2.0 | 实现Level/Wave/Spawn时间轴和条件结束。 |
-| T510 | P5 关卡完整单局 | READY | T500, T400 | 1.5 | 实现Countdown/Playing/UltimateDrawing/Paused/Victory/Defeat状态机。 |
-| T520 | P5 关卡完整单局 | BACKLOG | T510 | 2.0 | 完成幽菌古道教学关：普通斩、连斩、切弹、架势和终极。 |
+| T510 | P5 关卡完整单局 | DONE | T500, T400 | 1.5 | 实现Countdown/Playing/UltimateDrawing/Paused/Victory/Defeat状态机。 |
+| T520 | P5 关卡完整单局 | READY | T510 | 2.0 | 完成幽菌古道教学关：普通斩、连斩、切弹、架势和终极。 |
 | T530 | P5 关卡完整单局 | BACKLOG | T520 | 2.0 | 完成混合怪物普通关，验证战术组合和难度曲线。 |
 | T540 | P5 关卡完整单局 | BACKLOG | T460, T530 | 2.5 | 完成Boss关和镇墓玄甲王三阶段战斗。 |
 | T550 | P5 关卡完整单局 | BACKLOG | T540 | 2.0 | 实现结算、星级/评分、解锁、重开和最小进度保存。 |
@@ -447,7 +447,7 @@
 
 ### T510 · 实现Countdown/Playing/UltimateDrawing/Paused/Victory/Defeat状态机。
 
-- **状态：** `READY`
+- **状态：** `DONE`
 - **依赖：** T500, T400
 - **估算：** 1.5 人日
 - **产出：** BattleFlowStateMachine；事件门；统一时间源。
@@ -455,11 +455,11 @@
 - **验收：** 终极必须收到有效笔势事件；暂停/失焦恢复一致；胜负互斥。
 - **验证：** BattleFlowTests；NoAdvanceBeforePlayerActionTests。
 - **证据：** `artifacts/evals/T510/`
-- **提交：** `T510: <imperative summary>`
+- **提交：** `T510: implement deterministic battle flow`
 
 ### T520 · 完成幽菌古道教学关：普通斩、连斩、切弹、架势和终极。
 
-- **状态：** `BACKLOG`
+- **状态：** `READY`
 - **依赖：** T510
 - **估算：** 2.0 人日
 - **产出：** lv_001_tutorial配置；约6波；教程步骤。
