@@ -1,8 +1,8 @@
 # PROGRESS
 
-- 日期：2026-07-13
-- 当前成熟度：P3手势战斗核心已完成；P4已具备配置驱动玩家状态与通用技能效果链，进入通用敌人状态机
-- 当前任务：T420
+- 日期：2026-07-14
+- 当前成熟度：P3手势战斗核心已完成；P4已具备配置驱动玩家、技能、通用敌人状态/伤害/弱点运行时，进入敌人组合策略
+- 当前任务：T430
 - 状态：READY
 - Unity精确版本：6000.5.1f1（已由ProjectVersion.txt与本机安装核验）
 - 微信SDK来源或版本：官方 `minigame-tuanjie-transform-sdk` v0.1.33 / commit `ed4ad28f433c6b52b5fd3f22a6fa155a0c98c228` / embedded最小补丁
@@ -11,6 +11,11 @@
 
 ## 已完成
 
+- T420：新增纯C# `EnemyStateMachine`，明确`Spawn→Move→Windup→Attack→Recovery→Move`与`Stun/Dead/None`分支；攻击前摇、有效段、完整周期和打断笔势/窗口只从`EnemyAttacks`读取，跨帧可追赶多个边界，死亡、打断和回收均幂等，复用后时钟与战斗状态完整重置。
+- T420：`EnemyDefinitionFactory`统一映射`Enemies/DefenseRules/WeakpointRules`，`EnemyDamageModel`按护甲优先、溢出进HP结算并只在护甲首次归零发布配置`breakEffectGroupId`意图；`Damageable`接入T350 `IHittable`，`EnemyController`统一消费T360伤害、T370反弹投射物伤害和T410伤害/治疗/Buff/破甲/击退/处决/计数端口，未创建每怪子类或Inspector数值库。
+- T420：`WeakpointController`只在配置的攻击相对时间窗内启用触发Collider；T360弱点结果还需同时满足当前攻击配置笔势与打断窗才进入显式恢复的`Stun`。真实Mouse斜划经T300–T360正式链路命中Boss弱点，造成1点护甲伤害、护甲120→119，并打断phase1配置攻击进入Stun。
+- T420：专项EditMode 7/7、PlayMode 1/1，最终全量EditMode 117/117、PlayMode 29/29；配置只读导出/漂移门通过、ConfigExporter .NET 56/56，最终Unity刷新编译与Console Error/Warning为0。
+- T420：未修改xlsx、FieldDictionary、Schema、导出器、受管JSON/hash/ConfigIds、配置DTO、Combat实现、场景、Prefab、Input Actions、Packages、ProjectSettings或微信SDK；未提前实现T430策略注册表、T440通用池、T450敌人装配、T460 Boss阶段或T510战斗流程。
 - T410：`SkillService`统一执行`Skills`触发类型、有效笔势/输入窗、T400架势/能量和每技能CD门，再按`SkillEffects.order`稳定调用显式`IEffectExecutor`；`ExecuteEffectGroup`也消费T400发布的`onSwitchEffectGroupId`意图并复用同一路径。无效、超时、冷却、架势错误、能量不足或死亡均不部分扣能。`comboCount>=3`由受限比较表达式执行，未知语法在扣能前失败。
 - T410：显式注册Damage/Heal/Buff/破甲/击退/重复笔迹/慢动作/低血处决/下笔倍率/计数/VFX/清弹12类效果，不用反射或每技能MonoBehaviour；`TargetType`覆盖主目标、世界、半径、上笔、手势区域、全敌、非Boss和Boss，并保持调用方目标顺序。配置行克隆出的`skill_test_heal`无需产品C#分支即可生效，治疗封顶且不复活。
 - T410：配置闭环升级为schema 3/content 0.3.x；Enums/Schema/导出器注册表补齐`Heal`和`ClearProjectiles`，终极链冻结为减速→清弹→全敌50伤害→普通敌25%低血处决→Boss 2秒易伤。双工作簿SHA-256均为`eb7cd040...311e3`，受管JSON 169,528字节/650条/hash `ef7eec3a...b3c2`，JSON/hash/IDs与样例同源。
@@ -100,7 +105,7 @@
 - T200：按GAME_DESIGN修正关卡玩法ID为 `lv_001_tutorial`、`lv_002_cave`、`lv_003_boss`，Boss玩法ID为 `boss_tomb_king`；所有Level/Wave/Spawn/BossPhase/Reward依赖引用同步，文案键和资源键保持独立命名空间。
 - T200：FieldDictionary保留248条非递归字段记录，修正Global互斥类型列及10个主键/条件字段的必填语义；冻结Schema属性存在与Excel单元格非空的差异、空值转换、普通/分组/通配符/conditional外键和数据所有权。
 - T200：29表、14公式、248字段、Schema/样例、类型/范围/枚举、主键、外键、连续order、关卡-Boss语义和规范化contentHash的只读契约审计全部PASS；29表最终渲染经4张总览拼图复核，无结构或版式异常。
-- 执行顺序调整：用户明确要求暂时绕过T120及微信开发者工具/打包问题，先完成游戏主要内容；T120保持`BLOCKED`、T130保持`BACKLOG`，不删除MVP平台验收要求；主内容已推进至T410完成，当前唯一`READY`任务为T420。
+- 执行顺序调整：用户明确要求暂时绕过T120及微信开发者工具/打包问题，先完成游戏主要内容；T120保持`BLOCKED`、T130保持`BACKLOG`，不删除MVP平台验收要求；主内容已推进至T420完成，当前唯一`READY`任务为T430。
 - T120 G2：Unity `6000.5.1f1` 基于固定 embedded WXSDK 成功生成 `Builds/WeChat/T120`；84个文件、总计101,901,218字节，其中`minigame` 12,008,520字节，JSON结构、关键文件、SHA-256清单与敏感占位扫描均通过。
 - T120构建参数：空AppID、横屏、256MB、触摸启用、Development、关闭渲染线程与性能分析、清理构建，并使用SDK受支持的多线程Brotli；可复现入口为`Tools/CI/build-wechat.sh`。
 - T120 G2结论为`PASS WITH KNOWN ISSUES`：默认单线程Brotli在当前macOS Unity安装布局下引用错误路径（BUG-0005，已用配置规避）；转换含93条未匹配替换规则及6条Emscripten warning（BUG-0006），需要G3实际运行判定影响。
@@ -147,4 +152,4 @@
 8. T240为尚未到达资源接入阶段的75个非场景键使用按类型共享的受管占位资源；类型与覆盖合同已成立，但正式视觉、音频和逐Prefab内容仍须在T630及相应玩法任务中替换并重新校验。
 ## 下一步
 
-只执行T420：实现通用敌人状态机、Damageable和Weakpoint；不提前实现T430策略注册表、T440对象池或T510战斗流程，也不恢复T120/T130。平台任务最迟在T640/T750前恢复。
+只执行T430：实现可组合移动、攻击、防御和支援策略注册表；不提前实现T440对象池、T450敌人装配、T460 Boss阶段或T510战斗流程，也不恢复T120/T130。平台任务最迟在T640/T750前恢复。

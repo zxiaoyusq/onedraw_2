@@ -173,3 +173,12 @@ T360新增的`Stances.damageFormulaId -> DamageFormulas.formulaId`是必填普�
 - `condition`为空时执行；非空只允许`identifier`加`>=`、`<=`、`==`、`!=`、`>`或`<`和InvariantCulture数值（当前内容为`comboCount>=3`）。缺少调用方变量时条件不成立；语法非法必须在扣能前失败。
 - `PlayerCombatModel.Heal`把存活玩家HP封顶到配置`Players.maxHp`并发布正数`HpChanged`；HP为0时返回`AlreadyDead`，治疗执行器不能复活。复活若进入范围必须另立配置和状态机合同。
 - 当前终极`fx_ultimate_seal`顺序冻结为：`TimeScale(Battle)`→`ClearProjectiles(Battle)`→`Damage(AllEnemies)`→`ExecuteBelowHpRatio(NormalEnemies)`→`ApplyBuff(Boss)`。T410只提供执行管线和有效笔势入口；T420敌人适配、T440实际弹池、T510 `UltimateDrawing`流程与T600 HUD分别后续接入。
+
+## 15. T420通用敌人状态、伤害与弱点运行时语义
+
+- T420不升级配置版本。`EnemyDefinitionFactory`只从`Enemies`及其`defenseRuleId/weakpointRuleId`外键映射HP、层级、移动/攻击策略ID、护甲、破甲效果、弱点窗/半径/倍率/奖励和资源键；`EnemyAttackTimelineFactory`只从敌人当前`attackSetId`分组内的`EnemyAttacks`行映射前摇、有效段、打断笔势/窗口与效果组。Prefab、Inspector和控制器不保存这些数值的副本。
+- `EnemyStateMachine`是无`MonoBehaviour`依赖的纯规则，状态集合固定为`None/Spawn/Move/Windup/Attack/Recovery/Stun/Dead`。`cooldownSec`解释为从攻击开始到再次可攻击的完整周期，恢复时长为`cooldownSec - windupSec - activeSec`；配置若不能覆盖前摇与有效段则拒绝。外部单调时间戳可一次追赶多个状态边界。
+- 弱点窗和攻击打断窗都以当前攻击开始时刻为零点，起止边界均包含。弱点Collider只在`WeakpointRules.windowStartSec <= elapsed <= windowEndSec`且状态为Windup/Attack时启用；一次T360弱点命中只有同时满足`interruptAttack=true`、当前攻击的`gestureInterruptType`和`interruptStartSec/interruptEndSec`才打断。
+- 弱点/攻击行没有眩晕持续时间，因此弱点打断进入无限期`Stun`，必须由后续战斗/策略流程显式调用恢复；配置`Buffs.type=Stun`仍使用效果传入或Buff默认的配置时长，并在边界自动恢复。不得以Inspector常量或动画长度猜测替代缺失的配置时长。
+- `EnemyDamageModel`先用`DefenseRules.armorHp`吸收来伤，溢出伤害进入HP；护甲从正数首次降为0时只发布一次该行`breakEffectGroupId`意图。HP首次归零只触发一次死亡，死亡后伤害与治疗不改变状态且治疗不能复活；回收清空HP、护甲、Buff、计数、攻击、弱点、时钟和目标ID后才允许复用。
+- `EnemySkillEffectTarget`在Skills程序集把T410目标端口适配到通用敌人，支持伤害、治疗、Buff、破甲、击退意图、低血处决和计数；Actors不反向依赖Skills。移动/攻击/防御/支援策略实现归T430，对象池归T440，Boss阶段覆盖攻击集/防御/弱点归T460。

@@ -1,0 +1,12 @@
+# T420 Configuration Static Verification
+
+Command: `Tools/CI/verify-config.sh --skip-unity`
+Date: `2026-07-14`
+Result: `CONFIG_PIPELINE_PARTIAL_PASS unity=NOT_RUN reason=explicit_skip`
+
+- ConfigExporter build: PASS, 0 warnings, 0 errors.
+- Generated snapshot: schema `3`, content `0.3.0-sample`, content hash `ef7eec3aa29dffb593164526d50eff867e05fabb09fdbcbfc4347d620fb7b3c2`, 28 tables, 650 records.
+- Managed artifact drift: PASS; JSON/hash/ConfigIds all byte-identical to a fresh deterministic generation.
+- Generated sizes: JSON 169,528 bytes; hash 65 bytes; ConfigIds 23,125 bytes; 27 ID sets / 306 constants.
+- ConfigExporter tests: 56/56 passed.
+- Unity portion: intentionally run separately through the already-open Unity 6000.5.1f1 MCP instance; see `unity-mcp-jobs.md`.
