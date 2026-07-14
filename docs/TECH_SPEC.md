@@ -99,6 +99,9 @@ Tests.EditMode / Tests.PlayMode
 - 游戏：Boot → MainMenu → Loading → Battle → Result。
 - 战斗：Countdown → Playing ↔ Paused → UltimateDrawing → Playing → Victory/Defeat。
 - 必须由玩家完成的门使用事件，不允许超时自动确认。
+- `TutorialSequence`只根据配置的玩法事件推进；`TutorialDirector`只消费其运行时事件并投影遮罩、高亮、手势示意和配置文案，不反向伪造步骤完成。
+- 显式跳过会发布`TutorialSkipped`/`TutorialCompleted`，但不发布虚假`StepCompleted`、不清除战斗实体；最终`PlayerConfirmed`门仍需当前波已全部出生且活跃敌人为0。
+- 教程一次性完成标记写入版本化进度JSON v2的`completedTutorialIds`；v1存档经内建显式v1→v2迁移后以当前格式回写。
 
 ## 6. 手势实现细节
 

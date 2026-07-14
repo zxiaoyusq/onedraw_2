@@ -23,6 +23,13 @@ namespace OneStrokeDemon.Levels
         JObject Migrate(JObject source);
     }
 
+    public interface ITutorialCompletionProgress
+    {
+        bool IsTutorialCompleted(string tutorialId);
+
+        bool MarkTutorialCompleted(string tutorialId);
+    }
+
     public enum ProgressLoadStatus
     {
         Missing = 0,
@@ -61,6 +68,7 @@ namespace OneStrokeDemon.Levels
         private readonly HashSet<string> unlockedLevelSet;
         private readonly HashSet<string> unlockedFeatureSet;
         private readonly HashSet<string> appliedSettlementSet;
+        private readonly HashSet<string> completedTutorialSet;
 
         internal ProgressSnapshot(
             long revision,
@@ -68,7 +76,8 @@ namespace OneStrokeDemon.Levels
             IEnumerable<LevelProgress> levels,
             IEnumerable<string> unlockedLevelIds,
             IEnumerable<string> unlockedFeatureIds,
-            IEnumerable<string> appliedSettlementIds)
+            IEnumerable<string> appliedSettlementIds,
+            IEnumerable<string> completedTutorialIds)
         {
             if (revision < 0L)
             {
@@ -86,14 +95,17 @@ namespace OneStrokeDemon.Levels
             string[] unlockedLevels = NormalizeIds(unlockedLevelIds, nameof(unlockedLevelIds));
             string[] unlockedFeatures = NormalizeIds(unlockedFeatureIds, nameof(unlockedFeatureIds));
             string[] appliedSettlements = NormalizeIds(appliedSettlementIds, nameof(appliedSettlementIds));
+            string[] completedTutorials = NormalizeIds(completedTutorialIds, nameof(completedTutorialIds));
             Levels = new ReadOnlyCollection<LevelProgress>(levelArray);
             UnlockedLevelIds = new ReadOnlyCollection<string>(unlockedLevels);
             UnlockedFeatureIds = new ReadOnlyCollection<string>(unlockedFeatures);
             AppliedSettlementIds = new ReadOnlyCollection<string>(appliedSettlements);
+            CompletedTutorialIds = new ReadOnlyCollection<string>(completedTutorials);
             levelsById = levelArray.ToDictionary(row => row.LevelId, StringComparer.Ordinal);
             unlockedLevelSet = new HashSet<string>(unlockedLevels, StringComparer.Ordinal);
             unlockedFeatureSet = new HashSet<string>(unlockedFeatures, StringComparer.Ordinal);
             appliedSettlementSet = new HashSet<string>(appliedSettlements, StringComparer.Ordinal);
+            completedTutorialSet = new HashSet<string>(completedTutorials, StringComparer.Ordinal);
         }
 
         public long Revision { get; }
@@ -108,6 +120,8 @@ namespace OneStrokeDemon.Levels
 
         public IReadOnlyList<string> AppliedSettlementIds { get; }
 
+        public IReadOnlyList<string> CompletedTutorialIds { get; }
+
         public bool IsLevelUnlocked(string levelId)
         {
             return levelId != null && unlockedLevelSet.Contains(levelId);
@@ -121,6 +135,11 @@ namespace OneStrokeDemon.Levels
         public bool HasAppliedSettlement(string settlementId)
         {
             return settlementId != null && appliedSettlementSet.Contains(settlementId);
+        }
+
+        public bool IsTutorialCompleted(string tutorialId)
+        {
+            return tutorialId != null && completedTutorialSet.Contains(tutorialId);
         }
 
         public bool TryGetLevel(string levelId, out LevelProgress progress)
@@ -141,6 +160,7 @@ namespace OneStrokeDemon.Levels
                 0L,
                 Array.Empty<LevelProgress>(),
                 rootLevelIds,
+                Array.Empty<string>(),
                 Array.Empty<string>(),
                 Array.Empty<string>());
         }
@@ -212,7 +232,38 @@ namespace OneStrokeDemon.Levels
                 nextLevels.Values,
                 nextUnlockedLevels,
                 nextUnlockedFeatures,
-                nextAppliedSettlements);
+                nextAppliedSettlements,
+                completedTutorialSet);
+        }
+
+        internal ProgressSnapshot CompleteTutorial(string tutorialId)
+        {
+            ValidateId(tutorialId, nameof(tutorialId));
+            if (completedTutorialSet.Contains(tutorialId))
+            {
+                return this;
+            }
+
+            var nextCompletedTutorials = new HashSet<string>(
+                completedTutorialSet,
+                StringComparer.Ordinal)
+            {
+                tutorialId,
+            };
+            long nextRevision;
+            checked
+            {
+                nextRevision = Revision + 1L;
+            }
+
+            return new ProgressSnapshot(
+                nextRevision,
+                ScoreTokens,
+                Levels,
+                UnlockedLevelIds,
+                UnlockedFeatureIds,
+                AppliedSettlementIds,
+                nextCompletedTutorials);
         }
 
         private static LevelProgress[] NormalizeLevels(IEnumerable<LevelProgress> levels)
@@ -294,13 +345,14 @@ namespace OneStrokeDemon.Levels
 
     public sealed class ProgressSaveCodec
     {
-        public const int CurrentVersion = 1;
+        public const int CurrentVersion = 2;
 
         private readonly Dictionary<int, IProgressSaveMigration> migrations;
 
         public ProgressSaveCodec(IEnumerable<IProgressSaveMigration> migrations = null)
         {
             this.migrations = new Dictionary<int, IProgressSaveMigration>();
+            AddMigration(new VersionOneTutorialMigration(), nameof(migrations));
             if (migrations == null)
             {
                 return;
@@ -308,22 +360,7 @@ namespace OneStrokeDemon.Levels
 
             foreach (IProgressSaveMigration migration in migrations)
             {
-                if (migration == null ||
-                    migration.SourceVersion < 0 ||
-                    migration.TargetVersion <= migration.SourceVersion ||
-                    migration.TargetVersion > CurrentVersion)
-                {
-                    throw new ArgumentException("Invalid progress migration.", nameof(migrations));
-                }
-
-                if (this.migrations.ContainsKey(migration.SourceVersion))
-                {
-                    throw new ArgumentException(
-                        $"Duplicate migration source version {migration.SourceVersion}.",
-                        nameof(migrations));
-                }
-
-                this.migrations.Add(migration.SourceVersion, migration);
+                AddMigration(migration, nameof(migrations));
             }
         }
 
@@ -440,7 +477,8 @@ namespace OneStrokeDemon.Levels
             if (dto.Levels == null ||
                 dto.UnlockedLevelIds == null ||
                 dto.UnlockedFeatureIds == null ||
-                dto.AppliedSettlementIds == null)
+                dto.AppliedSettlementIds == null ||
+                dto.CompletedTutorialIds == null)
             {
                 throw new JsonSerializationException("Progress save arrays must not be null.");
             }
@@ -453,7 +491,8 @@ namespace OneStrokeDemon.Levels
                     : new LevelProgress(row.LevelId, row.BestScore, row.BestStars, row.ClearCount)),
                 dto.UnlockedLevelIds,
                 dto.UnlockedFeatureIds,
-                dto.AppliedSettlementIds);
+                dto.AppliedSettlementIds,
+                dto.CompletedTutorialIds);
         }
 
         private static ProgressSaveDto ToDto(ProgressSnapshot progress)
@@ -473,7 +512,30 @@ namespace OneStrokeDemon.Levels
                 UnlockedLevelIds = progress.UnlockedLevelIds.ToArray(),
                 UnlockedFeatureIds = progress.UnlockedFeatureIds.ToArray(),
                 AppliedSettlementIds = progress.AppliedSettlementIds.ToArray(),
+                CompletedTutorialIds = progress.CompletedTutorialIds.ToArray(),
             };
+        }
+
+        private void AddMigration(
+            IProgressSaveMigration migration,
+            string argumentName)
+        {
+            if (migration == null ||
+                migration.SourceVersion < 0 ||
+                migration.TargetVersion <= migration.SourceVersion ||
+                migration.TargetVersion > CurrentVersion)
+            {
+                throw new ArgumentException("Invalid progress migration.", argumentName);
+            }
+
+            if (migrations.ContainsKey(migration.SourceVersion))
+            {
+                throw new ArgumentException(
+                    $"Duplicate migration source version {migration.SourceVersion}.",
+                    argumentName);
+            }
+
+            migrations.Add(migration.SourceVersion, migration);
         }
 
         [JsonObject(MemberSerialization.OptIn)]
@@ -499,6 +561,28 @@ namespace OneStrokeDemon.Levels
 
             [JsonProperty("appliedSettlementIds", Order = 7, Required = Required.Always)]
             public string[] AppliedSettlementIds { get; set; }
+
+            [JsonProperty("completedTutorialIds", Order = 8, Required = Required.Always)]
+            public string[] CompletedTutorialIds { get; set; }
+        }
+
+        private sealed class VersionOneTutorialMigration : IProgressSaveMigration
+        {
+            public int SourceVersion => 1;
+
+            public int TargetVersion => 2;
+
+            public JObject Migrate(JObject source)
+            {
+                if (source == null)
+                {
+                    throw new ArgumentNullException(nameof(source));
+                }
+
+                source["version"] = TargetVersion;
+                source["completedTutorialIds"] = new JArray();
+                return source;
+            }
         }
 
         [JsonObject(MemberSerialization.OptIn)]

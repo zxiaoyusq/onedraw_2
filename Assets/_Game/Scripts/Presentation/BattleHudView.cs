@@ -22,6 +22,7 @@ namespace OneStrokeDemon.Presentation
         public BattleHudViewModel LastRendered { get; private set; }
         public int RenderCount { get; private set; }
         public RectTransform SafeAreaRoot => RequireReferences().SafeAreaRoot;
+        public RectTransform StanceTarget => RequireReferences().StanceRoot;
         public Button PauseButton => RequireReferences().PauseButton;
         public Button UltimateButton => RequireReferences().UltimateButton;
         public Button RestartButton => RequireReferences().RestartButton;
@@ -191,6 +192,7 @@ namespace OneStrokeDemon.Presentation
     internal sealed class BattleHudViewReferences
     {
         public RectTransform SafeAreaRoot;
+        public RectTransform StanceRoot;
         public TMP_Text LevelName;
         public TMP_Text HpLabel;
         public TMP_Text HpValue;
@@ -235,7 +237,7 @@ namespace OneStrokeDemon.Presentation
         {
             foreach (UnityEngine.Object item in new UnityEngine.Object[]
                      {
-                         SafeAreaRoot, LevelName, HpLabel, HpValue, HpSlider,
+                         SafeAreaRoot, StanceRoot, LevelName, HpLabel, HpValue, HpSlider,
                          EnergyLabel, EnergyValue, EnergySlider, ComboRoot,
                          ComboLabel, ComboValue, ScoreLabel, ScoreValue,
                          StanceLabel, StanceValue, UltimateButton, UltimateLabel,

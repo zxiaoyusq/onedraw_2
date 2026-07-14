@@ -58,7 +58,7 @@ public sealed class ExporterCliTests
 
         Assert.Equal(ConfigExporterApplication.SuccessExitCode, exitCode);
         Assert.Contains("CONFIG_GENERATED_VERIFY_PASS", output.ToString(), StringComparison.Ordinal);
-        Assert.Contains("idSets=28 idConstants=372", output.ToString(), StringComparison.Ordinal);
+        Assert.Contains("idSets=28 idConstants=374", output.ToString(), StringComparison.Ordinal);
         Assert.Equal(string.Empty, error.ToString());
     }
 

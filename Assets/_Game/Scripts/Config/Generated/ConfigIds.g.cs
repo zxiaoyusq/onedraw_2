@@ -6,10 +6,10 @@ namespace OneStrokeDemon.Config
     public static class ConfigIds
     {
         public const int SchemaVersion = 5;
-        public const string ContentVersion = "0.6.1-sample";
-        public const string ContentHash = "152b9faa81ba66e29469d7a4a48227f8fb7ef0f969f1cb13679d6fe0ce0786f8";
+        public const string ContentVersion = "0.6.2-sample";
+        public const string ContentHash = "7e2a0880c289b4dc7299dee0149bfe2bcc86ed55fa92fa392e5cd874ad77b91e";
         public const int IdSetCount = 28;
-        public const int IdConstantCount = 372;
+        public const int IdConstantCount = 374;
 
         public static class GlobalKeys
         {
@@ -340,6 +340,8 @@ namespace OneStrokeDemon.Config
             public const string TextUiScore = "text_ui_score";
             public const string TextUiStance = "text_ui_stance";
             public const string TextUiStars = "text_ui_stars";
+            public const string TextUiTutorialReview = "text_ui_tutorial_review";
+            public const string TextUiTutorialSkip = "text_ui_tutorial_skip";
             public const string TextUiVictory = "text_ui_victory";
         }
 

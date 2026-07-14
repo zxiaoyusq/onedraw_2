@@ -1,7 +1,7 @@
 project: OneStrokeDemon
 project_cn: 一笔镇妖
 plan_generated: 2026-07-11
-current_task: T650
+current_task: T700
 current_task_status: READY
 unity:
   project_root: .
@@ -23,9 +23,9 @@ config:
   generated_hash: Assets/_Game/Config/Generated/gameplay_config.hash
   generated_ids: Assets/_Game/Scripts/Config/Generated/ConfigIds.g.cs
   schema_version: 5
-  content_version: 0.6.1-sample
-  content_hash: 152b9faa81ba66e29469d7a4a48227f8fb7ef0f969f1cb13679d6fe0ce0786f8
-  workbook_sha256: 0fc25d73d7a1697fc4d78c8e01d874433998a71a6a2024cd0caa516dec2cb9b5
+  content_version: 0.6.2-sample
+  content_hash: 7e2a0880c289b4dc7299dee0149bfe2bcc86ed55fa92fa392e5cd874ad77b91e
+  workbook_sha256: 1278124703f32c4d6b5c3ac017984e148b0fb3ab5378d9fba04c47236620ffa2
   mirror_status: byte_identical
   contract_audit: pass
   exporter:
@@ -35,9 +35,9 @@ config:
     status: pass
     test_count: 8
     exported_tables: 29
-    exported_records: 740
-    output_bytes: 193551
-    output_sha256: 2623d80dfdbe286b4378900ca440210f42adc54c9f53d625cf4bedaf83c51172
+    exported_records: 742
+    output_bytes: 193859
+    output_sha256: 24bd59276c34ca59a8e74ad9d27fcbb4ad503c88ad93752b95e21e916b80195e
     runtime_snapshot_committed: true
   validator:
     path: Tools/ConfigExporter/Validation
@@ -54,11 +54,11 @@ config:
     compatibility: schema_5_content_0_6_x
     dto_tables: 29
     dto_fields: 266
-    loaded_records: 740
-    readonly_primary_indexes: 336
+    loaded_records: 742
+    readonly_primary_indexes: 338
     readonly_group_indexes: 56
-    full_editmode_tests: 192
-    full_playmode_tests: 45
+    full_editmode_tests: 195
+    full_playmode_tests: 46
     bootstrap_smoke: pass
   asset_registry:
     status: pass
@@ -79,19 +79,19 @@ config:
     default_read_only: true
     update_flag: --update
     drift_diagnostic: CFG013
-    generated_json_bytes: 193551
-    generated_json_sha256: 2623d80dfdbe286b4378900ca440210f42adc54c9f53d625cf4bedaf83c51172
+    generated_json_bytes: 193859
+    generated_json_sha256: 24bd59276c34ca59a8e74ad9d27fcbb4ad503c88ad93752b95e21e916b80195e
     generated_hash_bytes: 65
-    generated_hash_sha256: 03c2482f9e0f8573f7fb735e03c1ad532d5d0a3fc896b2d346cd7ab077856405
-    generated_ids_bytes: 27793
-    generated_ids_sha256: aee7d7500d1c4e2947172fe776236a1b3abacf48ac45f072eb1547d30bd2db1d
+    generated_hash_sha256: af6265cf2c4a10db420cfb8bf04f27b524f66cee14f0543a3891d88d21df2ae5
+    generated_ids_bytes: 27953
+    generated_ids_sha256: 339ac189c22dadcab133d5e6bd1f272a6a44a21060decf4fd7646ec0b1d54fd1
     id_sets: 28
-    id_constants: 372
+    id_constants: 374
     dotnet_tests: 58
     config_editmode_tests: 19
     config_playmode_tests: 3
-    full_editmode_tests: 187
-    full_playmode_tests: 45
+    full_editmode_tests: 195
+    full_playmode_tests: 46
     full_command_smoke: pass_via_readonly_drift_gate_plus_isolated_unity_batch_project
 result_progress:
   status: pass
@@ -107,13 +107,15 @@ result_progress:
     duplicate_side_effects: none
     publication_order: encode_then_store_then_publish
   save:
-    version: 1
+    version: 2
     format: deterministic_json
     storage_port: IProgressSaveStore
     platform_adapter: deferred_to_T130
     migration_port: IProgressSaveMigration
     corrupt_policy: fallback_to_configured_level_roots
     future_version_policy: recovered_incompatible
+    completed_tutorial_ids: configured_levels_tutorial_ids_only
+    version_one_migration: add_empty_completed_tutorial_ids
   navigation:
     owner: BattleResultNavigation
     session_port: IBattleSession
@@ -699,6 +701,33 @@ tutorial_flow:
   player_path: {step_started: 6, step_completed: 6, tutorial_completed: 1, spawned_enemies: 15, stance_switches: 1, ultimate_targets_defeated: 4, settlement: Victory}
   full_editmode_tests: 162
   full_playmode_tests: 41
+tutorial_presentation:
+  status: pass
+  director: TutorialDirector
+  view: TutorialOverlayView
+  runtime_factory: TutorialOverlayRuntime
+  event_source: TutorialSequence_runtime_events
+  event_types: [StepStarted, StepCompleted, TutorialSkipped, TutorialCompleted]
+  config_sources: [Tutorials.textKey, Tutorials.highlightTarget, Tutorials.gestureType, Texts]
+  configured_ui_texts: [text_ui_tutorial_skip, text_ui_tutorial_review]
+  highlight_registry: [BattleArea, SwitchButton, UltimateButton, dynamic_Weakpoint, dynamic_Projectile]
+  gesture_graphics: [Any, Horizontal, Vertical, Diagonal, Arc, Circle, Charged]
+  review_policy: render_last_step_without_mutating_sequence
+  skip_policy: explicit_no_fake_step_completion
+  combat_gate_after_skip: scheduler_complete_and_active_count_zero
+  completion_progress_port: ITutorialCompletionProgress
+  save_marker: completedTutorialIds
+  first_run_player_path: {skip: true, spawned_enemies: 15, defeated_enemies: 15, settlement: Victory}
+  restart_player_path: {auto_skip: true, spawned_enemies: 15, defeated_enemies: 15, settlement: Victory}
+  progress_store_writes: 1
+  editmode_focused: 3
+  playmode_focused: 1
+  config_editmode: 19
+  full_editmode_tests: 195
+  full_playmode_tests: 46
+  perceptual_screenshot: artifacts/evals/T650/tutorial-overlay-1920x1080.png
+  perceptual_screenshot_sha256: 86587e44620e6064e197cb4bb7b3fd1ad159b33a0af6b8d3a4531c6f8603599f
+  perceptual_resolution: 1920x1080_Metal
 manual_gates:
   unity_editor_smoke: pass
   standard_web_build: pass_with_known_issues
@@ -744,7 +773,7 @@ wechat_conversion:
 execution_order:
   deferred_tasks: [T120, T130]
   deferral_reason: user_prioritized_main_game_content_over_wechat_devtools_device_and_packaging_work
-  next_content_task: T650
+  next_content_task: T700
   resume_platform_before: [T640, T750]
 workflow:
   config_verify_command: Tools/CI/verify-config.sh

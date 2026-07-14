@@ -131,7 +131,7 @@ namespace OneStrokeDemon.Levels
         public ProgressSnapshot Progress { get; }
     }
 
-    public sealed class ResultService
+    public sealed class ResultService : ITutorialCompletionProgress
     {
         private const string ClearCondition = "Clear";
         private const string ScoreAtLeastCondition = "ScoreAtLeast";
@@ -146,6 +146,7 @@ namespace OneStrokeDemon.Levels
         private readonly ResultScoreSettings scoreSettings;
         private readonly Dictionary<string, LevelConfig> levels;
         private readonly HashSet<string> configuredFeatureIds;
+        private readonly HashSet<string> configuredTutorialIds;
         private readonly string[] rootLevelIds;
 
         public event Action<ResultReceipt> ReceiptPublished;
@@ -162,6 +163,7 @@ namespace OneStrokeDemon.Levels
             levels = BuildLevelCatalog(configProvider.GetLevels());
             rootLevelIds = FindRootLevelIds(levels.Values);
             configuredFeatureIds = BuildConfiguredFeatureIds(configProvider, levels.Values);
+            configuredTutorialIds = BuildConfiguredTutorialIds(levels.Values);
             ProgressSnapshot initial = ProgressSnapshot.Empty(rootLevelIds);
 
             ProgressLoadResult loaded = store.TryRead(out string payload)
@@ -186,6 +188,26 @@ namespace OneStrokeDemon.Levels
         public ProgressLoadResult LoadResult { get; }
 
         public ProgressSnapshot Current { get; private set; }
+
+        public bool IsTutorialCompleted(string tutorialId)
+        {
+            RequireConfiguredTutorial(tutorialId);
+            return Current.IsTutorialCompleted(tutorialId);
+        }
+
+        public bool MarkTutorialCompleted(string tutorialId)
+        {
+            RequireConfiguredTutorial(tutorialId);
+            ProgressSnapshot next = Current.CompleteTutorial(tutorialId);
+            if (ReferenceEquals(next, Current))
+            {
+                return false;
+            }
+
+            store.Write(codec.Encode(next));
+            Current = next;
+            return true;
+        }
 
         public ResultReceipt Settle(in ResultRequest request)
         {
@@ -467,6 +489,33 @@ namespace OneStrokeDemon.Levels
             return result;
         }
 
+        private static HashSet<string> BuildConfiguredTutorialIds(
+            IEnumerable<LevelConfig> configuredLevels)
+        {
+            var result = new HashSet<string>(StringComparer.Ordinal);
+            foreach (LevelConfig level in configuredLevels)
+            {
+                if (!string.IsNullOrWhiteSpace(level.TutorialId))
+                {
+                    result.Add(level.TutorialId);
+                }
+            }
+
+            return result;
+        }
+
+        private void RequireConfiguredTutorial(string tutorialId)
+        {
+            if (string.IsNullOrWhiteSpace(tutorialId) ||
+                !string.Equals(tutorialId, tutorialId.Trim(), StringComparison.Ordinal) ||
+                !configuredTutorialIds.Contains(tutorialId))
+            {
+                throw new ArgumentException(
+                    $"Unknown tutorial '{tutorialId}'.",
+                    nameof(tutorialId));
+            }
+        }
+
         private bool IsCatalogCompatible(ProgressSnapshot progress)
         {
             for (int index = 0; index < rootLevelIds.Length; index += 1)
@@ -496,6 +545,14 @@ namespace OneStrokeDemon.Levels
             for (int index = 0; index < progress.UnlockedFeatureIds.Count; index += 1)
             {
                 if (!configuredFeatureIds.Contains(progress.UnlockedFeatureIds[index]))
+                {
+                    return false;
+                }
+            }
+
+            for (int index = 0; index < progress.CompletedTutorialIds.Count; index += 1)
+            {
+                if (!configuredTutorialIds.Contains(progress.CompletedTutorialIds[index]))
                 {
                     return false;
                 }

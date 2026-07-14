@@ -67,6 +67,8 @@ T620专项必须覆盖：五类语义事件选择的`FeedbackCues`档案、配�
 
 T630专项必须覆盖：Runtime不存在PSD/PSB/JPG/JPEG，全部目标PNG可解码为RGBA且前景具有透明像素；Importer的Sprite Single、PPU、Pivot、Mesh、Clamp/Bilinear、Mip/ReadWrite、压缩和Max Size按资源类型一致；五个SpriteAtlas v2覆盖明确类别且不把字体等目录杂项打包；Sorting Layer顺序固定为Background、Default、Actors、Projectiles、VFX；Registry的18个Sprite与40个Prefab键均指向实际持久化资源，可渲染Prefab不保存玩法组件或数值。视觉证据使用确定性1920×1080最终RGBA资产画廊；离屏GPU捕获异常必须标为INVALID，不能替代Web/微信/真机路径。
 
+T650专项必须覆盖：提示、高亮目标、手势与跳过/回看文案只来自`Tutorials/Texts`；计时、错误事件和回看都不能代替正确玩家动作；显式跳过不伪造`StepCompleted`，只持久化一次完成标记；v1存档迁移到v2后标记可确定性往返。PlayMode必须从Bootstrap真实配置创建HUD/遮罩，验证中文提示、手势、高亮、跳过和回看无overflow/truncate，并走通“首局跳过但仍击败15怪后Victory → 重开自动跳过但仍击败15怪后Victory”，存储只写一次。
+
 ## 证据模板
 
 每个任务写`artifacts/evals/TASK-ID/verification.md`。模板真相源为`templates/verification.md`和`templates/change-whitelist.md`，可用下列命令初始化且不会覆盖已有证据：

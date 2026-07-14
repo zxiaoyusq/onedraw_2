@@ -120,6 +120,7 @@ namespace OneStrokeDemon.Presentation
         private static void BuildActionHud(RectTransform parent, BattleHudViewReferences ui)
         {
             RectTransform stance = CreatePanel("Stance", parent, PanelColor);
+            ui.StanceRoot = stance;
             SetAnchored(stance, new Vector2(0f, 0f), new Vector2(0f, 0f),
                 new Vector2(32f, 32f), new Vector2(310f, 96f), Vector2.zero);
             ui.StanceLabel = CreateText("StanceLabel", stance, 18f, TextAlignmentOptions.MidlineLeft);

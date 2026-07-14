@@ -2,7 +2,7 @@
 
 ## 1. 版本与唯一真相源
 
-- 当前冻结版本：`schemaVersion = 5`、`contentVersion = 0.6.1-sample`。
+- 当前冻结版本：`schemaVersion = 5`、`contentVersion = 0.6.2-sample`。
 - 正式内容唯一源：`Design/Config/GameConfig.xlsx`。
 - `config/一笔镇妖_游戏配置表模板.xlsx` 只是随正式源同步的示例镜像，不接受独立内容修改。
 - `Assets/_Game/Config/Generated/gameplay_config.json`和`gameplay_config.hash`由T250导出器生成，是可审查、可构建的只读Runtime快照与hash旁车。
@@ -262,7 +262,7 @@ T360新增的`Stances.damageFormulaId -> DamageFormulas.formulaId`是必填普�
 
 - T550不改变JSON字段形状、FieldDictionary或schema，只把content升级为`0.5.5-sample`。最终评分增加三个Global整数：`result_score_per_reflect=150`、`result_score_no_damage_bonus=1000`、`result_score_per_remaining_second=20`；均须为非负整数。最终分数以T360战斗分为基底，仅Victory叠加成功弹反、未受伤和`floor(max(0, durationLimitSec-gameplayElapsedSec))`个剩余整秒奖励；Defeat保留战斗分展示但星级固定0且不发胜利奖励。
 - 星级继续只读取当前`Levels.starScore1/2/3`。奖励只沿`Levels.rewardTableId -> Rewards`按order求值：`Clear`在Victory满足，`ScoreAtLeast`比较最终分数，`StarAtLeast`比较最终星级；`UnlockLevel`目标必须存在于Levels，`UnlockFeature`写入功能解锁，`ScoreToken`累加最小非付费积分。奖励、阈值、数量、后继关和功能ID不得复制到Inspector或产品C#。
-- 初始可玩关由完整`Levels.nextLevelId`有向图中未被任何后继引用的根自动得到，不在代码列关卡ID。存档为版本化JSON v1，保存revision、非付费积分、逐关最佳分/星/通关次数、已解锁关卡/功能及已应用结算ID；所有集合按Ordinal排序后编码。畸形结构、重复/空ID、非法范围或配置目录不存在的关卡ID整包回退初始进度；未来版本和缺失迁移链标为不兼容。迁移只能经`IProgressSaveMigration`逐版本显式注册，完整迁移且配置目录兼容后立即以当前v1确定性格式写回。
+- 初始可玩关由完整`Levels.nextLevelId`有向图中未被任何后继引用的根自动得到，不在代码列关卡ID。存档为版本化JSON v2，保存revision、非付费积分、逐关最佳分/星/通关次数、已解锁关卡/功能、已应用结算ID及已完成教程ID；所有集合按Ordinal排序后编码。畸形结构、重复/空ID、非法范围或配置目录不存在的关卡/教程ID整包回退初始进度；未来版本和缺失迁移链标为不兼容。迁移只能经`IProgressSaveMigration`逐版本显式注册，v1→v2由内建迁移补空`completedTutorialIds`；完整迁移且配置目录兼容后立即以当前v2确定性格式写回。
 - 每次结算必须携带非空稳定settlementId。首次写入先构造完整候选快照并完成JSON编码/存储，写成功后才发布；相同ID重复回调不再次写盘、加分币、解锁或增加通关次数。`IProgressSaveStore`是唯一存储端口，T550不直接使用PlayerPrefs或微信SDK；具体Editor/Web/WeChat适配仍归T130。
 - Restart必须释放当前战斗会话后以相同配置levelId创建全新会话；NextLevel只接受当前关Victory、配置后继非空且结算奖励后的进度已解锁该后继。旧会话的对象池租约、GameObject和事件所有权不得进入新会话。T550只交付规则和生命周期入口，不制作T600结算HUD、云存档、付费货币或平台同步。
 
@@ -285,3 +285,9 @@ T360新增的`Stances.damageFormulaId -> DamageFormulas.formulaId`是必填普�
 - `timeScale`范围为0～1，0表达完全停顿；全部持续时间由未缩放时间推进。震屏、伤害数字上浮、字号和VFX尺寸以1920×1080参考像素表达。颜色必须使用`#RRGGBBAA`；震动仅允许`Off/Light/Medium/Heavy`，工作簿Enums、Schema和代码登记集合必须精确一致。
 - `CombatFeedbackService`只消费已经形成的战斗结果或显式反馈事件，并按破甲优先于弱点、弱点优先于普通命中的语义选择配置档案；它只能向表现输出与可注入震动端口发命令，不能修改HP、护甲、分数、弹体归属或其他战斗真相。震动总开关关闭后仍须保留视觉/音频命令。
 - Unity输出层在创建时一次性解析五份配置、取得Registry中的AudioClip/Prefab并建立音频并发通道和T440 VFX/伤害数字池；命中热路径不得加载资源。回收必须恢复目标颜色、相机基位、TMP内容、VFX染色/缩放和精确池租约。T620仍使用T240占位音频/VFX，正式资源替换属于T630。
+
+## 29. T650教程遮罩、跳过与回看语义
+
+- T650不改变JSON字段形状、FieldDictionary或schema，content升级为`0.6.2-sample`。`Texts`新增`text_ui_tutorial_skip`/`text_ui_tutorial_review`两条中英文按钮文案；步骤提示、高亮目标和手势类型继续只读既有`Tutorials -> Texts`。新增中文均已在T610的294字符清单内，因此不重建字体二进制或TMP资产。
+- `TutorialDirector`消费T520的`StepStarted/StepCompleted/TutorialSkipped/TutorialCompleted`运行时事件，把配置提示、高亮目标和手势投影到遮罩。回看只重现最近步骤，不改变`TutorialSequence`状态或重发玩法事件。
+- 显式跳过直接把教程序列置为Completed并发布跳过/完成事实，不伪造任何`StepCompleted`。跳过不删除敌人、不跳过出生时间线；只有最终波已全部出生且活跃敌人为0时才能消费`PlayerConfirmed`门。首次完成或跳过通过`ITutorialCompletionProgress`写入存档v2，后续重开可自动跳过教程展示，但仍须正常完成战斗。

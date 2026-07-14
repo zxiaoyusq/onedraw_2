@@ -85,7 +85,7 @@ dotnet run --project Tools/ConfigExporter -- \
 6. 对排除 `contentHash` 后的规范化完整对象计算SHA-256：递归Ordinal键序、稳定数组序、UTF-8无BOM、紧凑JSON、无区域格式。
 7. 写入 `contentHash` 后以固定缩进和UTF-8无BOM序列化；生成时间只写日志。
 8. 先写目标同目录 `<output>.tmp`，落盘后重新读取并完成属性顺序、版本、记录数与hash自校验，再原子替换正式JSON；失败时保留旧输出并清理临时文件。
-9. T250从同一个`PreparedExport`生成JSON、64位hash+LF旁车，以及位于Config asmdef内的28组/当前372项`ConfigIds.g.cs`；禁止分别实现另一套排序、解析或数值真相。
+9. T250从同一个`PreparedExport`生成JSON、64位hash+LF旁车，以及位于Config asmdef内的28组/当前374项`ConfigIds.g.cs`；禁止分别实现另一套排序、解析或数值真相。
 10. 同一输入连续两次导出并比较全部生成文件，必须字节完全相同；测试还会反转源数据行，证明稳定排序不依赖Excel行号。
 
 ## T250生成物与漂移门
@@ -94,7 +94,7 @@ dotnet run --project Tools/ConfigExporter -- \
 2. `verify`只读重建预期字节并逐文件比较，不更新时间戳或修正文件；缺失、任意字节漂移、C#标识符冲突或输出路径冲突均以`CFG013`失败。
 3. `ConfigIds.g.cs`只包含稳定ID/Key和schema/content/hash元数据，不包含HP、CD、伤害或Unity对象引用；Runtime内容仍由JSON加载。
 4. 一键脚本会在临时目录再次生成并执行`cmp`；漂移时输出受管文件与预期文件的unified diff，验证通过后运行.NET 58项及Unity分类测试。
-5. Unity T250测试断言hash旁车、生成元数据、JSON Runtime hash一致，C#实际编入`OneStrokeDemon.Config.dll`，28组372常量均为稳定ID，并用代表性常量完成类型化配置/Registry查询。
+5. Unity T250测试断言hash旁车、生成元数据、JSON Runtime hash一致，C#实际编入`OneStrokeDemon.Config.dll`，28组374常量均为稳定ID，并用代表性常量完成类型化配置/Registry查询。
 
 T220坏配置清单位于 `Tools/ConfigExporter/Tests/Fixtures/invalid-config-cases.json`。测试只克隆并修改内存中的原始单元格，不生成或提交派生坏xlsx；每个用例都断言稳定错误码、Sheet、Excel数据行和字段。
 

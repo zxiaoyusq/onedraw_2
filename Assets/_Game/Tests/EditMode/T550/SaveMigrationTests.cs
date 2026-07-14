@@ -98,7 +98,8 @@ namespace OneStrokeDemon.Tests.EditMode.T550
             Assert.That(service.Current.ScoreTokens, Is.EqualTo(7L));
             Assert.That(service.Current.IsLevelUnlocked(ConfigIds.Levels.Lv001Tutorial), Is.True);
             Assert.That(store.WriteCount, Is.EqualTo(1));
-            Assert.That(JObject.Parse(store.Payload).Value<int>("version"), Is.EqualTo(1));
+            Assert.That(JObject.Parse(store.Payload).Value<int>("version"), Is.EqualTo(2));
+            Assert.That(service.Current.CompletedTutorialIds, Is.Empty);
         }
 
         [Test]

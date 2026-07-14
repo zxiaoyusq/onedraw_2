@@ -49,6 +49,7 @@ namespace OneStrokeDemon.Levels
         StepStarted = 1,
         StepCompleted = 2,
         TutorialCompleted = 3,
+        TutorialSkipped = 4,
     }
 
     public readonly struct TutorialGameplayEvent
@@ -439,13 +440,15 @@ namespace OneStrokeDemon.Levels
             bool stepStarted,
             bool stepCompleted,
             bool tutorialCompleted,
-            int completedStepOrder)
+            int completedStepOrder,
+            bool tutorialSkipped = false)
         {
             EventAccepted = eventAccepted;
             StepStarted = stepStarted;
             StepCompleted = stepCompleted;
             TutorialCompleted = tutorialCompleted;
             CompletedStepOrder = completedStepOrder;
+            TutorialSkipped = tutorialSkipped;
         }
 
         public bool EventAccepted { get; }
@@ -458,7 +461,10 @@ namespace OneStrokeDemon.Levels
 
         public int CompletedStepOrder { get; }
 
-        public bool Changed => StepStarted || StepCompleted || TutorialCompleted;
+        public bool TutorialSkipped { get; }
+
+        public bool Changed =>
+            StepStarted || StepCompleted || TutorialCompleted || TutorialSkipped;
     }
 
     public readonly struct TutorialRuntimeEvent
@@ -617,6 +623,38 @@ namespace OneStrokeDemon.Levels
             }
 
             return default;
+        }
+
+        public TutorialUpdateReport Skip()
+        {
+            if (State == TutorialSequenceState.Completed)
+            {
+                return default;
+            }
+
+            TutorialStepDefinition skipped = CurrentStep;
+            currentStepIndex = definition.Steps.Count;
+            completionObserved = false;
+            observedCompletion = default;
+            DisplayElapsedSeconds = 0d;
+            State = TutorialSequenceState.Completed;
+            Publish(
+                TutorialRuntimeEventType.TutorialSkipped,
+                skipped,
+                TutorialEventType.None,
+                0L);
+            Publish(
+                TutorialRuntimeEventType.TutorialCompleted,
+                skipped,
+                TutorialEventType.None,
+                0L);
+            return new TutorialUpdateReport(
+                eventAccepted: false,
+                stepStarted: false,
+                stepCompleted: false,
+                tutorialCompleted: true,
+                completedStepOrder: 0,
+                tutorialSkipped: true);
         }
 
         private TutorialUpdateReport CompleteCurrentStep(bool eventAccepted)

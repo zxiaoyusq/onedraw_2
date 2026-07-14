@@ -1,0 +1,866 @@
+Unity Editor version:    6000.5.1f1 (0d9463e84828)
+Branch:                  6000.5/staging
+Build type:              Release
+Batch mode:              YES
+macOS version:           Version 15.6 (Build 24G84)
+Darwin version:          24.6.0
+Architecture:            arm64
+Running under Rosetta:   NO
+Available memory:        16384 MB
+Date:                    2026-07-14T08:33:35Z
+[Licensing::Module] Trying to connect to existing licensing client channel...
+[Licensing::IpcConnector] Successfully connected to: "LicenseClient-cqmizhangxiaoyu2" at "2026-07-14T08:33:35.222525Z"
+Launching external process: /Applications/Unity/Hub/Editor/6000.5.1f1/Unity.app/Contents/Helpers/PackageManager/Server/UnityPackageManager
+
+COMMAND LINE ARGUMENTS:
+/Applications/Unity/Hub/Editor/6000.5.1f1/Unity.app/Contents/MacOS/Unity
+-batchmode
+-force-metal
+-projectPath
+/Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project
+-runTests
+-testPlatform
+PlayMode
+-testCategory
+T650
+-testResults
+/Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/evals/T650/playmode-screenshot-results.xml
+-logFile
+/Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/evals/T650/playmode-screenshot-unity.log
+Successfully changed project path to: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project
+/Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project
+[UnityMemory] Configuration Parameters - Can be set up in boot.config
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-nav-mesh-worker=65536"
+    "memorysetup-temp-allocator-size-audio-worker=65536"
+    "memorysetup-temp-allocator-size-cloud-worker=32768"
+    "memorysetup-allocator-temp-initial-block-size-main=262144"
+    "memorysetup-allocator-temp-initial-block-size-worker=262144"
+    "memorysetup-temp-allocator-size-preload-manager=33554432"
+    "memorysetup-temp-allocator-size-gfx=262144"
+    "memorysetup-temp-allocator-size-background-worker=32768"
+    "memorysetup-temp-allocator-size-job-worker=262144"
+    "memorysetup-bucket-allocator-granularity=16"
+    "memorysetup-bucket-allocator-bucket-count=8"
+    "memorysetup-bucket-allocator-block-size=33554432"
+    "memorysetup-bucket-allocator-block-count=8"
+    "memorysetup-main-allocator-block-size=16777216"
+    "memorysetup-thread-allocator-block-size=16777216"
+    "memorysetup-main-allocator-mimalloc-enabled=0"
+    "memorysetup-gfx-main-allocator-block-size=16777216"
+    "memorysetup-gfx-thread-allocator-block-size=16777216"
+    "memorysetup-cache-allocator-block-size=4194304"
+    "memorysetup-typetree-allocator-block-size=2097152"
+    "memorysetup-profiler-bucket-allocator-granularity=16"
+    "memorysetup-profiler-bucket-allocator-bucket-count=8"
+    "memorysetup-profiler-bucket-allocator-block-size=33554432"
+    "memorysetup-profiler-bucket-allocator-block-count=8"
+    "memorysetup-profiler-allocator-block-size=16777216"
+    "memorysetup-profiler-editor-allocator-block-size=1048576"
+    "memorysetup-temp-allocator-size-main=16777216"
+    "memorysetup-job-temp-allocator-block-size=2097152"
+    "memorysetup-job-temp-allocator-block-size-background=1048576"
+    "memorysetup-job-temp-allocator-reduction-small-platforms=262144"
+Logging is directed to a specific file, skipping project log.Player connection [8601149632]  Target information:
+
+Player connection [8601149632]  * "[IP] 10.206.81.30 [Port] 55505 [Flags] 2 [Guid] 3304312560 [EditorId] 3304312560 [Version] 1048832 [Id] OSXEditor(0,cqmizhangxiaoyu2deMacBook-Air.local) [Debug] 1 [PackageName] OSXEditor [ProjectName] Editor"
+
+Player connection [8601149632]  * "[IP] 10.251.1.1 [Port] 55505 [Flags] 2 [Guid] 3304312560 [EditorId] 3304312560 [Version] 1048832 [Id] OSXEditor(0,cqmizhangxiaoyu2deMacBook-Air.local) [Debug] 1 [PackageName] OSXEditor [ProjectName] Editor"
+
+Player connection [8601149632] Host joined multi-casting on [225.0.0.222:54997]...
+Player connection [8601149632] Host joined alternative multi-casting on [225.0.0.222:34997]...
+Input System module state changed to: Initialized.
+[Physics::Module] Initialized fallback backend.
+[Physics::Module] Id: 0xdecafbad
+[Licensing::Client] Error: HandshakeResponse reported an error:
+	ResponseCode: 505
+	ResponseStatus: Unsupported protocol version '1.18.1'.
+[Licensing::Module] Error: Failed to handshake to channel: "LicenseClient-cqmizhangxiaoyu2"
+[Licensing::IpcConnector] LicenseClient-cqmizhangxiaoyu2 channel disconnected successfully.
+[Licensing::IpcConnector] Successfully connected to: "LicenseClient-cqmizhangxiaoyu2-6000.5.1" at "2026-07-14T08:33:35.460476Z"
+[Package Manager] Connected to IPC stream "Upm-74353" after 0.3 seconds.
+[Licensing::Module] Licensing is not yet initialized.
+[Licensing::Client] Handshaking with LicensingClient:
+  Version:                 1.18.1+9fbee8e
+  Session Id:              ce14e83384ae442e8337be83675aa734
+  Correlation Id:          1ed0498c6110524d1f5c3ec9aa39dd73
+  External correlation Id: 5456558480286452101
+  Machine Id:              9rQ3oFulMuF1WLgKze+vIHadGFs=
+[Licensing::Module] Successfully connected to LicensingClient on channel: "LicenseClient-cqmizhangxiaoyu2-6000.5.1" (connect: 0.00s, validation: 0.00s, handshake: 0.25s)
+[Licensing::IpcConnector] Successfully connected to: "LicenseClient-cqmizhangxiaoyu2-6000.5.1-notifications" at "2026-07-14T08:33:35.710982Z"
+[Licensing::Module] Error: Access token is unavailable; failed to update
+[Licensing::Client] Successfully resolved entitlement details
+[Licensing::Module] License group:
+  Id: 18968374062854-UnityPersXXXX
+  Product: Unity Personal
+  Type: Assigned
+  Expiration: Unlimited
+[Licensing::Client] Successfully updated license, isAsync: True, time: 0.01
+[Licensing::Module] Licensing Background thread has ended after 0.51s
+[Licensing::Module] Licensing is initialized (took 0.07s).
+[Licensing::Client] Successfully resolved entitlement details
+Library Redirect Path: Library/
+[Physics::Module] Selected backend.
+[Physics::Module] Name: PhysX
+[Physics::Module] Id: 0xf2b8ea05
+[Physics::Module] SDK Version: 4.1.2
+[Physics::Module] Integration Version: 1.0.0
+[Physics::Module] Threading Mode: Multi-Threaded
+Artifact Garbage Collection - Removed 1 unused hashed content files
+Refreshing native plugins compatible for Editor in 20.05 ms, found 3 plugins.
+Initialize engine version: 6000.5.1f1 (0d9463e84828)
+[Subsystems] Discovering subsystems at path /Applications/Unity/Hub/Editor/6000.5.1f1/Unity.app/Contents/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Assets
+Forcing GfxDevice: Metal
+GfxDevice: creating device client; kGfxThreadingModeNonThreaded
+ preferred device: Apple M4 (high power)
+Metal devices available: 1
+0: Apple M4 (high power)
+Using device Apple M4 (high power)
+Initializing Metal device caps: Apple M4
+Mac GPU Family: 2
+Apple GPU Family: 9
+MSL Version: 3.0
+Has Float MSAA: 1
+Has Float Filtering: 1
+ReadWrite Texture Tier: 2
+Initialize mono
+Mono path[0] = '/Applications/Unity/Hub/Editor/6000.5.1f1/Unity.app/Contents/Resources/Scripting/Managed'
+Mono path[1] = '/Applications/Unity/Hub/Editor/6000.5.1f1/Unity.app/Contents/Resources/Scripting/BCLExtensions/runtime/netstandard2.1'
+Mono path[2] = '/Applications/Unity/Hub/Editor/6000.5.1f1/Unity.app/Contents/Resources/Scripting/MonoBleedingEdge/lib/mono/unityjit-macos'
+Mono config path = '/Applications/Unity/Hub/Editor/6000.5.1f1/Unity.app/Contents/Resources/Scripting/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56353
+CodeReloadManager initialized
+ImportWorker Server TCP listen port: 0
+AcceleratorClientConnectionCallback - disconnected - :0
+Begin MonoManager ReloadAssembly
+Registering precompiled unity dll's ...
+Register platform support module: /Applications/Unity/Hub/Editor/6000.5.1f1/PlaybackEngines/WebGLSupport/UnityEditor.WebGL.Extensions.dll
+Register platform support module: /Applications/Unity/Hub/Editor/6000.5.1f1/PlaybackEngines/MacStandaloneSupport/UnityEditor.OSXStandalone.Extensions.dll
+Register platform support module: /Applications/Unity/Hub/Editor/6000.5.1f1/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+[Licensing::Client] Successfully resolved entitlement details
+Register platform support module: /Applications/Unity/Hub/Editor/6000.5.1f1/PlaybackEngines/AndroidPlayer/UnityEditor.Android.Extensions.dll
+Registered in 0.004034 seconds.
+Native extension for Android target not found
+Native extension for WindowsStandalone target not found
+Native extension for OSXStandalone target not found
+Native extension for WebGL target not found
+Package Manager log level set to [2]
+ScheduleIndexationOnStartup MainProcess:False IndexOnStartup:True
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.232 seconds
+Domain Reload Profiling: 557ms
+	BeginReloadAssembly (91ms)
+	RebuildCommonClasses (3ms)
+	RebuildNativeTypeToScriptingClass (10ms)
+	initialDomainReloadingComplete (35ms)
+	LoadAllAssembliesAndSetupDomain (185ms)
+		LoadAssemblies (90ms)
+		AnalyzeDomain (143ms)
+			TypeCache.Refresh (141ms)
+				TypeCache.ScanAssembly (130ms)
+	FinalizeReload (233ms)
+		SetupLoadedEditorAssemblies (0ms)
+			InitializePlatformSupportModulesInManaged (5ms)
+			BeforeProcessingInitializeOnLoad (48ms)
+			ProcessInitializeOnLoadAttributes (57ms)
+			ProcessInitializeOnLoadMethodAttributes (83ms)
+[Licensing::Client] Successfully resolved entitlement details
+Application.AssetDatabase Initial Refresh Start
+[Package Manager] Restoring resolved packages state from cache
+[Licensing::Client] Successfully resolved entitlement details
+[Package Manager] Registered 68 packages:
+  Packages from [https://packages.unity.com]:
+    com.unity.2d.animation@15.1.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.2d.animation@6d5a363ae647)
+    com.unity.2d.aseprite@5.0.3 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.2d.aseprite@d13865913efa)
+    com.unity.2d.psdimporter@14.0.3 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.2d.psdimporter@5d82044f9e43)
+    com.unity.2d.spriteshape@15.0.3 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.2d.spriteshape@fcb7ec61a58b)
+    com.unity.2d.tilemap.extras@8.0.3 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.2d.tilemap.extras@a80140457adc)
+    com.unity.2d.tooling@3.0.1 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.2d.tooling@6f06ffb033c0)
+    com.unity.collab-proxy@2.12.4 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.collab-proxy@0b1559bcd34e)
+    com.unity.ide.rider@3.0.38 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.ide.rider@1f60b3138684)
+    com.unity.ide.visualstudio@2.0.26 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.ide.visualstudio@a99d56dec63f)
+    com.unity.inputsystem@1.19.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.inputsystem@21a28c3a6c83)
+    com.unity.nuget.newtonsoft-json@3.2.2 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.nuget.newtonsoft-json@4dfd81071c64)
+    com.unity.timeline@1.8.12 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.timeline@8cd8509afae5)
+    com.unity.visualscripting@1.9.11 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.visualscripting@8bed5ad90189)
+    com.unity.2d.common@14.0.1 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.2d.common@73badf92ba8b)
+    com.unity.searcher@4.9.4 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.searcher@d45a78918735)
+    com.unity.burst@1.8.29 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.burst@6bb9aca3ef38)
+    com.unity.nuget.mono-cecil@1.11.6 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.nuget.mono-cecil@ecb9724e46ff)
+    com.unity.test-framework.performance@3.5.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.test-framework.performance@8b56083ec0f0)
+  Built-in packages:
+    com.unity.2d.sprite@1.0.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.2d.sprite@053a968eab56)
+    com.unity.2d.tilemap@1.0.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.2d.tilemap@be0bacb99591)
+    com.unity.multiplayer.center@1.0.1 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.multiplayer.center@b860850997d0)
+    com.unity.render-pipelines.universal@17.5.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.render-pipelines.universal@be00b5bbd9a1)
+    com.unity.test-framework@1.7.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.test-framework@f3e6c9a02477)
+    com.unity.ugui@2.5.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.ugui@4f9b15fd1386)
+    com.unity.modules.accessibility@1.0.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.modules.accessibility)
+    com.unity.modules.adaptiveperformance@1.0.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.modules.adaptiveperformance)
+    com.unity.modules.ai@1.0.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.modules.ai)
+    com.unity.modules.androidjni@1.0.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.modules.androidjni)
+    com.unity.modules.animation@1.0.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.modules.animation)
+    com.unity.modules.assetbundle@1.0.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.modules.assetbundle)
+    com.unity.modules.audio@1.0.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.modules.audio)
+    com.unity.modules.cloth@1.0.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.modules.cloth)
+    com.unity.modules.director@1.0.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.modules.director)
+    com.unity.modules.imageconversion@1.0.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.modules.imageconversion)
+    com.unity.modules.imgui@1.0.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.modules.imgui)
+    com.unity.modules.jsonserialize@1.0.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.modules.jsonserialize)
+    com.unity.modules.particlesystem@1.0.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.modules.particlesystem)
+    com.unity.modules.physics@1.0.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.modules.physics)
+    com.unity.modules.physics2d@1.0.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.modules.physics2d)
+    com.unity.modules.physicscore2d@1.0.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.modules.physicscore2d)
+    com.unity.modules.screencapture@1.0.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.modules.screencapture)
+    com.unity.modules.terrain@1.0.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.modules.terrain)
+    com.unity.modules.terrainphysics@1.0.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.modules.terrainphysics)
+    com.unity.modules.tilemap@1.0.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.modules.tilemap)
+    com.unity.modules.ui@1.0.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.modules.ui)
+    com.unity.modules.uielements@1.0.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.modules.uielements)
+    com.unity.modules.umbra@1.0.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.modules.umbra)
+    com.unity.modules.unityanalytics@1.0.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.modules.unityanalytics)
+    com.unity.modules.unitywebrequest@1.0.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.modules.unitywebrequest)
+    com.unity.modules.unitywebrequestassetbundle@1.0.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.modules.unitywebrequestassetbundle)
+    com.unity.modules.unitywebrequestaudio@1.0.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.modules.unitywebrequestaudio)
+    com.unity.modules.unitywebrequesttexture@1.0.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.modules.unitywebrequesttexture)
+    com.unity.modules.unitywebrequestwww@1.0.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.modules.unitywebrequestwww)
+    com.unity.modules.vectorgraphics@1.0.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.modules.vectorgraphics)
+    com.unity.modules.vehicles@1.0.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.modules.vehicles)
+    com.unity.modules.video@1.0.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.modules.video)
+    com.unity.modules.wind@1.0.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.modules.wind)
+    com.unity.modules.xr@1.0.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.modules.xr)
+    com.unity.modules.subsystems@1.0.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.modules.subsystems)
+    com.unity.modules.hierarchycore@1.0.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.modules.hierarchycore)
+    com.unity.ext.nunit@2.1.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.ext.nunit@44f7d31723bd)
+    com.unity.render-pipelines.core@17.5.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.render-pipelines.core@d7ce3ed2cd80)
+    com.unity.shadergraph@17.5.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.shadergraph@2df19e8719bc)
+    com.unity.render-pipelines.universal-config@17.5.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.render-pipelines.universal-config@fdda01c80fe3)
+    com.unity.mathematics@1.4.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.mathematics@981956d94fb6)
+    com.unity.collections@6.5.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.collections@a43cabe808ca)
+  Embedded packages:
+    com.qq.weixin.minigame@file:/Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Packages/com.qq.weixin.minigame (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Packages/com.qq.weixin.minigame)
+  Git packages:
+    com.coplaydev.unity-mcp@https://github.com/CoplayDev/unity-mcp.git?path=/MCPForUnity#11836003a5e2ffcb7715ecec7e1fbb9d9cdb5bb8 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.coplaydev.unity-mcp@4ee62b097584)
+[Subsystems] No new subsystems found in resolved package list.
+[Package Manager] Done registering packages in 0.01 seconds
+[ScriptCompilation] Requested script compilation because: AssetDatabase observed changes in script compilation related files
+info: Microsoft.Hosting.Lifetime[14]
+      Now listening on: http://unix:/tmp/ilpp.sock-0965b3c8e789bc4969569e5e5a09ed6b
+info: Microsoft.Hosting.Lifetime[0]
+      Application started. Press Ctrl+C to shut down.
+info: Microsoft.Hosting.Lifetime[0]
+      Hosting environment: Production
+info: Microsoft.Hosting.Lifetime[0]
+      Content root path: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/2 POST http://ilpp/UnityILPP.PostProcessing/Ping - application/grpc -
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'gRPC - /UnityILPP.PostProcessing/Ping'
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'gRPC - /UnityILPP.PostProcessing/Ping'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/2 POST http://ilpp/UnityILPP.PostProcessing/Ping - 200 - application/grpc 24.1021ms
+Starting: /Applications/Unity/Hub/Editor/6000.5.1f1/Unity.app/Contents/Resources/BuildPipeline/bee_backend --ipc --defer-dag-verification --dagfile="Library/Bee/200b0aE.dag" --continue-on-failure --profile="Library/Bee/backend1.traceevents" ScriptAssemblies
+WorkingDir: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project
+DisplayProgressbar: Compiling Scripts
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/2 POST http://ilpp/UnityILPP.PostProcessing/ConfigurePostProcessors - application/grpc -
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'gRPC - /UnityILPP.PostProcessing/ConfigurePostProcessors'
+warn: Unity.ILPP.Runner.PostProcessingAssemblyLoadContext[0]
+      Assembly system.runtime.interopservices.windowsruntime has duplicate hint path. Ignoring "/Applications/Unity/Hub/Editor/6000.5.1f1/Unity.app/Contents/Resources/Scripting/UnityReferenceAssemblies/unity-4.8-api/Facades/System.Runtime.InteropServices.WindowsRuntime.dll" in favor of "/Applications/Unity/Hub/Editor/6000.5.1f1/Unity.app/Contents/Resources/Scripting/NetStandard/Extensions/2.0.0/System.Runtime.InteropServices.WindowsRuntime.dll"
+warn: Unity.ILPP.Runner.PostProcessingAssemblyLoadContext[0]
+      Assembly system.componentmodel.composition has duplicate hint path. Ignoring "/Applications/Unity/Hub/Editor/6000.5.1f1/Unity.app/Contents/Resources/Scripting/UnityReferenceAssemblies/unity-4.8-api/System.ComponentModel.Composition.dll" in favor of "/Applications/Unity/Hub/Editor/6000.5.1f1/Unity.app/Contents/Resources/Scripting/NetStandard/compat/2.1.0/shims/netfx/System.ComponentModel.Composition.dll"
+info: Unity.ILPP.Runner.PostProcessingAssemblyLoadContext[0]
+      Resolved Unity.Burst.Cecil, Version=0.11.6.0, Culture=neutral, PublicKeyToken=50cebf1cceb9d05e with Library/PackageCache/com.unity.burst@6bb9aca3ef38/Unity.Burst.CodeGen/Unity.Burst.Cecil.dll
+info: Unity.ILPP.Runner.PostProcessingAssemblyLoadContext[0]
+      Resolved Mono.Cecil, Version=0.11.5.0, Culture=neutral, PublicKeyToken=50cebf1cceb9d05e with Library/PackageCache/com.unity.nuget.mono-cecil@ecb9724e46ff/Mono.Cecil.dll
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'gRPC - /UnityILPP.PostProcessing/ConfigurePostProcessors'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/2 POST http://ilpp/UnityILPP.PostProcessing/ConfigurePostProcessors - 200 - application/grpc 14.0235ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/2 POST http://ilpp/UnityILPP.PostProcessing/PostProcessAssembly - application/grpc -
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'gRPC - /UnityILPP.PostProcessing/PostProcessAssembly'
+info: Unity.ILPP.Runner.PostProcessingPipeline[0]
+      Processing assembly Library/Bee/artifacts/200b0aE.dag/OneStrokeDemon.Tests.PlayMode.dll, with 137 defines and 297 references
+info: Unity.ILPP.Runner.PostProcessingPipeline[0]
+      processors: Unity.Jobs.CodeGen.JobsILPostProcessor, zzzUnity.Burst.CodeGen.BurstILPostProcessor
+info: Unity.ILPP.Runner.PostProcessingPipeline[0]
+      running Unity.Jobs.CodeGen.JobsILPostProcessor
+info: Unity.ILPP.Runner.PostProcessingPipeline[0]
+      running zzzUnity.Burst.CodeGen.BurstILPostProcessor
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'gRPC - /UnityILPP.PostProcessing/PostProcessAssembly'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/2 POST http://ilpp/UnityILPP.PostProcessing/PostProcessAssembly - 200 - application/grpc 10.3144ms
+ExitCode: 0 Duration: 2s464ms
+[ 855/1148  0s] ILPP-Configuration Library/ilpp-configuration.nevergeneratedoutput
+[1144/1148  2s] Csc Library/Bee/artifacts/200b0aE.dag/OneStrokeDemon.Tests.PlayMode.dll (+2 others)
+Assets/_Game/Tests/PlayMode/T610/LocalizationGlyphPlayModeTests.cs(216,17): warning CS0618: 'FindObjectsSortMode' is obsolete: 'FindObjectsSortMode has been deprecated. Use the FindObjectsByType overloads that do not take a FindObjectsSortMode parameter.'
+Assets/_Game/Tests/PlayMode/T610/LocalizationGlyphPlayModeTests.cs(214,33): warning CS0618: 'Object.FindObjectsByType<T>(FindObjectsInactive, FindObjectsSortMode)' is obsolete: 'FindObjectsByType with FindObjectsSortMode parameter has been deprecated. Use FindObjectsByType<T>() or FindObjectsByType<T>(FindObjectsInactive) instead. InstanceID will be replaced in the future with EntityId and previous sort order cannot be maintained.'
+Assets/_Game/Tests/PlayMode/T610/LocalizationGlyphPlayModeTests.cs(227,17): warning CS0618: 'FindObjectsSortMode' is obsolete: 'FindObjectsSortMode has been deprecated. Use the FindObjectsByType overloads that do not take a FindObjectsSortMode parameter.'
+Assets/_Game/Tests/PlayMode/T610/LocalizationGlyphPlayModeTests.cs(225,36): warning CS0618: 'Object.FindObjectsByType<T>(FindObjectsInactive, FindObjectsSortMode)' is obsolete: 'FindObjectsByType with FindObjectsSortMode parameter has been deprecated. Use FindObjectsByType<T>() or FindObjectsByType<T>(FindObjectsInactive) instead. InstanceID will be replaced in the future with EntityId and previous sort order cannot be maintained.'
+[1145/1148  0s] ILPostProcess Library/Bee/artifacts/200b0aE.dag/post-processed/OneStrokeDemon.Tests.PlayMode.dll (+pdb)
+Processing assembly Library/Bee/artifacts/200b0aE.dag/OneStrokeDemon.Tests.PlayMode.dll, with 137 defines and 297 references
+processors: Unity.Jobs.CodeGen.JobsILPostProcessor, zzzUnity.Burst.CodeGen.BurstILPostProcessor
+running Unity.Jobs.CodeGen.JobsILPostProcessor
+running zzzUnity.Burst.CodeGen.BurstILPostProcessor
+[1146/1148  0s] CopyFiles Library/ScriptAssemblies/OneStrokeDemon.Tests.PlayMode.dll
+[1147/1148  0s] CopyFiles Library/ScriptAssemblies/OneStrokeDemon.Tests.PlayMode.pdb
+*** Tundra build success (2.45 seconds), 5 items updated, 1148 evaluated
+Assets/_Game/Tests/PlayMode/T610/LocalizationGlyphPlayModeTests.cs(216,17): warning CS0618: 'FindObjectsSortMode' is obsolete: 'FindObjectsSortMode has been deprecated. Use the FindObjectsByType overloads that do not take a FindObjectsSortMode parameter.'
+Assets/_Game/Tests/PlayMode/T610/LocalizationGlyphPlayModeTests.cs(214,33): warning CS0618: 'Object.FindObjectsByType<T>(FindObjectsInactive, FindObjectsSortMode)' is obsolete: 'FindObjectsByType with FindObjectsSortMode parameter has been deprecated. Use FindObjectsByType<T>() or FindObjectsByType<T>(FindObjectsInactive) instead. InstanceID will be replaced in the future with EntityId and previous sort order cannot be maintained.'
+Assets/_Game/Tests/PlayMode/T610/LocalizationGlyphPlayModeTests.cs(227,17): warning CS0618: 'FindObjectsSortMode' is obsolete: 'FindObjectsSortMode has been deprecated. Use the FindObjectsByType overloads that do not take a FindObjectsSortMode parameter.'
+Assets/_Game/Tests/PlayMode/T610/LocalizationGlyphPlayModeTests.cs(225,36): warning CS0618: 'Object.FindObjectsByType<T>(FindObjectsInactive, FindObjectsSortMode)' is obsolete: 'FindObjectsByType with FindObjectsSortMode parameter has been deprecated. Use FindObjectsByType<T>() or FindObjectsByType<T>(FindObjectsInactive) instead. InstanceID will be replaced in the future with EntityId and previous sort order cannot be maintained.'
+AssetDatabase: script compilation time: 3.008959s
+Begin MonoManager ReloadAssembly
+Total cache size 268058432
+Total cache size after purge 268058432, took 00:00:00.2054151
+Symbol file LoadedFromMemory is not a mono symbol file
+Importing 'GUID: a04d9b2fd9ae54dd8bfa1ea2d5c3c30f - Path: Assets/_Game/Tests/EditMode/T650' with importer (DefaultImporter)
+Imported 'GUID: a04d9b2fd9ae54dd8bfa1ea2d5c3c30f' -> (Import Result ID: '7bdddd3575de002866de61d413272ec5') in 0.008 seconds [static dependencies only]. Details - ImportResultOutputID=941627e18e6e1455d4ae203e100f6d86 DependenciesID=02debefa493d7ced80d70a08c038ccea StaticDependenciesID=9c57accb0d32e299a4715ccbf1572db4
+Importing 'GUID: 9addc513e998443998e2f8cc62d8460e - Path: Assets/_Game/Tests/PlayMode/T650' with importer (DefaultImporter)
+Imported 'GUID: 9addc513e998443998e2f8cc62d8460e' -> (Import Result ID: 'd093ae351f627367be6b6c661f48cb96') in 0.002 seconds [static dependencies only]. Details - ImportResultOutputID=bf838323e44cd4f32b918e8f97146905 DependenciesID=80f867e6dbcd118ef323ab8e2f293804 StaticDependenciesID=e440816ff9e590afdbcc7831501653a2
+Refreshing native plugins compatible for Editor in 8.78 ms, found 6 plugins.
+Native extension for Android target not found
+Native extension for WindowsStandalone target not found
+Native extension for OSXStandalone target not found
+Native extension for WebGL target not found
+ScheduleIndexationOnStartup MainProcess:True IndexOnStartup:True
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  2.757 seconds
+Domain Reload Profiling: 3401ms
+	BeginReloadAssembly (156ms)
+		DisableScriptedObjects (53ms)
+		CreateAndSetChildDomain (36ms)
+	RebuildCommonClasses (5ms)
+	RebuildNativeTypeToScriptingClass (9ms)
+	initialDomainReloadingComplete (32ms)
+	LoadAllAssembliesAndSetupDomain (441ms)
+		LoadAssemblies (234ms)
+		AnalyzeDomain (178ms)
+			TypeCache.Refresh (135ms)
+				TypeCache.ScanAssembly (120ms)
+			BuildScriptInfoCaches (39ms)
+			ResolveRequiredComponents (4ms)
+	FinalizeReload (2757ms)
+		SetupLoadedEditorAssemblies (0ms)
+			InitializePlatformSupportModulesInManaged (4ms)
+			BeforeProcessingInitializeOnLoad (53ms)
+			ProcessInitializeOnLoadAttributes (2395ms)
+			ProcessInitializeOnLoadMethodAttributes (182ms)
+		AwakeInstancesAfterBackupRestoration (7ms)
+Importing 'GUID: 2e4374dcac44545f4b3b34cb58ca89d1 - Path: Assets/_Game/Art/UI/Fonts/Resources/Fonts/OneStrokeDemon UI Latin SDF.asset' with importer (NativeFormatImporter)
+Imported 'GUID: 2e4374dcac44545f4b3b34cb58ca89d1' -> (Import Result ID: 'fff607daf0242d89eb281722d205900c') in 0.029 seconds [static dependencies only]. Details - ImportResultOutputID=28e269f6382e043a441e2d3155218e12 DependenciesID=f23024619146c82170073414589e972b StaticDependenciesID=0fb795c6864659fbf9d791b801099778
+Starting new worker id: 0 with log in /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Logs/AssetImportWorkerHW0.log
+Refreshing native plugins compatible for Editor in 4.83 ms, found 6 plugins.
+
+Asset Pipeline Refresh (id=cbbea48aaca4240c2943458a2e8ca12e): Total: 8.444 seconds - Initiated by InitialRefreshV2(ForceSynchronousImport)
+	(Values over 0.05ms)
+	Summary:
+		Imports: total=3 (actual=3, local cache=0, cache server=0)
+		Asset DB Process Time: managed=3 ms, native=4382 ms
+		Asset DB Callback time: managed=306 ms, native=33 ms
+		Scripting: domain reloads=1, domain reload time=672 ms, compile time=3010 ms, other=35 ms
+		Project Asset Count: scripts=1796, non-scripts=3399
+		Asset File Changes: new=0, changed=8, moved=0, deleted=0
+		Scan Filter Count: 1
+	InvokePackagesCallback: 14.739ms
+	ApplyChangesToAssetFolders: 0.324ms
+	Scan: 1116.223ms
+	Collect global state as custom dependencies: 1.917ms
+	OnSourceAssetsModified: 0.327ms
+	CategorizeScriptCompilationAssets: 103.284ms
+	ProcessAssetsWithTransientArtifactChanges: 51.312ms
+	CategorizeAssets: 97.605ms
+	CompileScripts: 3010.132ms
+	ImportOutOfDateAssets: 2857.203ms (2781.717ms without children)
+		ImportManagerImport: 41.409ms (0.993ms without children)
+		UnloadImportedAssets: 0.881ms
+		EnsureUptoDateAssetsAreRegisteredWithGuidPM: 0.532ms
+		ImportSchedulerStart: 32.609ms
+	PostProcessAllAssets: 320.530ms
+		VCAutoAddAssetPostprocess 13.741ms
+		XRBuildSystem.XRAssetImported 0.327ms
+		PostProcessCallbackCreateDeferredMaterials 0.085ms
+		MonoPostProcessAllAssets: 305.884ms
+			AssetPostprocessor.OnPostprocessAllAssets 189.014ms
+			StyleCatalogPostProcessor.OnPostprocessAllAssets 52.943ms
+			BuilderAssetPostprocessor.OnPostprocessAllAssets 20.967ms
+			UniversalRenderPipelineGlobalSettingsPostprocessor.OnPostprocessAllAssets 8.801ms
+			WindowAssetPostprocessingWatcher.OnPostprocessAllAssets 2.518ms
+			ShaderGraphAssetPostProcessor.OnPostprocessAllAssets 1.366ms
+			SpeedTree9Postprocessor.OnPostprocessAllAssets 1.319ms
+			AssetChangedListener.OnPostprocessAllAssets 0.975ms
+			SampleDependencyImporterPostProcessor.OnPostprocessAllAssets 0.922ms
+			RetainedModeAssetPostprocessor.OnPostprocessAllAssets 0.765ms
+			UVCSAssetPostprocessor.OnPostprocessAllAssets 0.552ms
+			MaterialPostprocessor.OnPostprocessAllAssets 0.523ms
+			ArtifactBrowserPostProcessor.OnPostprocessAllAssets 0.375ms
+			SpriteEditorTexturePostprocessor.OnPostprocessAllAssets 0.341ms
+			RenderPipelineGlobalSettingsPostprocessor.OnPostprocessAllAssets 0.320ms
+			ShaderReflectionAssetPostProcessor.OnPostprocessAllAssets 0.300ms
+			InputActionAssetPostprocessor.OnPostprocessAllAssets 0.295ms
+			AudioMixerPostprocessor.OnPostprocessAllAssets 0.266ms
+			TMPro_TexturePostProcessor.OnPostprocessAllAssets 0.220ms
+			SpriteSlicePostprocessor.OnPostprocessAllAssets 0.210ms
+			TextAssetPostProcessor.OnPostprocessAllAssets 0.206ms
+			ReferencedClipsPostProcessor.OnPostprocessAllAssets 0.201ms
+			InputActionJsonNameModifierAssetProcessor.OnPostprocessAllAssets 0.187ms
+			AssetProcessor.OnPostprocessAllAssets 0.181ms
+			SpriteShapeAssetPostProcessor.OnPostprocessAllAssets 0.174ms
+			PostProcessor.OnPostprocessAllAssets 0.163ms
+			AssetEvents.OnPostprocessAllAssets 0.143ms
+			ProjectSettingsPostprocessor.OnPostprocessAllAssets 0.118ms
+			AssetDatabaseCallbacks.OnPostprocessAllAssets 0.110ms
+			TerrainToolbarOverlayPostProcessor.OnPostprocessAllAssets 0.108ms
+			SpriteLibraryAssetPostprocessor.OnPostprocessAllAssets 0.094ms
+			SpeedTreePostProcessor.OnPostprocessAllAssets 0.081ms
+			PSDImportPostProcessor.OnPostprocessAllAssets 0.077ms
+			ConfigAssetsTracker.OnPostprocessAllAssets 0.072ms
+			ScenarioDriftAssetsTracker.OnPostprocessAllAssets 0.071ms
+			SamplePostprocessor.OnPostprocessAllAssets 0.065ms
+			AudioContainerPostProcessor.OnPostprocessAllAssets 0.052ms
+			PSDImporterAssetPostProcessor.OnPostprocessAllAssets 0.051ms
+	PostAssetChangesProfiler: 6.141ms
+	UnloadStreamsBegin: 2.006ms
+	PersistCurrentRevisions: 0.160ms
+	GenerateScriptTypeHashes: 1.506ms
+	GenerateScriptTypeSerializationHashes: 2.457ms
+	Untracked: 859.705ms
+
+Application.AssetDatabase Initial Refresh End
+Shader Hidden/ChartRasterizerHardware is not supported: GPU does not support conservative rasterization
+Launching external process: /Applications/Unity/Hub/Editor/6000.5.1f1/Unity.app/Contents/Helpers/UnityShaderCompiler
+Launched and connected shader compiler UnityShaderCompiler after 0.05 seconds
+Shader Hidden/ChartRasterizerHardware is not supported: GPU does not support conservative rasterization
+Scanning for USB devices : 0.132ms
+Initializing Unity extensions:
+[MODES] ModeService[none].Initialize
+[MODES] ModeService[none].LoadModes
+[MODES] Loading mode Default (0) for mode-current-id-onedraw_2
+Worker ready: AssetImportWorkerHW0 0
+2026-07-14 16:33:46.491 Unity[74353:143487427] NSEventModifierFlagFunction specified to -setKeyEquivalentModifierMask: for item <NSMenuItem: 0x352d714c0 SDF, ke='Command-F12'>, but is only supported for system-provided menu items; will not be used
+Unloading 31 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 7777 unused Assets / (5.0 MB). Loaded Objects now: 8648.
+Memory consumption went from 275.7 MB to 270.7 MB.
+Total: 21.642584 ms (FindLiveObjects: 0.386041 ms CreateObjectMapping: 2.040875 ms MarkObjects: 15.497542 ms  DeleteObjects: 3.717167 ms)
+
+2026-07-14 16:33:46.643 Unity[74353:143487427] NSEventModifierFlagFunction specified to -setKeyEquivalentModifierMask: for item <NSMenuItem: 0x3237664e0 SDF, ke='Command-F12'>, but is only supported for system-provided menu items; will not be used
+[Project] Loading completed in 11.432 seconds
+	Project init time: 				10.213 seconds
+		Template init time: 		0.000 seconds
+		Package Manager init time: 		0.335 seconds
+		Asset Database init time: 		0.320 seconds
+		Global illumination init time: 	0.000 seconds
+		Assemblies load time: 			0.610 seconds
+		Unity extensions init time: 	0.012 seconds
+		Asset Database refresh time: 	8.444 seconds
+	Scene opening time: 			1.040 seconds
+##utp:{"type":"ProjectInfo","version":2,"phase":"Immediate","time":1784018026645,"processId":74353,"projectLoad":11.431576959000001,"projectInit":10.212546208,"templateInit":0.0,"packageManagerInit":0.335355083,"assetDatabaseInit":0.320205209,"globalIlluminationInit":0.000427708,"assembliesLoad":0.609925541,"unityExtensionsInit":0.012063625,"assetDatabaseRefresh":8.443673291,"sceneOpening":1.039636709}
+##utp:{"type":"EditorInfo","version":2,"phase":"Immediate","time":1784018026646,"processId":74353,"editorVersion":"6000.5.1f1 (0d9463e84828)","branch":"6000.5/staging","buildType":"Release","platform":"OSX"}
+Subscribe to USB device events
+Scanning for USB devices : 0.106ms
+[Licensing::Client] Successfully resolved entitlement details
+Running tests for ExecutionSettings with details:
+targetPlatform =
+playerHeartbeatTimeout = 600
+filters[0] =
+   Filter with settings:
+   testMode = PlayMode
+   targetPlatform =
+   testNames = null
+   groupNames = null
+   categoryNames = T650
+   assemblyNames = null
+ignoreTests = {}
+featureFlags = null
+
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/StackTrace.cs:35)
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+UnityEditor.TestTools.TestRunner.CommandLineTest.Executer:InitializeAndExecuteRun (string[]) (at ./Library/PackageCache/com.unity.test-framework@f3e6c9a02477/UnityEditor.TestRunner/CommandLineTest/Executer.cs:53)
+UnityEditor.TestTools.TestRunner.CommandLineTest.TestStarter:InitializeAndExecuteRun () (at ./Library/PackageCache/com.unity.test-framework@f3e6c9a02477/UnityEditor.TestRunner/CommandLineTest/TestStarter.cs:64)
+UnityEditor.EditorApplication:Internal_CallUpdateFunctions () (at /Users/bokken/build/output/unity/unity/Editor/Mono/EditorApplication.cs:403)
+
+(Filename: ./Library/PackageCache/com.unity.test-framework@f3e6c9a02477/UnityEditor.TestRunner/CommandLineTest/Executer.cs Line: 53)
+
+Start Indexing on Editor startup
+[Indexing] Starting Initial Indexing for Assets
+[UnityConnectServicesConfig] config is NOT valid, switching to default
+Created GICache directory at /Users/cqmizhangxiaoyu2/Library/Caches/com.unity3d.UnityEditor/GiCache. Took: 0.005s, timestamps: [11.435 - 11.440]
+[Licensing::Client] Successfully resolved entitlement details
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 1 unused Assets / (60.1 KB). Loaded Objects now: 8668.
+Memory consumption went from 261.2 MB to 261.2 MB.
+Total: 7.268500 ms (FindLiveObjects: 0.149375 ms CreateObjectMapping: 0.537916 ms MarkObjects: 6.566500 ms  DeleteObjects: 0.014541 ms)
+
+Importing 'GUID: 2d5cc4dec04624cf8964eeb9da77a3f1 - Path: Assets/InitTestScene094a8c94-d79e-45e1-950f-820839549519.unity' with importer (DefaultImporter)
+Imported 'GUID: 2d5cc4dec04624cf8964eeb9da77a3f1' -> (Import Result ID: 'b3c16e90c585ad69c011ccb0df13bb59') in 0.001 seconds [static dependencies only]. Details - ImportResultOutputID=10a235b6c70717098cab01f671f5f58f DependenciesID=e292dbe705baa4ec28c12eaa2a6103f6 StaticDependenciesID=750ff8e8208b75d6806f98f37696cea2
+Asset Pipeline Refresh (id=91b08acb26d81400fa485a82af90f909): Total: 0.205 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Executing IPrebuildSetup for: Unity.PerformanceTesting.Editor.TestRunBuilder.
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/StackTrace.cs:35)
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+UnityEditor.TestTools.TestRunner.TestRun.Tasks.BuildActionTaskBase`1/<ExecuteMethods>d__8<UnityEngine.TestTools.IPrebuildSetup>:MoveNext () (at ./Library/PackageCache/com.unity.test-framework@f3e6c9a02477/UnityEditor.TestRunner/TestRun/Tasks/BuildActionTaskBase.cs:48)
+UnityEditor.TestTools.TestRunner.TestRun.Tasks.BuildActionTaskBase`1/<Execute>d__7<UnityEngine.TestTools.IPrebuildSetup>:MoveNext () (at ./Library/PackageCache/com.unity.test-framework@f3e6c9a02477/UnityEditor.TestRunner/TestRun/Tasks/BuildActionTaskBase.cs:34)
+UnityEditor.TestTools.TestRunner.TestRun.TestJobRunner:ExecuteStep () (at ./Library/PackageCache/com.unity.test-framework@f3e6c9a02477/UnityEditor.TestRunner/TestRun/TestJobRunner.cs:194)
+UnityEditor.TestTools.TestRunner.TestRun.TestJobRunner:ExecuteCallback () (at ./Library/PackageCache/com.unity.test-framework@f3e6c9a02477/UnityEditor.TestRunner/TestRun/TestJobRunner.cs:129)
+UnityEditor.EditorApplication:Internal_CallUpdateFunctions () (at /Users/bokken/build/output/unity/unity/Editor/Mono/EditorApplication.cs:403)
+
+(Filename: ./Library/PackageCache/com.unity.test-framework@f3e6c9a02477/UnityEditor.TestRunner/TestRun/Tasks/BuildActionTaskBase.cs Line: 48)
+
+Thread 0x17a687000 may have been prematurely finalized
+
+Asset Pipeline Refresh (id=99469ddf599c44370b7bb3e24ce5c2d6): Total: 1.747 seconds - Initiated by RefreshV2(NoUpdateAssetOptions)
+	(Values over 0.05ms)
+	Summary:
+		Imports: total=0 (actual=0, local cache=0, cache server=0)
+		Asset DB Process Time: managed=0 ms, native=1746 ms
+		Asset DB Callback time: managed=0 ms, native=0 ms
+		Scripting: domain reloads=0, domain reload time=0 ms, compile time=0 ms, other=0 ms
+		Project Asset Count: scripts=1796, non-scripts=3400
+		Asset File Changes: new=0, changed=0, moved=0, deleted=0
+		Scan Filter Count: 1
+	ApplyChangesToAssetFolders: 0.304ms
+	Scan: 1646.901ms
+	Collect global state as custom dependencies: 0.213ms
+	ProcessAssetsWithTransientArtifactChanges: 0.921ms
+	CategorizeAssets: 32.064ms
+	ImportOutOfDateAssets: 40.352ms (7.499ms without children)
+		ReloadNativeAssets: 0.058ms
+		UnloadImportedAssets: 0.122ms
+		EnsureUptoDateAssetsAreRegisteredWithGuidPM: 0.405ms
+		ImportSchedulerStart: 32.267ms
+	GatherAllCurrentPrimaryImportResultRevisions: 1.018ms
+	UnloadStreamsBegin: 0.386ms
+	PersistCurrentRevisions: 0.104ms
+	Untracked: 18.059ms
+
+SpriteAtlasPacking completed in 1.755924 sec
+Reloading assemblies for play mode.
+Reloading assemblies after forced synchronous recompile.
+Begin MonoManager ReloadAssembly
+2026-07-14 16:33:50.343 Unity[74353:143487427] NSEventModifierFlagFunction specified to -setKeyEquivalentModifierMask: for item <NSMenuItem: 0x32351a5c0 SDF, ke='Command-F12'>, but is only supported for system-provided menu items; will not be used
+2026-07-14 16:33:50.346 Unity[74353:143487427] NSEventModifierFlagFunction specified to -setKeyEquivalentModifierMask: for item <NSMenuItem: 0x323559aa0 SDF, ke='Command-F12'>, but is only supported for system-provided menu items; will not be used
+2026-07-14 16:33:50.349 Unity[74353:143487427] NSEventModifierFlagFunction specified to -setKeyEquivalentModifierMask: for item <NSMenuItem: 0x352304ee0 SDF, ke='Command-F12'>, but is only supported for system-provided menu items; will not be used
+2026-07-14 16:33:50.351 Unity[74353:143487427] NSEventModifierFlagFunction specified to -setKeyEquivalentModifierMask: for item <NSMenuItem: 0x352350620 SDF, ke='Command-F12'>, but is only supported for system-provided menu items; will not be used
+Symbol file LoadedFromMemory is not a mono symbol file
+Refreshing native plugins compatible for Editor in 3.07 ms, found 6 plugins.
+Native extension for Android target not found
+Native extension for WindowsStandalone target not found
+Native extension for OSXStandalone target not found
+Native extension for WebGL target not found
+ScheduleIndexationOnStartup MainProcess:True IndexOnStartup:True
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  1.136 seconds
+Domain Reload Profiling: 2099ms
+	BeginReloadAssembly (782ms)
+		DisableScriptedObjects (34ms)
+		CreateAndSetChildDomain (466ms)
+	RebuildCommonClasses (6ms)
+	RebuildNativeTypeToScriptingClass (10ms)
+	initialDomainReloadingComplete (35ms)
+	LoadAllAssembliesAndSetupDomain (131ms)
+		LoadAssemblies (73ms)
+		AnalyzeDomain (18ms)
+			TypeCache.Refresh (8ms)
+			ResolveRequiredComponents (6ms)
+	FinalizeReload (1137ms)
+		SetupLoadedEditorAssemblies (0ms)
+			InitializePlatformSupportModulesInManaged (4ms)
+			BeforeProcessingInitializeOnLoad (49ms)
+			ProcessInitializeOnLoadAttributes (702ms)
+			ProcessInitializeOnLoadMethodAttributes (162ms)
+		AwakeInstancesAfterBackupRestoration (25ms)
+No restricted APIs configured; Validation skipped.
+Checking 29 assemblies for restricted APIs found 0 usage(s) in 2 ms
+Refreshing native plugins compatible for Editor in 5.24 ms, found 6 plugins.
+
+Asset Pipeline Refresh (id=5934b0f2afebe41c4b52a00a94c432ac): Total: 2.907 seconds - Initiated by StopAssetImportingV2(ForceSynchronousImport | ForceDomainReload)
+	(Values over 0.05ms)
+	Summary:
+		Imports: total=0 (actual=0, local cache=0, cache server=0)
+		Asset DB Process Time: managed=0 ms, native=1393 ms
+		Asset DB Callback time: managed=356 ms, native=153 ms
+		Scripting: domain reloads=1, domain reload time=1004 ms, compile time=1 ms, other=0 ms
+		Project Asset Count: scripts=1796, non-scripts=3400
+		Asset File Changes: new=0, changed=0, moved=0, deleted=0
+		Scan Filter Count: 0
+	InvokePackagesCallback: 0.805ms
+	ApplyChangesToAssetFolders: 0.231ms
+	Collect global state as custom dependencies: 2.413ms
+	ProcessAssetsWithTransientArtifactChanges: 136.696ms
+	CategorizeAssets: 43.791ms
+	CompileScripts: 0.550ms
+	ImportOutOfDateAssets: 1176.691ms (1149.266ms without children)
+		CollectScriptTypesHashes: 2.041ms
+		ReloadNativeAssets: 0.667ms
+		UnloadImportedAssets: 0.314ms
+		EnsureUptoDateAssetsAreRegisteredWithGuidPM: 0.652ms
+		ImportSchedulerStart: 25.755ms
+	PostProcessAllAssets: 498.902ms
+		PostProcessCallbackCreateDeferredMaterials 30.933ms
+		AssemblyValidation.PostprocessAllAssets 20.877ms
+		SpriteAtlasDatabase.OnAssetPostprocessCallback 13.180ms
+		ShaderAssetModifiedCallback 10.857ms
+		RaytracingShaderImportPostprocess 6.033ms
+		ComputeShaderImportPostprocess 5.534ms
+		SpeedTreeImporter.PostprocessAllAssets 5.086ms
+		LocalizationDatabase.AssetDatabasePostprocessCallback 3.300ms
+		BlockShaderImporter.PostprocessAllAssets 2.761ms
+		XRBuildSystem.XRAssetImported 0.298ms
+		MonoPostProcessAllAssets: 355.493ms
+			ShaderGraphAssetPostProcessor.OnPostprocessAllAssets 125.649ms
+			PostProcessor.OnPostprocessAllAssets 32.204ms
+			MaterialPostprocessor.OnPostprocessAllAssets 23.340ms
+			InputActionJsonNameModifierAssetProcessor.OnPostprocessAllAssets 22.313ms
+			AssetPostprocessor.OnPostprocessAllAssets 21.935ms
+			InputActionAssetPostprocessor.OnPostprocessAllAssets 21.932ms
+			TextAssetPostProcessor.OnPostprocessAllAssets 15.749ms
+			StyleCatalogPostProcessor.OnPostprocessAllAssets 15.490ms
+			SpriteSlicePostprocessor.OnPostprocessAllAssets 14.679ms
+			AssetChangedListener.OnPostprocessAllAssets 8.807ms
+			UniversalRenderPipelineGlobalSettingsPostprocessor.OnPostprocessAllAssets 5.423ms
+			BuilderAssetPostprocessor.OnPostprocessAllAssets 4.736ms
+			RenderPipelineGlobalSettingsPostprocessor.OnPostprocessAllAssets 2.921ms
+			SpeedTree9Postprocessor.OnPostprocessAllAssets 2.262ms
+			RetainedModeAssetPostprocessor.OnPostprocessAllAssets 1.050ms
+			WindowAssetPostprocessingWatcher.OnPostprocessAllAssets 0.836ms
+			SpriteShapeAssetPostProcessor.OnPostprocessAllAssets 0.422ms
+			SpriteEditorTexturePostprocessor.OnPostprocessAllAssets 0.324ms
+			ArtifactBrowserPostProcessor.OnPostprocessAllAssets 0.295ms
+			SpeedTreePostProcessor.OnPostprocessAllAssets 0.295ms
+			SampleDependencyImporterPostProcessor.OnPostprocessAllAssets 0.234ms
+			ProjectSettingsPostprocessor.OnPostprocessAllAssets 0.218ms
+			ShaderReflectionAssetPostProcessor.OnPostprocessAllAssets 0.209ms
+			ReferencedClipsPostProcessor.OnPostprocessAllAssets 0.177ms
+			TMPro_TexturePostProcessor.OnPostprocessAllAssets 0.168ms
+			UVCSAssetPostprocessor.OnPostprocessAllAssets 0.167ms
+			AudioMixerPostprocessor.OnPostprocessAllAssets 0.162ms
+			AssetEvents.OnPostprocessAllAssets 0.140ms
+			SamplePostprocessor.OnPostprocessAllAssets 0.108ms
+			SpriteLibraryAssetPostprocessor.OnPostprocessAllAssets 0.104ms
+			TerrainToolbarOverlayPostProcessor.OnPostprocessAllAssets 0.096ms
+			PSDImportPostProcessor.OnPostprocessAllAssets 0.070ms
+			AssetDatabaseCallbacks.OnPostprocessAllAssets 0.060ms
+			SyncVS.PostprocessSyncProject 0.060ms
+	PostAssetChangesProfiler: 10.033ms
+	GatherAllCurrentPrimaryImportResultRevisions: 0.093ms
+	PersistCurrentRevisions: 0.109ms
+	GenerateScriptTypeHashes: 2.685ms
+	GenerateScriptTypeSerializationHashes: 4.261ms
+	Untracked: 1033.836ms
+
+Loaded scene 'Temp/__Backupscenes/0.backup'
+	Deserialize:            0.483 ms
+	Integration:            446.958 ms
+	Integration of assets:  0.000 ms
+	Thread Wait Time:       0.005 ms
+	Total Operation Time:   447.446 ms
+[MODES] ModeService[none].Initialize
+[MODES] ModeService[none].LoadModes
+[Licensing::Client] Successfully resolved entitlement details
+[Licensing::Client] Successfully resolved entitlement details
+<b><color=#2EA3FF>MCP-FOR-UNITY</color></b>: [TestRunnerNoThrottle] Applied No Throttling for test run.
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/StackTrace.cs:35)
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+MCPForUnity.Editor.Helpers.McpLog:Info (string,bool) (at ./Library/PackageCache/com.coplaydev.unity-mcp@4ee62b097584/Editor/Helpers/McpLog.cs:40)
+MCPForUnity.Editor.Services.TestRunnerNoThrottle:ApplyNoThrottling () (at ./Library/PackageCache/com.coplaydev.unity-mcp@4ee62b097584/Editor/Services/TestRunnerNoThrottle.cs:101)
+MCPForUnity.Editor.Services.TestRunnerNoThrottle/TestCallbacks:RunStarted (UnityEditor.TestTools.TestRunner.Api.ITestAdaptor) (at ./Library/PackageCache/com.coplaydev.unity-mcp@4ee62b097584/Editor/Services/TestRunnerNoThrottle.cs:138)
+UnityEditor.TestTools.TestRunner.Api.CallbacksDelegator/<>c__DisplayClass7_0:<RunStarted>b__0 (UnityEditor.TestTools.TestRunner.Api.ICallbacks) (at ./Library/PackageCache/com.unity.test-framework@f3e6c9a02477/UnityEditor.TestRunner/Api/CallbacksDelegator.cs:42)
+UnityEditor.TestTools.TestRunner.Api.CallbacksDelegator:TryInvokeAllCallbacks (System.Action`1<UnityEditor.TestTools.TestRunner.Api.ICallbacks>) (at ./Library/PackageCache/com.unity.test-framework@f3e6c9a02477/UnityEditor.TestRunner/Api/CallbacksDelegator.cs:135)
+UnityEditor.TestTools.TestRunner.Api.CallbacksDelegator:RunStarted (NUnit.Framework.Interfaces.ITest) (at ./Library/PackageCache/com.unity.test-framework@f3e6c9a02477/UnityEditor.TestRunner/Api/CallbacksDelegator.cs:42)
+UnityEngine.Events.InvokableCall`1<NUnit.Framework.Interfaces.ITest>:Invoke (NUnit.Framework.Interfaces.ITest) (at /Users/bokken/build/output/unity/unity/Runtime/Export/UnityEvent/UnityEvent.cs:222)
+UnityEngine.Events.UnityEvent`1<NUnit.Framework.Interfaces.ITest>:Invoke (NUnit.Framework.Interfaces.ITest) (at /Users/bokken/build/output/unity/unity/artifacts/generated/UnityEvent/UnityEvent_1.cs:59)
+UnityEngine.Events.InvokableCall`1<NUnit.Framework.Interfaces.ITest>:Invoke (NUnit.Framework.Interfaces.ITest) (at /Users/bokken/build/output/unity/unity/Runtime/Export/UnityEvent/UnityEvent.cs:222)
+UnityEngine.Events.UnityEvent`1<NUnit.Framework.Interfaces.ITest>:Invoke (NUnit.Framework.Interfaces.ITest) (at /Users/bokken/build/output/unity/unity/artifacts/generated/UnityEvent/UnityEvent_1.cs:59)
+UnityEngine.TestTools.TestRunner.PlaymodeTestsController/<Run>d__25:MoveNext () (at ./Library/PackageCache/com.unity.test-framework@f3e6c9a02477/UnityEngine.TestRunner/TestRunner/PlaymodeTestsController.cs:137)
+UnityEngine.SetupCoroutine:InvokeMoveNext (System.Collections.IEnumerator,intptr) (at /Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/Coroutines.cs:17)
+
+(Filename: ./Library/PackageCache/com.coplaydev.unity-mcp@4ee62b097584/Editor/Helpers/McpLog.cs Line: 40)
+
+Unloading 68 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 1.727584 ms
+Loaded scene 'Assets/_Game/Scenes/Bootstrap.unity'
+	Deserialize:            53.845 ms
+	Integration:            198.695 ms
+	Integration of assets:  21.115 ms
+	Thread Wait Time:       1.443 ms
+	Total Operation Time:   275.098 ms
+CONFIG_RUNTIME_READY source=TextAsset:gameplay_config schema=5 content=0.6.2-sample hash=7e2a0880c289b4dc7299dee0149bfe2bcc86ed55fa92fa392e5cd874ad77b91e tables=29 records=742 primaryIndexes=338 groupIndexes=56
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/StackTrace.cs:35)
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+OneStrokeDemon.Bootstrap.BootstrapController:Start () (at Assets/_Game/Scripts/Bootstrap/BootstrapController.cs:72)
+
+(Filename: Assets/_Game/Scripts/Bootstrap/BootstrapController.cs Line: 72)
+
+ASSET_REGISTRY_READY source=AssetRegistry:asset_registry configHash=7e2a0880c289b4dc7299dee0149bfe2bcc86ed55fa92fa392e5cd874ad77b91e entries=76 prefabs=40 sprites=18 audioClips=17 scenes=1
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/StackTrace.cs:35)
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+OneStrokeDemon.Bootstrap.BootstrapController:Start () (at Assets/_Game/Scripts/Bootstrap/BootstrapController.cs:73)
+
+(Filename: Assets/_Game/Scripts/Bootstrap/BootstrapController.cs Line: 73)
+
+POINTER_INPUT_READY source=InputSystem modes=Mouse,Touch reference=1920x1080 safeArea=dynamic uiBeginBlock=true maxActivePointers=1
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/StackTrace.cs:35)
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+OneStrokeDemon.Bootstrap.BootstrapController:Start () (at Assets/_Game/Scripts/Bootstrap/BootstrapController.cs:74)
+
+(Filename: Assets/_Game/Scripts/Bootstrap/BootstrapController.cs Line: 74)
+
+Unloading 7224 unused Assets / (6.7 MB). Loaded Objects now: 8955.
+Memory consumption went from 299.0 MB to 292.4 MB.
+Total: 16.667334 ms (FindLiveObjects: 1.948292 ms CreateObjectMapping: 1.665500 ms MarkObjects: 9.390333 ms  DeleteObjects: 3.662791 ms)
+
+Unloading 4 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.391500 ms
+Loaded scene 'Assets/_Game/Scenes/MainMenu.unity'
+	Deserialize:            3.380 ms
+	Integration:            179.599 ms
+	Integration of assets:  0.071 ms
+	Thread Wait Time:       0.162 ms
+	Total Operation Time:   183.211 ms
+Unloading 3 unused Assets / (3.0 KB). Loaded Objects now: 9310.
+Memory consumption went from 297.2 MB to 297.2 MB.
+Total: 10.076041 ms (FindLiveObjects: 0.211792 ms CreateObjectMapping: 0.633208 ms MarkObjects: 9.202375 ms  DeleteObjects: 0.028166 ms)
+
+<b><color=#2EA3FF>MCP-FOR-UNITY</color></b>: [TestRunnerNoThrottle] Restored Interaction Mode after test run.
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/StackTrace.cs:35)
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+MCPForUnity.Editor.Helpers.McpLog:Info (string,bool) (at ./Library/PackageCache/com.coplaydev.unity-mcp@4ee62b097584/Editor/Helpers/McpLog.cs:40)
+MCPForUnity.Editor.Services.TestRunnerNoThrottle:RestoreThrottling () (at ./Library/PackageCache/com.coplaydev.unity-mcp@4ee62b097584/Editor/Services/TestRunnerNoThrottle.cs:114)
+MCPForUnity.Editor.Services.TestRunnerNoThrottle/TestCallbacks:RunFinished (UnityEditor.TestTools.TestRunner.Api.ITestResultAdaptor) (at ./Library/PackageCache/com.coplaydev.unity-mcp@4ee62b097584/Editor/Services/TestRunnerNoThrottle.cs:143)
+UnityEditor.TestTools.TestRunner.Api.CallbacksDelegator/<>c__DisplayClass9_0:<RunFinished>b__0 (UnityEditor.TestTools.TestRunner.Api.ICallbacks) (at ./Library/PackageCache/com.unity.test-framework@f3e6c9a02477/UnityEditor.TestRunner/Api/CallbacksDelegator.cs:55)
+UnityEditor.TestTools.TestRunner.Api.CallbacksDelegator:TryInvokeAllCallbacks (System.Action`1<UnityEditor.TestTools.TestRunner.Api.ICallbacks>) (at ./Library/PackageCache/com.unity.test-framework@f3e6c9a02477/UnityEditor.TestRunner/Api/CallbacksDelegator.cs:135)
+UnityEditor.TestTools.TestRunner.Api.CallbacksDelegator:RunFinished (NUnit.Framework.Interfaces.ITestResult) (at ./Library/PackageCache/com.unity.test-framework@f3e6c9a02477/UnityEditor.TestRunner/Api/CallbacksDelegator.cs:55)
+UnityEngine.Events.InvokableCall`1<NUnit.Framework.Interfaces.ITestResult>:Invoke (NUnit.Framework.Interfaces.ITestResult) (at /Users/bokken/build/output/unity/unity/Runtime/Export/UnityEvent/UnityEvent.cs:222)
+UnityEngine.Events.UnityEvent`1<NUnit.Framework.Interfaces.ITestResult>:Invoke (NUnit.Framework.Interfaces.ITestResult) (at /Users/bokken/build/output/unity/unity/artifacts/generated/UnityEvent/UnityEvent_1.cs:59)
+UnityEngine.Events.InvokableCall`1<NUnit.Framework.Interfaces.ITestResult>:Invoke (NUnit.Framework.Interfaces.ITestResult) (at /Users/bokken/build/output/unity/unity/Runtime/Export/UnityEvent/UnityEvent.cs:222)
+UnityEngine.Events.UnityEvent`1<NUnit.Framework.Interfaces.ITestResult>:Invoke (NUnit.Framework.Interfaces.ITestResult) (at /Users/bokken/build/output/unity/unity/artifacts/generated/UnityEvent/UnityEvent_1.cs:59)
+UnityEngine.TestTools.TestRunner.PlaymodeTestsController/<TestRunnerCoroutine>d__24:MoveNext () (at ./Library/PackageCache/com.unity.test-framework@f3e6c9a02477/UnityEngine.TestRunner/TestRunner/PlaymodeTestsController.cs:109)
+UnityEngine.SetupCoroutine:InvokeMoveNext (System.Collections.IEnumerator,intptr) (at /Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/Coroutines.cs:17)
+
+(Filename: ./Library/PackageCache/com.coplaydev.unity-mcp@4ee62b097584/Editor/Helpers/McpLog.cs Line: 40)
+
+Saving results to: /Users/cqmizhangxiaoyu2/Library/Application Support/DefaultCompany/onedraw_2/TestResults.xml
+Saving results to: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/evals/T650/playmode-screenshot-results.xml
+Thread 0x3186cb000 may have been prematurely finalized
+Unloading 8 Unused Serialized files (Serialized files now loaded: 0)
+Loaded scene 'Temp/__Backupscenes/0.backup'
+	Deserialize:            0.283 ms
+	Integration:            205.835 ms
+	Integration of assets:  0.001 ms
+	Thread Wait Time:       0.007 ms
+	Total Operation Time:   206.126 ms
+Unloading 200 unused Assets / (162.2 KB). Loaded Objects now: 8746.
+Memory consumption went from 295.1 MB to 294.9 MB.
+Total: 11.219292 ms (FindLiveObjects: 0.865209 ms CreateObjectMapping: 0.666291 ms MarkObjects: 9.495208 ms  DeleteObjects: 0.191667 ms)
+
+Executing IPostBuildCleanup for: Unity.PerformanceTesting.Editor.TestRunBuilder.
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/StackTrace.cs:35)
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+UnityEditor.TestTools.TestRunner.TestRun.Tasks.BuildActionTaskBase`1/<ExecuteMethods>d__8<UnityEngine.TestTools.IPostBuildCleanup>:MoveNext () (at ./Library/PackageCache/com.unity.test-framework@f3e6c9a02477/UnityEditor.TestRunner/TestRun/Tasks/BuildActionTaskBase.cs:48)
+UnityEditor.TestTools.TestRunner.TestRun.Tasks.BuildActionTaskBase`1/<Execute>d__7<UnityEngine.TestTools.IPostBuildCleanup>:MoveNext () (at ./Library/PackageCache/com.unity.test-framework@f3e6c9a02477/UnityEditor.TestRunner/TestRun/Tasks/BuildActionTaskBase.cs:34)
+UnityEditor.TestTools.TestRunner.TestRun.TestJobRunner:ExecuteStep () (at ./Library/PackageCache/com.unity.test-framework@f3e6c9a02477/UnityEditor.TestRunner/TestRun/TestJobRunner.cs:194)
+UnityEditor.TestTools.TestRunner.TestRun.TestJobRunner:ExecuteCallback () (at ./Library/PackageCache/com.unity.test-framework@f3e6c9a02477/UnityEditor.TestRunner/TestRun/TestJobRunner.cs:129)
+UnityEditor.EditorApplication:Internal_CallUpdateFunctions () (at /Users/bokken/build/output/unity/unity/Editor/Mono/EditorApplication.cs:403)
+
+(Filename: ./Library/PackageCache/com.unity.test-framework@f3e6c9a02477/UnityEditor.TestRunner/TestRun/Tasks/BuildActionTaskBase.cs Line: 48)
+
+Unloading 0 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 0 unused Assets / (0 B). Loaded Objects now: 8748.
+Memory consumption went from 294.8 MB to 294.8 MB.
+Total: 8.548291 ms (FindLiveObjects: 0.162250 ms CreateObjectMapping: 0.545042 ms MarkObjects: 7.834375 ms  DeleteObjects: 0.006291 ms)
+
+Asset Pipeline Refresh (id=56ae41c4033df45b29ae26bf69bcfd3a): Total: 0.077 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+DisplayProgressbar: Undo
+Test run completed. Exiting with code 0 (Ok). Run completed.
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/StackTrace.cs:35)
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+UnityEditor.TestTools.TestRunner.CommandLineTest.Executer:ExitApplication (UnityEditor.TestTools.TestRunner.CommandLineTest.Executer/ReturnCodes,string) (at ./Library/PackageCache/com.unity.test-framework@f3e6c9a02477/UnityEditor.TestRunner/CommandLineTest/Executer.cs:81)
+UnityEditor.TestTools.TestRunner.CommandLineTest.Executer:ExitIfRunIsCompleted () (at ./Library/PackageCache/com.unity.test-framework@f3e6c9a02477/UnityEditor.TestRunner/CommandLineTest/Executer.cs:74)
+UnityEditor.EditorApplication:Internal_CallUpdateFunctions () (at /Users/bokken/build/output/unity/unity/Editor/Mono/EditorApplication.cs:403)
+
+(Filename: ./Library/PackageCache/com.unity.test-framework@f3e6c9a02477/UnityEditor.TestRunner/CommandLineTest/Executer.cs Line: 81)
+
+MonoPathRemapper: Attempts to remap: 77971; Successful remaps: 37716
+Serialized file version minimum: 22, current 23
+Killing ADB server in 0.222806 seconds.
+Importing 'GUID: 00000000000000004000000000000000 - Path: ProjectSettings/ProjectSettings.asset' with importer (LibraryAssetImporter)
+Imported 'GUID: 00000000000000004000000000000000' -> (Import Result ID: '7b590aebac695fcc3ad48e1f08fcee54') in 0.004 seconds [static dependencies only]. Details - ImportResultOutputID=276a810dac73e1f29404d5e5f692e214 DependenciesID=7147713bbe9e4221d2959c59b798a85e StaticDependenciesID=0d8074e761a9f24e3d605b03729988af
+Importing 'GUID: 2e4374dcac44545f4b3b34cb58ca89d1 - Path: Assets/_Game/Art/UI/Fonts/Resources/Fonts/OneStrokeDemon UI Latin SDF.asset' with importer (NativeFormatImporter)
+Imported 'GUID: 2e4374dcac44545f4b3b34cb58ca89d1' -> (Import Result ID: 'd15e6c90dd143fc4010d246ff9b39ca7') in 0.003 seconds [static dependencies only]. Details - ImportResultOutputID=28e269f6382e043a441e2d3155218e12 DependenciesID=6ebb252fb458d38334e4216a313ae247 StaticDependenciesID=6c64f8cc6e85a33c7fa64b77b62560f3
+Refreshing native plugins compatible for Editor in 2.20 ms, found 6 plugins.
+Asset Pipeline Refresh (id=7b2a5882387574553a075d1023c35d1c): Total: 0.074 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Thread 0x35f5bb000 may have been prematurely finalized
+Input System module state changed to: ShutdownInProgress.
+Input Polling Thread exited.
+Input System module state changed to: Shutdown.
+正在关闭 MSBuild 服务器...
+正在关闭 VB/C# 编译器服务器...
+[Physics::Module] Cleanup current backend.
+[Physics::Module] Id: 0xf2b8ea05
+[Licensing::IpcConnector] LicenseClient-cqmizhangxiaoyu2-6000.5.1-notifications channel disconnected successfully.
+[Licensing::IpcConnector] LicenseClient-cqmizhangxiaoyu2-6000.5.1 channel disconnected successfully.
+Thread 0x1705ef000 may have been prematurely finalized
+Thread 0x17067b000 may have been prematurely finalized
+Thread 0x1708ab000 may have been prematurely finalized
+Thread 0x170937000 may have been prematurely finalized
+Thread 0x170707000 may have been prematurely finalized
+Thread 0x170a4f000 may have been prematurely finalized
+Thread 0x170793000 may have been prematurely finalized
+Thread 0x1709c3000 may have been prematurely finalized
+Thread 0x17081f000 may have been prematurely finalized
+成功关闭 MSBuild 服务器。
+成功关闭 VB/C# 编译器服务器。
+AcceleratorClientConnectionCallback - disconnected - :0
+Thread 0x311fbf000 may have been prematurely finalized
+Cleanup mono
+CodeReloadManager destroyed
+info: Microsoft.Hosting.Lifetime[0]
+      Application is shutting down...
+info: Unity.ILPP.Runner.PostProcessingAssemblyLoadContext[0]
+      ALC ILPP context 1 is unloading
+debugger-agent: Unable to listen on 44

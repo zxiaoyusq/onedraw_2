@@ -1,19 +1,25 @@
 # PROGRESS
 
 - 日期：2026-07-14
-- 当前成熟度：P3手势战斗核心、P4玩家/敌人技能、P5完整单局闭环以及P6 HUD/结算UI、中文字体、战斗反馈与原型美术接入均已完成；T650教程表现已READY
-- 当前任务：T650
+- 当前成熟度：P3手势战斗核心、P4玩家/敌人技能、P5完整单局闭环与P6 HUD/结算UI、中文字体、战斗反馈、原型美术和教程表现均已完成；进入P7质量回归
+- 当前任务：T700
 - 状态：READY
 - Unity精确版本：6000.5.1f1（已由ProjectVersion.txt与本机安装核验）
 - 微信SDK来源或版本：官方 `minigame-tuanjie-transform-sdk` v0.1.33 / commit `ed4ad28f433c6b52b5fd3f22a6fa155a0c98c228` / embedded最小补丁
 - Active Scene：Assets/_Game/Scenes/Bootstrap.unity
-- 配置版本：schema 5 / content 0.6.1-sample / hash `152b9faa81ba66e29469d7a4a48227f8fb7ef0f969f1cb13679d6fe0ce0786f8`
+- 配置版本：schema 5 / content 0.6.2-sample / hash `7e2a0880c289b4dc7299dee0149bfe2bcc86ed55fa92fa392e5cd874ad77b91e`
 
 ## 进行中
 
-- 无原子任务处于`IN_PROGRESS`；T650依赖T520/T600均为DONE，现为下一个`READY`内容任务。T640仍依赖已延期且BLOCKED的T120，不能提前开始。
+- 当前无`IN_PROGRESS`任务；T650已完成并提交，T700是第一个依赖均DONE的`READY`任务。T640仍依赖已延期且BLOCKED的T120，不能提前开始。
 
 ## 已完成
+
+- T650：新增事件驱动`TutorialDirector`、遮罩View/运行时工厂与高亮目标注册表；已有T520步骤事件是唯一推进真相，View只渲染配置提示、目标框、程序化横/竖/斜/弧/圆/蓄力示意并转发跳过/回看意图。回看不改变序列，显式跳过不伪造`StepCompleted`，且必须等全部出生完成、活跃敌人归零后才放行最终战斗门。
+- T650：进度存档升级到v2，以经配置目录验证的`completedTutorialIds`保存一次性标记；写成功后才发布当前快照，内建v1→v2迁移补空列表。首次跳过后重开会自动跳过教程展示，但两局都需击败15怪才Victory，存储端口只写入一次。
+- T650：双工作簿与交付副本字节一致，SHA-256均为`12781247...0ffa2`；新增“继续战斗/回放”两条`Texts`并升级为schema 5/content `0.6.2-sample`。受管JSON为193,859字节/742条/content hash `7e2a0880...b91e`，28组374个ID常量；30个Sheet前后重渲染、公式错误0，严格配置漂移门与ConfigExporter .NET 58/58通过。新文案只使用T610既有字符，未修改字体二进制或TMP资产。
+- T650：专项EditMode 3/3、PlayMode 1/1，ConfigPipeline EditMode 19/19，最终全量EditMode 195/195、PlayMode 46/46。Metal 1920×1080截图显示中文提示、青色手势/目标框与跳过按钮，SHA-256为`86587e44...599f`；活动教程文案无overflow/truncate。测试启动时License Client IPC首次握手报错但随后取得授权并完成全部测试；产品编译、运行时和测试结果无新Error/Warning，图形专项仅重报T610已知的4处CS0618测试API warning。
+- T650：未修改Scene、Prefab、Registry、Input Actions、Packages、ProjectSettings、微信SDK或Builds；未提前实现T640/T700及后续任务，标准Web、微信转换、DevTools和真机按用户延期决定未运行。
 
 - T630：用户于2026-07-14提供仓库外的2868×1320、130,855,476字节概念PSD，SHA-256为`e6a2552a...1fb34`；原稿未进入`Assets/`。按图层清单导出两张红色洞穴背景、黄衣灵猫、五种PSD敌人、UI与VFX，并按用户许可用ImageGen单独补齐魂偶和镇墓玄甲王；所有输入与输出登记为`APPROVED_PROTOTYPE`，无一声称具备发布授权，轮车僵妖上游生成条款仍待发布前核验。
 - T630：Runtime新增28张RGBA PNG（26个非背景含透明像素）、5个SpriteAtlas v2、2个单帧Actor Prefab和38个可池化VFX Prefab；Sorting Layer顺序固定为Background/Default/Actors/Projectiles/VFX。Canonical Registry的18个Sprite和40个Prefab键均改绑实际资源，17个AudioClip继续保留T240静音占位，未修改玩法配置、Scene、Packages、微信SDK或Builds。
@@ -172,7 +178,7 @@
 - T200：按GAME_DESIGN修正关卡玩法ID为 `lv_001_tutorial`、`lv_002_cave`、`lv_003_boss`，Boss玩法ID为 `boss_tomb_king`；所有Level/Wave/Spawn/BossPhase/Reward依赖引用同步，文案键和资源键保持独立命名空间。
 - T200：FieldDictionary保留248条非递归字段记录，修正Global互斥类型列及10个主键/条件字段的必填语义；冻结Schema属性存在与Excel单元格非空的差异、空值转换、普通/分组/通配符/conditional外键和数据所有权。
 - T200：29表、14公式、248字段、Schema/样例、类型/范围/枚举、主键、外键、连续order、关卡-Boss语义和规范化contentHash的只读契约审计全部PASS；29表最终渲染经4张总览拼图复核，无结构或版式异常。
-- 执行顺序调整：用户明确要求暂时绕过T120及微信开发者工具/打包问题，先完成游戏主要内容；T120保持`BLOCKED`、T130保持`BACKLOG`，不删除MVP平台验收要求；T630已完成，T650现为第一个依赖均DONE的`READY`内容任务。
+- 执行顺序调整：用户明确要求暂时绕过T120及微信开发者工具/打包问题，先完成游戏主要内容；T120保持`BLOCKED`、T130保持`BACKLOG`，不删除MVP平台验收要求；P6内容任务已完成，T700现为第一个依赖均DONE的`READY`任务。
 - T120 G2：Unity `6000.5.1f1` 基于固定 embedded WXSDK 成功生成 `Builds/WeChat/T120`；84个文件、总计101,901,218字节，其中`minigame` 12,008,520字节，JSON结构、关键文件、SHA-256清单与敏感占位扫描均通过。
 - T120构建参数：空AppID、横屏、256MB、触摸启用、Development、关闭渲染线程与性能分析、清理构建，并使用SDK受支持的多线程Brotli；可复现入口为`Tools/CI/build-wechat.sh`。
 - T120 G2结论为`PASS WITH KNOWN ISSUES`：默认单线程Brotli在当前macOS Unity安装布局下引用错误路径（BUG-0005，已用配置规避）；转换含93条未匹配替换规则及6条Emscripten warning（BUG-0006），需要G3实际运行判定影响。
@@ -217,7 +223,7 @@
 6. 长Web构建后Unity MCP实例桥接未自动恢复，见BUG-0003；Unity batch测试与Web运行未受影响。
 7. PSD主角和怪物大多为单张Sprite；T610两个静态TMP资产约2.78MB，实际Web压缩包、运行内存和真机触摸延迟仍需T730及平台门验证。
 8. T630已替换18个Sprite和40个Prefab视觉占位，但17个AudioClip仍使用T240静音占位；单帧角色尚无正式动画或逐对象身体碰撞，ImageGen补图与PSD原画的细节密度存在差异，全部美术仅获原型授权，不能外推为发布品质。
-9. 三个MVP关卡、T550结算/进度/重开、T600 HUD、T610中文字体、T620战斗反馈和T630原型视觉路径已闭环；但T650教程遮罩尚未实现，`IProgressSaveStore`与震动也仍待T130平台适配，因此当前证据不能外推为最终教程、平台持久化或真机体验。
+9. 三个MVP关卡、结算/进度/重开、HUD、中文字体、战斗反馈、原型视觉和教程遮罩路径已闭环；但`IProgressSaveStore`与震动仍待T130平台适配，T640多比例/安全区又依赖T120，因此当前证据不能外推为平台持久化、多设备布局或真机体验。
 ## 下一步
 
-只执行T650：完成事件驱动教程遮罩、手势示意和跳过/回看，继续以T520教程事件与配置Texts为真相源；不提前实现依赖T120的T640，也不恢复T120/T130。平台任务最迟在T640/T750前恢复。
+只执行T700：补齐纯规则EditMode回归矩阵；不提前实现T710或依赖T120的T640，也不恢复T120/T130。平台任务最迟在T640/T750前恢复。

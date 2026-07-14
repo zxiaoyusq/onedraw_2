@@ -5,7 +5,7 @@
 - `examples/gameplay_config.sample.json`：与工作簿示例数据对应的版本化JSON。
 - 正式工程中的唯一配置源应为 `Design/Config/GameConfig.xlsx`。
 - 运行时仅读取构建期生成的 `gameplay_config.json`。
-- 当前冻结契约为 schema `5` / content `0.6.1-sample`；T620新增`FeedbackCues`事件反馈映射，其他ID、空值、外键、排序和hash算法见 `docs/CONFIG_SCHEMA.md`。
+- 当前冻结契约为 schema `5` / content `0.6.2-sample`；T650新增教程跳过/回看UI文案，T620的`FeedbackCues`事件反馈映射及其他ID、空值、外键、排序和hash算法见 `docs/CONFIG_SCHEMA.md`。
 
 本模板当前示例内容：
 

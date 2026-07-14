@@ -9,6 +9,7 @@ namespace OneStrokeDemon.Levels
         private readonly BattleFlowCoordinator battle;
         private readonly TutorialSequence tutorial;
         private bool battleReadyPublished;
+        private bool tutorialCompletionGatePending;
 
         public TutorialLevelCoordinator(
             IConfigProvider configProvider,
@@ -70,6 +71,16 @@ namespace OneStrokeDemon.Levels
             ApplyTutorialUpdate(tutorial.Advance(
                 report.Time.GameplayUnscaledDeltaSeconds));
             SynchronizeLevelProgressGate();
+            TryConfirmCompletedTutorialGate();
+            return report;
+        }
+
+        public TutorialUpdateReport SkipTutorial()
+        {
+            TutorialUpdateReport report = tutorial.Skip();
+            ApplyTutorialUpdate(report);
+            SynchronizeLevelProgressGate();
+            TryConfirmCompletedTutorialGate();
             return report;
         }
 
@@ -97,7 +108,13 @@ namespace OneStrokeDemon.Levels
 
         public bool NotifyEnemyDefeated(long entityId)
         {
-            return battle.NotifyEnemyDefeated(entityId);
+            bool accepted = battle.NotifyEnemyDefeated(entityId);
+            if (accepted)
+            {
+                TryConfirmCompletedTutorialGate();
+            }
+
+            return accepted;
         }
 
         public bool TryBeginUltimateDrawing()
@@ -164,20 +181,39 @@ namespace OneStrokeDemon.Levels
 
         private void ApplyTutorialUpdate(in TutorialUpdateReport report)
         {
-            if (!report.StepCompleted ||
-                !report.TutorialCompleted ||
-                battle.Level.State == LevelRunnerState.Completed ||
-                battle.Level.CurrentWave.Definition.EndCondition !=
-                    WaveEndCondition.PlayerConfirmed)
+            if (!report.TutorialCompleted)
             {
                 return;
             }
 
-            if (!battle.ConfirmPlayerAction())
+            tutorialCompletionGatePending = true;
+            TryConfirmCompletedTutorialGate();
+        }
+
+        private void TryConfirmCompletedTutorialGate()
+        {
+            if (!tutorialCompletionGatePending)
             {
-                throw new InvalidOperationException(
-                    $"Tutorial step {report.CompletedStepOrder} completed but its " +
-                    "configured PlayerConfirmed wave gate rejected the event.");
+                return;
+            }
+
+            if (battle.Level.State == LevelRunnerState.Completed)
+            {
+                tutorialCompletionGatePending = false;
+                return;
+            }
+
+            WaveRunner wave = battle.Level.CurrentWave;
+            if (wave.Definition.EndCondition != WaveEndCondition.PlayerConfirmed ||
+                !wave.Scheduler.IsComplete ||
+                wave.ActiveCount != 0)
+            {
+                return;
+            }
+
+            if (battle.ConfirmPlayerAction())
+            {
+                tutorialCompletionGatePending = false;
             }
         }
 

@@ -1,0 +1,911 @@
+Unity Editor version:    6000.5.1f1 (0d9463e84828)
+Branch:                  6000.5/staging
+Build type:              Release
+Batch mode:              YES
+macOS version:           Version 15.6 (Build 24G84)
+Darwin version:          24.6.0
+Architecture:            arm64
+Running under Rosetta:   NO
+Available memory:        16384 MB
+Date:                    2026-07-14T08:39:12Z
+[Licensing::Module] Trying to connect to existing licensing client channel...
+[Licensing::IpcConnector] Successfully connected to: "LicenseClient-cqmizhangxiaoyu2" at "2026-07-14T08:39:12.711253Z"
+Launching external process: /Applications/Unity/Hub/Editor/6000.5.1f1/Unity.app/Contents/Helpers/PackageManager/Server/UnityPackageManager
+
+COMMAND LINE ARGUMENTS:
+/Applications/Unity/Hub/Editor/6000.5.1f1/Unity.app/Contents/MacOS/Unity
+-batchmode
+-nographics
+-projectPath
+/Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project
+-runTests
+-testPlatform
+EditMode
+-testResults
+/Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/evals/T650/full-editmode-results.xml
+-logFile
+/Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/evals/T650/full-editmode-unity.log
+Successfully changed project path to: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project
+/Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project
+[UnityMemory] Configuration Parameters - Can be set up in boot.config
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-nav-mesh-worker=65536"
+    "memorysetup-temp-allocator-size-audio-worker=65536"
+    "memorysetup-temp-allocator-size-cloud-worker=32768"
+    "memorysetup-allocator-temp-initial-block-size-main=262144"
+    "memorysetup-allocator-temp-initial-block-size-worker=262144"
+    "memorysetup-temp-allocator-size-preload-manager=33554432"
+    "memorysetup-temp-allocator-size-gfx=262144"
+    "memorysetup-temp-allocator-size-background-worker=32768"
+    "memorysetup-temp-allocator-size-job-worker=262144"
+    "memorysetup-bucket-allocator-granularity=16"
+    "memorysetup-bucket-allocator-bucket-count=8"
+    "memorysetup-bucket-allocator-block-size=33554432"
+    "memorysetup-bucket-allocator-block-count=8"
+    "memorysetup-main-allocator-block-size=16777216"
+    "memorysetup-thread-allocator-block-size=16777216"
+    "memorysetup-main-allocator-mimalloc-enabled=0"
+    "memorysetup-gfx-main-allocator-block-size=16777216"
+    "memorysetup-gfx-thread-allocator-block-size=16777216"
+    "memorysetup-cache-allocator-block-size=4194304"
+    "memorysetup-typetree-allocator-block-size=2097152"
+    "memorysetup-profiler-bucket-allocator-granularity=16"
+    "memorysetup-profiler-bucket-allocator-bucket-count=8"
+    "memorysetup-profiler-bucket-allocator-block-size=33554432"
+    "memorysetup-profiler-bucket-allocator-block-count=8"
+    "memorysetup-profiler-allocator-block-size=16777216"
+    "memorysetup-profiler-editor-allocator-block-size=1048576"
+    "memorysetup-temp-allocator-size-main=16777216"
+    "memorysetup-job-temp-allocator-block-size=2097152"
+    "memorysetup-job-temp-allocator-block-size-background=1048576"
+    "memorysetup-job-temp-allocator-reduction-small-platforms=262144"
+Logging is directed to a specific file, skipping project log.Player connection [8601149632]  Target information:
+
+Player connection [8601149632]  * "[IP] 10.206.81.30 [Port] 55505 [Flags] 2 [Guid] 3503456732 [EditorId] 3503456732 [Version] 1048832 [Id] OSXEditor(0,cqmizhangxiaoyu2deMacBook-Air.local) [Debug] 1 [PackageName] OSXEditor [ProjectName] Editor"
+
+Player connection [8601149632]  * "[IP] 10.251.1.1 [Port] 55505 [Flags] 2 [Guid] 3503456732 [EditorId] 3503456732 [Version] 1048832 [Id] OSXEditor(0,cqmizhangxiaoyu2deMacBook-Air.local) [Debug] 1 [PackageName] OSXEditor [ProjectName] Editor"
+
+Player connection [8601149632] Host joined multi-casting on [225.0.0.222:54997]...
+Player connection [8601149632] Host joined alternative multi-casting on [225.0.0.222:34997]...
+Input System module state changed to: Initialized.
+[Physics::Module] Initialized fallback backend.
+[Physics::Module] Id: 0xdecafbad
+[Licensing::Client] Error: HandshakeResponse reported an error:
+	ResponseCode: 505
+	ResponseStatus: Unsupported protocol version '1.18.1'.
+[Licensing::Module] Error: Failed to handshake to channel: "LicenseClient-cqmizhangxiaoyu2"
+[Licensing::IpcConnector] LicenseClient-cqmizhangxiaoyu2 channel disconnected successfully.
+[Licensing::IpcConnector] Successfully connected to: "LicenseClient-cqmizhangxiaoyu2-6000.5.1" at "2026-07-14T08:39:12.87996Z"
+[Package Manager] Connected to IPC stream "Upm-83711" after 0.2 seconds.
+[Licensing::Module] Licensing is not yet initialized.
+[Licensing::Client] Handshaking with LicensingClient:
+  Version:                 1.18.1+9fbee8e
+  Session Id:              b6ce630ba859415e82e82af2a59608d9
+  Correlation Id:          1ed0498c6110524d1f5c3ec9aa39dd73
+  External correlation Id: 9045130754981069176
+  Machine Id:              9rQ3oFulMuF1WLgKze+vIHadGFs=
+[Licensing::Module] Successfully connected to LicensingClient on channel: "LicenseClient-cqmizhangxiaoyu2-6000.5.1" (connect: 0.00s, validation: 0.00s, handshake: 0.17s)
+[Licensing::IpcConnector] Successfully connected to: "LicenseClient-cqmizhangxiaoyu2-6000.5.1-notifications" at "2026-07-14T08:39:13.051294Z"
+[Licensing::Module] Error: Access token is unavailable; failed to update
+[Licensing::Client] Successfully resolved entitlement details
+[Licensing::Module] License group:
+  Id: 18968374062854-UnityPersXXXX
+  Product: Unity Personal
+  Type: Assigned
+  Expiration: Unlimited
+[Licensing::Client] Successfully updated license, isAsync: True, time: 0.00
+[Licensing::Module] Licensing Background thread has ended after 0.34s
+[Licensing::Module] Licensing is initialized (took 0.03s).
+[Licensing::Client] Successfully resolved entitlement details
+Library Redirect Path: Library/
+[Physics::Module] Selected backend.
+[Physics::Module] Name: PhysX
+[Physics::Module] Id: 0xf2b8ea05
+[Physics::Module] SDK Version: 4.1.2
+[Physics::Module] Integration Version: 1.0.0
+[Physics::Module] Threading Mode: Multi-Threaded
+Artifact Garbage Collection - Removed 1 unused hashed content files
+Refreshing native plugins compatible for Editor in 3.56 ms, found 3 plugins.
+Initialize engine version: 6000.5.1f1 (0d9463e84828)
+[Subsystems] Discovering subsystems at path /Applications/Unity/Hub/Editor/6000.5.1f1/Unity.app/Contents/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Assets
+Forcing GfxDevice: Null
+GfxDevice: creating device client; kGfxThreadingModeNonThreaded
+NullGfxDevice:
+    Version:  NULL 1.0 [1.0]
+    Renderer: Null Device
+    Vendor:   Unity Technologies
+Initialize mono
+Mono path[0] = '/Applications/Unity/Hub/Editor/6000.5.1f1/Unity.app/Contents/Resources/Scripting/Managed'
+Mono path[1] = '/Applications/Unity/Hub/Editor/6000.5.1f1/Unity.app/Contents/Resources/Scripting/BCLExtensions/runtime/netstandard2.1'
+Mono path[2] = '/Applications/Unity/Hub/Editor/6000.5.1f1/Unity.app/Contents/Resources/Scripting/MonoBleedingEdge/lib/mono/unityjit-macos'
+Mono config path = '/Applications/Unity/Hub/Editor/6000.5.1f1/Unity.app/Contents/Resources/Scripting/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56711
+CodeReloadManager initialized
+ImportWorker Server TCP listen port: 0
+AcceleratorClientConnectionCallback - disconnected - :0
+Begin MonoManager ReloadAssembly
+Registering precompiled unity dll's ...
+Register platform support module: /Applications/Unity/Hub/Editor/6000.5.1f1/PlaybackEngines/WebGLSupport/UnityEditor.WebGL.Extensions.dll
+Register platform support module: /Applications/Unity/Hub/Editor/6000.5.1f1/PlaybackEngines/MacStandaloneSupport/UnityEditor.OSXStandalone.Extensions.dll
+Register platform support module: /Applications/Unity/Hub/Editor/6000.5.1f1/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+[Licensing::Client] Successfully resolved entitlement details
+Register platform support module: /Applications/Unity/Hub/Editor/6000.5.1f1/PlaybackEngines/AndroidPlayer/UnityEditor.Android.Extensions.dll
+Registered in 0.001871 seconds.
+Native extension for Android target not found
+Native extension for WindowsStandalone target not found
+Native extension for OSXStandalone target not found
+Native extension for WebGL target not found
+Package Manager log level set to [2]
+ScheduleIndexationOnStartup MainProcess:False IndexOnStartup:True
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.194 seconds
+Domain Reload Profiling: 515ms
+	BeginReloadAssembly (82ms)
+		CreateAndSetChildDomain (22ms)
+	RebuildCommonClasses (3ms)
+	RebuildNativeTypeToScriptingClass (13ms)
+	initialDomainReloadingComplete (35ms)
+	LoadAllAssembliesAndSetupDomain (189ms)
+		LoadAssemblies (59ms)
+		AnalyzeDomain (137ms)
+			TypeCache.Refresh (137ms)
+				TypeCache.ScanAssembly (127ms)
+	FinalizeReload (195ms)
+		SetupLoadedEditorAssemblies (0ms)
+			InitializePlatformSupportModulesInManaged (4ms)
+			BeforeProcessingInitializeOnLoad (44ms)
+			ProcessInitializeOnLoadAttributes (49ms)
+			ProcessInitializeOnLoadMethodAttributes (59ms)
+[Licensing::Client] Successfully resolved entitlement details
+Application.AssetDatabase Initial Refresh Start
+[Package Manager] Restoring resolved packages state from cache
+[Licensing::Client] Successfully resolved entitlement details
+[Package Manager] Registered 68 packages:
+  Packages from [https://packages.unity.com]:
+    com.unity.2d.animation@15.1.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.2d.animation@6d5a363ae647)
+    com.unity.2d.aseprite@5.0.3 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.2d.aseprite@d13865913efa)
+    com.unity.2d.psdimporter@14.0.3 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.2d.psdimporter@5d82044f9e43)
+    com.unity.2d.spriteshape@15.0.3 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.2d.spriteshape@fcb7ec61a58b)
+    com.unity.2d.tilemap.extras@8.0.3 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.2d.tilemap.extras@a80140457adc)
+    com.unity.2d.tooling@3.0.1 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.2d.tooling@6f06ffb033c0)
+    com.unity.collab-proxy@2.12.4 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.collab-proxy@0b1559bcd34e)
+    com.unity.ide.rider@3.0.38 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.ide.rider@1f60b3138684)
+    com.unity.ide.visualstudio@2.0.26 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.ide.visualstudio@a99d56dec63f)
+    com.unity.inputsystem@1.19.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.inputsystem@21a28c3a6c83)
+    com.unity.nuget.newtonsoft-json@3.2.2 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.nuget.newtonsoft-json@4dfd81071c64)
+    com.unity.timeline@1.8.12 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.timeline@8cd8509afae5)
+    com.unity.visualscripting@1.9.11 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.visualscripting@8bed5ad90189)
+    com.unity.2d.common@14.0.1 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.2d.common@73badf92ba8b)
+    com.unity.searcher@4.9.4 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.searcher@d45a78918735)
+    com.unity.burst@1.8.29 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.burst@6bb9aca3ef38)
+    com.unity.nuget.mono-cecil@1.11.6 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.nuget.mono-cecil@ecb9724e46ff)
+    com.unity.test-framework.performance@3.5.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.test-framework.performance@8b56083ec0f0)
+  Built-in packages:
+    com.unity.2d.sprite@1.0.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.2d.sprite@053a968eab56)
+    com.unity.2d.tilemap@1.0.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.2d.tilemap@be0bacb99591)
+    com.unity.multiplayer.center@1.0.1 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.multiplayer.center@b860850997d0)
+    com.unity.render-pipelines.universal@17.5.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.render-pipelines.universal@be00b5bbd9a1)
+    com.unity.test-framework@1.7.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.test-framework@f3e6c9a02477)
+    com.unity.ugui@2.5.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.ugui@4f9b15fd1386)
+    com.unity.modules.accessibility@1.0.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.modules.accessibility)
+    com.unity.modules.adaptiveperformance@1.0.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.modules.adaptiveperformance)
+    com.unity.modules.ai@1.0.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.modules.ai)
+    com.unity.modules.androidjni@1.0.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.modules.androidjni)
+    com.unity.modules.animation@1.0.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.modules.animation)
+    com.unity.modules.assetbundle@1.0.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.modules.assetbundle)
+    com.unity.modules.audio@1.0.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.modules.audio)
+    com.unity.modules.cloth@1.0.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.modules.cloth)
+    com.unity.modules.director@1.0.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.modules.director)
+    com.unity.modules.imageconversion@1.0.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.modules.imageconversion)
+    com.unity.modules.imgui@1.0.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.modules.imgui)
+    com.unity.modules.jsonserialize@1.0.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.modules.jsonserialize)
+    com.unity.modules.particlesystem@1.0.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.modules.particlesystem)
+    com.unity.modules.physics@1.0.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.modules.physics)
+    com.unity.modules.physics2d@1.0.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.modules.physics2d)
+    com.unity.modules.physicscore2d@1.0.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.modules.physicscore2d)
+    com.unity.modules.screencapture@1.0.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.modules.screencapture)
+    com.unity.modules.terrain@1.0.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.modules.terrain)
+    com.unity.modules.terrainphysics@1.0.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.modules.terrainphysics)
+    com.unity.modules.tilemap@1.0.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.modules.tilemap)
+    com.unity.modules.ui@1.0.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.modules.ui)
+    com.unity.modules.uielements@1.0.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.modules.uielements)
+    com.unity.modules.umbra@1.0.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.modules.umbra)
+    com.unity.modules.unityanalytics@1.0.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.modules.unityanalytics)
+    com.unity.modules.unitywebrequest@1.0.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.modules.unitywebrequest)
+    com.unity.modules.unitywebrequestassetbundle@1.0.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.modules.unitywebrequestassetbundle)
+    com.unity.modules.unitywebrequestaudio@1.0.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.modules.unitywebrequestaudio)
+    com.unity.modules.unitywebrequesttexture@1.0.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.modules.unitywebrequesttexture)
+    com.unity.modules.unitywebrequestwww@1.0.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.modules.unitywebrequestwww)
+    com.unity.modules.vectorgraphics@1.0.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.modules.vectorgraphics)
+    com.unity.modules.vehicles@1.0.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.modules.vehicles)
+    com.unity.modules.video@1.0.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.modules.video)
+    com.unity.modules.wind@1.0.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.modules.wind)
+    com.unity.modules.xr@1.0.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.modules.xr)
+    com.unity.modules.subsystems@1.0.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.modules.subsystems)
+    com.unity.modules.hierarchycore@1.0.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.modules.hierarchycore)
+    com.unity.ext.nunit@2.1.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.ext.nunit@44f7d31723bd)
+    com.unity.render-pipelines.core@17.5.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.render-pipelines.core@d7ce3ed2cd80)
+    com.unity.shadergraph@17.5.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.shadergraph@2df19e8719bc)
+    com.unity.render-pipelines.universal-config@17.5.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.render-pipelines.universal-config@fdda01c80fe3)
+    com.unity.mathematics@1.4.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.mathematics@981956d94fb6)
+    com.unity.collections@6.5.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.collections@a43cabe808ca)
+  Embedded packages:
+    com.qq.weixin.minigame@file:/Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Packages/com.qq.weixin.minigame (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Packages/com.qq.weixin.minigame)
+  Git packages:
+    com.coplaydev.unity-mcp@https://github.com/CoplayDev/unity-mcp.git?path=/MCPForUnity#11836003a5e2ffcb7715ecec7e1fbb9d9cdb5bb8 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.coplaydev.unity-mcp@4ee62b097584)
+[Subsystems] No new subsystems found in resolved package list.
+[Package Manager] Done registering packages in 0.01 seconds
+info: Microsoft.Hosting.Lifetime[14]
+      Now listening on: http://unix:/tmp/ilpp.sock-0965b3c8e789bc4969569e5e5a09ed6b
+info: Microsoft.Hosting.Lifetime[0]
+      Application started. Press Ctrl+C to shut down.
+info: Microsoft.Hosting.Lifetime[0]
+      Hosting environment: Production
+info: Microsoft.Hosting.Lifetime[0]
+      Content root path: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/2 POST http://ilpp/UnityILPP.PostProcessing/Ping - application/grpc -
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'gRPC - /UnityILPP.PostProcessing/Ping'
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'gRPC - /UnityILPP.PostProcessing/Ping'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/2 POST http://ilpp/UnityILPP.PostProcessing/Ping - 200 - application/grpc 21.0103ms
+Starting: /Applications/Unity/Hub/Editor/6000.5.1f1/Unity.app/Contents/Resources/BuildPipeline/bee_backend --ipc --defer-dag-verification --dagfile="Library/Bee/200b0aE.dag" --continue-on-failure --profile="Library/Bee/backend1.traceevents" ScriptAssemblies
+WorkingDir: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project
+DisplayProgressbar: Compiling Scripts
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/2 POST http://ilpp/UnityILPP.PostProcessing/ConfigurePostProcessors - application/grpc -
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'gRPC - /UnityILPP.PostProcessing/ConfigurePostProcessors'
+warn: Unity.ILPP.Runner.PostProcessingAssemblyLoadContext[0]
+      Assembly system.runtime.interopservices.windowsruntime has duplicate hint path. Ignoring "/Applications/Unity/Hub/Editor/6000.5.1f1/Unity.app/Contents/Resources/Scripting/UnityReferenceAssemblies/unity-4.8-api/Facades/System.Runtime.InteropServices.WindowsRuntime.dll" in favor of "/Applications/Unity/Hub/Editor/6000.5.1f1/Unity.app/Contents/Resources/Scripting/NetStandard/Extensions/2.0.0/System.Runtime.InteropServices.WindowsRuntime.dll"
+warn: Unity.ILPP.Runner.PostProcessingAssemblyLoadContext[0]
+      Assembly system.componentmodel.composition has duplicate hint path. Ignoring "/Applications/Unity/Hub/Editor/6000.5.1f1/Unity.app/Contents/Resources/Scripting/UnityReferenceAssemblies/unity-4.8-api/System.ComponentModel.Composition.dll" in favor of "/Applications/Unity/Hub/Editor/6000.5.1f1/Unity.app/Contents/Resources/Scripting/NetStandard/compat/2.1.0/shims/netfx/System.ComponentModel.Composition.dll"
+info: Unity.ILPP.Runner.PostProcessingAssemblyLoadContext[0]
+      Resolved Unity.Burst.Cecil, Version=0.11.6.0, Culture=neutral, PublicKeyToken=50cebf1cceb9d05e with Library/PackageCache/com.unity.burst@6bb9aca3ef38/Unity.Burst.CodeGen/Unity.Burst.Cecil.dll
+info: Unity.ILPP.Runner.PostProcessingAssemblyLoadContext[0]
+      Resolved Mono.Cecil, Version=0.11.5.0, Culture=neutral, PublicKeyToken=50cebf1cceb9d05e with Library/PackageCache/com.unity.nuget.mono-cecil@ecb9724e46ff/Mono.Cecil.dll
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'gRPC - /UnityILPP.PostProcessing/ConfigurePostProcessors'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/2 POST http://ilpp/UnityILPP.PostProcessing/ConfigurePostProcessors - 200 - application/grpc 13.3495ms
+ExitCode: 0 Duration: 0s263ms
+[ 856/1148  0s] ILPP-Configuration Library/ilpp-configuration.nevergeneratedoutput
+*** Tundra build success (0.25 seconds), 1 items updated, 1148 evaluated
+AssetDatabase: script compilation time: 0.693894s
+Total cache size 268058432
+Total cache size after purge 268058432, took 00:00:00.1713388
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory is not a mono symbol file
+Refreshing native plugins compatible for Editor in 2.81 ms, found 6 plugins.
+Native extension for Android target not found
+Native extension for WindowsStandalone target not found
+Native extension for OSXStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 2.08 ms, found 6 plugins.
+ScheduleIndexationOnStartup MainProcess:True IndexOnStartup:True
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  2.439 seconds
+Domain Reload Profiling: 2968ms
+	BeginReloadAssembly (121ms)
+		DisableScriptedObjects (25ms)
+		CreateAndSetChildDomain (34ms)
+	RebuildCommonClasses (5ms)
+	RebuildNativeTypeToScriptingClass (9ms)
+	initialDomainReloadingComplete (29ms)
+	LoadAllAssembliesAndSetupDomain (366ms)
+		LoadAssemblies (156ms)
+		AnalyzeDomain (177ms)
+			TypeCache.Refresh (131ms)
+				TypeCache.ScanAssembly (120ms)
+			BuildScriptInfoCaches (40ms)
+			ResolveRequiredComponents (4ms)
+	FinalizeReload (2440ms)
+		SetupLoadedEditorAssemblies (0ms)
+			InitializePlatformSupportModulesInManaged (4ms)
+			BeforeProcessingInitializeOnLoad (50ms)
+			ProcessInitializeOnLoadAttributes (2109ms)
+			ProcessInitializeOnLoadMethodAttributes (167ms)
+		AwakeInstancesAfterBackupRestoration (7ms)
+Starting new worker id: 0 with log in /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Logs/AssetImportWorkerHW0.log
+
+Asset Pipeline Refresh (id=ba4a2382e3ea5488e8c29979ba76d37e): Total: 5.194 seconds - Initiated by InitialRefreshV2(ForceSynchronousImport)
+	(Values over 0.05ms)
+	Summary:
+		Imports: total=0 (actual=0, local cache=0, cache server=0)
+		Asset DB Process Time: managed=0 ms, native=3714 ms
+		Asset DB Callback time: managed=185 ms, native=11 ms
+		Scripting: domain reloads=1, domain reload time=554 ms, compile time=695 ms, other=33 ms
+		Project Asset Count: scripts=1796, non-scripts=3399
+		Asset File Changes: new=0, changed=0, moved=0, deleted=0
+		Scan Filter Count: 1
+	InvokePackagesCallback: 13.060ms
+	ApplyChangesToAssetFolders: 0.249ms
+	Scan: 1028.492ms
+	Collect global state as custom dependencies: 1.666ms
+	CategorizeScriptCompilationAssets: 30.148ms
+	ProcessAssetsWithTransientArtifactChanges: 52.538ms
+	CategorizeAssets: 39.809ms
+	CompileScripts: 694.569ms
+	ImportOutOfDateAssets: 2487.388ms (2455.190ms without children)
+		UnloadImportedAssets: 0.596ms
+		EnsureUptoDateAssetsAreRegisteredWithGuidPM: 0.507ms
+		ImportSchedulerStart: 31.067ms
+	PostProcessAllAssets: 185.814ms
+		MonoPostProcessAllAssets: 185.786ms
+			UniversalRenderPipelineGlobalSettingsPostprocessor.OnPostprocessAllAssets 8.102ms
+			SpeedTree9Postprocessor.OnPostprocessAllAssets 1.396ms
+			WindowAssetPostprocessingWatcher.OnPostprocessAllAssets 1.268ms
+			RenderPipelineGlobalSettingsPostprocessor.OnPostprocessAllAssets 0.395ms
+			ShaderReflectionAssetPostProcessor.OnPostprocessAllAssets 0.191ms
+			ReferencedClipsPostProcessor.OnPostprocessAllAssets 0.182ms
+			InputActionAssetPostprocessor.OnPostprocessAllAssets 0.179ms
+			TerrainToolbarOverlayPostProcessor.OnPostprocessAllAssets 0.130ms
+			ProjectSettingsPostprocessor.OnPostprocessAllAssets 0.105ms
+			AssetDatabaseCallbacks.OnPostprocessAllAssets 0.084ms
+	UnloadStreamsBegin: 1.516ms
+	PersistCurrentRevisions: 0.104ms
+	GenerateScriptTypeHashes: 1.086ms
+	GenerateScriptTypeSerializationHashes: 1.909ms
+	Untracked: 656.857ms
+
+Application.AssetDatabase Initial Refresh End
+Shader Hidden/ChartRasterizerHardware is not supported: GPU does not support conservative rasterization
+Shader Hidden/ChartRasterizerHardware is not supported: GPU does not support conservative rasterization
+Scanning for USB devices : 0.113ms
+Initializing Unity extensions:
+[MODES] ModeService[none].Initialize
+[MODES] ModeService[none].LoadModes
+[MODES] Loading mode Default (0) for mode-current-id-onedraw_2
+Unloading 31 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 7777 unused Assets / (2.4 MB). Loaded Objects now: 8643.
+Memory consumption went from 256.3 MB to 253.8 MB.
+Total: 8.799125 ms (FindLiveObjects: 0.269750 ms CreateObjectMapping: 1.756291 ms MarkObjects: 5.077584 ms  DeleteObjects: 1.695167 ms)
+
+[Project] Loading completed in 7.095 seconds
+	Project init time: 				6.358 seconds
+		Template init time: 		0.000 seconds
+		Package Manager init time: 		0.221 seconds
+		Asset Database init time: 		0.145 seconds
+		Global illumination init time: 	0.000 seconds
+		Assemblies load time: 			0.533 seconds
+		Unity extensions init time: 	0.027 seconds
+		Asset Database refresh time: 	5.194 seconds
+	Scene opening time: 			0.655 seconds
+##utp:{"type":"ProjectInfo","version":2,"phase":"Immediate","time":1784018359802,"processId":83711,"projectLoad":7.094979625000001,"projectInit":6.358323417,"templateInit":0.0,"packageManagerInit":0.221381708,"assetDatabaseInit":0.145396959,"globalIlluminationInit":0.000428792,"assembliesLoad":0.532616667,"unityExtensionsInit":0.027243416,"assetDatabaseRefresh":5.193986958,"sceneOpening":0.654847167}
+##utp:{"type":"EditorInfo","version":2,"phase":"Immediate","time":1784018359802,"processId":83711,"editorVersion":"6000.5.1f1 (0d9463e84828)","branch":"6000.5/staging","buildType":"Release","platform":"OSX"}
+[Licensing::Client] Successfully resolved entitlement details
+Running tests for ExecutionSettings with details:
+targetPlatform =
+playerHeartbeatTimeout = 600
+filters[0] =
+   Filter with settings:
+   testMode = EditMode
+   targetPlatform =
+   testNames = null
+   groupNames = null
+   categoryNames = null
+   assemblyNames = null
+ignoreTests = {}
+featureFlags = null
+
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/StackTrace.cs:35)
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+UnityEditor.TestTools.TestRunner.CommandLineTest.Executer:InitializeAndExecuteRun (string[]) (at ./Library/PackageCache/com.unity.test-framework@f3e6c9a02477/UnityEditor.TestRunner/CommandLineTest/Executer.cs:53)
+UnityEditor.TestTools.TestRunner.CommandLineTest.TestStarter:InitializeAndExecuteRun () (at ./Library/PackageCache/com.unity.test-framework@f3e6c9a02477/UnityEditor.TestRunner/CommandLineTest/TestStarter.cs:64)
+UnityEditor.EditorApplication:Internal_CallUpdateFunctions () (at /Users/bokken/build/output/unity/unity/Editor/Mono/EditorApplication.cs:403)
+
+(Filename: ./Library/PackageCache/com.unity.test-framework@f3e6c9a02477/UnityEditor.TestRunner/CommandLineTest/Executer.cs Line: 53)
+
+Worker ready: AssetImportWorkerHW0 0
+Start Indexing on Editor startup
+[Indexing] Starting Initial Indexing for Assets
+[UnityConnectServicesConfig] config is NOT valid, switching to default
+Created GICache directory at /Users/cqmizhangxiaoyu2/Library/Caches/com.unity3d.UnityEditor/GiCache. Took: 0.004s, timestamps: [7.096 - 7.100]
+[Licensing::Client] Successfully resolved entitlement details
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 1 unused Assets / (60.1 KB). Loaded Objects now: 8669.
+Memory consumption went from 228.8 MB to 228.8 MB.
+Total: 7.181917 ms (FindLiveObjects: 0.179334 ms CreateObjectMapping: 0.652667 ms MarkObjects: 6.324583 ms  DeleteObjects: 0.025167 ms)
+
+Executing IPrebuildSetup for: Unity.PerformanceTesting.Editor.TestRunBuilder.
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/StackTrace.cs:35)
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+UnityEditor.TestTools.TestRunner.TestRun.Tasks.BuildActionTaskBase`1/<ExecuteMethods>d__8<UnityEngine.TestTools.IPrebuildSetup>:MoveNext () (at ./Library/PackageCache/com.unity.test-framework@f3e6c9a02477/UnityEditor.TestRunner/TestRun/Tasks/BuildActionTaskBase.cs:48)
+UnityEditor.TestTools.TestRunner.TestRun.Tasks.BuildActionTaskBase`1/<Execute>d__7<UnityEngine.TestTools.IPrebuildSetup>:MoveNext () (at ./Library/PackageCache/com.unity.test-framework@f3e6c9a02477/UnityEditor.TestRunner/TestRun/Tasks/BuildActionTaskBase.cs:34)
+UnityEditor.TestTools.TestRunner.TestRun.TestJobRunner:ExecuteStep () (at ./Library/PackageCache/com.unity.test-framework@f3e6c9a02477/UnityEditor.TestRunner/TestRun/TestJobRunner.cs:194)
+UnityEditor.TestTools.TestRunner.TestRun.TestJobRunner:ExecuteCallback () (at ./Library/PackageCache/com.unity.test-framework@f3e6c9a02477/UnityEditor.TestRunner/TestRun/TestJobRunner.cs:129)
+UnityEditor.EditorApplication:Internal_CallUpdateFunctions () (at /Users/bokken/build/output/unity/unity/Editor/Mono/EditorApplication.cs:403)
+
+(Filename: ./Library/PackageCache/com.unity.test-framework@f3e6c9a02477/UnityEditor.TestRunner/TestRun/Tasks/BuildActionTaskBase.cs Line: 48)
+
+<b><color=#2EA3FF>MCP-FOR-UNITY</color></b>: [TestRunnerNoThrottle] Applied No Throttling for test run.
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/StackTrace.cs:35)
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+MCPForUnity.Editor.Helpers.McpLog:Info (string,bool) (at ./Library/PackageCache/com.coplaydev.unity-mcp@4ee62b097584/Editor/Helpers/McpLog.cs:40)
+MCPForUnity.Editor.Services.TestRunnerNoThrottle:ApplyNoThrottling () (at ./Library/PackageCache/com.coplaydev.unity-mcp@4ee62b097584/Editor/Services/TestRunnerNoThrottle.cs:101)
+MCPForUnity.Editor.Services.TestRunnerNoThrottle/TestCallbacks:RunStarted (UnityEditor.TestTools.TestRunner.Api.ITestAdaptor) (at ./Library/PackageCache/com.coplaydev.unity-mcp@4ee62b097584/Editor/Services/TestRunnerNoThrottle.cs:138)
+UnityEditor.TestTools.TestRunner.Api.CallbacksDelegator/<>c__DisplayClass7_0:<RunStarted>b__0 (UnityEditor.TestTools.TestRunner.Api.ICallbacks) (at ./Library/PackageCache/com.unity.test-framework@f3e6c9a02477/UnityEditor.TestRunner/Api/CallbacksDelegator.cs:42)
+UnityEditor.TestTools.TestRunner.Api.CallbacksDelegator:TryInvokeAllCallbacks (System.Action`1<UnityEditor.TestTools.TestRunner.Api.ICallbacks>) (at ./Library/PackageCache/com.unity.test-framework@f3e6c9a02477/UnityEditor.TestRunner/Api/CallbacksDelegator.cs:135)
+UnityEditor.TestTools.TestRunner.Api.CallbacksDelegator:RunStarted (NUnit.Framework.Interfaces.ITest) (at ./Library/PackageCache/com.unity.test-framework@f3e6c9a02477/UnityEditor.TestRunner/Api/CallbacksDelegator.cs:42)
+UnityEngine.Events.InvokableCall`1<NUnit.Framework.Interfaces.ITest>:Invoke (NUnit.Framework.Interfaces.ITest) (at /Users/bokken/build/output/unity/unity/Runtime/Export/UnityEvent/UnityEvent.cs:222)
+UnityEngine.Events.UnityEvent`1<NUnit.Framework.Interfaces.ITest>:Invoke (NUnit.Framework.Interfaces.ITest) (at /Users/bokken/build/output/unity/unity/artifacts/generated/UnityEvent/UnityEvent_1.cs:59)
+UnityEditor.TestTools.TestRunner.TestRun.Tasks.Events.RunStartedInvocationEvent/<Execute>d__0:MoveNext () (at ./Library/PackageCache/com.unity.test-framework@f3e6c9a02477/UnityEditor.TestRunner/TestRun/Tasks/Events/RunStartedInvocationEvent.cs:15)
+UnityEditor.TestTools.TestRunner.TestRun.TestJobRunner:ExecuteStep () (at ./Library/PackageCache/com.unity.test-framework@f3e6c9a02477/UnityEditor.TestRunner/TestRun/TestJobRunner.cs:194)
+UnityEditor.TestTools.TestRunner.TestRun.TestJobRunner:ExecuteCallback () (at ./Library/PackageCache/com.unity.test-framework@f3e6c9a02477/UnityEditor.TestRunner/TestRun/TestJobRunner.cs:129)
+UnityEditor.EditorApplication:Internal_CallUpdateFunctions () (at /Users/bokken/build/output/unity/unity/Editor/Mono/EditorApplication.cs:403)
+
+(Filename: ./Library/PackageCache/com.coplaydev.unity-mcp@4ee62b097584/Editor/Helpers/McpLog.cs Line: 40)
+
+Starting new worker id: 1 with log in /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Logs/AssetImportWorkerHW1.log
+[Worker0] Imported GUID: d1c46ccb760d06146a24b7e265e19566 - Path: Packages/com.unity.collab-proxy/Editor/WebApi/CredentialsResponse.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'd9adc27057c190bb3063c9808aec1c97') in 0.038803291 seconds
+[Worker0] Imported GUID: 8b1d1407c22e5844698f18df6a9f1781 - Path: Packages/com.unity.collab-proxy/Editor/_Deprecated/CollabPlugin.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '85fa5c6d10447db5e30165c43864c963') in 0.00953725 seconds
+[Worker0] Imported GUID: 6483fd05e8bf42a47aee5e11dbf6db8a - Path: Packages/com.unity.collab-proxy/Editor/Views/LaunchDiffOperations.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '1b673d6d0be9cb650824aacbfe9fdb7f') in 0.009347584 seconds
+[Worker0] Imported GUID: dda6504e0e7d670488e2fee625f7da02 - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/buttonhome.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '7c2d844329163cb727dee3065f75781c') in 0.03146275 seconds
+[Worker0] Imported GUID: f09eae8c0ea04254b90c5386a034a225 - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/buttonssosigningoogle.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '0a8aa4a854016de9dda5f66b370d2936') in 0.012660458 seconds
+[Worker0] Imported GUID: 792f2bf6e6d57db4f93253a322673bc7 - Path: Packages/com.unity.collab-proxy/Editor/UVCSToolbar/ToolbarController.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '13cc492176e803ffc45b58f1b643dede') in 0.00923725 seconds
+[Worker0] Imported GUID: be2e0deab40f1478a99038fcbc19219d - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/ArrowCaretRight@2x.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '448ab8157bc41e63bc0f9ad7bdb4e502') in 0.016034542 seconds
+[Worker0] Imported GUID: 17b36165d09634a48bf5a0e4bb27f4bd - Path: Packages/com.unity.collab-proxy/Editor/UnityInternals/Unity.CollabProxy.Editor.asmdef - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'c1b44b0861c89af011c06a890c6703b2') in 0.0103445 seconds
+[Worker0] Imported GUID: 5bbb26813ae33c64d8937661111fb3c6 - Path: Packages/com.unity.collab-proxy/Editor/UVCSToolbar/UVCSToolbarButtonData.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '8fa0c6823dbe24af7360ea75da1f1c28') in 0.009981166 seconds
+[Worker0] Imported GUID: 1c16a099b53fd4712b2d4cdb8fecd9f8 - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/ArrowCaretLeft.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'a71e6c3a24d17db9829aaf67e123d11f') in 0.012327834 seconds
+[Worker0] Imported GUID: 3a4d62c64067bca4cbbd6f7fcad2e190 - Path: Packages/com.unity.collab-proxy/Editor/Views/DateFilter.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '8eb9f247cddd839d8ce315db0146597d') in 0.009754667 seconds
+[Worker0] Imported GUID: ee8ce5cd9c0883f4182b5cfd43cfd7fe - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/buttonssosigninunity@2x.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '20b8a14c6eaea4b15d1be01809a4997d') in 0.011694958 seconds
+[Worker0] Imported GUID: ee61022c90cce0b49bb0e459b11ec2ee - Path: Packages/com.unity.collab-proxy/Editor/UI/UnityPlasticGuiMessage.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '7bafb441032c58889a94d74e2ccea1b0') in 0.009809125 seconds
+[Worker0] Imported GUID: 63860c9f5f91cbb4ea813deafa1327a0 - Path: Packages/com.unity.collab-proxy/Editor/WebApi/SubscriptionDetailsResponse.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '82efebe26bb40631a96759ff6c51f3c2') in 0.009971875 seconds
+[Worker0] Imported GUID: a55fcf87e0ee4d5a83d10fab9c9407fe - Path: Packages/com.unity.collab-proxy/Editor/Views/SelectNewCodeReviewBehavior.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '82d3a0c1eef2a7415ac893ad242a1d98') in 0.009996375 seconds
+[Worker0] Imported GUID: ad0c4895dbf7aeb459c1d136884a7998 - Path: Packages/com.unity.collab-proxy/Editor/UI/UnityMenuItem.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '12fc1a1709d1b55f46bf495225860fc0') in 0.009457667 seconds
+[Worker0] Imported GUID: 3f227b28cf424364489edd67fce697bc - Path: Packages/com.unity.collab-proxy/Editor/AssetOverlays/Cache/AssetStatusCache.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '542d09e5da0527d70fda7c7d93b752a7') in 0.010545833 seconds
+[Worker0] Imported GUID: 421fea03dd9d4ac089ca279ee87c573b - Path: Packages/com.unity.collab-proxy/Editor/Views/EnableSwitchAndShelveFeatureDialog.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '94ab6d6e62b50b807798576ed87b35ca') in 0.009564541 seconds
+[Worker0] Imported GUID: 278463514ca704271b228ad4ddc32e6b - Path: Packages/com.unity.collab-proxy/Editor/UI/ThreadWaiterRegistry.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '77e360ec9a347c530691f60f7f28e8c3') in 0.009913125 seconds
+[Worker0] Imported GUID: 678db227e4ffec949980d309c0532b08 - Path: Packages/com.unity.collab-proxy/Editor/AssetMenu/Dialogs/CheckinDialog.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'c4be699342e1f91879e316f0029c1c45') in 0.009802833 seconds
+[Worker0] Imported GUID: d24e7e0b75e1a244bb9687d6fd4315ef - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/buttonssosigninemail.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '6d27a0ff3be4176d3fb6ae1b10785044') in 0.012934667 seconds
+[Worker0] Imported GUID: 08dbb8d51633f2f4bab9912fbce3e247 - Path: Packages/com.unity.collab-proxy/Editor/Views/DownloadPlasticExeDialog.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '1d4c8bc0ea86307398cd8d3d1da76bf7') in 0.011546792 seconds
+[Worker0] Imported GUID: 90a94ffd2947aab4d9da12dee0175a7a - Path: Packages/com.unity.collab-proxy/Editor/UI/UnityPlasticTimer.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '5aecc3ee838cbb4452fa3e0ce8eefb19') in 0.009693375 seconds
+[Worker0] Imported GUID: 9c963b5d17c74314eb7105e71377cdb8 - Path: Packages/com.unity.collab-proxy/Editor/AssetOverlays/Cache/BuildPathDictionary.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'a1d122ffca992b389ee3b905582b7f21') in 0.009782291 seconds
+[Worker0] Imported GUID: 9e56b150f059e654b911faff982eacf8 - Path: Packages/com.unity.collab-proxy/Editor/_Deprecated/README.md - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '5f7fb0c846763799fcc1dac4acfeec36') in 0.010840917 seconds
+[Worker0] Imported GUID: 8a6ec1abdba94827a2f174dae33832d2 - Path: Packages/com.unity.collab-proxy/Editor/Views/ShelvePendingChangesDialog.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'acd504629a929be724558b07e0fe0314') in 0.011121583 seconds
+[Worker0] Imported GUID: 217d1c918b0005940b43c6099bbad952 - Path: Packages/com.unity.collab-proxy/Editor/UnityInternals/UVCSToolbarBoostrap_Legacy.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '243cf1397c1762a47445594418d74d8e') in 0.011118583 seconds
+[Worker0] Imported GUID: f3cad5fee9fee5945b13e7e3518afb1b - Path: Packages/com.unity.collab-proxy/Lib/Editor/Unity.Plastic.Antlr3.Runtime.dll - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'ac18b83a8d2650a670f91913af8cdcf7') in 0.011821708 seconds
+[Worker0] Imported GUID: a9acb575a60d7e045ad7fadd3e3e137d - Path: Packages/com.unity.collab-proxy/Editor/AssetOverlays/Cache/RemoteStatusCache.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'edc611d177a3bb8c18dc6f4adca97162') in 0.010036 seconds
+[Worker0] Imported GUID: 1b769279d1324508b645aea1a29bae8c - Path: Packages/com.unity.collab-proxy/Editor/UnityInternals/UVCSToolbarButton_Legacy.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '5e33222a370b8cf15a037387ddb81640') in 0.013731042 seconds
+[Worker0] Imported GUID: 2815db9162500574ba59b498f10c3eff - Path: Packages/com.unity.collab-proxy/Lib/Editor/unityplastic.dll - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '7fdbe755f9d6c871175dfee62dc10375') in 0.015138083 seconds
+[Worker0] Imported GUID: e5fb93667cf08524f94b12181dbe3546 - Path: Packages/com.unity.collab-proxy/Lib/Editor/Unity.Plastic.Newtonsoft.Json.dll - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '7b05ee1265ea288a38a0fe670ed7edce') in 0.010726958 seconds
+[Worker0] Imported GUID: 226459a134855504d841db6b61519d2b - Path: Packages/com.unity.collab-proxy/Editor/AssetOverlays/Cache/LocalStatusCache.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '8cb8dfd3b5693f6529079617ddb95fef') in 0.014385959 seconds
+[Worker0] Imported GUID: 992242bf8b23e574bbc95a128844c481 - Path: Packages/com.unity.collab-proxy/Lib/Editor/FileSystemWatcherLicense.txt - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'bc5d410a2ca82a8cf5ebc04214fa476f') in 0.011772625 seconds
+[Worker0] Imported GUID: 2ab28149ef514131a59b505412f5bb87 - Path: Packages/com.unity.collab-proxy/Editor/Views/SummaryTextArea.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '91e4ddd8aca7c63a233e2b291075b6c7') in 0.009799459 seconds
+[Worker0] Imported GUID: e57a1c5d3e1c8844eb3893fed51c9727 - Path: Packages/com.unity.collab-proxy/Editor/WebApi/WebRestApiClient.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'e3379eefd60ba27bdf59dc62af5c3132') in 0.010061208 seconds
+[Worker0] Imported GUID: 83e946775d0516c4aba77860a60ed6e6 - Path: Packages/com.unity.collab-proxy/Editor/UI/UnityThreadWaiter.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'ec5b523674389a109766808bea1f9815') in 0.010198666 seconds
+[Worker0] Imported GUID: 5717b3e29bf6a2b48be2cf9d0707c505 - Path: Packages/com.unity.collab-proxy/Editor/UVCSToolbar/UVCSToolbar.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '8714bcdba2a65ccd7c3d4cfdd2d59807') in 0.010607417 seconds
+[Worker0] Imported GUID: 3086d66a563317b40a20a20da2c64ac0 - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/d_buttonssosigninemail.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '3acb6bad8d95ceb200cde85aaee26420') in 0.01144175 seconds
+[Worker0] Imported GUID: 09fca212d621e844a8a0f11a9ac6c1bc - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/d_buttonhome.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '38e4c834bd1d649a53a39e42ee8cfb64') in 0.012850583 seconds
+[Worker0] Imported GUID: 144aa74618b85974a9a50f612c2fa8fd - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/d_buttonssosigninemail@2x.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '945742aa943cf62ff6a51cf5a0e87a90') in 0.011592584 seconds
+[Worker0] Imported GUID: 3f65802f2a170a145bd30ab3801b8d80 - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/d_iconclipboard.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'e4e65b14ebea015220b88fbbcf63f078') in 0.01189825 seconds
+[Worker0] Imported GUID: b76c20add7d3d4f79afcbafeaa12e974 - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/d_iconchangesets@2x.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '569e91e0b0841acf37cec29f7b03fc15') in 0.01225125 seconds
+[Worker0] Imported GUID: c115023c6a2060d4da6a7684bd40c5c0 - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/d_iconclipboard@2x.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '521ac4171c2d42b52cadd287ee0b64c9') in 0.011959458 seconds
+[Worker0] Imported GUID: b3e01e80c420d4ac9a425a6abf8c99ec - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/d_ArrowCaretLeft@2x.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '580d2aa45fd9ebbba763d58596def6c2') in 0.013551334 seconds
+[Worker0] Imported GUID: 874d8401331ede14087e8d8d486ddda6 - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/d_iconbranches@2x.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '7fbb76aebb27a361591b7a95a5d7816e') in 0.011467417 seconds
+[Worker0] Imported GUID: 9b76c79563c3a274aa48b0dbdf009693 - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/d_iconbrex@2x.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'df9e11fc46c01548de19413c51571a2a') in 0.011556667 seconds
+[Worker0] Imported GUID: 78de972b7bcb2424e8560a8c310a6d10 - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/d_exclusionrule@2x.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '7de7d3437192733b75fc8d2c6eac9903') in 0.011184667 seconds
+[Worker0] Imported GUID: e1e64e28e7631534d8408668bcb82502 - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/d_iconlabel.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '86d345f5591cc7723b73d33d00494e6f') in 0.011679333 seconds
+[Worker0] Imported GUID: f38e832edef3ab648bcc2ab5dfa2906d - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/d_iconinfobellnotification.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '361728d445d586010bd9e3a210bd2ef9') in 0.014701708 seconds
+[Worker0] Imported GUID: 3de8a0634e55df8499c88204001cb0dd - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/d_icondeletedremoteoverlay.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '52f64391244f93503382137997f8a608') in 0.011913209 seconds
+[Worker0] Imported GUID: 3cf8ae89579fd29479f4269d09600e16 - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/d_iconinfobellnotification@2x.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '9d2f2fb206dba437afe62f31496d47b8') in 0.011554125 seconds
+[Worker0] Imported GUID: 3943479b9e27741a78451950ae5841f6 - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/d_ArrowCaretRight@2x.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '1db9f948646fb510a964cb5fda0fe251') in 0.01183875 seconds
+[Worker0] Imported GUID: 2b9bf8ec5d54fe249ac9e20979ccd42c - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/d_iconinviteusers@2x.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'e3600543dab1609e8aad61a1211aa9af') in 0.012146542 seconds
+[Worker0] Imported GUID: 612c5e166a121e3449dad067fbdc37a4 - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/d_iconbranches.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '5bd4d7b3aa4dedd86d4473df8689eed5') in 0.012254 seconds
+[Worker0] Imported GUID: 056ee72c467a4e24d87541d42839ca72 - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/d_iconconflictresolvedoverlay.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'cd40d13a5b8cfc61072f1e754a091a3c') in 0.011443708 seconds
+[Worker0] Imported GUID: a3ced8f7044b9de4787602a9e9b20ea7 - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/d_iconconflictedoverlay@2x.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '37db237b7162a8c9a46b4344e8bdf901') in 0.011628334 seconds
+[Worker0] Imported GUID: f6ea7eb320af940f6ade67ef3befef89 - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/d_iconincomingchangesview.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '08ab1051d8eec3ce559206fa28bc6ee6') in 0.012149708 seconds
+[Worker0] Imported GUID: 8b32b34c806b4de4cb7f04b3344b6966 - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/d_iconclouddriveview.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '9e34bd10c7984a9934c0e792e5bce4b5') in 0.011727709 seconds
+[Worker0] Imported GUID: ce435fe40bff4da41aadc577ebfb27d7 - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/d_iconlabel@2x.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'd10653b9f70ea15316c04e70967a193c') in 0.012631958 seconds
+[Worker0] Imported GUID: 2cfbf6619eb047545a425e8a31732c83 - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/d_icondeletedremoteoverlay@2x.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '31214667b8cc80d546522b3f7e98ef6a') in 0.011049708 seconds
+[Worker0] Imported GUID: 881798b77426a8f47b533dcc4767e9e5 - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/d_iconconflicted.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '59fe2c599b761daab23b269d88e24954') in 0.011426542 seconds
+[Worker0] Imported GUID: c41381829109cd84786a392ea6e3db60 - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/d_iconadd@2x.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'a2bdbd599894f91ec5591b83b62641fc') in 0.010950667 seconds
+[Worker0] Imported GUID: 079f562959995344baea4cd40a9ecea6 - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/d_iconignoredoverlay@2x.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '056faf360de01d580e156a0069807417') in 0.011350625 seconds
+[Worker0] Imported GUID: a36e66e044a5fd94ca570351917c6bda - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/d_iconedit@2x.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '6def15cf60f13ba23291f6bcd912c91d') in 0.012061625 seconds
+[Worker0] Imported GUID: 0c6a2a64ca9f9c946a7dbbd1674cf5bd - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/d_iconaddedlocal.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '0a46eb391e132975bc21352be476defa') in 0.011300375 seconds
+[Worker0] Imported GUID: bb1928aff4fd4cf44af1f629dc14ef9b - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/d_iconcheckedoutlocaloverlay.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '80de94198a63a69618cac777ed6d0523') in 0.011225875 seconds
+[Worker0] Imported GUID: 4a231ba0e81e63849a8f985c228e8acd - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/d_iconconflictresolvedoverlay@2x.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'a189dc391b52433707d715174fa6825c') in 0.011088458 seconds
+[Worker0] Imported GUID: 43fe0cd0da17e47fc9e56f08a2415f65 - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/d_iconincomingchangesview@2x.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '606189ee44faa52eaf591f0ae52ce879') in 0.011922958 seconds
+[Worker0] Imported GUID: 73d124bf77e463c45942d14136745d9f - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/d_iconaddedoverlay.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '5201af4c2dc6e259ecf0acc5b78d1ba0') in 0.011315041 seconds
+[Worker0] Imported GUID: 4da398eacd0c045bebf576a9f11339b0 - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/d_iconchangesets.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'f1fcf555a528cb05fa3fc2677900ae1d') in 0.012147292 seconds
+[Worker0] Imported GUID: e2c5ee46f6b0148afbe40d935c70faee - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/d_ArrowCaretLeft.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '94e724708404e41751ddc36c84e0f431') in 0.011197792 seconds
+[Worker0] Imported GUID: 3094096a150921c409ef35579f2ada0f - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/d_iconinviteusers.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '2dc0a377e132ecac1b5dcf1358ed133d') in 0.011705792 seconds
+[Worker0] Imported GUID: b6f88350c63b24a4abdb197bf2e86d7a - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/d_buttonhome@2x.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '403372fb6f45dbebf2da57b98f4ef72a') in 0.011858125 seconds
+[Worker0] Imported GUID: b0e7ed213bccf484e89c4261a7e16f66 - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/d_iconedit.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '1a31c0c276587baf86df5a9c7cee6b6e') in 0.01175825 seconds
+[Worker0] Imported GUID: 59eedc7f076ac5749993ec0e94b87af3 - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/d_iconclouddriveview@2x.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '1bcdace549adb78b20e56dae240bbd0a') in 0.012606375 seconds
+[Worker0] Imported GUID: 5de67bf0a3c601f4bab93b4fd3314ab1 - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/d_hideversioncontrol@2x.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '3717119bfa78254c9e7d89afaba59b0b') in 0.0109755 seconds
+[Worker0] Imported GUID: 267a89f787a621e4290fbff7a5442750 - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/d_iconbranch@2x.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '856eca98f0f37ab823117451eca8e6f5') in 0.012220416 seconds
+[Worker0] Imported GUID: c1516142c0a669b42aecce30a3459017 - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/d_iconbranch.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'ae807c277a07bbde86f1dcade6443b7d') in 0.012730375 seconds
+[Worker0] Imported GUID: d44f9c7a4044e1845b5b3627ba32fb10 - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/d_iconbrex.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '44d78e8bbae5a47b9cecac917a47c139') in 0.011341584 seconds
+[Worker0] Imported GUID: d616c78aaf225437199c9ac8c4f2197b - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/d_exclusionrule.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '6eec272e7d3bc47b38ac174fdc708912') in 0.012120542 seconds
+[Worker0] Imported GUID: a892bcc7ae1871447926b3c44d158763 - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/d_iconconflictedoverlay.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'c39d3ef638c8f13ec5369a4387abcdb1') in 0.010959875 seconds
+[Worker0] Imported GUID: 4da274d970a82a943ae3979e7833f3dd - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/d_icondeletedlocaloverlay.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '2b4fc835a561587c650c1c4e899e670d') in 0.010473125 seconds
+[Worker0] Imported GUID: c48b8bcda45b63442a7a7c7244c84635 - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/d_iconcurrentbranch@2x.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'bfba582197af91483af1c608eb86adbb') in 0.011054833 seconds
+[Worker0] Imported GUID: 6768dd39d3740af429fb2d88f53390c2 - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/d_iconignoredoverlay.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '3c0c49199c3c5601fe3a290a87d79035') in 0.011364 seconds
+[Worker0] Imported GUID: 864f64164beae6141b39879e1b6f4031 - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/d_iconadd.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'c681f6738a9a8808fdcbe26e54a96dd7') in 0.011879042 seconds
+[Worker0] Imported GUID: 0525793900d728a42936791a8a6de63b - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/d_iconclosebutton@2x.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'ebd86a1b278269757b7dae553befc0fc') in 0.010722666 seconds
+[Worker0] Imported GUID: 50d1ea51731fa43db9ce0ec4fe5f0b07 - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/d_iconhistory@2x.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'a81de9d6ba9ddeddc636cc327ffe9aaa') in 0.012646083 seconds
+[Worker0] Imported GUID: 8219bbb48767b46e7b1588dad7f021aa - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/d_iconhistory.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'ce013a24162edfe54625098e6ef71a4c') in 0.013779875 seconds
+[Worker0] Imported GUID: f4d4cddc7d40e49e18d2253e661465b2 - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/d_ArrowCaretRight.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'e0b8694ac342d69fd827df5da5e37c82') in 0.012282875 seconds
+Worker ready: AssetImportWorkerHW1 1
+[Worker0] Imported GUID: 0a02e43184c7e9c4c9c59b601100b705 - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/d_iconcurrentbranch.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'ab6b5527c8861a2b2c3be5f2d269de34') in 0.013045958 seconds
+[Worker0] Imported GUID: a6fbd5a181bc51e42a61a73fe8d727c8 - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/d_iconaddedoverlay@2x.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'ec51ac65d4ced90338c48942c9ffb737') in 0.014347 seconds
+[Worker0] Imported GUID: 9aebd705574f9e642aef1e5f59b3e4d8 - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/d_iconemptygravatar.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '8b1e1db942d7de24ff9c19cffbdc4b0b') in 0.081454334 seconds
+[Worker0] Imported GUID: 92b204cca46037444ab18ba6701f86f7 - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/d_icondeletedlocaloverlay@2x.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '21fdef0f7d852e3515e6e5a9c197366f') in 0.017931709 seconds
+[Worker0] Imported GUID: 02800fb9cff14da47a04572790384d8b - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/d_iconaddedlocal@2x.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '2dbc67a089b635dac61eb91c50cef18e') in 0.010878583 seconds
+[Worker0] Imported GUID: 626b9cddb29049e4cac50cd87b419945 - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/d_icondeletedremote@2x.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'a897ba931b81fa6b5412ddfec8929b4a') in 0.012360958 seconds
+[Worker0] Imported GUID: 9cadde7a0d5f9024ab3f2cd5f6a740d6 - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/d_iconclosebutton.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '8a92b3e6133d22131bea3ad7ef946920') in 0.013124667 seconds
+[Worker0] Imported GUID: 65f0e363b74cf5845ab8c3fbc14f39ac - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/d_iconconflicted@2x.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '1c7f047c4a8b48fb8c897d25ff89d42b') in 0.013012125 seconds
+[Worker0] Imported GUID: ec597fbbebec64e4f8725c31ce52fdb7 - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/d_hideversioncontrol.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'b593684bbcb815e6278bd8124b1d5512') in 0.012569583 seconds
+[Worker0] Imported GUID: 0ac55f9f886d827408c102bdf33c5ff7 - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/d_iconemptygravatar@2x.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '2f5a7948dbcacc2aeac3824402e8728d') in 0.011149416 seconds
+[Worker0] Imported GUID: 23e66f7264c74424889342127f229577 - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/d_icondeletedremote.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'e8e2ce8eb4cd59c4d184523219838ef9') in 0.011320542 seconds
+[Worker0] Imported GUID: 8d98ab6168c3e91439339f1908b8fe97 - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/d_iconcheckedoutlocaloverlay@2x.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'b2d125898fc6e05a1f5fabcdbb28495e') in 0.011591209 seconds
+[Worker0] Imported GUID: 897c3a3f5c4038345a7143573bbb4a40 - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/d_step2.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '6c92962f6c07b42390e6d3d7174a1da7') in 0.030456916 seconds
+[Worker0] Imported GUID: eb56188e070e442c4b93b8856b5c1ab0 - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/d_iconprivateoverlay@2x.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'e22b4a89714152c5e6407e94b4b23e74') in 0.020088833 seconds
+[Worker0] Imported GUID: 6975ee4c1f40caf4da8dd733ee2cfeaf - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/d_secondarytabclose.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'b2600bc8834a4c954eb108eb132c5ee0') in 0.012661625 seconds
+[Worker0] Imported GUID: ba2e8a5b6413ebc46b4f580903cb911d - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/d_iconlockretained.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'b4bf32ea20546a56903243e2148de5dc') in 0.011830416 seconds
+[Worker0] Imported GUID: e64bde76852ee8247b40b50ef8880632 - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/d_iconplasticnotifypendingchanges.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '2b5ad6a8bd9ec4d1990150a0f21c552a') in 0.012096292 seconds
+[Worker0] Imported GUID: f31d2c855644aad4cb2030bce12859f6 - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/d_iconplasticnotifyincoming.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '8492ed7649643465486155c2e2edcfc7') in 0.012772667 seconds
+[Worker0] Imported GUID: 1046ed65e6aaffb4391378f6d08d6c14 - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/d_iconlockedremoteoverlay.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'e9d6ee938ef6cea0e0ad5a48e6ca0a02') in 0.016126666 seconds
+[Worker0] Imported GUID: be423a54b981d38428de82ad12534629 - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/d_stepok.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '787e4b8862f7eb2b8ee064776d0234a2') in 0.012966083 seconds
+[Worker0] Imported GUID: 4aa4898734bfdbc4dbd410de4141e533 - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/d_iconpendingchanges.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '4b065b7027c4c87bae8fb179933cf9e2') in 0.013673042 seconds
+[Worker0] Imported GUID: cdb88fdb0cf46b244a667edaff21c7df - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/d_step2@2x.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '165bdc43af4bdc1675b23dfe56789543') in 0.016300708 seconds
+[Worker0] Imported GUID: 4a4dfcc81b0e1214fbbd0003c8ab4070 - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/d_iconrepository.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'eb27afe39920ca8b8d0898136e2d7a28') in 0.015285334 seconds
+[Worker0] Imported GUID: c9ed6d6ea2f9657409bfa068d4846139 - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/d_step3@2x.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'ca5b2d5a8db059fd01766675f76cff47') in 0.011478167 seconds
+[Worker0] Imported GUID: 54024d7bafa404eb39097aa14df8a5cb - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/d_iconplasticnotifypendingchangesandincoming@2x.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'a5b4c2a8458a8cad07c6b534a7091fcc') in 0.016200042 seconds
+[Worker0] Imported GUID: 691dc543ff5b9ca44bf846657ba04161 - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/d_iconundo.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '5066d489224f32419c2e85f564e90bba') in 0.01284625 seconds
+[Worker0] Imported GUID: 9264df9de832d7f4bb90a1d0c31d8343 - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/d_iconshelve@2x.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '4bf803e55cb9b3a774b69fd137652d9e') in 0.013868958 seconds
+[Worker0] Imported GUID: 6d6088174bb906b49ad8428526ee337b - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/d_iconundo@2x.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '4ed4f0e8a2c7171f07e2be68be27970d') in 0.01206 seconds
+[Worker0] Imported GUID: 3494dc956dfd7174abc07060940a2848 - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/d_stepok@2x.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '128bc26d78788328581c9d2751af75b2') in 0.014418125 seconds
+[Worker0] Imported GUID: 55747841a2e3b47dab36dc8d5e0dc4df - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/d_iconlock@2x.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '1f059091db2165496198861fb48fb32c') in 0.01870675 seconds
+[Worker0] Imported GUID: c34cd61ed96ff9a40a54e159467c5155 - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/d_iconretainedoverlay@2x.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'c0ae05aad36af5d9a90ab4e1b985f0b3') in 0.014928958 seconds
+[Worker0] Imported GUID: 73d87bc3a27171144985c68fbbd54380 - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/d_iconzoomin@2x.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '88ab4ea81cb351c73051c6c8319db5fb') in 0.013361958 seconds
+[Worker0] Imported GUID: 3168140d6f409d0448447f18568d9482 - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/d_iconplasticview@2x.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '868a7548e0b49cf3d04aa5530882a386') in 0.013323834 seconds
+[Worker0] Imported GUID: 292bae633fda01e41b8847fad37495c2 - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/d_iconshelve.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '3a613ace61b2a0510d0e4961a084c77a') in 0.012406125 seconds
+[Worker0] Imported GUID: 43735cb4df8a4aa49b379e83bd9d77b8 - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/d_iconzoomout.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'ff76c5984c2108865167ef514c03ce1a') in 0.015227958 seconds
+[Worker0] Imported GUID: 19b06b801c204604290761788cf6e125 - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/d_iconpackageupdateavailable@2x.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '5cb2bee087766444e1df71c427b159f8') in 0.013964833 seconds
+[Worker0] Imported GUID: 11d4f7dd8fc834c8e92cab84d5137828 - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/d_iconpendingchangesview.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '393c9b929c6a7e13a0cc3b262c77cf88') in 0.01314075 seconds
+[Worker0] Imported GUID: 38236a82ff44aaa4b972248479d5f970 - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/d_step1.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'cd12a2175bd43112e4ab6fbf3148be8f') in 0.01312525 seconds
+[Worker0] Imported GUID: 7ee48c5fba4919649a8a6094cbead669 - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/d_loading@2x.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '017a2c2de4e443d3e39dcaa38517bc8f') in 0.013374667 seconds
+[Worker0] Imported GUID: 23743f0c0ed1e6546808a5d645c2a6a5 - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/d_iconplasticnotifyconflict@2x.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '38fbb75ebb344bdf150e23c170d204b9') in 0.012185125 seconds
+[Worker0] Imported GUID: 5544f39aea350784ba1dd4ecc285b777 - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/d_iconzoomin.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '3d18529aa01cbcccce577e260cc7e029') in 0.01327225 seconds
+[Worker0] Imported GUID: c5fc116b3271b5947808130b2212cd60 - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/d_iconplasticnotifyincoming@2x.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'd569f45723d4e69afe7afd77c33ed826') in 0.011831084 seconds
+[Worker0] Imported GUID: 9aa4348290784b2468144a97eb15d8d7 - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/d_secondarytabclosehover@2x.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'd3fbcc2e50a97430778c7c867783cef8') in 0.013710542 seconds
+[Worker0] Imported GUID: 998e4aae0494244578bee3771d57801c - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/d_iconmergeview.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'cdd47548915f5f6a1d13ed4902b4d2c0') in 0.015123417 seconds
+[Worker0] Imported GUID: ae53a7884da90e94eb5dfeab594b746c - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/d_iconlockedlocaloverlay@2x.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'a82d6a3e755be53954385851851492fd') in 0.012760917 seconds
+[Worker0] Imported GUID: 20647d71003f8e34685b1972b30dbd2b - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/d_iconlockretained@2x.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '5a19ed74fa609d174f057b1e8795cea7') in 0.013300625 seconds
+[Worker0] Imported GUID: 71c45f80bffdb9145ad2c456254c862e - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/d_iconlockedlocaloverlay.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '7508ce5eb4d2c8a88c145f0bf82b55fc') in 0.011787209 seconds
+[Worker0] Imported GUID: f82dfc5fc3c5a8f4080a3550427019c8 - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/d_iconoutofsync@2x.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '875445c24eebc7bea6f587f87d325d19') in 0.011833958 seconds
+[Worker0] Imported GUID: f7adc828ed70a485db62c459bdf09525 - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/d_iconlock.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '7fc336357dc6895505b10fc9f9a972ad') in 0.011655209 seconds
+[Worker0] Imported GUID: 68302c8c48e3cee4aad72dbbf7894781 - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/d_iconpendingchanges@2x.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'd2b5e969c56ab2e6e1fd8267c924538d') in 0.013634458 seconds
+[Worker0] Imported GUID: 16e2437bc79d04055b65b968f4eba9c0 - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/d_iconpendingchangesview@2x.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '1bfe2e3e3f05ae85142aabf8e4e0d22e') in 0.012687666 seconds
+[Worker0] Imported GUID: 05ba7199286b24c6ca7441e2c454f5c3 - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/d_inclusionrule.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'f2c9419b7523d76b98b89610f89d1623') in 0.013805125 seconds
+[Worker0] Imported GUID: 4d7e6e570e9d65a4c9a994783a0652e2 - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/d_iconoutofsyncoverlay@2x.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '7d74ed6fff61598228248644ce8bd399') in 0.013311375 seconds
+[Worker0] Imported GUID: 46930b20180b59e46b73494adf53abbb - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/d_step3.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'c154402ca6c28b070406b09d64a39c7c') in 0.015484333 seconds
+[Worker0] Imported GUID: 602b72d4617c3694aa94419fc1b68e04 - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/d_refresh@2x.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '73a5cada43b3cd211af6c0aa7576008a') in 0.025834958 seconds
+[Worker0] Imported GUID: 6a9d211bea1bc4a429d86cbb2d0b0a3e - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/d_secondarytabclosehover.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'ba33ee36d36ec37e4a44bfddf03585b6') in 0.023236667 seconds
+[Worker0] Imported GUID: f0c047e73e3b41341822a9e31da81877 - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/d_iconplasticnotifypendingchanges@2x.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'dcbecde080c6736fa0516252045588cd') in 0.023060667 seconds
+[Worker0] Imported GUID: 1dc16508006061742a802767b556accc - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/d_iconpackageupdateavailable.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '33418f3ed20ff2088310d1c355e78b91') in 0.020782167 seconds
+[Worker0] Imported GUID: d58e94bfb1bac774dbb8ca9c2597ef2e - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/d_loading.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '1d37bf4cf42eb9e04e2c35aad7a98871') in 0.02293125 seconds
+[Worker0] Imported GUID: 0e80bd0b4a8196f46acf73711b9505ec - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/d_iconoutofsync.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '0dfbd15d0e4a009717bb30150deb186e') in 0.019029625 seconds
+[Worker0] Imported GUID: 5bc0112babc1a49bdbd1f6e5d9c13c7b - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/d_iconmergeview@2x.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'bba1a3f871486efbbc03eddf2ba969e9') in 0.016129375 seconds
+[Worker0] Imported GUID: 2bb4e96f5d0b02c468932d665a015c54 - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/d_iconlockedremoteoverlay@2x.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '40581837e3476e522f37ac56a8e84d36') in 0.018314334 seconds
+[Worker0] Imported GUID: aa56ed15cc1254489866c414e4d3c7ba - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/d_iconmovedoverlay.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'bfd7d16cc9e0a70475ad5819791f0d83') in 0.014163125 seconds
+[Worker0] Imported GUID: 320a7c2756434dc43b9ecca2585168b2 - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/d_iconzoomout@2x.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'cb26948ea6d5667b10ae686cef0b4b41') in 0.030267958 seconds
+[Worker0] Imported GUID: f180c6addffab449cb6897ba994abec5 - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/d_iconplasticnotifypendingchangesandincoming.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '31ba1ee54b56b3a8e1fbf4bc33bc8c99') in 0.016402542 seconds
+[Worker0] Imported GUID: d83d26a46db2b504fbcfa6f2aae590b6 - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/d_iconretainedoverlay.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '846e3f7d61efdbcaf5ca06b2c013d13c') in 0.016530833 seconds
+[Worker0] Imported GUID: bcc1ec3ffeb1c46f7abd19daa3e05f49 - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/d_inclusionrule@2x.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '4e91884e63d85d75c711f804f8cdc1b2') in 0.017468916 seconds
+[Worker0] Imported GUID: 92b8c447daf4d4b41a0ec148d1091261 - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/d_refresh.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'fefb72b5441fbfdec9a46a91de4ad10e') in 0.020794833 seconds
+[Worker0] Imported GUID: c8a69ecdf54ac8e4b873466605de27ff - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/d_step1@2x.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '8b24ee247c2da466e2d74284f9f9fb37') in 0.016806583 seconds
+[Worker0] Imported GUID: 519d97e745e55f041b609f3666cbc037 - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/d_iconplasticview.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '3ea0a976cfb99b9d70c9931290e3719f') in 0.014637333 seconds
+[Worker0] Imported GUID: 4a652ffb5816840768619c35903cb1fa - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/d_iconprivateoverlay.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '3fc3fe669d5e6e7bbe95b25b44ee6472') in 0.013991958 seconds
+[Worker0] Imported GUID: dc633de6e6e7415448c7568418239a9d - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/d_iconoutofsyncoverlay.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '6b02ca89a30b811e13bcda881efcdbca') in 0.013231833 seconds
+[Worker0] Imported GUID: 8ebb93c64d7a141569a153a9d4fe9ae2 - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/exclusionrule.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'd4c7aa5a28e0c0d50a1ee6e33e382f98') in 0.013245125 seconds
+[Worker0] Imported GUID: 36564eb85f1bdf2409df96325231cb6c - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/d_iconrepository@2x.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'c25768dad625ffff5f67baa68631b61f') in 0.015372167 seconds
+[Worker0] Imported GUID: 51582ae5ea51fa14996791a550f89473 - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/d_iconplasticnotifyconflict.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '7ec9974f94d68d8f38527bfd66d89b7c') in 0.016964208 seconds
+[Worker0] Imported GUID: e27bb56b83f03421880673ee2b951102 - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/d_iconmovedoverlay@2x.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'd0911432f738051733580fbf86cbc4ea') in 0.017823416 seconds
+[Worker0] Imported GUID: 4cffcba66879d7a4a9da8554709e9825 - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/iconlockedremoteoverlay.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '84c00009989137606f6cb09620a25462') in 0.01499625 seconds
+[Worker0] Imported GUID: ab97695f01bc84c4b93e8440531417e7 - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/iconbrex@2x.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'e43178f9f138061403cfb5964461c7f0') in 0.013288083 seconds
+[Worker0] Imported GUID: bac66973cba57b842965eb95154fba7e - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/iconlockretained.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '14d44689c1614b602e594c30ee2ee413') in 0.0130245 seconds
+[Worker0] Imported GUID: 59d17703fae374169bc28ce046728590 - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/iconchangesets@2x.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'f9d7bf9e789c46a598a78c7a6bf916db') in 0.014093709 seconds
+[Worker0] Imported GUID: 0ff35d4ec6d381941bdbe1fb4b6dbceb - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/iconclipboard@2x.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'f79d5e84fd0873df698b659ae501fa4d') in 0.013786583 seconds
+[Worker0] Imported GUID: f95f697d66d238446b1ab717def09945 - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/iconconflicted@2x.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'a19d5f0c6985003985e01f4ed81441f6') in 0.015173041 seconds
+[Worker0] Imported GUID: b85a4b2ec6433d04895612d791edc260 - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/icondeletedremote.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '5db696de7b0d247513b6e1d92ec794cf') in 0.0130385 seconds
+[Worker0] Imported GUID: ead32eef98d0a664fb5b025c4bf013d4 - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/iconcurrentbranch@2x.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'a62e8899cfe651ecdb674b83f4871f5b') in 0.015378084 seconds
+[Worker0] Imported GUID: fbfdd7d489e0bd54f946ebc8e19db8bd - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/hideversioncontrol@2x.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '24a726e69679d3bb0c18a14dc60122df') in 0.012908458 seconds
+[Worker0] Imported GUID: b43651fb085b38445ade3f9de3ab0636 - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/iconinviteusers@2x.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '8cbf3665e210cf8c85a3207ec911b845') in 0.01597275 seconds
+[Worker0] Imported GUID: da545229eea36164d8b8cba2f75a1143 - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/iconemptygravatar@2x.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '166ba5e201fd6f187e2de5bdbf1d6b1b') in 0.013202458 seconds
+[Worker0] Imported GUID: 0e3e607c04fbd4d4090157ea31abb634 - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/iconedit@2x.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'd857c115faa73943e566de5839b323e2') in 0.012974958 seconds
+[Worker0] Imported GUID: 6d3f95684dd634b18aa9ab45b3e06cfd - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/iconlock.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '21365c4ee6cd047f8e782fab2782e9db') in 0.012581833 seconds
+[Worker0] Imported GUID: f42a69ee6b34c4a8eb57e17686d6ab67 - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/iconhistory.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'fa4c9abb36e3cfe0f4ac30e0eaa0d8f6') in 0.014453833 seconds
+[Worker0] Imported GUID: a57d0bc93481bd844af3c2236db044f2 - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/iconaddedoverlay.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '51e29c23369c50c0e8a05f6c0c3191bb') in 0.013568959 seconds
+[Worker0] Imported GUID: efa87fc6a7693ac48844726c5391e3ab - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/iconadd@2x.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'eef75ef48c5c3f494a36a759971a8fb0') in 0.012860667 seconds
+[Worker0] Imported GUID: 309b1d5a294fd6c43ae9cf77656c1852 - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/iconconflictresolvedoverlay@2x.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '77e9f6863e72c58fbc308970ce0b44b4') in 0.012810542 seconds
+[Worker0] Imported GUID: 91976e8b9ce0f0341838727acd55621c - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/iconemptygravatar.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '10d79ab4923ab6238b7a996b492309a1') in 0.0138455 seconds
+[Worker0] Imported GUID: e45389a8a97044d4caf408f252370632 - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/iconbranches@2x.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '7a0956eaf6a285d505f7fb49d844af3d') in 0.013643959 seconds
+[Worker0] Imported GUID: 13527793884104b46b7446fd7464c3ed - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/iconclosebutton.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'c4e497e491bce8b1850d3f49d3831c2b') in 0.013681958 seconds
+[Worker0] Imported GUID: 08c1bc2a008284ed6987b801a480e64a - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/iconhistory@2x.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '6383990fb686afb86b2586dab176715a') in 0.013989875 seconds
+[Worker0] Imported GUID: 9a1ab8af8c446204e989a90f18305caf - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/iconaddedlocal.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '41b917c2ae87fb008c17e342d832873b') in 0.013023958 seconds
+[Worker0] Imported GUID: 1844d3d99090a0b43b60a5f1ff821467 - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/iconlockretained@2x.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '6470d657d5184c6df476dcc873557bfd') in 0.013453916 seconds
+[Worker0] Imported GUID: c8396bd7e257d6b4b8d1d72fdb7a2684 - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/iconlabel@2x.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '9a798c37966da0d6de2c63ecdde7a4b3') in 0.013014166 seconds
+[Worker0] Imported GUID: b528c1b33a65cf94ea74f830b54c9acb - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/iconlockedlocaloverlay@2x.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '49ad583282f011d9874cf9a3051cb6aa') in 0.013371834 seconds
+[Worker0] Imported GUID: f73a7d8758d7be04588b15637d94b5a8 - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/iconlockedremoteoverlay@2x.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '0522d1ce4cf39e59c6b5c4a62ee06a1e') in 0.012693625 seconds
+[Worker0] Imported GUID: d1c88f142eee55b4eb2b2cfd7b3624ce - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/iconconflicted.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '20d8908dadded37eaeecf7e1ae5514d1') in 0.013591375 seconds
+[Worker0] Imported GUID: fcbeb36f6ab89fb498ccbbc3bc2ef51c - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/iconignoredoverlay@2x.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'bf79e2e62b5b22f468d5bc52d462f581') in 0.013074042 seconds
+[Worker0] Imported GUID: fea4bd4d5cc294ea59798fa81207b6d9 - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/iconclosebutton@2x.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '58e82c10544662e6ea964a6290009315') in 0.012767042 seconds
+[Worker0] Imported GUID: 120bf54dff785a0429b068b814e9c12a - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/iconmergelink.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'aedb47011f7db48e2a6f1f92066aa8fb') in 0.012397042 seconds
+[Worker0] Imported GUID: 3cbf8d5b4d364724baa11fed1344d029 - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/iconedit.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '073702715bf7c8c8e2a02a2ae474565f') in 0.013576375 seconds
+[Worker0] Imported GUID: a67b58d6cddcd4345b1e001340de5a76 - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/iconaddedlocal@2x.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'cd5c65bfc2a48f308dbfe9fb38fb7b32') in 0.013194375 seconds
+[Worker0] Imported GUID: c5d82e0b4fbcf42539ceffc642e631ce - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/iconchangesets.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'eca3650feb7e898569151ec5241fbc66') in 0.012931583 seconds
+[Worker0] Imported GUID: 981b1c6358520f245a69c070270eca96 - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/iconbranch.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '3a384ae9e3881abd829881a927528ddc') in 0.013935209 seconds
+[Worker0] Imported GUID: 99d1cf315f771ae48ab6f41c99a8d7cb - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/iconadd.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'b89fe803bf8df79c8c734f61650cf089') in 0.013215542 seconds
+[Worker0] Imported GUID: 3999034958d54364da380a8839a11050 - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/iconcheckedoutlocaloverlay@2x.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '326ef4617bd8c837ae0cbb018d034328') in 0.012887042 seconds
+[Worker0] Imported GUID: d5c3277b1dbad9448b46c2ec87a2cef8 - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/icondeletedremoteoverlay@2x.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '86d86e3f761aed2962adc790d34d4747') in 0.012309292 seconds
+[Worker0] Imported GUID: 42540fa3b3cef1340bebdf077d0e2030 - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/iconlabel.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '484f5f2e09ba538c9b104a5d0e2f84fa') in 0.012457083 seconds
+[Worker0] Imported GUID: 259fe6e49c74eb143a9fc88f6bd3f050 - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/iconclouddriveview@2x.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '722b260f979ff512c74ad052f970a296') in 0.011821084 seconds
+[Worker0] Imported GUID: 0a08fa9ec51507e488400cee024073a7 - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/hideversioncontrol.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '1f4e5abff71665601870f47863a1f10b') in 0.01316925 seconds
+[Worker0] Imported GUID: 52a825037e457964f9c91a99d4522f14 - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/iconignoredoverlay.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'fd2b08483e3d3209510e4a8e1cfa3bfa') in 0.012519667 seconds
+[Worker0] Imported GUID: 830164d71b9d60c40b606822b957d10b - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/iconinfobellnotification@2x.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '7d8a70ae6a1044357248c0a86669e947') in 0.012025875 seconds
+[Worker0] Imported GUID: 092347b12f348a6439e85218cd291ea2 - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/icondeletedremoteoverlay.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'fbc5d016d289da161164dc16bddbf303') in 0.012447416 seconds
+[Worker0] Imported GUID: a6219d44b6fc910449f7c3fee45db5c5 - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/iconbranches.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'ce78e2867a39e97051cc69fd2816fecf') in 0.012627167 seconds
+[Worker0] Imported GUID: 40e23f4f2fddc724db517c63f4d8990d - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/iconinviteusers.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '895e67f810020ceb2cf98a3f49c420cc') in 0.01270175 seconds
+[Worker0] Imported GUID: ba96945b6a1b743579931a87e98041fe - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/iconlock@2x.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '669621b5df9936c88772313ff8842d76') in 0.016219958 seconds
+[Worker0] Imported GUID: a3e491f99ea3ad74f8731ca93e84c497 - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/icondeletedlocaloverlay@2x.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'd22280f95851b0c8f310d3748bdd8b7a') in 0.013259417 seconds
+[Worker0] Imported GUID: 229870d327005574fb840c2dd8050ec6 - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/iconclouddriveview.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '49440f256792e5dfcd8f598608d06360') in 0.013008459 seconds
+[Worker0] Imported GUID: 87480bc179519ff4da25283c61c2573b - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/iconbrex.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '02faf1b7b5e61e560088036dd2f18fbf') in 0.012662125 seconds
+[Worker0] Imported GUID: c677bcd9111fb4514aa1a56844e9006f - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/iconincomingchangesview.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '09b4d0e33f307696d684a95e521335ce') in 0.0122525 seconds
+[Worker0] Imported GUID: 425970578f3342a43b40545d1ac8a25d - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/iconbranch@2x.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '53ccf7dca8247dc742d5a88d042ecd49') in 0.012046208 seconds
+[Worker1] Imported GUID: cd221d2235472c94491e607ae42942dd - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/icondeletedlocaloverlay.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '484ef5135f98d3c8adac584f94019511') in 0.073245083 seconds
+[Worker0] Imported GUID: 1318ab8bf649dcf43b922511fa5e155b - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/iconconflictresolvedoverlay.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'b5e27b1c3cbdf36fba6da055ccb52d24') in 0.012011916 seconds
+[Worker1] Imported GUID: b6073d723b6ef3f429aa7e1d0f3db44f - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/iconlockedlocaloverlay.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'fff3560c253f86c26d5df80ac403736f') in 0.013732625 seconds
+[Worker0] Imported GUID: d30af1e364af1fc48be2ff2dcb0d4724 - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/iconcurrentbranch.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '59086d974f198d6c24d3870629ef4ea9') in 0.012821167 seconds
+[Worker0] Imported GUID: 70e3ce8ad01f39248a3ea97a35bcf238 - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/icondeletedremote@2x.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '78347f02e740533d7e1e5269c90c1273') in 0.012381583 seconds
+[Worker1] Imported GUID: eb591dd22aae343468cc4dd017c550d0 - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/iconcheckedoutlocaloverlay.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '1b6555293bff42532f7adc92ad05f3ae') in 0.012738667 seconds
+[Worker0] Imported GUID: 8d91317e8f7610f41a30fcb9c0d99196 - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/iconclipboard.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '47e00576ca0246c8f671d7938074c3e4') in 0.012797208 seconds
+[Worker1] Imported GUID: 5679a74364f6b4440ab7e7aed55cd95e - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/iconconflictedoverlay@2x.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '59b8b6eda568dd4f876ebe1ff5a1d0d8') in 0.012744167 seconds
+[Worker0] Imported GUID: 4c635bf514a064e8d9688218d937fe77 - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/exclusionrule@2x.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '73a24e956a15c8753e27c29559a1e829') in 0.012803708 seconds
+[Worker1] Imported GUID: ca9343b72095cb846be99d76d069dfc0 - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/iconinfobellnotification.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '3ceae0dc022476f900d06e2199bb8a40') in 0.012668333 seconds
+[Worker1] Imported GUID: b8263c2f8ead9485180cfeaa9bde0999 - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/iconincomingchangesview@2x.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '22d5681c3649f5ecad37045357a79e26') in 0.012263708 seconds
+[Worker0] Imported GUID: 503a763cc33a6854c86d736c5dd2515c - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/iconconflictedoverlay.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '06e6089f3072c0c6569f18d078a2a58e') in 0.012356625 seconds
+[Worker1] Imported GUID: 74ef721fef79c44489d4e3edb0ab0c01 - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/iconaddedoverlay@2x.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '266ec3a390d12738d2671be4d6301aec') in 0.014129959 seconds
+[Worker1] Imported GUID: 20894f77802694ca2b9afb02a7388138 - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/iconprivateoverlay@2x.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '5df184fb4ae915a1eb4a7e4deea0a206') in 0.012966167 seconds
+[Worker0] Imported GUID: a01087ce1455c7e4c8f2410c26afcfd2 - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/iconretainedoverlay@2x.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '264926db9b0788e4af706f5b57c0fbf7') in 0.012910542 seconds
+[Worker1] Imported GUID: 232fe04bebe5e904bb0568e685bd32a6 - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/iconpendingchanges@2x.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'a66c33b6be9d06adc5eeae405e3f3e93') in 0.012806333 seconds
+[Worker0] Imported GUID: 8fac55fff4ce5fa40a7b2efefc0e617a - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/secondarytabclosehover.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '9c95d3d6d127fd742791b8a9ecbcfaa1') in 0.0132645 seconds
+[Worker0] Imported GUID: c6b1bcaa3f4767141acd747384dbb276 - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/loading.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '76d8a3956fe58081a4a37bc5f2a84c2a') in 0.012101709 seconds
+[Worker1] Imported GUID: 0229db2477529f049aa3683cfba9d23b - Path: Packages/com.unity.collab-proxy/Editor/Assets/Layouts/SignInWithEmailPanel.uxml - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '6b86a761921e6dc110ba30b7a8c8a838') in 0.022200042 seconds
+[Worker0] Imported GUID: 569cb7c654ca242978cdc7428c2881a3 - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/iconmergeview.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '9f5e50ec673bc52d1195e3c05a336543') in 0.014470708 seconds
+[Worker1] Imported GUID: e73eb87336d0d0846a48f288248f52eb - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/iconretainedoverlay.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'c241a750b90edb9526988056d02e19fe') in 0.012678833 seconds
+[Worker0] Imported GUID: 636d03a8834e3ed4cac3a1cb4b82deaf - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/iconoutofsync.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'cc31656122302667aca3158dd3378617') in 0.012601125 seconds
+[Worker1] Imported GUID: e9cc02852345307449379a9a877679da - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/iconpackageupdateavailable.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '31582af8261dc7a9a749bac205d54ca2') in 0.013056834 seconds
+[Worker0] Imported GUID: 67e680da36c60e245ab0176daa656da5 - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/iconpackageupdateavailable@2x.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'eb150d30f653c7ac3da74b57f43701b5') in 0.011870875 seconds
+[Worker1] Imported GUID: b1b37c2733b68854ba004ff712ef849f - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/iconshelve.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'aed9e662610b25a9ccd3a77316d11ff0') in 0.012441792 seconds
+[Worker0] Imported GUID: 0247a919add89e04aad63b6657886901 - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/iconzoomin@2x.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '3feaeeafc668b66ead62f8f970066dae') in 0.011375709 seconds
+[Worker1] Imported GUID: d4780dc1205c7c7478c970d8c61d24e8 - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/stepok.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '3b047fc376f8f5c7d839b3c583d1dd4b') in 0.011917167 seconds
+[Worker1] Imported GUID: 3da0c7cf51d8e4b40a5af55a4ca63e4e - Path: Packages/com.unity.collab-proxy/Editor/Assets/Layouts/DownloadPlasticExeDialog.uxml - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '33a5db0fe67f6a3aadbd274019d8aa55') in 0.013572583 seconds
+[Worker1] Imported GUID: 6e0a54826ffc3ee46b0aa3e1c1575a69 - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/iconplasticnotifyconflict@2x.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '288c2a31eb00597136e00e0e26de23d0') in 0.0193415 seconds
+[Worker0] Imported GUID: d0a8e201e79e1f441bdf295aef957220 - Path: Packages/com.unity.collab-proxy/Editor/Assets/Layouts/TabView.uxml - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '770d3b11f79b9606e11e4df4cc1a0eae') in 0.050502541 seconds
+[Worker1] Imported GUID: 0727168a534af3641a8e744834225825 - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/iconzoomout.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '0f2126e2542695cac3bcca094f3b3caf') in 0.014831708 seconds
+[Worker0] Imported GUID: 96967b3953faf48f6885b45aed76490f - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/iconplasticnotifypendingchangesandincoming.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'caa20e519587ec1609e3f57fb5ecec14') in 0.012879667 seconds
+[Worker1] Imported GUID: ed64f3a17f2ede646be21ed6edc9161a - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/iconrepository.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '7eddb74b912319394972680e2ef85e00') in 0.016972208 seconds
+[Worker0] Imported GUID: 58f6d5934224b4bb0a67d67e45a6654b - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/iconpendingchangesview@2x.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '92656fcef134375543889adda3d6413a') in 0.012633791 seconds
+[Worker1] Imported GUID: 5dbc069eb79bd4d43840847264d6d956 - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/loading@2x.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '893bc1a596891cfac32830d1d082ec96') in 0.0130575 seconds
+[Worker0] Imported GUID: eb1c900f0d4a3ee42a9a49630bf88a12 - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/iconplasticnotifypendingchanges@2x.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '9b6e6b57db04218fd5ff278f5bc83298') in 0.012761292 seconds
+[Worker0] Imported GUID: affeade9874cf2347abb155e8d0db4d8 - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/step1@2x.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '79e7eddbdeb8565f4463448d436f10d9') in 0.01280375 seconds
+[Worker1] Imported GUID: 84f696eaa6e195043b22f318aa59b058 - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/iconrepository@2x.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'b7792dac999244edc73802095ffcf2ba') in 0.0133305 seconds
+[Worker0] Imported GUID: cd0b17b71a5c498428ee91dee8a78a88 - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/step2.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '20d29c8da6d0120761398353277ca7a0') in 0.01365225 seconds
+[Worker1] Imported GUID: 9a9269fb6330f4ae1964f9eb1c203537 - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/iconplasticnotifypendingchangesandincoming@2x.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '1452595f4526f9f397af160a4e176234') in 0.013673375 seconds
+[Worker1] Imported GUID: ae869fe6797f4454cbbf417d87ff637c - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/iconplasticnotifyincoming@2x.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '3329548b4caa12ceed69f0f068cd94ce') in 0.013621791 seconds
+[Worker0] Imported GUID: 0dfbb2b6ddcdd254da80e3418498b3a6 - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/iconundo@2x.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'ff3d1688cff705b4c46ca7c2ca5bb395') in 0.014556333 seconds
+[Worker1] Imported GUID: d7094718bdac022428dd29244922d06b - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/iconoutofsync@2x.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '84d98fe97021f70742f559ab9de59b5a') in 0.013938833 seconds
+[Worker0] Imported GUID: 94fe868620119564f9474f40cd6145aa - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/iconpressedclosebutton.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '5613913bc56b79d5606f7f8f3a070ffb') in 0.014757209 seconds
+[Worker1] Imported GUID: 97a4e2b6ae08b1140a5ba9e22953e029 - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/iconplasticview@2x.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'ab42318d8150698ec34926caf7ac0b58') in 0.014236833 seconds
+[Worker0] Imported GUID: 1e6c9635b80f973488d8335a081c905f - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/iconplasticnotifyincoming.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '1304e1ff26a4c14eb07ceeefbe55139b') in 0.0133135 seconds
+[Worker0] Imported GUID: 3728580c149181a44b359e89f6edacae - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/iconoutofsyncoverlay@2x.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'b62da13938bddc57c0e88e35cfad8906') in 0.012616291 seconds
+[Worker1] Imported GUID: f3e2797165e71b443bae6264899b89d6 - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/iconplasticnotifypendingchanges.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '62507d8ba842061fd69c7891883559ec') in 0.013344583 seconds
+[Worker0] Imported GUID: feccc3dff22272744a267246ae760a73 - Path: Packages/com.unity.collab-proxy/Editor/Assets/Layouts/ProgressControlsForDialogs.uxml - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'ea33cfd78cf88933622f8c04366b5ddd') in 0.013716208 seconds
+[Worker1] Imported GUID: c7bee029a895b44cfb249d7cd63d13af - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/iconmovedoverlay@2x.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'f731e8efe7a6dcc2653787c44e295f1b') in 0.013683667 seconds
+[Worker1] Imported GUID: 26d3a583da6079145a52a8bef4beb6c5 - Path: Packages/com.unity.collab-proxy/Editor/Assets/Layouts/TeamEditionConfigurationWindow.uxml - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '7883a4ed601bb840030b6cbaa6f7abc9') in 0.013667625 seconds
+[Worker0] Imported GUID: 76a05d2ec901a8b49a064fe0b0674ba7 - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/iconpendingchanges.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '8f570279d56e0bbadb5e933461668089') in 0.013800167 seconds
+[Worker0] Imported GUID: 913c727eecab25c489fa2adbad9c9ab8 - Path: Packages/com.unity.collab-proxy/Editor/Assets/Layouts/WaitingSignInPanel.uxml - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'ed57bcf9087c2eea6c289d6687489946') in 0.015240834 seconds
+[Worker1] Imported GUID: 1e71b422b557b1247aaf914bb6e9c0c5 - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/iconzoomout@2x.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '2b83fd8f6e3f907f6b886b0ab02ba341') in 0.015620791 seconds
+[Worker0] Imported GUID: 0029170d14ce6c04c9f45c22cdae5559 - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/step2@2x.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '764e2ad73f03709e5c5336ed9663b75b') in 0.013965791 seconds
+[Worker1] Imported GUID: ca92e845b7b4b41da8e081ca8c0ed3b8 - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/iconmergeview@2x.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '4e185aabbfbf31e2dffa8d898a13cbfc') in 0.014740167 seconds
+[Worker0] Imported GUID: 6f6a4c6bd7cdc654d9d91f7de72afcb6 - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/refresh.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'ab5e8cdc4461cec15d04c62b59426c10') in 0.014568666 seconds
+[Worker1] Imported GUID: 43411f399f49b42eb9a7157481e8747c - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/inclusionrule@2x.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '5c4b937d667928e274243bab6945cafd') in 0.013716167 seconds
+[Worker1] Imported GUID: d63fb8a8a3f06407e8e712a29a3499c0 - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/iconmovedoverlay.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'f842a2258571b9137fe732f5e35a608f') in 0.015408542 seconds
+[Worker0] Imported GUID: 034d3052cb4a54f028bf55f9f9115d3c - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/iconpendingchangesview.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '6826eb346a25b7d30dd345fab8cafb04') in 0.015833667 seconds
+[Worker1] Imported GUID: a916ed6819efd014588f58e3cfc48196 - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/iconplasticnotifyconflict.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '85cbc786ed82fb6188dd79cd8af24819') in 0.01473275 seconds
+[Worker0] Imported GUID: e4517bb2f521d99439ec9981a44a87ec - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/iconoutofsyncoverlay.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'e3f00279b6db85c8dc3febed103490b5') in 0.0170875 seconds
+[Worker1] Imported GUID: 9ce84ff0fdeb13d4a83f077d075dd9a5 - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/step1.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '6f209558ae49727345f4fc55a2e3e955') in 0.016895958 seconds
+[Worker0] Imported GUID: b6420407edc75d04f89d57eb2fcc314b - Path: Packages/com.unity.collab-proxy/Editor/Assets/Layouts/OrganizationPanel.uxml - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '6667d338db04fd50fb7b29b605259810') in 0.017402584 seconds
+[Worker1] Imported GUID: 36e6970b84831434a9eac79abd03700b - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/step3@2x.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'efae49b253cd2a5a2c60dee264422628') in 0.014179792 seconds
+[Worker0] Imported GUID: dcb2ee37925b97e438ae244996d81a55 - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/iconplasticview.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '2b647c3923ebfb808ae4585802640546') in 0.014484792 seconds
+[Worker0] Imported GUID: 69899ed144c8eea4baea48b858b37746 - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/step3.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'd8c05ead50877d5a5f623afddad14a14') in 0.014852209 seconds
+[Worker1] Imported GUID: 98773313eabe35543bfdbf542ccea271 - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/iconundo.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '12f2fc0ebf7c1e6f51f747bfab397e4e') in 0.01784 seconds
+[Worker1] Imported GUID: be340a165cb9c8d4cb50f1deeb51d4ea - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/stepok@2x.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '2ae933871f5bd3d600e8a1e543c91156') in 0.014875792 seconds
+[Worker0] Imported GUID: 03cefa94d5aa9d74993fb2138af9d607 - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/secondarytabclose.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '40fb9129c2ea59f6d05dda2910a8f759') in 0.015036875 seconds
+[Worker0] Imported GUID: 59571f82a0dc1a14da606dc0df6f8ea7 - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/refresh@2x.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'ed9623f7e714c33c5b5c086dffd7de07') in 0.014775167 seconds
+[Worker1] Imported GUID: bf9a3e542f66af64a80a6631aa93e516 - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/iconzoomin.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '7469eaeab8cb23091f7177274c1a49f1') in 0.014668375 seconds
+[Worker0] Imported GUID: 18b097dd2d10fb442a321314f4541401 - Path: Packages/com.unity.collab-proxy/Editor/Assets/Layouts/SignInPanel.uxml - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'b0ca408ae85499cec48f528589f02d71') in 0.015712334 seconds
+[Worker1] Imported GUID: 695fbddd7238dc94c8f102d9191c2886 - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/iconshelve@2x.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '15bc504f055ae367597cc25575f21f7c') in 0.017137625 seconds
+[Worker0] Imported GUID: 556a2f3b046024d4c9621c1b4be5f0c1 - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/xlink.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '189ff4ceb14e1d1da7dc330e9a5f37af') in 0.014535792 seconds
+[Worker1] Imported GUID: 63387a17b866347b390227e10a2b1f2e - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/inclusionrule.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '9c0eb1ca208bbdebf5a510af34856df3') in 0.014179708 seconds
+[Worker0] Imported GUID: d69b2503b822f4c3a95386e4bc0c8668 - Path: Packages/com.unity.collab-proxy/Editor/Assets/Images/iconprivateoverlay.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'd8c8338bca5feff7a00f7c651b952f6a') in 0.016336583 seconds
+<b><color=#2EA3FF>MCP-FOR-UNITY</color></b>: [TestRunnerNoThrottle] Restored Interaction Mode after test run.
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/StackTrace.cs:35)
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+MCPForUnity.Editor.Helpers.McpLog:Info (string,bool) (at ./Library/PackageCache/com.coplaydev.unity-mcp@4ee62b097584/Editor/Helpers/McpLog.cs:40)
+MCPForUnity.Editor.Services.TestRunnerNoThrottle:RestoreThrottling () (at ./Library/PackageCache/com.coplaydev.unity-mcp@4ee62b097584/Editor/Services/TestRunnerNoThrottle.cs:114)
+MCPForUnity.Editor.Services.TestRunnerNoThrottle/TestCallbacks:RunFinished (UnityEditor.TestTools.TestRunner.Api.ITestResultAdaptor) (at ./Library/PackageCache/com.coplaydev.unity-mcp@4ee62b097584/Editor/Services/TestRunnerNoThrottle.cs:143)
+UnityEditor.TestTools.TestRunner.Api.CallbacksDelegator/<>c__DisplayClass9_0:<RunFinished>b__0 (UnityEditor.TestTools.TestRunner.Api.ICallbacks) (at ./Library/PackageCache/com.unity.test-framework@f3e6c9a02477/UnityEditor.TestRunner/Api/CallbacksDelegator.cs:55)
+UnityEditor.TestTools.TestRunner.Api.CallbacksDelegator:TryInvokeAllCallbacks (System.Action`1<UnityEditor.TestTools.TestRunner.Api.ICallbacks>) (at ./Library/PackageCache/com.unity.test-framework@f3e6c9a02477/UnityEditor.TestRunner/Api/CallbacksDelegator.cs:135)
+UnityEditor.TestTools.TestRunner.Api.CallbacksDelegator:RunFinished (NUnit.Framework.Interfaces.ITestResult) (at ./Library/PackageCache/com.unity.test-framework@f3e6c9a02477/UnityEditor.TestRunner/Api/CallbacksDelegator.cs:55)
+UnityEngine.Events.InvokableCall`1<NUnit.Framework.Interfaces.ITestResult>:Invoke (NUnit.Framework.Interfaces.ITestResult) (at /Users/bokken/build/output/unity/unity/Runtime/Export/UnityEvent/UnityEvent.cs:222)
+UnityEngine.Events.UnityEvent`1<NUnit.Framework.Interfaces.ITestResult>:Invoke (NUnit.Framework.Interfaces.ITestResult) (at /Users/bokken/build/output/unity/unity/artifacts/generated/UnityEvent/UnityEvent_1.cs:59)
+UnityEditor.TestTools.TestRunner.TestRun.Tasks.Events.RunFinishedInvocationEvent/<Execute>d__0:MoveNext () (at ./Library/PackageCache/com.unity.test-framework@f3e6c9a02477/UnityEditor.TestRunner/TestRun/Tasks/Events/RunFinishedInvocationEvent.cs:24)
+UnityEditor.TestTools.TestRunner.TestRun.TestJobRunner:ExecuteStep () (at ./Library/PackageCache/com.unity.test-framework@f3e6c9a02477/UnityEditor.TestRunner/TestRun/TestJobRunner.cs:194)
+UnityEditor.TestTools.TestRunner.TestRun.TestJobRunner:ExecuteCallback () (at ./Library/PackageCache/com.unity.test-framework@f3e6c9a02477/UnityEditor.TestRunner/TestRun/TestJobRunner.cs:129)
+UnityEditor.EditorApplication:Internal_CallUpdateFunctions () (at /Users/bokken/build/output/unity/unity/Editor/Mono/EditorApplication.cs:403)
+
+(Filename: ./Library/PackageCache/com.coplaydev.unity-mcp@4ee62b097584/Editor/Helpers/McpLog.cs Line: 40)
+
+Saving results to: /Users/cqmizhangxiaoyu2/Library/Application Support/DefaultCompany/onedraw_2/TestResults.xml
+[Worker0] Imported GUID: c53c624438663f74ab67fbdf8869ae18 - Path: Packages/com.unity.collab-proxy/Editor/AssetsUtils/Processor/UVCSAssetModificationProcessor.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'ee21615c3032deb1b2c8f2eb80c6632a') in 0.012407917 seconds
+[Worker1] Imported GUID: 90945345530e7174eb4f0575a0bec0bf - Path: Packages/com.unity.collab-proxy/Editor/Assets/Styles/WaitingSignInPanel.uss - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '3fcde0aace27b3489e0499c35e10a6ab') in 0.015073375 seconds
+[Worker0] Imported GUID: a8bf7716389c4dfe840c4e747033debc - Path: Packages/com.unity.collab-proxy/Editor/CloudDrive/CreateWorkspace/CollaboratorsListView.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '1391a59fa0f3a8a55fe2ec8f57aecf88') in 0.013231708 seconds
+[Worker1] Imported GUID: e000057c8aef84d6d81a07b18c13db7e - Path: Packages/com.unity.collab-proxy/Editor/CodeEditor/Document/NewLineFinder.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '3abc4f25108dfa7e381fb220a0a1c41e') in 0.014044834 seconds
+[Worker1] Imported GUID: aba34a0d0084f48f19b98ac1c78902b5 - Path: Packages/com.unity.collab-proxy/Editor/CodeEditor/Document/DocumentLine.LineNode.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '404306f6ac44717f5e84c8fe206edead') in 0.011393209 seconds
+[Worker0] Imported GUID: c75b18825b89d4e2485182ab4ea5ddda - Path: Packages/com.unity.collab-proxy/Editor/CodeEditor/Document/OffsetChangeMap.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '0238ecedf7e053cbf918bd9f126488da') in 0.01450625 seconds
+Saving results to: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/evals/T650/full-editmode-results.xml
+[Worker0] Imported GUID: c0819a043e0c64a4780ca8ab3c311d07 - Path: Packages/com.unity.collab-proxy/Editor/CloudDrive/Welcome/WelcomeView.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'af2f63cf734d699302d759ca1da9b99e') in 0.012068166 seconds
+[Worker1] Imported GUID: b77071fd36e946809b40d79e6ba9fe8a - Path: Packages/com.unity.collab-proxy/Editor/AssetsUtils/Processor/UnityCloudProjectLinkMonitor.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '491852dd83255a577bf5deaf5a926bee') in 0.012401208 seconds
+[Worker1] Imported GUID: 85086b32b8552416fbdc73ec5d384b63 - Path: Packages/com.unity.collab-proxy/Editor/CodeEditor/Document/IUndoableOperation.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'cd6077c52b234f18761b4f815de6a0d4') in 0.012337041 seconds
+[Worker0] Imported GUID: 45287be3ac9444c08ec6fa91021df881 - Path: Packages/com.unity.collab-proxy/Editor/CodeEditor/Editing/Caret.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'cd0271dce9e4ac21acbf2b397c04ef17') in 0.012374875 seconds
+Executing IPostBuildCleanup for: Unity.PerformanceTesting.Editor.TestRunBuilder.
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/StackTrace.cs:35)
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+UnityEditor.TestTools.TestRunner.TestRun.Tasks.BuildActionTaskBase`1/<ExecuteMethods>d__8<UnityEngine.TestTools.IPostBuildCleanup>:MoveNext () (at ./Library/PackageCache/com.unity.test-framework@f3e6c9a02477/UnityEditor.TestRunner/TestRun/Tasks/BuildActionTaskBase.cs:48)
+UnityEditor.TestTools.TestRunner.TestRun.Tasks.BuildActionTaskBase`1/<Execute>d__7<UnityEngine.TestTools.IPostBuildCleanup>:MoveNext () (at ./Library/PackageCache/com.unity.test-framework@f3e6c9a02477/UnityEditor.TestRunner/TestRun/Tasks/BuildActionTaskBase.cs:34)
+UnityEditor.TestTools.TestRunner.TestRun.TestJobRunner:ExecuteStep () (at ./Library/PackageCache/com.unity.test-framework@f3e6c9a02477/UnityEditor.TestRunner/TestRun/TestJobRunner.cs:194)
+UnityEditor.TestTools.TestRunner.TestRun.TestJobRunner:ExecuteCallback () (at ./Library/PackageCache/com.unity.test-framework@f3e6c9a02477/UnityEditor.TestRunner/TestRun/TestJobRunner.cs:129)
+UnityEditor.EditorApplication:Internal_CallUpdateFunctions () (at /Users/bokken/build/output/unity/unity/Editor/Mono/EditorApplication.cs:403)
+
+(Filename: ./Library/PackageCache/com.unity.test-framework@f3e6c9a02477/UnityEditor.TestRunner/TestRun/Tasks/BuildActionTaskBase.cs Line: 48)
+
+[Worker1] Imported GUID: 3073089003718474ab284d743790fbb2 - Path: Packages/com.unity.collab-proxy/Editor/Assets/Styles/DownloadPlasticExeDialog.uss - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '514c2351b9f1a7341630f46732a51482') in 0.013840916 seconds
+[Worker0] Imported GUID: fdc8bc956a06142009aad60c2e917c9b - Path: Packages/com.unity.collab-proxy/Editor/CodeEditor/Document/UndoStack.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'd5d2b8d17faaec9d74961a0def0b8987') in 0.014358042 seconds
+Unloading 96 Unused Serialized files (Serialized files now loaded: 0)
+[Worker1] Imported GUID: 5f7e5d5ce5c2fd6418dddab8e9586141 - Path: Packages/com.unity.collab-proxy/Editor/CodeEditor/Editing/CaretNavigationCommandHandler.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '2f618fee231e4139463e0bc143fb9231') in 0.015264375 seconds
+[Worker0] Imported GUID: dc2789440232fe940b427760def51c66 - Path: Packages/com.unity.collab-proxy/Editor/CloudDrive/ShareWorkspace/ShareWorkspaceDialog.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '4019524fe8d7a2d91ddc80b6c23a9dda') in 0.015082917 seconds
+Unloading 254 unused Assets / (291.6 KB). Loaded Objects now: 8738.
+Memory consumption went from 289.0 MB to 288.7 MB.
+Total: 42.511042 ms (FindLiveObjects: 0.207792 ms CreateObjectMapping: 0.798250 ms MarkObjects: 41.064000 ms  DeleteObjects: 0.440417 ms)
+
+DisplayProgressbar: Undo
+Test run completed. Exiting with code 0 (Ok). Run completed.
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/StackTrace.cs:35)
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+UnityEditor.TestTools.TestRunner.CommandLineTest.Executer:ExitApplication (UnityEditor.TestTools.TestRunner.CommandLineTest.Executer/ReturnCodes,string) (at ./Library/PackageCache/com.unity.test-framework@f3e6c9a02477/UnityEditor.TestRunner/CommandLineTest/Executer.cs:81)
+UnityEditor.TestTools.TestRunner.CommandLineTest.Executer:ExitIfRunIsCompleted () (at ./Library/PackageCache/com.unity.test-framework@f3e6c9a02477/UnityEditor.TestRunner/CommandLineTest/Executer.cs:74)
+UnityEditor.EditorApplication:Internal_CallUpdateFunctions () (at /Users/bokken/build/output/unity/unity/Editor/Mono/EditorApplication.cs:403)
+
+(Filename: ./Library/PackageCache/com.unity.test-framework@f3e6c9a02477/UnityEditor.TestRunner/CommandLineTest/Executer.cs Line: 81)
+
+MonoPathRemapper: Attempts to remap: 76277; Successful remaps: 36116
+Serialized file version minimum: 23, current 23
+[Worker1] Imported GUID: e9ffdef169b1cbb4e9910671a9ee83bc - Path: Packages/com.unity.collab-proxy/Editor/AssetsUtils/Processor/UVCSAssetPostprocessor.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '15ab3cc68faf6a0523ea7d97fd67d8a1') in 0.014061083 seconds
+[Worker0] Imported GUID: eb0dcdae5773e44869a9ea2b87f7d8a1 - Path: Packages/com.unity.collab-proxy/Editor/CodeEditor/Document/DocumentChangeEventArgs.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'ec4d2a0ebf90c5888b6cbf7cc73dfc84') in 0.01394775 seconds
+[Worker1] Imported GUID: 62446cb4d55e74ea999402dc661a65bf - Path: Packages/com.unity.collab-proxy/Editor/CodeEditor/Document/TextDocument.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '6d05ebedf76c991dfce60854f995c541') in 0.014660875 seconds
+[Worker0] Imported GUID: 719f01626c14c440c852febfcc5ecf9d - Path: Packages/com.unity.collab-proxy/Editor/CodeEditor/Document/DocumentChangedEventArgs.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'f229714dc9cfbc9ccddd56ad0bb392cf') in 0.014469584 seconds
+[Worker0] Imported GUID: e76f45abe6dcffe438b00d78c0aca721 - Path: Packages/com.unity.collab-proxy/Editor/CodeEditor/Editing/CaretWeakEventHandler.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'd4c17c0e0f6c7fef3552bd7c40f07906') in 0.011832334 seconds
+[Worker1] Imported GUID: bdf4f3d05dd541fa829ffa06bfbc8d0c - Path: Packages/com.unity.collab-proxy/Editor/Assets/Styles/Base.uss - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'dfba16e374d2b6f839ae55a5e972c873') in 0.012280083 seconds
+[Worker0] Imported GUID: a4dab1ebc3086c245ad199490a29637f - Path: Packages/com.unity.collab-proxy/Editor/CloudDrive/CreateWorkspace/CreateWorkspaceView.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '0e5e2242a84f9f62dc4ff679952d01c0') in 0.011807708 seconds
+[Worker1] Imported GUID: a8c19b64eb4ef43a2bdea621c5acaf14 - Path: Packages/com.unity.collab-proxy/Editor/CodeEditor/Document/LineManager.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '63339e9733b593929a748111fd0fd275') in 0.01129225 seconds
+[Worker1] Imported GUID: a287a16eb8f0400e86cec102678ab7a5 - Path: Packages/com.unity.collab-proxy/Editor/CloudDrive/CreateWorkspace/CollaboratorsListViewItem.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '44fe22895f869c3d4dc942b9c8cd40e4') in 0.012007875 seconds
+[Worker0] Imported GUID: 3fdd4fc558bf14e809d9ede79af274da - Path: Packages/com.unity.collab-proxy/Editor/CodeEditor/Document/DocumentChangeOperation.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '24c41519f7d5fa3947413a37a2cc10b9') in 0.012124917 seconds
+[Worker1] Imported GUID: 1bad6294dbf1045048f29381bfdf4961 - Path: Packages/com.unity.collab-proxy/Editor/CodeEditor/Document/ILineTracker.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'eb914f76c622489a790c9a48c7fa3829') in 0.012433417 seconds
+[Worker0] Imported GUID: 690c38bf24d7648d381bc95a526c5f29 - Path: Packages/com.unity.collab-proxy/Editor/CodeEditor/Document/TextLocation.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '03e10f1a55e5257144663a87d8cc9310') in 0.012613834 seconds
+[Worker0] Imported GUID: 224736fab6ec4e119f1f69e2c1d7b554 - Path: Packages/com.unity.collab-proxy/Editor/CloudDrive/CreateWorkspace/CollaboratorsMultiColumnHeader.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '5f752d5cca21b3dd5bc3a907b29fc0e0') in 0.013092 seconds
+[Worker1] Imported GUID: c368b48e7c623484ba454c98a9734955 - Path: Packages/com.unity.collab-proxy/Editor/CloudDrive/ShareWorkspace/ShareWorkspacePanel.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'a6c24c8cfb60a45bdb93875f93b313de') in 0.014287167 seconds
+[Worker0] Imported GUID: 8d60b8806ad5a453e978d149b4442288 - Path: Packages/com.unity.collab-proxy/Editor/CodeEditor/Document/TextAnchorNode.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'cd30ff4691c01ab04901a39c259a9dd2') in 0.013856708 seconds
+[Worker1] Imported GUID: c673e4e20ea67ab40a4661592f51aa99 - Path: Packages/com.unity.collab-proxy/Editor/Assets/Styles/SignInPanel.uss - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '9d4c918e63b682e0874f654ce48850d7') in 0.014281 seconds
+[Worker1] Imported GUID: f053b65364b4545b38e5a456af79939e - Path: Packages/com.unity.collab-proxy/Editor/CodeEditor/Document/RopeTextSource.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '5579d46f4cf5297baf4dc98a66ba50ec') in 0.01226625 seconds
+[Worker0] Imported GUID: a67a7d0865a447b49e842eac00d70833 - Path: Packages/com.unity.collab-proxy/Editor/CloudDrive/CreateWorkspace/CollaboratorsListViewHeaderState.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '1fd16123ea82b36223452e1b2de764df') in 0.013489875 seconds
+[Worker0] Imported GUID: 0c13d6a1dbd74659becd6e9d0d519282 - Path: Packages/com.unity.collab-proxy/Editor/CodeEditor/Editing/CaretLayer.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '57a07e53191ae4cc0ff0e6fcd5a9c2a0') in 0.012428208 seconds
+[Worker1] Imported GUID: 179af60903151564bb6b3157bce93991 - Path: Packages/com.unity.collab-proxy/Editor/CloudDrive/CreateWorkspace/CreateWorkspaceDialog.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '669410f8ca6d67d9dcc18fec351593c7') in 0.016080542 seconds
+[Worker0] Imported GUID: 1cb83927eaf714ec9ad8234a784bb1a9 - Path: Packages/com.unity.collab-proxy/Editor/CodeEditor/Document/ITextAnchor.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '2d1973f3f799e0782cee96ae94ac5f40') in 0.01484675 seconds
+[Worker1] Imported GUID: e05b9be8556f5ae41aa78140b83146d5 - Path: Packages/com.unity.collab-proxy/Editor/Assets/Styles/ProgressControlsForDialogs.uss - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'af01a6780059bdae3673ffb079ddee8e') in 0.013175791 seconds
+[Worker0] Imported GUID: c63e2acf5cfd4816b950cf4bf6381b6f - Path: Packages/com.unity.collab-proxy/Editor/CloudDrive/Workspaces/CloudWorkspacesView.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '055d42b47221453065c07329ef6d6128') in 0.013497666 seconds
+[Worker1] Imported GUID: 2c0888ba8c8e4b2889752ee1eb9b3e9e - Path: Packages/com.unity.collab-proxy/Editor/CodeEditor/Editing/EditingCommands.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '09b295e9e3023a7e8e9905e0537c8104') in 0.01215925 seconds
+[Worker1] Imported GUID: f3989142b33d44a0ca19788765ba05cc - Path: Packages/com.unity.collab-proxy/Editor/CodeEditor/Document/SimpleSegment.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'ea58f0417070d55562896b78dabf718d') in 0.012335292 seconds
+[Worker0] Imported GUID: 1cd69f37df825af4385cd9efe745fc30 - Path: Packages/com.unity.collab-proxy/Editor/Assets/Styles/TeamEditionConfigurationWindow.uss - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '14eca486b3755b08e67b72ab7ce3fa93') in 0.01581575 seconds
+[Worker1] Imported GUID: b37675bc656348c429a6c56b2eda1345 - Path: Packages/com.unity.collab-proxy/Editor/Assets/Styles/SignInWithEmailPanel.uss - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '07c632ce411ce781479b05bee9bb41b0') in 0.014578292 seconds
+[Worker0] Imported GUID: 3a70b5eaccc1e42a99eadc319fa45595 - Path: Packages/com.unity.collab-proxy/Editor/CodeEditor/Document/TextSegment.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '06b9fc2c0552ee17b14cbf49ccb611c7') in 0.012807208 seconds
+[Worker1] Imported GUID: 88da5407899aaaf448a40c85888108ae - Path: Packages/com.unity.collab-proxy/Editor/Assets/Styles/TabView.uss - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '597a3b1b3390652e3eb55588dbd4e126') in 0.012543083 seconds
+[Worker0] Imported GUID: 642639f75f2dfbd4ab01e6708b58f304 - Path: Packages/com.unity.collab-proxy/Editor/Assets/Styles/OrganizationPanel.uss - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'dbc754a9a0b3e9c0791de6b7e35769cc') in 0.012283167 seconds
+[Worker1] Imported GUID: fdec637f96aaa6546ad88a90cae5dcf1 - Path: Packages/com.unity.collab-proxy/Editor/AssetsUtils/Processor/WorkspaceOperationsMonitor.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '8f6252bffc493a40ee31f56475401e4f') in 0.0134955 seconds
+[Worker0] Imported GUID: 4e43250273a4d4b3392541c97d1eb150 - Path: Packages/com.unity.collab-proxy/Editor/CodeEditor/Document/TextDocumentWeakEventManager.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '18f1bc2e7781ff3c4476a3a85b2a7470') in 0.012513417 seconds
+[Worker1] Imported GUID: ee168e8444b3b420eba9eff487b036ca - Path: Packages/com.unity.collab-proxy/Editor/CodeEditor/Document/TextUtilities.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '8ca499fd17f5b01e4281dd71913c35da') in 0.012012375 seconds
+[Worker0] Imported GUID: 36d9d402826ee48d8816a061c1aba22e - Path: Packages/com.unity.collab-proxy/Editor/CodeEditor/Document/DocumentTextWriter.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '6fc953c22de6847619c03e92695edf65') in 0.011772083 seconds
+[Worker0] Imported GUID: d3daa94b5fca9a648b12f6ef2aae752f - Path: Packages/com.unity.collab-proxy/Editor/AssetsUtils/Processor/UVCSAssetsProcessor.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '85f7321b6af7943db86e788d90448ba8') in 0.011372916 seconds
+[Worker1] Imported GUID: abdd7cad9f7d58546ac746130105711a - Path: Packages/com.unity.collab-proxy/Editor/CloudDrive/CreateWorkspace/CreateWorkspacePanel.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '61a499c224b8ca0634cfb3e2cd93f362') in 0.011489042 seconds
+[Worker1] Imported GUID: 17cae8c12182e4a88b5695b1b2eea5cd - Path: Packages/com.unity.collab-proxy/Editor/CodeEditor/Document/TextSourceVersionProvider.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '68e5003b35f8b5b0085036a6b22898c9') in 0.011599041 seconds
+[Worker0] Imported GUID: 5a50ae8041732462c981b5464a2c568c - Path: Packages/com.unity.collab-proxy/Editor/CodeEditor/Document/TextAnchorTree.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '200e87d67ce6c32c295f85cc68f61936') in 0.011505667 seconds
+[Worker0] Imported GUID: add4a8f16bfab4878bb29c08218cad07 - Path: Packages/com.unity.collab-proxy/Editor/CodeEditor/Document/DocumentLine.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'afbd80848c14aab024fbe7fc447059e1') in 0.011202833 seconds
+[Worker1] Imported GUID: 7d8e4407573404e26af41eacb660eb3e - Path: Packages/com.unity.collab-proxy/Editor/CodeEditor/Document/DocumentLineTree.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'e389a92367c23604d5d58b4bc505d7a8') in 0.011314167 seconds
+[Worker1] Imported GUID: 11f102ea76a834282a8a533f1a797d3e - Path: Packages/com.unity.collab-proxy/Editor/CodeEditor/Document/ITextSource.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'bb7ed73e12918834a5937e8d67948591') in 0.011501709 seconds
+[Worker0] Imported GUID: 420fb70569c5a44e19076a23cf7a7cce - Path: Packages/com.unity.collab-proxy/Editor/CodeEditor/Document/UndoOperationGroup.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '240e8258fca6f95023f5dc3fa7beeba8') in 0.011382375 seconds
+[Worker1] Imported GUID: 5ace82b9e549646ee8414b4ac05f7a3c - Path: Packages/com.unity.collab-proxy/Editor/CodeEditor/Document/WeakLineTracker.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '39853b8dc782cae36efd8c5eaee39817') in 0.011817625 seconds
+[Worker0] Imported GUID: d170e6aba78146b09759f774ef27c7fd - Path: Packages/com.unity.collab-proxy/Editor/CodeEditor/Document/IDocument.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'fdefa8f9b02be0d8011ea1a4bd0d3b62') in 0.011944666 seconds
+[Worker1] Imported GUID: 71cb30384b5f8d64ea7df220cff88d0c - Path: Packages/com.unity.collab-proxy/Editor/AssetsUtils/Processor/AssetsProcessor.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '0f8d24dd86127370839d89b5fb6bcee1') in 0.011928875 seconds
+[Worker0] Imported GUID: 6fa7f4f386ba74571bc126c89255222e - Path: Packages/com.unity.collab-proxy/Editor/CodeEditor/Document/TextAnchor.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'e09dcd30fe2538d3618317c399f80ec8') in 0.011818583 seconds
+[Worker1] Imported GUID: 4809ab5cb1988e5449f9e1911e77d7ef - Path: Packages/com.unity.collab-proxy/Editor/CodeEditor/Editing/DragDropException.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '5c885074fd031a8e51ba405893bd860e') in 0.011706667 seconds
+[Worker0] Imported GUID: 6c67e63daeb772a4ca7887f421833c0c - Path: Packages/com.unity.collab-proxy/Editor/CodeEditor/Editing/EditingCommandHandler.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'c507cd1fdcc8f8fddb501d4080ea0b1d') in 0.01157325 seconds
+[Worker1] Imported GUID: 7289a765b886748bcb6d677f6977fc52 - Path: Packages/com.unity.collab-proxy/Editor/CodeEditor/Document/TextSegmentCollection.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'a567b1a584ca41fb6577943bf8fd23a8') in 0.011685917 seconds
+[Worker0] Imported GUID: a5b0cf5fb60d4f159d80936799b33e55 - Path: Packages/com.unity.collab-proxy/Editor/CodeEditor/Editing/AbstractMargin.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '6d1d21384f420b46aa1949811d38bc81') in 0.011567209 seconds
+Killing ADB server in 0.26126 seconds.
+Importing 'GUID: 00000000000000009000000000000000 - Path: ProjectSettings/QualitySettings.asset' with importer (LibraryAssetImporter)
+Imported 'GUID: 00000000000000009000000000000000' -> (Import Result ID: '5f2c1ff076b322f487b8a0440ee59356') in 0.007 seconds [static dependencies only]. Details - ImportResultOutputID=7b12711da11c94ad897442b4820d3f7b DependenciesID=0bfed87d78aca864d47f641e721e7999 StaticDependenciesID=4487ff082a94cf257e4b11ffeace0014
+Refreshing native plugins compatible for Editor in 2.81 ms, found 6 plugins.
+Asset Pipeline Refresh (id=7ff4b4c8ab0a647e584379af046b0488): Total: 0.215 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Thread 0x16d8b3000 may have been prematurely finalized
+正在关闭 MSBuild 服务器...
+正在关闭 VB/C# 编译器服务器...
+Input System module state changed to: ShutdownInProgress.
+Input Polling Thread exited.
+Input System module state changed to: Shutdown.
+成功关闭 VB/C# 编译器服务器。
+成功关闭 MSBuild 服务器。
+[Physics::Module] Cleanup current backend.
+[Physics::Module] Id: 0xf2b8ea05
+[Licensing::IpcConnector] LicenseClient-cqmizhangxiaoyu2-6000.5.1-notifications channel disconnected successfully.
+[Licensing::IpcConnector] LicenseClient-cqmizhangxiaoyu2-6000.5.1 channel disconnected successfully.
+Thread 0x176613000 may have been prematurely finalized
+Thread 0x17669f000 may have been prematurely finalized
+Thread 0x177747000 may have been prematurely finalized
+Thread 0x1777d3000 may have been prematurely finalized
+Thread 0x17785f000 may have been prematurely finalized
+Thread 0x1778eb000 may have been prematurely finalized
+Thread 0x177e47000 may have been prematurely finalized
+Thread 0x177b87000 may have been prematurely finalized
+AcceleratorClientConnectionCallback - disconnected - :0
+Thread 0x32bb87000 may have been prematurely finalized
+Cleanup mono
+CodeReloadManager destroyed
+info: Microsoft.Hosting.Lifetime[0]
+      Application is shutting down...
+info: Unity.ILPP.Runner.PostProcessingAssemblyLoadContext[0]
+      ALC ILPP context 1 is unloading
+debugger-agent: Unable to listen on 44
