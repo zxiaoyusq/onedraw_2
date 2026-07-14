@@ -48,6 +48,7 @@ internal static class ConfigContract
         Sheet("AssetManifest", "assetManifest", "assetKey"),
         Sheet("Enums", "enums", "enumType", "value"),
         Sheet(FieldDictionarySheetName, "fieldDictionary"),
+        Sheet("FeedbackCues", "feedbackCues", "feedbackId"),
     };
 
     public static readonly IReadOnlyList<string> WorkbookSheetOrder = new[] { ReadmeSheetName }
@@ -111,6 +112,9 @@ internal static class ConfigContract
                     "EnemiesInsideGesture", "LastStrokeTargets", "NextStroke",
                     "NormalEnemies", "Target",
                 },
+                StringComparer.Ordinal),
+            ["FeedbackVibrationPattern"] = new HashSet<string>(
+                new[] { "Heavy", "Light", "Medium", "Off" },
                 StringComparer.Ordinal),
         };
 

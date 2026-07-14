@@ -66,10 +66,10 @@ namespace OneStrokeDemon.Tests.EditMode.T230
         public void DuplicateJsonPropertyFailsStrictParsing()
         {
             string source = RuntimeConfigTestFixture.LoadJson();
-            const string firstProperty = "\"schemaVersion\": 4,";
+            const string firstProperty = "\"schemaVersion\": 5,";
             string duplicate = source.Replace(
                 firstProperty,
-                firstProperty + "\n  \"schemaVersion\": 4,");
+                firstProperty + "\n  \"schemaVersion\": 5,");
 
             AssertFailure(new GameplayConfigService(), "CFGRT002", duplicate);
         }

@@ -301,3 +301,12 @@
 - 决定：验收不以“无Console报错”代替字形证据。EditMode逐码点核对配置、清单、子集hash、静态Atlas预算和fallback；PlayMode读取实际`TMP_CharacterInfo`拒绝replacement glyph，检查HUD/结算无overflow/truncate，并用图形设备保存1920×1080中文HUD与动态伤害数字截图。
 - 理由：完整CJK源字体和动态Atlas会增加包体、运行时内存与首次缺字抖动；系统字体不可再分发且跨设备不一致；只验证配置静态文案又会漏掉数值格式字符。固定许可来源、最小子集、静态分层Atlas和配置漂移测试使中文显示可复现且包体边界明确。
 - 限制：T610的Metal截图不替代Web/微信压缩包、低端机字体内存、DevTools或真机验证；多比例/刘海/左右手布局仍属T640，战斗反馈、正式美术和教程遮罩分别属T620/T630/T650。
+
+## D-036 · T620以只读反馈事件驱动预缓存、池化的多通道表现
+
+- 状态：ACCEPTED
+- 决定：配置升级为schema `5`/content `0.6.1-sample`，新增五行`FeedbackCues`作为事件到VFX、音频、时间缩放、白闪、震屏、数字和震动强度的唯一数值映射。`CombatFeedbackService`只接收既有战斗结果或显式不可变事件，不持有Damageable、分数或弹体写端口；破甲、弱点和普通命中的选择优先级属于事件协议，具体强度与cue全部由配置取得。
+- 决定：Unity输出在创建时解析配置、从T240 Registry取得全部AudioClip/VFX Prefab并预建音频并发通道，再沿T440 family/pool合同租用VFX和伤害数字。命中时只发布已缓存资源、推进T510统一时间源、闪白/震屏并返回池；目标颜色、相机基位、TMP文本/透明度、VFX染色/缩放和租约在完成、重开或Dispose时恢复。
+- 决定：震动通过`ICombatFeedbackVibration`注入，并由Service总开关门控；Gameplay/Presentation不调用微信SDK静态API。T130未来可把该端口适配到`IPlatformService`，关闭震动只抑制平台请求，不影响视觉和音频反馈。
+- 理由：若每个敌人或伤害分支各自播放表现，会复制强度数值并让反馈反向改变结算；若命中时才从Resources/路径加载，会制造首次卡顿且绕过Registry；若震动直接调用SDK，Editor/Web测试和用户开关都会失去统一边界。只读事件、配置档案、预缓存与端口门控保持战斗真相单一并让表现可独立验证。
+- 限制：T620继续使用T240类型正确的占位AudioClip/VFX Prefab，因此验证的是cue路由、层次与生命周期而非T630正式资源品质；多比例布局、教程遮罩、Web/微信DevTools和真机震感仍分别属于T640/T650及已延期平台任务。

@@ -92,6 +92,7 @@ namespace OneStrokeDemon.Config
         public TextConfig GetText(string textKey) => Get(RequireSnapshot().Texts, "Texts", "textKey", textKey);
         public AudioCueConfig GetAudioCue(string audioKey) => Get(RequireSnapshot().AudioCues, "AudioCues", "audioKey", audioKey);
         public VfxCueConfig GetVfxCue(string vfxKey) => Get(RequireSnapshot().VfxCues, "VfxCues", "vfxKey", vfxKey);
+        public FeedbackCueConfig GetFeedbackCue(string feedbackId) => Get(RequireSnapshot().FeedbackCues, "FeedbackCues", "feedbackId", feedbackId);
         public AssetManifestConfig GetAsset(string assetKey) => Get(RequireSnapshot().Assets, "AssetManifest", "assetKey", assetKey);
         public IReadOnlyList<AssetManifestConfig> GetAssetManifest() => RequireSnapshot().AssetManifestEntries;
 

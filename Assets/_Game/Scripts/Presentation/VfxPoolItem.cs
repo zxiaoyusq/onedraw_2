@@ -21,6 +21,12 @@ namespace OneStrokeDemon.Presentation
         private bool hasPoolParent;
         private bool isConfigured;
         private bool isPlaying;
+        private SpriteRenderer[] renderers = Array.Empty<SpriteRenderer>();
+        private Color[] originalColors = Array.Empty<Color>();
+        private string[] originalSortingLayers = Array.Empty<string>();
+        private int[] originalSortingOrders = Array.Empty<int>();
+        private Color tint = Color.white;
+        private float visualScale = 1f;
 
         public bool IsPoolActive => poolLease.IsValid;
 
@@ -45,6 +51,10 @@ namespace OneStrokeDemon.Presentation
         public bool FollowsTarget => configuredFollowTarget;
 
         public Transform FollowTarget => followTarget;
+
+        public Color Tint => tint;
+
+        public float VisualScale => visualScale;
 
         public void Configure(IConfigProvider configProvider, string configuredVfxKey)
         {
@@ -94,6 +104,11 @@ namespace OneStrokeDemon.Presentation
 
         public void Play(Transform target, Vector3 worldPosition)
         {
+            Play(target, worldPosition, Color.white, 1f);
+        }
+
+        public void Play(Transform target, Vector3 worldPosition, Color configuredTint, float configuredScale)
+        {
             if (!IsPoolActive)
             {
                 throw new InvalidOperationException("VFX must hold a pool lease before playing.");
@@ -105,6 +120,27 @@ namespace OneStrokeDemon.Presentation
             }
 
             ValidateVector(worldPosition, nameof(worldPosition));
+            if (float.IsNaN(configuredScale) || float.IsInfinity(configuredScale) || configuredScale <= 0f)
+            {
+                throw new ArgumentOutOfRangeException(nameof(configuredScale));
+            }
+
+            CacheRenderers();
+            tint = configuredTint;
+            visualScale = configuredScale;
+            transform.localScale = Vector3.one;
+            float sourceVisualSize = MeasureSourceVisualSize();
+            transform.localScale = Vector3.one *
+                (sourceVisualSize > Mathf.Epsilon
+                    ? visualScale / sourceVisualSize
+                    : visualScale);
+            for (int index = 0; index < renderers.Length; index += 1)
+            {
+                renderers[index].color = originalColors[index] * tint;
+                renderers[index].sortingLayerName = sortingLayer;
+                renderers[index].sortingOrder = sortingOrder;
+            }
+
             followTarget = configuredFollowTarget ? target : null;
             transform.position = followTarget != null ? followTarget.position : worldPosition;
             elapsedSeconds = 0f;
@@ -179,13 +215,71 @@ namespace OneStrokeDemon.Presentation
 
         private void ResetRuntimeState()
         {
+            for (int index = 0; index < renderers.Length; index += 1)
+            {
+                if (renderers[index] != null)
+                {
+                    renderers[index].color = originalColors[index];
+                    renderers[index].sortingLayerName = originalSortingLayers[index];
+                    renderers[index].sortingOrder = originalSortingOrders[index];
+                }
+            }
+
             followTarget = null;
             elapsedSeconds = 0f;
             isPlaying = false;
+            tint = Color.white;
+            visualScale = 1f;
             transform.SetParent(hasPoolParent ? poolParent : null, false);
             transform.localPosition = Vector3.zero;
             transform.localRotation = Quaternion.identity;
             transform.localScale = Vector3.one;
+        }
+
+        private void CacheRenderers()
+        {
+            if (renderers.Length > 0)
+            {
+                return;
+            }
+
+            renderers = GetComponentsInChildren<SpriteRenderer>(true);
+            originalColors = new Color[renderers.Length];
+            originalSortingLayers = new string[renderers.Length];
+            originalSortingOrders = new int[renderers.Length];
+            for (int index = 0; index < renderers.Length; index += 1)
+            {
+                originalColors[index] = renderers[index].color;
+                originalSortingLayers[index] = renderers[index].sortingLayerName;
+                originalSortingOrders[index] = renderers[index].sortingOrder;
+            }
+        }
+
+        private float MeasureSourceVisualSize()
+        {
+            bool hasBounds = false;
+            Bounds combined = default;
+            for (int index = 0; index < renderers.Length; index += 1)
+            {
+                if (renderers[index] == null)
+                {
+                    continue;
+                }
+
+                if (!hasBounds)
+                {
+                    combined = renderers[index].bounds;
+                    hasBounds = true;
+                }
+                else
+                {
+                    combined.Encapsulate(renderers[index].bounds);
+                }
+            }
+
+            return hasBounds
+                ? Mathf.Max(combined.size.x, combined.size.y, combined.size.z)
+                : 0f;
         }
 
         private static void ValidateVector(Vector3 value, string parameterName)

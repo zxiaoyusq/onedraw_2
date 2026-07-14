@@ -1,0 +1,893 @@
+Unity Editor version:    6000.5.1f1 (0d9463e84828)
+Branch:                  6000.5/staging
+Build type:              Release
+Batch mode:              YES
+macOS version:           Version 15.6 (Build 24G84)
+Darwin version:          24.6.0
+Architecture:            arm64
+Running under Rosetta:   NO
+Available memory:        16384 MB
+Date:                    2026-07-14T01:53:46Z
+[Licensing::Module] Trying to connect to existing licensing client channel...
+[Licensing::IpcConnector] Successfully connected to: "LicenseClient-cqmizhangxiaoyu2" at "2026-07-14T01:53:46.07447Z"
+Launching external process: /Applications/Unity/Hub/Editor/6000.5.1f1/Unity.app/Contents/Helpers/PackageManager/Server/UnityPackageManager
+
+COMMAND LINE ARGUMENTS:
+/Applications/Unity/Hub/Editor/6000.5.1f1/Unity.app/Contents/MacOS/Unity
+-batchmode
+-nographics
+-projectPath
+/Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project
+-runTests
+-testPlatform
+EditMode
+-testResults
+/Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/evals/T620/full-editmode-results.xml
+-logFile
+/Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/evals/T620/full-editmode-unity.log
+-assemblyNames
+OneStrokeDemon.Tests.EditMode
+Successfully changed project path to: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project
+/Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project
+[UnityMemory] Configuration Parameters - Can be set up in boot.config
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-nav-mesh-worker=65536"
+    "memorysetup-temp-allocator-size-audio-worker=65536"
+    "memorysetup-temp-allocator-size-cloud-worker=32768"
+    "memorysetup-allocator-temp-initial-block-size-main=262144"
+    "memorysetup-allocator-temp-initial-block-size-worker=262144"
+    "memorysetup-temp-allocator-size-preload-manager=33554432"
+    "memorysetup-temp-allocator-size-gfx=262144"
+    "memorysetup-temp-allocator-size-background-worker=32768"
+    "memorysetup-temp-allocator-size-job-worker=262144"
+    "memorysetup-bucket-allocator-granularity=16"
+    "memorysetup-bucket-allocator-bucket-count=8"
+    "memorysetup-bucket-allocator-block-size=33554432"
+    "memorysetup-bucket-allocator-block-count=8"
+    "memorysetup-main-allocator-block-size=16777216"
+    "memorysetup-thread-allocator-block-size=16777216"
+    "memorysetup-main-allocator-mimalloc-enabled=0"
+    "memorysetup-gfx-main-allocator-block-size=16777216"
+    "memorysetup-gfx-thread-allocator-block-size=16777216"
+    "memorysetup-cache-allocator-block-size=4194304"
+    "memorysetup-typetree-allocator-block-size=2097152"
+    "memorysetup-profiler-bucket-allocator-granularity=16"
+    "memorysetup-profiler-bucket-allocator-bucket-count=8"
+    "memorysetup-profiler-bucket-allocator-block-size=33554432"
+    "memorysetup-profiler-bucket-allocator-block-count=8"
+    "memorysetup-profiler-allocator-block-size=16777216"
+    "memorysetup-profiler-editor-allocator-block-size=1048576"
+    "memorysetup-temp-allocator-size-main=16777216"
+    "memorysetup-job-temp-allocator-block-size=2097152"
+    "memorysetup-job-temp-allocator-block-size-background=1048576"
+    "memorysetup-job-temp-allocator-reduction-small-platforms=262144"
+Logging is directed to a specific file, skipping project log.Player connection [8601149632]  Target information:
+
+Player connection [8601149632]  * "[IP] 10.206.81.30 [Port] 55505 [Flags] 2 [Guid] 4234744780 [EditorId] 4234744780 [Version] 1048832 [Id] OSXEditor(0,cqmizhangxiaoyu2deMacBook-Air.local) [Debug] 1 [PackageName] OSXEditor [ProjectName] Editor"
+
+Player connection [8601149632]  * "[IP] 10.251.1.1 [Port] 55505 [Flags] 2 [Guid] 4234744780 [EditorId] 4234744780 [Version] 1048832 [Id] OSXEditor(0,cqmizhangxiaoyu2deMacBook-Air.local) [Debug] 1 [PackageName] OSXEditor [ProjectName] Editor"
+
+Player connection [8601149632] Host joined multi-casting on [225.0.0.222:54997]...
+Player connection [8601149632] Host joined alternative multi-casting on [225.0.0.222:34997]...
+Input System module state changed to: Initialized.
+[Physics::Module] Initialized fallback backend.
+[Physics::Module] Id: 0xdecafbad
+[Licensing::Client] Error: HandshakeResponse reported an error:
+	ResponseCode: 505
+	ResponseStatus: Unsupported protocol version '1.18.1'.
+[Licensing::Module] Error: Failed to handshake to channel: "LicenseClient-cqmizhangxiaoyu2"
+[Licensing::IpcConnector] LicenseClient-cqmizhangxiaoyu2 channel disconnected successfully.
+[Licensing::IpcConnector] Successfully connected to: "LicenseClient-cqmizhangxiaoyu2-6000.5.1" at "2026-07-14T01:53:46.264853Z"
+[Package Manager] Connected to IPC stream "Upm-11927" after 0.2 seconds.
+[Licensing::Module] Licensing is not yet initialized.
+[Licensing::Client] Handshaking with LicensingClient:
+  Version:                 1.18.1+9fbee8e
+  Session Id:              3c651869d20041a2ab5b9deb91488cb2
+  Correlation Id:          1ed0498c6110524d1f5c3ec9aa39dd73
+  External correlation Id: 2362711498068938354
+  Machine Id:              9rQ3oFulMuF1WLgKze+vIHadGFs=
+[Licensing::Module] Successfully connected to LicensingClient on channel: "LicenseClient-cqmizhangxiaoyu2-6000.5.1" (connect: 0.00s, validation: 0.00s, handshake: 0.17s)
+[Licensing::IpcConnector] Successfully connected to: "LicenseClient-cqmizhangxiaoyu2-6000.5.1-notifications" at "2026-07-14T01:53:46.433951Z"
+[Licensing::Module] Error: Access token is unavailable; failed to update
+[Licensing::Client] Successfully resolved entitlement details
+[Licensing::Module] License group:
+  Id: 18968374062854-UnityPersXXXX
+  Product: Unity Personal
+  Type: Assigned
+  Expiration: Unlimited
+[Licensing::Client] Successfully updated license, isAsync: True, time: 0.00
+[Licensing::Module] Licensing Background thread has ended after 0.36s
+[Licensing::Module] Licensing is initialized (took 0.04s).
+[Licensing::Client] Successfully resolved entitlement details
+Library Redirect Path: Library/
+[Physics::Module] Selected backend.
+[Physics::Module] Name: PhysX
+[Physics::Module] Id: 0xf2b8ea05
+[Physics::Module] SDK Version: 4.1.2
+[Physics::Module] Integration Version: 1.0.0
+[Physics::Module] Threading Mode: Multi-Threaded
+Refreshing native plugins compatible for Editor in 11.00 ms, found 3 plugins.
+Initialize engine version: 6000.5.1f1 (0d9463e84828)
+[Subsystems] Discovering subsystems at path /Applications/Unity/Hub/Editor/6000.5.1f1/Unity.app/Contents/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Assets
+Forcing GfxDevice: Null
+GfxDevice: creating device client; kGfxThreadingModeNonThreaded
+NullGfxDevice:
+    Version:  NULL 1.0 [1.0]
+    Renderer: Null Device
+    Vendor:   Unity Technologies
+Initialize mono
+Mono path[0] = '/Applications/Unity/Hub/Editor/6000.5.1f1/Unity.app/Contents/Resources/Scripting/Managed'
+Mono path[1] = '/Applications/Unity/Hub/Editor/6000.5.1f1/Unity.app/Contents/Resources/Scripting/BCLExtensions/runtime/netstandard2.1'
+Mono path[2] = '/Applications/Unity/Hub/Editor/6000.5.1f1/Unity.app/Contents/Resources/Scripting/MonoBleedingEdge/lib/mono/unityjit-macos'
+Mono config path = '/Applications/Unity/Hub/Editor/6000.5.1f1/Unity.app/Contents/Resources/Scripting/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56927
+CodeReloadManager initialized
+ImportWorker Server TCP listen port: 0
+AcceleratorClientConnectionCallback - disconnected - :0
+Begin MonoManager ReloadAssembly
+Registering precompiled unity dll's ...
+Register platform support module: /Applications/Unity/Hub/Editor/6000.5.1f1/PlaybackEngines/WebGLSupport/UnityEditor.WebGL.Extensions.dll
+Register platform support module: /Applications/Unity/Hub/Editor/6000.5.1f1/PlaybackEngines/MacStandaloneSupport/UnityEditor.OSXStandalone.Extensions.dll
+Register platform support module: /Applications/Unity/Hub/Editor/6000.5.1f1/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+[Licensing::Client] Successfully resolved entitlement details
+Register platform support module: /Applications/Unity/Hub/Editor/6000.5.1f1/PlaybackEngines/AndroidPlayer/UnityEditor.Android.Extensions.dll
+Registered in 0.003945 seconds.
+Native extension for Android target not found
+Native extension for WindowsStandalone target not found
+Native extension for OSXStandalone target not found
+Native extension for WebGL target not found
+Package Manager log level set to [2]
+ScheduleIndexationOnStartup MainProcess:False IndexOnStartup:True
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.229 seconds
+Domain Reload Profiling: 530ms
+	BeginReloadAssembly (84ms)
+		CreateAndSetChildDomain (18ms)
+	RebuildCommonClasses (3ms)
+	RebuildNativeTypeToScriptingClass (9ms)
+	initialDomainReloadingComplete (32ms)
+	LoadAllAssembliesAndSetupDomain (172ms)
+		LoadAssemblies (67ms)
+		AnalyzeDomain (131ms)
+			TypeCache.Refresh (130ms)
+				TypeCache.ScanAssembly (120ms)
+	FinalizeReload (230ms)
+		SetupLoadedEditorAssemblies (0ms)
+			InitializePlatformSupportModulesInManaged (5ms)
+			BeforeProcessingInitializeOnLoad (43ms)
+			ProcessInitializeOnLoadAttributes (60ms)
+			ProcessInitializeOnLoadMethodAttributes (82ms)
+[Licensing::Client] Successfully resolved entitlement details
+Application.AssetDatabase Initial Refresh Start
+[Package Manager] Restoring resolved packages state from cache
+[Licensing::Client] Successfully resolved entitlement details
+[Package Manager] Registered 68 packages:
+  Packages from [https://packages.unity.com]:
+    com.unity.2d.animation@15.1.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.2d.animation@6d5a363ae647)
+    com.unity.2d.aseprite@5.0.3 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.2d.aseprite@d13865913efa)
+    com.unity.2d.psdimporter@14.0.3 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.2d.psdimporter@5d82044f9e43)
+    com.unity.2d.spriteshape@15.0.3 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.2d.spriteshape@fcb7ec61a58b)
+    com.unity.2d.tilemap.extras@8.0.3 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.2d.tilemap.extras@a80140457adc)
+    com.unity.2d.tooling@3.0.1 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.2d.tooling@6f06ffb033c0)
+    com.unity.collab-proxy@2.12.4 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.collab-proxy@0b1559bcd34e)
+    com.unity.ide.rider@3.0.38 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.ide.rider@1f60b3138684)
+    com.unity.ide.visualstudio@2.0.26 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.ide.visualstudio@a99d56dec63f)
+    com.unity.inputsystem@1.19.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.inputsystem@21a28c3a6c83)
+    com.unity.nuget.newtonsoft-json@3.2.2 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.nuget.newtonsoft-json@4dfd81071c64)
+    com.unity.timeline@1.8.12 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.timeline@8cd8509afae5)
+    com.unity.visualscripting@1.9.11 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.visualscripting@8bed5ad90189)
+    com.unity.2d.common@14.0.1 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.2d.common@73badf92ba8b)
+    com.unity.searcher@4.9.4 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.searcher@d45a78918735)
+    com.unity.burst@1.8.29 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.burst@6bb9aca3ef38)
+    com.unity.nuget.mono-cecil@1.11.6 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.nuget.mono-cecil@ecb9724e46ff)
+    com.unity.test-framework.performance@3.5.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.test-framework.performance@8b56083ec0f0)
+  Built-in packages:
+    com.unity.2d.sprite@1.0.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.2d.sprite@053a968eab56)
+    com.unity.2d.tilemap@1.0.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.2d.tilemap@be0bacb99591)
+    com.unity.multiplayer.center@1.0.1 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.multiplayer.center@b860850997d0)
+    com.unity.render-pipelines.universal@17.5.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.render-pipelines.universal@be00b5bbd9a1)
+    com.unity.test-framework@1.7.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.test-framework@f3e6c9a02477)
+    com.unity.ugui@2.5.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.ugui@4f9b15fd1386)
+    com.unity.modules.accessibility@1.0.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.modules.accessibility)
+    com.unity.modules.adaptiveperformance@1.0.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.modules.adaptiveperformance)
+    com.unity.modules.ai@1.0.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.modules.ai)
+    com.unity.modules.androidjni@1.0.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.modules.androidjni)
+    com.unity.modules.animation@1.0.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.modules.animation)
+    com.unity.modules.assetbundle@1.0.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.modules.assetbundle)
+    com.unity.modules.audio@1.0.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.modules.audio)
+    com.unity.modules.cloth@1.0.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.modules.cloth)
+    com.unity.modules.director@1.0.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.modules.director)
+    com.unity.modules.imageconversion@1.0.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.modules.imageconversion)
+    com.unity.modules.imgui@1.0.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.modules.imgui)
+    com.unity.modules.jsonserialize@1.0.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.modules.jsonserialize)
+    com.unity.modules.particlesystem@1.0.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.modules.particlesystem)
+    com.unity.modules.physics@1.0.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.modules.physics)
+    com.unity.modules.physics2d@1.0.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.modules.physics2d)
+    com.unity.modules.physicscore2d@1.0.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.modules.physicscore2d)
+    com.unity.modules.screencapture@1.0.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.modules.screencapture)
+    com.unity.modules.terrain@1.0.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.modules.terrain)
+    com.unity.modules.terrainphysics@1.0.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.modules.terrainphysics)
+    com.unity.modules.tilemap@1.0.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.modules.tilemap)
+    com.unity.modules.ui@1.0.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.modules.ui)
+    com.unity.modules.uielements@1.0.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.modules.uielements)
+    com.unity.modules.umbra@1.0.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.modules.umbra)
+    com.unity.modules.unityanalytics@1.0.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.modules.unityanalytics)
+    com.unity.modules.unitywebrequest@1.0.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.modules.unitywebrequest)
+    com.unity.modules.unitywebrequestassetbundle@1.0.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.modules.unitywebrequestassetbundle)
+    com.unity.modules.unitywebrequestaudio@1.0.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.modules.unitywebrequestaudio)
+    com.unity.modules.unitywebrequesttexture@1.0.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.modules.unitywebrequesttexture)
+    com.unity.modules.unitywebrequestwww@1.0.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.modules.unitywebrequestwww)
+    com.unity.modules.vectorgraphics@1.0.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.modules.vectorgraphics)
+    com.unity.modules.vehicles@1.0.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.modules.vehicles)
+    com.unity.modules.video@1.0.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.modules.video)
+    com.unity.modules.wind@1.0.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.modules.wind)
+    com.unity.modules.xr@1.0.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.modules.xr)
+    com.unity.modules.subsystems@1.0.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.modules.subsystems)
+    com.unity.modules.hierarchycore@1.0.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.modules.hierarchycore)
+    com.unity.ext.nunit@2.1.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.ext.nunit@44f7d31723bd)
+    com.unity.render-pipelines.core@17.5.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.render-pipelines.core@d7ce3ed2cd80)
+    com.unity.shadergraph@17.5.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.shadergraph@2df19e8719bc)
+    com.unity.render-pipelines.universal-config@17.5.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.render-pipelines.universal-config@fdda01c80fe3)
+    com.unity.mathematics@1.4.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.mathematics@981956d94fb6)
+    com.unity.collections@6.5.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.collections@a43cabe808ca)
+  Embedded packages:
+    com.qq.weixin.minigame@file:/Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Packages/com.qq.weixin.minigame (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Packages/com.qq.weixin.minigame)
+  Git packages:
+    com.coplaydev.unity-mcp@https://github.com/CoplayDev/unity-mcp.git?path=/MCPForUnity#11836003a5e2ffcb7715ecec7e1fbb9d9cdb5bb8 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.coplaydev.unity-mcp@4ee62b097584)
+[Subsystems] No new subsystems found in resolved package list.
+[Package Manager] Done registering packages in 0.02 seconds
+info: Microsoft.Hosting.Lifetime[14]
+      Now listening on: http://unix:/tmp/ilpp.sock-0965b3c8e789bc4969569e5e5a09ed6b
+info: Microsoft.Hosting.Lifetime[0]
+      Application started. Press Ctrl+C to shut down.
+info: Microsoft.Hosting.Lifetime[0]
+      Hosting environment: Production
+info: Microsoft.Hosting.Lifetime[0]
+      Content root path: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/2 POST http://ilpp/UnityILPP.PostProcessing/Ping - application/grpc -
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'gRPC - /UnityILPP.PostProcessing/Ping'
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'gRPC - /UnityILPP.PostProcessing/Ping'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/2 POST http://ilpp/UnityILPP.PostProcessing/Ping - 200 - application/grpc 14.2750ms
+Starting: /Applications/Unity/Hub/Editor/6000.5.1f1/Unity.app/Contents/Resources/BuildPipeline/bee_backend --ipc --defer-dag-verification --dagfile="Library/Bee/200b0aE.dag" --continue-on-failure --profile="Library/Bee/backend1.traceevents" ScriptAssemblies
+WorkingDir: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project
+DisplayProgressbar: Compiling Scripts
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/2 POST http://ilpp/UnityILPP.PostProcessing/ConfigurePostProcessors - application/grpc -
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'gRPC - /UnityILPP.PostProcessing/ConfigurePostProcessors'
+warn: Unity.ILPP.Runner.PostProcessingAssemblyLoadContext[0]
+      Assembly system.runtime.interopservices.windowsruntime has duplicate hint path. Ignoring "/Applications/Unity/Hub/Editor/6000.5.1f1/Unity.app/Contents/Resources/Scripting/UnityReferenceAssemblies/unity-4.8-api/Facades/System.Runtime.InteropServices.WindowsRuntime.dll" in favor of "/Applications/Unity/Hub/Editor/6000.5.1f1/Unity.app/Contents/Resources/Scripting/NetStandard/Extensions/2.0.0/System.Runtime.InteropServices.WindowsRuntime.dll"
+warn: Unity.ILPP.Runner.PostProcessingAssemblyLoadContext[0]
+      Assembly system.componentmodel.composition has duplicate hint path. Ignoring "/Applications/Unity/Hub/Editor/6000.5.1f1/Unity.app/Contents/Resources/Scripting/UnityReferenceAssemblies/unity-4.8-api/System.ComponentModel.Composition.dll" in favor of "/Applications/Unity/Hub/Editor/6000.5.1f1/Unity.app/Contents/Resources/Scripting/NetStandard/compat/2.1.0/shims/netfx/System.ComponentModel.Composition.dll"
+info: Unity.ILPP.Runner.PostProcessingAssemblyLoadContext[0]
+      Resolved Unity.Burst.Cecil, Version=0.11.6.0, Culture=neutral, PublicKeyToken=50cebf1cceb9d05e with Library/PackageCache/com.unity.burst@6bb9aca3ef38/Unity.Burst.CodeGen/Unity.Burst.Cecil.dll
+info: Unity.ILPP.Runner.PostProcessingAssemblyLoadContext[0]
+      Resolved Mono.Cecil, Version=0.11.5.0, Culture=neutral, PublicKeyToken=50cebf1cceb9d05e with Library/PackageCache/com.unity.nuget.mono-cecil@ecb9724e46ff/Mono.Cecil.dll
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'gRPC - /UnityILPP.PostProcessing/ConfigurePostProcessors'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/2 POST http://ilpp/UnityILPP.PostProcessing/ConfigurePostProcessors - 200 - application/grpc 14.3482ms
+ExitCode: 0 Duration: 0s297ms
+[ 856/1148  0s] ILPP-Configuration Library/ilpp-configuration.nevergeneratedoutput
+*** Tundra build success (0.28 seconds), 1 items updated, 1148 evaluated
+AssetDatabase: script compilation time: 0.717296s
+Begin MonoManager ReloadAssembly
+Total cache size 268058432
+Total cache size after purge 268058432, took 00:00:00.2497981
+Symbol file LoadedFromMemory is not a mono symbol file
+Refreshing native plugins compatible for Editor in 6.60 ms, found 6 plugins.
+Native extension for Android target not found
+Native extension for WindowsStandalone target not found
+Native extension for OSXStandalone target not found
+Native extension for WebGL target not found
+ScheduleIndexationOnStartup MainProcess:True IndexOnStartup:True
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  2.395 seconds
+Domain Reload Profiling: 2968ms
+	BeginReloadAssembly (118ms)
+		DisableScriptedObjects (10ms)
+		CreateAndSetChildDomain (40ms)
+	RebuildCommonClasses (4ms)
+	RebuildNativeTypeToScriptingClass (9ms)
+	initialDomainReloadingComplete (30ms)
+	LoadAllAssembliesAndSetupDomain (412ms)
+		LoadAssemblies (212ms)
+		AnalyzeDomain (173ms)
+			TypeCache.Refresh (129ms)
+				TypeCache.ScanAssembly (116ms)
+			BuildScriptInfoCaches (39ms)
+			ResolveRequiredComponents (4ms)
+	FinalizeReload (2395ms)
+		SetupLoadedEditorAssemblies (0ms)
+			InitializePlatformSupportModulesInManaged (4ms)
+			BeforeProcessingInitializeOnLoad (45ms)
+			ProcessInitializeOnLoadAttributes (2057ms)
+			ProcessInitializeOnLoadMethodAttributes (174ms)
+		AwakeInstancesAfterBackupRestoration (7ms)
+Starting new worker id: 0 with log in /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Logs/AssetImportWorkerHW0.log
+
+Asset Pipeline Refresh (id=d619a09e85e364656ac48c90dc5970d9): Total: 5.074 seconds - Initiated by InitialRefreshV2(ForceSynchronousImport)
+	(Values over 0.05ms)
+	Summary:
+		Imports: total=0 (actual=0, local cache=0, cache server=0)
+		Asset DB Process Time: managed=0 ms, native=3683 ms
+		Asset DB Callback time: managed=16 ms, native=20 ms
+		Scripting: domain reloads=1, domain reload time=602 ms, compile time=718 ms, other=33 ms
+		Project Asset Count: scripts=1788, non-scripts=3326
+		Asset File Changes: new=0, changed=0, moved=0, deleted=0
+		Scan Filter Count: 1
+	InvokePackagesCallback: 22.090ms
+	ApplyChangesToAssetFolders: 0.287ms
+	Scan: 922.265ms
+	Collect global state as custom dependencies: 1.619ms
+	CategorizeScriptCompilationAssets: 96.974ms
+	ProcessAssetsWithTransientArtifactChanges: 48.296ms
+	CategorizeAssets: 42.977ms
+	CompileScripts: 717.952ms
+	ImportOutOfDateAssets: 2448.839ms (2415.119ms without children)
+		UnloadImportedAssets: 0.629ms
+		EnsureUptoDateAssetsAreRegisteredWithGuidPM: 0.484ms
+		ImportSchedulerStart: 32.579ms
+	PostProcessAllAssets: 16.176ms
+		MonoPostProcessAllAssets: 16.144ms
+			UniversalRenderPipelineGlobalSettingsPostprocessor.OnPostprocessAllAssets 6.508ms
+			WindowAssetPostprocessingWatcher.OnPostprocessAllAssets 1.180ms
+			SpeedTree9Postprocessor.OnPostprocessAllAssets 0.908ms
+			RenderPipelineGlobalSettingsPostprocessor.OnPostprocessAllAssets 0.326ms
+			ShaderReflectionAssetPostProcessor.OnPostprocessAllAssets 0.313ms
+			ReferencedClipsPostProcessor.OnPostprocessAllAssets 0.156ms
+			InputActionAssetPostprocessor.OnPostprocessAllAssets 0.130ms
+			ProjectSettingsPostprocessor.OnPostprocessAllAssets 0.088ms
+			TerrainToolbarOverlayPostProcessor.OnPostprocessAllAssets 0.086ms
+			AssetDatabaseCallbacks.OnPostprocessAllAssets 0.069ms
+	UnloadStreamsBegin: 2.269ms
+	PersistCurrentRevisions: 0.103ms
+	GenerateScriptTypeHashes: 1.090ms
+	GenerateScriptTypeSerializationHashes: 1.946ms
+	Untracked: 752.223ms
+
+Application.AssetDatabase Initial Refresh End
+Shader Hidden/ChartRasterizerHardware is not supported: GPU does not support conservative rasterization
+Shader Hidden/ChartRasterizerHardware is not supported: GPU does not support conservative rasterization
+Scanning for USB devices : 0.097ms
+Initializing Unity extensions:
+[MODES] ModeService[none].Initialize
+[MODES] ModeService[none].LoadModes
+[MODES] Loading mode Default (0) for mode-current-id-onedraw_2
+Unloading 26 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 7770 unused Assets / (1.6 MB). Loaded Objects now: 8626.
+Memory consumption went from 255.1 MB to 253.5 MB.
+Total: 8.975541 ms (FindLiveObjects: 0.348416 ms CreateObjectMapping: 1.654667 ms MarkObjects: 5.624500 ms  DeleteObjects: 1.347583 ms)
+
+[Project] Loading completed in 7.182 seconds
+	Project init time: 				6.356 seconds
+		Template init time: 		0.000 seconds
+		Package Manager init time: 		0.249 seconds
+		Asset Database init time: 		0.134 seconds
+		Global illumination init time: 	0.000 seconds
+		Assemblies load time: 			0.579 seconds
+		Unity extensions init time: 	0.027 seconds
+		Asset Database refresh time: 	5.074 seconds
+	Scene opening time: 			0.752 seconds
+##utp:{"type":"ProjectInfo","version":2,"phase":"Immediate","time":1783994033253,"processId":11927,"projectLoad":7.181927084,"projectInit":6.355591875,"templateInit":0.0,"packageManagerInit":0.249141334,"assetDatabaseInit":0.13414125,"globalIlluminationInit":0.000424208,"assembliesLoad":0.579337417,"unityExtensionsInit":0.026635667,"assetDatabaseRefresh":5.073914958,"sceneOpening":0.75159175}
+##utp:{"type":"EditorInfo","version":2,"phase":"Immediate","time":1783994033253,"processId":11927,"editorVersion":"6000.5.1f1 (0d9463e84828)","branch":"6000.5/staging","buildType":"Release","platform":"OSX"}
+[Licensing::Client] Successfully resolved entitlement details
+Running tests for ExecutionSettings with details:
+targetPlatform =
+playerHeartbeatTimeout = 600
+filters[0] =
+   Filter with settings:
+   testMode = EditMode
+   targetPlatform =
+   testNames = null
+   groupNames = null
+   categoryNames = null
+   assemblyNames = OneStrokeDemon.Tests.EditMode
+ignoreTests = {}
+featureFlags = null
+
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/StackTrace.cs:35)
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+UnityEditor.TestTools.TestRunner.CommandLineTest.Executer:InitializeAndExecuteRun (string[]) (at ./Library/PackageCache/com.unity.test-framework@f3e6c9a02477/UnityEditor.TestRunner/CommandLineTest/Executer.cs:53)
+UnityEditor.TestTools.TestRunner.CommandLineTest.TestStarter:InitializeAndExecuteRun () (at ./Library/PackageCache/com.unity.test-framework@f3e6c9a02477/UnityEditor.TestRunner/CommandLineTest/TestStarter.cs:64)
+UnityEditor.EditorApplication:Internal_CallUpdateFunctions () (at /Users/bokken/build/output/unity/unity/Editor/Mono/EditorApplication.cs:403)
+
+(Filename: ./Library/PackageCache/com.unity.test-framework@f3e6c9a02477/UnityEditor.TestRunner/CommandLineTest/Executer.cs Line: 53)
+
+Start Indexing on Editor startup
+[Indexing] Starting Initial Indexing for Assets
+[UnityConnectServicesConfig] config is NOT valid, switching to default
+Created GICache directory at /Users/cqmizhangxiaoyu2/Library/Caches/com.unity3d.UnityEditor/GiCache. Took: 0.005s, timestamps: [7.183 - 7.188]
+[Licensing::Client] Successfully resolved entitlement details
+Worker ready: AssetImportWorkerHW0 0
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 1 unused Assets / (60.1 KB). Loaded Objects now: 8652.
+Memory consumption went from 227.2 MB to 227.2 MB.
+Total: 15.829708 ms (FindLiveObjects: 0.222417 ms CreateObjectMapping: 0.598750 ms MarkObjects: 14.963750 ms  DeleteObjects: 0.044500 ms)
+
+Executing IPrebuildSetup for: Unity.PerformanceTesting.Editor.TestRunBuilder.
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/StackTrace.cs:35)
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+UnityEditor.TestTools.TestRunner.TestRun.Tasks.BuildActionTaskBase`1/<ExecuteMethods>d__8<UnityEngine.TestTools.IPrebuildSetup>:MoveNext () (at ./Library/PackageCache/com.unity.test-framework@f3e6c9a02477/UnityEditor.TestRunner/TestRun/Tasks/BuildActionTaskBase.cs:48)
+UnityEditor.TestTools.TestRunner.TestRun.Tasks.BuildActionTaskBase`1/<Execute>d__7<UnityEngine.TestTools.IPrebuildSetup>:MoveNext () (at ./Library/PackageCache/com.unity.test-framework@f3e6c9a02477/UnityEditor.TestRunner/TestRun/Tasks/BuildActionTaskBase.cs:34)
+UnityEditor.TestTools.TestRunner.TestRun.TestJobRunner:ExecuteStep () (at ./Library/PackageCache/com.unity.test-framework@f3e6c9a02477/UnityEditor.TestRunner/TestRun/TestJobRunner.cs:194)
+UnityEditor.TestTools.TestRunner.TestRun.TestJobRunner:ExecuteCallback () (at ./Library/PackageCache/com.unity.test-framework@f3e6c9a02477/UnityEditor.TestRunner/TestRun/TestJobRunner.cs:129)
+UnityEditor.EditorApplication:Internal_CallUpdateFunctions () (at /Users/bokken/build/output/unity/unity/Editor/Mono/EditorApplication.cs:403)
+
+(Filename: ./Library/PackageCache/com.unity.test-framework@f3e6c9a02477/UnityEditor.TestRunner/TestRun/Tasks/BuildActionTaskBase.cs Line: 48)
+
+<b><color=#2EA3FF>MCP-FOR-UNITY</color></b>: [TestRunnerNoThrottle] Applied No Throttling for test run.
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/StackTrace.cs:35)
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+MCPForUnity.Editor.Helpers.McpLog:Info (string,bool) (at ./Library/PackageCache/com.coplaydev.unity-mcp@4ee62b097584/Editor/Helpers/McpLog.cs:40)
+MCPForUnity.Editor.Services.TestRunnerNoThrottle:ApplyNoThrottling () (at ./Library/PackageCache/com.coplaydev.unity-mcp@4ee62b097584/Editor/Services/TestRunnerNoThrottle.cs:101)
+MCPForUnity.Editor.Services.TestRunnerNoThrottle/TestCallbacks:RunStarted (UnityEditor.TestTools.TestRunner.Api.ITestAdaptor) (at ./Library/PackageCache/com.coplaydev.unity-mcp@4ee62b097584/Editor/Services/TestRunnerNoThrottle.cs:138)
+UnityEditor.TestTools.TestRunner.Api.CallbacksDelegator/<>c__DisplayClass7_0:<RunStarted>b__0 (UnityEditor.TestTools.TestRunner.Api.ICallbacks) (at ./Library/PackageCache/com.unity.test-framework@f3e6c9a02477/UnityEditor.TestRunner/Api/CallbacksDelegator.cs:42)
+UnityEditor.TestTools.TestRunner.Api.CallbacksDelegator:TryInvokeAllCallbacks (System.Action`1<UnityEditor.TestTools.TestRunner.Api.ICallbacks>) (at ./Library/PackageCache/com.unity.test-framework@f3e6c9a02477/UnityEditor.TestRunner/Api/CallbacksDelegator.cs:135)
+UnityEditor.TestTools.TestRunner.Api.CallbacksDelegator:RunStarted (NUnit.Framework.Interfaces.ITest) (at ./Library/PackageCache/com.unity.test-framework@f3e6c9a02477/UnityEditor.TestRunner/Api/CallbacksDelegator.cs:42)
+UnityEngine.Events.InvokableCall`1<NUnit.Framework.Interfaces.ITest>:Invoke (NUnit.Framework.Interfaces.ITest) (at /Users/bokken/build/output/unity/unity/Runtime/Export/UnityEvent/UnityEvent.cs:222)
+UnityEngine.Events.UnityEvent`1<NUnit.Framework.Interfaces.ITest>:Invoke (NUnit.Framework.Interfaces.ITest) (at /Users/bokken/build/output/unity/unity/artifacts/generated/UnityEvent/UnityEvent_1.cs:59)
+UnityEditor.TestTools.TestRunner.TestRun.Tasks.Events.RunStartedInvocationEvent/<Execute>d__0:MoveNext () (at ./Library/PackageCache/com.unity.test-framework@f3e6c9a02477/UnityEditor.TestRunner/TestRun/Tasks/Events/RunStartedInvocationEvent.cs:15)
+UnityEditor.TestTools.TestRunner.TestRun.TestJobRunner:ExecuteStep () (at ./Library/PackageCache/com.unity.test-framework@f3e6c9a02477/UnityEditor.TestRunner/TestRun/TestJobRunner.cs:194)
+UnityEditor.TestTools.TestRunner.TestRun.TestJobRunner:ExecuteCallback () (at ./Library/PackageCache/com.unity.test-framework@f3e6c9a02477/UnityEditor.TestRunner/TestRun/TestJobRunner.cs:129)
+UnityEditor.EditorApplication:Internal_CallUpdateFunctions () (at /Users/bokken/build/output/unity/unity/Editor/Mono/EditorApplication.cs:403)
+
+(Filename: ./Library/PackageCache/com.coplaydev.unity-mcp@4ee62b097584/Editor/Helpers/McpLog.cs Line: 40)
+
+Starting new worker id: 1 with log in /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Logs/AssetImportWorkerHW1.log
+[Worker0] Imported GUID: e2b62b02447ed4b24a64d0c33705c559 - Path: Assets/_Game/Scripts/Combat/StrokeHitSettingsFactory.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '59a44c6a5610af49dfe5dfa5456e8427') in 0.048762458 seconds
+[Worker0] Imported GUID: 6295186c24ce24fd6bc7e4a93543d235 - Path: Assets/_Game/Scripts/Combat/StrokeHitQuery.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'a6014a27ba9199c5d418db6aed5fd61d') in 0.011028042 seconds
+[Worker0] Imported GUID: a6726aa00b8cd4149aa1c1881e77b233 - Path: Assets/_Game/Scripts/Core/OneStrokeDemon.Core.asmdef - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '41dc93a7b296a477dc7bcaefbc3e9dcd') in 0.01305725 seconds
+[Worker0] Imported GUID: 86792c33b872542d491aef035ca1f3c3 - Path: Assets/_Game/Scripts/Config/GameplayConfigException.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'c6839289393993831175bcefa5a808e0') in 0.013502583 seconds
+[Worker0] Imported GUID: 59119e2a8de5749088a033a9467f8c40 - Path: Assets/_Game/Scripts/Core/ISceneFlowService.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '99137e68029915cea26ff25f25e7064e') in 0.011842959 seconds
+[Worker0] Imported GUID: 28aac9b9e926d4dc9a042162aab39873 - Path: Assets/_Game/Scripts/Config/GameplayConfigSnapshot.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'ae6e2989d7482691f46dff297cdea4fe') in 0.011717334 seconds
+[Worker0] Imported GUID: 9131e980fb2dd48efbc29cadc5396fe2 - Path: Assets/_Game/Scripts/Config/GameplayConfigRows.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '802ab2d24b1543d8e035e5f44ad181a1') in 0.014766708 seconds
+[Worker0] Imported GUID: d122ab547521443448829a71de8683a4 - Path: Assets/_Game/Scripts/Combat/StrokeSamplingSettingsFactory.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'bb3bca5f91eb185ce61421e7fdaa3e0d') in 0.012854208 seconds
+[Worker0] Imported GUID: 28e5685fe37a343b892a54ade83daa95 - Path: Assets/_Game/Scripts/Input/OneStrokeDemon.Input.asmdef - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '63b3d3ab6317d0940659010846ec292d') in 0.011573833 seconds
+[Worker0] Imported GUID: 05040cb12ecca4ccca7c80ed30864912 - Path: Assets/_Game/Scripts/Combat/StrokeHitSettings.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'bfd56add1e59ec34b8871270892657bf') in 0.01155375 seconds
+[Worker0] Imported GUID: 5919ad1809ae44c0e95d4c1f596d2b88 - Path: Assets/_Game/Scripts/Core/ObjectPoolService.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '1c58d8321eec5d01c7e8f9c342b264f4') in 0.012831083 seconds
+[Worker0] Imported GUID: 927e09549a0474ba2957cb7eee51df88 - Path: Assets/_Game/Scripts/Input/GestureClassifier.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'b79344256805cb1c9985e7ea265fdf43') in 0.012383167 seconds
+[Worker0] Imported GUID: 0267f5d19d1914569b461daeb544db8b - Path: Assets/_Game/Scripts/Config/AssemblyInfo.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '21ea67430a6f2dbccbf9709900ea89d6') in 0.011741667 seconds
+[Worker0] Imported GUID: 9cd422027ab2043569adc6bc6710602a - Path: Assets/_Game/Scripts/Input/PointerInputProcessor.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '4af152959ae5a191ec643fa141a35901') in 0.0119805 seconds
+[Worker0] Imported GUID: a973415b07f4f43738c43d3573262ab8 - Path: Assets/_Game/Scripts/Config/AssetRegistryLoadSummary.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '9185b66756fd2becac511f168404501e') in 0.011992208 seconds
+[Worker0] Imported GUID: 3bcec52476db041dfa0bf3d71e40f4c6 - Path: Assets/_Game/Scripts/Combat/StrokeTrailPath.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'ffba60cea29f7ccbce327519a0b91089') in 0.013065 seconds
+[Worker0] Imported GUID: 0104bb4cad98c4af28ac186d9c23ad9f - Path: Assets/_Game/Scripts/Config/GameplayConfigService.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'ea72932a3154ca06e5ef959c5c815d59') in 0.01902125 seconds
+[Worker0] Imported GUID: 27f4ef99197b94b8b839df1e335eacf8 - Path: Assets/_Game/Scripts/Levels/BossLevelCoordinator.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '6ad3a5e1b8a74a5f5778ec315fc2bff4') in 0.013461708 seconds
+[Worker0] Imported GUID: ff6ede4fcd30f4867a9b8bf169da3bbe - Path: Assets/_Game/Scripts/Core/SceneNames.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'a8c3965017bc0b3c5b4d9751fdc2759d') in 0.011816959 seconds
+[Worker0] Imported GUID: 337508fd2690e4dc3b50d4b07221f32b - Path: Assets/_Game/Scripts/Combat/StrokeHitResolver.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '8b129e5ad9fd6bb28b8abe464c8770fe') in 0.011242667 seconds
+[Worker0] Imported GUID: 8d585ffa8afe0433f993556440271ccc - Path: Assets/_Game/Scripts/Config/ObjectPoolConfiguration.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'df188a5423889cae8acd404c5b4b8c59') in 0.0130575 seconds
+[Worker0] Imported GUID: 36bb0b0f41b7d4c2c975d3cded7f3a1c - Path: Assets/_Game/Scripts/Input/PointerInputRuntime.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'c76521b6b6868c24f9c8f425ffaa74d0') in 0.012637292 seconds
+[Worker0] Imported GUID: 0ca41eeb70016439a95b2088c3dbd2d4 - Path: Assets/_Game/Scripts/Input/StrokeGeometry.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '14beb38c49e21b09ee596cb3910d4ac5') in 0.012477667 seconds
+[Worker0] Imported GUID: b27c9e80e0ec14d2080ab5dab908eae9 - Path: Assets/_Game/Scripts/Config/GameplayConfigDocument.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '0717347d172c84ccc1d40a0ee61a6087') in 0.015011333 seconds
+[Worker0] Imported GUID: d46b4ec2e631a4e4eb94b1f71e20d048 - Path: Assets/_Game/Scripts/Levels/AssemblyMarker.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'd960e00f8b03f9aaa61d94229e92c8bd') in 0.013851209 seconds
+[Worker0] Imported GUID: 99f0772fdd0374df1bf84219761ec6d1 - Path: Assets/_Game/Scripts/Input/ReferencePixelConverter.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '9842ec51dcff6fd0dbea37a265339fd1') in 0.01278225 seconds
+[Worker0] Imported GUID: 67d58360cb6264ad3882c9a563698aec - Path: Assets/_Game/Scripts/Input/GestureRule.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '2160cb0f139c3f3f0d6424730b6ace05') in 0.02026775 seconds
+[Worker0] Imported GUID: e9b26eee036f247aa9223397717eb341 - Path: Assets/_Game/Scripts/Config/AssetRegistryException.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '63398896bae00007fb56cb379069c6f6') in 0.019357292 seconds
+[Worker0] Imported GUID: 40e656b58e03843dbb5574372af68ad0 - Path: Assets/_Game/Scripts/Config/GameplayConfigCompatibility.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '1781eabef74e48323f42babf78e9de7e') in 0.016603042 seconds
+[Worker0] Imported GUID: 59a8ab072913648cd8a092ff632dfdff - Path: Assets/_Game/Scripts/Config/IConfigProvider.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '68f906f9f8566626476a6d9c8045e2b7') in 0.017222792 seconds
+[Worker0] Imported GUID: d1759c3aceda14e0ebcfacadcda304e9 - Path: Assets/_Game/Scripts/Input/StrokeGeometryData.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'b0bd77e7a76620c4ca99e637308c2ec7') in 0.014608417 seconds
+[Worker0] Imported GUID: 00a72cfa9d7b946609db73b2e33cc4af - Path: Assets/_Game/Scripts/Editor/OneStrokeDemon.Editor.asmdef - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'cc9e911e745a40f4ecdc57c078e04ef0') in 0.014959708 seconds
+[Worker0] Imported GUID: 9ae22430cd19043bcbbbb9dbbed1fff1 - Path: Assets/_Game/Scripts/Input/InputSystemPointerAdapter.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '085e6e850a46d2eaef15c1db84420c45') in 0.013837209 seconds
+[Worker0] Imported GUID: ddd5d5931771a4af4a5be65530128079 - Path: Assets/_Game/Scripts/Input/EventSystemPointerUiBlocker.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'bc9c28191aa8227697a337760ca4718b') in 0.0150525 seconds
+[Worker0] Imported GUID: 55739a69811b3465781bb3fd1fc46f8b - Path: Assets/_Game/Scripts/Levels/LevelRunner.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '73bdb5773e4d27fd053e3e4c5bd81a5b') in 0.014715292 seconds
+[Worker0] Imported GUID: dccfa9500ed104286b4892a42cb0c66d - Path: Assets/_Game/Scripts/Input/StrokeSampler.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '72d344962f0dc83110ea90efb817f008') in 0.01416875 seconds
+[Worker0] Imported GUID: 568b16467322144ac9b66d87358c72cc - Path: Assets/_Game/Scripts/Config/IAssetRegistry.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '69370a657555b6d17f58461153c283b0') in 0.013628625 seconds
+[Worker0] Imported GUID: ffb556b766b294afb94fb35c2bf04a23 - Path: Assets/_Game/Scripts/Input/StrokeGeometrySettings.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '06d3ad74da82ba1750cfcb9123a2c5e1') in 0.013587292 seconds
+[Worker0] Imported GUID: 2482d5bc85fd64af899ae684232fa0a3 - Path: Assets/_Game/Scripts/Config/GameplayConfigRuntime.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'f98c4cb76705610e23cf41915e3da566') in 0.014043166 seconds
+[Worker0] Imported GUID: 8eb7ab99b3eb8479f9d55d29facff7e4 - Path: Assets/_Game/Tests/EditMode/OneStrokeDemon.Tests.EditMode.asmdef - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '98805cc546279fadddeea7247b4b2f22') in 0.014877667 seconds
+[Worker0] Imported GUID: 7199739001675411aa11ced57241bae6 - Path: Assets/_Game/Scripts/Levels/ResultScoring.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '7e7ef58104d70640e0ff0edd433d219e') in 0.0149235 seconds
+[Worker0] Imported GUID: f28aec0b59e474aa48812d4f2caf1f99 - Path: Assets/_Game/Scripts/Levels/TutorialFlow.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '88da04ba45736e31306ae4e3cffc73a2') in 0.013250459 seconds
+[Worker0] Imported GUID: 195c7dd760cdf4ac38be7d82ab12b53c - Path: Assets/_Game/Scripts/Skills/SkillService.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'ed205334163e9c0189241a3206626555') in 0.014714958 seconds
+[Worker0] Imported GUID: 7282b681e114542ea8ee044f77a1f6c7 - Path: Assets/_Game/Art/UI/Fonts/FONT_SOURCE.md - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '01929c5c8cd0db059a8e0f0ded31ef43') in 0.013530834 seconds
+[Worker0] Imported GUID: 9af9a1b2ef14c45f69f15c2348f2983a - Path: Assets/_Game/Tests/EditMode/T110/WechatSdkIntegrationTests.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '38df4b9cb0d01be8091055a05e999e85') in 0.013941667 seconds
+[Worker0] Imported GUID: 6366d21b67c76483b9f7008aa484f59a - Path: Assets/_Game/Scripts/Skills/OneStrokeDemon.Skills.asmdef - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '34a2f6a9664ef5116bd631ec67dcb044') in 0.013990167 seconds
+[Worker0] Imported GUID: c9610808f97344ccebaacbe3abe064a5 - Path: Assets/_Game/Scripts/Skills/SkillTargetSelector.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'e207c0cce68ff1b06a43fe343d822f72') in 0.0142375 seconds
+[Worker0] Imported GUID: 05ba5373e2141404b97dc402b3793d0d - Path: Assets/_Game/Scripts/Editor/AssetRegistry/AssetRegistryEditorValidator.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '5ec690ddfdc801e563a56775e7d7a3cf') in 0.013656625 seconds
+[Worker0] Imported GUID: 9c3c56a61a73473995d0e5586fae6df0 - Path: Assets/_Game/Scripts/Presentation/CombatFeedbackRuntime.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'fde56f7cc903d4592573b817c0aaa2e1') in 0.012412708 seconds
+[Worker0] Imported GUID: b4d7fda51f0a841cb9c8839d23a29806 - Path: Assets/_Game/Scripts/Editor/AssetRegistry/AssetRegistryAuthoring.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'ac0c4af9f11ae9ee03ec2af7245829bf') in 0.014840834 seconds
+[Worker0] Imported GUID: 55d886a01303f4f42a722803275c9540 - Path: Assets/_Game/Scripts/Levels/ResultService.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'c87f3fe63db731368f028bd4a2a76c3f') in 0.014049167 seconds
+[Worker0] Imported GUID: ca525e92fb34b40c68c205067a015612 - Path: Assets/_Game/Scripts/Presentation/AssemblyMarker.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'e86877a6e664e9a1c99386fac9d54d04') in 0.015159083 seconds
+[Worker0] Imported GUID: e92e9299376a1442e8abeb1a8b970e48 - Path: Assets/_Game/Scripts/Levels/ProgressSave.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'e91dae4ebab0d24b2a13724106dc1bb6') in 0.0149465 seconds
+[Worker0] Imported GUID: 7d943fefeb3fb457a9bd6a2dd45f7100 - Path: Assets/_Game/Tests/EditMode/T030/AssemblyDependencyTests.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'bccbe1a1ca839c9105da709381d8e7e2') in 0.017151042 seconds
+[Worker0] Imported GUID: b2aa7e671e9d14e1c9750aa8db950702 - Path: Assets/_Game/Scripts/Presentation/StrokeTrailView.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'a00cecfec83b530e86ed4de342479bd1') in 0.015304459 seconds
+[Worker0] Imported GUID: cebfde00c0820498fbdd205d46da8d15 - Path: Assets/_Game/Tests/EditMode/T040/WorkflowContractTests.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'abfad71256361ba17c5cb28d311c18c7') in 0.01481175 seconds
+[Worker0] Imported GUID: 4c6723e30d0064eccac69cf68ab9c426 - Path: Assets/_Game/Scripts/Presentation/BattleHudContracts.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'b155ea188b5addf2461852bba262a0dc') in 0.012186333 seconds
+[Worker0] Imported GUID: af10fea0965ee4d099c05e9a72b0ac05 - Path: Assets/_Game/Config/Registry/Placeholders/PlaceholderSprite.asset - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '5121fb66f1464ce79eaa5ac086ad6047') in 0.043109042 seconds
+[Worker0] Imported GUID: ad3d81771a106432b81544ca40a90f6e - Path: Assets/_Game/Scripts/Platform/AssemblyMarker.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'ae29967057cb57aa57690f46712521b8') in 0.013609375 seconds
+[Worker0] Imported GUID: c1bb7980f6828449f893270d4dd79624 - Path: Assets/_Game/Scripts/Presentation/StrokeTrailSettingsFactory.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '3db6c2e730deee5f70af3564a73a17dc') in 0.013197375 seconds
+[Worker0] Imported GUID: 10c2f55fc7b8241b5a04db744c136747 - Path: Assets/_Game/Scripts/Levels/SpawnScheduler.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '4e5d7efbddbeb768fa77eaa5a712c1f6') in 0.012899 seconds
+[Worker0] Imported GUID: af4d22c11a50d4519b9adaa19d589605 - Path: Assets/_Game/Scripts/Skills/SkillEffectContracts.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'f047f4ad6f548ed19d9bc7c706efb2a9') in 0.012599583 seconds
+[Worker0] Imported GUID: 51f25127334f64b70ac5ca51b00be00b - Path: Assets/_Game/Tests/EditMode/T120/WechatBuildEntryTests.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '0df1bae921bf3ba01c0e57624336705d') in 0.01311725 seconds
+[Worker0] Imported GUID: 47eac0dd973214657955627285111e0a - Path: Assets/_Game/Scripts/Presentation/BattleHudStateBinding.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'a44de205c92fe5a2f1b183e3231bf111') in 0.012618333 seconds
+[Worker0] Imported GUID: d6cc1601c59ca423bb70181d7536230e - Path: Assets/_Game/Scripts/Editor/Build/WechatBuildEntry.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'eb00dfd32c91d6da8b82cb68954a82ce') in 0.012353958 seconds
+[Worker0] Imported GUID: f8da38ec0e5e64613bf94ea3f71e0fc2 - Path: Assets/_Game/Scripts/Levels/WaveRunner.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '5b5975775f131ad67a7f3191411c450b') in 0.012436208 seconds
+[Worker0] Imported GUID: 0408f714e62e44c14aa6d95d12a1bcae - Path: Assets/_Game/Tests/PlayMode/OneStrokeDemon.Tests.PlayMode.asmdef - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '6c134f23c177b528cad39e9d8aaad2d4') in 0.013038916 seconds
+[Worker0] Imported GUID: 8ec3d5b0c79d84d5dbc08cc8d81d7554 - Path: Assets/_Game/Tests/EditMode/T250/GeneratedConfigPipelineTests.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'b9bcbe08c4d7ea86b219848e93528961') in 0.012542583 seconds
+[Worker0] Imported GUID: a4b63a6fd168849ca81b2e5a57ad6cb8 - Path: Assets/_Game/Scripts/Editor/Build/WebBuildEntry.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '0c60c83419f4462cdada93d3fab24161') in 0.012430667 seconds
+[Worker0] Imported GUID: eb94f088556d64f2cb349fbd3ec25ab1 - Path: Assets/_Game/Config/Registry/Placeholders/PlaceholderPrefab.prefab - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '3c3a22580408300609365b607425777a') in 0.048553375 seconds
+[Worker0] Imported GUID: dfca2bb7f988c48f8b9e29b025fd86bf - Path: Assets/_Game/Config/Registry/Placeholders/PlaceholderAudio.asset - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'b25d4a4c554b25510aeb2717b363502b') in 0.014240417 seconds
+[Worker0] Imported GUID: 56529ae97bb8f4837885e7d1df914c66 - Path: Assets/_Game/Scripts/Levels/TutorialLevelCoordinator.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '696617f5df16344e74a3f8ad79275fa3') in 0.012262292 seconds
+[Worker0] Imported GUID: 8abd178b0ac8e41b3aea6cf393c793a7 - Path: Assets/_Game/Scripts/Config/Generated/ConfigIds.g.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '53a0df3bd36aa3e052b6276786376bed') in 0.011922583 seconds
+[Worker0] Imported GUID: 6659817f22a20491c8bb32d9040003b3 - Path: Assets/_Game/Scripts/Presentation/BattleHudViewFactory.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'b5c0458ce6239f0c681a4011453b2e02') in 0.012167625 seconds
+[Worker0] Imported GUID: 657ffac3b75d34f76939523925e56282 - Path: Assets/_Game/Scripts/Levels/OneStrokeDemon.Levels.asmdef - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '39cbdc5faa807da297597c4dfcb96178') in 0.011322041 seconds
+[Worker0] Imported GUID: cdcad1302b6d74ecfb552d7d53ed2c93 - Path: Assets/_Game/Scripts/Skills/BossPhaseController.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'a80d5d95c5e2f1d2e487e424dc9ea5f7') in 0.011344291 seconds
+[Worker0] Imported GUID: c75956571eb99449888d4e92e7ce9f4e - Path: Assets/_Game/Scripts/Skills/SkillConditionEvaluator.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '1a95e3f0fd20a0e05750aaec4095f3ed') in 0.011567334 seconds
+[Worker0] Imported GUID: 5978bde39d7144869b322a906dd5e5e2 - Path: Assets/_Game/Art/UI/Fonts/OneStrokeDemonUI-Regular.ttf - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '8950afcbceb635b6b7be2a6a558a6118') in 0.020317042 seconds
+[Worker0] Imported GUID: aee9409c7d95f46c4a2a4c8518286a95 - Path: Assets/_Game/Art/UI/Fonts/OneStrokeDemonUI.charset.txt - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '3ce569be6d5c09aaab7f3fdc17f75bcc') in 0.01280375 seconds
+[Worker0] Imported GUID: d74309f11c87944e795f3791141ba09f - Path: Assets/_Game/Scripts/Presentation/DamageNumberPoolItem.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '5b64b711d3795651614b81bf3a8eaea7') in 0.0135515 seconds
+[Worker0] Imported GUID: e41f2b2d6e8c4deea756ecf02d2b83b1 - Path: Assets/_Game/Scripts/Presentation/CombatFeedbackService.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '2ff331f45650485480b935b24804468d') in 0.012095916 seconds
+[Worker0] Imported GUID: 9f4bec8a2cd1d4bfcb5cea26a18aced5 - Path: Assets/_Game/Scripts/Presentation/VfxPoolItem.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '6a6085d7810194ba7a3e8ca523b77c48') in 0.012516833 seconds
+[Worker0] Imported GUID: 568fde2dfc5aa45558b3c9122ac32d82 - Path: Assets/_Game/Tests/EditMode/T240/AssetRegistryValidationTests.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '03cea7c7c1bab27b4cb2da599464b61b') in 0.011975291 seconds
+[Worker0] Imported GUID: 5b2be20c34d6a477fbcf8b700e890a6c - Path: Assets/_Game/Tests/EditMode/T230/RuntimeConfigTestFixture.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '063aeb4c49ed47ee9d12b45d290e7243') in 0.011658458 seconds
+[Worker0] Imported GUID: a4149b8f864e941fc948e30ddd8f05e5 - Path: Assets/_Game/Scripts/Presentation/BattleHudPresenter.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'd655999da21c2e976d793fe26ef7ac5a') in 0.014260167 seconds
+[Worker0] Imported GUID: 9192967015a5340a3be3247869a23ab0 - Path: Assets/_Game/Scripts/Presentation/OneStrokeDemon.Presentation.asmdef - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'f3dce9fa65bb01647386bfa6f11bc542') in 0.012115709 seconds
+[Worker0] Imported GUID: 2326f36ca9c4f4e828c65e0ee8afb8cc - Path: Assets/_Game/Scripts/Platform/T100/WebSmokeProbe.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'a35411a50b8169b91dbe48f64f448e1f') in 0.012646542 seconds
+[Worker0] Imported GUID: c353eda5fb926444ead643737a1416aa - Path: Assets/_Game/Tests/EditMode/T230/RuntimeConfigLoadTests.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'c4915ca901f262020cce188f95570e51') in 0.016683875 seconds
+[Worker0] Imported GUID: aaf8a15fa340e42799295a7407819a99 - Path: Assets/_Game/Scripts/Skills/EffectExecutorRegistry.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '7f5625f424125bb92d529dd89865d6a3') in 0.02010775 seconds
+[Worker0] Imported GUID: 3fed9afe601324412bd998b1da5709c8 - Path: Assets/_Game/Scripts/Skills/EnemySkillEffectTarget.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '7576477d093e4b991900580bf6488fcf') in 0.013222666 seconds
+[Worker0] Imported GUID: 76a8e073810484a11ad8bc04852e473a - Path: Assets/_Game/Scripts/Presentation/StrokeTrailPool.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '5e3b347fad62beb5c3dac6ae0ee6d1a4') in 0.012718458 seconds
+[Worker0] Imported GUID: 8587419f2a219433ca600730f9aa537f - Path: Assets/_Game/Art/UI/Fonts/OFL.txt - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '8ccb9471ef6dbbfc07be168d3181e951') in 0.012452 seconds
+[Worker0] Imported GUID: 46d71532292664bbcb821d6c09fbe0e5 - Path: Assets/_Game/Scripts/Skills/AssemblyMarker.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'e82d25ac7dc5bfa18a9be14c83bc6893') in 0.011159083 seconds
+[Worker0] Imported GUID: 39aa25cf0ba5544d6ba33e6626cda670 - Path: Assets/_Game/Tests/EditMode/T230/InvalidConfigTests.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '03c0a4b6144392cb3614458db4e33c8a') in 0.011288208 seconds
+[Worker0] Imported GUID: 1b968dea8f74d4ef1ab2290c19b47a83 - Path: Assets/_Game/Tests/EditMode/T020/RenderPipelineBaselineTests.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '530de48a4731b2f8ab1143d5ff14dc0f') in 0.011503833 seconds
+[Worker0] Imported GUID: 1a2c8d01cd6714aa1aa108802f301d24 - Path: Assets/_Game/Scripts/Editor/AssetRegistry/AssetRegistryPaths.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '80fcfb264b691d3f40a732c908aedbdd') in 0.012328042 seconds
+[Worker0] Imported GUID: 7161ba8762f2d42b7ac1816fc61feeea - Path: Assets/_Game/Scripts/Skills/PlayerSkillEffectTarget.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '7e69f3edb49a4c6ed44ba34d5a9048f5') in 0.011847958 seconds
+[Worker0] Imported GUID: bae11203337d949c0bcbd27e71095fff - Path: Assets/_Game/Scripts/Presentation/BattleHudView.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '3078db88e2a95803389dc07f4a7050ea') in 0.011796 seconds
+[Worker0] Imported GUID: a1576e49f25744eff906bfd2d899bcb9 - Path: Assets/_Game/Scripts/Editor/Localization/LocalizationFontAssetAuthoring.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'c029c3641a215c463c6e02380cdcad29') in 0.011453 seconds
+[Worker0] Imported GUID: 7fc11cf174c444c7a95f669bbf9b5c8f - Path: Assets/_Game/Config/Registry/Placeholders/BattleSceneReference.asset - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'd296d46fc7de4af5de1bb1997981ad34') in 0.0265665 seconds
+[Worker0] Imported GUID: 661700f49ed8340768566c2b1aed1440 - Path: Assets/_Game/Scripts/Presentation/StrokeTrailSettings.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '0f08312167c33d3ac6e6aaed65cb62cb') in 0.0126895 seconds
+Worker ready: AssetImportWorkerHW1 1
+[Worker0] Imported GUID: fd486886c0d4b47109469a486bc83683 - Path: Assets/_Game/Tests/EditMode/T100/WebBuildSmokeTests.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '2df79cee1e0becd8bef9272d74b2b4bd') in 0.013973 seconds
+[Worker0] Imported GUID: bec96f9f177644349af277c85174682d - Path: Assets/_Game/Scripts/Platform/OneStrokeDemon.Platform.asmdef - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '2449a8140b0d5ec5ed89d3faf295dc8c') in 0.013153125 seconds
+[Worker0] Imported GUID: 586774d122c0046e9a2e4c79eed2aa9a - Path: Assets/_Game/Tests/PlayMode/T310/StrokeInputCollectorPlayModeTests.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '6ed44070ad2777c68f56f1be1ce296e6') in 0.012296959 seconds
+[Worker0] Imported GUID: 74d4edef8dd484fc58eba8e24ab83813 - Path: Assets/_Game/Tests/EditMode/T300/PointerInputTests.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'c2edcfee73d95e45326fc0166cd23747') in 0.012031792 seconds
+[Worker0] Imported GUID: 6efb8d17fc3954f6d9ed6bbc836dc7e3 - Path: Packages/com.qq.weixin.minigame/LICENSE - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '54221e8269b4b605506392196d3e28c6') in 0.012483875 seconds
+[Worker0] Imported GUID: 2e4374dcac44545f4b3b34cb58ca89d1 - Path: Assets/_Game/Art/UI/Fonts/Resources/Fonts/OneStrokeDemon UI Latin SDF.asset - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '27c9ac8d299c133bc39c57fde58ea974') in 0.044051125 seconds
+[Worker0] Imported GUID: 03295472344154e8294713fed38d070b - Path: Assets/_Game/Tests/EditMode/T310/StrokeSamplerBoundaryTests.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'a9a04389e48a45796d4c5ac6e5b70395') in 0.012477875 seconds
+[Worker0] Imported GUID: e3467c89072bc4303870698201a9b3cf - Path: Assets/_Game/Tests/PlayMode/T600/HudBindingPlayModeTests.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '26ccf7099f8f64981198ca8428533806') in 0.011876042 seconds
+[Worker0] Imported GUID: 9255abff2395340e89470f2d3baf1d00 - Path: Assets/_Game/Tests/EditMode/T600/BattleHudPresenterTests.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'a0bf678b20c1b73a39b20dc57940ba9f') in 0.011503084 seconds
+[Worker0] Imported GUID: d309e3317e7e6433d8bc787e7ea803c0 - Path: Assets/_Game/Tests/PlayMode/T450/EnemyGalleryPlayModeTests.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'f7b78a4704396920b36abbfd3b19cdfa') in 0.011769417 seconds
+[Worker0] Imported GUID: 7ec8ac3f1bba94d9c87f204a32dfbba5 - Path: Assets/_Game/Tests/EditMode/T510/BattleFlowTests.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'add0d935be34d77f6331a35429799234') in 0.012940542 seconds
+[Worker0] Imported GUID: ef88b47e0390547aab8913564e6adf1c - Path: Assets/_Game/Tests/EditMode/T450/EnemyArchetypeConfigTests.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '0a11a63e32cd64a215c6d8df9b34538a') in 0.012824083 seconds
+[Worker0] Imported GUID: f0066cb5860f84011b08359afae89c69 - Path: Packages/com.qq.weixin.minigame/package.json - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '01e12dda5ded57032fe5c4935b3cf4c9') in 0.013094833 seconds
+[Worker0] Imported GUID: f0bf68b49f1ab4403b2fbfeb3dc5f122 - Path: Assets/_Game/Tests/PlayMode/T300/PointerRuntimeBootstrapPlayModeTests.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '38998d4849948544ce1cfd00b14f229b') in 0.011601292 seconds
+[Worker0] Imported GUID: a6d500214e0cb42bf8c42899d05696af - Path: Assets/_Game/Tests/EditMode/T350/StrokeHitResolverTests.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '3e64eb516557c140d2900752fce98726') in 0.011966208 seconds
+[Worker0] Imported GUID: c770255f0491447ee8ac2e5c16b1ac6d - Path: Assets/_Game/Tests/PlayMode/T510/NoAdvanceBeforePlayerActionTests.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'a98a1a742e77d7a260408746a6bdd62e') in 0.011088042 seconds
+[Worker0] Imported GUID: 9b8d34f36df5c4c3ea7735648fc61c7f - Path: Packages/com.qq.weixin.minigame/mainifest.json - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '50cc6fe64752a593513ad978b35302cb') in 0.011225125 seconds
+[Worker0] Imported GUID: 8ccfb2bcad708447fbee40c743c3f4c1 - Path: Assets/_Game/Tests/EditMode/T460/BossPhaseTests.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '0e68013e0ce260deecde89a2c02d41f6') in 0.01176725 seconds
+[Worker0] Imported GUID: 810e56716c6224c75826f4beb1af5e28 - Path: Assets/_Game/Tests/EditMode/T420/EnemyStateMachineTests.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '22dbdf64d826de0f5b5e9f11e78d1151') in 0.011837375 seconds
+[Worker0] Imported GUID: 587e35594c4c549b9adf63384ac03083 - Path: Assets/_Game/Tests/EditMode/T500/SpawnTimelineTests.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'ede65498bd6d6d59328ff299b6a4d17a') in 0.011240334 seconds
+[Worker0] Imported GUID: afebbcbd62734491680f34e9d9e1056c - Path: Assets/_Game/Tests/PlayMode/T430/AttackTelegraphPlayModeTests.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'b9134c86de9a1024a129932627d0c08b') in 0.011625583 seconds
+[Worker0] Imported GUID: 065194d4fbeb946148d974aa5c360c12 - Path: Assets/_Game/Tests/EditMode/T360/DamageFormulaTests.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '94f29cfbb8ed7f46ef7a12959aa3e98b') in 0.011510625 seconds
+[Worker0] Imported GUID: 2815528dbaf20408980fb2572f0f4483 - Path: Assets/_Game/Tests/EditMode/T440/PoolResetTests.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '27e149b0d8a7a9612ae57b1b6a18ff2a') in 0.011918292 seconds
+[Worker0] Imported GUID: 259de3cf47cb04db7a264023f00ad39e - Path: Assets/_Game/Tests/PlayMode/T400/StanceSwitchPlayModeTests.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'eb3facf9f90198a2bbade8c45ed2a9e5') in 0.012999083 seconds
+[Worker0] Imported GUID: bad8e416923b54e0fadf97454deabf15 - Path: Assets/_Game/Tests/EditMode/T320/StrokeGeometryTests.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '5b00022467d83e2fefbac57285cb9a00') in 0.011441125 seconds
+[Worker0] Imported GUID: 8634a9803ec34489c9e9cd620064a17d - Path: Assets/_Game/Tests/PlayMode/T230/RuntimeConfigBootstrapPlayModeTests.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '3932d1d90682cdecdac6a008580bbe8b') in 0.012389208 seconds
+[Worker0] Imported GUID: c40ae0308f82f4396bb769a865e060cd - Path: Assets/_Game/Tests/PlayMode/T340/StrokeTrailPoolPlayModeTests.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '94b7838a6e07e7dc3836fbcb8e19263e') in 0.012204375 seconds
+[Worker0] Imported GUID: 350206191163945b98b0030dffdb67a4 - Path: Assets/_Game/Tests/PlayMode/T440/RestartThreeTimesPlayModeTests.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '5a4a09e695a9442d87a778edf62ffa62') in 0.015427584 seconds
+[Worker0] Imported GUID: 416856427272a4fa6af5c365d0a4814a - Path: Assets/_Game/Tests/EditMode/T360/ComboScoreTests.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '6fba72feb62205121871eadce1c84737') in 0.013597083 seconds
+[Worker0] Imported GUID: 9d05d520a4df449e3bd1b011c4ee0138 - Path: Assets/_Game/Tests/PlayMode/T030/SceneFlowSmokePlayModeTests.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '521cefba869ef8095f0f2353f9505c37') in 0.012909292 seconds
+[Worker0] Imported GUID: 62d242d2231d4e26899d4ca980edfa74 - Path: Assets/_Game/Tests/PlayMode/T620/CombatFeedbackPlayModeTests.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '87d714ddff50fdd423d49d92512b241a') in 0.013345625 seconds
+[Worker0] Imported GUID: ce7490893024b4485846f738b5b486fa - Path: Assets/_Game/Tests/EditMode/T410/SkillEffectPipelineTests.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'c681df0a68a9fd2c4d4474ee58f7c143') in 0.012034417 seconds
+[Worker0] Imported GUID: 9281cbf3f87b649cf97419eb326000ca - Path: Assets/_Game/Tests/PlayMode/T350/MultiTargetHitPlayModeTests.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'e67e0ae2c3ccc5b113d88c469af52a1c') in 0.012779166 seconds
+[Worker0] Imported GUID: 51e56d32e155c45248aebf66b284a9d3 - Path: Assets/_Game/Tests/PlayMode/T330/GestureClassificationPipelinePlayModeTests.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'cf121d4fae57c240ee8c28781cc55e90') in 0.016474708 seconds
+[Worker0] Imported GUID: 0eb5997386ee9444e8b3d86e4e9005a5 - Path: Assets/_Game/Tests/EditMode/T330/GestureClassifierTests.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '412d3ad3693102d97e19d57b3b9f48fb') in 0.013300041 seconds
+[Worker0] Imported GUID: 4d3cc199fbf9b4ae890a4842aa8f758e - Path: Assets/_Game/Tests/PlayMode/T550/RestartThreeTimesPlayModeTests.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '9a351508f4d3e0c1b862e41a2a350b03') in 0.011285542 seconds
+[Worker0] Imported GUID: 1685ca5a2a7ef44c8875e1f0b72c159d - Path: Assets/_Game/Tests/EditMode/T370/ProjectileCutTests.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '916097bf5ede94cd056fa22f15607149') in 0.011597167 seconds
+[Worker0] Imported GUID: 17c74d932a32a49a8b909ebe28e35e45 - Path: Assets/_Game/Tests/PlayMode/T420/EnemyWeakpointCombatPlayModeTests.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '11ad4f43124698bd980a6f17dc355dd8') in 0.011510833 seconds
+[Worker0] Imported GUID: 2f4c6aca4bed24d769bf7d4bd65a20aa - Path: Assets/_Game/Tests/PlayMode/T370/ProjectileReflectPlayModeTests.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '2c0a3af0f38569c0b9414783a9c3901b') in 0.011709916 seconds
+[Worker0] Imported GUID: b25f48d671cb24974aca395d9cf5a11a - Path: Assets/_Game/Tests/PlayMode/T360/CombatResolutionPipelinePlayModeTests.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '4e54c339e6f7028f3b34d51595e22d04') in 0.012658542 seconds
+[Worker0] Imported GUID: 06622a37267904d59ad08ed5515b91d1 - Path: Assets/_Game/Tests/EditMode/T610/LocalizationGlyphTests.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '488a3cc0e646889d8430a69236c40452') in 0.011489708 seconds
+[Worker0] Imported GUID: f595c2757754a4e9da06512463d88a6b - Path: Assets/_Game/Tests/PlayMode/T320/StrokeGeometryPipelinePlayModeTests.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '1805bca1b795dd16bf473b34764f266d') in 0.011630083 seconds
+[Worker0] Imported GUID: feedd6fade11c44c69106a7bea35d139 - Path: Assets/_Game/Tests/EditMode/T430/EnemyStrategyTests.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'a497c64d33074b3f824a93cd1927b10d') in 0.011289083 seconds
+[Worker0] Imported GUID: e33e5931bc4184de9a4ad33ab43f4ba5 - Path: Assets/_Game/Tests/PlayMode/T540/BossLevelE2EPlayModeTests.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'aee3f44828c8824fa31e53d57d78c2a0') in 0.013170583 seconds
+[Worker0] Imported GUID: 4b3631b6b0f544a6aa75aa820fe97d77 - Path: Assets/_Game/Tests/PlayMode/T240/AssetRegistryBootstrapPlayModeTests.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '980571a61902ad6876753925f345261b') in 0.011512417 seconds
+[Worker0] Imported GUID: c56066c0ff58344b0910b31fa7518989 - Path: Assets/_Game/Tests/PlayMode/T500/WaveRunnerPlayModeTests.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '4a2a945b2750a5625482869a0866c40d') in 0.01140325 seconds
+[Worker0] Imported GUID: aeb418fd8f5e44a22b4573857aebf7b6 - Path: Assets/_Game/Tests/EditMode/T540/BossLevelConfigTests.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '8fdb05efcc18481fcf488c6d5a10ad3f') in 0.011329375 seconds
+[Worker0] Imported GUID: 477f7d31ef571479e961a0ab55c863b9 - Path: Assets/_Game/Tests/EditMode/T600/BattleHudStateBindingTests.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '6d40df456d5cd3cdefa9c4b67901f654') in 0.011178417 seconds
+[Worker0] Imported GUID: 9857d5f43b2d8467f93cdf7c57955e21 - Path: Assets/_Game/Tests/PlayMode/T610/LocalizationGlyphPlayModeTests.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'd878729d57318337ea1f06089c8cd8e6') in 0.011628792 seconds
+[Worker0] Imported GUID: db0ea57037a32460c99e06ad2476af89 - Path: Assets/_Game/Tests/EditMode/T530/NormalLevelConfigTests.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '9d67d4a6abed8149ea3e69a0c8276033') in 0.011377042 seconds
+[Worker0] Imported GUID: 4194fef4402d34c4aaadeaedfb41eb11 - Path: Assets/_Game/Art/UI/Fonts/Resources/Fonts/OneStrokeDemon UI Chinese SDF.asset - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '6593538cb319727ecd1aa7d988b1db98') in 0.034042666 seconds
+[Worker0] Imported GUID: f044f35b44a9e4037b9be0c00855a149 - Path: Assets/_Game/Tests/PlayMode/T530/NormalLevelE2EPlayModeTests.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '4352a08a3978c3ed7eb70c29061870e6') in 0.011458083 seconds
+[Worker0] Imported GUID: f403333f05dd740218917399e4d406d9 - Path: Assets/_Game/Tests/PlayMode/T520/TutorialLevelE2EPlayModeTests.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'a8fa20ae3e0c37e8a2bd7cb7d8ed92b5') in 0.011530375 seconds
+[Worker0] Imported GUID: ddc54c39b82f45e392d8ec10e1edaf01 - Path: Assets/_Game/Tests/EditMode/T620/FeedbackEventTests.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '13263dd8771e18a3eed3f0628ceb7426') in 0.011311334 seconds
+[Worker0] Imported GUID: 07c70aeefb3b4417bbd19a83ee8c9f21 - Path: Assets/_Game/Tests/EditMode/T520/TutorialFlowTests.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '6b7410c17a5c6c5127a41370c8f0c54d') in 0.011973375 seconds
+[Worker0] Imported GUID: fa3e85117bf7f424387ba5d8c10ab48c - Path: Assets/_Game/Tests/EditMode/T550/SaveMigrationTests.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '68e3121b9f8089236883480c0168295c') in 0.011567041 seconds
+[Worker0] Imported GUID: 4d3863f18df3f4377a665012f4b5e112 - Path: Assets/_Game/Tests/PlayMode/T410/UltimateSkillPlayModeTests.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '8180add67ce7b1061a3cc8c1b3cf3d1e') in 0.011590167 seconds
+[Worker0] Imported GUID: cae91c4f5587e45889b1d0ff46ffe8a6 - Path: Assets/_Game/Tests/PlayMode/T020/InputBaselinePlayModeTests.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '6c80f85a0fa461d555bb73eee5078ed1') in 0.010613666 seconds
+[Worker0] Imported GUID: 9aebc9d6f5d164937b59031fde78cb84 - Path: Assets/_Game/Tests/EditMode/T510/NoAdvanceBeforePlayerActionTests.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '69ca0e253ef2f38defc9404d5951a998') in 0.010704166 seconds
+[Worker0] Imported GUID: b5627548fa6df4b55a5777ca09a96ad2 - Path: Assets/_Game/Tests/PlayMode/T460/BossBattlePlayModeTests.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '642e4fd391aeaeee8efabe003aae109e') in 0.010757667 seconds
+[Worker0] Imported GUID: eaeb9f1caf77b43d2922adf83a728e8b - Path: Packages/com.qq.weixin.minigame/CHANGELOG.md - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '06a02efbfaa609d263472aabf9afff73') in 0.012007125 seconds
+[Worker0] Imported GUID: d91cdcab4f98f4da5953b56043206b5b - Path: Assets/_Game/Tests/EditMode/T400/PlayerCombatTests.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '1b899412879798851e862beb4512116b') in 0.012731292 seconds
+[Worker0] Imported GUID: c6a8f42c1afa94028817579b7af77bac - Path: Assets/_Game/Tests/EditMode/T550/ResultTests.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '7bea7b098507208fb77fc3c86d92bc59') in 0.011375958 seconds
+[Worker0] Imported GUID: d86f9e24de03e432dab8100006d1d996 - Path: Assets/_Game/Tests/PlayMode/T300/PointerCancelPlayModeTests.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '53e10595be7ee3aa49f5bcb96117a8d7') in 0.011743834 seconds
+[Worker0] Imported GUID: 86ece724f793242fc99c1c36e9222e03 - Path: Packages/com.qq.weixin.minigame/README.md - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '756d768a7a09171428e47e62135eced7') in 0.011524416 seconds
+[Worker0] Imported GUID: 196cb9765efee499781a2bbca40f3d78 - Path: Packages/com.qq.weixin.minigame/UPSTREAM.md - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'c6f7ecd05908a4ffb2053e96e2b14a16') in 0.011414584 seconds
+[Worker0] Imported GUID: 35f480205054085db3ceb2be04b7e97a - Path: Packages/com.qq.weixin.minigame/Editor/BuildProfile/WeixinMiniGameSettings.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '6c7a3eeaa1643914f362390bca455b03') in 0.010182708 seconds
+[Worker0] Imported GUID: 3dab97d40676842bc81d76ab4ff5cfd7 - Path: Packages/com.qq.weixin.minigame/Runtime/WXProfileStatsScript.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '601eb28bb6456120cbc64c5f861c344c') in 0.009791667 seconds
+[Worker0] Imported GUID: c55b2481b4f414cc9a504335f6396c93 - Path: Packages/com.qq.weixin.minigame/Editor/WXExtDef.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '50413858b2de3ce3c432ee605a1f6712') in 0.010079458 seconds
+[Worker0] Imported GUID: b4b797696785c4e6c93ba24eb8129b15 - Path: Packages/com.qq.weixin.minigame/Runtime/DisableKeyboardInput.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '1b405e7c0ab57f061219db8b7736739b') in 0.009705333 seconds
+[Worker0] Imported GUID: 6aad761bd858d8d4880b225d799ed346 - Path: Packages/com.qq.weixin.minigame/Editor/WXEditorSettingHelper.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'ce297f9ffd74a2a1079daec326e2edee') in 0.010414375 seconds
+[Worker0] Imported GUID: df4d545d2ba5ed176543212d06fd4afd - Path: Packages/com.qq.weixin.minigame/Editor/BuildProfile/WeixinMiniGameSettingsEditor.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '7aad2816f788d2aa3c67b5e25683fae6') in 0.010838916 seconds
+[Worker0] Imported GUID: f17a7c2339e372b468d80e48b8a1fbb8 - Path: Packages/com.qq.weixin.minigame/Runtime/Plugins/Unity.FontABTool.dll - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '0b5616c6527645782171683e9b10ce8e') in 0.012196375 seconds
+[Worker0] Imported GUID: 1bfa8a2ba04dd8c133e09ac1dcaa6539 - Path: Packages/com.qq.weixin.minigame/Runtime/WXRuntimeExtDef.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '41040251b3b947a1f55ffa3c2f63f262') in 0.011040375 seconds
+[Worker0] Imported GUID: 094d36fd8b54c4c3d98d21b57d92ae26 - Path: Packages/com.qq.weixin.minigame/Editor/Brotli/LICENSE.txt - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'ef6427ac4ec0c9e6195ac4de6f54ee84') in 0.010732666 seconds
+[Worker0] Imported GUID: b7da9cba2e99b4eaf9c4813ef99dd093 - Path: Packages/com.qq.weixin.minigame/Editor/Node/package.json - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'a5fddf84451104ee05c0283c0350c774') in 0.010652375 seconds
+[Worker0] Imported GUID: 71bc98cdcdfd4e059f97a9d2bd913e7f - Path: Packages/com.qq.weixin.minigame/Runtime/Plugins/crypto.jspre - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '89c66e472b259dc3d77772e3b4c6c6ce') in 0.010762875 seconds
+[Worker0] Imported GUID: 0b4df61ea34a9bc4c89a8e8b93455bd6 - Path: Packages/com.qq.weixin.minigame/Editor/BuildProfile/WeixinSubplatformInterface.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'c2b606b0398a1719cf16b4886db5446c') in 0.010126625 seconds
+[Worker0] Imported GUID: ad34d0bbab40b445689701c63f86cf16 - Path: Packages/com.qq.weixin.minigame/Editor/Playable/WXPlayableConvertCore.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '4a615c4f6d667df7f448485e157139c6') in 0.010238333 seconds
+[Worker0] Imported GUID: cccbd1d680cfe34fa1fef9e4875e5f23 - Path: Packages/com.qq.weixin.minigame/Runtime/Plugins/libemscriptenglx.a - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'eb64eb324c7e3c0d2e799792c36b489b') in 0.010184458 seconds
+[Worker0] Imported GUID: 94249136b4b39434dbb3ae3f5b41f47b - Path: Packages/com.qq.weixin.minigame/Runtime/Plugins/wx-perf.xml - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'ec1f3442eedaad79b746550c78631492') in 0.010124917 seconds
+[Worker0] Imported GUID: a8be7960d079402392e951de6e3978b7 - Path: Packages/com.qq.weixin.minigame/Runtime/Plugins/AES.jslib - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'ed68954d4d93e2d125459424d0ba99f1') in 0.010201458 seconds
+[Worker0] Imported GUID: f37c59ed5d1a64bf59ac4657b5fd2cd8 - Path: Packages/com.qq.weixin.minigame/Editor/Playable/WXPlayableWindow.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'db09366c88a13cbdc9d32d9026b621db') in 0.010828292 seconds
+[Worker0] Imported GUID: de46a37ac18378340bae0bc523c46892 - Path: Packages/com.qq.weixin.minigame/Runtime/Plugins/WxPerfJsBridge.jslib - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '5ea7c627439f62789b31bf7831b7329c') in 0.010584833 seconds
+[Worker0] Imported GUID: d9e79ef28f134cfcbafaedb5f052df60 - Path: Packages/com.qq.weixin.minigame/Runtime/WebAES.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '42f18f521fe22dbb3f24a6375d294654') in 0.010533209 seconds
+[Worker0] Imported GUID: 89ccba97a8e2991dc502c741bc8cd6c6 - Path: Packages/com.qq.weixin.minigame/Runtime/Plugins/libemscriptenglx_2021.a - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'cca2f0a85ea861d586dd1473e7a4b52b') in 0.01070925 seconds
+[Worker0] Imported GUID: 3a6b8e4d9c124f70a5b2d1e8c9f06347 - Path: Packages/com.qq.weixin.minigame/Runtime/Plugins/libemscriptenglx-mt-wasmex.a - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '772d9a33844d202506498457049b5209') in 0.010446917 seconds
+[Worker0] Imported GUID: e3bcb9f6d2b014d38815ff3cdeb11f6f - Path: Packages/com.qq.weixin.minigame/Runtime/Plugins/LitJson.dll - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '38784700ffc13e489a9975437be590b3') in 0.010355 seconds
+[Worker0] Imported GUID: 63a9d4fa9c3846e3704029822b94973f - Path: Packages/com.qq.weixin.minigame/Runtime/Plugins/WxGameDataMonitor.jslib - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '9e137e72adc3134feac8acda248581b4') in 0.011560958 seconds
+[Worker0] Imported GUID: 63afc2a12fd6d404092ed133a0c10433 - Path: Packages/com.qq.weixin.minigame/Runtime/Plugins/SDK-Call-JS-Old.jslib - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '021d7cf6c8519da77a1380bc0a216260') in 0.010864375 seconds
+[Worker0] Imported GUID: 30bbdd4df4b1a43bb83ed8e59cc42c54 - Path: Packages/com.qq.weixin.minigame/Runtime/Plugins/wx-runtime-editor.dll - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '8dde9ef0003bee438f14d53ad2cd8645') in 0.011923584 seconds
+[Worker0] Imported GUID: 45dd8c2a2ea344e82b37e0128ac127ac - Path: Packages/com.qq.weixin.minigame/Runtime/Plugins/Gyroscope.jslib - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'e53f6191dccb13c60c819834fc11c2dc') in 0.013525083 seconds
+[Worker0] Imported GUID: 1cf430f187a0b40eda7f668318d8be23 - Path: Packages/com.qq.weixin.minigame/Editor/wx-editor.dll - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '5ef73bcf54327b896fbab6c32a50852d') in 0.012066166 seconds
+[Worker0] Imported GUID: 701e11c62dd2c4c808cc684685c3362b - Path: Packages/com.qq.weixin.minigame/Runtime/WXTouchInputOverride.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '31baabab08d6c27ca65948ab6e43d9df') in 0.010829042 seconds
+[Worker0] Imported GUID: 1cc549c674e5b4efe964933831f56e80 - Path: Packages/com.qq.weixin.minigame/Editor/Playable/WXPlayableEditorSettingHelper.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '0a8c89f1ab03aac59a40aa8525265e19') in 0.010916125 seconds
+[Worker0] Imported GUID: 5efd170ecd8084500bed5692932fe14e - Path: Packages/com.qq.weixin.minigame/Runtime/WxWasmSDKRuntime.asmdef - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'ca5985a5ce06b5fa67aaad3b50542c3e') in 0.011296584 seconds
+[Worker0] Imported GUID: 53b47b93caed9426d81c354bb916a04b - Path: Packages/com.qq.weixin.minigame/Runtime/WXBase.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'f6b1aa6563a7f681bf7098da2d42fb80') in 0.010629667 seconds
+[Worker0] Imported GUID: 741d5b08eb860f748890537f2389546f - Path: Packages/com.qq.weixin.minigame/Editor/BuildProfile/WeixinBuildProfileUpdater.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '6e7a63ae05876412fb21d14f1a2eb10c') in 0.010465458 seconds
+[Worker0] Imported GUID: 5aaeb4910866f4388a86efc2ac5bde76 - Path: Packages/com.qq.weixin.minigame/Editor/Brotli/commits.txt - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '5b33890524eb50cdd8c1271f8a4e5ad0') in 0.011048333 seconds
+[Worker0] Imported GUID: eb6ae48726f0b434e9d6ea7d36a67545 - Path: Packages/com.qq.weixin.minigame/Editor/WxWasmSDKEditor.asmdef - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '0615bcd7268281820506e9efdb57e37c') in 0.011130416 seconds
+[Worker0] Imported GUID: dae845d21bfc9479cbd0cbe4e34ac070 - Path: Packages/com.qq.weixin.minigame/Runtime/Plugins/dumper.jslib - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'c2d7e4d2c4b626786c61c2c9dfa45ca4') in 0.010815416 seconds
+[Worker0] Imported GUID: 444bec77765d04ba4b9651e697c210de - Path: Packages/com.qq.weixin.minigame/Runtime/Plugins/Touch.jslib - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '6d82b9a12509185393f05a57d59192d5') in 0.010448041 seconds
+[Worker0] Imported GUID: 219f51218fc9f4c2a819e2cb5cf9a89a - Path: Packages/com.qq.weixin.minigame/Editor/WXPluginVersion.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'b5100a7f06e83f32542e006853a9d169') in 0.010440167 seconds
+[Worker0] Imported GUID: fe134d53b5bcc45a2a2cde4341229134 - Path: Packages/com.qq.weixin.minigame/Editor/MiniGameConfig.asset - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'a50df9728b1a9a8de4a6ba1ecbb76880') in 0.014544458 seconds
+[Worker0] Imported GUID: f1315910877e64f9898a2c5a31a63994 - Path: Packages/com.qq.weixin.minigame/Runtime/Plugins/SDK-WX-TextureMin-JS-WEBGL2-Linear.jslib - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '7ed730c7fec3fda5c89f49a4167055d2') in 0.010351042 seconds
+[Worker0] Imported GUID: f0312171d672c4253a88f587630cce43 - Path: Packages/com.qq.weixin.minigame/Runtime/Plugins/WXAssetBundle.jslib - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '4071e4b6fc5cd245b47c2746bb482b81') in 0.010927709 seconds
+[Worker0] Imported GUID: f6343e71e5292471784dafd28757bca3 - Path: Packages/com.qq.weixin.minigame/Editor/convert.exe - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'd964b33c45b7d9c21eb81ee5b6f88a50') in 0.00978375 seconds
+[Worker0] Imported GUID: 3940ebcc91b954d46ab08a5ee248e437 - Path: Packages/com.qq.weixin.minigame/Runtime/Plugins/SDK-WX-TextureMin-JS-WEBGL2.jslib - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'ecfd7f154bbb7a948acfabff76e76acc') in 0.010791292 seconds
+[Worker0] Imported GUID: caa3fbb6c84922ca163efc767ecc3b3e - Path: Packages/com.qq.weixin.minigame/Editor/wx-editor.xml - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '2e3a94e832c122e79a794ab6284e04b8') in 0.010866 seconds
+[Worker0] Imported GUID: b079ebcdeb0414c9e9e8990e3490fcb6 - Path: Packages/com.qq.weixin.minigame/Runtime/Plugins/link.xml - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '69728779c1ec7d29a07bf9e407f20d61') in 0.010428666 seconds
+[Worker0] Imported GUID: 7effdffff4ef64cc1855f2f1ab492810 - Path: Packages/com.qq.weixin.minigame/Editor/TextureEditor/classdata.tpk - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '9df7f47c6b1bc637d58a127d059bb2b2') in 0.010784208 seconds
+[Worker0] Imported GUID: 340c9937849614db7bd7a069ff60c77b - Path: Packages/com.qq.weixin.minigame/Runtime/Plugins/SDK-Call-JS.jslib - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'dcae79e0efd822ac6ce5bd519161f92a') in 0.010914209 seconds
+[Worker0] Imported GUID: e8dec6e99bf04b4f787998f122542793 - Path: Packages/com.qq.weixin.minigame/Editor/WXAssetPostprocessor.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '06fb748af349a3c50863fbfc0f81a2e7') in 0.010270125 seconds
+[Worker0] Imported GUID: 1a1722151dc86475a97d2595708ea31e - Path: Packages/com.qq.weixin.minigame/Editor/TextureEditor/slim.conf - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '6b856e5d113a055f7bc5aba0ad348ee4') in 0.010738542 seconds
+[Worker0] Imported GUID: e5abb6c95bc17485f832ec3d792e39c6 - Path: Packages/com.qq.weixin.minigame/Editor/Node/dump_wasm_symbol.mjs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'e9c2cbdb421665f457453c1f4b615c15') in 0.010635833 seconds
+[Worker0] Imported GUID: 9f8c1a7b3e624d5fb0a91c2d4e6f7083 - Path: Packages/com.qq.weixin.minigame/Runtime/Plugins/libemscriptenglx-mt.a - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '6e0a97acb305703aa911b135b8f2f862') in 0.010355125 seconds
+[Worker0] Imported GUID: f0cbdcf50f6d52cea758f1ea825443c0 - Path: Packages/com.qq.weixin.minigame/Runtime/Plugins/wx-perf.dll - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'ece944784b23531b95d14f040844d1a1') in 0.011880209 seconds
+[Worker0] Imported GUID: 8f5c8e7d6a4b3c2f1e0d9a8b7c6d5e4f - Path: Packages/com.qq.weixin.minigame/Editor/WXMultiPackageMergeWindow.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'f047495b899037b3278f9dda40a54a14') in 0.011888041 seconds
+[Worker1] Imported GUID: 1be2e6c9f9cdc42e68ecb97007669776 - Path: Packages/com.qq.weixin.minigame/Runtime/Plugins/UDPSocket.jslib - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '483cc93621d46588f9f0c03232135507') in 0.043048084 seconds
+[Worker0] Imported GUID: ffc57a59a921b41ad99b4dbcda98fbd3 - Path: Packages/com.qq.weixin.minigame/Runtime/WX.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '049ea39756c0fc278b3ae26a63454f7d') in 0.010479833 seconds
+[Worker1] Imported GUID: 6521eabde5f4d44adba349ff255f0139 - Path: Packages/com.qq.weixin.minigame/Editor/WXEditorWindow.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'fd5b3f2425bb21847db69d009219019d') in 0.016885208 seconds
+[Worker0] Imported GUID: afe54ec7e25b9433f9a6da5d41540ddc - Path: Packages/com.qq.weixin.minigame/Runtime/Plugins/TCPSocket.jslib - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '4a39d144ec443a1bcf5e385df6bb6305') in 0.011156208 seconds
+[Worker1] Imported GUID: 181a2b83a01be4385986be06d6f06c7c - Path: Packages/com.qq.weixin.minigame/Runtime/Plugins/WXTouch.jslib - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '9bc07457596030c39dce8ba95c2d3b4a') in 0.011234209 seconds
+[Worker0] Imported GUID: 0b1635079cc064e43992cabea23c6113 - Path: Packages/com.qq.weixin.minigame/Editor/PicCompressor.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '421285f4c3c129c06785960d36ad53cc') in 0.010647333 seconds
+[Worker1] Imported GUID: 16161334b3862407fa62d3aa1c7b79f4 - Path: Packages/com.qq.weixin.minigame/Editor/WXConvertCore.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '5a94c7c7acc0c7ec210e3e3c43dd0edb') in 0.010675917 seconds
+[Worker0] Imported GUID: c209e0053cc1f462680a6855c0b6ae45 - Path: Packages/com.qq.weixin.minigame/Runtime/HideLoadingPage.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'c9fc9dd76eb162ba0473f2ad0e8f0048') in 0.010659 seconds
+[Worker1] Imported GUID: d55bbf266368a4d91b5b8750b746dc78 - Path: Packages/com.qq.weixin.minigame/Runtime/Plugins/SDK-WX-TextureMin-JS-WEBGL1.jslib - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '2d1f47f45b037f7aed35d05e8246c460') in 0.011672375 seconds
+[Worker0] Imported GUID: ee32301e25b2402fa31faba7435a1367 - Path: Packages/com.qq.weixin.minigame/Runtime/WebMD5.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'b1aece9981dc5999c9d3eef8243f347c') in 0.010215083 seconds
+[Worker1] Imported GUID: 9250060552104a8388aaff7dc4f4dde7 - Path: Packages/com.qq.weixin.minigame/Runtime/Plugins/MD5.jslib - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '8a9ce64efd2c54629e12a801e3d5e7aa') in 0.011179667 seconds
+[Worker0] Imported GUID: c296d558f5cd4d6d275ac9b8bbc69011 - Path: Packages/com.qq.weixin.minigame/Runtime/Plugins/wx-runtime-editor.xml - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'cc48960b4686ec1a24bd7a33e79354fe') in 0.011810333 seconds
+[Worker0] Imported GUID: 26999bc34f7d1b3448cb3f93c500c1b6 - Path: Packages/com.qq.weixin.minigame/Editor/Brotli/linux_x86_64/libbrotlicommon.so - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '9f29d87a641c3507243073e05901e4de') in 0.010251541 seconds
+[Worker1] Imported GUID: 8b2ed2be1f98c46c69f29eb343d66213 - Path: Packages/com.qq.weixin.minigame/Editor/LuaHooker/mac/newstatehooker.dylib - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'a2cd2ddc33dc2d84630383a01d5528bc') in 0.010243042 seconds
+[Worker1] Imported GUID: 713e2b6c25b3540e595a5036bacaedbd - Path: Packages/com.qq.weixin.minigame/Editor/Brotli/win_x86_64/msvcp140_1.dll - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'aa5b8e154b308c71f97b14869d5b7331') in 0.009873959 seconds
+[Worker0] Imported GUID: 466c0abf5fe5847879df912061e09f9e - Path: Packages/com.qq.weixin.minigame/Editor/Brotli/win_x86_64/vcruntime140_1.dll - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'f95668d555a4d6bf90e261db0187a527') in 0.009975292 seconds
+[Worker1] Imported GUID: 2a8df7c71fa3e7368ca9ecf2510f25f2 - Path: Packages/com.qq.weixin.minigame/Runtime/playable-default/events.js - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'de6f199ecaf82c8013ae7354092fd920') in 0.010051375 seconds
+[Worker0] Imported GUID: 2d5cc5c55aa4d1e25c444733ae9688c0 - Path: Packages/com.qq.weixin.minigame/Runtime/wechat-default/check-version.js - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '92afcab5c245e2dfa1b49e7a6cf7f3fe') in 0.009954625 seconds
+[Worker0] Imported GUID: 46b6212d7f9af457b81b0db029ca88dc - Path: Packages/com.qq.weixin.minigame/Editor/TextureEditor/Release/Mono.Cecil.Pdb.dll - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'bdc100352ce598e164c037106c7ba95d') in 0.009776834 seconds
+[Worker1] Imported GUID: 482c84c1110074e5295b51734fa3053b - Path: Packages/com.qq.weixin.minigame/Editor/Brotli/win_x86_64/msvcp140.dll - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '0bf19776f7726d50243a6c8b81d8e7b4') in 0.010032875 seconds
+[Worker1] Imported GUID: 53be097f33ee44043afd3a9a9b37f51a - Path: Packages/com.qq.weixin.minigame/Editor/TextureEditor/Node/PVRTexToolCLI.exe - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '2cc7386bf06701fb1f90d95c487c35f4') in 0.009671333 seconds
+[Worker0] Imported GUID: f343f8658a82b291aad699f288d36e28 - Path: Packages/com.qq.weixin.minigame/Runtime/Plugins/wx-runtime.xml - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'c360c03b75b82eee58057e043298dc16') in 0.010546625 seconds
+[Worker0] Imported GUID: 0bdb21a0771599ca15daf2fd5a9f8bec - Path: Packages/com.qq.weixin.minigame/Runtime/wechat-default/texture-config.js - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '8ca91a4e8d39036daf2703e357bd1a88') in 0.009791625 seconds
+[Worker1] Imported GUID: ee9610a9a4b6fc216b853450ee78ad07 - Path: Packages/com.qq.weixin.minigame/Runtime/playable-default/check-version.js - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'e2a8d18b16315b32c3bbc1d398c64f76') in 0.010499125 seconds
+[Worker1] Imported GUID: 3d6ef9eca47b75594828d5bd35a31389 - Path: Packages/com.qq.weixin.minigame/Runtime/wechat-default/weapp-adapter.js - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '2bab42ac5247ff3bd7d62b678a7b5990') in 0.010529667 seconds
+[Worker0] Imported GUID: 0dedb8177ed8f384d9833f379a1b9b2a - Path: Packages/com.qq.weixin.minigame/Runtime/Plugins/wx_perf_2021.a - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'c4c26fe517182429e6b1c6ea86a2f521') in 0.011106791 seconds
+[Worker1] Imported GUID: 8cf919bdb0222454ca11dee03ff47d57 - Path: Packages/com.qq.weixin.minigame/Runtime/WXSDKPerf/WXPerfEngine.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '46935d7b8468070d5943b086643ec4c6') in 0.010578666 seconds
+[Worker0] Imported GUID: bfc6b5fc132c54b389c910666e91e66e - Path: Packages/com.qq.weixin.minigame/Editor/TextureEditor/Release/AssetsTools.NET.Texture.dll - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '079a088ee3256d8e67cccc920030a002') in 0.010338 seconds
+[Worker1] Imported GUID: b8d17f3584abd400cb2a7b53d6cb59cf - Path: Packages/com.qq.weixin.minigame/Editor/TextureEditor/Node/astcenc-neon - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '21d5525935253453e77d9628b21388e8') in 0.0103925 seconds
+[Worker0] Imported GUID: be799b1631d688242995c11c94a5b318 - Path: Packages/com.qq.weixin.minigame/Editor/LuaHooker/win/ucrtbased.dll - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'd44b59055ef92febf9a8eb4769eb283c') in 0.010425667 seconds
+[Worker1] Imported GUID: e0d60c769ddf340d8bd8197a3cd3dc5c - Path: Packages/com.qq.weixin.minigame/Editor/TextureEditor/Node/astcenc-sse4.1.exe - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '9351ec84139e134503ca706fbdb438b3') in 0.01013425 seconds
+[Worker0] Imported GUID: fd2ecb55b98bab864c610551d5e32a67 - Path: Packages/com.qq.weixin.minigame/Runtime/playable-default/playable-fix.js - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '03bfde9ea757f80299764276b32db6c7') in 0.010043917 seconds
+[Worker1] Imported GUID: d11f540cd68bc4963b55a165b65e0eab - Path: Packages/com.qq.weixin.minigame/Editor/TextureEditor/Node/astcenc-avx2.exe - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'd0479cb3dbf7320ec08e923ffd947de5') in 0.009936833 seconds
+[Worker0] Imported GUID: be3a2dfed73e8bf87a2b0a07d64fea1f - Path: Packages/com.qq.weixin.minigame/Runtime/playable-default/project.config.json - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '05ce4e3ab7d8f0e93c8293c0969d0a36') in 0.010015875 seconds
+[Worker1] Imported GUID: 6d497916b78134c669342228f6836ff0 - Path: Packages/com.qq.weixin.minigame/Editor/TextureEditor/Node/PVRTexToolCLI - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '1d116119c456975977391e8f72545a2c') in 0.010354 seconds
+[Worker0] Imported GUID: 47f9c47210cca785ae35ea82943ac6ea - Path: Packages/com.qq.weixin.minigame/Runtime/playable-default/game.js - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '2aed9ad3f763c5dd74b638ddd27727d2') in 0.010285583 seconds
+[Worker1] Imported GUID: 1392e41e45c17397863a6e46e54c2d67 - Path: Packages/com.qq.weixin.minigame/Runtime/playable-default/game.json - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'ec9103a1d7ef894cae08731d7c6f1474') in 0.011997417 seconds
+[Worker0] Imported GUID: 29f2223671a2f8ee2a718abd1768405c - Path: Packages/com.qq.weixin.minigame/Runtime/wechat-default/project.config.json - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '7f1ceed959b001f7df20e516c0c0cfd9') in 0.011920833 seconds
+[Worker1] Imported GUID: 71bd70f02cc3e024492b5cf4e7fe001a - Path: Packages/com.qq.weixin.minigame/Editor/Brotli/macos/libbrotlienc.dylib - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '6ea1f57073443ff5a1504f69cf318479') in 0.015418166 seconds
+[Worker0] Imported GUID: bc8062036b97bf140ac20cc5e3ecce67 - Path: Packages/com.qq.weixin.minigame/WebGLTemplates/WXTemplate2022TJ/index.html - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '387f112f2501cbfd62ac65405d5c12de') in 0.016613 seconds
+[Worker1] Imported GUID: a69a4e1dbb4c6456fb71f4ee0e5ee2e0 - Path: Packages/com.qq.weixin.minigame/Editor/TextureEditor/Node/pngquant.exe - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '5f1872e22f268ac8ddbf887ab6fb3c3e') in 0.01049825 seconds
+[Worker0] Imported GUID: e23a7460c65914b4995b078d7edfcd55 - Path: Packages/com.qq.weixin.minigame/Editor/Brotli/win_x86_64/vcruntime140.dll - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '5bcf1500213c30089a00a886bd0ad5c2') in 0.009793 seconds
+[Worker0] Imported GUID: 963e182c8306ee4147b4707774bf7dd3 - Path: Packages/com.qq.weixin.minigame/Runtime/wechat-default/plugin-config.js - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '21817f68b5cd9c9f5945651287554eee') in 0.009705417 seconds
+[Worker1] Imported GUID: 45677730c25dd48fda3659b7cc95014d - Path: Packages/com.qq.weixin.minigame/WebGLTemplates/WXTemplate2022/index.html - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '32a8ea7f0f986dbe974e787e8d1c7cbc') in 0.010337125 seconds
+[Worker0] Imported GUID: 324ff5758fd55f474da735457e9b4da3 - Path: Packages/com.qq.weixin.minigame/Runtime/wechat-default/events.js - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '8120d4033bf3b93a9cd6df5e47f872b1') in 0.009816208 seconds
+[Worker1] Imported GUID: 3d6e54874174a442dac95a8908b3449a - Path: Packages/com.qq.weixin.minigame/Editor/TextureEditor/Release/Mono.Cecil.Mdb.dll - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '2420f562607b2cc5f5c55d334c545858') in 0.009806917 seconds
+[Worker0] Imported GUID: ab6a645f6356213cf658751685a78764 - Path: Packages/com.qq.weixin.minigame/Runtime/playable-default/texture-config.js - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '2a99e879c0ebc8ed6904d2b0667f5d42') in 0.010463459 seconds
+[Worker1] Imported GUID: c113acfee35db6b5c61fd4a76596cfd3 - Path: Packages/com.qq.weixin.minigame/Editor/BuildProfile/lib/libwx-metal-cpp.bc - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '99d90657a7583742384075acf632fbf6') in 0.010442041 seconds
+[Worker0] Imported GUID: c7d34b53fefa24bf5b0ce2914fc60ad8 - Path: Packages/com.qq.weixin.minigame/Editor/Brotli/linux_x86_64/brotli - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '2d369624fa367c21071b891ca4cc0623') in 0.010233833 seconds
+[Worker1] Imported GUID: 11a25072934d7774980b8bb4ed24b59c - Path: Packages/com.qq.weixin.minigame/Editor/Brotli/win_x86_64/libbrotlicommon.dll - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '5e5ab76a716eef36aa920e93751ab1f2') in 0.010116292 seconds
+[Worker0] Imported GUID: 4ea6d39e8f178a673411643a41c195b8 - Path: Packages/com.qq.weixin.minigame/Runtime/wechat-default/game.js - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '17e429ece9d567bdabf0138eb97fa3a1') in 0.009986584 seconds
+[Worker1] Imported GUID: 6708da74d31314f7e96085e884d8b693 - Path: Packages/com.qq.weixin.minigame/Runtime/Plugins/wx-runtime.dll - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'aad1e398f78b21772961e77bed629be7') in 0.010104083 seconds
+[Worker1] Imported GUID: 894a22bfc94a12543b3d68ec88cb5161 - Path: Packages/com.qq.weixin.minigame/Editor/Brotli/macos/libbrotlicommon.dylib - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '14fca1a19875105963af48e36bd727bb') in 0.010882708 seconds
+[Worker0] Imported GUID: d4fc050e897664dfdb7dfa2ac285e02c - Path: Packages/com.qq.weixin.minigame/Editor/TextureEditor/Release/Mono.Cecil.Rocks.dll - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '2d077dd326958960f14224b0a13d36a1') in 0.011116041 seconds
+[Worker1] Imported GUID: cdd7e8b4c965e6f7260a556ebe30604f - Path: Packages/com.qq.weixin.minigame/Runtime/playable-default/weapp-adapter.js - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '6649a9a3e3f8b9fb8ddea16bd0d17a8c') in 0.0104115 seconds
+[Worker0] Imported GUID: 8b67e6c263812432b84963c0556881bc - Path: Packages/com.qq.weixin.minigame/Editor/TextureEditor/Node/astcenc-avx2 - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '2a436c2f69efb3a03a10bccc5db214b9') in 0.010291958 seconds
+[Worker1] Imported GUID: 187d3306362e8bec07846a683aeb77da - Path: Packages/com.qq.weixin.minigame/Runtime/Plugins/wx_perf_2022.a - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'b27a456ab51ed1d92f6a23584a53ee7d') in 0.011451791 seconds
+[Worker1] Imported GUID: 84106878858c34f4495d07c9caf95b2b - Path: Packages/com.qq.weixin.minigame/Editor/Brotli/linux_x86_64/libbrotlienc.so - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'dbbf93e7bdf9b8231e4b1d76b62fe828') in 0.010172875 seconds
+[Worker0] Imported GUID: d8a1dcb512f394b7187ac255c4eb2222 - Path: Packages/com.qq.weixin.minigame/WebGLTemplates/WXTemplate/thumbnail.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'ebb50663ec8c0e941890d2ed00ce69fd') in 0.022442959 seconds
+[Worker0] Imported GUID: e8f97b36f4f314df1b6c6e60c2b0906a - Path: Packages/com.qq.weixin.minigame/WebGLTemplates/WXTemplate/index.html - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '53886fab67c202ba93e01ee23040849a') in 0.013667875 seconds
+[Worker1] Imported GUID: 4a563f43abd8546408de4f06090b9f9d - Path: Packages/com.qq.weixin.minigame/Editor/TextureEditor/Release/AssetRipper.TextureDecoder.dll - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'e1996b50967444c57f894e1843fc7518') in 0.014392875 seconds
+[Worker1] Imported GUID: 250ffb10dd8854b5d8b5d31a7f9afd14 - Path: Packages/com.qq.weixin.minigame/Editor/Brotli/win_x86_64/msvcp140_2.dll - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '391108b9835eae9567811e503da97a07') in 0.010653375 seconds
+[Worker0] Imported GUID: dda1926f3454e003333e8085a4f2c0fd - Path: Packages/com.qq.weixin.minigame/Editor/BuildProfile/lib/mtl_library.jslib - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '1ee961c9bfde806ae93289843a6e51d3') in 0.013805125 seconds
+[Worker1] Imported GUID: 1c53e55830d63074d8af0d0cf34587a8 - Path: Packages/com.qq.weixin.minigame/Editor/LuaHooker/win/newstatehooker.dll - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '965d471ec76689d3fcbe9a62346e4734') in 0.010244375 seconds
+[Worker0] Imported GUID: 2fc5c63ddf7924a90a8d391563d72888 - Path: Packages/com.qq.weixin.minigame/WebGLTemplates/WXTemplate2020/thumbnail.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'f4f9f551a973eb6dc7657ac4060c6a7d') in 0.011518166 seconds
+[Worker1] Imported GUID: dbf7bc13124280ca0dd5410b3e391f79 - Path: Packages/com.qq.weixin.minigame/Runtime/playable-default/unity-namespace.js - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '88c712d6287c0ee20020c872322f0339') in 0.009775583 seconds
+[Worker0] Imported GUID: 8c40fadb8821641a18813395e4d7b23f - Path: Packages/com.qq.weixin.minigame/Editor/TextureEditor/Release/AssetsTools.NET.dll - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'b08d308fd6328b44a26fccd4859a9372') in 0.01017775 seconds
+[Worker1] Imported GUID: b18f4be17de93e246a9af4379ecb2650 - Path: Packages/com.qq.weixin.minigame/Editor/Brotli/win_x86_64/libbrotlienc.dll - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '6c15151aa4e8f6ebe9f075fcb649e584') in 0.009809875 seconds
+[Worker0] Imported GUID: e78890e7532b942e094f240ba5c88f60 - Path: Packages/com.qq.weixin.minigame/Editor/TextureEditor/Node/pngquant - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'e7115766c075e12681706cdf92b655a6') in 0.010253792 seconds
+[Worker1] Imported GUID: 74b4e5c821cda4b7d8f401d7935a892e - Path: Packages/com.qq.weixin.minigame/Editor/Brotli/macos/brotli - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '6ee9f6dfe032832f9c8ab4db10db1d76') in 0.011306708 seconds
+[Worker0] Imported GUID: 5d90dd44ef95dfc050c3c2538a2c86b4 - Path: Packages/com.qq.weixin.minigame/Runtime/wechat-default/unity-namespace.js - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '9e9dd883f542d44cb0993a10e45cce71') in 0.010334333 seconds
+[Worker0] Imported GUID: 76c37ea88d9139de0759ee0b7d64d75f - Path: Packages/com.qq.weixin.minigame/Runtime/wechat-default/game.json - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '46b19703408e08103f83a99c4e4f3089') in 0.011164917 seconds
+[Worker0] Imported GUID: 41ca615173bb4ce0db9f813c6d5f6681 - Path: Packages/com.qq.weixin.minigame/Runtime/playable-default/plugin-config.js - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '263fab1f4efbc12dbfafb5e03b9cc984') in 0.011212625 seconds
+[Worker0] Imported GUID: 14077bb4dfcdf487aa222261b4719a0e - Path: Packages/com.qq.weixin.minigame/Editor/Brotli/win_x86_64/brotli.exe - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'd047ccbcfc7101c6360b3273d1690136') in 0.011478875 seconds
+[Worker1] Imported GUID: 17952b36507784310a2a0252c91f1682 - Path: Packages/com.qq.weixin.minigame/WebGLTemplates/WXTemplate2022/thumbnail.png - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'e478aa7ec8a30a805f9cbeaf906710a3') in 0.039068083 seconds
+[Worker0] Imported GUID: 0a1dcb5e36001403b96030ff715906fa - Path: Packages/com.qq.weixin.minigame/WebGLTemplates/WXTemplate2020/index.html - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '8141e1dc9d8eac6b1307d765e83b566f') in 0.011083333 seconds
+<b><color=#2EA3FF>MCP-FOR-UNITY</color></b>: [TestRunnerNoThrottle] Restored Interaction Mode after test run.
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/StackTrace.cs:35)
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+MCPForUnity.Editor.Helpers.McpLog:Info (string,bool) (at ./Library/PackageCache/com.coplaydev.unity-mcp@4ee62b097584/Editor/Helpers/McpLog.cs:40)
+MCPForUnity.Editor.Services.TestRunnerNoThrottle:RestoreThrottling () (at ./Library/PackageCache/com.coplaydev.unity-mcp@4ee62b097584/Editor/Services/TestRunnerNoThrottle.cs:114)
+MCPForUnity.Editor.Services.TestRunnerNoThrottle/TestCallbacks:RunFinished (UnityEditor.TestTools.TestRunner.Api.ITestResultAdaptor) (at ./Library/PackageCache/com.coplaydev.unity-mcp@4ee62b097584/Editor/Services/TestRunnerNoThrottle.cs:143)
+UnityEditor.TestTools.TestRunner.Api.CallbacksDelegator/<>c__DisplayClass9_0:<RunFinished>b__0 (UnityEditor.TestTools.TestRunner.Api.ICallbacks) (at ./Library/PackageCache/com.unity.test-framework@f3e6c9a02477/UnityEditor.TestRunner/Api/CallbacksDelegator.cs:55)
+UnityEditor.TestTools.TestRunner.Api.CallbacksDelegator:TryInvokeAllCallbacks (System.Action`1<UnityEditor.TestTools.TestRunner.Api.ICallbacks>) (at ./Library/PackageCache/com.unity.test-framework@f3e6c9a02477/UnityEditor.TestRunner/Api/CallbacksDelegator.cs:135)
+UnityEditor.TestTools.TestRunner.Api.CallbacksDelegator:RunFinished (NUnit.Framework.Interfaces.ITestResult) (at ./Library/PackageCache/com.unity.test-framework@f3e6c9a02477/UnityEditor.TestRunner/Api/CallbacksDelegator.cs:55)
+UnityEngine.Events.InvokableCall`1<NUnit.Framework.Interfaces.ITestResult>:Invoke (NUnit.Framework.Interfaces.ITestResult) (at /Users/bokken/build/output/unity/unity/Runtime/Export/UnityEvent/UnityEvent.cs:222)
+UnityEngine.Events.UnityEvent`1<NUnit.Framework.Interfaces.ITestResult>:Invoke (NUnit.Framework.Interfaces.ITestResult) (at /Users/bokken/build/output/unity/unity/artifacts/generated/UnityEvent/UnityEvent_1.cs:59)
+UnityEditor.TestTools.TestRunner.TestRun.Tasks.Events.RunFinishedInvocationEvent/<Execute>d__0:MoveNext () (at ./Library/PackageCache/com.unity.test-framework@f3e6c9a02477/UnityEditor.TestRunner/TestRun/Tasks/Events/RunFinishedInvocationEvent.cs:24)
+UnityEditor.TestTools.TestRunner.TestRun.TestJobRunner:ExecuteStep () (at ./Library/PackageCache/com.unity.test-framework@f3e6c9a02477/UnityEditor.TestRunner/TestRun/TestJobRunner.cs:194)
+UnityEditor.TestTools.TestRunner.TestRun.TestJobRunner:ExecuteCallback () (at ./Library/PackageCache/com.unity.test-framework@f3e6c9a02477/UnityEditor.TestRunner/TestRun/TestJobRunner.cs:129)
+UnityEditor.EditorApplication:Internal_CallUpdateFunctions () (at /Users/bokken/build/output/unity/unity/Editor/Mono/EditorApplication.cs:403)
+
+(Filename: ./Library/PackageCache/com.coplaydev.unity-mcp@4ee62b097584/Editor/Helpers/McpLog.cs Line: 40)
+
+Saving results to: /Users/cqmizhangxiaoyu2/Library/Application Support/DefaultCompany/onedraw_2/TestResults.xml
+Saving results to: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/evals/T620/full-editmode-results.xml
+[Worker0] Imported GUID: ff10387718bed089fb702b60513300b9 - Path: Packages/com.qq.weixin.minigame/Runtime/playable-default/unity-sdk/file-info.js - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'c5af84217f58861d099342dbf27d4c41') in 0.010382708 seconds
+Executing IPostBuildCleanup for: Unity.PerformanceTesting.Editor.TestRunBuilder.
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/StackTrace.cs:35)
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+UnityEditor.TestTools.TestRunner.TestRun.Tasks.BuildActionTaskBase`1/<ExecuteMethods>d__8<UnityEngine.TestTools.IPostBuildCleanup>:MoveNext () (at ./Library/PackageCache/com.unity.test-framework@f3e6c9a02477/UnityEditor.TestRunner/TestRun/Tasks/BuildActionTaskBase.cs:48)
+UnityEditor.TestTools.TestRunner.TestRun.Tasks.BuildActionTaskBase`1/<Execute>d__7<UnityEngine.TestTools.IPostBuildCleanup>:MoveNext () (at ./Library/PackageCache/com.unity.test-framework@f3e6c9a02477/UnityEditor.TestRunner/TestRun/Tasks/BuildActionTaskBase.cs:34)
+UnityEditor.TestTools.TestRunner.TestRun.TestJobRunner:ExecuteStep () (at ./Library/PackageCache/com.unity.test-framework@f3e6c9a02477/UnityEditor.TestRunner/TestRun/TestJobRunner.cs:194)
+UnityEditor.TestTools.TestRunner.TestRun.TestJobRunner:ExecuteCallback () (at ./Library/PackageCache/com.unity.test-framework@f3e6c9a02477/UnityEditor.TestRunner/TestRun/TestJobRunner.cs:129)
+UnityEditor.EditorApplication:Internal_CallUpdateFunctions () (at /Users/bokken/build/output/unity/unity/Editor/Mono/EditorApplication.cs:403)
+
+(Filename: ./Library/PackageCache/com.unity.test-framework@f3e6c9a02477/UnityEditor.TestRunner/TestRun/Tasks/BuildActionTaskBase.cs Line: 48)
+
+[Worker1] Imported GUID: 7f0de3fbaf2b948239e9b1f4338444fb - Path: Packages/com.qq.weixin.minigame/Editor/TextureEditor/Release/SixLabors.ImageSharp.xml - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '51b85a2c31a74422caf6b8e26f7cf744') in 0.013521041 seconds
+Unloading 25 Unused Serialized files (Serialized files now loaded: 0)
+[Worker0] Imported GUID: 10644ac31a97e863f7cb12b6b745a8b3 - Path: Packages/com.qq.weixin.minigame/Runtime/wechat-default/unity-sdk/conf.js - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '900197a104d828db495e244247f86368') in 0.010811334 seconds
+[Worker1] Imported GUID: 09ace65c67a4546b69b7dd4afe3fe8d7 - Path: Packages/com.qq.weixin.minigame/Editor/TextureEditor/Release/WXTextureTools.exe - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'c109e51f49a82f8cf87db0b3db6a3163') in 0.01102925 seconds
+Unloading 24 unused Assets / (164.3 KB). Loaded Objects now: 8663.
+Memory consumption went from 240.4 MB to 240.3 MB.
+Total: 24.485792 ms (FindLiveObjects: 0.170000 ms CreateObjectMapping: 0.619208 ms MarkObjects: 23.485125 ms  DeleteObjects: 0.211000 ms)
+
+DisplayProgressbar: Undo
+Test run completed. Exiting with code 0 (Ok). Run completed.
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/StackTrace.cs:35)
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+UnityEditor.TestTools.TestRunner.CommandLineTest.Executer:ExitApplication (UnityEditor.TestTools.TestRunner.CommandLineTest.Executer/ReturnCodes,string) (at ./Library/PackageCache/com.unity.test-framework@f3e6c9a02477/UnityEditor.TestRunner/CommandLineTest/Executer.cs:81)
+UnityEditor.TestTools.TestRunner.CommandLineTest.Executer:ExitIfRunIsCompleted () (at ./Library/PackageCache/com.unity.test-framework@f3e6c9a02477/UnityEditor.TestRunner/CommandLineTest/Executer.cs:74)
+UnityEditor.EditorApplication:Internal_CallUpdateFunctions () (at /Users/bokken/build/output/unity/unity/Editor/Mono/EditorApplication.cs:403)
+
+(Filename: ./Library/PackageCache/com.unity.test-framework@f3e6c9a02477/UnityEditor.TestRunner/CommandLineTest/Executer.cs Line: 81)
+
+MonoPathRemapper: Attempts to remap: 76054; Successful remaps: 36122
+Serialized file version minimum: 23, current 23
+[Worker1] Imported GUID: ab85195f6bb44c5434c15bb9134abd43 - Path: Packages/com.qq.weixin.minigame/Runtime/playable-default/unity-sdk/canvas-context.js - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'cbd4a5af713e03ccd0e1cd69c8f738ac') in 0.010342167 seconds
+[Worker0] Imported GUID: 7d05ed4878f734a40a9f377b7f0f03b3 - Path: Packages/com.qq.weixin.minigame/Editor/TextureEditor/Release/System.Text.Encoding.CodePages.dll - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '3936cf65e46693067ee0ff8bbb32c949') in 0.011264833 seconds
+[Worker1] Imported GUID: bee745550b0fd4509bcf69d64c3467dd - Path: Packages/com.qq.weixin.minigame/Editor/TextureEditor/Release/System.Text.Encoding.CodePages.xml - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '24a72e9a34b31604dda568cf788e8537') in 0.010854541 seconds
+[Worker0] Imported GUID: 4fe59523718954f4f58e6111d77ab995 - Path: Packages/com.qq.weixin.minigame/Runtime/playable-default/plugins/check-update.js - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '21b32b3ad112701ac6b4641e03f3c543') in 0.011395375 seconds
+[Worker1] Imported GUID: 4befa62a970884b639d880395e3530be - Path: Packages/com.qq.weixin.minigame/Editor/TextureEditor/Release/System.Memory.dll - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '7db46123972e5a4db597956cfc9091b4') in 0.011412792 seconds
+[Worker0] Imported GUID: 4e62c2bef69424d4b9a1868da02aa5c7 - Path: Packages/com.qq.weixin.minigame/Editor/TextureEditor/Release/System.Runtime.CompilerServices.Unsafe.xml - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '10823008f498c54984bd1035431bf187') in 0.010755667 seconds
+[Worker1] Imported GUID: 51b894f92c9ced1ee1adde91882b7403 - Path: Packages/com.qq.weixin.minigame/Runtime/wechat-default/unity-sdk/canvas-context.js - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '682bb5ebc283d0d84009c8d8d22e2dbf') in 0.010474208 seconds
+[Worker0] Imported GUID: 3264cdd2297a249bba0d81f4edc86afe - Path: Packages/com.qq.weixin.minigame/Runtime/playable-default/unity-sdk/recorder.js - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '46cda7f942e3305878e032ad9a2c44f3') in 0.009947166 seconds
+[Worker1] Imported GUID: 4879f54f71c138f07bdb061b50b98fcc - Path: Packages/com.qq.weixin.minigame/Runtime/playable-default/unity-sdk/fix.js - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '5bcfb3d59b518e77b51fc7763477a2e5') in 0.010204708 seconds
+[Worker0] Imported GUID: 1e9dd2b8fa5a84c7b8d035d98c54cc52 - Path: Packages/com.qq.weixin.minigame/Editor/TextureEditor/Release/SixLabors.ImageSharp.dll - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '01246a0d382f0b0acdaee52a65c0aad6') in 0.010310291 seconds
+[Worker0] Imported GUID: 3e638173a276543a5b7f11c2942ce871 - Path: Packages/com.qq.weixin.minigame/Editor/TextureEditor/Release/System.Buffers.xml - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'c649a1f7bd2cb81cc31978aa142c8cd8') in 0.01018175 seconds
+[Worker1] Imported GUID: 214de1f0f39f860660e0efc7558014c5 - Path: Packages/com.qq.weixin.minigame/Runtime/wechat-default/unity-sdk/cloud.js - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'c3a661c8170b5d2f3bf60366ef9196b0') in 0.010309542 seconds
+[Worker1] Imported GUID: 9efe82d9b94aa617477c9e1e8cc8ab22 - Path: Packages/com.qq.weixin.minigame/Runtime/playable-default/data-package/game.js - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '975954f77a3d20bb304c27b11b8daa1a') in 0.010768292 seconds
+[Worker0] Imported GUID: 295efddacdbe34a76897f7a077c80dae - Path: Packages/com.qq.weixin.minigame/Editor/TextureEditor/Release/Mono.Cecil.dll - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '0450e171b631d1b4937876e54d9c00aa') in 0.010982667 seconds
+[Worker1] Imported GUID: 5aa665c9abc684afaa92d6cb506badbf - Path: Packages/com.qq.weixin.minigame/Editor/TextureEditor/Release/System.Runtime.CompilerServices.Unsafe.dll - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '335faa9c210a9dd6f24c5f84103e792e') in 0.011409791 seconds
+[Worker0] Imported GUID: 141d34c98fb5ad16e2d311b0fb74bc97 - Path: Packages/com.qq.weixin.minigame/Runtime/wechat-default/plugins/screen-adapter.js - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'd4a0e9cbc809bd57f8a8f173fa1be4e9') in 0.011199333 seconds
+[Worker0] Imported GUID: 859e4896a97d94a17b7da75fb59d4ede - Path: Packages/com.qq.weixin.minigame/Editor/TextureEditor/Release/System.Half.dll - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '4878051470ceac4557168abfc7b00730') in 0.012511208 seconds
+[Worker1] Imported GUID: 7dd087e8fa233c392b82ec9e508105bf - Path: Packages/com.qq.weixin.minigame/Runtime/wechat-default/unity-sdk/ad.js - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '47ff8a54c0fe3333e12ecd1e33a8945c') in 0.012991959 seconds
+[Worker0] Imported GUID: 6d14ec31f24832daf05f2a2c71effe50 - Path: Packages/com.qq.weixin.minigame/Runtime/playable-default/unity-sdk/index.js - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'c12cb8259576f39c910961141643eedb') in 0.013152541 seconds
+[Worker1] Imported GUID: f31b8a48bcef94a366e0da48bc9a87af - Path: Packages/com.qq.weixin.minigame/Runtime/wechat-default/unity-sdk/fix.js - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '7a487785766cfed103f8c53c12cd35dc') in 0.013228208 seconds
+[Worker0] Imported GUID: 7ba0c0aa8a745c588c2b369ed2ea9b8f - Path: Packages/com.qq.weixin.minigame/Runtime/playable-default/unity-sdk/canvas.js - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '30842b8d2dd9746827ee9fb8539050ff') in 0.011536083 seconds
+[Worker1] Imported GUID: 68054ee6e01966317520d6eea858ff98 - Path: Packages/com.qq.weixin.minigame/Runtime/wechat-default/plugins/check-update.js - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '7382f0caff88e77604b909671defbb37') in 0.011148 seconds
+[Worker0] Imported GUID: 714fd08a44aca958475e408eeda070b8 - Path: Packages/com.qq.weixin.minigame/Runtime/playable-default/unity-sdk/logger.js - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '2a35d95c39fa7c7c595d2b48eb0027e0') in 0.011625916 seconds
+[Worker0] Imported GUID: 3142ec738cfee425186894647ea2542c - Path: Packages/com.qq.weixin.minigame/Editor/TextureEditor/Release/System.Numerics.Vectors.xml - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'cbfb2ae782b098948db05eab18327f7b') in 0.014335042 seconds
+[Worker1] Imported GUID: 507fe315d662e66a0bc7d46cb4c64a52 - Path: Packages/com.qq.weixin.minigame/Runtime/wechat-default/images/background.jpg - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'dfd29db59b9bc7545a7e4babe7060bfc') in 0.043477125 seconds
+[Worker1] Imported GUID: 7a46667a1f899f8343a6fdcc11a1cb5a - Path: Packages/com.qq.weixin.minigame/Runtime/playable-default/unity-sdk/resType.js - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '3fd4fd965c696870b5b02e22c5d15f75') in 0.0111785 seconds
+[Worker0] Imported GUID: 596142b9479e1ab4caaf44c77d5a7d8f - Path: Packages/com.qq.weixin.minigame/Runtime/Plugins/LuaAdaptor/lua_adaptor_501.c - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '65c7749ab484f5d679564bb88ebeec92') in 0.011442292 seconds
+[Worker0] Imported GUID: 22c1eec6f7d81a1d27ccfcf67f7b3f2e - Path: Packages/com.qq.weixin.minigame/Runtime/playable-default/unity-sdk/module-helper.js - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '3cc7ac863496c8ab3d5db5edc78d6ac5') in 0.010890708 seconds
+[Worker1] Imported GUID: 260c77c5e5413f48198f110e59f8ef00 - Path: Packages/com.qq.weixin.minigame/Runtime/wechat-default/unity-sdk/authorize.js - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '8a1339a5ee2450321d2e0ebf670414a6') in 0.011022125 seconds
+[Worker0] Imported GUID: 1204a3ef7d83c8c3d304e91e57f99c27 - Path: Packages/com.qq.weixin.minigame/Runtime/playable-default/unity-sdk/sdk.js - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'b9471d8985d74b8c615b082fa0bf58b0') in 0.01259525 seconds
+[Worker1] Imported GUID: 2ac89e161712e66d9338db0ad7fff401 - Path: Packages/com.qq.weixin.minigame/Runtime/playable-default/unity-sdk/response.js - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'c1c2b9b1bdcd4c9782a13413ef898686') in 0.0121975 seconds
+[Worker1] Imported GUID: a5eceadd915f796a4ba7628d882b997d - Path: Packages/com.qq.weixin.minigame/Runtime/playable-default/unity-sdk/conf.js - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'da6e3b47172d76ee47753ead5b0125f8') in 0.010981083 seconds
+[Worker0] Imported GUID: 7c17154ce4ec5c2710e814da9ace0c81 - Path: Packages/com.qq.weixin.minigame/Runtime/wechat-default/open-data/loading.js - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '0fd2685bb3c0e3ac780d615763d2bf61') in 0.0109465 seconds
+[Worker0] Imported GUID: 5f2b5a69e74bcd9e75222a58d7a62505 - Path: Packages/com.qq.weixin.minigame/Runtime/wechat-default/unity-sdk/game-club.js - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'b888559b0b63825e1ae51a8eb883765e') in 0.010808792 seconds
+[Worker1] Imported GUID: efaa878bfecfacd5521bab58893456f5 - Path: Packages/com.qq.weixin.minigame/Runtime/playable-default/unity-sdk/video.js - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'c909e1cd44c8934c51be369c23cb9739') in 0.010935 seconds
+[Worker1] Imported GUID: 2c61fe7994a261a48a95348a09bd839a - Path: Packages/com.qq.weixin.minigame/Runtime/Plugins/LuaAdaptor/lua_adaptor_comm.c - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '9dc0b36aa6025a702fec1cad04140626') in 0.011781125 seconds
+[Worker0] Imported GUID: 798157947f88e004d938d2092163d6eb - Path: Packages/com.qq.weixin.minigame/Runtime/Plugins/LuaAdaptor/lua_adaptor_503.c - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '9db2708077c19d5187cac5e86041f090') in 0.011701791 seconds
+[Worker1] Imported GUID: 9ef1588c07a3a9209ff4e7968922de2d - Path: Packages/com.qq.weixin.minigame/Runtime/wechat-default/unity-sdk/fs.js - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '1f7ec41bce0ac334e8389e75e1ff82fe') in 0.011312166 seconds
+[Worker0] Imported GUID: ed141ff2aa002553242a83084fa04a57 - Path: Packages/com.qq.weixin.minigame/Runtime/playable-default/unity-sdk/utils.js - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '2a7ac2c148cea84b820c7a7d352b66c7') in 0.011118625 seconds
+Killing ADB server in 0.135659 seconds.
+[Worker1] Imported GUID: 6ef861f4a3f4a8a440566a4fb2d353d5 - Path: Packages/com.qq.weixin.minigame/Runtime/playable-default/unity-playable-plugin/index.js - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '3781ef70b4f841408a244cc804956974') in 0.011831917 seconds
+[Worker0] Imported GUID: 1365381d0bba8498ef91876db07ad9f8 - Path: Packages/com.qq.weixin.minigame/Runtime/wechat-default/data-package/game.js - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '47ee12f66db6d91c10022f45c6fa7f76') in 0.011735792 seconds
+Importing 'GUID: 00000000000000009000000000000000 - Path: ProjectSettings/QualitySettings.asset' with importer (LibraryAssetImporter)
+Imported 'GUID: 00000000000000009000000000000000' -> (Import Result ID: '5f2c1ff076b322f487b8a0440ee59356') in 0.007 seconds [static dependencies only]. Details - ImportResultOutputID=7b12711da11c94ad897442b4820d3f7b DependenciesID=0bfed87d78aca864d47f641e721e7999 StaticDependenciesID=4487ff082a94cf257e4b11ffeace0014
+Refreshing native plugins compatible for Editor in 2.79 ms, found 6 plugins.
+Asset Pipeline Refresh (id=093709bd9af6c40b5b5173136beeec58): Total: 0.219 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Thread 0x16dbeb000 may have been prematurely finalized
+正在关闭 MSBuild 服务器...
+正在关闭 VB/C# 编译器服务器...
+成功关闭 VB/C# 编译器服务器。
+Input System module state changed to: ShutdownInProgress.
+Input Polling Thread exited.
+Input System module state changed to: Shutdown.
+成功关闭 MSBuild 服务器。
+[Physics::Module] Cleanup current backend.
+[Physics::Module] Id: 0xf2b8ea05
+[Licensing::IpcConnector] LicenseClient-cqmizhangxiaoyu2-6000.5.1-notifications channel disconnected successfully.
+[Licensing::IpcConnector] LicenseClient-cqmizhangxiaoyu2-6000.5.1 channel disconnected successfully.
+Thread 0x17e113000 may have been prematurely finalized
+Thread 0x17e19f000 may have been prematurely finalized
+Thread 0x17e3cf000 may have been prematurely finalized
+Thread 0x17e343000 may have been prematurely finalized
+Thread 0x17e45b000 may have been prematurely finalized
+Thread 0x17e22b000 may have been prematurely finalized
+Thread 0x17e4e7000 may have been prematurely finalized
+Thread 0x17e2b7000 may have been prematurely finalized
+AcceleratorClientConnectionCallback - disconnected - :0
+Thread 0x17fb97000 may have been prematurely finalized
+Cleanup mono
+info: Microsoft.Hosting.Lifetime[0]
+      Application is shutting down...
+CodeReloadManager destroyed
+info: Unity.ILPP.Runner.PostProcessingAssemblyLoadContext[0]
+      ALC ILPP context 1 is unloading
+debugger-agent: Unable to listen on 44

@@ -10,6 +10,7 @@ internal static partial class SemanticValidator
     public static void Validate(ConfigValidationContext context)
     {
         ValidateContentVersion(context);
+        ValidateFeedbackColors(context);
         ValidateGlobalTypedUnion(context);
         ValidateOrderedPairs(context);
         ValidateGroupOrders(context);
@@ -17,6 +18,29 @@ internal static partial class SemanticValidator
         ValidateRewardConditions(context);
         ValidateLevelWaveSpawnGraph(context);
         ValidateBossPhases(context);
+    }
+
+    private static void ValidateFeedbackColors(ConfigValidationContext context)
+    {
+        var table = context.Document.GetRequiredTable("FeedbackCues");
+        foreach (var row in table.Rows)
+        {
+            foreach (var fieldName in new[] { "damageNumberColorHex", "vfxTintColorHex" })
+            {
+                var value = ConfigValues.String(row, fieldName);
+                if (ColorHexRegex().IsMatch(value))
+                {
+                    continue;
+                }
+
+                throw Failure(
+                    "CFG009",
+                    $"Color '{value}' must use #RRGGBBAA hexadecimal format.",
+                    table,
+                    row,
+                    fieldName);
+            }
+        }
     }
 
     private static void ValidateContentVersion(ConfigValidationContext context)
@@ -430,4 +454,7 @@ internal static partial class SemanticValidator
         "^[0-9]+\\.[0-9]+\\.[0-9]+(?:-[a-z0-9][a-z0-9.-]*)?$",
         RegexOptions.CultureInvariant)]
     private static partial Regex ContentVersionRegex();
+
+    [GeneratedRegex("^#[0-9A-Fa-f]{8}$", RegexOptions.CultureInvariant)]
+    private static partial Regex ColorHexRegex();
 }

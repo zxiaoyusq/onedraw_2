@@ -38,6 +38,7 @@ namespace OneStrokeDemon.Config
         TextConfig GetText(string textKey);
         AudioCueConfig GetAudioCue(string audioKey);
         VfxCueConfig GetVfxCue(string vfxKey);
+        FeedbackCueConfig GetFeedbackCue(string feedbackId);
         AssetManifestConfig GetAsset(string assetKey);
         IReadOnlyList<AssetManifestConfig> GetAssetManifest();
     }

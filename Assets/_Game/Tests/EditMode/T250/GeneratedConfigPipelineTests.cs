@@ -40,9 +40,9 @@ namespace OneStrokeDemon.Tests.EditMode.T250
             Assert.That(ConfigIds.SchemaVersion, Is.EqualTo(service.SchemaVersion));
             Assert.That(ConfigIds.ContentVersion, Is.EqualTo(service.ContentVersion));
             Assert.That(ConfigIds.ContentHash, Is.EqualTo(service.ContentHash));
-            Assert.That(summary.RecordCount, Is.EqualTo(715));
-            Assert.That(ConfigIds.IdSetCount, Is.EqualTo(27));
-            Assert.That(ConfigIds.IdConstantCount, Is.EqualTo(367));
+            Assert.That(summary.RecordCount, Is.EqualTo(740));
+            Assert.That(ConfigIds.IdSetCount, Is.EqualTo(28));
+            Assert.That(ConfigIds.IdConstantCount, Is.EqualTo(372));
         }
 
         [Test]
@@ -82,6 +82,8 @@ namespace OneStrokeDemon.Tests.EditMode.T250
                 Is.EqualTo("skill_ultimate_seal"));
             Assert.That(config.GetAsset(ConfigIds.Assets.SceneBattle).AssetKey,
                 Is.EqualTo("scene_battle"));
+            Assert.That(config.GetFeedbackCue(ConfigIds.FeedbackCues.FeedbackArmorBreak).VfxKey,
+                Is.EqualTo(ConfigIds.VfxCues.VfxArmorBreak));
             Assert.That(AssetRegistryEditorValidator.ValidateCanonical().EntryCount, Is.EqualTo(76));
         }
     }

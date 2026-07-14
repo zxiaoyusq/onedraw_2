@@ -359,6 +359,24 @@
       "mutations": [
         { "operation": "set", "sheet": "Rewards", "match": { "rewardTableId": "reward_level_001", "order": "2" }, "values": { "conditionValue": "4" } }
       ]
+    },
+    {
+      "id": "feedback_time_scale_above_one",
+      "expectedCode": "CFG007",
+      "expectedSheet": "FeedbackCues",
+      "expectedField": "timeScale",
+      "mutations": [
+        { "operation": "set", "sheet": "FeedbackCues", "match": { "feedbackId": "feedback_enemy_hit" }, "values": { "timeScale": "1.1" } }
+      ]
+    },
+    {
+      "id": "feedback_color_malformed",
+      "expectedCode": "CFG009",
+      "expectedSheet": "FeedbackCues",
+      "expectedField": "damageNumberColorHex",
+      "mutations": [
+        { "operation": "set", "sheet": "FeedbackCues", "match": { "feedbackId": "feedback_enemy_hit" }, "values": { "damageNumberColorHex": "white" } }
+      ]
     }
   ]
 }

@@ -35,12 +35,13 @@
     "vfxCues",
     "assetManifest",
     "enums",
-    "fieldDictionary"
+    "fieldDictionary",
+    "feedbackCues"
   ],
   "properties": {
     "schemaVersion": {
       "type": "integer",
-      "const": 4
+      "const": 5
     },
     "contentVersion": {
       "type": "string",
@@ -216,6 +217,12 @@
       "type": "array",
       "items": {
         "$ref": "#/$defs/FieldDictionaryRow"
+      }
+    },
+    "feedbackCues": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/FeedbackCuesRow"
       }
     }
   },
@@ -1613,6 +1620,104 @@
         },
         "sortingOrder": {
           "type": "integer"
+        }
+      }
+    },
+    "FeedbackCuesRow": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "feedbackId",
+        "vfxKey",
+        "audioKey",
+        "timeScale",
+        "timeScaleSec",
+        "flashSec",
+        "shakeStrengthRefPx",
+        "shakeSec",
+        "vibrationPattern",
+        "damageNumberColorHex",
+        "damageNumberFontSizeRefPx",
+        "damageNumberLifeSec",
+        "damageNumberRiseRefPx",
+        "vfxTintColorHex",
+        "vfxScaleRefPx",
+        "description"
+      ],
+      "properties": {
+        "feedbackId": {
+          "type": "string"
+        },
+        "vfxKey": {
+          "type": "string"
+        },
+        "audioKey": {
+          "type": "string"
+        },
+        "timeScale": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "timeScaleSec": {
+          "type": "number",
+          "minimum": 0.01,
+          "maximum": 2
+        },
+        "flashSec": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 2
+        },
+        "shakeStrengthRefPx": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "shakeSec": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 2
+        },
+        "vibrationPattern": {
+          "type": "string",
+          "enum": [
+            "Off",
+            "Light",
+            "Medium",
+            "Heavy"
+          ]
+        },
+        "damageNumberColorHex": {
+          "type": "string",
+          "pattern": "^#[0-9A-Fa-f]{8}$"
+        },
+        "damageNumberFontSizeRefPx": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 200
+        },
+        "damageNumberLifeSec": {
+          "type": "number",
+          "minimum": 0.01,
+          "maximum": 3
+        },
+        "damageNumberRiseRefPx": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 300
+        },
+        "vfxTintColorHex": {
+          "type": "string",
+          "pattern": "^#[0-9A-Fa-f]{8}$"
+        },
+        "vfxScaleRefPx": {
+          "type": "number",
+          "minimum": 1,
+          "maximum": 200
+        },
+        "description": {
+          "type": "string"
         }
       }
     },

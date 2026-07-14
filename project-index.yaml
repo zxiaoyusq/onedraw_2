@@ -1,7 +1,7 @@
 project: OneStrokeDemon
 project_cn: 一笔镇妖
 plan_generated: 2026-07-11
-current_task: T620
+current_task: T630
 current_task_status: READY
 unity:
   project_root: .
@@ -22,10 +22,10 @@ config:
   generated_json: Assets/_Game/Config/Generated/gameplay_config.json
   generated_hash: Assets/_Game/Config/Generated/gameplay_config.hash
   generated_ids: Assets/_Game/Scripts/Config/Generated/ConfigIds.g.cs
-  schema_version: 4
-  content_version: 0.6.0-sample
-  content_hash: 54885fb2ce8373bad21af796d96a7a4cbc4ce6d8f41def3f909686b14ec87a1d
-  workbook_sha256: 4429caa0846bd4da207380d37ffadca4ab48adb6dd43c73b5691fbcc18457f13
+  schema_version: 5
+  content_version: 0.6.1-sample
+  content_hash: 152b9faa81ba66e29469d7a4a48227f8fb7ef0f969f1cb13679d6fe0ce0786f8
+  workbook_sha256: 0fc25d73d7a1697fc4d78c8e01d874433998a71a6a2024cd0caa516dec2cb9b5
   mirror_status: byte_identical
   contract_audit: pass
   exporter:
@@ -34,16 +34,16 @@ config:
     xlsx_library: DocumentFormat.OpenXml@3.5.1
     status: pass
     test_count: 8
-    exported_tables: 28
-    exported_records: 715
-    output_bytes: 185197
-    output_sha256: d49208b72f908f68ae1dfc58480061b3ae6d2ccaf1c18b7f9db234cb0de48610
+    exported_tables: 29
+    exported_records: 740
+    output_bytes: 193551
+    output_sha256: 2623d80dfdbe286b4378900ca440210f42adc54c9f53d625cf4bedaf83c51172
     runtime_snapshot_committed: true
   validator:
     path: Tools/ConfigExporter/Validation
     status: pass
-    test_count: 56
-    invalid_case_count: 39
+    test_count: 58
+    invalid_case_count: 41
     diagnostic_location: Sheet/ExcelRow/Field
     schema_mirror_check: pass
     whole_package_rejection: true
@@ -51,14 +51,14 @@ config:
     status: pass
     json_package: com.unity.nuget.newtonsoft-json@3.2.2
     newtonsoft_version: 13.0.2
-    compatibility: schema_4_content_0_6_x
-    dto_tables: 28
-    dto_fields: 250
-    loaded_records: 715
-    readonly_primary_indexes: 331
+    compatibility: schema_5_content_0_6_x
+    dto_tables: 29
+    dto_fields: 266
+    loaded_records: 740
+    readonly_primary_indexes: 336
     readonly_group_indexes: 56
-    editmode_tests: 183
-    playmode_tests: 44
+    full_editmode_tests: 187
+    full_playmode_tests: 45
     bootstrap_smoke: pass
   asset_registry:
     status: pass
@@ -79,20 +79,20 @@ config:
     default_read_only: true
     update_flag: --update
     drift_diagnostic: CFG013
-    generated_json_bytes: 185197
-    generated_json_sha256: d49208b72f908f68ae1dfc58480061b3ae6d2ccaf1c18b7f9db234cb0de48610
+    generated_json_bytes: 193551
+    generated_json_sha256: 2623d80dfdbe286b4378900ca440210f42adc54c9f53d625cf4bedaf83c51172
     generated_hash_bytes: 65
-    generated_hash_sha256: 13382b20bfc7857afacfb68840d568531c6dea1dbbfffc854c52b0741654ee80
-    generated_ids_bytes: 27334
-    generated_ids_sha256: 62cbc5622fa62b8f92683231acfe6a98fe53e95cea186d72492f850f6aa07ead
-    id_sets: 27
-    id_constants: 367
-    dotnet_tests: 56
+    generated_hash_sha256: 03c2482f9e0f8573f7fb735e03c1ad532d5d0a3fc896b2d346cd7ab077856405
+    generated_ids_bytes: 27793
+    generated_ids_sha256: aee7d7500d1c4e2947172fe776236a1b3abacf48ac45f072eb1547d30bd2db1d
+    id_sets: 28
+    id_constants: 372
+    dotnet_tests: 58
     config_editmode_tests: 19
     config_playmode_tests: 3
-    full_editmode_tests: 183
-    full_playmode_tests: 44
-    full_command_smoke: pass_via_static_drift_gate_plus_isolated_unity_batch_project
+    full_editmode_tests: 187
+    full_playmode_tests: 45
+    full_command_smoke: pass_via_readonly_drift_gate_plus_isolated_unity_batch_project
 result_progress:
   status: pass
   scoring:
@@ -169,6 +169,32 @@ localization_fonts:
   playmode_tests: 1
   full_editmode_tests: 183
   full_playmode_tests: 44
+combat_feedback:
+  status: pass
+  service: CombatFeedbackService
+  runtime_output: CombatFeedbackRuntime
+  configured_table: FeedbackCues
+  configured_profiles: 5
+  profile_ids: [feedback_enemy_hit, feedback_weakpoint_hit, feedback_armor_break, feedback_projectile_reflect, feedback_player_hit]
+  outputs: [gameplay_time_scale, target_white_flash, camera_shake, pooled_vfx, pooled_damage_number, cached_audio, optional_vibration]
+  result_policy: readonly_never_changes_damage_truth
+  resource_policy: preload_registry_assets_before_hit
+  pools: [vfx, damage-number]
+  vibration_port: ICombatFeedbackVibration
+  vibration_master_switch: true
+  platform_adapter: deferred_to_T130_IPlatformService
+  placeholder_assets: true_until_T630
+  dotnet_config_tests: 58
+  roslyn_response_compile: pass_zero_errors
+  editmode_focused: 4
+  playmode_focused: 1
+  config_editmode: 19
+  config_playmode: 3
+  full_editmode: 187
+  full_playmode: 45
+  perceptual_screenshot: artifacts/evals/T620/combat-feedback-1920x1080.png
+  perceptual_screenshot_sha256: 8c687c19e993035461d01c1eeb3d63a7c43febb180dd949a176c1da08195797d
+  perceptual_resolution: 1920x1080_Metal
 input:
   status: pass
   package: com.unity.inputsystem@1.19.0
@@ -685,7 +711,7 @@ wechat_conversion:
 execution_order:
   deferred_tasks: [T120, T130]
   deferral_reason: user_prioritized_main_game_content_over_wechat_devtools_device_and_packaging_work
-  next_content_task: T620
+  next_content_task: T630
   resume_platform_before: [T640, T750]
 workflow:
   config_verify_command: Tools/CI/verify-config.sh

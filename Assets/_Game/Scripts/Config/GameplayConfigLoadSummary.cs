@@ -28,7 +28,7 @@ namespace OneStrokeDemon.Config
 
         public string ContentHash { get; }
 
-        public int TableCount => 28;
+        public int TableCount => 29;
 
         public int RecordCount { get; }
 

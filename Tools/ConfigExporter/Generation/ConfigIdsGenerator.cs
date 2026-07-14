@@ -44,6 +44,7 @@ internal sealed class ConfigIdsGenerator
         Set("AudioCues", "AudioCues", "audioKey"),
         Set("VfxCues", "VfxCues", "vfxKey"),
         Set("Assets", "AssetManifest", "assetKey"),
+        Set("FeedbackCues", "FeedbackCues", "feedbackId"),
     };
 
     public GeneratedConfigIds Generate(ConfigDocument document, string contentHash)

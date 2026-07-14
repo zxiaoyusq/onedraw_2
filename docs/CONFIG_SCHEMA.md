@@ -2,7 +2,7 @@
 
 ## 1. 版本与唯一真相源
 
-- 当前冻结版本：`schemaVersion = 4`、`contentVersion = 0.6.0-sample`。
+- 当前冻结版本：`schemaVersion = 5`、`contentVersion = 0.6.1-sample`。
 - 正式内容唯一源：`Design/Config/GameConfig.xlsx`。
 - `config/一笔镇妖_游戏配置表模板.xlsx` 只是随正式源同步的示例镜像，不接受独立内容修改。
 - `Assets/_Game/Config/Generated/gameplay_config.json`和`gameplay_config.hash`由T250导出器生成，是可审查、可构建的只读Runtime快照与hash旁车。
@@ -23,11 +23,11 @@
 
 ## 3. 工作簿物理结构
 
-- 工作簿固定29个Sheet：1个 `README` 加28个数据Sheet；名称和顺序属于契约。
+- 工作簿固定30个Sheet：1个 `README` 加29个数据Sheet；名称和顺序属于契约。
 - 每个数据Sheet第1行为标题、第2行为说明、第3行留空、第4行为唯一表头、第5行起为数据。
 - 首字段为空的整行视为空白行并忽略；数据区中间不得插入“看似空白但带业务值”的行。
-- `README!E5:E18` 的14个 `COUNTA` 公式只用于人工摘要，公式引用必须带Sheet单引号且限定 `A5:A1000`；公式与公式结果都不进入JSON。
-- `FieldDictionary` 有250条记录，完整描述其余27个数据Sheet（包括 `Enums`），但不递归描述自身。`FieldDictionaryRow` 的JSON结构由Schema直接定义。
+- `README!E5:E19` 的15个 `COUNTA` 公式只用于人工摘要，公式引用必须带Sheet单引号且限定 `A5:A1000`；公式与公式结果都不进入JSON。
+- `FieldDictionary` 有266条记录，完整描述其余28个数据Sheet（包括 `Enums` 和 `FeedbackCues`），但不递归描述自身。`FieldDictionaryRow` 的JSON结构由Schema直接定义。
 - 表头是API，顺序必须与Schema `$defs/*Row.properties`、`required`及样例JSON对象字段一致。
 
 ## 4. Sheet、主键与分组
@@ -62,6 +62,7 @@
 | AssetManifest | assetKey | — | 配置期预期资源键与类型 |
 | Enums | enumType+value | enumType内value唯一 | 策划枚举字典 |
 | FieldDictionary | sheet+field | 不自描述 | 字段类型、约束与说明 |
+| FeedbackCues | feedbackId | `vfxKey/audioKey`引用提示表 | 事件反馈的停顿、闪白、震屏、数字、特效、音频和震动强度 |
 
 `attackSetId`、`effectGroupId`、`rewardTableId`和 `tutorialId` 是分组ID；引用校验要求目标组至少存在一行，不能把分组字段单独误判为行主键。
 
@@ -103,7 +104,7 @@ T360新增的`Stances.damageFormulaId -> DamageFormulas.formulaId`是必填普�
 
 ## 8. 稳定排序与contentHash
 
-- JSON顶层属性顺序固定为：`schemaVersion`、`contentVersion`、`contentHash`，随后按工作簿中的28个数据Sheet顺序使用lowerCamelCase数组名。
+- JSON顶层属性顺序固定为：`schemaVersion`、`contentVersion`、`contentHash`，随后按工作簿中的29个数据Sheet顺序使用lowerCamelCase数组名。
 - 简单表按行主键Ordinal升序；组合表按组合键依次升序。
 - 玩法分组表的稳定顺序为：EnemyAttacks按 `attackSetId, order, attackId`；SkillEffects按 `effectGroupId, order`；Waves按 `levelId, order, waveId`；BossPhases按 `enemyId, order, bossPhaseId`；Rewards按 `rewardTableId, order`；Tutorials按 `tutorialId, order`。
 - Enums按 `enumType, value`；FieldDictionary按固定Sheet顺序和该Sheet表头顺序。排序不得依赖当前Excel行号、系统区域设置或字典遍历顺序。
@@ -114,7 +115,7 @@ T360新增的`Stances.damageFormulaId -> DamageFormulas.formulaId`是必填普�
 
 ## 9. 必须校验
 
-- 29个Sheet名称/顺序、每个表头、FieldDictionary覆盖和Schema定义一致。
+- 30个Sheet名称/顺序、每个表头、FieldDictionary覆盖和Schema定义一致。
 - 主键/组合键唯一；FieldDictionary必填字段非空；类型、范围、布尔、枚举和Trim规则有效。
 - 全部普通、分组、通配符和conditional外键符合第7节。
 - SkillEffects、EnemyAttacks、Waves、Rewards、Tutorials和BossPhases的组内order从1连续且不重复。
@@ -125,7 +126,7 @@ T360新增的`Stances.damageFormulaId -> DamageFormulas.formulaId`是必填普�
 
 ## 10. Runtime约定
 
-- JSON根包含 `schemaVersion`、`contentVersion`、`contentHash` 和28个表数组。
+- JSON根包含 `schemaVersion`、`contentVersion`、`contentHash` 和29个表数组。
 - `GameplayConfigService` 启动时一次性反序列化、校验版本并构建只读索引。
 - 业务代码通过 `IConfigProvider.GetEnemy(id)` 等API访问，不直接遍历或修改原始DTO。
 - 启动日志打印配置来源、版本、hash、记录数和校验摘要。
@@ -277,3 +278,10 @@ T360新增的`Stances.damageFormulaId -> DamageFormulas.formulaId`是必填普�
 - T610不改变工作簿、JSON字段、FieldDictionary、schema、content版本或hash。字体字符清单以受管JSON全部`texts[].zhCN`为内容输入，并与可打印ASCII、NBSP和固定中文UI标点求唯一并集；当前结果为294个码点。该清单是构建派生物，不是第二套文案源。
 - 任一配置中文文案新增码点后，字符清单、OFL重命名子集、TMP静态资产与覆盖测试必须同步重建；运行时不得下载字体、解析xlsx、动态扩Atlas或用Inspector维护额外常用字列表。
 - HUD的数值格式仍由T600 Presenter生成，但数字、负号、加号、斜杠、冒号、空格及动态`暴击`示例必须被同一主字体/fallback链覆盖。配置内容、运行时格式字符和字体资产之间的漂移由EditMode/PlayMode共同拒绝。
+
+## 28. T620战斗反馈配置与事件映射语义
+
+- T620把schema升级为`5`、content升级为`0.6.1-sample`，新增`FeedbackCues`。当前五个稳定协议ID分别映射普通命中、弱点命中、破甲、弹反和玩家受击；每行只保存`VfxCues/AudioCues`外键、玩法时间缩放与持续时间、白闪/震屏、伤害数字样式、VFX染色/尺寸及震动等级，不保存伤害或命中裁决。
+- `timeScale`范围为0～1，0表达完全停顿；全部持续时间由未缩放时间推进。震屏、伤害数字上浮、字号和VFX尺寸以1920×1080参考像素表达。颜色必须使用`#RRGGBBAA`；震动仅允许`Off/Light/Medium/Heavy`，工作簿Enums、Schema和代码登记集合必须精确一致。
+- `CombatFeedbackService`只消费已经形成的战斗结果或显式反馈事件，并按破甲优先于弱点、弱点优先于普通命中的语义选择配置档案；它只能向表现输出与可注入震动端口发命令，不能修改HP、护甲、分数、弹体归属或其他战斗真相。震动总开关关闭后仍须保留视觉/音频命令。
+- Unity输出层在创建时一次性解析五份配置、取得Registry中的AudioClip/Prefab并建立音频并发通道和T440 VFX/伤害数字池；命中热路径不得加载资源。回收必须恢复目标颜色、相机基位、TMP内容、VFX染色/缩放和精确池租约。T620仍使用T240占位音频/VFX，正式资源替换属于T630。

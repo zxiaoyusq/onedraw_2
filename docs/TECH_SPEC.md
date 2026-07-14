@@ -92,6 +92,7 @@ Tests.EditMode / Tests.PlayMode
 - `EnemyController`：通用状态机；策略注册表组合移动、攻击和防御。
 - `SkillService`：Skill → EffectGroup → 有序Effect执行器。
 - `ObjectPoolService`：敌人、投射物、VFX和数字复用并完整重置。
+- `CombatFeedbackService`：消费只读战斗结果，按`FeedbackCues`发布停顿、闪白、震屏、池化VFX/数字、预载音频与可关闭震动命令；不修改伤害真相。
 
 ### 流程
 

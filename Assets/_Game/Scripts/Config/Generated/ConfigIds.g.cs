@@ -5,11 +5,11 @@ namespace OneStrokeDemon.Config
 {
     public static class ConfigIds
     {
-        public const int SchemaVersion = 4;
-        public const string ContentVersion = "0.6.0-sample";
-        public const string ContentHash = "54885fb2ce8373bad21af796d96a7a4cbc4ce6d8f41def3f909686b14ec87a1d";
-        public const int IdSetCount = 27;
-        public const int IdConstantCount = 367;
+        public const int SchemaVersion = 5;
+        public const string ContentVersion = "0.6.1-sample";
+        public const string ContentHash = "152b9faa81ba66e29469d7a4a48227f8fb7ef0f969f1cb13679d6fe0ce0786f8";
+        public const int IdSetCount = 28;
+        public const int IdConstantCount = 372;
 
         public static class GlobalKeys
         {
@@ -484,6 +484,15 @@ namespace OneStrokeDemon.Config
             public const string VfxVulnerable = "vfx_vulnerable";
             public const string VfxWeakpointHit = "vfx_weakpoint_hit";
             public const string VfxWheelCharge = "vfx_wheel_charge";
+        }
+
+        public static class FeedbackCues
+        {
+            public const string FeedbackArmorBreak = "feedback_armor_break";
+            public const string FeedbackEnemyHit = "feedback_enemy_hit";
+            public const string FeedbackPlayerHit = "feedback_player_hit";
+            public const string FeedbackProjectileReflect = "feedback_projectile_reflect";
+            public const string FeedbackWeakpointHit = "feedback_weakpoint_hit";
         }
     }
 }

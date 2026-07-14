@@ -6,7 +6,7 @@ namespace OneStrokeDemon.Config
 {
     public static class GameplayConfigCompatibility
     {
-        public const long SupportedSchemaVersion = 4;
+        public const long SupportedSchemaVersion = 5;
         public const int SupportedContentMajor = 0;
         public const int SupportedContentMinor = 6;
 

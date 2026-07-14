@@ -370,6 +370,27 @@ namespace OneStrokeDemon.Config
     }
 
     [JsonObject(MemberSerialization.OptIn)]
+    public sealed class FeedbackCueConfig
+    {
+        [JsonProperty("feedbackId", Required = JsonRequired.Always)] public string FeedbackId { get; private set; } = string.Empty;
+        [JsonProperty("vfxKey", Required = JsonRequired.Always)] public string VfxKey { get; private set; } = string.Empty;
+        [JsonProperty("audioKey", Required = JsonRequired.Always)] public string AudioKey { get; private set; } = string.Empty;
+        [JsonProperty("timeScale", Required = JsonRequired.Always)] public float TimeScale { get; private set; }
+        [JsonProperty("timeScaleSec", Required = JsonRequired.Always)] public float TimeScaleSec { get; private set; }
+        [JsonProperty("flashSec", Required = JsonRequired.Always)] public float FlashSec { get; private set; }
+        [JsonProperty("shakeStrengthRefPx", Required = JsonRequired.Always)] public float ShakeStrengthRefPx { get; private set; }
+        [JsonProperty("shakeSec", Required = JsonRequired.Always)] public float ShakeSec { get; private set; }
+        [JsonProperty("vibrationPattern", Required = JsonRequired.Always)] public string VibrationPattern { get; private set; } = string.Empty;
+        [JsonProperty("damageNumberColorHex", Required = JsonRequired.Always)] public string DamageNumberColorHex { get; private set; } = string.Empty;
+        [JsonProperty("damageNumberFontSizeRefPx", Required = JsonRequired.Always)] public long DamageNumberFontSizeRefPx { get; private set; }
+        [JsonProperty("damageNumberLifeSec", Required = JsonRequired.Always)] public float DamageNumberLifeSec { get; private set; }
+        [JsonProperty("damageNumberRiseRefPx", Required = JsonRequired.Always)] public float DamageNumberRiseRefPx { get; private set; }
+        [JsonProperty("vfxTintColorHex", Required = JsonRequired.Always)] public string VfxTintColorHex { get; private set; } = string.Empty;
+        [JsonProperty("vfxScaleRefPx", Required = JsonRequired.Always)] public float VfxScaleRefPx { get; private set; }
+        [JsonProperty("description", Required = JsonRequired.Always)] public string Description { get; private set; } = string.Empty;
+    }
+
+    [JsonObject(MemberSerialization.OptIn)]
     public sealed class AssetManifestConfig
     {
         [JsonProperty("assetKey", Required = JsonRequired.Always)] public string AssetKey { get; private set; } = string.Empty;

@@ -1,15 +1,21 @@
 # PROGRESS
 
 - 日期：2026-07-14
-- 当前成熟度：P3手势战斗核心、P4玩家/敌人技能、P5完整单局闭环以及P6基础HUD/结算UI与中文字体均已完成，下一项补齐战斗反馈
-- 当前任务：T620
+- 当前成熟度：P3手势战斗核心、P4玩家/敌人技能、P5完整单局闭环以及P6 HUD/结算UI、中文字体与战斗反馈均已完成；下一项接入原型美术资源
+- 当前任务：T630
 - 状态：READY
 - Unity精确版本：6000.5.1f1（已由ProjectVersion.txt与本机安装核验）
 - 微信SDK来源或版本：官方 `minigame-tuanjie-transform-sdk` v0.1.33 / commit `ed4ad28f433c6b52b5fd3f22a6fa155a0c98c228` / embedded最小补丁
 - Active Scene：Assets/_Game/Scenes/Bootstrap.unity
-- 配置版本：schema 4 / content 0.6.0-sample / hash `54885fb2ce8373bad21af796d96a7a4cbc4ce6d8f41def3f909686b14ec87a1d`
+- 配置版本：schema 5 / content 0.6.1-sample / hash `152b9faa81ba66e29469d7a4a48227f8fb7ef0f969f1cb13679d6fe0ce0786f8`
 
 ## 已完成
+
+- T620：新增配置驱动的5类战斗反馈档案，以及只读`CombatFeedbackService`和Unity输出适配；命中、弱点、破甲、弹反与玩家受击可编排受击停顿/慢动作、闪白、震屏、池化VFX/伤害数字、预载音效及可关闭震动，反馈不修改伤害或战斗结算真相。
+- T620：双工作簿已同步为schema 5/content `0.6.1-sample`，新增`FeedbackCues`并完成关键Sheet渲染、重新导入及公式错误0复核；受管JSON为193,551字节/740条/content hash `152b9faa...86f8`，28组372个ID常量。严格生成/漂移门及ConfigExporter .NET 58/58通过。
+- T620：反馈Runtime预载全部配置AudioClip/VFX Prefab，按T440池合同复用VFX与伤害数字；参考像素字号、上浮和VFX尺寸按Global参考高度与实际字体/渲染Bounds换算，反馈对象继承宿主Layer。完成、Restart和Dispose均恢复目标颜色、相机基位、池租约、TMP与VFX状态。
+- T620：专项EditMode 4/4、PlayMode 1/1，ConfigPipeline Unity EditMode 19/19、PlayMode 3/3，最终全量EditMode 187/187、PlayMode 45/45。Metal 1920×1080画廊清楚展示普通命中白字、弱点黄字、破甲橙字、弹反无伤害数字和玩家受击红字，截图SHA-256为`8c687c19...97d`；测试日志无新增编译错误、运行异常或失败，重编译只报告T610既有且本任务未改动的4处CS0618测试API弃用warning。
+- T620：未修改Scene、Prefab、Registry、Input Actions、Packages、ProjectSettings、微信SDK或Builds；T240黑色占位VFX/音频的正式品质留给T630，微信震动适配仍留给T130，未提前实现T640/T650。
 
 - T610：采用Google Fonts官方仓库固定提交`2894aab3...d384`的OFL Noto Sans SC作为一次性构建输入，实例化weight 500并按保留字体名规则重命名为`One Stroke Demon UI`。未提交17,772,300字节上游原字体，只交付124,488字节子集、OFL全文和来源/hash记录；子集SHA-256为`fd0ab5d8...1ac5`。
 - T610：字符清单确定性覆盖全部`texts[].zhCN`、可打印ASCII、NBSP和常用中文UI标点，共294个唯一码点；TMP拆为96字符512×512 Latin静态主Atlas和198字符1024×1024中文静态fallback，均关闭多Atlas。全局TMP Settings及BattleHUD显式资源路径指向主字体，主字体与全局fallback均指向中文资产；TMP Essential Resources经Unity Editor导入后删去未使用的LiberationSans大Atlas/源字体和非移动shader，仅保留约20KB移动SDF、设置、样式与中文换行规则。
@@ -158,7 +164,7 @@
 - T200：按GAME_DESIGN修正关卡玩法ID为 `lv_001_tutorial`、`lv_002_cave`、`lv_003_boss`，Boss玩法ID为 `boss_tomb_king`；所有Level/Wave/Spawn/BossPhase/Reward依赖引用同步，文案键和资源键保持独立命名空间。
 - T200：FieldDictionary保留248条非递归字段记录，修正Global互斥类型列及10个主键/条件字段的必填语义；冻结Schema属性存在与Excel单元格非空的差异、空值转换、普通/分组/通配符/conditional外键和数据所有权。
 - T200：29表、14公式、248字段、Schema/样例、类型/范围/枚举、主键、外键、连续order、关卡-Boss语义和规范化contentHash的只读契约审计全部PASS；29表最终渲染经4张总览拼图复核，无结构或版式异常。
-- 执行顺序调整：用户明确要求暂时绕过T120及微信开发者工具/打包问题，先完成游戏主要内容；T120保持`BLOCKED`、T130保持`BACKLOG`，不删除MVP平台验收要求；P5及P6字体已完成，当前首个依赖满足的`READY`任务为T620。
+- 执行顺序调整：用户明确要求暂时绕过T120及微信开发者工具/打包问题，先完成游戏主要内容；T120保持`BLOCKED`、T130保持`BACKLOG`，不删除MVP平台验收要求；T620已完成，当前首个依赖满足的`READY`任务为T630。
 - T120 G2：Unity `6000.5.1f1` 基于固定 embedded WXSDK 成功生成 `Builds/WeChat/T120`；84个文件、总计101,901,218字节，其中`minigame` 12,008,520字节，JSON结构、关键文件、SHA-256清单与敏感占位扫描均通过。
 - T120构建参数：空AppID、横屏、256MB、触摸启用、Development、关闭渲染线程与性能分析、清理构建，并使用SDK受支持的多线程Brotli；可复现入口为`Tools/CI/build-wechat.sh`。
 - T120 G2结论为`PASS WITH KNOWN ISSUES`：默认单线程Brotli在当前macOS Unity安装布局下引用错误路径（BUG-0005，已用配置规避）；转换含93条未匹配替换规则及6条Emscripten warning（BUG-0006），需要G3实际运行判定影响。
@@ -203,7 +209,7 @@
 6. 长Web构建后Unity MCP实例桥接未自动恢复，见BUG-0003；Unity batch测试与Web运行未受影响。
 7. PSD主角和怪物大多为单张Sprite；T610两个静态TMP资产约2.78MB，实际Web压缩包、运行内存和真机触摸延迟仍需T730及平台门验证。
 8. T450已能按AssetManifest类型装配六怪，但T240的75个非场景键仍使用按类型共享的受管占位资源；类型与覆盖合同已成立，正式视觉、音频、身体碰撞形状和逐Prefab内容仍须在T630及相应玩法任务中替换并重新校验。
-9. 三个MVP关卡、T550结算/进度/重开、T600 HUD与T610中文字体路径已闭环；但T620战斗反馈、T630正式资源和T650教程遮罩尚未实现，`IProgressSaveStore`也仍待T130平台适配，因此当前证据不能外推为最终演出、平台持久化或真机体验。
+9. 三个MVP关卡、T550结算/进度/重开、T600 HUD、T610中文字体与T620战斗反馈路径已闭环；但T630正式资源和T650教程遮罩尚未实现，`IProgressSaveStore`与震动也仍待T130平台适配，因此当前证据不能外推为最终演出、平台持久化或真机体验。
 ## 下一步
 
-只执行T620：实现受击停顿、闪白、震屏、伤害数字、音效、震动和慢动作，并保持反馈不改变T360伤害真相、全部cue/强度/时长来自现有配置且对象池化；不提前实现T630/T640/T650，也不恢复T120/T130。平台任务最迟在T640/T750前恢复。
+只执行T630：接入PSD解析出的背景、主角、怪物、UI和特效作为原型资源，统一透明PNG、尺寸、压缩、命名、Pivot/PPU/SortingLayer和来源/授权记录；不把125MB PSD放入Runtime Assets，不把单张角色虚构为骨骼拆件，不提前实现T640/T650，也不恢复T120/T130。平台任务最迟在T640/T750前恢复。

@@ -44,6 +44,7 @@ namespace OneStrokeDemon.Config
         [JsonProperty("assetManifest", Required = JsonRequired.Always)] internal AssetManifestConfig[] AssetManifestRows { get; private set; } = Array.Empty<AssetManifestConfig>();
         [JsonProperty("enums", Required = JsonRequired.Always)] internal EnumConfig[] EnumRows { get; private set; } = Array.Empty<EnumConfig>();
         [JsonProperty("fieldDictionary", Required = JsonRequired.Always)] internal FieldDictionaryConfig[] FieldDictionaryRows { get; private set; } = Array.Empty<FieldDictionaryConfig>();
+        [JsonProperty("feedbackCues", Required = JsonRequired.Always)] internal FeedbackCueConfig[] FeedbackCueRows { get; private set; } = Array.Empty<FeedbackCueConfig>();
 
         internal int RecordCount =>
             GlobalRows.Length + PlayerRows.Length + StanceRows.Length + StrokeRuleRows.Length +
@@ -52,6 +53,6 @@ namespace OneStrokeDemon.Config
             BuffRows.Length + SkillRows.Length + SkillEffectRows.Length + LevelRows.Length + WaveRows.Length +
             SpawnPointRows.Length + EnemyModifierRows.Length + SpawnRows.Length + BossPhaseRows.Length +
             RewardRows.Length + TutorialRows.Length + TextRows.Length + AudioCueRows.Length + VfxCueRows.Length +
-            AssetManifestRows.Length + EnumRows.Length + FieldDictionaryRows.Length;
+            AssetManifestRows.Length + EnumRows.Length + FieldDictionaryRows.Length + FeedbackCueRows.Length;
     }
 }

@@ -29,6 +29,7 @@
 - `ConfigValidationTests`
 - `SaveMigrationTests`
 - `LocalizationGlyphTests`
+- `FeedbackEventTests`
 
 ## 必须有的PlayMode测试
 
@@ -46,6 +47,7 @@
 - `BossBattlePlayModeTests`
 - `HudBindingPlayModeTests`
 - `LocalizationGlyphPlayModeTests`
+- `CombatFeedbackPlayModeTests`
 
 T510专项必须覆盖：配置倒计时到Playing的delta切分；统一时间缩放精确到期；Countdown暂停保留进度；FocusLost/ApplicationPaused叠加后完整恢复；Ultimate输入窗包含边界、严格超时只取消、旧gestureEventId不能重放；大delta不能跨PlayerConfirmed；同帧死亡/到时/完成只产生一次互斥结算。PlayMode从Bootstrap真实配置路径验证生命周期与有效终极事件，不能只构造表外设置。
 
@@ -60,6 +62,8 @@ T550专项必须覆盖：最终分数按配置拆分T360战斗分、弹反、无
 T600专项必须覆盖：Presenter只从配置和单一只读状态源生成生命、能量、连斩、实时评分、架势、终极、暂停与结算ViewModel；能量、冷却、流程终态和`CanGoNext`必须完整门控按钮，View点击不得绕过门直接改Model，Dispose后不得继续渲染或执行命令。状态绑定必须覆盖Player、Combo、Score、BattleFlow和ResultService事件以及单调终极冷却时钟。`HudBindingPlayModeTests`必须从Bootstrap真实配置创建实际Canvas，断言全部关键面板位于同一Safe Area根、自定义安全矩形锚点准确，并走通终极、暂停、主菜单、Victory 4480分/2星/奖励、Restart和NextLevel按钮路径。
 
 T610专项必须覆盖：字符清单与全部`texts[].zhCN`、可打印ASCII、NBSP和常用中文UI标点精确一致；OFL子集的来源提交、重命名、SHA-256和体积固定；Latin主字体与中文fallback均为Static单Atlas且不超过512×512/1024×1024，TMP Settings及HUD资源路径指向同一fallback链。PlayMode必须从Bootstrap真实配置渲染中文HUD、结算和动态负伤害/暴击数字，逐字符拒绝replacement glyph并检查活动文本无overflow/truncate；图形设备路径保存1920×1080截图并目检，`-nographics`专项仍须独立通过。
+
+T620专项必须覆盖：五类语义事件选择的`FeedbackCues`档案、配置变体无需改代码即可改变cue/强度、原始伤害与事件字段不被反馈层改写，以及震动总开关关闭后平台端口零请求但视觉命令保留。PlayMode必须从Bootstrap真实配置与Registry预缓存音频/VFX，验证白闪、时间缩放、相机震动、池化VFX和伤害数字的激活/完成/重开清理，并以图形设备保存五类反馈同屏截图进行人工感知验收。
 
 ## 证据模板
 

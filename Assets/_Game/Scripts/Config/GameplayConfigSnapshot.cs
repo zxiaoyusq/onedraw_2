@@ -38,6 +38,7 @@ namespace OneStrokeDemon.Config
             AudioCues = BuildIndex(document.AudioCueRows, row => row.AudioKey, "AudioCues", "audioKey", source);
             VfxCues = BuildIndex(document.VfxCueRows, row => row.VfxKey, "VfxCues", "vfxKey", source);
             Assets = BuildIndex(document.AssetManifestRows, row => row.AssetKey, "AssetManifest", "assetKey", source);
+            FeedbackCues = BuildIndex(document.FeedbackCueRows, row => row.FeedbackId, "FeedbackCues", "feedbackId", source);
             AssetManifestEntries = new ReadOnlyCollection<AssetManifestConfig>(
                 (AssetManifestConfig[])document.AssetManifestRows.Clone());
 
@@ -84,7 +85,7 @@ namespace OneStrokeDemon.Config
                 DamageFormulas.Count + DefenseRules.Count + WeakpointRules.Count + MovePatterns.Count +
                 Enemies.Count + EnemyAttacks.Count + Projectiles.Count + Buffs.Count + Skills.Count + Levels.Count +
                 Waves.Count + SpawnPoints.Count + EnemyModifiers.Count + Spawns.Count + BossPhases.Count + Texts.Count +
-                AudioCues.Count + VfxCues.Count + Assets.Count;
+                AudioCues.Count + VfxCues.Count + Assets.Count + FeedbackCues.Count;
             GroupIndexCount = AttacksBySet.Count + EffectsByGroup.Count + WavesByLevel.Count + SpawnsByWave.Count +
                 PhasesByEnemy.Count + RewardsByTable.Count + TutorialsById.Count;
         }
@@ -116,6 +117,7 @@ namespace OneStrokeDemon.Config
         public IReadOnlyDictionary<string, AudioCueConfig> AudioCues { get; }
         public IReadOnlyDictionary<string, VfxCueConfig> VfxCues { get; }
         public IReadOnlyDictionary<string, AssetManifestConfig> Assets { get; }
+        public IReadOnlyDictionary<string, FeedbackCueConfig> FeedbackCues { get; }
         public IReadOnlyList<AssetManifestConfig> AssetManifestEntries { get; }
         public IReadOnlyDictionary<string, IReadOnlyList<EnemyAttackConfig>> AttacksBySet { get; }
         public IReadOnlyDictionary<string, IReadOnlyList<SkillEffectConfig>> EffectsByGroup { get; }

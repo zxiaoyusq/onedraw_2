@@ -50,20 +50,20 @@ Tools/CI/verify-config.sh --update  # 显式重生成受管文件后执行同一
 
 ## 稳定输出契约
 
-- xlsx 需按冻结顺序包含 `README` 和 28 张数据表，数据表第 4 行是精确匹配的表头。
+- xlsx 需按冻结顺序包含 `README` 和 29 张数据表，数据表第 4 行是精确匹配的表头。
 - 字段类型来自 `FieldDictionary`，字符串 trim，整数、小数和布尔始终用 `InvariantCulture` 解析。
 - 根属性、表、行和行字段按冻结契约排序；输出 UTF-8 无 BOM、2 空格缩进、LF 结尾，不包含时间戳。
 - `contentHash` 是不包含自身字段的规范化 JSON 的 SHA-256。
 - 每份输出在替换前重新解析，检查顶层顺序、元数据、记录数和哈希。
 - `gameplay_config.hash`只包含64位小写`contentHash`及一个LF；当前为65字节。
-- `ConfigIds.g.cs`位于`OneStrokeDemon.Config` asmdef作用域，按27组稳定键生成当前315个Ordinal排序常量，并嵌入schema/content/hash；UTF-8无BOM、LF结尾、无时间戳。
+- `ConfigIds.g.cs`位于`OneStrokeDemon.Config` asmdef作用域，按28组稳定键生成当前372个Ordinal排序常量，并嵌入schema/content/hash；UTF-8无BOM、LF结尾、无时间戳。
 - C#标识符由稳定ID确定性转换；同组不同ID若产生同名标识符，生成以`CFG013`失败，不静默改名。
 
 ## 生产校验合同
 
 `validate` 与 `export` 使用同一完整校验链。任何配置错误都在序列化和原子写入前阻断整包，不半应用、不静默修正。当前生产校验覆盖：
 
-- 29个Sheet及表头、FieldDictionary覆盖、字段类型/空值、`contentVersion`和Schema合同。
+- 30个Sheet及表头、FieldDictionary覆盖、字段类型/空值、`contentVersion`和Schema合同。
 - 必填、稳定ID、主键/组合键唯一、min/max、时间/归一化范围、大小写敏感枚举。
 - FieldDictionary、Enums与JSON Schema中的类型、可空性、范围和枚举镜像一致性。
 - 普通、分组、唯一通配符及conditional外键，资源、文案、音频和VFX引用。
@@ -79,4 +79,4 @@ Tools/CI/verify-config.sh --update  # 显式重生成受管文件后执行同一
 dotnet test Tools/ConfigExporter/Tests/ConfigExporter.Tests.csproj
 ```
 
-当前56项测试覆盖三生成物双生成字节一致、受管文件精确匹配、JSON/hash/C#三类漂移、冻结哈希/样例语义一致、表头漂移、区域设置无关性、CLI非零错误码、自校验失败保护旧输出，以及39类只修改内存副本的坏配置。坏配置断言精确错误码、Sheet、Excel行和字段；正式xlsx在测试中保持只读。
+当前58项测试覆盖三生成物双生成字节一致、受管文件精确匹配、JSON/hash/C#三类漂移、冻结哈希/样例语义一致、表头漂移、区域设置无关性、CLI非零错误码、自校验失败保护旧输出，以及41类只修改内存副本的坏配置。坏配置断言精确错误码、Sheet、Excel行和字段；正式xlsx在测试中保持只读。
