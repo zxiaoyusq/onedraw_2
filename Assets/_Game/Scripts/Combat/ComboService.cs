@@ -10,6 +10,8 @@ namespace OneStrokeDemon.Combat
         private double lastHitTimestamp;
         private int count;
 
+        public event Action<ComboSnapshot> Changed;
+
         public ComboService(double timeoutSeconds)
         {
             if (double.IsNaN(timeoutSeconds) || double.IsInfinity(timeoutSeconds) || timeoutSeconds <= 0d)
@@ -57,7 +59,9 @@ namespace OneStrokeDemon.Combat
             }
 
             lastHitTimestamp = timestamp;
-            return Current;
+            ComboSnapshot snapshot = Current;
+            Changed?.Invoke(snapshot);
+            return snapshot;
         }
 
         public ComboSnapshot AdvanceTime(double timestamp)
@@ -67,6 +71,7 @@ namespace OneStrokeDemon.Combat
             {
                 count = 0;
                 lastHitTimestamp = 0d;
+                Changed?.Invoke(Current);
             }
 
             return Current;
@@ -74,10 +79,15 @@ namespace OneStrokeDemon.Combat
 
         public void Reset()
         {
+            bool changed = hasObservedTimestamp || count != 0 || lastHitTimestamp != 0d;
             hasObservedTimestamp = false;
             latestObservedTimestamp = 0d;
             lastHitTimestamp = 0d;
             count = 0;
+            if (changed)
+            {
+                Changed?.Invoke(Current);
+            }
         }
 
         private void Observe(double timestamp)

@@ -43,6 +43,7 @@
 - `RestartThreeTimesPlayModeTests`
 - `EnemyGalleryPlayModeTests`
 - `BossBattlePlayModeTests`
+- `HudBindingPlayModeTests`
 
 T510专项必须覆盖：配置倒计时到Playing的delta切分；统一时间缩放精确到期；Countdown暂停保留进度；FocusLost/ApplicationPaused叠加后完整恢复；Ultimate输入窗包含边界、严格超时只取消、旧gestureEventId不能重放；大delta不能跨PlayerConfirmed；同帧死亡/到时/完成只产生一次互斥结算。PlayMode从Bootstrap真实配置路径验证生命周期与有效终极事件，不能只构造表外设置。
 
@@ -53,6 +54,8 @@ T530专项必须覆盖：正式配置映射`lv_002_cave`的8波、23条出生行
 T540专项必须覆盖：正式配置映射`lv_003_boss`的240秒上限、2波、6条出生行、11个混合前置敌人和1个Boss，以及三阶段提示、攻击、进入效果和最终处决意图。EditMode必须用内存配置变体证明关卡时限、波次、出生、阶段阈值和提示只改表即可改变重载结果；PlayMode必须从Bootstrap真实配置经T500/T510/T460/T410完成前置门、三阶段和处决Victory，并独立验证玩家死亡Defeat后阶段运行时停止、全新协调器重试可Victory、终态事件不跨局且活动池租约为0。
 
 T550专项必须覆盖：最终分数按配置拆分T360战斗分、弹反、无伤与剩余整秒，Victory使用Levels阈值得星并按Rewards顺序执行解锁/非付费积分，Defeat不发胜利奖励；相同settlementId重复结算不得再次写盘、加币、解锁或增加通关次数，写盘异常不得发布候选快照。SaveMigrationTests必须覆盖缺失、确定性往返、畸形JSON、未来版本、显式v0→v1迁移及未知配置ID回退。PlayMode必须从Bootstrap真实配置连续Restart三次再用胜利结果进入配置后继关，断言旧会话、GameObject和活动池租约全部释放。
+
+T600专项必须覆盖：Presenter只从配置和单一只读状态源生成生命、能量、连斩、实时评分、架势、终极、暂停与结算ViewModel；能量、冷却、流程终态和`CanGoNext`必须完整门控按钮，View点击不得绕过门直接改Model，Dispose后不得继续渲染或执行命令。状态绑定必须覆盖Player、Combo、Score、BattleFlow和ResultService事件以及单调终极冷却时钟。`HudBindingPlayModeTests`必须从Bootstrap真实配置创建实际Canvas，断言全部关键面板位于同一Safe Area根、自定义安全矩形锚点准确，并走通终极、暂停、主菜单、Victory 4480分/2星/奖励、Restart和NextLevel按钮路径。
 
 ## 证据模板
 

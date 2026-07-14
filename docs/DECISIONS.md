@@ -283,3 +283,12 @@
 - 决定：Restart/NextLevel不复用当前协调器或对象池状态，而由`IBattleSessionFactory`创建新会话；替换前统一Dispose旧会话。NextLevel还必须同时满足当前Victory、配置后继存在且结算后已解锁。T550只依赖存储端口，不直接调用PlayerPrefs或微信SDK，平台适配继续归T130。
 - 理由：如果用显示分数或按钮点击次数判重，生命周期重复回调仍会重复奖励；如果先发布内存状态再写盘，失败会让本局与重启后进度分叉；如果Restart复用终态对象，订阅、租约和一次性裁决会跨局残留。稳定ID、写后发布和会话所有权边界使结算可重试、存档可迁移且重开可验证。
 - 限制：当前存档是本地最小模型，不含云同步、冲突合并、付费货币、加密或平台存储实现；T550不制作T600结算HUD。PlayMode已证明三次重开和下一关替换无活动池租约，但不能替代T710长期生命周期、T120微信DevTools或真机持久化验证。
+
+## D-034 · T600以单向状态投影驱动无业务逻辑HUD并统一Safe Area根
+
+- 状态：ACCEPTED
+- 决定：配置保持schema `4`并升级content到`0.6.0-sample`。HUD通用中英文词汇新增到Texts，关卡、架势和终极名称继续读取既有显示文案外键；Presenter只接收配置、只读HUD状态源、View和命令端口，不在C#、Inspector或View复制显示文案、技能费用或关卡结果。
+- 决定：`BattleHudStateBinding`统一订阅Player、Combo、Score、BattleFlow和ResultService事件并投影原始只读值；Flow只在状态变化或结算事件刷新，避免取消笔迹等非显示事件造成重复渲染。Presenter产生不可变ViewModel并独占按钮门，本地化和奖励格式化；View只渲染并转发意图，命令端口负责实际暂停、终极和导航动作。
+- 决定：BattleHUD由运行时工厂创建Screen Space Overlay Canvas，参考尺寸读取Global，所有关键面板统一挂在一个动态Safe Area根下。T600用Bootstrap真实配置PlayMode装配该入口并验证自定义屏幕安全矩形、HUD数值、暂停/终极和结算导航；当前Battle灰盒尚无完整生产关卡组合根，因此不为接线而手工改Scene YAML或虚构新的战斗装配所有者。
+- 理由：若各控件分别订阅战斗服务，状态一致性、解除订阅和按钮门会分散；若View直接调Model，测试点击与真实战斗流程会形成双重规则；若各面板各自计算安全边距，设备适配容易漂移。单一投影、Presenter和Safe Area根使UI可复用、可测试，并为后续完整组合根与T640布局适配保留明确边界。
+- 限制：T600不提供中文TMP字体/fallback、完整多比例/左右手适配、正式PSD资源、受击反馈或教程遮罩；头less PlayMode证明接线和布局数学，不替代T610字体截图、T640多设备截图、T120 DevTools或真机视觉验收。

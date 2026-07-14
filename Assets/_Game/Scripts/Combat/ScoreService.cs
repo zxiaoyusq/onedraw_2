@@ -12,6 +12,8 @@ namespace OneStrokeDemon.Combat
         private int directionMatchCount;
         private int criticalHitCount;
 
+        public event Action<CombatScoreSnapshot> Changed;
+
         public CombatScoreSnapshot Current => new CombatScoreSnapshot(
             totalScore,
             totalEnergyEarned,
@@ -53,11 +55,20 @@ namespace OneStrokeDemon.Combat
             weakpointHitCount = nextWeakpointCount;
             directionMatchCount = nextDirectionCount;
             criticalHitCount = nextCriticalCount;
-            return Current;
+            CombatScoreSnapshot snapshot = Current;
+            Changed?.Invoke(snapshot);
+            return snapshot;
         }
 
         public void Reset()
         {
+            bool changed = totalScore != 0L ||
+                           totalEnergyEarned != 0L ||
+                           totalDamage != 0L ||
+                           hitCount != 0 ||
+                           weakpointHitCount != 0 ||
+                           directionMatchCount != 0 ||
+                           criticalHitCount != 0;
             totalScore = 0L;
             totalEnergyEarned = 0L;
             totalDamage = 0L;
@@ -65,6 +76,10 @@ namespace OneStrokeDemon.Combat
             weakpointHitCount = 0;
             directionMatchCount = 0;
             criticalHitCount = 0;
+            if (changed)
+            {
+                Changed?.Invoke(Current);
+            }
         }
     }
 

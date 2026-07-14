@@ -1,16 +1,20 @@
 # PROGRESS
 
 - 日期：2026-07-14
-- 当前成熟度：P3手势战斗核心、P4玩家/敌人技能与P5完整单局闭环均已完成，下一阶段进入P6 HUD与结算表现
-- 当前任务：T600
+- 当前成熟度：P3手势战斗核心、P4玩家/敌人技能、P5完整单局闭环与P6基础HUD/结算UI均已完成，下一项补齐中文TMP字体
+- 当前任务：T610
 - 状态：READY
 - Unity精确版本：6000.5.1f1（已由ProjectVersion.txt与本机安装核验）
 - 微信SDK来源或版本：官方 `minigame-tuanjie-transform-sdk` v0.1.33 / commit `ed4ad28f433c6b52b5fd3f22a6fa155a0c98c228` / embedded最小补丁
 - Active Scene：Assets/_Game/Scenes/Bootstrap.unity
-- 配置版本：schema 4 / content 0.5.5-sample / hash `aa391c48c8c9478113937b2372cbc78ab90ee2f4448732ed0329068fddf25bb1`
+- 配置版本：schema 4 / content 0.6.0-sample / hash `54885fb2ce8373bad21af796d96a7a4cbc4ce6d8f41def3f909686b14ec87a1d`
 
 ## 已完成
 
+- T600：新增只读`BattleHudState/BattleHudViewModel`、`BattleHudPresenter`与`BattleHudStateBinding`。Presenter单向订阅玩家、连斩、评分、流程和结算状态，View只渲染模型并转发暂停、终极、重开、下一关和主菜单意图；按钮按Playing/Paused/终态、能量、冷却和后继关可用性门控，不直接修改战斗Model。
+- T600：新增运行时`BattleHUD` Canvas/uGUI/TMP工厂，参考分辨率只读Global的1920×1080，全部关键面板挂在动态Safe Area根下；生命/能量、连斩、实时评分、架势、终极状态、暂停层及Victory/Defeat结算、星级和奖励均可由同一Presenter更新。当前Battle场景仍只有灰盒环境且没有完整关卡组合根，T600提供可组合运行时入口并在Bootstrap真实配置PlayMode中装配验证，不手工改Scene YAML或提前实现T640完整多设备布局。
+- T600：工作簿新增20条中英文HUD通用文案并升级content `0.6.0-sample`，双工作簿与交付副本SHA-256均为`4429caa0...7f13`；受管JSON为185,197字节/715条/content hash `54885fb2...a1d`，运行时331个主索引、56个组索引，27组367个ID常量。29个Sheet全部重渲染并视觉复核、公式错误0，严格导出/漂移门与.NET 56/56通过；Runtime兼容线同步为schema 4/content 0.6.x。
+- T600：专项EditMode 6/6、`HudBindingPlayModeTests` 1/1，最终全量EditMode 180/180、PlayMode 43/43。玩家路径断言HP/能量100/100、连斩4、评分521、Demon Blade、终极/暂停按钮转发、自定义Safe Area锚点、Victory 4480分/2星/100积分奖励及Restart/NextLevel；最终日志无编译错误、异常或新增Warning。未修改Scene、Prefab、Registry、Input Actions、Packages、ProjectSettings或微信SDK，也未实现T610字体、T620反馈、T630正式美术、T640完整适配或T650教程遮罩。
 - T550：新增无`MonoBehaviour`依赖的`ResultScoring/ResultService`。最终分数以T360战斗分为基底，并只从Global读取每次弹反150分、胜利无伤1000分和每个剩余整秒20分；星级读取当前Levels三阈值。胜利奖励按Rewards的Clear/ScoreAtLeast/StarAtLeast与UnlockLevel/UnlockFeature/ScoreToken协议顺序执行，Defeat不发胜利奖励。
 - T550：新增`ProgressSave` v1、确定性JSON编解码、`IProgressSaveMigration`与注入式`IProgressSaveStore`。初始解锁从完整Levels nextLevel图自动求根；缺失存档正常初始化，畸形/未知目录ID回退，未来版本或缺迁移链安全拒绝。结算ID全局持久化去重，重复回调不重复写盘、加币、解锁或增加通关次数；存储写入成功后才原子发布新快照。
 - T550：新增`BattleResultNavigation`会话所有权边界，Restart释放旧会话后以同关新建，NextLevel只接受当前胜利且奖励已解锁的配置后继关。Bootstrap真实配置PlayMode连续重开3次再进入`lv_002_cave`，共5个会话全部释放，旧GameObject销毁、活动池租约为0，generation为5。

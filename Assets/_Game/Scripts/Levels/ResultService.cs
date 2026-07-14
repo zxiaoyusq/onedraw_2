@@ -148,6 +148,8 @@ namespace OneStrokeDemon.Levels
         private readonly HashSet<string> configuredFeatureIds;
         private readonly string[] rootLevelIds;
 
+        public event Action<ResultReceipt> ReceiptPublished;
+
         public ResultService(
             IConfigProvider configProvider,
             IProgressSaveStore store,
@@ -207,13 +209,15 @@ namespace OneStrokeDemon.Levels
                 request.Metrics);
             if (Current.HasAppliedSettlement(request.SettlementId))
             {
-                return CreateReceipt(
+                ResultReceipt duplicate = CreateReceipt(
                     SettlementApplyStatus.Duplicate,
                     request,
                     level,
                     score,
                     Array.Empty<RewardGrant>(),
                     Current);
+                ReceiptPublished?.Invoke(duplicate);
+                return duplicate;
             }
 
             IReadOnlyList<RewardGrant> grants = request.Settlement == BattleSettlement.Victory
@@ -228,13 +232,15 @@ namespace OneStrokeDemon.Levels
             string payload = codec.Encode(next);
             store.Write(payload);
             Current = next;
-            return CreateReceipt(
+            ResultReceipt receipt = CreateReceipt(
                 SettlementApplyStatus.Applied,
                 request,
                 level,
                 score,
                 grants,
                 next);
+            ReceiptPublished?.Invoke(receipt);
+            return receipt;
         }
 
         private ResultReceipt CreateReceipt(

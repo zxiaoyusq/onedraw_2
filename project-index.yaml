@@ -1,7 +1,7 @@
 project: OneStrokeDemon
 project_cn: 一笔镇妖
 plan_generated: 2026-07-11
-current_task: T600
+current_task: T610
 current_task_status: READY
 unity:
   project_root: .
@@ -23,9 +23,9 @@ config:
   generated_hash: Assets/_Game/Config/Generated/gameplay_config.hash
   generated_ids: Assets/_Game/Scripts/Config/Generated/ConfigIds.g.cs
   schema_version: 4
-  content_version: 0.5.5-sample
-  content_hash: aa391c48c8c9478113937b2372cbc78ab90ee2f4448732ed0329068fddf25bb1
-  workbook_sha256: fb4033d5cdf4dddf7d90800f300f25066ae950b58377029fd92a75f8feb580f2
+  content_version: 0.6.0-sample
+  content_hash: 54885fb2ce8373bad21af796d96a7a4cbc4ce6d8f41def3f909686b14ec87a1d
+  workbook_sha256: 4429caa0846bd4da207380d37ffadca4ab48adb6dd43c73b5691fbcc18457f13
   mirror_status: byte_identical
   contract_audit: pass
   exporter:
@@ -35,9 +35,9 @@ config:
     status: pass
     test_count: 8
     exported_tables: 28
-    exported_records: 695
-    output_bytes: 182404
-    output_sha256: d0e8d1f34a66eaeaf4eb9737f42c88222a84c68a6434e78d5871e73deb89c9d5
+    exported_records: 715
+    output_bytes: 185197
+    output_sha256: d49208b72f908f68ae1dfc58480061b3ae6d2ccaf1c18b7f9db234cb0de48610
     runtime_snapshot_committed: true
   validator:
     path: Tools/ConfigExporter/Validation
@@ -51,14 +51,14 @@ config:
     status: pass
     json_package: com.unity.nuget.newtonsoft-json@3.2.2
     newtonsoft_version: 13.0.2
-    compatibility: schema_4_content_0_5_x
+    compatibility: schema_4_content_0_6_x
     dto_tables: 28
     dto_fields: 250
-    loaded_records: 695
-    readonly_primary_indexes: 311
+    loaded_records: 715
+    readonly_primary_indexes: 331
     readonly_group_indexes: 56
-    editmode_tests: 174
-    playmode_tests: 42
+    editmode_tests: 180
+    playmode_tests: 43
     bootstrap_smoke: pass
   asset_registry:
     status: pass
@@ -79,19 +79,19 @@ config:
     default_read_only: true
     update_flag: --update
     drift_diagnostic: CFG013
-    generated_json_bytes: 182404
-    generated_json_sha256: d0e8d1f34a66eaeaf4eb9737f42c88222a84c68a6434e78d5871e73deb89c9d5
+    generated_json_bytes: 185197
+    generated_json_sha256: d49208b72f908f68ae1dfc58480061b3ae6d2ccaf1c18b7f9db234cb0de48610
     generated_hash_bytes: 65
-    generated_hash_sha256: e9dc7decbb854758550c46e12a0018ea92595532ecd9c21697f6de32e11a5712
-    generated_ids_bytes: 25982
-    generated_ids_sha256: 07560c8e87b217cfc2edad4ea644339ea055cfbb690526605ada2df62b50f8ad
+    generated_hash_sha256: 13382b20bfc7857afacfb68840d568531c6dea1dbbfffc854c52b0741654ee80
+    generated_ids_bytes: 27334
+    generated_ids_sha256: 62cbc5622fa62b8f92683231acfe6a98fe53e95cea186d72492f850f6aa07ead
     id_sets: 27
-    id_constants: 347
+    id_constants: 367
     dotnet_tests: 56
     config_editmode_tests: 19
     config_playmode_tests: 3
-    full_editmode_tests: 174
-    full_playmode_tests: 42
+    full_editmode_tests: 180
+    full_playmode_tests: 43
     full_command_smoke: pass_via_static_drift_gate_plus_isolated_unity_batch_project
 result_progress:
   status: pass
@@ -128,6 +128,27 @@ result_progress:
     config_playmode: 3
     full_editmode: 174
     full_playmode: 42
+battle_hud:
+  status: pass
+  state_contract: BattleHudState
+  state_source: BattleHudStateBinding
+  presenter: BattleHudPresenter
+  view: BattleHudView
+  runtime_factory: BattleHudRuntime
+  source_events: [PlayerCombatController, ComboService, ScoreService, BattleFlowStateMachine, ResultService]
+  view_policy: render_readonly_view_model_and_forward_intents_only
+  localized_text_source: Texts
+  display_name_sources: [Levels.displayNameKey, Stances.displayNameKey, Skills.displayNameKey]
+  buttons: [PauseResume, Ultimate, Restart, NextLevel, MainMenu]
+  button_gates: [flow_state, player_alive, energy_cost, required_stance, cooldown, can_go_next]
+  reference_resolution_source: Global.reference_width_and_reference_height
+  safe_area: single_dynamic_normalized_anchor_root
+  configured_hud_texts: 20
+  editmode_tests: 6
+  playmode_tests: 1
+  player_path: {hp: "100/100", energy: "100/100", combo: 4, live_score: 521, result_score: 4480, stars: 2, score_token_reward: 100}
+  full_editmode_tests: 180
+  full_playmode_tests: 43
 input:
   status: pass
   package: com.unity.inputsystem@1.19.0
@@ -644,7 +665,7 @@ wechat_conversion:
 execution_order:
   deferred_tasks: [T120, T130]
   deferral_reason: user_prioritized_main_game_content_over_wechat_devtools_device_and_packaging_work
-  next_content_task: T550
+  next_content_task: T610
   resume_platform_before: [T640, T750]
 workflow:
   config_verify_command: Tools/CI/verify-config.sh

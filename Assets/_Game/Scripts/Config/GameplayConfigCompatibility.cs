@@ -8,7 +8,7 @@ namespace OneStrokeDemon.Config
     {
         public const long SupportedSchemaVersion = 4;
         public const int SupportedContentMajor = 0;
-        public const int SupportedContentMinor = 5;
+        public const int SupportedContentMinor = 6;
 
         private static readonly Regex ContentVersionPattern = new Regex(
             "^(?<major>[0-9]+)\\.(?<minor>[0-9]+)\\.(?<patch>[0-9]+)(?:-[a-z0-9][a-z0-9.-]*)?$",

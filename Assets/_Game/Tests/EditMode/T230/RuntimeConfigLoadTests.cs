@@ -56,14 +56,14 @@ namespace OneStrokeDemon.Tests.EditMode.T230
 
             Assert.That(service.State, Is.EqualTo(GameplayConfigServiceState.Ready));
             Assert.That(summary.SchemaVersion, Is.EqualTo(4));
-            Assert.That(summary.ContentVersion, Is.EqualTo("0.5.5-sample"));
-            Assert.That(summary.ContentHash, Is.EqualTo("aa391c48c8c9478113937b2372cbc78ab90ee2f4448732ed0329068fddf25bb1"));
+            Assert.That(summary.ContentVersion, Is.EqualTo("0.6.0-sample"));
+            Assert.That(summary.ContentHash, Is.EqualTo("54885fb2ce8373bad21af796d96a7a4cbc4ce6d8f41def3f909686b14ec87a1d"));
             Assert.That(summary.TableCount, Is.EqualTo(28));
-            Assert.That(summary.RecordCount, Is.EqualTo(695));
+            Assert.That(summary.RecordCount, Is.EqualTo(715));
             Assert.That(summary.PrimaryIndexCount, Is.GreaterThan(0));
             Assert.That(summary.GroupIndexCount, Is.GreaterThan(0));
             Assert.That(summary.ToLogMessage(), Does.Contain("source=test:generated-gameplay-config"));
-            Assert.That(summary.ToLogMessage(), Does.Contain("records=695"));
+            Assert.That(summary.ToLogMessage(), Does.Contain("records=715"));
 
             Assert.That(service.GetGlobal("reference_width").IntValue, Is.EqualTo(1920));
             Assert.That(service.GetStance("stance_blade").DamageFormulaId, Is.EqualTo("damage_player_default"));
@@ -86,6 +86,8 @@ namespace OneStrokeDemon.Tests.EditMode.T230
             Assert.That(service.GetRewards("reward_level_001"), Is.Not.Empty);
             Assert.That(service.GetTutorialSteps("tutorial_level_001"), Is.Not.Empty);
             Assert.That(service.GetText("text_level_001").ZhCN, Is.Not.Empty);
+            Assert.That(service.GetText(ConfigIds.Texts.TextUiHp).ZhCN, Is.EqualTo("生命"));
+            Assert.That(service.GetText(ConfigIds.Texts.TextUiVictory).EnUS, Is.EqualTo("Victory"));
             Assert.That(service.GetAsset("boss_tomb_armor_king").AssetType, Is.EqualTo("Prefab"));
 
             IReadOnlyList<WaveConfig> waves = service.GetWaves("lv_001_tutorial");

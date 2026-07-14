@@ -40,9 +40,9 @@ namespace OneStrokeDemon.Tests.EditMode.T250
             Assert.That(ConfigIds.SchemaVersion, Is.EqualTo(service.SchemaVersion));
             Assert.That(ConfigIds.ContentVersion, Is.EqualTo(service.ContentVersion));
             Assert.That(ConfigIds.ContentHash, Is.EqualTo(service.ContentHash));
-            Assert.That(summary.RecordCount, Is.EqualTo(695));
+            Assert.That(summary.RecordCount, Is.EqualTo(715));
             Assert.That(ConfigIds.IdSetCount, Is.EqualTo(27));
-            Assert.That(ConfigIds.IdConstantCount, Is.EqualTo(347));
+            Assert.That(ConfigIds.IdConstantCount, Is.EqualTo(367));
         }
 
         [Test]
@@ -74,6 +74,8 @@ namespace OneStrokeDemon.Tests.EditMode.T250
                 Is.EqualTo("player_moyan"));
             Assert.That(config.GetLevel(ConfigIds.Levels.Lv001Tutorial).LevelId,
                 Is.EqualTo("lv_001_tutorial"));
+            Assert.That(config.GetText(ConfigIds.Texts.TextUiPause).ZhCN,
+                Is.EqualTo("暂停"));
             Assert.That(config.GetEnemy(ConfigIds.Enemies.BossTombKing).EnemyId,
                 Is.EqualTo("boss_tomb_king"));
             Assert.That(config.GetSkill(ConfigIds.Skills.SkillUltimateSeal).SkillId,

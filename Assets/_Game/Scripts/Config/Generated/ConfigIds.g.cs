@@ -6,10 +6,10 @@ namespace OneStrokeDemon.Config
     public static class ConfigIds
     {
         public const int SchemaVersion = 4;
-        public const string ContentVersion = "0.5.5-sample";
-        public const string ContentHash = "aa391c48c8c9478113937b2372cbc78ab90ee2f4448732ed0329068fddf25bb1";
+        public const string ContentVersion = "0.6.0-sample";
+        public const string ContentHash = "54885fb2ce8373bad21af796d96a7a4cbc4ce6d8f41def3f909686b14ec87a1d";
         public const int IdSetCount = 27;
-        public const int IdConstantCount = 347;
+        public const int IdConstantCount = 367;
 
         public static class GlobalKeys
         {
@@ -321,6 +321,26 @@ namespace OneStrokeDemon.Config
             public const string TextTutorialSwipe = "text_tutorial_swipe";
             public const string TextTutorialUltimate = "text_tutorial_ultimate";
             public const string TextTutorialWeakpoint = "text_tutorial_weakpoint";
+            public const string TextUiCombo = "text_ui_combo";
+            public const string TextUiCooldown = "text_ui_cooldown";
+            public const string TextUiDefeat = "text_ui_defeat";
+            public const string TextUiEnergy = "text_ui_energy";
+            public const string TextUiHp = "text_ui_hp";
+            public const string TextUiMainMenu = "text_ui_main_menu";
+            public const string TextUiNextLevel = "text_ui_next_level";
+            public const string TextUiPause = "text_ui_pause";
+            public const string TextUiPaused = "text_ui_paused";
+            public const string TextUiReady = "text_ui_ready";
+            public const string TextUiRestart = "text_ui_restart";
+            public const string TextUiResume = "text_ui_resume";
+            public const string TextUiRewardFeature = "text_ui_reward_feature";
+            public const string TextUiRewardLevel = "text_ui_reward_level";
+            public const string TextUiRewardScoreToken = "text_ui_reward_score_token";
+            public const string TextUiRewards = "text_ui_rewards";
+            public const string TextUiScore = "text_ui_score";
+            public const string TextUiStance = "text_ui_stance";
+            public const string TextUiStars = "text_ui_stars";
+            public const string TextUiVictory = "text_ui_victory";
         }
 
         public static class AudioCues

@@ -2,7 +2,7 @@
 
 ## 1. 版本与唯一真相源
 
-- 当前冻结版本：`schemaVersion = 4`、`contentVersion = 0.5.5-sample`。
+- 当前冻结版本：`schemaVersion = 4`、`contentVersion = 0.6.0-sample`。
 - 正式内容唯一源：`Design/Config/GameConfig.xlsx`。
 - `config/一笔镇妖_游戏配置表模板.xlsx` 只是随正式源同步的示例镜像，不接受独立内容修改。
 - `Assets/_Game/Config/Generated/gameplay_config.json`和`gameplay_config.hash`由T250导出器生成，是可审查、可构建的只读Runtime快照与hash旁车。
@@ -264,3 +264,10 @@ T360新增的`Stances.damageFormulaId -> DamageFormulas.formulaId`是必填普�
 - 初始可玩关由完整`Levels.nextLevelId`有向图中未被任何后继引用的根自动得到，不在代码列关卡ID。存档为版本化JSON v1，保存revision、非付费积分、逐关最佳分/星/通关次数、已解锁关卡/功能及已应用结算ID；所有集合按Ordinal排序后编码。畸形结构、重复/空ID、非法范围或配置目录不存在的关卡ID整包回退初始进度；未来版本和缺失迁移链标为不兼容。迁移只能经`IProgressSaveMigration`逐版本显式注册，完整迁移且配置目录兼容后立即以当前v1确定性格式写回。
 - 每次结算必须携带非空稳定settlementId。首次写入先构造完整候选快照并完成JSON编码/存储，写成功后才发布；相同ID重复回调不再次写盘、加分币、解锁或增加通关次数。`IProgressSaveStore`是唯一存储端口，T550不直接使用PlayerPrefs或微信SDK；具体Editor/Web/WeChat适配仍归T130。
 - Restart必须释放当前战斗会话后以相同配置levelId创建全新会话；NextLevel只接受当前关Victory、配置后继非空且结算奖励后的进度已解锁该后继。旧会话的对象池租约、GameObject和事件所有权不得进入新会话。T550只交付规则和生命周期入口，不制作T600结算HUD、云存档、付费货币或平台同步。
+
+## 26. T600 HUD文案、状态投影与Safe Area语义
+
+- T600不改变JSON字段形状、FieldDictionary或schema，只把content升级为`0.6.0-sample`。`Texts`新增20条`text_ui_*`通用中英文文案，覆盖生命、能量、连斩、评分、架势、冷却、可释放、暂停/继续、胜负、星级、奖励类型和结算导航；关卡、架势与终极名称继续沿既有`displayNameKey -> Texts`外键取得。产品View、Presenter和Inspector不得保存第二套显示文案。
+- `BattleHudStateBinding`只把`PlayerCombatController/ComboService/ScoreService/BattleFlowStateMachine/ResultService`的只读状态和事件投影成HUD状态，不反向修改任何Model。Presenter是唯一按钮门和本地化格式化所有者；View只接收不可变ViewModel并转发意图。暂停、终极、Restart、NextLevel和MainMenu的实际命令由调用方端口处理，View不能直接调用战斗服务或场景API。
+- 终极按钮只在Playing、玩家存活、配置架势满足、能量达到`Skills.energyCost`且调用方提供的冷却时钟已到期时可用；暂停只在Countdown/Playing/UltimateDrawing/Paused可切换。终态隐藏暂停与终极，Restart可用；NextLevel仅在结算回执`CanGoNext=true`时显示。胜负、最终分数、0至3星及已应用奖励只读T550回执，不自行重算分数或发奖励。
+- `BattleHUD`的参考分辨率只读`Global.reference_width/reference_height`。全部关键UI挂在动态Safe Area根下，设备像素矩形先与屏幕相交再归一化为锚点；T600保证单一安全区根和可测试的基础布局，不声称完成T640的16:9/19.5:9/平板截图矩阵、左右手镜像或触控遮挡专项，也不包含T610中文字体资产。

@@ -112,7 +112,7 @@ namespace OneStrokeDemon.Tests.EditMode.T230
         [Test]
         public void RootAndGlobalVersionsMustAgreeEvenWhenHashIsValid()
         {
-            string json = RuntimeConfigTestFixture.MutateAndRehash(root => root["contentVersion"] = "0.5.1");
+            string json = RuntimeConfigTestFixture.MutateAndRehash(root => root["contentVersion"] = "0.6.1");
 
             GameplayConfigException exception = AssertFailure(new GameplayConfigService(), "CFGRT004", json);
             Assert.That(exception.Context, Is.EqualTo("Global.content_version"));
