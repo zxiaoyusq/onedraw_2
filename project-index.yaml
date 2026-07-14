@@ -1,7 +1,7 @@
 project: OneStrokeDemon
 project_cn: 一笔镇妖
 plan_generated: 2026-07-11
-current_task: T630
+current_task: T650
 current_task_status: READY
 unity:
   project_root: .
@@ -57,7 +57,7 @@ config:
     loaded_records: 740
     readonly_primary_indexes: 336
     readonly_group_indexes: 56
-    full_editmode_tests: 187
+    full_editmode_tests: 192
     full_playmode_tests: 45
     bootstrap_smoke: pass
   asset_registry:
@@ -69,7 +69,7 @@ config:
     audio_clips: 17
     scenes: 1
     scene_reference: Assets/_Game/Scenes/Battle.unity
-    placeholder_strategy: one_managed_asset_per_runtime_type
+    placeholder_strategy: actual_visual_assets_and_managed_silent_audio_placeholder
     address_or_path_lookup: disabled
     build_preprocessor: enabled
     bootstrap_smoke: pass
@@ -147,8 +147,8 @@ battle_hud:
   editmode_tests: 6
   playmode_tests: 1
   player_path: {hp: "100/100", energy: "100/100", combo: 4, live_score: 521, result_score: 4480, stars: 2, score_token_reward: 100}
-  full_editmode_tests: 183
-  full_playmode_tests: 44
+  full_editmode_tests: 192
+  full_playmode_tests: 45
 localization_fonts:
   status: pass
   family: "One Stroke Demon UI"
@@ -183,7 +183,8 @@ combat_feedback:
   vibration_port: ICombatFeedbackVibration
   vibration_master_switch: true
   platform_adapter: deferred_to_T130_IPlatformService
-  placeholder_assets: true_until_T630
+  visual_assets: T630_prototype_assets
+  audio_assets: T240_managed_silent_placeholders
   dotnet_config_tests: 58
   roslyn_response_compile: pass_zero_errors
   editmode_focused: 4
@@ -195,6 +196,38 @@ combat_feedback:
   perceptual_screenshot: artifacts/evals/T620/combat-feedback-1920x1080.png
   perceptual_screenshot_sha256: 8c687c19e993035461d01c1eeb3d63a7c43febb180dd949a176c1da08195797d
   perceptual_resolution: 1920x1080_Metal
+prototype_art:
+  status: pass_prototype_scope
+  source_psd_filename: "一笔镇妖 主视觉 测试 03.psd"
+  source_psd_committed: false
+  source_psd_dimensions: 2868x1320
+  source_psd_bytes: 130855476
+  source_psd_sha256: e6a2552a69270899b59d6236958767678a4025e402484e16c0ac0d7d4031fb34
+  generated_actor_sheet_sha256: 425a8eb7036ba39b7ca66e7c877d8507151c56186eda2a4c667bb4d5af45a0c8
+  generated_actors: [enemy_soul_puppet, boss_tomb_armor_king]
+  source_status: APPROVED_PROTOTYPE_only
+  release_status: pending_source_and_commercial_license_review
+  runtime_pngs: 28
+  rgba_pngs: 28
+  transparent_foregrounds: 26
+  sprite_atlases_v2: [Backgrounds, Characters, Enemies, UI, VFX]
+  sorting_layers: [Background, Default, Actors, Projectiles, VFX]
+  actor_prefabs: 2
+  vfx_prefabs: 38
+  registry_actual_visual_assets: {sprites: 18, prefabs: 40}
+  registry_remaining_placeholders: {audio_clips: 17}
+  editor_authoring: T630ArtAssetAuthoring
+  focused_editmode: 5
+  full_editmode: 192
+  full_playmode: 45
+  visual_review: artifacts/evals/T630/prototype-art-review.png
+  visual_review_resolution: 1920x1080
+  visual_review_sha256: 2e7cb0886c597ea39ec905fb565d39f8f7132f7708b17d7997976cff674948e3
+  offscreen_gpu_capture: invalid_not_acceptance_evidence
+  standard_web: not_run_user_deferred_platform_work
+  wechat_conversion: not_run_user_deferred_platform_work
+  devtools: not_run_blocked_missing_tool
+  device: not_run_blocked_and_user_deferred
 input:
   status: pass
   package: com.unity.inputsystem@1.19.0
@@ -499,8 +532,8 @@ enemy_archetypes:
   duplicate_teaching_signature_policy: fail
   telegraph_contract: positive_windup_and_interrupt_window_spans_execution_boundary
   asset_routes: {Sprite: 5, Prefab: 1}
-  current_asset_quality: T240_managed_type_placeholders
-  formal_animation_and_body_hitbox_authoring: deferred_to_T630
+  current_asset_quality: T630_prototype_sprites_and_prefabs
+  formal_animation_and_body_hitbox_authoring: future_quality_task_not_in_T630
   per_enemy_business_subclasses: none
   pool_prewarm_source: Enemies.poolPrewarm
   prewarmed_enemy_objects: 29
@@ -711,7 +744,7 @@ wechat_conversion:
 execution_order:
   deferred_tasks: [T120, T130]
   deferral_reason: user_prioritized_main_game_content_over_wechat_devtools_device_and_packaging_work
-  next_content_task: T630
+  next_content_task: T650
   resume_platform_before: [T640, T750]
 workflow:
   config_verify_command: Tools/CI/verify-config.sh

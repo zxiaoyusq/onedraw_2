@@ -1,0 +1,996 @@
+Unity Editor version:    6000.5.1f1 (0d9463e84828)
+Branch:                  6000.5/staging
+Build type:              Release
+Batch mode:              YES
+macOS version:           Version 15.6 (Build 24G84)
+Darwin version:          24.6.0
+Architecture:            arm64
+Running under Rosetta:   NO
+Available memory:        16384 MB
+Date:                    2026-07-14T07:31:14Z
+[Licensing::Module] Trying to connect to existing licensing client channel...
+[Licensing::IpcConnector] Successfully connected to: "LicenseClient-cqmizhangxiaoyu2" at "2026-07-14T07:31:14.264936Z"
+Launching external process: /Applications/Unity/Hub/Editor/6000.5.1f1/Unity.app/Contents/Helpers/PackageManager/Server/UnityPackageManager
+
+COMMAND LINE ARGUMENTS:
+/Applications/Unity/Hub/Editor/6000.5.1f1/Unity.app/Contents/MacOS/Unity
+-batchmode
+-nographics
+-quit
+-projectPath
+/Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2
+-executeMethod
+OneStrokeDemon.Editor.Art.T630ArtAssetAuthoring.CreateOrRepairPrototypeAssets
+-logFile
+/Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/evals/T630/unity-authoring.log
+Successfully changed project path to: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2
+/Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2
+[UnityMemory] Configuration Parameters - Can be set up in boot.config
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-nav-mesh-worker=65536"
+    "memorysetup-temp-allocator-size-audio-worker=65536"
+    "memorysetup-temp-allocator-size-cloud-worker=32768"
+    "memorysetup-allocator-temp-initial-block-size-main=262144"
+    "memorysetup-allocator-temp-initial-block-size-worker=262144"
+    "memorysetup-temp-allocator-size-preload-manager=33554432"
+    "memorysetup-temp-allocator-size-gfx=262144"
+    "memorysetup-temp-allocator-size-background-worker=32768"
+    "memorysetup-temp-allocator-size-job-worker=262144"
+    "memorysetup-bucket-allocator-granularity=16"
+    "memorysetup-bucket-allocator-bucket-count=8"
+    "memorysetup-bucket-allocator-block-size=33554432"
+    "memorysetup-bucket-allocator-block-count=8"
+    "memorysetup-main-allocator-block-size=16777216"
+    "memorysetup-thread-allocator-block-size=16777216"
+    "memorysetup-main-allocator-mimalloc-enabled=0"
+    "memorysetup-gfx-main-allocator-block-size=16777216"
+    "memorysetup-gfx-thread-allocator-block-size=16777216"
+    "memorysetup-cache-allocator-block-size=4194304"
+    "memorysetup-typetree-allocator-block-size=2097152"
+    "memorysetup-profiler-bucket-allocator-granularity=16"
+    "memorysetup-profiler-bucket-allocator-bucket-count=8"
+    "memorysetup-profiler-bucket-allocator-block-size=33554432"
+    "memorysetup-profiler-bucket-allocator-block-count=8"
+    "memorysetup-profiler-allocator-block-size=16777216"
+    "memorysetup-profiler-editor-allocator-block-size=1048576"
+    "memorysetup-temp-allocator-size-main=16777216"
+    "memorysetup-job-temp-allocator-block-size=2097152"
+    "memorysetup-job-temp-allocator-block-size-background=1048576"
+    "memorysetup-job-temp-allocator-reduction-small-platforms=262144"
+Logging is directed to a specific file, skipping project log.Player connection [8601149632]  Target information:
+
+Player connection [8601149632]  * "[IP] 10.206.81.30 [Port] 55505 [Flags] 2 [Guid] 1056150887 [EditorId] 1056150887 [Version] 1048832 [Id] OSXEditor(0,cqmizhangxiaoyu2deMacBook-Air.local) [Debug] 1 [PackageName] OSXEditor [ProjectName] Editor"
+
+Player connection [8601149632]  * "[IP] 10.251.1.1 [Port] 55505 [Flags] 2 [Guid] 1056150887 [EditorId] 1056150887 [Version] 1048832 [Id] OSXEditor(0,cqmizhangxiaoyu2deMacBook-Air.local) [Debug] 1 [PackageName] OSXEditor [ProjectName] Editor"
+
+Player connection [8601149632] Host joined multi-casting on [225.0.0.222:54997]...
+Player connection [8601149632] Host joined alternative multi-casting on [225.0.0.222:34997]...
+Input System module state changed to: Initialized.
+[Physics::Module] Initialized fallback backend.
+[Physics::Module] Id: 0xdecafbad
+[Licensing::Client] Error: HandshakeResponse reported an error:
+	ResponseCode: 505
+	ResponseStatus: Unsupported protocol version '1.18.1'.
+[Licensing::Module] Error: Failed to handshake to channel: "LicenseClient-cqmizhangxiaoyu2"
+[Licensing::IpcConnector] LicenseClient-cqmizhangxiaoyu2 channel disconnected successfully.
+[Licensing::IpcConnector] Successfully connected to: "LicenseClient-cqmizhangxiaoyu2-6000.5.1" at "2026-07-14T07:31:14.4681Z"
+[Package Manager] Connected to IPC stream "Upm-96309" after 0.2 seconds.
+[Licensing::Module] Licensing is not yet initialized.
+[Licensing::Client] Handshaking with LicensingClient:
+  Version:                 1.18.1+9fbee8e
+  Session Id:              61811844a9b7455e89fe2db0f1c9f0e2
+  Correlation Id:          1ed0498c6110524d1f5c3ec9aa39dd73
+  External correlation Id: 4917691040870596920
+  Machine Id:              9rQ3oFulMuF1WLgKze+vIHadGFs=
+[Licensing::Module] Successfully connected to LicensingClient on channel: "LicenseClient-cqmizhangxiaoyu2-6000.5.1" (connect: 0.00s, validation: 0.00s, handshake: 0.18s)
+[Licensing::IpcConnector] Successfully connected to: "LicenseClient-cqmizhangxiaoyu2-6000.5.1-notifications" at "2026-07-14T07:31:14.654562Z"
+[Licensing::Module] Error: Access token is unavailable; failed to update
+[Licensing::Client] Successfully resolved entitlement details
+[Licensing::Module] License group:
+  Id: 18968374062854-UnityPersXXXX
+  Product: Unity Personal
+  Type: Assigned
+  Expiration: Unlimited
+[Licensing::Client] Successfully updated license, isAsync: True, time: 0.00
+[Licensing::Client] Successfully resolved entitlement details
+[Licensing::Module] Licensing Background thread has ended after 0.39s
+[Licensing::Module] Licensing is initialized (took 0.07s).
+[Licensing::Client] Successfully resolved entitlement details
+Library Redirect Path: Library/
+[Physics::Module] Selected backend.
+[Physics::Module] Name: PhysX
+[Physics::Module] Id: 0xf2b8ea05
+[Physics::Module] SDK Version: 4.1.2
+[Physics::Module] Integration Version: 1.0.0
+[Physics::Module] Threading Mode: Multi-Threaded
+Refreshing native plugins compatible for Editor in 18.82 ms, found 3 plugins.
+Initialize engine version: 6000.5.1f1 (0d9463e84828)
+[Subsystems] Discovering subsystems at path /Applications/Unity/Hub/Editor/6000.5.1f1/Unity.app/Contents/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/Assets
+Forcing GfxDevice: Null
+GfxDevice: creating device client; kGfxThreadingModeNonThreaded
+NullGfxDevice:
+    Version:  NULL 1.0 [1.0]
+    Renderer: Null Device
+    Vendor:   Unity Technologies
+Initialize mono
+Mono path[0] = '/Applications/Unity/Hub/Editor/6000.5.1f1/Unity.app/Contents/Resources/Scripting/Managed'
+Mono path[1] = '/Applications/Unity/Hub/Editor/6000.5.1f1/Unity.app/Contents/Resources/Scripting/BCLExtensions/runtime/netstandard2.1'
+Mono path[2] = '/Applications/Unity/Hub/Editor/6000.5.1f1/Unity.app/Contents/Resources/Scripting/MonoBleedingEdge/lib/mono/unityjit-macos'
+Mono config path = '/Applications/Unity/Hub/Editor/6000.5.1f1/Unity.app/Contents/Resources/Scripting/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56309
+CodeReloadManager initialized
+ImportWorker Server TCP listen port: 0
+AcceleratorClientConnectionCallback - disconnected - :0
+Begin MonoManager ReloadAssembly
+Registering precompiled unity dll's ...
+Register platform support module: /Applications/Unity/Hub/Editor/6000.5.1f1/PlaybackEngines/WebGLSupport/UnityEditor.WebGL.Extensions.dll
+Register platform support module: /Applications/Unity/Hub/Editor/6000.5.1f1/PlaybackEngines/MacStandaloneSupport/UnityEditor.OSXStandalone.Extensions.dll
+Register platform support module: /Applications/Unity/Hub/Editor/6000.5.1f1/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+[Licensing::Client] Successfully resolved entitlement details
+Register platform support module: /Applications/Unity/Hub/Editor/6000.5.1f1/PlaybackEngines/AndroidPlayer/UnityEditor.Android.Extensions.dll
+Registered in 0.003477 seconds.
+Native extension for Android target not found
+Native extension for WindowsStandalone target not found
+Native extension for OSXStandalone target not found
+Native extension for WebGL target not found
+Package Manager log level set to [2]
+ScheduleIndexationOnStartup MainProcess:False IndexOnStartup:True
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.258 seconds
+Domain Reload Profiling: 619ms
+	BeginReloadAssembly (86ms)
+		CreateAndSetChildDomain (6ms)
+	RebuildCommonClasses (3ms)
+	RebuildNativeTypeToScriptingClass (10ms)
+	initialDomainReloadingComplete (36ms)
+	LoadAllAssembliesAndSetupDomain (225ms)
+		LoadAssemblies (81ms)
+		AnalyzeDomain (170ms)
+			TypeCache.Refresh (169ms)
+				TypeCache.ScanAssembly (144ms)
+	FinalizeReload (260ms)
+		SetupLoadedEditorAssemblies (0ms)
+			InitializePlatformSupportModulesInManaged (10ms)
+			BeforeProcessingInitializeOnLoad (52ms)
+			ProcessInitializeOnLoadAttributes (62ms)
+			ProcessInitializeOnLoadMethodAttributes (83ms)
+[Licensing::Client] Successfully resolved entitlement details
+Application.AssetDatabase Initial Refresh Start
+[Package Manager] Restoring resolved packages state from cache
+[Licensing::Client] Successfully resolved entitlement details
+[Package Manager] Registered 68 packages:
+  Packages from [https://packages.unity.com]:
+    com.unity.2d.animation@15.1.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/Library/PackageCache/com.unity.2d.animation@6d5a363ae647)
+    com.unity.2d.aseprite@5.0.3 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/Library/PackageCache/com.unity.2d.aseprite@d13865913efa)
+    com.unity.2d.psdimporter@14.0.3 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/Library/PackageCache/com.unity.2d.psdimporter@5d82044f9e43)
+    com.unity.2d.spriteshape@15.0.3 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/Library/PackageCache/com.unity.2d.spriteshape@fcb7ec61a58b)
+    com.unity.2d.tilemap.extras@8.0.3 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/Library/PackageCache/com.unity.2d.tilemap.extras@a80140457adc)
+    com.unity.2d.tooling@3.0.1 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/Library/PackageCache/com.unity.2d.tooling@6f06ffb033c0)
+    com.unity.collab-proxy@2.12.4 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/Library/PackageCache/com.unity.collab-proxy@0b1559bcd34e)
+    com.unity.ide.rider@3.0.38 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/Library/PackageCache/com.unity.ide.rider@1f60b3138684)
+    com.unity.ide.visualstudio@2.0.26 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/Library/PackageCache/com.unity.ide.visualstudio@a99d56dec63f)
+    com.unity.inputsystem@1.19.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/Library/PackageCache/com.unity.inputsystem@21a28c3a6c83)
+    com.unity.nuget.newtonsoft-json@3.2.2 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/Library/PackageCache/com.unity.nuget.newtonsoft-json@4dfd81071c64)
+    com.unity.timeline@1.8.12 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/Library/PackageCache/com.unity.timeline@8cd8509afae5)
+    com.unity.visualscripting@1.9.11 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/Library/PackageCache/com.unity.visualscripting@8bed5ad90189)
+    com.unity.2d.common@14.0.1 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/Library/PackageCache/com.unity.2d.common@73badf92ba8b)
+    com.unity.searcher@4.9.4 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/Library/PackageCache/com.unity.searcher@d45a78918735)
+    com.unity.burst@1.8.29 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/Library/PackageCache/com.unity.burst@6bb9aca3ef38)
+    com.unity.nuget.mono-cecil@1.11.6 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/Library/PackageCache/com.unity.nuget.mono-cecil@ecb9724e46ff)
+    com.unity.test-framework.performance@3.5.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/Library/PackageCache/com.unity.test-framework.performance@8b56083ec0f0)
+  Built-in packages:
+    com.unity.2d.sprite@1.0.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/Library/PackageCache/com.unity.2d.sprite@053a968eab56)
+    com.unity.2d.tilemap@1.0.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/Library/PackageCache/com.unity.2d.tilemap@be0bacb99591)
+    com.unity.multiplayer.center@1.0.1 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/Library/PackageCache/com.unity.multiplayer.center@b860850997d0)
+    com.unity.render-pipelines.universal@17.5.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/Library/PackageCache/com.unity.render-pipelines.universal@be00b5bbd9a1)
+    com.unity.test-framework@1.7.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/Library/PackageCache/com.unity.test-framework@f3e6c9a02477)
+    com.unity.ugui@2.5.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/Library/PackageCache/com.unity.ugui@4f9b15fd1386)
+    com.unity.modules.accessibility@1.0.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/Library/PackageCache/com.unity.modules.accessibility)
+    com.unity.modules.adaptiveperformance@1.0.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/Library/PackageCache/com.unity.modules.adaptiveperformance)
+    com.unity.modules.ai@1.0.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/Library/PackageCache/com.unity.modules.ai)
+    com.unity.modules.androidjni@1.0.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/Library/PackageCache/com.unity.modules.androidjni)
+    com.unity.modules.animation@1.0.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/Library/PackageCache/com.unity.modules.animation)
+    com.unity.modules.assetbundle@1.0.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/Library/PackageCache/com.unity.modules.assetbundle)
+    com.unity.modules.audio@1.0.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/Library/PackageCache/com.unity.modules.audio)
+    com.unity.modules.cloth@1.0.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/Library/PackageCache/com.unity.modules.cloth)
+    com.unity.modules.director@1.0.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/Library/PackageCache/com.unity.modules.director)
+    com.unity.modules.imageconversion@1.0.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/Library/PackageCache/com.unity.modules.imageconversion)
+    com.unity.modules.imgui@1.0.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/Library/PackageCache/com.unity.modules.imgui)
+    com.unity.modules.jsonserialize@1.0.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/Library/PackageCache/com.unity.modules.jsonserialize)
+    com.unity.modules.particlesystem@1.0.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/Library/PackageCache/com.unity.modules.particlesystem)
+    com.unity.modules.physics@1.0.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/Library/PackageCache/com.unity.modules.physics)
+    com.unity.modules.physics2d@1.0.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/Library/PackageCache/com.unity.modules.physics2d)
+    com.unity.modules.physicscore2d@1.0.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/Library/PackageCache/com.unity.modules.physicscore2d)
+    com.unity.modules.screencapture@1.0.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/Library/PackageCache/com.unity.modules.screencapture)
+    com.unity.modules.terrain@1.0.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/Library/PackageCache/com.unity.modules.terrain)
+    com.unity.modules.terrainphysics@1.0.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/Library/PackageCache/com.unity.modules.terrainphysics)
+    com.unity.modules.tilemap@1.0.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/Library/PackageCache/com.unity.modules.tilemap)
+    com.unity.modules.ui@1.0.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/Library/PackageCache/com.unity.modules.ui)
+    com.unity.modules.uielements@1.0.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/Library/PackageCache/com.unity.modules.uielements)
+    com.unity.modules.umbra@1.0.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/Library/PackageCache/com.unity.modules.umbra)
+    com.unity.modules.unityanalytics@1.0.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/Library/PackageCache/com.unity.modules.unityanalytics)
+    com.unity.modules.unitywebrequest@1.0.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/Library/PackageCache/com.unity.modules.unitywebrequest)
+    com.unity.modules.unitywebrequestassetbundle@1.0.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/Library/PackageCache/com.unity.modules.unitywebrequestassetbundle)
+    com.unity.modules.unitywebrequestaudio@1.0.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/Library/PackageCache/com.unity.modules.unitywebrequestaudio)
+    com.unity.modules.unitywebrequesttexture@1.0.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/Library/PackageCache/com.unity.modules.unitywebrequesttexture)
+    com.unity.modules.unitywebrequestwww@1.0.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/Library/PackageCache/com.unity.modules.unitywebrequestwww)
+    com.unity.modules.vectorgraphics@1.0.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/Library/PackageCache/com.unity.modules.vectorgraphics)
+    com.unity.modules.vehicles@1.0.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/Library/PackageCache/com.unity.modules.vehicles)
+    com.unity.modules.video@1.0.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/Library/PackageCache/com.unity.modules.video)
+    com.unity.modules.wind@1.0.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/Library/PackageCache/com.unity.modules.wind)
+    com.unity.modules.xr@1.0.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/Library/PackageCache/com.unity.modules.xr)
+    com.unity.modules.subsystems@1.0.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/Library/PackageCache/com.unity.modules.subsystems)
+    com.unity.modules.hierarchycore@1.0.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/Library/PackageCache/com.unity.modules.hierarchycore)
+    com.unity.ext.nunit@2.1.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/Library/PackageCache/com.unity.ext.nunit@44f7d31723bd)
+    com.unity.render-pipelines.core@17.5.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/Library/PackageCache/com.unity.render-pipelines.core@d7ce3ed2cd80)
+    com.unity.shadergraph@17.5.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/Library/PackageCache/com.unity.shadergraph@2df19e8719bc)
+    com.unity.render-pipelines.universal-config@17.5.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/Library/PackageCache/com.unity.render-pipelines.universal-config@fdda01c80fe3)
+    com.unity.mathematics@1.4.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/Library/PackageCache/com.unity.mathematics@981956d94fb6)
+    com.unity.collections@6.5.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/Library/PackageCache/com.unity.collections@a43cabe808ca)
+  Embedded packages:
+    com.qq.weixin.minigame@file:/Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/Packages/com.qq.weixin.minigame (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/Packages/com.qq.weixin.minigame)
+  Git packages:
+    com.coplaydev.unity-mcp@https://github.com/CoplayDev/unity-mcp.git?path=/MCPForUnity#11836003a5e2ffcb7715ecec7e1fbb9d9cdb5bb8 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/Library/PackageCache/com.coplaydev.unity-mcp@4ee62b097584)
+[Subsystems] No new subsystems found in resolved package list.
+[Package Manager] Done registering packages in 0.01 seconds
+[ScriptCompilation] Requested script compilation because: AssetDatabase observed changes in script compilation related files
+info: Microsoft.Hosting.Lifetime[14]
+      Now listening on: http://unix:/tmp/ilpp.sock-9df2e69d620ba2a103d38ca806ff6a73
+info: Microsoft.Hosting.Lifetime[0]
+      Application started. Press Ctrl+C to shut down.
+info: Microsoft.Hosting.Lifetime[0]
+      Hosting environment: Production
+info: Microsoft.Hosting.Lifetime[0]
+      Content root path: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/2 POST http://ilpp/UnityILPP.PostProcessing/Ping - application/grpc -
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'gRPC - /UnityILPP.PostProcessing/Ping'
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'gRPC - /UnityILPP.PostProcessing/Ping'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/2 POST http://ilpp/UnityILPP.PostProcessing/Ping - 200 - application/grpc 24.5838ms
+Starting: /Applications/Unity/Hub/Editor/6000.5.1f1/Unity.app/Contents/Resources/BuildPipeline/bee_backend --ipc --defer-dag-verification --dagfile="Library/Bee/2000b0aE.dag" --continue-on-failure --profile="Library/Bee/backend1.traceevents" ScriptAssemblies
+WorkingDir: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2
+DisplayProgressbar: Compiling Scripts
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/2 POST http://ilpp/UnityILPP.PostProcessing/ConfigurePostProcessors - application/grpc -
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'gRPC - /UnityILPP.PostProcessing/ConfigurePostProcessors'
+warn: Unity.ILPP.Runner.PostProcessingAssemblyLoadContext[0]
+      Assembly system.runtime.interopservices.windowsruntime has duplicate hint path. Ignoring "/Applications/Unity/Hub/Editor/6000.5.1f1/Unity.app/Contents/Resources/Scripting/UnityReferenceAssemblies/unity-4.8-api/Facades/System.Runtime.InteropServices.WindowsRuntime.dll" in favor of "/Applications/Unity/Hub/Editor/6000.5.1f1/Unity.app/Contents/Resources/Scripting/NetStandard/Extensions/2.0.0/System.Runtime.InteropServices.WindowsRuntime.dll"
+warn: Unity.ILPP.Runner.PostProcessingAssemblyLoadContext[0]
+      Assembly system.componentmodel.composition has duplicate hint path. Ignoring "/Applications/Unity/Hub/Editor/6000.5.1f1/Unity.app/Contents/Resources/Scripting/UnityReferenceAssemblies/unity-4.8-api/System.ComponentModel.Composition.dll" in favor of "/Applications/Unity/Hub/Editor/6000.5.1f1/Unity.app/Contents/Resources/Scripting/NetStandard/compat/2.1.0/shims/netfx/System.ComponentModel.Composition.dll"
+info: Unity.ILPP.Runner.PostProcessingAssemblyLoadContext[0]
+      Resolved Unity.Burst.Cecil, Version=0.11.6.0, Culture=neutral, PublicKeyToken=50cebf1cceb9d05e with Library/PackageCache/com.unity.burst@6bb9aca3ef38/Unity.Burst.CodeGen/Unity.Burst.Cecil.dll
+info: Unity.ILPP.Runner.PostProcessingAssemblyLoadContext[0]
+      Resolved Mono.Cecil, Version=0.11.5.0, Culture=neutral, PublicKeyToken=50cebf1cceb9d05e with Library/PackageCache/com.unity.nuget.mono-cecil@ecb9724e46ff/Mono.Cecil.dll
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'gRPC - /UnityILPP.PostProcessing/ConfigurePostProcessors'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/2 POST http://ilpp/UnityILPP.PostProcessing/ConfigurePostProcessors - 200 - application/grpc 19.3588ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/2 POST http://ilpp/UnityILPP.PostProcessing/PostProcessAssembly - application/grpc -
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'gRPC - /UnityILPP.PostProcessing/PostProcessAssembly'
+info: Unity.ILPP.Runner.PostProcessingPipeline[0]
+      Processing assembly Library/Bee/artifacts/2000b0aE.dag/OneStrokeDemon.Editor.dll, with 115 defines and 329 references
+info: Unity.ILPP.Runner.PostProcessingPipeline[0]
+      processors: Unity.Jobs.CodeGen.JobsILPostProcessor, zzzUnity.Burst.CodeGen.BurstILPostProcessor
+info: Unity.ILPP.Runner.PostProcessingPipeline[0]
+      running Unity.Jobs.CodeGen.JobsILPostProcessor
+info: Unity.ILPP.Runner.PostProcessingPipeline[0]
+      running zzzUnity.Burst.CodeGen.BurstILPostProcessor
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'gRPC - /UnityILPP.PostProcessing/PostProcessAssembly'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/2 POST http://ilpp/UnityILPP.PostProcessing/PostProcessAssembly - 200 - application/grpc 12.5017ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/2 POST http://ilpp/UnityILPP.PostProcessing/PostProcessAssembly - application/grpc -
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'gRPC - /UnityILPP.PostProcessing/PostProcessAssembly'
+info: Unity.ILPP.Runner.PostProcessingPipeline[0]
+      Processing assembly Library/Bee/artifacts/2000b0aE.dag/OneStrokeDemon.Tests.EditMode.dll, with 115 defines and 312 references
+info: Unity.ILPP.Runner.PostProcessingPipeline[0]
+      processors: Unity.Jobs.CodeGen.JobsILPostProcessor, zzzUnity.Burst.CodeGen.BurstILPostProcessor
+info: Unity.ILPP.Runner.PostProcessingPipeline[0]
+      running Unity.Jobs.CodeGen.JobsILPostProcessor
+info: Unity.ILPP.Runner.PostProcessingPipeline[0]
+      running zzzUnity.Burst.CodeGen.BurstILPostProcessor
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'gRPC - /UnityILPP.PostProcessing/PostProcessAssembly'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/2 POST http://ilpp/UnityILPP.PostProcessing/PostProcessAssembly - 200 - application/grpc 64.3927ms
+ExitCode: 0 Duration: 1s694ms
+[ 855/1149  0s] ILPP-Configuration Library/ilpp-configuration.nevergeneratedoutput
+[1141/1149  1s] Csc Library/Bee/artifacts/2000b0aE.dag/OneStrokeDemon.Editor.dll (+2 others)
+[1142/1149  0s] ILPostProcess Library/Bee/artifacts/2000b0aE.dag/post-processed/OneStrokeDemon.Editor.dll (+pdb)
+Processing assembly Library/Bee/artifacts/2000b0aE.dag/OneStrokeDemon.Editor.dll, with 115 defines and 329 references
+processors: Unity.Jobs.CodeGen.JobsILPostProcessor, zzzUnity.Burst.CodeGen.BurstILPostProcessor
+running Unity.Jobs.CodeGen.JobsILPostProcessor
+running zzzUnity.Burst.CodeGen.BurstILPostProcessor
+[1143/1149  0s] CopyFiles Library/ScriptAssemblies/OneStrokeDemon.Editor.dll
+[1144/1149  0s] CopyFiles Library/ScriptAssemblies/OneStrokeDemon.Editor.pdb
+[1145/1149  0s] Csc Library/Bee/artifacts/2000b0aE.dag/OneStrokeDemon.Tests.EditMode.dll (+2 others)
+[1146/1149  0s] ILPostProcess Library/Bee/artifacts/2000b0aE.dag/post-processed/OneStrokeDemon.Tests.EditMode.dll (+pdb)
+Processing assembly Library/Bee/artifacts/2000b0aE.dag/OneStrokeDemon.Tests.EditMode.dll, with 115 defines and 312 references
+processors: Unity.Jobs.CodeGen.JobsILPostProcessor, zzzUnity.Burst.CodeGen.BurstILPostProcessor
+running Unity.Jobs.CodeGen.JobsILPostProcessor
+running zzzUnity.Burst.CodeGen.BurstILPostProcessor
+[1147/1149  0s] CopyFiles Library/ScriptAssemblies/OneStrokeDemon.Tests.EditMode.pdb
+[1148/1149  0s] CopyFiles Library/ScriptAssemblies/OneStrokeDemon.Tests.EditMode.dll
+*** Tundra build success (1.68 seconds), 9 items updated, 1149 evaluated
+AssetDatabase: script compilation time: 2.242239s
+Begin MonoManager ReloadAssembly
+Total cache size 268058432
+Total cache size after purge 268058432, took 00:00:00.1709161
+Symbol file LoadedFromMemory is not a mono symbol file
+Refreshing native plugins compatible for Editor in 9.88 ms, found 6 plugins.
+Native extension for Android target not found
+Native extension for WindowsStandalone target not found
+Native extension for OSXStandalone target not found
+Native extension for WebGL target not found
+ScheduleIndexationOnStartup MainProcess:True IndexOnStartup:True
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  2.641 seconds
+Domain Reload Profiling: 3288ms
+	BeginReloadAssembly (164ms)
+		DisableScriptedObjects (47ms)
+		CreateAndSetChildDomain (44ms)
+	RebuildCommonClasses (5ms)
+	RebuildNativeTypeToScriptingClass (9ms)
+	initialDomainReloadingComplete (34ms)
+	LoadAllAssembliesAndSetupDomain (435ms)
+		LoadAssemblies (223ms)
+		AnalyzeDomain (184ms)
+			TypeCache.Refresh (143ms)
+				TypeCache.ScanAssembly (129ms)
+			BuildScriptInfoCaches (36ms)
+			ResolveRequiredComponents (5ms)
+	FinalizeReload (2642ms)
+		SetupLoadedEditorAssemblies (0ms)
+			InitializePlatformSupportModulesInManaged (4ms)
+			BeforeProcessingInitializeOnLoad (48ms)
+			ProcessInitializeOnLoadAttributes (2243ms)
+			ProcessInitializeOnLoadMethodAttributes (222ms)
+		AwakeInstancesAfterBackupRestoration (12ms)
+Importing 'GUID: 1142bbad8b9e8c44c83a9775ff120d37 - Path: Packages/com.unity.render-pipelines.core/Tests/Editor/UnifiedRayTracing/TraceRays.urtshader' with importer (ScriptedImporter : Unity.Rendering.LightTransport.Editor:UnityEditor.Rendering.UnifiedRayTracing:UnifiedRTShaderImporter)
+Launching external process: /Applications/Unity/Hub/Editor/6000.5.1f1/Unity.app/Contents/Helpers/UnityShaderCompiler
+Launched and connected shader compiler UnityShaderCompiler after 0.06 seconds
+Imported 'GUID: 1142bbad8b9e8c44c83a9775ff120d37' -> (Import Result ID: 'deed08e12ec34367a7977d9cf30b84ad') in 0.203 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=b8cd29adba5e758f291bace7f264f11b DependenciesID=0aa6b69164149c9b3a572af0140972c2 StaticDependenciesID=83382896bf2194e2afb7a814a9f914cd
+Importing 'GUID: d19f4f8a13b6edb48b986a47ec96402e - Path: Packages/com.unity.render-pipelines.core/Runtime/PathTracing/Shaders/LightmapShadowMaskIntegration.urtshader' with importer (ScriptedImporter : Unity.Rendering.LightTransport.Editor:UnityEditor.Rendering.UnifiedRayTracing:UnifiedRTShaderImporter)
+Imported 'GUID: d19f4f8a13b6edb48b986a47ec96402e' -> (Import Result ID: 'ec6299234f09cbf43e06929b906dab3b') in 0.023 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=7a53f9d67828921b1b3b2ae4b5f41b08 DependenciesID=9d0b9c18b094ba69eed9e7d9c1a7c86f StaticDependenciesID=14c19d6e640993fbe77b1f068828bf12
+Importing 'GUID: 737a1597422c12547a8714d76a9406ec - Path: Packages/com.unity.render-pipelines.core/Runtime/PathTracing/Shaders/LightmapGBufferDebug.urtshader' with importer (ScriptedImporter : Unity.Rendering.LightTransport.Editor:UnityEditor.Rendering.UnifiedRayTracing:UnifiedRTShaderImporter)
+Imported 'GUID: 737a1597422c12547a8714d76a9406ec' -> (Import Result ID: 'a15cd997f94d94f0fb3735e9aa59a9c6') in 0.003 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=bbff83d3009ab393f954626a123bea27 DependenciesID=17ffdd21524bd9e3c13e1e7cfc77b836 StaticDependenciesID=8d11f009385b3a4cea3b53c3339efefb
+Importing 'GUID: f32463968f29423cad25aee15a14b9f1 - Path: Packages/com.unity.render-pipelines.core/Runtime/Lighting/SurfaceCache/PunctualLightSampling.urtshader' with importer (ScriptedImporter : Unity.Rendering.LightTransport.Editor:UnityEditor.Rendering.UnifiedRayTracing:UnifiedRTShaderImporter)
+Imported 'GUID: f32463968f29423cad25aee15a14b9f1' -> (Import Result ID: '4a88239e41af6f4e493aa0e9b30b5bbf') in 0.005 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=c7e0700aac06e64d4365f2f3857155b2 DependenciesID=74ffd4be606e2152d5fe8631e8d146c3 StaticDependenciesID=fae2d39a41418b21bab2b70cd0d272f0
+Importing 'GUID: 1451d029813b192429211be28181beab - Path: Packages/com.unity.render-pipelines.core/Runtime/PathTracing/Shaders/LightmapNormalIntegration.urtshader' with importer (ScriptedImporter : Unity.Rendering.LightTransport.Editor:UnityEditor.Rendering.UnifiedRayTracing:UnifiedRTShaderImporter)
+Imported 'GUID: 1451d029813b192429211be28181beab' -> (Import Result ID: 'b3bcc8ce38583fe880423ee7d6605f9e') in 0.003 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=523a2a9f1d3fd99b3de78348909ecd4b DependenciesID=ce5de24f2f3c721b1c02073003315d87 StaticDependenciesID=6695b2a8ac591a9580bdd3907887ec37
+Importing 'GUID: 94a070d33e408384bafc1dea4a565df9 - Path: Packages/com.unity.render-pipelines.core/Editor/Lighting/ProbeVolume/RenderingLayerMask/TraceRenderingLayerMask.urtshader' with importer (ScriptedImporter : Unity.Rendering.LightTransport.Editor:UnityEditor.Rendering.UnifiedRayTracing:UnifiedRTShaderImporter)
+Imported 'GUID: 94a070d33e408384bafc1dea4a565df9' -> (Import Result ID: 'ed8cbafff091c0cef9b529d42e5e1bd6') in 0.003 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=181e423fb6c3a6636694a6f996e24849 DependenciesID=404515262e59057cd7c0a365210eb083 StaticDependenciesID=76c56abbfe1dea1698b482e1c311a1b3
+Importing 'GUID: 94a39d12848d8d64ca962a72b74e7c50 - Path: Packages/com.unity.render-pipelines.core/Runtime/Lighting/SurfaceCache/Estimation.urtshader' with importer (ScriptedImporter : Unity.Rendering.LightTransport.Editor:UnityEditor.Rendering.UnifiedRayTracing:UnifiedRTShaderImporter)
+Imported 'GUID: 94a39d12848d8d64ca962a72b74e7c50' -> (Import Result ID: '9cad49784fe106c0b633d53f02464f58') in 0.003 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=74b44801c0570216a63a86f85095de52 DependenciesID=4fed8164f43c23934bb55292c5a3f200 StaticDependenciesID=3d83c90598d39b20511fc2d468edef81
+Importing 'GUID: 6513c3b892e933c4f8d00c19d5c47532 - Path: Packages/com.unity.render-pipelines.core/Tests/Editor/UnifiedRayTracing/TraceTransparentRays.urtshader' with importer (ScriptedImporter : Unity.Rendering.LightTransport.Editor:UnityEditor.Rendering.UnifiedRayTracing:UnifiedRTShaderImporter)
+Imported 'GUID: 6513c3b892e933c4f8d00c19d5c47532' -> (Import Result ID: '43acd1e2e434becda58879d2180291be') in 0.002 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=cd73330d6df9aa7ed5c977378c8cc5d8 DependenciesID=4279a1c6077c69ed01eb6777874b4833 StaticDependenciesID=8372fb0bb36e1468fa9601c49a86d0e6
+Importing 'GUID: 7624adbeb148b5c48ab5ab660cc2602a - Path: Packages/com.unity.render-pipelines.core/Runtime/PathTracing/Shaders/LightmapIndirectIntegration.urtshader' with importer (ScriptedImporter : Unity.Rendering.LightTransport.Editor:UnityEditor.Rendering.UnifiedRayTracing:UnifiedRTShaderImporter)
+Imported 'GUID: 7624adbeb148b5c48ab5ab660cc2602a' -> (Import Result ID: 'c7fb5794e3bcde201d70758c87c2488b') in 0.003 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=af792602db19c850ca8e2ba9eea59d86 DependenciesID=144018845fa3f79999d66ef72a845a84 StaticDependenciesID=67a45332e0f51102f9bb9c93a750d036
+Importing 'GUID: e9f4de6d1e07fb94f9a60d35b618f724 - Path: Packages/com.unity.render-pipelines.core/Runtime/PathTracing/Shaders/LightmapGBufferIntegration.urtshader' with importer (ScriptedImporter : Unity.Rendering.LightTransport.Editor:UnityEditor.Rendering.UnifiedRayTracing:UnifiedRTShaderImporter)
+Imported 'GUID: e9f4de6d1e07fb94f9a60d35b618f724' -> (Import Result ID: '66dbafadd89d65acef6d3c5713fc3b5c') in 0.002 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=cf2d9f7b2d6cbcff844906a8bcc31bf8 DependenciesID=a88219ff04ec0f4dcb09b1ada48172a8 StaticDependenciesID=8b26c93a6e3373b36ba430a420b17d9a
+Importing 'GUID: 5a2a534753fbdb44e96c3c78b5a6999d - Path: Packages/com.unity.render-pipelines.core/Editor/Lighting/ProbeVolume/DynamicGI/DynamicGISkyOcclusion.urtshader' with importer (ScriptedImporter : Unity.Rendering.LightTransport.Editor:UnityEditor.Rendering.UnifiedRayTracing:UnifiedRTShaderImporter)
+Imported 'GUID: 5a2a534753fbdb44e96c3c78b5a6999d' -> (Import Result ID: 'b1f64d5e5e79830a495b719a7b68ea59') in 0.002 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=b938348763d3a22aa33b5388fce6ef95 DependenciesID=6df0805f05d5a3d73415fc319945ac36 StaticDependenciesID=41b936436a30154af8a3b61f441fd564
+Importing 'GUID: 5bbebdef5916845478fcef13fa10d89f - Path: Packages/com.unity.render-pipelines.core/Runtime/PathTracing/Shaders/LightmapDirectIntegration.urtshader' with importer (ScriptedImporter : Unity.Rendering.LightTransport.Editor:UnityEditor.Rendering.UnifiedRayTracing:UnifiedRTShaderImporter)
+Imported 'GUID: 5bbebdef5916845478fcef13fa10d89f' -> (Import Result ID: '95f849285e7152aa4e96af740343e7c4') in 0.003 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=6d0494424b364d5c7b8452fac02a5e63 DependenciesID=1bcce95fa4d88b781e43d5ccc1b1462f StaticDependenciesID=49e7ce722dcdec23942b360d8297bad5
+Importing 'GUID: fbc59f55df2416344b008dc23753cae2 - Path: Packages/com.unity.render-pipelines.core/Tests/Editor/UnifiedRayTracing/TraceRaysAndFetchAttributes.urtshader' with importer (ScriptedImporter : Unity.Rendering.LightTransport.Editor:UnityEditor.Rendering.UnifiedRayTracing:UnifiedRTShaderImporter)
+Imported 'GUID: fbc59f55df2416344b008dc23753cae2' -> (Import Result ID: 'c8111b73d480034630afbcd01b3744a6') in 0.002 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=50d12dbd244d34fe44886b5628d7c19e DependenciesID=e5ef05488337ee2df46e602869594017 StaticDependenciesID=8530ce6573ae9a6cd0b7e3b83f0a29ad
+Importing 'GUID: 1c410815c01ce1d4d82c645c0cd45747 - Path: Packages/com.unity.render-pipelines.core/Runtime/PathTracing/Shaders/LightmapAOIntegration.urtshader' with importer (ScriptedImporter : Unity.Rendering.LightTransport.Editor:UnityEditor.Rendering.UnifiedRayTracing:UnifiedRTShaderImporter)
+Imported 'GUID: 1c410815c01ce1d4d82c645c0cd45747' -> (Import Result ID: 'c0b345c952835572411a6e8ddc4afd05') in 0.003 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=c95e197d05dc56fe79f527d6bd148028 DependenciesID=005d120a19ceccb16d7c68f8230ee0fb StaticDependenciesID=750dfd3ce8976c275bbe79cdc0d3127f
+Importing 'GUID: 2c32233d92a2d0745930664c087c5c9a - Path: Packages/com.unity.render-pipelines.core/Runtime/PathTracing/Shaders/ProbeIntegrationValidity.urtshader' with importer (ScriptedImporter : Unity.Rendering.LightTransport.Editor:UnityEditor.Rendering.UnifiedRayTracing:UnifiedRTShaderImporter)
+Imported 'GUID: 2c32233d92a2d0745930664c087c5c9a' -> (Import Result ID: '948aeb594e8908208f8fa8786b7a0f5b') in 0.002 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=d741d4867130fefef91588715d746cd5 DependenciesID=42427928ded0c7f6034988f8b6b2a056 StaticDependenciesID=29b4a31e24ae88c796e0b3135dc8eb9b
+Importing 'GUID: ace95ac84e213794891b4bd7c9b3c158 - Path: Packages/com.unity.render-pipelines.core/Runtime/PathTracing/Shaders/LightmapValidityIntegration.urtshader' with importer (ScriptedImporter : Unity.Rendering.LightTransport.Editor:UnityEditor.Rendering.UnifiedRayTracing:UnifiedRTShaderImporter)
+Imported 'GUID: ace95ac84e213794891b4bd7c9b3c158' -> (Import Result ID: '1aa7ee043dfe958d932d0e40591f727f') in 0.002 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=eb7b2f242b46d05535d472f2bb6f851e DependenciesID=3d54062a5c1a593c637aac9e64d0b788 StaticDependenciesID=ba52e4c5fecd98843b40eedfc4866f08
+Importing 'GUID: 5ecdabd800f05984696f22ba95284516 - Path: Packages/com.unity.render-pipelines.core/Runtime/PathTracing/Shaders/ProbeIntegrationIndirect.urtshader' with importer (ScriptedImporter : Unity.Rendering.LightTransport.Editor:UnityEditor.Rendering.UnifiedRayTracing:UnifiedRTShaderImporter)
+Imported 'GUID: 5ecdabd800f05984696f22ba95284516' -> (Import Result ID: '8db1d2d7b80e4c7a6d6a4297f35825ac') in 0.003 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=0e64773277f895a018157b6ed8f0cd53 DependenciesID=b1084c405328741c7b52803b5dd30bb7 StaticDependenciesID=e2c127f94ccdcb83ca23463fb1f2a2e5
+Importing 'GUID: 6e0b547bab30a804c8123974120d583f - Path: Packages/com.unity.render-pipelines.core/Tests/Runtime/PathTracing/PathIteratorTest.urtshader' with importer (ScriptedImporter : Unity.Rendering.LightTransport.Editor:UnityEditor.Rendering.UnifiedRayTracing:UnifiedRTShaderImporter)
+Imported 'GUID: 6e0b547bab30a804c8123974120d583f' -> (Import Result ID: 'f66a05d556a40e6694b1445c64deccc4') in 0.003 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=829d7b61418a36e536de0ad5014deef8 DependenciesID=52cb60bbd0dd055dc6d3f626823c688f StaticDependenciesID=109768bf87f2aa9106ce5a61082f1a11
+Importing 'GUID: de3013e16d99f2746ab1735ec06a660b - Path: Packages/com.unity.render-pipelines.core/Runtime/PathTracing/Shaders/ProbeIntegrationOcclusion.urtshader' with importer (ScriptedImporter : Unity.Rendering.LightTransport.Editor:UnityEditor.Rendering.UnifiedRayTracing:UnifiedRTShaderImporter)
+Imported 'GUID: de3013e16d99f2746ab1735ec06a660b' -> (Import Result ID: '981801d147b3c4c493671dcec40a83ee') in 0.003 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=f0722c2cd435706421d5bd9a15d20a9f DependenciesID=4fc1ca56c1844323014d6fb4030ceafe StaticDependenciesID=b27c26bc9001d433eb4742192dec8cdb
+Importing 'GUID: 1f9bfe60b4ad75943a5281839c1a4e5c - Path: Packages/com.unity.render-pipelines.core/Runtime/PathTracing/Shaders/ProbeIntegrationDirect.urtshader' with importer (ScriptedImporter : Unity.Rendering.LightTransport.Editor:UnityEditor.Rendering.UnifiedRayTracing:UnifiedRTShaderImporter)
+Imported 'GUID: 1f9bfe60b4ad75943a5281839c1a4e5c' -> (Import Result ID: 'bf78caf973912576b69941defe019872') in 0.003 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=b217746b85d53d269bdb9a3428004d64 DependenciesID=54ebe09d976e4e282954973d8737b975 StaticDependenciesID=9976b23c91526db98b62402ee2637b09
+Importing 'GUID: ff2cbab5da58bf04d82c5f34037ed123 - Path: Packages/com.unity.render-pipelines.core/Editor/Lighting/ProbeVolume/VirtualOffset/TraceVirtualOffset.urtshader' with importer (ScriptedImporter : Unity.Rendering.LightTransport.Editor:UnityEditor.Rendering.UnifiedRayTracing:UnifiedRTShaderImporter)
+Imported 'GUID: ff2cbab5da58bf04d82c5f34037ed123' -> (Import Result ID: '4674a6080cb9f9e7812d9e80c2116716') in 0.002 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=975212f57f7e3395e7bf504354250913 DependenciesID=23783bfa371fec98639b9f590b560ee2 StaticDependenciesID=bb01cef5f5bbfce7bb5614b4f3a2af7b
+Starting new worker id: 0 with log in /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/Logs/AssetImportWorkerHW0.log
+Refreshing native plugins compatible for Editor in 4.38 ms, found 6 plugins.
+
+Asset Pipeline Refresh (id=c68cfa145dc814813964cfafb0f631ca): Total: 7.498 seconds - Initiated by InitialRefreshV2(ForceSynchronousImport)
+	(Values over 0.05ms)
+	Summary:
+		Imports: total=21 (actual=21, local cache=0, cache server=0)
+		Asset DB Process Time: managed=35 ms, native=4014 ms
+		Asset DB Callback time: managed=418 ms, native=79 ms
+		Scripting: domain reloads=1, domain reload time=673 ms, compile time=2243 ms, other=33 ms
+		Project Asset Count: scripts=1794, non-scripts=3399
+		Asset File Changes: new=0, changed=1, moved=0, deleted=0
+		Scan Filter Count: 1
+	InvokePackagesCallback: 14.129ms
+	ApplyChangesToAssetFolders: 0.242ms
+	Scan: 709.042ms
+	Collect global state as custom dependencies: 2.974ms
+	OnSourceAssetsModified: 0.399ms
+	CategorizeScriptCompilationAssets: 57.256ms
+	ProcessAssetsWithTransientArtifactChanges: 51.087ms
+	CategorizeAssets: 70.641ms
+	CompileScripts: 2243.242ms
+	ImportOutOfDateAssets: 3006.512ms (2666.837ms without children)
+		ImportManagerImport: 300.177ms (7.902ms without children)
+			UpdateCategorizedAssets: 0.935ms
+		UnloadImportedAssets: 1.092ms
+		ReloadImportedAssets: 0.742ms
+		EnsureUptoDateAssetsAreRegisteredWithGuidPM: 0.493ms
+		ImportSchedulerStart: 37.879ms
+	PostProcessAllAssets: 479.729ms
+		ComputeShaderImportPostprocess 32.443ms
+		RaytracingShaderImportPostprocess 22.510ms
+		VCAutoAddAssetPostprocess 1.829ms
+		ShaderAssetModifiedCallback 0.526ms
+		XRBuildSystem.XRAssetImported 0.250ms
+		PostProcessCallbackCreateDeferredMaterials 0.073ms
+		SpriteAtlasDatabase.OnAssetPostprocessCallback 0.067ms
+		MonoPostProcessAllAssets: 417.923ms
+			AssetPostprocessor.OnPostprocessAllAssets 282.189ms
+			StyleCatalogPostProcessor.OnPostprocessAllAssets 66.522ms
+			BuilderAssetPostprocessor.OnPostprocessAllAssets 27.537ms
+			UniversalRenderPipelineGlobalSettingsPostprocessor.OnPostprocessAllAssets 8.972ms
+			WindowAssetPostprocessingWatcher.OnPostprocessAllAssets 1.532ms
+			ShaderGraphAssetPostProcessor.OnPostprocessAllAssets 1.446ms
+			SpeedTree9Postprocessor.OnPostprocessAllAssets 1.288ms
+			RetainedModeAssetPostprocessor.OnPostprocessAllAssets 0.959ms
+			AssetChangedListener.OnPostprocessAllAssets 0.924ms
+			MaterialPostprocessor.OnPostprocessAllAssets 0.851ms
+			ProjectSettingsPostprocessor.OnPostprocessAllAssets 0.767ms
+			InputActionAssetPostprocessor.OnPostprocessAllAssets 0.721ms
+			InputActionJsonNameModifierAssetProcessor.OnPostprocessAllAssets 0.615ms
+			SpriteShapeAssetPostProcessor.OnPostprocessAllAssets 0.602ms
+			ArtifactBrowserPostProcessor.OnPostprocessAllAssets 0.533ms
+			AudioMixerPostprocessor.OnPostprocessAllAssets 0.486ms
+			TMPro_TexturePostProcessor.OnPostprocessAllAssets 0.458ms
+			SpriteEditorTexturePostprocessor.OnPostprocessAllAssets 0.447ms
+			RenderPipelineGlobalSettingsPostprocessor.OnPostprocessAllAssets 0.391ms
+			SampleDependencyImporterPostProcessor.OnPostprocessAllAssets 0.366ms
+			SamplePostprocessor.OnPostprocessAllAssets 0.348ms
+			TextAssetPostProcessor.OnPostprocessAllAssets 0.321ms
+			SpriteSlicePostprocessor.OnPostprocessAllAssets 0.295ms
+			PostProcessor.OnPostprocessAllAssets 0.254ms
+			ReferencedClipsPostProcessor.OnPostprocessAllAssets 0.215ms
+			UVCSAssetPostprocessor.OnPostprocessAllAssets 0.206ms
+			ShaderReflectionAssetPostProcessor.OnPostprocessAllAssets 0.171ms
+			AssetProcessor.OnPostprocessAllAssets 0.162ms
+			AssetEvents.OnPostprocessAllAssets 0.151ms
+			AssetDatabaseCallbacks.OnPostprocessAllAssets 0.149ms
+			PSDImportPostProcessor.OnPostprocessAllAssets 0.119ms
+			SpriteLibraryAssetPostprocessor.OnPostprocessAllAssets 0.118ms
+			TerrainToolbarOverlayPostProcessor.OnPostprocessAllAssets 0.104ms
+			ConfigAssetsTracker.OnPostprocessAllAssets 0.091ms
+			SpeedTreePostProcessor.OnPostprocessAllAssets 0.072ms
+	PostAssetChangesProfiler: 6.063ms
+	UnloadStreamsBegin: 5.718ms
+	PersistCurrentRevisions: 0.213ms
+	GenerateScriptTypeHashes: 10.750ms
+	GenerateScriptTypeSerializationHashes: 30.592ms
+	Untracked: 849.139ms
+
+Application.AssetDatabase Initial Refresh End
+Shader Hidden/ChartRasterizerHardware is not supported: GPU does not support conservative rasterization
+Shader Hidden/ChartRasterizerHardware is not supported: GPU does not support conservative rasterization
+Scanning for USB devices : 0.197ms
+Initializing Unity extensions:
+[MODES] ModeService[none].Initialize
+[MODES] ModeService[none].LoadModes
+[MODES] Loading mode Default (0) for mode-current-id-onedraw_2
+Unloading 50 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 7809 unused Assets / (1.2 MB). Loaded Objects now: 8644.
+Memory consumption went from 270.5 MB to 269.4 MB.
+Total: 16.646375 ms (FindLiveObjects: 0.362375 ms CreateObjectMapping: 2.184750 ms MarkObjects: 11.017167 ms  DeleteObjects: 3.081416 ms)
+
+Worker ready: AssetImportWorkerHW0 0
+
+Asset Pipeline Refresh (id=d8b249a9765c0440a93dba96c61c512c): Total: 0.967 seconds - Initiated by RefreshV2(NoUpdateAssetOptions)
+	(Values over 0.05ms)
+	Summary:
+		Imports: total=0 (actual=0, local cache=0, cache server=0)
+		Asset DB Process Time: managed=0 ms, native=967 ms
+		Asset DB Callback time: managed=0 ms, native=0 ms
+		Scripting: domain reloads=0, domain reload time=0 ms, compile time=0 ms, other=0 ms
+		Project Asset Count: scripts=1794, non-scripts=3399
+		Asset File Changes: new=0, changed=0, moved=0, deleted=0
+		Scan Filter Count: 1
+	ApplyChangesToAssetFolders: 0.141ms
+	Scan: 875.540ms
+	Collect global state as custom dependencies: 0.240ms
+	ProcessAssetsWithTransientArtifactChanges: 0.331ms
+	CategorizeAssets: 36.766ms
+	ImportOutOfDateAssets: 39.185ms (10.550ms without children)
+		UnloadImportedAssets: 0.087ms
+		EnsureUptoDateAssetsAreRegisteredWithGuidPM: 0.393ms
+		ImportSchedulerStart: 28.125ms
+	GatherAllCurrentPrimaryImportResultRevisions: 0.305ms
+	PersistCurrentRevisions: 0.104ms
+	Untracked: 12.927ms
+
+Importing 'GUID: 00000000000000003000000000000000 - Path: ProjectSettings/TagManager.asset' with importer (LibraryAssetImporter)
+Imported 'GUID: 00000000000000003000000000000000' -> (Import Result ID: 'aba51fc6dce21e789bae7f29909bd6f4') in 0.002 seconds [static dependencies only]. Details - ImportResultOutputID=fd6696bcbef029973bb12ace65e33982 DependenciesID=c5676547272f4183252f0fccbd90cd3e StaticDependenciesID=ce65c21291386cb9afe214c8b37718c8
+Refreshing native plugins compatible for Editor in 3.46 ms, found 6 plugins.
+Asset Pipeline Refresh (id=a833794fa6443456da3276f6508f5281): Total: 0.059 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Importing 'GUID: 074c755b0ed12423298ed3ab40b119a4 - Path: Assets/_Game/Art/Backgrounds/bg_red_cave.png' with importer (TextureImporter)
+Imported 'GUID: 074c755b0ed12423298ed3ab40b119a4' -> (Import Result ID: 'c0a94dd62e0b2d226aec3e1b232dbe3b') in 0.126 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=9c25432c32a5a75de3fcb2d1feeb24bb DependenciesID=ef540abc88d6c31b02e1f49531ee615d StaticDependenciesID=2ad04d65199149685839551e6d3978c6
+Refreshing native plugins compatible for Editor in 3.16 ms, found 6 plugins.
+Asset Pipeline Refresh (id=5ad93bebfa36744e8bd68274004ccc94): Total: 0.179 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Importing 'GUID: f8e01a1bb03de4616b590ff3b68c9c22 - Path: Assets/_Game/Art/Backgrounds/bg_red_cave_boss.png' with importer (TextureImporter)
+Imported 'GUID: f8e01a1bb03de4616b590ff3b68c9c22' -> (Import Result ID: '84630fbaa127995bde13d83a8a193ea2') in 0.105 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=1b96a9adb6627cb017ab7d13550d2602 DependenciesID=e2c2e84d523d9ea97c2645418e736429 StaticDependenciesID=e12c1f6af125330775b125ff56150ac3
+Refreshing native plugins compatible for Editor in 5.90 ms, found 6 plugins.
+Asset Pipeline Refresh (id=d330c85b9057042458c5293c6e8394a5): Total: 0.172 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Importing 'GUID: c7e6907bc657349ef970f35711336fe7 - Path: Assets/_Game/Art/Characters/Moyan/moyan_idle.png' with importer (TextureImporter)
+Imported 'GUID: c7e6907bc657349ef970f35711336fe7' -> (Import Result ID: 'ada2ac5e655c61069870365e374bdc4e') in 0.025 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=cbfb6990a11472bd0be1612ef5152944 DependenciesID=dde3a02a1a2f0386244d1c6e5384305c StaticDependenciesID=2cc7652e5225807af6efc6993d19acd7
+Refreshing native plugins compatible for Editor in 2.03 ms, found 6 plugins.
+Asset Pipeline Refresh (id=231b2cc347afe4cc88acca85ee9cee98): Total: 0.076 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Importing 'GUID: 266e994ffa86a4f5db5726181a530897 - Path: Assets/_Game/Art/Enemies/fire_fish.png' with importer (TextureImporter)
+Imported 'GUID: 266e994ffa86a4f5db5726181a530897' -> (Import Result ID: 'ca775dbc424119ca2a8eba06eaa1df49') in 0.008 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=f99215325942600187fe73e2c2c05cf8 DependenciesID=c1aec01e43ec07fec4ec54e0a737d870 StaticDependenciesID=ad520ebd2d26d1b072872ee7ff0b5643
+Refreshing native plugins compatible for Editor in 2.09 ms, found 6 plugins.
+Asset Pipeline Refresh (id=e1c2f7add44324b11bf1562afd8cfcc4): Total: 0.054 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Importing 'GUID: 51b8285c5376c4181aa1a79180e33a73 - Path: Assets/_Game/Art/Enemies/skeleton_ghost.png' with importer (TextureImporter)
+Imported 'GUID: 51b8285c5376c4181aa1a79180e33a73' -> (Import Result ID: '2ebbadba74f470183e49ecd827ae4abb') in 0.006 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=2f5d9f180ee6c726a9ae20cf14466f8b DependenciesID=08150de948857b4ea003ee50dfe32fa7 StaticDependenciesID=a03abcbdffe9fc5d2cfbeb5ea4729bd4
+Refreshing native plugins compatible for Editor in 2.07 ms, found 6 plugins.
+Asset Pipeline Refresh (id=3c8005e73e9094b31a92c612dbe0cd1c): Total: 0.052 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Importing 'GUID: 3677e13e25dbe4a3dac46637ab9bcd15 - Path: Assets/_Game/Art/Enemies/soul_puppet.png' with importer (TextureImporter)
+Imported 'GUID: 3677e13e25dbe4a3dac46637ab9bcd15' -> (Import Result ID: '72e3f19f5fea1d53e146c71004227f32') in 0.024 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=5748f941a070182bd6e7a0921e086953 DependenciesID=a582ca92c00c9bbff976f8ff34300979 StaticDependenciesID=d8d3d19a46c5790e2fa80226372d3529
+Refreshing native plugins compatible for Editor in 2.54 ms, found 6 plugins.
+Asset Pipeline Refresh (id=0900409c9f0ce415e94cafa579ebad64): Total: 0.071 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Importing 'GUID: e88d6193a79254146812ab0b66b52870 - Path: Assets/_Game/Art/Enemies/stone_turtle.png' with importer (TextureImporter)
+Imported 'GUID: e88d6193a79254146812ab0b66b52870' -> (Import Result ID: '7e586aa1d1f19807f854996bad776ee8') in 0.009 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=7336e9b18d5267ef49c92058b6fd0de9 DependenciesID=4d0cad7426b9ad140b6412689ef717df StaticDependenciesID=4955184fa3079cda3866a23754cd615f
+Refreshing native plugins compatible for Editor in 2.03 ms, found 6 plugins.
+Asset Pipeline Refresh (id=5ed74d055a53e410b8074c31c37e8957): Total: 0.055 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Importing 'GUID: 84086e7c3c32742b990588c62bd39775 - Path: Assets/_Game/Art/Enemies/talisman_bat.png' with importer (TextureImporter)
+Imported 'GUID: 84086e7c3c32742b990588c62bd39775' -> (Import Result ID: '77c2ffe079f12f94a75e91573e9797e2') in 0.006 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=819de5229a6bc1aaf348c20f211fcd69 DependenciesID=c77d1bb439684c52516d38220da0a72d StaticDependenciesID=f60cbe54366e2670e22306088dd32f95
+Refreshing native plugins compatible for Editor in 2.97 ms, found 6 plugins.
+Asset Pipeline Refresh (id=42598f298243f43d8b29436341e8f433): Total: 0.052 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Importing 'GUID: b5a56503a6edc48dcb7f89a0b2e7466c - Path: Assets/_Game/Art/Enemies/tomb_armor_king.png' with importer (TextureImporter)
+Imported 'GUID: b5a56503a6edc48dcb7f89a0b2e7466c' -> (Import Result ID: '7d12d84057c6173d94951e424e469324') in 0.038 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=809d09e8d5a07ad4fa3e1362d1741d9c DependenciesID=12d903aa94679386e29b7f8b6644512e StaticDependenciesID=cae9ca709e1c6e5c68a008ed0ad5f031
+Refreshing native plugins compatible for Editor in 2.07 ms, found 6 plugins.
+Asset Pipeline Refresh (id=a0c15a080642546dd8bc34eabdbe3d28): Total: 0.092 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Importing 'GUID: e53b598e54c8b44a6bcc4d0c54285374 - Path: Assets/_Game/Art/Enemies/wheel_zombie.png' with importer (TextureImporter)
+Imported 'GUID: e53b598e54c8b44a6bcc4d0c54285374' -> (Import Result ID: '7a7ed9a1bebff26963029d6090e3d05a') in 0.008 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=2e97a54237e07af83a816f8d848c1583 DependenciesID=bb73ecf2e2b2d80f3be4b141f62c9133 StaticDependenciesID=393524902e98cb6e210abd419dd71063
+Refreshing native plugins compatible for Editor in 2.18 ms, found 6 plugins.
+Asset Pipeline Refresh (id=ac04b783c25e84c3a90ff5342b459653): Total: 0.059 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Importing 'GUID: bbba5c72b150e4a518153833d4ad5a32 - Path: Assets/_Game/Art/Sprites/icon_skill_blade_echo.png' with importer (TextureImporter)
+Imported 'GUID: bbba5c72b150e4a518153833d4ad5a32' -> (Import Result ID: '863fdcea06a9ba15e6bcbd27f6f8f4da') in 0.010 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=579d18d16dd22d24682da4aed8031a0b DependenciesID=04ccc833baaad4b5b7557be1fcd6b2e6 StaticDependenciesID=070bd45f7d47100d80b7c61d35a806cf
+Refreshing native plugins compatible for Editor in 5.07 ms, found 6 plugins.
+Asset Pipeline Refresh (id=781433727350846f1b9ced4e1c221154): Total: 0.068 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Importing 'GUID: 55fd45fad4b13425a863cd01677ebd61 - Path: Assets/_Game/Art/Sprites/icon_skill_talisman_bind.png' with importer (TextureImporter)
+Imported 'GUID: 55fd45fad4b13425a863cd01677ebd61' -> (Import Result ID: '8840d073af870eca23d24e0b5734aaa5') in 0.003 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=6a6402364c318773074ceada0bbf8af3 DependenciesID=adb613c15a29ae5f1506cd8f019c487d StaticDependenciesID=7ff20277e225d8a0bcadab340d428435
+Refreshing native plugins compatible for Editor in 2.23 ms, found 6 plugins.
+Asset Pipeline Refresh (id=f1f560929d4604492ad71016d9f0e66c): Total: 0.054 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Importing 'GUID: 34178335871bb439ba3425a75602b98d - Path: Assets/_Game/Art/Sprites/proj_ghost_fire.png' with importer (TextureImporter)
+Imported 'GUID: 34178335871bb439ba3425a75602b98d' -> (Import Result ID: '9282a82a1f2fa6f0076c09ff04c72074') in 0.002 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=1b6e305238389abca12f0110d3f0343b DependenciesID=14c7c2a08ceed219cb3bd956a3e99619 StaticDependenciesID=c4753489759ffbbeef46da5328c6e1f4
+Refreshing native plugins compatible for Editor in 2.45 ms, found 6 plugins.
+Asset Pipeline Refresh (id=90d7be009f76647988d2de621c44205d): Total: 0.048 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Importing 'GUID: 8f81b8ba124f74862bc6c265f98574c0 - Path: Assets/_Game/Art/Sprites/proj_rockfall.png' with importer (TextureImporter)
+Imported 'GUID: 8f81b8ba124f74862bc6c265f98574c0' -> (Import Result ID: 'a2d86a1c74ae3cc86fd9a86777ac38e1') in 0.005 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=dc8ff34e955bee7b1efe30f6bbb6d949 DependenciesID=c00c8cc81878a133f5c2d09a5366bb22 StaticDependenciesID=a4f11ae9edec923343ca91c1bb20b3d8
+Refreshing native plugins compatible for Editor in 2.11 ms, found 6 plugins.
+Asset Pipeline Refresh (id=2501f9c2e98c14c6f80fe98278dbddce): Total: 0.055 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Importing 'GUID: a9ef07a766cd040299b96a0ea15402f9 - Path: Assets/_Game/Art/Sprites/proj_seal_bolt.png' with importer (TextureImporter)
+Imported 'GUID: a9ef07a766cd040299b96a0ea15402f9' -> (Import Result ID: '4c81a9cecee407bd51452162f7db9fdd') in 0.003 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=5d94694348a76eec54279c238a4be64c DependenciesID=5000de727b335a6cf069c22f8fabfad3 StaticDependenciesID=1a5f7bf228f74ee883e323b8cde51297
+Refreshing native plugins compatible for Editor in 2.04 ms, found 6 plugins.
+Asset Pipeline Refresh (id=e2f24a0f857354c3d882ac3673e5250b): Total: 0.053 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Importing 'GUID: 3646f332efdd2496fb5c47a61fe5911c - Path: Assets/_Game/Art/Sprites/proj_seal_wave.png' with importer (TextureImporter)
+Imported 'GUID: 3646f332efdd2496fb5c47a61fe5911c' -> (Import Result ID: '9f1d164304096e5ed5be930f6f5c9809') in 0.005 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=a911ca21f7d747384fc50b671b97550a DependenciesID=1f78e66073840a9781f0f82772f80fbe StaticDependenciesID=f89185c03b651cb351f7b231954512bc
+Refreshing native plugins compatible for Editor in 2.93 ms, found 6 plugins.
+Asset Pipeline Refresh (id=5a0d7a1fde3ee4613afd3f18cfbc5d36): Total: 0.054 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Importing 'GUID: be6acb5020db949e89654705425297f7 - Path: Assets/_Game/Art/Sprites/proj_soul_shard.png' with importer (TextureImporter)
+Imported 'GUID: be6acb5020db949e89654705425297f7' -> (Import Result ID: '4655fa346f8536184b0223056e53e9a9') in 0.001 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=8d0a40109083040ac3ee4b2dff82929f DependenciesID=981b78cfb58873560d6e9beef0ae18ee StaticDependenciesID=b5e2bc1c83d2d27804cca8b3e93c0a81
+Refreshing native plugins compatible for Editor in 2.03 ms, found 6 plugins.
+Asset Pipeline Refresh (id=b60307f96732a49dda14770026c4e525): Total: 0.045 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Importing 'GUID: 6267aff61f464490c9e7b4b109909741 - Path: Assets/_Game/Art/UI/button_settings.png' with importer (TextureImporter)
+Imported 'GUID: 6267aff61f464490c9e7b4b109909741' -> (Import Result ID: '31323e3c3cbbd4642db434a795230c63') in 0.002 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=27a0b8b04d61591ecb28694eb47983a0 DependenciesID=06cf1c53efc6fa073e66d4233ccd6435 StaticDependenciesID=7a582d823e1d31f4ae41baa5da690a68
+Refreshing native plugins compatible for Editor in 2.09 ms, found 6 plugins.
+Asset Pipeline Refresh (id=c8506cb450a0b48c8a35f21c263fb428): Total: 0.049 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Importing 'GUID: 10b32b90aed2643cabc89a10df81b36d - Path: Assets/_Game/Art/UI/button_switch.png' with importer (TextureImporter)
+Imported 'GUID: 10b32b90aed2643cabc89a10df81b36d' -> (Import Result ID: 'a1ad223d8172f622942ce79ffa1e2b40') in 0.005 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=f16757be31182fb2b8a699f0a0be5ff9 DependenciesID=176371da144fe130fb00f2846d0f0584 StaticDependenciesID=cdf59141a7d448b6a24ca0ea77867a4b
+Refreshing native plugins compatible for Editor in 2.27 ms, found 6 plugins.
+Asset Pipeline Refresh (id=b7fa5fcef479a47e588eeae8abdd0484): Total: 0.050 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Importing 'GUID: a3bd8e26083a0432bb94d28b646154f5 - Path: Assets/_Game/Art/UI/button_ultimate.png' with importer (TextureImporter)
+Imported 'GUID: a3bd8e26083a0432bb94d28b646154f5' -> (Import Result ID: '6b8b680fb64904eab5754f41f3a85f5f') in 0.008 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=a84c632dd53b62b96d26b96b35876ca1 DependenciesID=f7c69d650cb24cec25ab1758fd832590 StaticDependenciesID=8b442a32774f6a52456c64180c0bdd37
+Refreshing native plugins compatible for Editor in 2.01 ms, found 6 plugins.
+Asset Pipeline Refresh (id=49cad090dcb0c47c787472fd286cea26): Total: 0.051 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Importing 'GUID: cc967b1d42ea646d581d186269055111 - Path: Assets/_Game/Art/UI/hud_health_frame.png' with importer (TextureImporter)
+Imported 'GUID: cc967b1d42ea646d581d186269055111' -> (Import Result ID: 'bff2c1a4c5066406c0cb89726e2299a5') in 0.007 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=9ca50c97d455eebb5e3fe78541d3d894 DependenciesID=d813916cb0944aa1d99ca9057cb601f8 StaticDependenciesID=17bce256a00187d81bda7f38186f6ee9
+Refreshing native plugins compatible for Editor in 3.86 ms, found 6 plugins.
+Asset Pipeline Refresh (id=c2a44f380d150419fbbcf29ac9c0f059): Total: 0.052 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Importing 'GUID: 28ee04a6932ad42dd9f51c7ae92c6b5a - Path: Assets/_Game/Art/UI/icon_skill_ultimate.png' with importer (TextureImporter)
+Imported 'GUID: 28ee04a6932ad42dd9f51c7ae92c6b5a' -> (Import Result ID: '38dabe2f06def1c0d791896a31e65620') in 0.008 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=260bf3843b9e125b897c36102a7e221a DependenciesID=4e4a47213140c0be84eb17e70050f23b StaticDependenciesID=e382d1f5f0b00da8e5698644c1742076
+Refreshing native plugins compatible for Editor in 2.19 ms, found 6 plugins.
+Asset Pipeline Refresh (id=db4013548260042dfbdcff9498cbde2e): Total: 0.052 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Importing 'GUID: 85f31450372b84cd1a8125084f26a342 - Path: Assets/_Game/Art/UI/icon_stance_blade.png' with importer (TextureImporter)
+Imported 'GUID: 85f31450372b84cd1a8125084f26a342' -> (Import Result ID: 'beae709629f5ef57ddd85bff1da85886') in 0.005 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=99012b783702dcfa2039d38ca262600b DependenciesID=f77d71f121cd1eb2a6a1e7eaedf80905 StaticDependenciesID=6e18267402c20612c364b8cfb4f939f7
+Refreshing native plugins compatible for Editor in 2.42 ms, found 6 plugins.
+Asset Pipeline Refresh (id=652d134be88384b2891b5d7d16d80263): Total: 0.048 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Importing 'GUID: b1f1aaf20d04a469b9747539156ddd67 - Path: Assets/_Game/Art/UI/icon_stance_talisman.png' with importer (TextureImporter)
+Imported 'GUID: b1f1aaf20d04a469b9747539156ddd67' -> (Import Result ID: '680ef0b50eaacc843486bc2413b13279') in 0.008 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=baf4167e5ae6a0af4649717052c65952 DependenciesID=be36424a782d6fedd3ed8b290f46bcd7 StaticDependenciesID=63fc8223d576ec27056a78fe60682917
+Refreshing native plugins compatible for Editor in 2.04 ms, found 6 plugins.
+Asset Pipeline Refresh (id=6cb77772dbac6462d819f2ae10f78517): Total: 0.052 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Importing 'GUID: aee2ecd4a207d4fc78ce1ac47d28ff06 - Path: Assets/_Game/Art/VFX/Sprites/vfx_ghost_flame.png' with importer (TextureImporter)
+Imported 'GUID: aee2ecd4a207d4fc78ce1ac47d28ff06' -> (Import Result ID: 'bdd98a541ffc5af80fbab56c91af7231') in 0.001 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=f46a6c1d917e10f43d92491e8af519eb DependenciesID=7e5bed8b54dd6fb4d0e7733e6b1fbb6b StaticDependenciesID=3c779da6b9407b15e8864c6c02489e2a
+Asset Pipeline Refresh (id=19b867b0557af4e4baf58bbc50320bc2): Total: 0.047 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Importing 'GUID: 5de14de482cd14e949de2db048ca2f10 - Path: Assets/_Game/Art/VFX/Sprites/vfx_impact_glow.png' with importer (TextureImporter)
+Imported 'GUID: 5de14de482cd14e949de2db048ca2f10' -> (Import Result ID: 'ecff43a335f05e8f44573b9416553aa8') in 0.034 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=ab55fc50f384998d49c9d935815ce4ac DependenciesID=76928a3c56bdaebef298e3211d0b32e2 StaticDependenciesID=8197ebab8c2bc3e6f2e349424007d8dc
+Refreshing native plugins compatible for Editor in 2.06 ms, found 6 plugins.
+Asset Pipeline Refresh (id=50f75b9da82ed461d9862a073b07fd4f): Total: 0.077 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Importing 'GUID: a76fb49c9a56d4c1da04c66879ebd029 - Path: Assets/_Game/Art/VFX/Sprites/vfx_slash_arc.png' with importer (TextureImporter)
+Imported 'GUID: a76fb49c9a56d4c1da04c66879ebd029' -> (Import Result ID: 'f9722c12fe09459943aa2b23ef7f258d') in 0.018 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=47e05004c84df46b90829f5769649bde DependenciesID=fe80de2c41229a0a3ea68e6ab8363294 StaticDependenciesID=c128aaea110309daa37e56e5058e71ab
+Asset Pipeline Refresh (id=007986826832f4b969dce3a58ed40507): Total: 0.059 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Importing 'GUID: 3ee397b4693124d61b41f0b3d92b8c3d - Path: Assets/_Game/Art/VFX/Sprites/vfx_smoke_burst.png' with importer (TextureImporter)
+Imported 'GUID: 3ee397b4693124d61b41f0b3d92b8c3d' -> (Import Result ID: 'a46d297cb81486364882201f28d0264b') in 0.007 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=67a7fa617383addc2905ebe902bc0181 DependenciesID=25735cdaee20e43ab207ebf3e5a147d7 StaticDependenciesID=91b7ff9727b991c709bb185ef4c6fb3e
+Refreshing native plugins compatible for Editor in 2.21 ms, found 6 plugins.
+Asset Pipeline Refresh (id=a67f22b2f5fb14fdfbbd6ebd8cd03806): Total: 0.048 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Importing 'GUID: 05d1de9fc0a7b4106af6878f56cfbc8a - Path: Assets/_Game/Art/SpriteAtlases/Backgrounds.spriteatlasv2' with importer (SpriteAtlasImporter)
+- 	Placed sprite                                                      bg_red_cave in page (  0) at (   0,    0). Page is now (2868, 1099). ( 2872/1103) : 0
+- 	Placed sprite                                                 bg_red_cave_boss in page (  0) at (   0, 1103). Page is now (2868, 2199). ( 2872/1100) : 0
+Sprite Atlas Operation : " ## Generating Atlas Masks ## " took 0.177382 sec (current mem: 248 MB)
+Processing Atlas : Backgrounds
+filling image source format : 2868, 1099, 11472, 4 boundary fill : 0
+Source Texture (Assets/_Game/Art/Backgrounds/bg_red_cave_boss.png) of Sprite (bg_red_cave_boss) is using compressed format. To ensure no loss in source pixel details when packing to SpriteAtlas, please use uncompressed format in TextureImporter.
+filling image source format : 2868, 1096, 11472, 4 boundary fill : 0
+Sprite Atlas Operation : " ## Generate Texture and Render Datas ## " took 0.093582 sec (current mem: 253 MB)
+- Packing completed.
+Imported 'GUID: 05d1de9fc0a7b4106af6878f56cfbc8a' -> (Import Result ID: 'd48338489012d394a0380300eeedc60b') in 0.291 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=56423e2c52d4e27d58af6b780fef7ed6 DependenciesID=07940b464fdc626620aa45f0bb2efea9 StaticDependenciesID=62ef6dc1b48d64504c72655151892dfc
+
+Asset Pipeline Refresh (id=a08f47338879f4e3cab2378c3cd69399): Total: 0.348 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+	(Values over 0.05ms)
+	Summary:
+		Imports: total=1 (actual=1, local cache=0, cache server=0)
+		Asset DB Process Time: managed=0 ms, native=343 ms
+		Asset DB Callback time: managed=1 ms, native=2 ms
+		Scripting: domain reloads=0, domain reload time=0 ms, compile time=0 ms, other=0 ms
+		Project Asset Count: scripts=1794, non-scripts=3399
+		Asset File Changes: new=0, changed=1, moved=0, deleted=0
+		Scan Filter Count: 5
+	ApplyChangesToAssetFolders: 0.068ms
+	Scan: 3.750ms
+	OnSourceAssetsModified: 1.070ms
+	CategorizeAssets: 12.618ms
+	ImportOutOfDateAssets: 324.038ms (6.798ms without children)
+		ImportManagerImport: 293.518ms (0.454ms without children)
+		UnloadImportedAssets: 0.198ms
+		ReloadImportedAssets: 0.191ms
+		EnsureUptoDateAssetsAreRegisteredWithGuidPM: 0.356ms
+		ImportSchedulerStart: 23.136ms
+	PostProcessAllAssets: 0.630ms
+		XRBuildSystem.XRAssetImported 0.235ms
+		MonoPostProcessAllAssets: 0.346ms
+	PostAssetChangesProfiler: 1.986ms
+	GatherAllCurrentPrimaryImportResultRevisions: 0.085ms
+	PersistCurrentRevisions: 0.154ms
+	Untracked: 2.606ms
+
+Importing 'GUID: 05d1de9fc0a7b4106af6878f56cfbc8a - Path: Assets/_Game/Art/SpriteAtlases/Backgrounds.spriteatlasv2' with importer (SpriteAtlasImporter)
+- 	Placed sprite                                                      bg_red_cave in page (  0) at (   0,    0). Page is now (2868, 1099). ( 2872/1103) : 0
+- 	Placed sprite                                                 bg_red_cave_boss in page (  0) at (   0, 1103). Page is now (2868, 2199). ( 2872/1100) : 0
+Sprite Atlas Operation : " ## Generating Atlas Masks ## " took 0.176534 sec (current mem: 248 MB)
+Processing Atlas : Backgrounds
+filling image source format : 2868, 1099, 11472, 4 boundary fill : 0
+Source Texture (Assets/_Game/Art/Backgrounds/bg_red_cave_boss.png) of Sprite (bg_red_cave_boss) is using compressed format. To ensure no loss in source pixel details when packing to SpriteAtlas, please use uncompressed format in TextureImporter.
+filling image source format : 2868, 1096, 11472, 4 boundary fill : 0
+Sprite Atlas Operation : " ## Generate Texture and Render Datas ## " took 0.082271 sec (current mem: 253 MB)
+- Packing completed.
+Imported 'GUID: 05d1de9fc0a7b4106af6878f56cfbc8a' -> (Import Result ID: 'd48338489012d394a0380300eeedc60b') in 0.267 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=56423e2c52d4e27d58af6b780fef7ed6 DependenciesID=07940b464fdc626620aa45f0bb2efea9 StaticDependenciesID=62ef6dc1b48d64504c72655151892dfc
+Refreshing native plugins compatible for Editor in 2.10 ms, found 6 plugins.
+
+Asset Pipeline Refresh (id=d0435a6a1d1b6486db738c72b1454566): Total: 0.309 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+	(Values over 0.05ms)
+	Summary:
+		Imports: total=1 (actual=1, local cache=0, cache server=0)
+		Asset DB Process Time: managed=0 ms, native=305 ms
+		Asset DB Callback time: managed=0 ms, native=2 ms
+		Scripting: domain reloads=0, domain reload time=0 ms, compile time=0 ms, other=0 ms
+		Project Asset Count: scripts=1794, non-scripts=3399
+		Asset File Changes: new=0, changed=0, moved=0, deleted=0
+		Scan Filter Count: 5
+	ApplyChangesToAssetFolders: 0.057ms
+	Scan: 2.847ms
+	CategorizeAssets: 0.807ms
+	ImportOutOfDateAssets: 300.380ms (6.894ms without children)
+		ImportManagerImport: 267.999ms (0.324ms without children)
+		UnloadImportedAssets: 0.094ms
+		ReloadImportedAssets: 0.121ms
+		EnsureUptoDateAssetsAreRegisteredWithGuidPM: 0.308ms
+		ImportSchedulerStart: 25.052ms
+	PostProcessAllAssets: 0.742ms
+		XRBuildSystem.XRAssetImported 0.321ms
+		MonoPostProcessAllAssets: 0.357ms
+	PostAssetChangesProfiler: 2.146ms
+	GatherAllCurrentPrimaryImportResultRevisions: 0.078ms
+	PersistCurrentRevisions: 0.102ms
+	Untracked: 1.326ms
+
+Importing 'GUID: 79d01ebf7a859405eb8af199fd3b0c18 - Path: Assets/_Game/Art/SpriteAtlases/Characters.spriteatlasv2' with importer (SpriteAtlasImporter)
+- 	Placed sprite                                                       moyan_idle in page (  0) at (   0,    0). Page is now ( 391,  386). ( 395/390) : 0
+Sprite Atlas Operation : " ## Generating Atlas Masks ## " took 0.002948 sec (current mem: 243 MB)
+Processing Atlas : Characters
+- 	Page (  0) downsized to : ( 512 x  512).
+filling image source format : 391, 386, 1564, 4 boundary fill : 0
+Sprite Atlas Operation : " ## Generate Texture and Render Datas ## " took 0.001367 sec (current mem: 242 MB)
+- Packing completed.
+Imported 'GUID: 79d01ebf7a859405eb8af199fd3b0c18' -> (Import Result ID: '03456df0bdc4a97a1ab84179e07338ff') in 0.006 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=e814235a754ad591071869d5cd337cbf DependenciesID=c40df2efebcc8448cb5d17c1a491a05b StaticDependenciesID=57e8ad42740b196720db9429600e4537
+Asset Pipeline Refresh (id=1ac5d61d7f2d347c89ddd48ba390c22a): Total: 0.060 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Importing 'GUID: 79d01ebf7a859405eb8af199fd3b0c18 - Path: Assets/_Game/Art/SpriteAtlases/Characters.spriteatlasv2' with importer (SpriteAtlasImporter)
+- 	Placed sprite                                                       moyan_idle in page (  0) at (   0,    0). Page is now ( 391,  386). ( 395/390) : 0
+Sprite Atlas Operation : " ## Generating Atlas Masks ## " took 0.002899 sec (current mem: 243 MB)
+Processing Atlas : Characters
+- 	Page (  0) downsized to : ( 512 x  512).
+filling image source format : 391, 386, 1564, 4 boundary fill : 0
+Sprite Atlas Operation : " ## Generate Texture and Render Datas ## " took 0.001235 sec (current mem: 242 MB)
+- Packing completed.
+Imported 'GUID: 79d01ebf7a859405eb8af199fd3b0c18' -> (Import Result ID: '03456df0bdc4a97a1ab84179e07338ff') in 0.005 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=e814235a754ad591071869d5cd337cbf DependenciesID=c40df2efebcc8448cb5d17c1a491a05b StaticDependenciesID=57e8ad42740b196720db9429600e4537
+Refreshing native plugins compatible for Editor in 2.17 ms, found 6 plugins.
+Asset Pipeline Refresh (id=8a4fa5208a6a8443aa29dc6b7b196682): Total: 0.045 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Importing 'GUID: 36251a77d56dc42279ca8318f69f67db - Path: Assets/_Game/Art/SpriteAtlases/Enemies.spriteatlasv2' with importer (SpriteAtlasImporter)
+- 	Placed sprite                                                  tomb_armor_king in page (  0) at (   0,    0). Page is now ( 763,  865). ( 767/869) : 0
+- 	Placed sprite                                                      soul_puppet in page (  0) at ( 705,  158). Page is now (1151,  901). ( 450/747) : 0
+- 	Placed sprite                                                     stone_turtle in page (  0) at (1112,    0). Page is now (1461,  901). ( 353/432) : 0
+- 	Placed sprite                                                        fire_fish in page (  0) at (1129,  431). Page is now (1475,  901). ( 350/356) : 0
+- 	Placed sprite                                                     wheel_zombie in page (  0) at (1464,    0). Page is now (1761,  901). ( 301/328) : 0
+- 	Placed sprite                                                   skeleton_ghost in page (  0) at (1441,  329). Page is now (1794,  901). ( 357/259) : 0
+- 	Placed sprite                                                     talisman_bat in page (  0) at (1428,  679). Page is now (1832,  901). ( 408/221) : 0
+Sprite Atlas Operation : " ## Generating Atlas Masks ## " took 0.054652 sec (current mem: 250 MB)
+Processing Atlas : Enemies
+- 	Page (  0) downsized to : (2048 x 1024).
+filling image source format : 775, 877, 3100, 4 boundary fill : 0
+filling image source format : 458, 755, 1832, 4 boundary fill : 0
+filling image source format : 349, 428, 1396, 4 boundary fill : 0
+filling image source format : 346, 352, 1384, 4 boundary fill : 0
+filling image source format : 297, 324, 1188, 4 boundary fill : 0
+filling image source format : 353, 255, 1412, 4 boundary fill : 0
+filling image source format : 404, 217, 1616, 4 boundary fill : 0
+Sprite Atlas Operation : " ## Generate Texture and Render Datas ## " took 0.009047 sec (current mem: 246 MB)
+- Packing completed.
+Imported 'GUID: 36251a77d56dc42279ca8318f69f67db' -> (Import Result ID: '9f8960e7c0ac818c6d7e2a508eb602e3') in 0.068 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=9c4cc9ecab99c8798f7ff7b4474e0f77 DependenciesID=7e00cbd013b64e90a38ba71dfa00dbac StaticDependenciesID=da1c26694ced2f9085f1fafecb1213f3
+Refreshing native plugins compatible for Editor in 2.08 ms, found 6 plugins.
+Asset Pipeline Refresh (id=ea273b4e511644fce8725928d86d8ece): Total: 0.121 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Importing 'GUID: 36251a77d56dc42279ca8318f69f67db - Path: Assets/_Game/Art/SpriteAtlases/Enemies.spriteatlasv2' with importer (SpriteAtlasImporter)
+- 	Placed sprite                                                  tomb_armor_king in page (  0) at (   0,    0). Page is now ( 763,  865). ( 767/869) : 0
+- 	Placed sprite                                                      soul_puppet in page (  0) at ( 705,  158). Page is now (1151,  901). ( 450/747) : 0
+- 	Placed sprite                                                     stone_turtle in page (  0) at (1112,    0). Page is now (1461,  901). ( 353/432) : 0
+- 	Placed sprite                                                        fire_fish in page (  0) at (1129,  431). Page is now (1475,  901). ( 350/356) : 0
+- 	Placed sprite                                                     wheel_zombie in page (  0) at (1464,    0). Page is now (1761,  901). ( 301/328) : 0
+- 	Placed sprite                                                   skeleton_ghost in page (  0) at (1441,  329). Page is now (1794,  901). ( 357/259) : 0
+- 	Placed sprite                                                     talisman_bat in page (  0) at (1428,  679). Page is now (1832,  901). ( 408/221) : 0
+Sprite Atlas Operation : " ## Generating Atlas Masks ## " took 0.054329 sec (current mem: 250 MB)
+Processing Atlas : Enemies
+- 	Page (  0) downsized to : (2048 x 1024).
+filling image source format : 775, 877, 3100, 4 boundary fill : 0
+filling image source format : 458, 755, 1832, 4 boundary fill : 0
+filling image source format : 349, 428, 1396, 4 boundary fill : 0
+filling image source format : 346, 352, 1384, 4 boundary fill : 0
+filling image source format : 297, 324, 1188, 4 boundary fill : 0
+filling image source format : 353, 255, 1412, 4 boundary fill : 0
+filling image source format : 404, 217, 1616, 4 boundary fill : 0
+Sprite Atlas Operation : " ## Generate Texture and Render Datas ## " took 0.008284 sec (current mem: 246 MB)
+- Packing completed.
+Imported 'GUID: 36251a77d56dc42279ca8318f69f67db' -> (Import Result ID: '9f8960e7c0ac818c6d7e2a508eb602e3') in 0.065 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=9c4cc9ecab99c8798f7ff7b4474e0f77 DependenciesID=7e00cbd013b64e90a38ba71dfa00dbac StaticDependenciesID=da1c26694ced2f9085f1fafecb1213f3
+Refreshing native plugins compatible for Editor in 2.28 ms, found 6 plugins.
+Asset Pipeline Refresh (id=f50b17d1e78264117907616d6ccd6544): Total: 0.108 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Importing 'GUID: 300d475e61caa4e25b3c60008893bff2 - Path: Assets/_Game/Art/SpriteAtlases/UI.spriteatlasv2' with importer (SpriteAtlasImporter)
+- 	Placed sprite                                             icon_stance_talisman in page (  0) at (   0,    0). Page is now ( 550,  522). ( 554/526) : 0
+- 	Placed sprite                                                  button_ultimate in page (  0) at (   0,  526). Page is now ( 550, 1048). ( 554/526) : 0
+- 	Placed sprite                                              icon_skill_ultimate in page (  0) at (   0, 1052). Page is now ( 550, 1574). ( 554/526) : 0
+- 	Placed sprite                                                 hud_health_frame in page (  0) at (   0, 1578). Page is now ( 829, 1770). ( 833/196) : 0
+- 	Placed sprite                                                icon_stance_blade in page (  0) at ( 554,    0). Page is now ( 863, 1770). ( 313/396) : 0
+- 	Placed sprite                                                    button_switch in page (  0) at ( 554,  396). Page is now ( 863, 1770). ( 313/396) : 0
+- 	Placed sprite                                            icon_skill_blade_echo in page (  0) at (   0, 1774). Page is now ( 863, 1987). ( 516/217) : 0
+- 	Placed sprite                                         icon_skill_talisman_bind in page (  0) at ( 553,  791). Page is now ( 863, 1987). ( 210/184) : 0
+- 	Placed sprite                                                  button_settings in page (  0) at ( 554,  974). Page is now ( 863, 1987). ( 174/163) : 0
+Sprite Atlas Operation : " ## Generating Atlas Masks ## " took 0.066482 sec (current mem: 256 MB)
+Processing Atlas : UI
+- 	Page (  0) downsized to : (1024 x 2048).
+filling image source format : 550, 522, 2200, 4 boundary fill : 0
+filling image source format : 550, 522, 2200, 4 boundary fill : 0
+filling image source format : 550, 522, 2200, 4 boundary fill : 0
+filling image source format : 829, 192, 3316, 4 boundary fill : 0
+filling image source format : 309, 392, 1236, 4 boundary fill : 0
+filling image source format : 309, 392, 1236, 4 boundary fill : 0
+filling image source format : 512, 213, 2048, 4 boundary fill : 0
+filling image source format : 206, 180, 824, 4 boundary fill : 0
+filling image source format : 170, 159, 680, 4 boundary fill : 0
+Sprite Atlas Operation : " ## Generate Texture and Render Datas ## " took 0.008797 sec (current mem: 253 MB)
+- Packing completed.
+Imported 'GUID: 300d475e61caa4e25b3c60008893bff2' -> (Import Result ID: '991cd5f81ea87fdefb0c51826d20c878') in 0.078 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=6d6bef54492f411136ebf96d046cfa68 DependenciesID=e8402c4095af7cb7fea02af39396a9e7 StaticDependenciesID=96e64e977c5c5c4b999b3dd3fbc89812
+Refreshing native plugins compatible for Editor in 2.11 ms, found 6 plugins.
+Asset Pipeline Refresh (id=a8c735a21a22642d3bfbc35dd64fa0e0): Total: 0.134 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Importing 'GUID: 300d475e61caa4e25b3c60008893bff2 - Path: Assets/_Game/Art/SpriteAtlases/UI.spriteatlasv2' with importer (SpriteAtlasImporter)
+- 	Placed sprite                                             icon_stance_talisman in page (  0) at (   0,    0). Page is now ( 550,  522). ( 554/526) : 0
+- 	Placed sprite                                                  button_ultimate in page (  0) at (   0,  526). Page is now ( 550, 1048). ( 554/526) : 0
+- 	Placed sprite                                              icon_skill_ultimate in page (  0) at (   0, 1052). Page is now ( 550, 1574). ( 554/526) : 0
+- 	Placed sprite                                                 hud_health_frame in page (  0) at (   0, 1578). Page is now ( 829, 1770). ( 833/196) : 0
+- 	Placed sprite                                                icon_stance_blade in page (  0) at ( 554,    0). Page is now ( 863, 1770). ( 313/396) : 0
+- 	Placed sprite                                                    button_switch in page (  0) at ( 554,  396). Page is now ( 863, 1770). ( 313/396) : 0
+- 	Placed sprite                                            icon_skill_blade_echo in page (  0) at (   0, 1774). Page is now ( 863, 1987). ( 516/217) : 0
+- 	Placed sprite                                         icon_skill_talisman_bind in page (  0) at ( 553,  791). Page is now ( 863, 1987). ( 210/184) : 0
+- 	Placed sprite                                                  button_settings in page (  0) at ( 554,  974). Page is now ( 863, 1987). ( 174/163) : 0
+Sprite Atlas Operation : " ## Generating Atlas Masks ## " took 0.064532 sec (current mem: 256 MB)
+Processing Atlas : UI
+- 	Page (  0) downsized to : (1024 x 2048).
+filling image source format : 550, 522, 2200, 4 boundary fill : 0
+filling image source format : 550, 522, 2200, 4 boundary fill : 0
+filling image source format : 550, 522, 2200, 4 boundary fill : 0
+filling image source format : 829, 192, 3316, 4 boundary fill : 0
+filling image source format : 309, 392, 1236, 4 boundary fill : 0
+filling image source format : 309, 392, 1236, 4 boundary fill : 0
+filling image source format : 512, 213, 2048, 4 boundary fill : 0
+filling image source format : 206, 180, 824, 4 boundary fill : 0
+filling image source format : 170, 159, 680, 4 boundary fill : 0
+Sprite Atlas Operation : " ## Generate Texture and Render Datas ## " took 0.008910 sec (current mem: 253 MB)
+- Packing completed.
+Imported 'GUID: 300d475e61caa4e25b3c60008893bff2' -> (Import Result ID: '991cd5f81ea87fdefb0c51826d20c878') in 0.076 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=6d6bef54492f411136ebf96d046cfa68 DependenciesID=e8402c4095af7cb7fea02af39396a9e7 StaticDependenciesID=96e64e977c5c5c4b999b3dd3fbc89812
+Refreshing native plugins compatible for Editor in 2.20 ms, found 6 plugins.
+Asset Pipeline Refresh (id=70beb14fd274441e9ae58a99ddea56d5): Total: 0.118 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Importing 'GUID: 88a89530707d741ce9f5e5535b02291d - Path: Assets/_Game/Art/SpriteAtlases/VFX.spriteatlasv2' with importer (SpriteAtlasImporter)
+- 	Placed sprite                                                  vfx_impact_glow in page (  0) at (   0,    0). Page is now (1024,  589). ( 1028/593) : 0
+- 	Placed sprite                                                    vfx_slash_arc in page (  0) at (   0,  428). Page is now (1024,  853). ( 1028/429) : 0
+- 	Placed sprite                                                  vfx_smoke_burst in page (  0) at (1027,    0). Page is now (1395,  853). ( 372/474) : 0
+- 	Placed sprite                                                   proj_seal_wave in page (  0) at ( 606,  462). Page is now (1395,  853). ( 516/217) : 0
+- 	Placed sprite                                                    proj_rockfall in page (  0) at (1177,  421). Page is now (1395,  853). ( 211/259) : 0
+- 	Placed sprite                                                   proj_seal_bolt in page (  0) at (1315,  668). Page is now (1521,  853). ( 210/184) : 0
+- 	Placed sprite                                                  proj_soul_shard in page (  0) at ( 460,    0). Page is now (1521,  853). ( 70/79) : 0
+- 	Placed sprite                                                  vfx_ghost_flame in page (  0) at ( 529,    0). Page is now (1521,  853). ( 53/86) : 0
+- 	Placed sprite                                                  proj_ghost_fire in page (  0) at ( 581,    0). Page is now (1521,  853). ( 53/86) : 0
+Sprite Atlas Operation : " ## Generating Atlas Masks ## " took 0.028671 sec (current mem: 262 MB)
+Processing Atlas : VFX
+- 	Page (  0) downsized to : (2048 x 1024).
+filling image source format : 1024, 593, 4096, 4 boundary fill : 0
+filling image source format : 1024, 425, 4096, 4 boundary fill : 0
+filling image source format : 368, 470, 1472, 4 boundary fill : 0
+filling image source format : 512, 213, 2048, 4 boundary fill : 0
+filling image source format : 207, 256, 828, 4 boundary fill : 0
+filling image source format : 206, 180, 824, 4 boundary fill : 0
+filling image source format : 68, 75, 272, 4 boundary fill : 0
+filling image source format : 51, 84, 204, 4 boundary fill : 0
+filling image source format : 51, 84, 204, 4 boundary fill : 0
+Sprite Atlas Operation : " ## Generate Texture and Render Datas ## " took 0.008689 sec (current mem: 258 MB)
+- Packing completed.
+Imported 'GUID: 88a89530707d741ce9f5e5535b02291d' -> (Import Result ID: '8dacc047608c9da3fc250cd9c11b5e82') in 0.040 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=415014fa66fb9536ad7c1a442c425e10 DependenciesID=af4abf1a7a85f0335c5a6de41541e607 StaticDependenciesID=40a6baa81816e2d9d734f4016084030d
+Asset Pipeline Refresh (id=b38f431e55abd4c76966e01648ee695a): Total: 0.092 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Importing 'GUID: 88a89530707d741ce9f5e5535b02291d - Path: Assets/_Game/Art/SpriteAtlases/VFX.spriteatlasv2' with importer (SpriteAtlasImporter)
+- 	Placed sprite                                                  vfx_impact_glow in page (  0) at (   0,    0). Page is now (1024,  589). ( 1028/593) : 0
+- 	Placed sprite                                                    vfx_slash_arc in page (  0) at (   0,  428). Page is now (1024,  853). ( 1028/429) : 0
+- 	Placed sprite                                                  vfx_smoke_burst in page (  0) at (1027,    0). Page is now (1395,  853). ( 372/474) : 0
+- 	Placed sprite                                                   proj_seal_wave in page (  0) at ( 606,  462). Page is now (1395,  853). ( 516/217) : 0
+- 	Placed sprite                                                    proj_rockfall in page (  0) at (1177,  421). Page is now (1395,  853). ( 211/259) : 0
+- 	Placed sprite                                                   proj_seal_bolt in page (  0) at (1315,  668). Page is now (1521,  853). ( 210/184) : 0
+- 	Placed sprite                                                  proj_soul_shard in page (  0) at ( 460,    0). Page is now (1521,  853). ( 70/79) : 0
+- 	Placed sprite                                                  vfx_ghost_flame in page (  0) at ( 529,    0). Page is now (1521,  853). ( 53/86) : 0
+- 	Placed sprite                                                  proj_ghost_fire in page (  0) at ( 581,    0). Page is now (1521,  853). ( 53/86) : 0
+Sprite Atlas Operation : " ## Generating Atlas Masks ## " took 0.028480 sec (current mem: 262 MB)
+Processing Atlas : VFX
+- 	Page (  0) downsized to : (2048 x 1024).
+filling image source format : 1024, 593, 4096, 4 boundary fill : 0
+filling image source format : 1024, 425, 4096, 4 boundary fill : 0
+filling image source format : 368, 470, 1472, 4 boundary fill : 0
+filling image source format : 512, 213, 2048, 4 boundary fill : 0
+filling image source format : 207, 256, 828, 4 boundary fill : 0
+filling image source format : 206, 180, 824, 4 boundary fill : 0
+filling image source format : 68, 75, 272, 4 boundary fill : 0
+filling image source format : 51, 84, 204, 4 boundary fill : 0
+filling image source format : 51, 84, 204, 4 boundary fill : 0
+Sprite Atlas Operation : " ## Generate Texture and Render Datas ## " took 0.008375 sec (current mem: 258 MB)
+- Packing completed.
+Imported 'GUID: 88a89530707d741ce9f5e5535b02291d' -> (Import Result ID: '8dacc047608c9da3fc250cd9c11b5e82') in 0.039 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=415014fa66fb9536ad7c1a442c425e10 DependenciesID=af4abf1a7a85f0335c5a6de41541e607 StaticDependenciesID=40a6baa81816e2d9d734f4016084030d
+Refreshing native plugins compatible for Editor in 2.01 ms, found 6 plugins.
+Asset Pipeline Refresh (id=cb6b2546f344546358274cfca841d3ba): Total: 0.079 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Asset Pipeline Refresh (id=9caf0c187e7874d8792b24e5073d2d80): Total: 0.003 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Asset Pipeline Refresh (id=1e881b7cf29ea4a15b52de7806488477): Total: 0.003 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Asset Pipeline Refresh (id=76a1f7b0c48894605bfe40fd9064d750): Total: 0.003 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Asset Pipeline Refresh (id=7f6e7516b8c1040dc8f6eb9d652a4b43): Total: 0.003 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Asset Pipeline Refresh (id=84cee77bf2cba49b5a3b2d6895f152ed): Total: 0.003 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Asset Pipeline Refresh (id=948930f12d18440c9993aed3ef275ace): Total: 0.003 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Asset Pipeline Refresh (id=09b41acef79564b11a1f56d8fd1a7d59): Total: 0.003 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Asset Pipeline Refresh (id=d3bb2c82739b545a88df6ed9088d8d75): Total: 0.003 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Asset Pipeline Refresh (id=94c4ec7a490a2477fb8dd6e922f8aead): Total: 0.003 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Asset Pipeline Refresh (id=2a365ebcec1db40948b15c3788aab10e): Total: 0.003 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Asset Pipeline Refresh (id=724cd1e06aab74defab3e73f158b16f0): Total: 0.003 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Asset Pipeline Refresh (id=6da2c2dd74237459f866c226a3ee4bfa): Total: 0.003 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Asset Pipeline Refresh (id=99d68f1627a29452ea1d7bccb3585f86): Total: 0.003 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Asset Pipeline Refresh (id=74cb0063b52c54ef98ac6764109bc32e): Total: 0.003 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Asset Pipeline Refresh (id=d18b7c0cc6e1f43438d3fbff4bd2661a): Total: 0.003 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Asset Pipeline Refresh (id=8645a9461d85a49e0a52632266867855): Total: 0.003 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Asset Pipeline Refresh (id=9a516b7388ee74d2daad4fd63acf3bd2): Total: 0.003 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Asset Pipeline Refresh (id=e9c4a16e4aaf54f118b994e07f8a9b61): Total: 0.003 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Asset Pipeline Refresh (id=5e757460e58dd45c896853028a2e07d5): Total: 0.003 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Asset Pipeline Refresh (id=3a0c7c021dedb45c180abde4f8a59cc1): Total: 0.003 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Asset Pipeline Refresh (id=b548d3be15e29466a972723495be5564): Total: 0.003 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Asset Pipeline Refresh (id=2aa92272dfabd46c08d7e82a89b8d595): Total: 0.003 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Asset Pipeline Refresh (id=0c65850cb68b54e20b31d2a68c8db28b): Total: 0.003 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Asset Pipeline Refresh (id=12a5874a943da4147b4ad78d0dac36f1): Total: 0.003 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Asset Pipeline Refresh (id=30b436449892a4fd4ac85a38a21b4777): Total: 0.004 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Asset Pipeline Refresh (id=1b38b146a2e28460293b438df04309bf): Total: 0.004 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Asset Pipeline Refresh (id=26f9e9be308ef4566a7d3f6515d1d997): Total: 0.003 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Asset Pipeline Refresh (id=054efbcbf104c47cfb226379e019051b): Total: 0.003 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Asset Pipeline Refresh (id=7395b1868439e4a56b83f3c4f173c4d6): Total: 0.003 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Asset Pipeline Refresh (id=ad6fa610efa1a4e9691cdac3dd5076fa): Total: 0.004 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Asset Pipeline Refresh (id=534e9c271f0b44311a8a287a7bd7316f): Total: 0.003 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Asset Pipeline Refresh (id=22556fc7da9cb41a7894bee3c2c7ccfb): Total: 0.004 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Asset Pipeline Refresh (id=948a088ef02374111ab30a8e333a1ca7): Total: 0.003 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Asset Pipeline Refresh (id=2f7acda1d3e1c4aca84140c6ed33f621): Total: 0.003 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Asset Pipeline Refresh (id=0f6714e15e904408db703d4c671884d9): Total: 0.003 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Asset Pipeline Refresh (id=bb846d3fdfecc4aa096f257b31b3ab7e): Total: 0.003 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Asset Pipeline Refresh (id=55669477945494331b2d14116d94d31b): Total: 0.004 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Asset Pipeline Refresh (id=a87af9e78287140988f86f4056f19875): Total: 0.003 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Asset Pipeline Refresh (id=821a7c0b52dce456985d0813e8247c8b): Total: 0.003 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Asset Pipeline Refresh (id=435567ac12bd04d22849266650a1c3b5): Total: 0.004 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Importing 'GUID: 7da892722a0e841488a9ec9d882c65bb - Path: Assets/_Game/Config/Registry/AssetRegistry.asset' with importer (NativeFormatImporter)
+Imported 'GUID: 7da892722a0e841488a9ec9d882c65bb' -> (Import Result ID: '31693709ae3ec89dd3ab86b42981f9b2') in 0.001 seconds [static dependencies only]. Details - ImportResultOutputID=3b7fc3e6044702fc036c6b6659b4416d DependenciesID=7317e460a421e8831e92559315f6224b StaticDependenciesID=68b57a0595764029976fd81fb3565047
+Refreshing native plugins compatible for Editor in 2.10 ms, found 6 plugins.
+Asset Pipeline Refresh (id=ce42e58be237c4805a2e6ee1380ea2b9): Total: 0.046 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+
+Asset Pipeline Refresh (id=dc52398a102524f09a45c9f5c9ab6391): Total: 0.387 seconds - Initiated by RefreshV2(NoUpdateAssetOptions)
+	(Values over 0.05ms)
+	Summary:
+		Imports: total=0 (actual=0, local cache=0, cache server=0)
+		Asset DB Process Time: managed=0 ms, native=386 ms
+		Asset DB Callback time: managed=0 ms, native=0 ms
+		Scripting: domain reloads=0, domain reload time=0 ms, compile time=0 ms, other=0 ms
+		Project Asset Count: scripts=1794, non-scripts=3399
+		Asset File Changes: new=0, changed=0, moved=0, deleted=0
+		Scan Filter Count: 1
+	ApplyChangesToAssetFolders: 0.066ms
+	Scan: 386.377ms
+	Collect global state as custom dependencies: 0.069ms
+	GatherAllCurrentPrimaryImportResultRevisions: 0.078ms
+	UnloadStreamsEnd: 0.108ms
+	Untracked: 0.232ms
+
+T630_ART_AUTHORING_PASS png=28 atlases=5 ASSET_REGISTRY_READY source=AssetRegistry:Assets/_Game/Config/Registry/AssetRegistry.asset configHash=152b9faa81ba66e29469d7a4a48227f8fb7ef0f969f1cb13679d6fe0ce0786f8 entries=76 prefabs=40 sprites=18 audioClips=17 scenes=1
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/StackTrace.cs:35)
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+OneStrokeDemon.Editor.Art.T630ArtAssetAuthoring:CreateOrRepairPrototypeAssets () (at Assets/_Game/Scripts/Editor/Art/T630ArtAssetAuthoring.cs:72)
+
+(Filename: Assets/_Game/Scripts/Editor/Art/T630ArtAssetAuthoring.cs Line: 72)
+
+Batchmode quit successfully invoked - shutting down!
+Killing ADB server in 0.197055 seconds.
+Thread 0x3293cb000 may have been prematurely finalized
+正在关闭 MSBuild 服务器...
+正在关闭 VB/C# 编译器服务器...
+Input System module state changed to: ShutdownInProgress.
+Input Polling Thread exited.
+Input System module state changed to: Shutdown.
+[Physics::Module] Cleanup current backend.
+[Physics::Module] Id: 0xf2b8ea05
+[Licensing::IpcConnector] LicenseClient-cqmizhangxiaoyu2-6000.5.1-notifications channel disconnected successfully.
+[Licensing::IpcConnector] LicenseClient-cqmizhangxiaoyu2-6000.5.1 channel disconnected successfully.
+Thread 0x177ed3000 may have been prematurely finalized
+Thread 0x178103000 may have been prematurely finalized
+Thread 0x178077000 may have been prematurely finalized
+Thread 0x177f5f000 may have been prematurely finalized
+Thread 0x177feb000 may have been prematurely finalized
+Thread 0x17818f000 may have been prematurely finalized
+Thread 0x17821b000 may have been prematurely finalized
+成功关闭 MSBuild 服务器。
+成功关闭 VB/C# 编译器服务器。
+AcceleratorClientConnectionCallback - disconnected - :0
+Thread 0x325b87000 may have been prematurely finalized
+Cleanup mono
+CodeReloadManager destroyed
+info: Microsoft.Hosting.Lifetime[0]
+      Application is shutting down...
+info: Unity.ILPP.Runner.PostProcessingAssemblyLoadContext[0]
+      ALC ILPP context 1 is unloading
+debugger-agent: Unable to listen on 33
+Exiting batchmode successfully now!
+[Package Manager] Server process was shutdown

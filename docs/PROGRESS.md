@@ -1,15 +1,23 @@
 # PROGRESS
 
 - 日期：2026-07-14
-- 当前成熟度：P3手势战斗核心、P4玩家/敌人技能、P5完整单局闭环以及P6 HUD/结算UI、中文字体与战斗反馈均已完成；下一项接入原型美术资源
-- 当前任务：T630
+- 当前成熟度：P3手势战斗核心、P4玩家/敌人技能、P5完整单局闭环以及P6 HUD/结算UI、中文字体、战斗反馈与原型美术接入均已完成；T650教程表现已READY
+- 当前任务：T650
 - 状态：READY
 - Unity精确版本：6000.5.1f1（已由ProjectVersion.txt与本机安装核验）
 - 微信SDK来源或版本：官方 `minigame-tuanjie-transform-sdk` v0.1.33 / commit `ed4ad28f433c6b52b5fd3f22a6fa155a0c98c228` / embedded最小补丁
 - Active Scene：Assets/_Game/Scenes/Bootstrap.unity
 - 配置版本：schema 5 / content 0.6.1-sample / hash `152b9faa81ba66e29469d7a4a48227f8fb7ef0f969f1cb13679d6fe0ce0786f8`
 
+## 进行中
+
+- 无原子任务处于`IN_PROGRESS`；T650依赖T520/T600均为DONE，现为下一个`READY`内容任务。T640仍依赖已延期且BLOCKED的T120，不能提前开始。
+
 ## 已完成
+
+- T630：用户于2026-07-14提供仓库外的2868×1320、130,855,476字节概念PSD，SHA-256为`e6a2552a...1fb34`；原稿未进入`Assets/`。按图层清单导出两张红色洞穴背景、黄衣灵猫、五种PSD敌人、UI与VFX，并按用户许可用ImageGen单独补齐魂偶和镇墓玄甲王；所有输入与输出登记为`APPROVED_PROTOTYPE`，无一声称具备发布授权，轮车僵妖上游生成条款仍待发布前核验。
+- T630：Runtime新增28张RGBA PNG（26个非背景含透明像素）、5个SpriteAtlas v2、2个单帧Actor Prefab和38个可池化VFX Prefab；Sorting Layer顺序固定为Background/Default/Actors/Projectiles/VFX。Canonical Registry的18个Sprite和40个Prefab键均改绑实际资源，17个AudioClip继续保留T240静音占位，未修改玩法配置、Scene、Packages、微信SDK或Builds。
+- T630：专项EditMode 5/5、配置漂移0与.NET 58/58、ConfigPipeline Unity EditMode 19/19和PlayMode 3/3、最终全量EditMode 192/192及PlayMode 45/45全部通过，最终日志无Error/Warning。确定性1920×1080最终RGBA画廊SHA-256为`2e7cb088...948e3`；一次`-nographics`崩溃和Metal批处理纹理/颜色损坏均明确标为INVALID且不作证据，标准Web/微信/DevTools/真机按用户延期要求为NOT RUN。
 
 - T620：新增配置驱动的5类战斗反馈档案，以及只读`CombatFeedbackService`和Unity输出适配；命中、弱点、破甲、弹反与玩家受击可编排受击停顿/慢动作、闪白、震屏、池化VFX/伤害数字、预载音效及可关闭震动，反馈不修改伤害或战斗结算真相。
 - T620：双工作簿已同步为schema 5/content `0.6.1-sample`，新增`FeedbackCues`并完成关键Sheet渲染、重新导入及公式错误0复核；受管JSON为193,551字节/740条/content hash `152b9faa...86f8`，28组372个ID常量。严格生成/漂移门及ConfigExporter .NET 58/58通过。
@@ -164,7 +172,7 @@
 - T200：按GAME_DESIGN修正关卡玩法ID为 `lv_001_tutorial`、`lv_002_cave`、`lv_003_boss`，Boss玩法ID为 `boss_tomb_king`；所有Level/Wave/Spawn/BossPhase/Reward依赖引用同步，文案键和资源键保持独立命名空间。
 - T200：FieldDictionary保留248条非递归字段记录，修正Global互斥类型列及10个主键/条件字段的必填语义；冻结Schema属性存在与Excel单元格非空的差异、空值转换、普通/分组/通配符/conditional外键和数据所有权。
 - T200：29表、14公式、248字段、Schema/样例、类型/范围/枚举、主键、外键、连续order、关卡-Boss语义和规范化contentHash的只读契约审计全部PASS；29表最终渲染经4张总览拼图复核，无结构或版式异常。
-- 执行顺序调整：用户明确要求暂时绕过T120及微信开发者工具/打包问题，先完成游戏主要内容；T120保持`BLOCKED`、T130保持`BACKLOG`，不删除MVP平台验收要求；T620已完成，当前首个依赖满足的`READY`任务为T630。
+- 执行顺序调整：用户明确要求暂时绕过T120及微信开发者工具/打包问题，先完成游戏主要内容；T120保持`BLOCKED`、T130保持`BACKLOG`，不删除MVP平台验收要求；T630已完成，T650现为第一个依赖均DONE的`READY`内容任务。
 - T120 G2：Unity `6000.5.1f1` 基于固定 embedded WXSDK 成功生成 `Builds/WeChat/T120`；84个文件、总计101,901,218字节，其中`minigame` 12,008,520字节，JSON结构、关键文件、SHA-256清单与敏感占位扫描均通过。
 - T120构建参数：空AppID、横屏、256MB、触摸启用、Development、关闭渲染线程与性能分析、清理构建，并使用SDK受支持的多线程Brotli；可复现入口为`Tools/CI/build-wechat.sh`。
 - T120 G2结论为`PASS WITH KNOWN ISSUES`：默认单线程Brotli在当前macOS Unity安装布局下引用错误路径（BUG-0005，已用配置规避）；转换含93条未匹配替换规则及6条Emscripten warning（BUG-0006），需要G3实际运行判定影响。
@@ -208,8 +216,8 @@
 5. 标准Web存在URP EASU不支持与PlayerPrefs手动同步弃用warning，见BUG-0001/BUG-0002；T610已在Editor Metal路径验证TMP中文，但尚未重新构建Web验证字体压缩/加载，G1仍未覆盖后台音频恢复或真机触摸。
 6. 长Web构建后Unity MCP实例桥接未自动恢复，见BUG-0003；Unity batch测试与Web运行未受影响。
 7. PSD主角和怪物大多为单张Sprite；T610两个静态TMP资产约2.78MB，实际Web压缩包、运行内存和真机触摸延迟仍需T730及平台门验证。
-8. T450已能按AssetManifest类型装配六怪，但T240的75个非场景键仍使用按类型共享的受管占位资源；类型与覆盖合同已成立，正式视觉、音频、身体碰撞形状和逐Prefab内容仍须在T630及相应玩法任务中替换并重新校验。
-9. 三个MVP关卡、T550结算/进度/重开、T600 HUD、T610中文字体与T620战斗反馈路径已闭环；但T630正式资源和T650教程遮罩尚未实现，`IProgressSaveStore`与震动也仍待T130平台适配，因此当前证据不能外推为最终演出、平台持久化或真机体验。
+8. T630已替换18个Sprite和40个Prefab视觉占位，但17个AudioClip仍使用T240静音占位；单帧角色尚无正式动画或逐对象身体碰撞，ImageGen补图与PSD原画的细节密度存在差异，全部美术仅获原型授权，不能外推为发布品质。
+9. 三个MVP关卡、T550结算/进度/重开、T600 HUD、T610中文字体、T620战斗反馈和T630原型视觉路径已闭环；但T650教程遮罩尚未实现，`IProgressSaveStore`与震动也仍待T130平台适配，因此当前证据不能外推为最终教程、平台持久化或真机体验。
 ## 下一步
 
-只执行T630：接入PSD解析出的背景、主角、怪物、UI和特效作为原型资源，统一透明PNG、尺寸、压缩、命名、Pivot/PPU/SortingLayer和来源/授权记录；不把125MB PSD放入Runtime Assets，不把单张角色虚构为骨骼拆件，不提前实现T640/T650，也不恢复T120/T130。平台任务最迟在T640/T750前恢复。
+只执行T650：完成事件驱动教程遮罩、手势示意和跳过/回看，继续以T520教程事件与配置Texts为真相源；不提前实现依赖T120的T640，也不恢复T120/T130。平台任务最迟在T640/T750前恢复。

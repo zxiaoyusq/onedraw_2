@@ -1,4 +1,6 @@
-# ASSET_INTEGRATION：PSD素材接入计划
+# ASSET_INTEGRATION：PSD原型素材接入记录
+
+> T630的精确导入、Atlas、来源和验收门以`docs/ART_PIPELINE.md`与`docs/ASSET_SOURCES.md`为准。本文件保留对概念PSD内容的历史识别摘要。
 
 ## 已识别内容
 
@@ -13,11 +15,12 @@
 - UI英文和装饰大多已栅格化；动态血条需要重新拆成框、底槽、填充、头像和文本。
 - 背景虽有多层加工，但没有干净的远景、中景、前景视差层。
 - 轮车僵妖源图层名含生成图标记，正式商用前必须核对来源和授权。
+- 用户已在2026-07-14提供目标PSD；原始文件保持在仓库外，只把经来源登记和hash固定的派生PNG接入Runtime。PSD内仍未提供魂偶和镇墓玄甲王的独立角色图，因此二者由用户允许的ImageGen单独补齐，并明确标记为新生成原型图。
 
 ## Unity导入规则
 
 - 不把PSD原文件放入Runtime Assets，只导出经确认的透明PNG。
-- 统一命名：`spr_chr_*`、`spr_enemy_*`、`spr_bg_*`、`ui_*`、`vfx_*`。
+- 命名与配置稳定键对齐：背景`bg_*`、主角`moyan_*`、敌人小写蛇形名、UI `button_*`/`hud_*`/`icon_*`、投射物`proj_*`、VFX `vfx_*`；精确目录与Atlas归属见`docs/ART_PIPELINE.md`。
 - PPU、Pivot、Max Size、Compression和Filter Mode由资源类型预设控制。
 - 角色敌人、UI、背景、VFX分别进入SpriteAtlas。
 - 原型可用单帧位移、缩放、闪白表达动作；正式动画另开拆件任务。
@@ -32,7 +35,7 @@
 
 ## 占位与替换流程
 
-当前尚未导入正式美术、音频和逐对象Prefab，因此所有Sprite键复用一个洋红占位Sprite、所有AudioClip键复用一个静音占位AudioClip、所有Prefab键复用一个含占位SpriteRenderer的Prefab；`scene_battle`直接引用Build Settings中的Battle场景。这些资源只用于建立完整类型和覆盖合同，不代表正式表现完成。
+T630已把18个Sprite键和40个Prefab键全部改绑为实际原型资产：Sprite使用上述28张RGBA PNG中的目标资源；魂偶与Boss使用各自的可渲染Actor Prefab；38个VFX键使用含`SpriteRenderer`和`VfxPoolItem`的独立Prefab。17个AudioClip键继续复用T240静音占位，`scene_battle`继续引用Build Settings中的Battle场景。当前视觉资产只代表原型品质，生成角色与PSD原画的细节密度仍有差异，也不包含正式骨骼动画或逐对象身体碰撞制作。
 
 替换单项资源时：
 

@@ -310,3 +310,12 @@
 - 决定：震动通过`ICombatFeedbackVibration`注入，并由Service总开关门控；Gameplay/Presentation不调用微信SDK静态API。T130未来可把该端口适配到`IPlatformService`，关闭震动只抑制平台请求，不影响视觉和音频反馈。
 - 理由：若每个敌人或伤害分支各自播放表现，会复制强度数值并让反馈反向改变结算；若命中时才从Resources/路径加载，会制造首次卡顿且绕过Registry；若震动直接调用SDK，Editor/Web测试和用户开关都会失去统一边界。只读事件、配置档案、预缓存与端口门控保持战斗真相单一并让表现可独立验证。
 - 限制：T620继续使用T240类型正确的占位AudioClip/VFX Prefab，因此验证的是cue路由、层次与生命周期而非T630正式资源品质；多比例布局、教程遮罩、Web/微信DevTools和真机震感仍分别属于T640/T650及已延期平台任务。
+
+## D-037 · T630以外部PSD和单独标记的生成角色完成可追溯原型美术闭环
+
+- 状态：ACCEPTED
+- 决定：用户提供的2868×1320、SHA-256 `e6a2552a...1fb34` PSD只作为仓库外构建输入，按图层清单导出两张背景、主角、五种敌人、UI和VFX；Runtime只保留RGBA PNG。PSD没有配置所需的魂偶与镇墓玄甲王独立角色图，二者按用户明确许可由ImageGen补齐，并在来源表中与PSD派生物分开记录，不能声称来自PSD。
+- 决定：所有角色保持单帧Sprite，不虚构身体拆件或骨骼动画。五个SpriteAtlas v2按Backgrounds、Characters、Enemies、UI、VFX明确文件集合打包；Actor Prefab只含可渲染Sprite，VFX Prefab只含渲染与T440/T620池恢复组件，不保存HP、伤害、速度或其他配置数值。Canonical Registry的18个Sprite和40个Prefab键改绑实际资源，17个AudioClip继续使用T240静音占位。
+- 决定：当前输入统一标为`APPROVED_PROTOTYPE`。用户提供允许本项目原型使用，但不推定各PSD图层的商用发布权；轮车僵妖图层名带`Gemini_Generated_Image`且上游平台/账号/条款未知，因此发布候选前必须重新核验，所有T630资源均不得自动升级为`APPROVED_RELEASE`。
+- 理由：把大PSD放入Runtime会引入无关图层、导入成本与授权边界；把生成补图伪装为PSD原层会破坏追溯；继续复用单一洋红占位又无法验证配置资产键的实际可读性。外部原稿、逐文件hash、分源登记和同类型Registry替换同时满足原型交付、可重复导出与后续替换边界。
+- 限制：T630确定性画廊和自动化测试证明最终RGBA、Importer、Atlas、Sorting Layer、Registry与Prefab合同；一次`-nographics`捕获崩溃和Metal批处理纹理/颜色异常均标为INVALID，不作为玩家证据。标准Web、微信转换、DevTools、真机、多比例布局、正式动画、身体碰撞、音频与发布授权仍属后续任务。

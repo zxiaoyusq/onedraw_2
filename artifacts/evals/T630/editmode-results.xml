@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="5" result="Passed" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-07-14 07:42:17Z" end-time="2026-07-14 07:42:18Z" duration="0.3597242">
+  <test-suite type="TestSuite" id="1000" name="onedraw_2" fullname="onedraw_2" runstate="Runnable" testcasecount="192" result="Passed" start-time="2026-07-14 07:42:17Z" end-time="2026-07-14 07:42:18Z" duration="0.359724" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="EditMode" />
+    </properties>
+    <test-suite type="Assembly" id="1233" name="OneStrokeDemon.Tests.EditMode.dll" fullname="/Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/Library/ScriptAssemblies/OneStrokeDemon.Tests.EditMode.dll" runstate="Runnable" testcasecount="192" result="Passed" start-time="2026-07-14 07:42:17Z" end-time="2026-07-14 07:42:18Z" duration="0.353030" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="7028" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="EditMode" />
+        <property name="EditorOnly" value="True" />
+      </properties>
+      <test-suite type="TestSuite" id="1234" name="OneStrokeDemon" fullname="OneStrokeDemon" runstate="Runnable" testcasecount="192" result="Passed" start-time="2026-07-14 07:42:17Z" end-time="2026-07-14 07:42:18Z" duration="0.347565" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1235" name="Tests" fullname="OneStrokeDemon.Tests" runstate="Runnable" testcasecount="192" result="Passed" start-time="2026-07-14 07:42:17Z" end-time="2026-07-14 07:42:18Z" duration="0.344030" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestSuite" id="1236" name="EditMode" fullname="OneStrokeDemon.Tests.EditMode" runstate="Runnable" testcasecount="192" result="Passed" start-time="2026-07-14 07:42:17Z" end-time="2026-07-14 07:42:18Z" duration="0.341990" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-suite type="TestSuite" id="1237" name="T630" fullname="OneStrokeDemon.Tests.EditMode.T630" runstate="Runnable" testcasecount="5" result="Passed" start-time="2026-07-14 07:42:17Z" end-time="2026-07-14 07:42:18Z" duration="0.337537" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-suite type="TestFixture" id="1021" name="AssetImportValidationTests" fullname="OneStrokeDemon.Tests.EditMode.T630.AssetImportValidationTests" classname="OneStrokeDemon.Tests.EditMode.T630.AssetImportValidationTests" runstate="Runnable" testcasecount="5" result="Passed" start-time="2026-07-14 07:42:17Z" end-time="2026-07-14 07:42:18Z" duration="0.336952" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
+                <properties>
+                  <property name="Category" value="AssetImport" />
+                </properties>
+                <test-case id="1026" name="CanonicalVisualRegistryUsesRealSpritesAndRenderablePrefabs" fullname="OneStrokeDemon.Tests.EditMode.T630.AssetImportValidationTests.CanonicalVisualRegistryUsesRealSpritesAndRenderablePrefabs" methodname="CanonicalVisualRegistryUsesRealSpritesAndRenderablePrefabs" classname="OneStrokeDemon.Tests.EditMode.T630.AssetImportValidationTests" runstate="Runnable" seed="1345135868" result="Passed" start-time="2026-07-14 07:42:17Z" end-time="2026-07-14 07:42:18Z" duration="0.203472" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1023" name="ImportersUseCategoryPpuPivotMeshCompressionAndSizeContract" fullname="OneStrokeDemon.Tests.EditMode.T630.AssetImportValidationTests.ImportersUseCategoryPpuPivotMeshCompressionAndSizeContract" methodname="ImportersUseCategoryPpuPivotMeshCompressionAndSizeContract" classname="OneStrokeDemon.Tests.EditMode.T630.AssetImportValidationTests" runstate="Runnable" seed="1754472459" result="Passed" start-time="2026-07-14 07:42:18Z" end-time="2026-07-14 07:42:18Z" duration="0.032899" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1022" name="RuntimeArtUsesOnlyRgbaPngWithTransparentForegrounds" fullname="OneStrokeDemon.Tests.EditMode.T630.AssetImportValidationTests.RuntimeArtUsesOnlyRgbaPngWithTransparentForegrounds" methodname="RuntimeArtUsesOnlyRgbaPngWithTransparentForegrounds" classname="OneStrokeDemon.Tests.EditMode.T630.AssetImportValidationTests" runstate="Runnable" seed="414257792" result="Passed" start-time="2026-07-14 07:42:18Z" end-time="2026-07-14 07:42:18Z" duration="0.089185" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1025" name="SortingLayersHaveStableBackToFrontOrder" fullname="OneStrokeDemon.Tests.EditMode.T630.AssetImportValidationTests.SortingLayersHaveStableBackToFrontOrder" methodname="SortingLayersHaveStableBackToFrontOrder" classname="OneStrokeDemon.Tests.EditMode.T630.AssetImportValidationTests" runstate="Runnable" seed="1333118397" result="Passed" start-time="2026-07-14 07:42:18Z" end-time="2026-07-14 07:42:18Z" duration="0.001325" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1024" name="SpriteAtlasV2AssetsAreIncludedAndBindEveryCategory" fullname="OneStrokeDemon.Tests.EditMode.T630.AssetImportValidationTests.SpriteAtlasV2AssetsAreIncludedAndBindEveryCategory" methodname="SpriteAtlasV2AssetsAreIncludedAndBindEveryCategory" classname="OneStrokeDemon.Tests.EditMode.T630.AssetImportValidationTests" runstate="Runnable" seed="1011301574" result="Passed" start-time="2026-07-14 07:42:18Z" end-time="2026-07-14 07:42:18Z" duration="0.003364" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                  <output><![CDATA[<b><color=#2EA3FF>MCP-FOR-UNITY</color></b>: [TestRunnerNoThrottle] Restored Interaction Mode after test run.
+Saving results to: /Users/cqmizhangxiaoyu2/Library/Application Support/DefaultCompany/onedraw_2/TestResults.xml
+]]></output>
+                </test-case>
+              </test-suite>
+            </test-suite>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

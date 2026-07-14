@@ -65,6 +65,8 @@ T610专项必须覆盖：字符清单与全部`texts[].zhCN`、可打印ASCII、
 
 T620专项必须覆盖：五类语义事件选择的`FeedbackCues`档案、配置变体无需改代码即可改变cue/强度、原始伤害与事件字段不被反馈层改写，以及震动总开关关闭后平台端口零请求但视觉命令保留。PlayMode必须从Bootstrap真实配置与Registry预缓存音频/VFX，验证白闪、时间缩放、相机震动、池化VFX和伤害数字的激活/完成/重开清理，并以图形设备保存五类反馈同屏截图进行人工感知验收。
 
+T630专项必须覆盖：Runtime不存在PSD/PSB/JPG/JPEG，全部目标PNG可解码为RGBA且前景具有透明像素；Importer的Sprite Single、PPU、Pivot、Mesh、Clamp/Bilinear、Mip/ReadWrite、压缩和Max Size按资源类型一致；五个SpriteAtlas v2覆盖明确类别且不把字体等目录杂项打包；Sorting Layer顺序固定为Background、Default、Actors、Projectiles、VFX；Registry的18个Sprite与40个Prefab键均指向实际持久化资源，可渲染Prefab不保存玩法组件或数值。视觉证据使用确定性1920×1080最终RGBA资产画廊；离屏GPU捕获异常必须标为INVALID，不能替代Web/微信/真机路径。
+
 ## 证据模板
 
 每个任务写`artifacts/evals/TASK-ID/verification.md`。模板真相源为`templates/verification.md`和`templates/change-whitelist.md`，可用下列命令初始化且不会覆盖已有证据：
