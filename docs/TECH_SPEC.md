@@ -140,3 +140,11 @@ Tests.EditMode / Tests.PlayMode
 - Runtime配置只读；临时状态单独存储。
 - 错误必须包含配置ID和上下文；不吞异常，不半份回退。
 - `.unity/.prefab/.asset` 由Unity Editor或MCP保存，任务未授权时禁止手改YAML。
+
+## 10. 中文TMP字体与fallback
+
+- UI字体采用OFL来源的重命名子集；上游完整CJK字体只作本地构建输入，不进入仓库或交付，许可证、固定提交和源/子集hash必须随包保存。
+- 字符清单由全部`Texts.zhCN`、可打印ASCII、动态数字所需符号和常用中文UI标点求并集；配置文案新增字符后，`LocalizationGlyphTests`必须先失败，再重建子集与TMP资产。
+- 运行时不动态扩Atlas。默认Latin主字体和中文fallback均为Static、单Atlas，最大尺寸分别为512×512和1024×1024；HUD显式加载项目字体，不允许静默退回系统字体。
+- TMP `.asset`、Settings与shader资源只能由Unity Editor作者工具生成/导入。固定uGUI包的Essential Resources导入后只保留移动SDF shader、Settings、样式及中文换行规则，删除未使用的默认大Atlas和源字体。
+- PlayMode必须逐字符验证实际`TMP_CharacterInfo`没有替换字形，同时检查活动HUD/结算文本无overflow或truncate，并保存带中文HUD和动态伤害数字的1920×1080实际渲染截图。

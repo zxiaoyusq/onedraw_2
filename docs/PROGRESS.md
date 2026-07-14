@@ -1,8 +1,8 @@
 # PROGRESS
 
 - 日期：2026-07-14
-- 当前成熟度：P3手势战斗核心、P4玩家/敌人技能、P5完整单局闭环与P6基础HUD/结算UI均已完成，下一项补齐中文TMP字体
-- 当前任务：T610
+- 当前成熟度：P3手势战斗核心、P4玩家/敌人技能、P5完整单局闭环以及P6基础HUD/结算UI与中文字体均已完成，下一项补齐战斗反馈
+- 当前任务：T620
 - 状态：READY
 - Unity精确版本：6000.5.1f1（已由ProjectVersion.txt与本机安装核验）
 - 微信SDK来源或版本：官方 `minigame-tuanjie-transform-sdk` v0.1.33 / commit `ed4ad28f433c6b52b5fd3f22a6fa155a0c98c228` / embedded最小补丁
@@ -11,6 +11,10 @@
 
 ## 已完成
 
+- T610：采用Google Fonts官方仓库固定提交`2894aab3...d384`的OFL Noto Sans SC作为一次性构建输入，实例化weight 500并按保留字体名规则重命名为`One Stroke Demon UI`。未提交17,772,300字节上游原字体，只交付124,488字节子集、OFL全文和来源/hash记录；子集SHA-256为`fd0ab5d8...1ac5`。
+- T610：字符清单确定性覆盖全部`texts[].zhCN`、可打印ASCII、NBSP和常用中文UI标点，共294个唯一码点；TMP拆为96字符512×512 Latin静态主Atlas和198字符1024×1024中文静态fallback，均关闭多Atlas。全局TMP Settings及BattleHUD显式资源路径指向主字体，主字体与全局fallback均指向中文资产；TMP Essential Resources经Unity Editor导入后删去未使用的LiberationSans大Atlas/源字体和非移动shader，仅保留约20KB移动SDF、设置、样式与中文换行规则。
+- T610：调整Noto行高下LevelName、结算标题/分数/星级容器高度。专项EditMode 3/3、PlayMode 1/1，最终全量EditMode 183/183、PlayMode 44/44；1920×1080 Metal渲染截图显示中文生命/能量/连斩/评分/架势/终极和动态`-12345 暴击`，字符信息逐字断言无replacement glyph，活动HUD与结算文案均无overflow/truncate。配置只读漂移门与.NET 56/56通过，最终专项/全量日志无编译错误、缺字警告、异常或测试失败。
+- T610：未修改工作簿、schema、FieldDictionary、DTO、受管JSON/hash/ConfigIds、场景、Prefab、Registry、Input Actions、Packages、ProjectSettings、微信SDK或Builds；未提前实现T620反馈、T630正式美术、T640完整适配或T650教程遮罩，也未恢复T120/T130平台工作。
 - T600：新增只读`BattleHudState/BattleHudViewModel`、`BattleHudPresenter`与`BattleHudStateBinding`。Presenter单向订阅玩家、连斩、评分、流程和结算状态，View只渲染模型并转发暂停、终极、重开、下一关和主菜单意图；按钮按Playing/Paused/终态、能量、冷却和后继关可用性门控，不直接修改战斗Model。
 - T600：新增运行时`BattleHUD` Canvas/uGUI/TMP工厂，参考分辨率只读Global的1920×1080，全部关键面板挂在动态Safe Area根下；生命/能量、连斩、实时评分、架势、终极状态、暂停层及Victory/Defeat结算、星级和奖励均可由同一Presenter更新。当前Battle场景仍只有灰盒环境且没有完整关卡组合根，T600提供可组合运行时入口并在Bootstrap真实配置PlayMode中装配验证，不手工改Scene YAML或提前实现T640完整多设备布局。
 - T600：工作簿新增20条中英文HUD通用文案并升级content `0.6.0-sample`，双工作簿与交付副本SHA-256均为`4429caa0...7f13`；受管JSON为185,197字节/715条/content hash `54885fb2...a1d`，运行时331个主索引、56个组索引，27组367个ID常量。29个Sheet全部重渲染并视觉复核、公式错误0，严格导出/漂移门与.NET 56/56通过；Runtime兼容线同步为schema 4/content 0.6.x。
@@ -154,7 +158,7 @@
 - T200：按GAME_DESIGN修正关卡玩法ID为 `lv_001_tutorial`、`lv_002_cave`、`lv_003_boss`，Boss玩法ID为 `boss_tomb_king`；所有Level/Wave/Spawn/BossPhase/Reward依赖引用同步，文案键和资源键保持独立命名空间。
 - T200：FieldDictionary保留248条非递归字段记录，修正Global互斥类型列及10个主键/条件字段的必填语义；冻结Schema属性存在与Excel单元格非空的差异、空值转换、普通/分组/通配符/conditional外键和数据所有权。
 - T200：29表、14公式、248字段、Schema/样例、类型/范围/枚举、主键、外键、连续order、关卡-Boss语义和规范化contentHash的只读契约审计全部PASS；29表最终渲染经4张总览拼图复核，无结构或版式异常。
-- 执行顺序调整：用户明确要求暂时绕过T120及微信开发者工具/打包问题，先完成游戏主要内容；T120保持`BLOCKED`、T130保持`BACKLOG`，不删除MVP平台验收要求；P5已推进至T550完成，当前首个依赖满足的`READY`任务为T600。
+- 执行顺序调整：用户明确要求暂时绕过T120及微信开发者工具/打包问题，先完成游戏主要内容；T120保持`BLOCKED`、T130保持`BACKLOG`，不删除MVP平台验收要求；P5及P6字体已完成，当前首个依赖满足的`READY`任务为T620。
 - T120 G2：Unity `6000.5.1f1` 基于固定 embedded WXSDK 成功生成 `Builds/WeChat/T120`；84个文件、总计101,901,218字节，其中`minigame` 12,008,520字节，JSON结构、关键文件、SHA-256清单与敏感占位扫描均通过。
 - T120构建参数：空AppID、横屏、256MB、触摸启用、Development、关闭渲染线程与性能分析、清理构建，并使用SDK受支持的多线程Brotli；可复现入口为`Tools/CI/build-wechat.sh`。
 - T120 G2结论为`PASS WITH KNOWN ISSUES`：默认单线程Brotli在当前macOS Unity安装布局下引用错误路径（BUG-0005，已用配置规避）；转换含93条未匹配替换规则及6条Emscripten warning（BUG-0006），需要G3实际运行判定影响。
@@ -195,11 +199,11 @@
 2. G2存在93条未匹配替换规则与6条Emscripten warning（BUG-0006）；只有导入开发者工具并运行后才能判定是否影响启动或交互。
 3. 官方SDK对Unity 6的公开说明仍是测试版本；本工程需要embedded单点补丁才能在6000.5.1f1编译，且仍有6条上游warning（BUG-0004）。
 4. SDK默认单线程Brotli路径与当前macOS Unity安装布局不兼容（BUG-0005）；当前通过SDK公开的多线程Brotli设置完成转换。
-5. 标准Web存在URP EASU不支持与PlayerPrefs手动同步弃用warning，见BUG-0001/BUG-0002；G1未覆盖TMP中文、后台音频恢复或真机触摸。
+5. 标准Web存在URP EASU不支持与PlayerPrefs手动同步弃用warning，见BUG-0001/BUG-0002；T610已在Editor Metal路径验证TMP中文，但尚未重新构建Web验证字体压缩/加载，G1仍未覆盖后台音频恢复或真机触摸。
 6. 长Web构建后Unity MCP实例桥接未自动恢复，见BUG-0003；Unity batch测试与Web运行未受影响。
-7. PSD主角和怪物大多为单张Sprite；中文字体包体、Web内存和真机触摸延迟仍需后续验证。
+7. PSD主角和怪物大多为单张Sprite；T610两个静态TMP资产约2.78MB，实际Web压缩包、运行内存和真机触摸延迟仍需T730及平台门验证。
 8. T450已能按AssetManifest类型装配六怪，但T240的75个非场景键仍使用按类型共享的受管占位资源；类型与覆盖合同已成立，正式视觉、音频、身体碰撞形状和逐Prefab内容仍须在T630及相应玩法任务中替换并重新校验。
-9. 三个MVP关卡及T550结算/进度/重开原型路径已闭环；但T600 HUD、T650正式教程遮罩和T630正式资源尚未实现，`IProgressSaveStore`也仍待T130平台适配，因此当前证据不能外推为最终用户可读性、正式演出、平台持久化或真机体验。
+9. 三个MVP关卡、T550结算/进度/重开、T600 HUD与T610中文字体路径已闭环；但T620战斗反馈、T630正式资源和T650教程遮罩尚未实现，`IProgressSaveStore`也仍待T130平台适配，因此当前证据不能外推为最终演出、平台持久化或真机体验。
 ## 下一步
 
-只执行T600：实现生命、能量、连斩、评分、架势、终极、暂停和结算HUD的只读Presenter/View绑定；不把业务逻辑或配置文案写进View，不提前实现T610/T620/T630/T650，也不恢复T120/T130。平台任务最迟在T640/T750前恢复。
+只执行T620：实现受击停顿、闪白、震屏、伤害数字、音效、震动和慢动作，并保持反馈不改变T360伤害真相、全部cue/强度/时长来自现有配置且对象池化；不提前实现T630/T640/T650，也不恢复T120/T130。平台任务最迟在T640/T750前恢复。

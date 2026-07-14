@@ -271,3 +271,9 @@ T360新增的`Stances.damageFormulaId -> DamageFormulas.formulaId`是必填普�
 - `BattleHudStateBinding`只把`PlayerCombatController/ComboService/ScoreService/BattleFlowStateMachine/ResultService`的只读状态和事件投影成HUD状态，不反向修改任何Model。Presenter是唯一按钮门和本地化格式化所有者；View只接收不可变ViewModel并转发意图。暂停、终极、Restart、NextLevel和MainMenu的实际命令由调用方端口处理，View不能直接调用战斗服务或场景API。
 - 终极按钮只在Playing、玩家存活、配置架势满足、能量达到`Skills.energyCost`且调用方提供的冷却时钟已到期时可用；暂停只在Countdown/Playing/UltimateDrawing/Paused可切换。终态隐藏暂停与终极，Restart可用；NextLevel仅在结算回执`CanGoNext=true`时显示。胜负、最终分数、0至3星及已应用奖励只读T550回执，不自行重算分数或发奖励。
 - `BattleHUD`的参考分辨率只读`Global.reference_width/reference_height`。全部关键UI挂在动态Safe Area根下，设备像素矩形先与屏幕相交再归一化为锚点；T600保证单一安全区根和可测试的基础布局，不声称完成T640的16:9/19.5:9/平板截图矩阵、左右手镜像或触控遮挡专项，也不包含T610中文字体资产。
+
+## 27. T610配置文案字符覆盖与字体资产语义
+
+- T610不改变工作簿、JSON字段、FieldDictionary、schema、content版本或hash。字体字符清单以受管JSON全部`texts[].zhCN`为内容输入，并与可打印ASCII、NBSP和固定中文UI标点求唯一并集；当前结果为294个码点。该清单是构建派生物，不是第二套文案源。
+- 任一配置中文文案新增码点后，字符清单、OFL重命名子集、TMP静态资产与覆盖测试必须同步重建；运行时不得下载字体、解析xlsx、动态扩Atlas或用Inspector维护额外常用字列表。
+- HUD的数值格式仍由T600 Presenter生成，但数字、负号、加号、斜杠、冒号、空格及动态`暴击`示例必须被同一主字体/fallback链覆盖。配置内容、运行时格式字符和字体资产之间的漂移由EditMode/PlayMode共同拒绝。

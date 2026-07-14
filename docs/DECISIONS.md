@@ -292,3 +292,12 @@
 - 决定：BattleHUD由运行时工厂创建Screen Space Overlay Canvas，参考尺寸读取Global，所有关键面板统一挂在一个动态Safe Area根下。T600用Bootstrap真实配置PlayMode装配该入口并验证自定义屏幕安全矩形、HUD数值、暂停/终极和结算导航；当前Battle灰盒尚无完整生产关卡组合根，因此不为接线而手工改Scene YAML或虚构新的战斗装配所有者。
 - 理由：若各控件分别订阅战斗服务，状态一致性、解除订阅和按钮门会分散；若View直接调Model，测试点击与真实战斗流程会形成双重规则；若各面板各自计算安全边距，设备适配容易漂移。单一投影、Presenter和Safe Area根使UI可复用、可测试，并为后续完整组合根与T640布局适配保留明确边界。
 - 限制：T600不提供中文TMP字体/fallback、完整多比例/左右手适配、正式PSD资源、受击反馈或教程遮罩；头less PlayMode证明接线和布局数学，不替代T610字体截图、T640多设备截图、T120 DevTools或真机视觉验收。
+
+## D-035 · T610以配置字符并集生成静态主字体与中文fallback
+
+- 状态：ACCEPTED
+- 决定：字体源固定为Google Fonts官方仓库提交`2894aab31764f10f29c421bdfd2340d3b382d384`的OFL Noto Sans SC。上游完整字体只作本地构建输入；交付物实例化weight 500、去除保留字体名并重命名为`One Stroke Demon UI`，只保留项目字符清单，同时随包保存OFL全文、来源和SHA-256。
+- 决定：字符清单是全部受管`texts[].zhCN`、可打印ASCII、NBSP及常用中文UI标点的确定性并集。TMP使用96字符512×512静态Latin主Atlas与198字符1024×1024静态中文fallback，关闭运行时多Atlas；TMP Settings全局fallback和HUD显式资源路径均指向这条链。Unity作者工具导入固定uGUI包的Essential Resources并删除未使用的LiberationSans大Atlas、源字体及非移动shader。
+- 决定：验收不以“无Console报错”代替字形证据。EditMode逐码点核对配置、清单、子集hash、静态Atlas预算和fallback；PlayMode读取实际`TMP_CharacterInfo`拒绝replacement glyph，检查HUD/结算无overflow/truncate，并用图形设备保存1920×1080中文HUD与动态伤害数字截图。
+- 理由：完整CJK源字体和动态Atlas会增加包体、运行时内存与首次缺字抖动；系统字体不可再分发且跨设备不一致；只验证配置静态文案又会漏掉数值格式字符。固定许可来源、最小子集、静态分层Atlas和配置漂移测试使中文显示可复现且包体边界明确。
+- 限制：T610的Metal截图不替代Web/微信压缩包、低端机字体内存、DevTools或真机验证；多比例/刘海/左右手布局仍属T640，战斗反馈、正式美术和教程遮罩分别属T620/T630/T650。

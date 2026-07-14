@@ -1,7 +1,7 @@
 project: OneStrokeDemon
 project_cn: 一笔镇妖
 plan_generated: 2026-07-11
-current_task: T610
+current_task: T620
 current_task_status: READY
 unity:
   project_root: .
@@ -57,8 +57,8 @@ config:
     loaded_records: 715
     readonly_primary_indexes: 331
     readonly_group_indexes: 56
-    editmode_tests: 180
-    playmode_tests: 43
+    editmode_tests: 183
+    playmode_tests: 44
     bootstrap_smoke: pass
   asset_registry:
     status: pass
@@ -90,8 +90,8 @@ config:
     dotnet_tests: 56
     config_editmode_tests: 19
     config_playmode_tests: 3
-    full_editmode_tests: 180
-    full_playmode_tests: 43
+    full_editmode_tests: 183
+    full_playmode_tests: 44
     full_command_smoke: pass_via_static_drift_gate_plus_isolated_unity_batch_project
 result_progress:
   status: pass
@@ -147,8 +147,28 @@ battle_hud:
   editmode_tests: 6
   playmode_tests: 1
   player_path: {hp: "100/100", energy: "100/100", combo: 4, live_score: 521, result_score: 4480, stars: 2, score_token_reward: 100}
-  full_editmode_tests: 180
-  full_playmode_tests: 43
+  full_editmode_tests: 183
+  full_playmode_tests: 44
+localization_fonts:
+  status: pass
+  family: "One Stroke Demon UI"
+  upstream: google/fonts_ofl/notosanssc
+  upstream_commit: 2894aab31764f10f29c421bdfd2340d3b382d384
+  license: SIL_OFL_1_1
+  upstream_source_committed: false
+  delivered_subset_bytes: 124488
+  delivered_subset_sha256: fd0ab5d8ce0c0210a6439084423ebc6c599110d6e928028b6275dd8bb9291ac5
+  character_inventory: 294
+  character_sources: [all_Texts_zhCN, printable_ASCII, NBSP, common_zhCN_UI_punctuation]
+  primary: {characters: 96, atlas: 512x512, population: Static, multi_atlas: false}
+  fallback: {characters: 198, atlas: 1024x1024, population: Static, multi_atlas: false}
+  tmp_essential_retained_bytes: 20172
+  hud_font_resource: "Fonts/OneStrokeDemon UI Latin SDF"
+  screenshot: artifacts/evals/T610/chinese-hud-1920x1080.png
+  editmode_tests: 3
+  playmode_tests: 1
+  full_editmode_tests: 183
+  full_playmode_tests: 44
 input:
   status: pass
   package: com.unity.inputsystem@1.19.0
@@ -665,7 +685,7 @@ wechat_conversion:
 execution_order:
   deferred_tasks: [T120, T130]
   deferral_reason: user_prioritized_main_game_content_over_wechat_devtools_device_and_packaging_work
-  next_content_task: T610
+  next_content_task: T620
   resume_platform_before: [T640, T750]
 workflow:
   config_verify_command: Tools/CI/verify-config.sh

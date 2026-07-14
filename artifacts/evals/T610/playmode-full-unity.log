@@ -1,0 +1,2488 @@
+Unity Editor version:    6000.5.1f1 (0d9463e84828)
+Branch:                  6000.5/staging
+Build type:              Release
+Batch mode:              YES
+macOS version:           Version 15.6 (Build 24G84)
+Darwin version:          24.6.0
+Architecture:            arm64
+Running under Rosetta:   NO
+Available memory:        16384 MB
+Date:                    2026-07-14T00:35:23Z
+[Licensing::Module] Trying to connect to existing licensing client channel...
+[Licensing::IpcConnector] Successfully connected to: "LicenseClient-cqmizhangxiaoyu2" at "2026-07-14T00:35:23.47919Z"
+Launching external process: /Applications/Unity/Hub/Editor/6000.5.1f1/Unity.app/Contents/Helpers/PackageManager/Server/UnityPackageManager
+
+COMMAND LINE ARGUMENTS:
+/Applications/Unity/Hub/Editor/6000.5.1f1/Unity.app/Contents/MacOS/Unity
+-batchmode
+-nographics
+-projectPath
+/Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project
+-runTests
+-testPlatform
+PlayMode
+-testResults
+/Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/evals/T610/playmode-full-results.xml
+-logFile
+/Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/evals/T610/playmode-full-unity.log
+Successfully changed project path to: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project
+/Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project
+[UnityMemory] Configuration Parameters - Can be set up in boot.config
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-nav-mesh-worker=65536"
+    "memorysetup-temp-allocator-size-audio-worker=65536"
+    "memorysetup-temp-allocator-size-cloud-worker=32768"
+    "memorysetup-allocator-temp-initial-block-size-main=262144"
+    "memorysetup-allocator-temp-initial-block-size-worker=262144"
+    "memorysetup-temp-allocator-size-preload-manager=33554432"
+    "memorysetup-temp-allocator-size-gfx=262144"
+    "memorysetup-temp-allocator-size-background-worker=32768"
+    "memorysetup-temp-allocator-size-job-worker=262144"
+    "memorysetup-bucket-allocator-granularity=16"
+    "memorysetup-bucket-allocator-bucket-count=8"
+    "memorysetup-bucket-allocator-block-size=33554432"
+    "memorysetup-bucket-allocator-block-count=8"
+    "memorysetup-main-allocator-block-size=16777216"
+    "memorysetup-thread-allocator-block-size=16777216"
+    "memorysetup-main-allocator-mimalloc-enabled=0"
+    "memorysetup-gfx-main-allocator-block-size=16777216"
+    "memorysetup-gfx-thread-allocator-block-size=16777216"
+    "memorysetup-cache-allocator-block-size=4194304"
+    "memorysetup-typetree-allocator-block-size=2097152"
+    "memorysetup-profiler-bucket-allocator-granularity=16"
+    "memorysetup-profiler-bucket-allocator-bucket-count=8"
+    "memorysetup-profiler-bucket-allocator-block-size=33554432"
+    "memorysetup-profiler-bucket-allocator-block-count=8"
+    "memorysetup-profiler-allocator-block-size=16777216"
+    "memorysetup-profiler-editor-allocator-block-size=1048576"
+    "memorysetup-temp-allocator-size-main=16777216"
+    "memorysetup-job-temp-allocator-block-size=2097152"
+    "memorysetup-job-temp-allocator-block-size-background=1048576"
+    "memorysetup-job-temp-allocator-reduction-small-platforms=262144"
+Logging is directed to a specific file, skipping project log.Player connection [8601149632]  Target information:
+
+Player connection [8601149632]  * "[IP] 10.206.81.30 [Port] 55505 [Flags] 2 [Guid] 85965053 [EditorId] 85965053 [Version] 1048832 [Id] OSXEditor(0,cqmizhangxiaoyu2deMacBook-Air.local) [Debug] 1 [PackageName] OSXEditor [ProjectName] Editor"
+
+Player connection [8601149632]  * "[IP] 10.251.1.1 [Port] 55505 [Flags] 2 [Guid] 85965053 [EditorId] 85965053 [Version] 1048832 [Id] OSXEditor(0,cqmizhangxiaoyu2deMacBook-Air.local) [Debug] 1 [PackageName] OSXEditor [ProjectName] Editor"
+
+Player connection [8601149632] Host joined multi-casting on [225.0.0.222:54997]...
+Player connection [8601149632] Host joined alternative multi-casting on [225.0.0.222:34997]...
+Input System module state changed to: Initialized.
+[Physics::Module] Initialized fallback backend.
+[Physics::Module] Id: 0xdecafbad
+[Licensing::Client] Error: HandshakeResponse reported an error:
+	ResponseCode: 505
+	ResponseStatus: Unsupported protocol version '1.18.1'.
+[Licensing::Module] Error: Failed to handshake to channel: "LicenseClient-cqmizhangxiaoyu2"
+[Licensing::IpcConnector] LicenseClient-cqmizhangxiaoyu2 channel disconnected successfully.
+[Licensing::IpcConnector] Successfully connected to: "LicenseClient-cqmizhangxiaoyu2-6000.5.1" at "2026-07-14T00:35:23.662342Z"
+[Package Manager] Connected to IPC stream "Upm-1832" after 0.1 seconds.
+[Licensing::Module] Licensing is not yet initialized.
+[Licensing::Client] Handshaking with LicensingClient:
+  Version:                 1.18.1+9fbee8e
+  Session Id:              18a2cde665354e64b01559ea0b22523e
+  Correlation Id:          1ed0498c6110524d1f5c3ec9aa39dd73
+  External correlation Id: 7732427569748972062
+  Machine Id:              9rQ3oFulMuF1WLgKze+vIHadGFs=
+[Licensing::Module] Successfully connected to LicensingClient on channel: "LicenseClient-cqmizhangxiaoyu2-6000.5.1" (connect: 0.00s, validation: 0.00s, handshake: 0.19s)
+[Licensing::IpcConnector] Successfully connected to: "LicenseClient-cqmizhangxiaoyu2-6000.5.1-notifications" at "2026-07-14T00:35:23.850171Z"
+[Licensing::Module] Error: Access token is unavailable; failed to update
+[Licensing::Client] Successfully resolved entitlement details
+[Licensing::Module] License group:
+  Id: 18968374062854-UnityPersXXXX
+  Product: Unity Personal
+  Type: Assigned
+  Expiration: Unlimited
+[Licensing::Client] Successfully updated license, isAsync: True, time: 0.00
+[Licensing::Module] Licensing Background thread has ended after 0.37s
+[Licensing::Module] Licensing is initialized (took 0.15s).
+[Licensing::Client] Successfully resolved entitlement details
+Library Redirect Path: Library/
+[Physics::Module] Selected backend.
+[Physics::Module] Name: PhysX
+[Physics::Module] Id: 0xf2b8ea05
+[Physics::Module] SDK Version: 4.1.2
+[Physics::Module] Integration Version: 1.0.0
+[Physics::Module] Threading Mode: Multi-Threaded
+Refreshing native plugins compatible for Editor in 7.13 ms, found 3 plugins.
+Initialize engine version: 6000.5.1f1 (0d9463e84828)
+[Subsystems] Discovering subsystems at path /Applications/Unity/Hub/Editor/6000.5.1f1/Unity.app/Contents/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Assets
+Forcing GfxDevice: Null
+GfxDevice: creating device client; kGfxThreadingModeNonThreaded
+NullGfxDevice:
+    Version:  NULL 1.0 [1.0]
+    Renderer: Null Device
+    Vendor:   Unity Technologies
+Initialize mono
+Mono path[0] = '/Applications/Unity/Hub/Editor/6000.5.1f1/Unity.app/Contents/Resources/Scripting/Managed'
+Mono path[1] = '/Applications/Unity/Hub/Editor/6000.5.1f1/Unity.app/Contents/Resources/Scripting/BCLExtensions/runtime/netstandard2.1'
+Mono path[2] = '/Applications/Unity/Hub/Editor/6000.5.1f1/Unity.app/Contents/Resources/Scripting/MonoBleedingEdge/lib/mono/unityjit-macos'
+Mono config path = '/Applications/Unity/Hub/Editor/6000.5.1f1/Unity.app/Contents/Resources/Scripting/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56832
+CodeReloadManager initialized
+ImportWorker Server TCP listen port: 0
+AcceleratorClientConnectionCallback - disconnected - :0
+Begin MonoManager ReloadAssembly
+Registering precompiled unity dll's ...
+Register platform support module: /Applications/Unity/Hub/Editor/6000.5.1f1/PlaybackEngines/WebGLSupport/UnityEditor.WebGL.Extensions.dll
+Register platform support module: /Applications/Unity/Hub/Editor/6000.5.1f1/PlaybackEngines/MacStandaloneSupport/UnityEditor.OSXStandalone.Extensions.dll
+Register platform support module: /Applications/Unity/Hub/Editor/6000.5.1f1/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+[Licensing::Client] Successfully resolved entitlement details
+Register platform support module: /Applications/Unity/Hub/Editor/6000.5.1f1/PlaybackEngines/AndroidPlayer/UnityEditor.Android.Extensions.dll
+Registered in 0.002685 seconds.
+Native extension for Android target not found
+Native extension for WindowsStandalone target not found
+Native extension for OSXStandalone target not found
+Native extension for WebGL target not found
+Package Manager log level set to [2]
+ScheduleIndexationOnStartup MainProcess:False IndexOnStartup:False
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.220 seconds
+Domain Reload Profiling: 490ms
+	BeginReloadAssembly (58ms)
+		CreateAndSetChildDomain (7ms)
+	RebuildCommonClasses (3ms)
+	RebuildNativeTypeToScriptingClass (9ms)
+	initialDomainReloadingComplete (31ms)
+	LoadAllAssembliesAndSetupDomain (168ms)
+		LoadAssemblies (51ms)
+		AnalyzeDomain (127ms)
+			TypeCache.Refresh (126ms)
+				TypeCache.ScanAssembly (117ms)
+	FinalizeReload (221ms)
+		SetupLoadedEditorAssemblies (0ms)
+			InitializePlatformSupportModulesInManaged (4ms)
+			BeforeProcessingInitializeOnLoad (46ms)
+			ProcessInitializeOnLoadAttributes (51ms)
+			ProcessInitializeOnLoadMethodAttributes (80ms)
+[Licensing::Client] Successfully resolved entitlement details
+Application.AssetDatabase Initial Refresh Start
+[Package Manager] Restoring resolved packages state from cache
+[Licensing::Client] Successfully resolved entitlement details
+[Package Manager] Registered 68 packages:
+  Packages from [https://packages.unity.com]:
+    com.unity.2d.animation@15.1.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.2d.animation@6d5a363ae647)
+    com.unity.2d.aseprite@5.0.3 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.2d.aseprite@d13865913efa)
+    com.unity.2d.psdimporter@14.0.3 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.2d.psdimporter@5d82044f9e43)
+    com.unity.2d.spriteshape@15.0.3 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.2d.spriteshape@fcb7ec61a58b)
+    com.unity.2d.tilemap.extras@8.0.3 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.2d.tilemap.extras@a80140457adc)
+    com.unity.2d.tooling@3.0.1 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.2d.tooling@6f06ffb033c0)
+    com.unity.collab-proxy@2.12.4 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.collab-proxy@0b1559bcd34e)
+    com.unity.ide.rider@3.0.38 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.ide.rider@1f60b3138684)
+    com.unity.ide.visualstudio@2.0.26 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.ide.visualstudio@a99d56dec63f)
+    com.unity.inputsystem@1.19.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.inputsystem@21a28c3a6c83)
+    com.unity.nuget.newtonsoft-json@3.2.2 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.nuget.newtonsoft-json@4dfd81071c64)
+    com.unity.timeline@1.8.12 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.timeline@8cd8509afae5)
+    com.unity.visualscripting@1.9.11 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.visualscripting@8bed5ad90189)
+    com.unity.2d.common@14.0.1 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.2d.common@73badf92ba8b)
+    com.unity.searcher@4.9.4 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.searcher@d45a78918735)
+    com.unity.burst@1.8.29 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.burst@6bb9aca3ef38)
+    com.unity.nuget.mono-cecil@1.11.6 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.nuget.mono-cecil@ecb9724e46ff)
+    com.unity.test-framework.performance@3.5.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.test-framework.performance@8b56083ec0f0)
+  Built-in packages:
+    com.unity.2d.sprite@1.0.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.2d.sprite@053a968eab56)
+    com.unity.2d.tilemap@1.0.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.2d.tilemap@be0bacb99591)
+    com.unity.multiplayer.center@1.0.1 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.multiplayer.center@b860850997d0)
+    com.unity.render-pipelines.universal@17.5.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.render-pipelines.universal@be00b5bbd9a1)
+    com.unity.test-framework@1.7.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.test-framework@f3e6c9a02477)
+    com.unity.ugui@2.5.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.ugui@4f9b15fd1386)
+    com.unity.modules.accessibility@1.0.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.modules.accessibility)
+    com.unity.modules.adaptiveperformance@1.0.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.modules.adaptiveperformance)
+    com.unity.modules.ai@1.0.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.modules.ai)
+    com.unity.modules.androidjni@1.0.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.modules.androidjni)
+    com.unity.modules.animation@1.0.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.modules.animation)
+    com.unity.modules.assetbundle@1.0.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.modules.assetbundle)
+    com.unity.modules.audio@1.0.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.modules.audio)
+    com.unity.modules.cloth@1.0.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.modules.cloth)
+    com.unity.modules.director@1.0.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.modules.director)
+    com.unity.modules.imageconversion@1.0.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.modules.imageconversion)
+    com.unity.modules.imgui@1.0.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.modules.imgui)
+    com.unity.modules.jsonserialize@1.0.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.modules.jsonserialize)
+    com.unity.modules.particlesystem@1.0.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.modules.particlesystem)
+    com.unity.modules.physics@1.0.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.modules.physics)
+    com.unity.modules.physics2d@1.0.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.modules.physics2d)
+    com.unity.modules.physicscore2d@1.0.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.modules.physicscore2d)
+    com.unity.modules.screencapture@1.0.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.modules.screencapture)
+    com.unity.modules.terrain@1.0.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.modules.terrain)
+    com.unity.modules.terrainphysics@1.0.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.modules.terrainphysics)
+    com.unity.modules.tilemap@1.0.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.modules.tilemap)
+    com.unity.modules.ui@1.0.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.modules.ui)
+    com.unity.modules.uielements@1.0.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.modules.uielements)
+    com.unity.modules.umbra@1.0.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.modules.umbra)
+    com.unity.modules.unityanalytics@1.0.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.modules.unityanalytics)
+    com.unity.modules.unitywebrequest@1.0.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.modules.unitywebrequest)
+    com.unity.modules.unitywebrequestassetbundle@1.0.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.modules.unitywebrequestassetbundle)
+    com.unity.modules.unitywebrequestaudio@1.0.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.modules.unitywebrequestaudio)
+    com.unity.modules.unitywebrequesttexture@1.0.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.modules.unitywebrequesttexture)
+    com.unity.modules.unitywebrequestwww@1.0.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.modules.unitywebrequestwww)
+    com.unity.modules.vectorgraphics@1.0.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.modules.vectorgraphics)
+    com.unity.modules.vehicles@1.0.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.modules.vehicles)
+    com.unity.modules.video@1.0.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.modules.video)
+    com.unity.modules.wind@1.0.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.modules.wind)
+    com.unity.modules.xr@1.0.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.modules.xr)
+    com.unity.modules.subsystems@1.0.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.modules.subsystems)
+    com.unity.modules.hierarchycore@1.0.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.modules.hierarchycore)
+    com.unity.ext.nunit@2.1.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.ext.nunit@44f7d31723bd)
+    com.unity.render-pipelines.core@17.5.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.render-pipelines.core@d7ce3ed2cd80)
+    com.unity.shadergraph@17.5.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.shadergraph@2df19e8719bc)
+    com.unity.render-pipelines.universal-config@17.5.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.render-pipelines.universal-config@fdda01c80fe3)
+    com.unity.mathematics@1.4.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.mathematics@981956d94fb6)
+    com.unity.collections@6.5.0 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.unity.collections@a43cabe808ca)
+  Embedded packages:
+    com.qq.weixin.minigame@file:/Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Packages/com.qq.weixin.minigame (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Packages/com.qq.weixin.minigame)
+  Git packages:
+    com.coplaydev.unity-mcp@https://github.com/CoplayDev/unity-mcp.git?path=/MCPForUnity#11836003a5e2ffcb7715ecec7e1fbb9d9cdb5bb8 (location: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/PackageCache/com.coplaydev.unity-mcp@4ee62b097584)
+[Subsystems] No new subsystems found in resolved package list.
+[Package Manager] Done registering packages in 0.02 seconds
+info: Microsoft.Hosting.Lifetime[14]
+      Now listening on: http://unix:/tmp/ilpp.sock-0965b3c8e789bc4969569e5e5a09ed6b
+info: Microsoft.Hosting.Lifetime[0]
+      Application started. Press Ctrl+C to shut down.
+info: Microsoft.Hosting.Lifetime[0]
+      Hosting environment: Production
+info: Microsoft.Hosting.Lifetime[0]
+      Content root path: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/2 POST http://ilpp/UnityILPP.PostProcessing/Ping - application/grpc -
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'gRPC - /UnityILPP.PostProcessing/Ping'
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'gRPC - /UnityILPP.PostProcessing/Ping'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/2 POST http://ilpp/UnityILPP.PostProcessing/Ping - 200 - application/grpc 13.9185ms
+Starting: /Applications/Unity/Hub/Editor/6000.5.1f1/Unity.app/Contents/Resources/BuildPipeline/bee_backend --ipc --defer-dag-verification --dagfile="Library/Bee/200b0aE.dag" --continue-on-failure --profile="Library/Bee/backend1.traceevents" ScriptAssemblies
+WorkingDir: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project
+DisplayProgressbar: Compiling Scripts
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/2 POST http://ilpp/UnityILPP.PostProcessing/ConfigurePostProcessors - application/grpc -
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'gRPC - /UnityILPP.PostProcessing/ConfigurePostProcessors'
+warn: Unity.ILPP.Runner.PostProcessingAssemblyLoadContext[0]
+      Assembly system.runtime.interopservices.windowsruntime has duplicate hint path. Ignoring "/Applications/Unity/Hub/Editor/6000.5.1f1/Unity.app/Contents/Resources/Scripting/UnityReferenceAssemblies/unity-4.8-api/Facades/System.Runtime.InteropServices.WindowsRuntime.dll" in favor of "/Applications/Unity/Hub/Editor/6000.5.1f1/Unity.app/Contents/Resources/Scripting/NetStandard/Extensions/2.0.0/System.Runtime.InteropServices.WindowsRuntime.dll"
+warn: Unity.ILPP.Runner.PostProcessingAssemblyLoadContext[0]
+      Assembly system.componentmodel.composition has duplicate hint path. Ignoring "/Applications/Unity/Hub/Editor/6000.5.1f1/Unity.app/Contents/Resources/Scripting/UnityReferenceAssemblies/unity-4.8-api/System.ComponentModel.Composition.dll" in favor of "/Applications/Unity/Hub/Editor/6000.5.1f1/Unity.app/Contents/Resources/Scripting/NetStandard/compat/2.1.0/shims/netfx/System.ComponentModel.Composition.dll"
+info: Unity.ILPP.Runner.PostProcessingAssemblyLoadContext[0]
+      Resolved Unity.Burst.Cecil, Version=0.11.6.0, Culture=neutral, PublicKeyToken=50cebf1cceb9d05e with Library/PackageCache/com.unity.burst@6bb9aca3ef38/Unity.Burst.CodeGen/Unity.Burst.Cecil.dll
+info: Unity.ILPP.Runner.PostProcessingAssemblyLoadContext[0]
+      Resolved Mono.Cecil, Version=0.11.5.0, Culture=neutral, PublicKeyToken=50cebf1cceb9d05e with Library/PackageCache/com.unity.nuget.mono-cecil@ecb9724e46ff/Mono.Cecil.dll
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'gRPC - /UnityILPP.PostProcessing/ConfigurePostProcessors'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/2 POST http://ilpp/UnityILPP.PostProcessing/ConfigurePostProcessors - 200 - application/grpc 13.6167ms
+ExitCode: 0 Duration: 0s334ms
+[ 856/1148  0s] ILPP-Configuration Library/ilpp-configuration.nevergeneratedoutput
+*** Tundra build success (0.32 seconds), 1 items updated, 1148 evaluated
+AssetDatabase: script compilation time: 0.702619s
+Begin MonoManager ReloadAssembly
+Total cache size 268058432
+Total cache size after purge 268058432, took 00:00:00.2148025
+Symbol file LoadedFromMemory is not a mono symbol file
+Refreshing native plugins compatible for Editor in 6.23 ms, found 6 plugins.
+Native extension for Android target not found
+Native extension for WindowsStandalone target not found
+Native extension for OSXStandalone target not found
+Native extension for WebGL target not found
+ScheduleIndexationOnStartup MainProcess:True IndexOnStartup:False
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  2.642 seconds
+Domain Reload Profiling: 3230ms
+	BeginReloadAssembly (155ms)
+		DisableScriptedObjects (53ms)
+		CreateAndSetChildDomain (35ms)
+	RebuildCommonClasses (5ms)
+	RebuildNativeTypeToScriptingClass (9ms)
+	initialDomainReloadingComplete (31ms)
+	LoadAllAssembliesAndSetupDomain (388ms)
+		LoadAssemblies (179ms)
+		AnalyzeDomain (178ms)
+			TypeCache.Refresh (133ms)
+				TypeCache.ScanAssembly (121ms)
+			BuildScriptInfoCaches (40ms)
+			ResolveRequiredComponents (4ms)
+	FinalizeReload (2643ms)
+		SetupLoadedEditorAssemblies (0ms)
+			InitializePlatformSupportModulesInManaged (4ms)
+			BeforeProcessingInitializeOnLoad (50ms)
+			ProcessInitializeOnLoadAttributes (2286ms)
+			ProcessInitializeOnLoadMethodAttributes (181ms)
+		AwakeInstancesAfterBackupRestoration (7ms)
+Starting new worker id: 0 with log in /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Logs/AssetImportWorkerHW0.log
+
+Asset Pipeline Refresh (id=51ba1a727058c4d9d9e31bc7d13957e1): Total: 5.350 seconds - Initiated by InitialRefreshV2(ForceSynchronousImport)
+	(Values over 0.05ms)
+	Summary:
+		Imports: total=0 (actual=0, local cache=0, cache server=0)
+		Asset DB Process Time: managed=0 ms, native=3876 ms
+		Asset DB Callback time: managed=84 ms, native=18 ms
+		Scripting: domain reloads=1, domain reload time=626 ms, compile time=703 ms, other=40 ms
+		Project Asset Count: scripts=1786, non-scripts=3326
+		Asset File Changes: new=0, changed=0, moved=0, deleted=0
+		Scan Filter Count: 1
+	InvokePackagesCallback: 20.065ms
+	ApplyChangesToAssetFolders: 0.875ms
+	Scan: 913.333ms
+	Collect global state as custom dependencies: 1.611ms
+	CategorizeScriptCompilationAssets: 56.775ms
+	ProcessAssetsWithTransientArtifactChanges: 48.631ms
+	CategorizeAssets: 42.398ms
+	CompileScripts: 703.254ms
+	ImportOutOfDateAssets: 2696.839ms (2663.076ms without children)
+		UnloadImportedAssets: 0.808ms
+		EnsureUptoDateAssetsAreRegisteredWithGuidPM: 0.480ms
+		ImportSchedulerStart: 32.451ms
+	PostProcessAllAssets: 84.260ms
+		MonoPostProcessAllAssets: 84.228ms
+			UniversalRenderPipelineGlobalSettingsPostprocessor.OnPostprocessAllAssets 20.510ms
+			WindowAssetPostprocessingWatcher.OnPostprocessAllAssets 1.622ms
+			SpeedTree9Postprocessor.OnPostprocessAllAssets 1.176ms
+			RenderPipelineGlobalSettingsPostprocessor.OnPostprocessAllAssets 0.346ms
+			ShaderReflectionAssetPostProcessor.OnPostprocessAllAssets 0.249ms
+			InputActionAssetPostprocessor.OnPostprocessAllAssets 0.235ms
+			ReferencedClipsPostProcessor.OnPostprocessAllAssets 0.189ms
+			TerrainToolbarOverlayPostProcessor.OnPostprocessAllAssets 0.177ms
+			ProjectSettingsPostprocessor.OnPostprocessAllAssets 0.116ms
+			AssetDatabaseCallbacks.OnPostprocessAllAssets 0.090ms
+	UnloadStreamsBegin: 1.844ms
+	PersistCurrentRevisions: 0.102ms
+	GenerateScriptTypeHashes: 1.012ms
+	GenerateScriptTypeSerializationHashes: 1.807ms
+	Untracked: 778.259ms
+
+Application.AssetDatabase Initial Refresh End
+Shader Hidden/ChartRasterizerHardware is not supported: GPU does not support conservative rasterization
+Shader Hidden/ChartRasterizerHardware is not supported: GPU does not support conservative rasterization
+Scanning for USB devices : 0.017ms
+Initializing Unity extensions:
+[MODES] ModeService[none].Initialize
+[MODES] ModeService[none].LoadModes
+[MODES] Loading mode Default (0) for mode-current-id-onedraw_2
+Unloading 26 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 7766 unused Assets / (6.1 MB). Loaded Objects now: 8622.
+Memory consumption went from 257.0 MB to 251.0 MB.
+Total: 11.196459 ms (FindLiveObjects: 0.319792 ms CreateObjectMapping: 1.677250 ms MarkObjects: 5.655625 ms  DeleteObjects: 3.543583 ms)
+
+[Project] Loading completed in 7.552 seconds
+	Project init time: 				6.661 seconds
+		Template init time: 		0.000 seconds
+		Package Manager init time: 		0.271 seconds
+		Asset Database init time: 		0.119 seconds
+		Global illumination init time: 	0.000 seconds
+		Assemblies load time: 			0.510 seconds
+		Unity extensions init time: 	0.027 seconds
+		Asset Database refresh time: 	5.350 seconds
+	Scene opening time: 			0.820 seconds
+##utp:{"type":"ProjectInfo","version":2,"phase":"Immediate","time":1783989331026,"processId":1832,"projectLoad":7.551564750000001,"projectInit":6.660792958,"templateInit":0.0,"packageManagerInit":0.271434334,"assetDatabaseInit":0.118766833,"globalIlluminationInit":0.000347,"assembliesLoad":0.509776792,"unityExtensionsInit":0.027287459,"assetDatabaseRefresh":5.350019417,"sceneOpening":0.819900459}
+##utp:{"type":"EditorInfo","version":2,"phase":"Immediate","time":1783989331026,"processId":1832,"editorVersion":"6000.5.1f1 (0d9463e84828)","branch":"6000.5/staging","buildType":"Release","platform":"OSX"}
+Worker ready: AssetImportWorkerHW0 0
+[Licensing::Client] Successfully resolved entitlement details
+Running tests for ExecutionSettings with details:
+targetPlatform =
+playerHeartbeatTimeout = 600
+filters[0] =
+   Filter with settings:
+   testMode = PlayMode
+   targetPlatform =
+   testNames = null
+   groupNames = null
+   categoryNames = null
+   assemblyNames = null
+ignoreTests = {}
+featureFlags = null
+
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/StackTrace.cs:35)
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+UnityEditor.TestTools.TestRunner.CommandLineTest.Executer:InitializeAndExecuteRun (string[]) (at ./Library/PackageCache/com.unity.test-framework@f3e6c9a02477/UnityEditor.TestRunner/CommandLineTest/Executer.cs:53)
+UnityEditor.TestTools.TestRunner.CommandLineTest.TestStarter:InitializeAndExecuteRun () (at ./Library/PackageCache/com.unity.test-framework@f3e6c9a02477/UnityEditor.TestRunner/CommandLineTest/TestStarter.cs:64)
+UnityEditor.EditorApplication:Internal_CallUpdateFunctions () (at /Users/bokken/build/output/unity/unity/Editor/Mono/EditorApplication.cs:403)
+
+(Filename: ./Library/PackageCache/com.unity.test-framework@f3e6c9a02477/UnityEditor.TestRunner/CommandLineTest/Executer.cs Line: 53)
+
+[UnityConnectServicesConfig] config is NOT valid, switching to default
+Created GICache directory at /Users/cqmizhangxiaoyu2/Library/Caches/com.unity3d.UnityEditor/GiCache. Took: 0.003s, timestamps: [7.553 - 7.556]
+[Licensing::Client] Successfully resolved entitlement details
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 1 unused Assets / (56.3 KB). Loaded Objects now: 8643.
+Memory consumption went from 245.8 MB to 245.7 MB.
+Total: 6.892208 ms (FindLiveObjects: 0.175500 ms CreateObjectMapping: 0.545875 ms MarkObjects: 6.151167 ms  DeleteObjects: 0.019333 ms)
+
+Importing 'GUID: 495c11e7187184296b4a74cfce06770a - Path: Assets/InitTestScene9d9503d1-efd0-41bb-a0a1-b4b4ba1b95cb.unity' with importer (DefaultImporter)
+Imported 'GUID: 495c11e7187184296b4a74cfce06770a' -> (Import Result ID: '2951dd22f4c95e321ee65c58c06b5fba') in 0.004 seconds [static dependencies only]. Details - ImportResultOutputID=363165da9b9075912ef12c32912dd242 DependenciesID=7ac422c84cc1c26f5f6372b3adfe6056 StaticDependenciesID=8f07829eb5643f83e722c799968c91e2
+Refreshing native plugins compatible for Editor in 9.47 ms, found 6 plugins.
+Asset Pipeline Refresh (id=ee82f3f660cd442369262a21d8a860d5): Total: 0.170 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Executing IPrebuildSetup for: Unity.PerformanceTesting.Editor.TestRunBuilder.
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/StackTrace.cs:35)
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+UnityEditor.TestTools.TestRunner.TestRun.Tasks.BuildActionTaskBase`1/<ExecuteMethods>d__8<UnityEngine.TestTools.IPrebuildSetup>:MoveNext () (at ./Library/PackageCache/com.unity.test-framework@f3e6c9a02477/UnityEditor.TestRunner/TestRun/Tasks/BuildActionTaskBase.cs:48)
+UnityEditor.TestTools.TestRunner.TestRun.Tasks.BuildActionTaskBase`1/<Execute>d__7<UnityEngine.TestTools.IPrebuildSetup>:MoveNext () (at ./Library/PackageCache/com.unity.test-framework@f3e6c9a02477/UnityEditor.TestRunner/TestRun/Tasks/BuildActionTaskBase.cs:34)
+UnityEditor.TestTools.TestRunner.TestRun.TestJobRunner:ExecuteStep () (at ./Library/PackageCache/com.unity.test-framework@f3e6c9a02477/UnityEditor.TestRunner/TestRun/TestJobRunner.cs:194)
+UnityEditor.TestTools.TestRunner.TestRun.TestJobRunner:ExecuteCallback () (at ./Library/PackageCache/com.unity.test-framework@f3e6c9a02477/UnityEditor.TestRunner/TestRun/TestJobRunner.cs:129)
+UnityEditor.EditorApplication:Internal_CallUpdateFunctions () (at /Users/bokken/build/output/unity/unity/Editor/Mono/EditorApplication.cs:403)
+
+(Filename: ./Library/PackageCache/com.unity.test-framework@f3e6c9a02477/UnityEditor.TestRunner/TestRun/Tasks/BuildActionTaskBase.cs Line: 48)
+
+Thread 0x16b95f000 may have been prematurely finalized
+SpriteAtlasPacking completed in 0.003155 sec
+Reloading assemblies for play mode.
+Reloading assemblies after forced synchronous recompile.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory is not a mono symbol file
+Refreshing native plugins compatible for Editor in 4.47 ms, found 6 plugins.
+Native extension for Android target not found
+Native extension for WindowsStandalone target not found
+Native extension for OSXStandalone target not found
+Native extension for WebGL target not found
+ScheduleIndexationOnStartup MainProcess:True IndexOnStartup:False
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.979 seconds
+Domain Reload Profiling: 1521ms
+	BeginReloadAssembly (361ms)
+		DisableScriptedObjects (23ms)
+		CreateAndSetChildDomain (269ms)
+	RebuildCommonClasses (5ms)
+	RebuildNativeTypeToScriptingClass (9ms)
+	initialDomainReloadingComplete (36ms)
+	LoadAllAssembliesAndSetupDomain (132ms)
+		LoadAssemblies (85ms)
+		AnalyzeDomain (17ms)
+			TypeCache.Refresh (9ms)
+			ResolveRequiredComponents (5ms)
+	FinalizeReload (980ms)
+		SetupLoadedEditorAssemblies (0ms)
+			InitializePlatformSupportModulesInManaged (4ms)
+			BeforeProcessingInitializeOnLoad (44ms)
+			ProcessInitializeOnLoadAttributes (604ms)
+			ProcessInitializeOnLoadMethodAttributes (143ms)
+		AwakeInstancesAfterBackupRestoration (16ms)
+No restricted APIs configured; Validation skipped.
+Checking 29 assemblies for restricted APIs found 0 usage(s) in 164 ms
+Refreshing native plugins compatible for Editor in 4.69 ms, found 6 plugins.
+
+Asset Pipeline Refresh (id=ea164534482154ff89bc580955e0ce64): Total: 2.423 seconds - Initiated by StopAssetImportingV2(ForceSynchronousImport | ForceDomainReload)
+	(Values over 0.05ms)
+	Summary:
+		Imports: total=0 (actual=0, local cache=0, cache server=0)
+		Asset DB Process Time: managed=0 ms, native=1193 ms
+		Asset DB Callback time: managed=352 ms, native=306 ms
+		Scripting: domain reloads=1, domain reload time=570 ms, compile time=1 ms, other=0 ms
+		Project Asset Count: scripts=1786, non-scripts=3327
+		Asset File Changes: new=0, changed=0, moved=0, deleted=0
+		Scan Filter Count: 0
+	InvokePackagesCallback: 1.083ms
+	ApplyChangesToAssetFolders: 0.240ms
+	Collect global state as custom dependencies: 1.234ms
+	ProcessAssetsWithTransientArtifactChanges: 111.610ms
+	CategorizeAssets: 39.606ms
+	CompileScripts: 0.522ms
+	ImportOutOfDateAssets: 1015.881ms (992.195ms without children)
+		CollectScriptTypesHashes: 1.329ms
+		ReloadNativeAssets: 0.660ms
+		UnloadImportedAssets: 0.114ms
+		EnsureUptoDateAssetsAreRegisteredWithGuidPM: 0.419ms
+		ImportSchedulerStart: 22.449ms
+	PostProcessAllAssets: 652.689ms
+		PostProcessCallbackCreateDeferredMaterials 26.907ms
+		AssemblyValidation.PostprocessAllAssets 23.245ms
+		SpriteAtlasDatabase.OnAssetPostprocessCallback 11.653ms
+		ShaderAssetModifiedCallback 11.308ms
+		RaytracingShaderImportPostprocess 6.431ms
+		ComputeShaderImportPostprocess 5.684ms
+		SpeedTreeImporter.PostprocessAllAssets 4.975ms
+		BlockShaderImporter.PostprocessAllAssets 2.877ms
+		LocalizationDatabase.AssetDatabasePostprocessCallback 2.851ms
+		XRBuildSystem.XRAssetImported 0.412ms
+		MonoPostProcessAllAssets: 351.754ms
+			ShaderGraphAssetPostProcessor.OnPostprocessAllAssets 120.180ms
+			PostProcessor.OnPostprocessAllAssets 32.435ms
+			InputActionAssetPostprocessor.OnPostprocessAllAssets 22.426ms
+			MaterialPostprocessor.OnPostprocessAllAssets 22.345ms
+			AssetPostprocessor.OnPostprocessAllAssets 22.042ms
+			InputActionJsonNameModifierAssetProcessor.OnPostprocessAllAssets 21.779ms
+			TextAssetPostProcessor.OnPostprocessAllAssets 17.524ms
+			SpriteSlicePostprocessor.OnPostprocessAllAssets 14.417ms
+			StyleCatalogPostProcessor.OnPostprocessAllAssets 11.659ms
+			AssetChangedListener.OnPostprocessAllAssets 9.858ms
+			UniversalRenderPipelineGlobalSettingsPostprocessor.OnPostprocessAllAssets 5.617ms
+			BuilderAssetPostprocessor.OnPostprocessAllAssets 4.346ms
+			RenderPipelineGlobalSettingsPostprocessor.OnPostprocessAllAssets 3.166ms
+			SpeedTree9Postprocessor.OnPostprocessAllAssets 2.099ms
+			RetainedModeAssetPostprocessor.OnPostprocessAllAssets 1.410ms
+			WindowAssetPostprocessingWatcher.OnPostprocessAllAssets 0.941ms
+			SpriteShapeAssetPostProcessor.OnPostprocessAllAssets 0.436ms
+			SpriteEditorTexturePostprocessor.OnPostprocessAllAssets 0.357ms
+			SampleDependencyImporterPostProcessor.OnPostprocessAllAssets 0.264ms
+			ArtifactBrowserPostProcessor.OnPostprocessAllAssets 0.257ms
+			ShaderReflectionAssetPostProcessor.OnPostprocessAllAssets 0.238ms
+			SpeedTreePostProcessor.OnPostprocessAllAssets 0.222ms
+			TMPro_TexturePostProcessor.OnPostprocessAllAssets 0.195ms
+			UVCSAssetPostprocessor.OnPostprocessAllAssets 0.187ms
+			ProjectSettingsPostprocessor.OnPostprocessAllAssets 0.177ms
+			ReferencedClipsPostProcessor.OnPostprocessAllAssets 0.166ms
+			AudioMixerPostprocessor.OnPostprocessAllAssets 0.154ms
+			AssetEvents.OnPostprocessAllAssets 0.130ms
+			SpriteLibraryAssetPostprocessor.OnPostprocessAllAssets 0.106ms
+			SamplePostprocessor.OnPostprocessAllAssets 0.105ms
+			TerrainToolbarOverlayPostProcessor.OnPostprocessAllAssets 0.089ms
+			PSDImportPostProcessor.OnPostprocessAllAssets 0.071ms
+			AssetDatabaseCallbacks.OnPostprocessAllAssets 0.070ms
+			ConfigAssetsTracker.OnPostprocessAllAssets 0.056ms
+			ScenarioDriftAssetsTracker.OnPostprocessAllAssets 0.054ms
+			SyncVS.PostprocessSyncProject 0.051ms
+	PostAssetChangesProfiler: 5.410ms
+	GatherAllCurrentPrimaryImportResultRevisions: 0.395ms
+	UnloadStreamsBegin: 0.095ms
+	PersistCurrentRevisions: 0.101ms
+	GenerateScriptTypeHashes: 2.317ms
+	GenerateScriptTypeSerializationHashes: 3.814ms
+	Untracked: 590.986ms
+
+Loaded scene 'Temp/__Backupscenes/0.backup'
+	Deserialize:            0.583 ms
+	Integration:            362.856 ms
+	Integration of assets:  0.002 ms
+	Thread Wait Time:       0.006 ms
+	Total Operation Time:   363.447 ms
+[MODES] ModeService[none].Initialize
+[MODES] ModeService[none].LoadModes
+[Licensing::Client] Successfully resolved entitlement details
+[Licensing::Client] Successfully resolved entitlement details
+<b><color=#2EA3FF>MCP-FOR-UNITY</color></b>: [TestRunnerNoThrottle] Applied No Throttling for test run.
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/StackTrace.cs:35)
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+MCPForUnity.Editor.Helpers.McpLog:Info (string,bool) (at ./Library/PackageCache/com.coplaydev.unity-mcp@4ee62b097584/Editor/Helpers/McpLog.cs:40)
+MCPForUnity.Editor.Services.TestRunnerNoThrottle:ApplyNoThrottling () (at ./Library/PackageCache/com.coplaydev.unity-mcp@4ee62b097584/Editor/Services/TestRunnerNoThrottle.cs:101)
+MCPForUnity.Editor.Services.TestRunnerNoThrottle/TestCallbacks:RunStarted (UnityEditor.TestTools.TestRunner.Api.ITestAdaptor) (at ./Library/PackageCache/com.coplaydev.unity-mcp@4ee62b097584/Editor/Services/TestRunnerNoThrottle.cs:138)
+UnityEditor.TestTools.TestRunner.Api.CallbacksDelegator/<>c__DisplayClass7_0:<RunStarted>b__0 (UnityEditor.TestTools.TestRunner.Api.ICallbacks) (at ./Library/PackageCache/com.unity.test-framework@f3e6c9a02477/UnityEditor.TestRunner/Api/CallbacksDelegator.cs:42)
+UnityEditor.TestTools.TestRunner.Api.CallbacksDelegator:TryInvokeAllCallbacks (System.Action`1<UnityEditor.TestTools.TestRunner.Api.ICallbacks>) (at ./Library/PackageCache/com.unity.test-framework@f3e6c9a02477/UnityEditor.TestRunner/Api/CallbacksDelegator.cs:135)
+UnityEditor.TestTools.TestRunner.Api.CallbacksDelegator:RunStarted (NUnit.Framework.Interfaces.ITest) (at ./Library/PackageCache/com.unity.test-framework@f3e6c9a02477/UnityEditor.TestRunner/Api/CallbacksDelegator.cs:42)
+UnityEngine.Events.InvokableCall`1<NUnit.Framework.Interfaces.ITest>:Invoke (NUnit.Framework.Interfaces.ITest) (at /Users/bokken/build/output/unity/unity/Runtime/Export/UnityEvent/UnityEvent.cs:222)
+UnityEngine.Events.UnityEvent`1<NUnit.Framework.Interfaces.ITest>:Invoke (NUnit.Framework.Interfaces.ITest) (at /Users/bokken/build/output/unity/unity/artifacts/generated/UnityEvent/UnityEvent_1.cs:59)
+UnityEngine.Events.InvokableCall`1<NUnit.Framework.Interfaces.ITest>:Invoke (NUnit.Framework.Interfaces.ITest) (at /Users/bokken/build/output/unity/unity/Runtime/Export/UnityEvent/UnityEvent.cs:222)
+UnityEngine.Events.UnityEvent`1<NUnit.Framework.Interfaces.ITest>:Invoke (NUnit.Framework.Interfaces.ITest) (at /Users/bokken/build/output/unity/unity/artifacts/generated/UnityEvent/UnityEvent_1.cs:59)
+UnityEngine.TestTools.TestRunner.PlaymodeTestsController/<Run>d__25:MoveNext () (at ./Library/PackageCache/com.unity.test-framework@f3e6c9a02477/UnityEngine.TestRunner/TestRunner/PlaymodeTestsController.cs:137)
+UnityEngine.SetupCoroutine:InvokeMoveNext (System.Collections.IEnumerator,intptr) (at /Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/Coroutines.cs:17)
+
+(Filename: ./Library/PackageCache/com.coplaydev.unity-mcp@4ee62b097584/Editor/Helpers/McpLog.cs Line: 40)
+
+Unloading 6 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.331125 ms
+Loaded scene 'Assets/_Game/Scenes/Bootstrap.unity'
+	Deserialize:            6.970 ms
+	Integration:            188.688 ms
+	Integration of assets:  4.019 ms
+	Thread Wait Time:       0.075 ms
+	Total Operation Time:   199.751 ms
+CONFIG_RUNTIME_READY source=TextAsset:gameplay_config schema=4 content=0.6.0-sample hash=54885fb2ce8373bad21af796d96a7a4cbc4ce6d8f41def3f909686b14ec87a1d tables=28 records=715 primaryIndexes=331 groupIndexes=56
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/StackTrace.cs:35)
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+OneStrokeDemon.Bootstrap.BootstrapController:Start () (at Assets/_Game/Scripts/Bootstrap/BootstrapController.cs:72)
+
+(Filename: Assets/_Game/Scripts/Bootstrap/BootstrapController.cs Line: 72)
+
+ASSET_REGISTRY_READY source=AssetRegistry:asset_registry configHash=54885fb2ce8373bad21af796d96a7a4cbc4ce6d8f41def3f909686b14ec87a1d entries=76 prefabs=40 sprites=18 audioClips=17 scenes=1
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/StackTrace.cs:35)
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+OneStrokeDemon.Bootstrap.BootstrapController:Start () (at Assets/_Game/Scripts/Bootstrap/BootstrapController.cs:73)
+
+(Filename: Assets/_Game/Scripts/Bootstrap/BootstrapController.cs Line: 73)
+
+POINTER_INPUT_READY source=InputSystem modes=Mouse,Touch reference=1920x1080 safeArea=dynamic uiBeginBlock=true maxActivePointers=1
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/StackTrace.cs:35)
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+OneStrokeDemon.Bootstrap.BootstrapController:Start () (at Assets/_Game/Scripts/Bootstrap/BootstrapController.cs:74)
+
+(Filename: Assets/_Game/Scripts/Bootstrap/BootstrapController.cs Line: 74)
+
+Unloading 7213 unused Assets / (4.7 MB). Loaded Objects now: 8690.
+Memory consumption went from 261.8 MB to 257.1 MB.
+Total: 15.020125 ms (FindLiveObjects: 1.072125 ms CreateObjectMapping: 1.460292 ms MarkObjects: 7.249417 ms  DeleteObjects: 5.238042 ms)
+
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.389458 ms
+Loaded scene 'Assets/_Game/Scenes/MainMenu.unity'
+	Deserialize:            1.757 ms
+	Integration:            227.099 ms
+	Integration of assets:  0.024 ms
+	Thread Wait Time:       0.054 ms
+	Total Operation Time:   228.933 ms
+Unloading 3 unused Assets / (3.5 KB). Loaded Objects now: 8691.
+Memory consumption went from 247.8 MB to 247.8 MB.
+Total: 8.511041 ms (FindLiveObjects: 0.225666 ms CreateObjectMapping: 0.563584 ms MarkObjects: 7.702000 ms  DeleteObjects: 0.019750 ms)
+
+Unloading 1 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.146584 ms
+Loaded scene 'Assets/_Game/Scenes/Battle.unity'
+	Deserialize:            0.564 ms
+	Integration:            178.401 ms
+	Integration of assets:  0.001 ms
+	Thread Wait Time:       1.039 ms
+	Total Operation Time:   180.004 ms
+Unloading 1 unused Assets / (1.0 KB). Loaded Objects now: 8691.
+Memory consumption went from 247.6 MB to 247.6 MB.
+Total: 8.156250 ms (FindLiveObjects: 0.316084 ms CreateObjectMapping: 0.571041 ms MarkObjects: 7.255709 ms  DeleteObjects: 0.013250 ms)
+
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.127834 ms
+Loaded scene 'Assets/_Game/Scenes/Bootstrap.unity'
+	Deserialize:            0.656 ms
+	Integration:            216.338 ms
+	Integration of assets:  0.007 ms
+	Thread Wait Time:       0.035 ms
+	Total Operation Time:   217.036 ms
+CONFIG_RUNTIME_READY source=TextAsset:gameplay_config schema=4 content=0.6.0-sample hash=54885fb2ce8373bad21af796d96a7a4cbc4ce6d8f41def3f909686b14ec87a1d tables=28 records=715 primaryIndexes=331 groupIndexes=56
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/StackTrace.cs:35)
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+OneStrokeDemon.Bootstrap.BootstrapController:Start () (at Assets/_Game/Scripts/Bootstrap/BootstrapController.cs:72)
+
+(Filename: Assets/_Game/Scripts/Bootstrap/BootstrapController.cs Line: 72)
+
+ASSET_REGISTRY_READY source=AssetRegistry:asset_registry configHash=54885fb2ce8373bad21af796d96a7a4cbc4ce6d8f41def3f909686b14ec87a1d entries=76 prefabs=40 sprites=18 audioClips=17 scenes=1
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/StackTrace.cs:35)
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+OneStrokeDemon.Bootstrap.BootstrapController:Start () (at Assets/_Game/Scripts/Bootstrap/BootstrapController.cs:73)
+
+(Filename: Assets/_Game/Scripts/Bootstrap/BootstrapController.cs Line: 73)
+
+POINTER_INPUT_READY source=InputSystem modes=Mouse,Touch reference=1920x1080 safeArea=dynamic uiBeginBlock=true maxActivePointers=1
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/StackTrace.cs:35)
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+OneStrokeDemon.Bootstrap.BootstrapController:Start () (at Assets/_Game/Scripts/Bootstrap/BootstrapController.cs:74)
+
+(Filename: Assets/_Game/Scripts/Bootstrap/BootstrapController.cs Line: 74)
+
+Unloading 1 unused Assets / (1.0 KB). Loaded Objects now: 8691.
+Memory consumption went from 247.8 MB to 247.8 MB.
+Total: 7.653750 ms (FindLiveObjects: 0.164375 ms CreateObjectMapping: 0.561667 ms MarkObjects: 6.917125 ms  DeleteObjects: 0.010292 ms)
+
+Unloading 1 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.102959 ms
+Loaded scene 'Assets/_Game/Scenes/MainMenu.unity'
+	Deserialize:            0.355 ms
+	Integration:            181.715 ms
+	Integration of assets:  0.001 ms
+	Thread Wait Time:       0.037 ms
+	Total Operation Time:   182.109 ms
+Unloading 3 unused Assets / (3.5 KB). Loaded Objects now: 8691.
+Memory consumption went from 247.8 MB to 247.8 MB.
+Total: 7.652417 ms (FindLiveObjects: 0.182833 ms CreateObjectMapping: 0.563208 ms MarkObjects: 6.891125 ms  DeleteObjects: 0.015000 ms)
+
+CONFIG_RUNTIME_FAILED error=CFGRT003 [TextAsset:gameplay_config::schemaVersion]: Unsupported schema version 999; expected 4.
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/StackTrace.cs:35)
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:LogError (object)
+OneStrokeDemon.Bootstrap.BootstrapController:Start () (at Assets/_Game/Scripts/Bootstrap/BootstrapController.cs:35)
+
+(Filename: Assets/_Game/Scripts/Bootstrap/BootstrapController.cs Line: 35)
+
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.121000 ms
+Loaded scene 'Assets/_Game/Scenes/Bootstrap.unity'
+	Deserialize:            0.505 ms
+	Integration:            224.270 ms
+	Integration of assets:  0.005 ms
+	Thread Wait Time:       0.043 ms
+	Total Operation Time:   224.822 ms
+CONFIG_RUNTIME_READY source=TextAsset:gameplay_config schema=4 content=0.6.0-sample hash=54885fb2ce8373bad21af796d96a7a4cbc4ce6d8f41def3f909686b14ec87a1d tables=28 records=715 primaryIndexes=331 groupIndexes=56
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/StackTrace.cs:35)
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+OneStrokeDemon.Bootstrap.BootstrapController:Start () (at Assets/_Game/Scripts/Bootstrap/BootstrapController.cs:72)
+
+(Filename: Assets/_Game/Scripts/Bootstrap/BootstrapController.cs Line: 72)
+
+ASSET_REGISTRY_READY source=AssetRegistry:asset_registry configHash=54885fb2ce8373bad21af796d96a7a4cbc4ce6d8f41def3f909686b14ec87a1d entries=76 prefabs=40 sprites=18 audioClips=17 scenes=1
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/StackTrace.cs:35)
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+OneStrokeDemon.Bootstrap.BootstrapController:Start () (at Assets/_Game/Scripts/Bootstrap/BootstrapController.cs:73)
+
+(Filename: Assets/_Game/Scripts/Bootstrap/BootstrapController.cs Line: 73)
+
+POINTER_INPUT_READY source=InputSystem modes=Mouse,Touch reference=1920x1080 safeArea=dynamic uiBeginBlock=true maxActivePointers=1
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/StackTrace.cs:35)
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+OneStrokeDemon.Bootstrap.BootstrapController:Start () (at Assets/_Game/Scripts/Bootstrap/BootstrapController.cs:74)
+
+(Filename: Assets/_Game/Scripts/Bootstrap/BootstrapController.cs Line: 74)
+
+Unloading 1 unused Assets / (1.0 KB). Loaded Objects now: 8691.
+Memory consumption went from 247.9 MB to 247.9 MB.
+Total: 7.996708 ms (FindLiveObjects: 0.173458 ms CreateObjectMapping: 0.543750 ms MarkObjects: 7.266208 ms  DeleteObjects: 0.013125 ms)
+
+Unloading 1 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.108708 ms
+Loaded scene 'Assets/_Game/Scenes/MainMenu.unity'
+	Deserialize:            0.313 ms
+	Integration:            184.609 ms
+	Integration of assets:  0.001 ms
+	Thread Wait Time:       0.039 ms
+	Total Operation Time:   184.962 ms
+Unloading 3 unused Assets / (3.0 KB). Loaded Objects now: 8691.
+Memory consumption went from 247.8 MB to 247.8 MB.
+Total: 8.105875 ms (FindLiveObjects: 0.168542 ms CreateObjectMapping: 0.586750 ms MarkObjects: 7.332542 ms  DeleteObjects: 0.017583 ms)
+
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.113708 ms
+Loaded scene 'Assets/_Game/Scenes/Bootstrap.unity'
+	Deserialize:            0.529 ms
+	Integration:            216.127 ms
+	Integration of assets:  0.006 ms
+	Thread Wait Time:       0.034 ms
+	Total Operation Time:   216.697 ms
+CONFIG_RUNTIME_READY source=TextAsset:gameplay_config schema=4 content=0.6.0-sample hash=54885fb2ce8373bad21af796d96a7a4cbc4ce6d8f41def3f909686b14ec87a1d tables=28 records=715 primaryIndexes=331 groupIndexes=56
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/StackTrace.cs:35)
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+OneStrokeDemon.Bootstrap.BootstrapController:Start () (at Assets/_Game/Scripts/Bootstrap/BootstrapController.cs:72)
+
+(Filename: Assets/_Game/Scripts/Bootstrap/BootstrapController.cs Line: 72)
+
+ASSET_REGISTRY_READY source=AssetRegistry:asset_registry configHash=54885fb2ce8373bad21af796d96a7a4cbc4ce6d8f41def3f909686b14ec87a1d entries=76 prefabs=40 sprites=18 audioClips=17 scenes=1
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/StackTrace.cs:35)
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+OneStrokeDemon.Bootstrap.BootstrapController:Start () (at Assets/_Game/Scripts/Bootstrap/BootstrapController.cs:73)
+
+(Filename: Assets/_Game/Scripts/Bootstrap/BootstrapController.cs Line: 73)
+
+POINTER_INPUT_READY source=InputSystem modes=Mouse,Touch reference=1920x1080 safeArea=dynamic uiBeginBlock=true maxActivePointers=1
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/StackTrace.cs:35)
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+OneStrokeDemon.Bootstrap.BootstrapController:Start () (at Assets/_Game/Scripts/Bootstrap/BootstrapController.cs:74)
+
+(Filename: Assets/_Game/Scripts/Bootstrap/BootstrapController.cs Line: 74)
+
+Unloading 1 unused Assets / (1.0 KB). Loaded Objects now: 8693.
+Memory consumption went from 248.3 MB to 248.3 MB.
+Total: 7.690708 ms (FindLiveObjects: 0.163208 ms CreateObjectMapping: 0.525500 ms MarkObjects: 6.991292 ms  DeleteObjects: 0.010500 ms)
+
+Unloading 1 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.100708 ms
+Loaded scene 'Assets/_Game/Scenes/MainMenu.unity'
+	Deserialize:            0.352 ms
+	Integration:            176.068 ms
+	Integration of assets:  0.001 ms
+	Thread Wait Time:       0.036 ms
+	Total Operation Time:   176.456 ms
+Unloading 11 unused Assets / (11.9 KB). Loaded Objects now: 8682.
+Memory consumption went from 248.3 MB to 248.3 MB.
+Total: 7.665583 ms (FindLiveObjects: 0.175083 ms CreateObjectMapping: 0.557334 ms MarkObjects: 6.872541 ms  DeleteObjects: 0.060459 ms)
+
+Unloading 7 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.119708 ms
+Loaded scene 'Assets/_Game/Scenes/Bootstrap.unity'
+	Deserialize:            0.768 ms
+	Integration:            221.940 ms
+	Integration of assets:  0.097 ms
+	Thread Wait Time:       0.087 ms
+	Total Operation Time:   222.893 ms
+CONFIG_RUNTIME_READY source=TextAsset:gameplay_config schema=4 content=0.6.0-sample hash=54885fb2ce8373bad21af796d96a7a4cbc4ce6d8f41def3f909686b14ec87a1d tables=28 records=715 primaryIndexes=331 groupIndexes=56
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/StackTrace.cs:35)
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+OneStrokeDemon.Bootstrap.BootstrapController:Start () (at Assets/_Game/Scripts/Bootstrap/BootstrapController.cs:72)
+
+(Filename: Assets/_Game/Scripts/Bootstrap/BootstrapController.cs Line: 72)
+
+ASSET_REGISTRY_READY source=AssetRegistry:asset_registry configHash=54885fb2ce8373bad21af796d96a7a4cbc4ce6d8f41def3f909686b14ec87a1d entries=76 prefabs=40 sprites=18 audioClips=17 scenes=1
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/StackTrace.cs:35)
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+OneStrokeDemon.Bootstrap.BootstrapController:Start () (at Assets/_Game/Scripts/Bootstrap/BootstrapController.cs:73)
+
+(Filename: Assets/_Game/Scripts/Bootstrap/BootstrapController.cs Line: 73)
+
+POINTER_INPUT_READY source=InputSystem modes=Mouse,Touch reference=1920x1080 safeArea=dynamic uiBeginBlock=true maxActivePointers=1
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/StackTrace.cs:35)
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+OneStrokeDemon.Bootstrap.BootstrapController:Start () (at Assets/_Game/Scripts/Bootstrap/BootstrapController.cs:74)
+
+(Filename: Assets/_Game/Scripts/Bootstrap/BootstrapController.cs Line: 74)
+
+Unloading 1 unused Assets / (1.0 KB). Loaded Objects now: 8694.
+Memory consumption went from 249.0 MB to 249.0 MB.
+Total: 7.793750 ms (FindLiveObjects: 0.165791 ms CreateObjectMapping: 0.579167 ms MarkObjects: 7.037500 ms  DeleteObjects: 0.010958 ms)
+
+Unloading 1 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.103250 ms
+Loaded scene 'Assets/_Game/Scenes/MainMenu.unity'
+	Deserialize:            0.337 ms
+	Integration:            178.262 ms
+	Integration of assets:  0.001 ms
+	Thread Wait Time:       0.058 ms
+	Total Operation Time:   178.658 ms
+Unloading 3 unused Assets / (3.0 KB). Loaded Objects now: 8697.
+Memory consumption went from 249.0 MB to 249.0 MB.
+Total: 8.737875 ms (FindLiveObjects: 0.329416 ms CreateObjectMapping: 0.573625 ms MarkObjects: 7.807042 ms  DeleteObjects: 0.027625 ms)
+
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.208750 ms
+Loaded scene 'Assets/_Game/Scenes/Bootstrap.unity'
+	Deserialize:            2.132 ms
+	Integration:            262.808 ms
+	Integration of assets:  0.010 ms
+	Thread Wait Time:       0.034 ms
+	Total Operation Time:   264.985 ms
+CONFIG_RUNTIME_READY source=TextAsset:gameplay_config schema=4 content=0.6.0-sample hash=54885fb2ce8373bad21af796d96a7a4cbc4ce6d8f41def3f909686b14ec87a1d tables=28 records=715 primaryIndexes=331 groupIndexes=56
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/StackTrace.cs:35)
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+OneStrokeDemon.Bootstrap.BootstrapController:Start () (at Assets/_Game/Scripts/Bootstrap/BootstrapController.cs:72)
+
+(Filename: Assets/_Game/Scripts/Bootstrap/BootstrapController.cs Line: 72)
+
+ASSET_REGISTRY_READY source=AssetRegistry:asset_registry configHash=54885fb2ce8373bad21af796d96a7a4cbc4ce6d8f41def3f909686b14ec87a1d entries=76 prefabs=40 sprites=18 audioClips=17 scenes=1
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/StackTrace.cs:35)
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+OneStrokeDemon.Bootstrap.BootstrapController:Start () (at Assets/_Game/Scripts/Bootstrap/BootstrapController.cs:73)
+
+(Filename: Assets/_Game/Scripts/Bootstrap/BootstrapController.cs Line: 73)
+
+POINTER_INPUT_READY source=InputSystem modes=Mouse,Touch reference=1920x1080 safeArea=dynamic uiBeginBlock=true maxActivePointers=1
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/StackTrace.cs:35)
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+OneStrokeDemon.Bootstrap.BootstrapController:Start () (at Assets/_Game/Scripts/Bootstrap/BootstrapController.cs:74)
+
+(Filename: Assets/_Game/Scripts/Bootstrap/BootstrapController.cs Line: 74)
+
+Unloading 1 unused Assets / (1.0 KB). Loaded Objects now: 8694.
+Memory consumption went from 249.0 MB to 249.0 MB.
+Total: 8.542958 ms (FindLiveObjects: 0.278291 ms CreateObjectMapping: 0.547000 ms MarkObjects: 7.703250 ms  DeleteObjects: 0.013916 ms)
+
+Unloading 1 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.166083 ms
+Loaded scene 'Assets/_Game/Scenes/MainMenu.unity'
+	Deserialize:            0.391 ms
+	Integration:            195.123 ms
+	Integration of assets:  0.001 ms
+	Thread Wait Time:       0.065 ms
+	Total Operation Time:   195.579 ms
+Unloading 11 unused Assets / (11.9 KB). Loaded Objects now: 8683.
+Memory consumption went from 249.0 MB to 249.0 MB.
+Total: 7.951500 ms (FindLiveObjects: 0.198750 ms CreateObjectMapping: 0.533292 ms MarkObjects: 7.128417 ms  DeleteObjects: 0.090500 ms)
+
+Unloading 7 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.132125 ms
+Loaded scene 'Assets/_Game/Scenes/Bootstrap.unity'
+	Deserialize:            0.845 ms
+	Integration:            216.362 ms
+	Integration of assets:  0.082 ms
+	Thread Wait Time:       0.091 ms
+	Total Operation Time:   217.381 ms
+CONFIG_RUNTIME_READY source=TextAsset:gameplay_config schema=4 content=0.6.0-sample hash=54885fb2ce8373bad21af796d96a7a4cbc4ce6d8f41def3f909686b14ec87a1d tables=28 records=715 primaryIndexes=331 groupIndexes=56
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/StackTrace.cs:35)
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+OneStrokeDemon.Bootstrap.BootstrapController:Start () (at Assets/_Game/Scripts/Bootstrap/BootstrapController.cs:72)
+
+(Filename: Assets/_Game/Scripts/Bootstrap/BootstrapController.cs Line: 72)
+
+ASSET_REGISTRY_READY source=AssetRegistry:asset_registry configHash=54885fb2ce8373bad21af796d96a7a4cbc4ce6d8f41def3f909686b14ec87a1d entries=76 prefabs=40 sprites=18 audioClips=17 scenes=1
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/StackTrace.cs:35)
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+OneStrokeDemon.Bootstrap.BootstrapController:Start () (at Assets/_Game/Scripts/Bootstrap/BootstrapController.cs:73)
+
+(Filename: Assets/_Game/Scripts/Bootstrap/BootstrapController.cs Line: 73)
+
+POINTER_INPUT_READY source=InputSystem modes=Mouse,Touch reference=1920x1080 safeArea=dynamic uiBeginBlock=true maxActivePointers=1
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/StackTrace.cs:35)
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+OneStrokeDemon.Bootstrap.BootstrapController:Start () (at Assets/_Game/Scripts/Bootstrap/BootstrapController.cs:74)
+
+(Filename: Assets/_Game/Scripts/Bootstrap/BootstrapController.cs Line: 74)
+
+Unloading 1 unused Assets / (1.0 KB). Loaded Objects now: 8694.
+Memory consumption went from 249.1 MB to 249.1 MB.
+Total: 7.714542 ms (FindLiveObjects: 0.159167 ms CreateObjectMapping: 0.569333 ms MarkObjects: 6.974750 ms  DeleteObjects: 0.011125 ms)
+
+Unloading 1 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.114458 ms
+Loaded scene 'Assets/_Game/Scenes/MainMenu.unity'
+	Deserialize:            0.326 ms
+	Integration:            177.361 ms
+	Integration of assets:  0.001 ms
+	Thread Wait Time:       0.044 ms
+	Total Operation Time:   177.732 ms
+Unloading 11 unused Assets / (13.3 KB). Loaded Objects now: 8683.
+Memory consumption went from 249.1 MB to 249.0 MB.
+Total: 7.793000 ms (FindLiveObjects: 0.176416 ms CreateObjectMapping: 0.541542 ms MarkObjects: 7.012750 ms  DeleteObjects: 0.062084 ms)
+
+Unloading 7 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.113500 ms
+Loaded scene 'Assets/_Game/Scenes/Bootstrap.unity'
+	Deserialize:            0.763 ms
+	Integration:            225.337 ms
+	Integration of assets:  0.073 ms
+	Thread Wait Time:       0.047 ms
+	Total Operation Time:   226.219 ms
+CONFIG_RUNTIME_READY source=TextAsset:gameplay_config schema=4 content=0.6.0-sample hash=54885fb2ce8373bad21af796d96a7a4cbc4ce6d8f41def3f909686b14ec87a1d tables=28 records=715 primaryIndexes=331 groupIndexes=56
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/StackTrace.cs:35)
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+OneStrokeDemon.Bootstrap.BootstrapController:Start () (at Assets/_Game/Scripts/Bootstrap/BootstrapController.cs:72)
+
+(Filename: Assets/_Game/Scripts/Bootstrap/BootstrapController.cs Line: 72)
+
+ASSET_REGISTRY_READY source=AssetRegistry:asset_registry configHash=54885fb2ce8373bad21af796d96a7a4cbc4ce6d8f41def3f909686b14ec87a1d entries=76 prefabs=40 sprites=18 audioClips=17 scenes=1
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/StackTrace.cs:35)
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+OneStrokeDemon.Bootstrap.BootstrapController:Start () (at Assets/_Game/Scripts/Bootstrap/BootstrapController.cs:73)
+
+(Filename: Assets/_Game/Scripts/Bootstrap/BootstrapController.cs Line: 73)
+
+POINTER_INPUT_READY source=InputSystem modes=Mouse,Touch reference=1920x1080 safeArea=dynamic uiBeginBlock=true maxActivePointers=1
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/StackTrace.cs:35)
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+OneStrokeDemon.Bootstrap.BootstrapController:Start () (at Assets/_Game/Scripts/Bootstrap/BootstrapController.cs:74)
+
+(Filename: Assets/_Game/Scripts/Bootstrap/BootstrapController.cs Line: 74)
+
+Unloading 1 unused Assets / (1.0 KB). Loaded Objects now: 8694.
+Memory consumption went from 249.1 MB to 249.1 MB.
+Total: 8.229875 ms (FindLiveObjects: 0.310500 ms CreateObjectMapping: 0.596583 ms MarkObjects: 7.308791 ms  DeleteObjects: 0.013417 ms)
+
+Unloading 1 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.147208 ms
+Loaded scene 'Assets/_Game/Scenes/MainMenu.unity'
+	Deserialize:            0.456 ms
+	Integration:            196.150 ms
+	Integration of assets:  0.001 ms
+	Thread Wait Time:       0.042 ms
+	Total Operation Time:   196.649 ms
+Unloading 3 unused Assets / (3.5 KB). Loaded Objects now: 8749.
+Memory consumption went from 249.1 MB to 249.1 MB.
+Total: 8.584959 ms (FindLiveObjects: 0.197500 ms CreateObjectMapping: 0.531833 ms MarkObjects: 7.833792 ms  DeleteObjects: 0.021500 ms)
+
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.172666 ms
+Loaded scene 'Assets/_Game/Scenes/Bootstrap.unity'
+	Deserialize:            0.639 ms
+	Integration:            230.427 ms
+	Integration of assets:  0.006 ms
+	Thread Wait Time:       0.024 ms
+	Total Operation Time:   231.097 ms
+CONFIG_RUNTIME_READY source=TextAsset:gameplay_config schema=4 content=0.6.0-sample hash=54885fb2ce8373bad21af796d96a7a4cbc4ce6d8f41def3f909686b14ec87a1d tables=28 records=715 primaryIndexes=331 groupIndexes=56
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/StackTrace.cs:35)
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+OneStrokeDemon.Bootstrap.BootstrapController:Start () (at Assets/_Game/Scripts/Bootstrap/BootstrapController.cs:72)
+
+(Filename: Assets/_Game/Scripts/Bootstrap/BootstrapController.cs Line: 72)
+
+ASSET_REGISTRY_READY source=AssetRegistry:asset_registry configHash=54885fb2ce8373bad21af796d96a7a4cbc4ce6d8f41def3f909686b14ec87a1d entries=76 prefabs=40 sprites=18 audioClips=17 scenes=1
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/StackTrace.cs:35)
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+OneStrokeDemon.Bootstrap.BootstrapController:Start () (at Assets/_Game/Scripts/Bootstrap/BootstrapController.cs:73)
+
+(Filename: Assets/_Game/Scripts/Bootstrap/BootstrapController.cs Line: 73)
+
+POINTER_INPUT_READY source=InputSystem modes=Mouse,Touch reference=1920x1080 safeArea=dynamic uiBeginBlock=true maxActivePointers=1
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/StackTrace.cs:35)
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+OneStrokeDemon.Bootstrap.BootstrapController:Start () (at Assets/_Game/Scripts/Bootstrap/BootstrapController.cs:74)
+
+(Filename: Assets/_Game/Scripts/Bootstrap/BootstrapController.cs Line: 74)
+
+Unloading 1 unused Assets / (1.0 KB). Loaded Objects now: 8694.
+Memory consumption went from 249.1 MB to 249.1 MB.
+Total: 8.480458 ms (FindLiveObjects: 0.211917 ms CreateObjectMapping: 0.574083 ms MarkObjects: 7.672167 ms  DeleteObjects: 0.022208 ms)
+
+Unloading 1 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.114625 ms
+Loaded scene 'Assets/_Game/Scenes/MainMenu.unity'
+	Deserialize:            0.350 ms
+	Integration:            195.546 ms
+	Integration of assets:  0.001 ms
+	Thread Wait Time:       0.052 ms
+	Total Operation Time:   195.949 ms
+Unloading 11 unused Assets / (13.3 KB). Loaded Objects now: 8683.
+Memory consumption went from 249.1 MB to 249.0 MB.
+Total: 9.241958 ms (FindLiveObjects: 0.546416 ms CreateObjectMapping: 0.603625 ms MarkObjects: 7.965292 ms  DeleteObjects: 0.126166 ms)
+
+Unloading 7 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.159459 ms
+Loaded scene 'Assets/_Game/Scenes/Bootstrap.unity'
+	Deserialize:            0.919 ms
+	Integration:            234.861 ms
+	Integration of assets:  0.090 ms
+	Thread Wait Time:       0.044 ms
+	Total Operation Time:   235.915 ms
+CONFIG_RUNTIME_READY source=TextAsset:gameplay_config schema=4 content=0.6.0-sample hash=54885fb2ce8373bad21af796d96a7a4cbc4ce6d8f41def3f909686b14ec87a1d tables=28 records=715 primaryIndexes=331 groupIndexes=56
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/StackTrace.cs:35)
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+OneStrokeDemon.Bootstrap.BootstrapController:Start () (at Assets/_Game/Scripts/Bootstrap/BootstrapController.cs:72)
+
+(Filename: Assets/_Game/Scripts/Bootstrap/BootstrapController.cs Line: 72)
+
+ASSET_REGISTRY_READY source=AssetRegistry:asset_registry configHash=54885fb2ce8373bad21af796d96a7a4cbc4ce6d8f41def3f909686b14ec87a1d entries=76 prefabs=40 sprites=18 audioClips=17 scenes=1
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/StackTrace.cs:35)
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+OneStrokeDemon.Bootstrap.BootstrapController:Start () (at Assets/_Game/Scripts/Bootstrap/BootstrapController.cs:73)
+
+(Filename: Assets/_Game/Scripts/Bootstrap/BootstrapController.cs Line: 73)
+
+POINTER_INPUT_READY source=InputSystem modes=Mouse,Touch reference=1920x1080 safeArea=dynamic uiBeginBlock=true maxActivePointers=1
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/StackTrace.cs:35)
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+OneStrokeDemon.Bootstrap.BootstrapController:Start () (at Assets/_Game/Scripts/Bootstrap/BootstrapController.cs:74)
+
+(Filename: Assets/_Game/Scripts/Bootstrap/BootstrapController.cs Line: 74)
+
+Unloading 1 unused Assets / (1.0 KB). Loaded Objects now: 8694.
+Memory consumption went from 249.1 MB to 249.1 MB.
+Total: 8.902292 ms (FindLiveObjects: 0.379958 ms CreateObjectMapping: 0.530750 ms MarkObjects: 7.978208 ms  DeleteObjects: 0.013334 ms)
+
+Unloading 1 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.118333 ms
+Loaded scene 'Assets/_Game/Scenes/MainMenu.unity'
+	Deserialize:            0.399 ms
+	Integration:            186.147 ms
+	Integration of assets:  0.001 ms
+	Thread Wait Time:       0.038 ms
+	Total Operation Time:   186.585 ms
+Unloading 11 unused Assets / (11.9 KB). Loaded Objects now: 8682.
+Memory consumption went from 248.5 MB to 248.5 MB.
+Total: 7.779625 ms (FindLiveObjects: 0.180084 ms CreateObjectMapping: 0.570209 ms MarkObjects: 6.966458 ms  DeleteObjects: 0.062583 ms)
+
+Unloading 7 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.130000 ms
+Loaded scene 'Assets/_Game/Scenes/Bootstrap.unity'
+	Deserialize:            0.831 ms
+	Integration:            227.089 ms
+	Integration of assets:  0.101 ms
+	Thread Wait Time:       0.031 ms
+	Total Operation Time:   228.051 ms
+CONFIG_RUNTIME_READY source=TextAsset:gameplay_config schema=4 content=0.6.0-sample hash=54885fb2ce8373bad21af796d96a7a4cbc4ce6d8f41def3f909686b14ec87a1d tables=28 records=715 primaryIndexes=331 groupIndexes=56
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/StackTrace.cs:35)
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+OneStrokeDemon.Bootstrap.BootstrapController:Start () (at Assets/_Game/Scripts/Bootstrap/BootstrapController.cs:72)
+
+(Filename: Assets/_Game/Scripts/Bootstrap/BootstrapController.cs Line: 72)
+
+ASSET_REGISTRY_READY source=AssetRegistry:asset_registry configHash=54885fb2ce8373bad21af796d96a7a4cbc4ce6d8f41def3f909686b14ec87a1d entries=76 prefabs=40 sprites=18 audioClips=17 scenes=1
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/StackTrace.cs:35)
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+OneStrokeDemon.Bootstrap.BootstrapController:Start () (at Assets/_Game/Scripts/Bootstrap/BootstrapController.cs:73)
+
+(Filename: Assets/_Game/Scripts/Bootstrap/BootstrapController.cs Line: 73)
+
+POINTER_INPUT_READY source=InputSystem modes=Mouse,Touch reference=1920x1080 safeArea=dynamic uiBeginBlock=true maxActivePointers=1
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/StackTrace.cs:35)
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+OneStrokeDemon.Bootstrap.BootstrapController:Start () (at Assets/_Game/Scripts/Bootstrap/BootstrapController.cs:74)
+
+(Filename: Assets/_Game/Scripts/Bootstrap/BootstrapController.cs Line: 74)
+
+Unloading 1 unused Assets / (1.0 KB). Loaded Objects now: 8694.
+Memory consumption went from 249.1 MB to 249.1 MB.
+Total: 8.260625 ms (FindLiveObjects: 0.171875 ms CreateObjectMapping: 0.562667 ms MarkObjects: 7.511083 ms  DeleteObjects: 0.014417 ms)
+
+Unloading 1 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.120167 ms
+Loaded scene 'Assets/_Game/Scenes/MainMenu.unity'
+	Deserialize:            0.588 ms
+	Integration:            180.333 ms
+	Integration of assets:  0.001 ms
+	Thread Wait Time:       0.046 ms
+	Total Operation Time:   180.967 ms
+Unloading 3 unused Assets / (3.0 KB). Loaded Objects now: 8767.
+Memory consumption went from 249.2 MB to 249.2 MB.
+Total: 7.847916 ms (FindLiveObjects: 0.149791 ms CreateObjectMapping: 0.549667 ms MarkObjects: 7.131333 ms  DeleteObjects: 0.016791 ms)
+
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.113209 ms
+Loaded scene 'Assets/_Game/Scenes/Bootstrap.unity'
+	Deserialize:            0.504 ms
+	Integration:            230.079 ms
+	Integration of assets:  0.007 ms
+	Thread Wait Time:       0.049 ms
+	Total Operation Time:   230.640 ms
+CONFIG_RUNTIME_READY source=TextAsset:gameplay_config schema=4 content=0.6.0-sample hash=54885fb2ce8373bad21af796d96a7a4cbc4ce6d8f41def3f909686b14ec87a1d tables=28 records=715 primaryIndexes=331 groupIndexes=56
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/StackTrace.cs:35)
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+OneStrokeDemon.Bootstrap.BootstrapController:Start () (at Assets/_Game/Scripts/Bootstrap/BootstrapController.cs:72)
+
+(Filename: Assets/_Game/Scripts/Bootstrap/BootstrapController.cs Line: 72)
+
+ASSET_REGISTRY_READY source=AssetRegistry:asset_registry configHash=54885fb2ce8373bad21af796d96a7a4cbc4ce6d8f41def3f909686b14ec87a1d entries=76 prefabs=40 sprites=18 audioClips=17 scenes=1
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/StackTrace.cs:35)
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+OneStrokeDemon.Bootstrap.BootstrapController:Start () (at Assets/_Game/Scripts/Bootstrap/BootstrapController.cs:73)
+
+(Filename: Assets/_Game/Scripts/Bootstrap/BootstrapController.cs Line: 73)
+
+POINTER_INPUT_READY source=InputSystem modes=Mouse,Touch reference=1920x1080 safeArea=dynamic uiBeginBlock=true maxActivePointers=1
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/StackTrace.cs:35)
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+OneStrokeDemon.Bootstrap.BootstrapController:Start () (at Assets/_Game/Scripts/Bootstrap/BootstrapController.cs:74)
+
+(Filename: Assets/_Game/Scripts/Bootstrap/BootstrapController.cs Line: 74)
+
+Unloading 1 unused Assets / (1.0 KB). Loaded Objects now: 8696.
+Memory consumption went from 249.2 MB to 249.2 MB.
+Total: 7.878875 ms (FindLiveObjects: 0.162417 ms CreateObjectMapping: 0.551375 ms MarkObjects: 7.150375 ms  DeleteObjects: 0.014458 ms)
+
+Unloading 1 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.117708 ms
+Loaded scene 'Assets/_Game/Scenes/MainMenu.unity'
+	Deserialize:            0.401 ms
+	Integration:            178.036 ms
+	Integration of assets:  0.001 ms
+	Thread Wait Time:       0.048 ms
+	Total Operation Time:   178.486 ms
+Unloading 11 unused Assets / (11.9 KB). Loaded Objects now: 8684.
+Memory consumption went from 248.7 MB to 248.7 MB.
+Total: 7.838000 ms (FindLiveObjects: 0.169375 ms CreateObjectMapping: 0.555042 ms MarkObjects: 7.047042 ms  DeleteObjects: 0.066375 ms)
+
+Unloading 7 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.134375 ms
+Loaded scene 'Assets/_Game/Scenes/Bootstrap.unity'
+	Deserialize:            2.539 ms
+	Integration:            217.794 ms
+	Integration of assets:  0.093 ms
+	Thread Wait Time:       0.050 ms
+	Total Operation Time:   220.476 ms
+CONFIG_RUNTIME_READY source=TextAsset:gameplay_config schema=4 content=0.6.0-sample hash=54885fb2ce8373bad21af796d96a7a4cbc4ce6d8f41def3f909686b14ec87a1d tables=28 records=715 primaryIndexes=331 groupIndexes=56
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/StackTrace.cs:35)
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+OneStrokeDemon.Bootstrap.BootstrapController:Start () (at Assets/_Game/Scripts/Bootstrap/BootstrapController.cs:72)
+
+(Filename: Assets/_Game/Scripts/Bootstrap/BootstrapController.cs Line: 72)
+
+ASSET_REGISTRY_READY source=AssetRegistry:asset_registry configHash=54885fb2ce8373bad21af796d96a7a4cbc4ce6d8f41def3f909686b14ec87a1d entries=76 prefabs=40 sprites=18 audioClips=17 scenes=1
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/StackTrace.cs:35)
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+OneStrokeDemon.Bootstrap.BootstrapController:Start () (at Assets/_Game/Scripts/Bootstrap/BootstrapController.cs:73)
+
+(Filename: Assets/_Game/Scripts/Bootstrap/BootstrapController.cs Line: 73)
+
+POINTER_INPUT_READY source=InputSystem modes=Mouse,Touch reference=1920x1080 safeArea=dynamic uiBeginBlock=true maxActivePointers=1
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/StackTrace.cs:35)
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+OneStrokeDemon.Bootstrap.BootstrapController:Start () (at Assets/_Game/Scripts/Bootstrap/BootstrapController.cs:74)
+
+(Filename: Assets/_Game/Scripts/Bootstrap/BootstrapController.cs Line: 74)
+
+Unloading 1 unused Assets / (1.0 KB). Loaded Objects now: 8696.
+Memory consumption went from 249.2 MB to 249.2 MB.
+Total: 8.036792 ms (FindLiveObjects: 0.262917 ms CreateObjectMapping: 0.575583 ms MarkObjects: 7.184791 ms  DeleteObjects: 0.013334 ms)
+
+Unloading 1 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.123625 ms
+Loaded scene 'Assets/_Game/Scenes/MainMenu.unity'
+	Deserialize:            0.387 ms
+	Integration:            180.618 ms
+	Integration of assets:  0.001 ms
+	Thread Wait Time:       0.031 ms
+	Total Operation Time:   181.037 ms
+Unloading 3 unused Assets / (3.0 KB). Loaded Objects now: 8715.
+Memory consumption went from 249.3 MB to 249.3 MB.
+Total: 7.643583 ms (FindLiveObjects: 0.149666 ms CreateObjectMapping: 0.536584 ms MarkObjects: 6.941958 ms  DeleteObjects: 0.015208 ms)
+
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.118791 ms
+Loaded scene 'Assets/_Game/Scenes/Bootstrap.unity'
+	Deserialize:            0.573 ms
+	Integration:            222.334 ms
+	Integration of assets:  0.005 ms
+	Thread Wait Time:       0.026 ms
+	Total Operation Time:   222.938 ms
+CONFIG_RUNTIME_READY source=TextAsset:gameplay_config schema=4 content=0.6.0-sample hash=54885fb2ce8373bad21af796d96a7a4cbc4ce6d8f41def3f909686b14ec87a1d tables=28 records=715 primaryIndexes=331 groupIndexes=56
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/StackTrace.cs:35)
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+OneStrokeDemon.Bootstrap.BootstrapController:Start () (at Assets/_Game/Scripts/Bootstrap/BootstrapController.cs:72)
+
+(Filename: Assets/_Game/Scripts/Bootstrap/BootstrapController.cs Line: 72)
+
+ASSET_REGISTRY_READY source=AssetRegistry:asset_registry configHash=54885fb2ce8373bad21af796d96a7a4cbc4ce6d8f41def3f909686b14ec87a1d entries=76 prefabs=40 sprites=18 audioClips=17 scenes=1
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/StackTrace.cs:35)
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+OneStrokeDemon.Bootstrap.BootstrapController:Start () (at Assets/_Game/Scripts/Bootstrap/BootstrapController.cs:73)
+
+(Filename: Assets/_Game/Scripts/Bootstrap/BootstrapController.cs Line: 73)
+
+POINTER_INPUT_READY source=InputSystem modes=Mouse,Touch reference=1920x1080 safeArea=dynamic uiBeginBlock=true maxActivePointers=1
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/StackTrace.cs:35)
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+OneStrokeDemon.Bootstrap.BootstrapController:Start () (at Assets/_Game/Scripts/Bootstrap/BootstrapController.cs:74)
+
+(Filename: Assets/_Game/Scripts/Bootstrap/BootstrapController.cs Line: 74)
+
+Unloading 1 unused Assets / (1.0 KB). Loaded Objects now: 8698.
+Memory consumption went from 249.3 MB to 249.3 MB.
+Total: 7.916542 ms (FindLiveObjects: 0.161708 ms CreateObjectMapping: 0.553709 ms MarkObjects: 7.187000 ms  DeleteObjects: 0.014083 ms)
+
+Unloading 1 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.105375 ms
+Loaded scene 'Assets/_Game/Scenes/MainMenu.unity'
+	Deserialize:            0.403 ms
+	Integration:            182.267 ms
+	Integration of assets:  0.001 ms
+	Thread Wait Time:       0.049 ms
+	Total Operation Time:   182.721 ms
+Unloading 11 unused Assets / (11.9 KB). Loaded Objects now: 8687.
+Memory consumption went from 249.4 MB to 249.4 MB.
+Total: 7.691833 ms (FindLiveObjects: 0.169417 ms CreateObjectMapping: 0.557250 ms MarkObjects: 6.903250 ms  DeleteObjects: 0.061792 ms)
+
+Unloading 7 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.109750 ms
+Loaded scene 'Assets/_Game/Scenes/Bootstrap.unity'
+	Deserialize:            0.763 ms
+	Integration:            218.649 ms
+	Integration of assets:  0.075 ms
+	Thread Wait Time:       0.070 ms
+	Total Operation Time:   219.557 ms
+CONFIG_RUNTIME_READY source=TextAsset:gameplay_config schema=4 content=0.6.0-sample hash=54885fb2ce8373bad21af796d96a7a4cbc4ce6d8f41def3f909686b14ec87a1d tables=28 records=715 primaryIndexes=331 groupIndexes=56
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/StackTrace.cs:35)
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+OneStrokeDemon.Bootstrap.BootstrapController:Start () (at Assets/_Game/Scripts/Bootstrap/BootstrapController.cs:72)
+
+(Filename: Assets/_Game/Scripts/Bootstrap/BootstrapController.cs Line: 72)
+
+ASSET_REGISTRY_READY source=AssetRegistry:asset_registry configHash=54885fb2ce8373bad21af796d96a7a4cbc4ce6d8f41def3f909686b14ec87a1d entries=76 prefabs=40 sprites=18 audioClips=17 scenes=1
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/StackTrace.cs:35)
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+OneStrokeDemon.Bootstrap.BootstrapController:Start () (at Assets/_Game/Scripts/Bootstrap/BootstrapController.cs:73)
+
+(Filename: Assets/_Game/Scripts/Bootstrap/BootstrapController.cs Line: 73)
+
+POINTER_INPUT_READY source=InputSystem modes=Mouse,Touch reference=1920x1080 safeArea=dynamic uiBeginBlock=true maxActivePointers=1
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/StackTrace.cs:35)
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+OneStrokeDemon.Bootstrap.BootstrapController:Start () (at Assets/_Game/Scripts/Bootstrap/BootstrapController.cs:74)
+
+(Filename: Assets/_Game/Scripts/Bootstrap/BootstrapController.cs Line: 74)
+
+Unloading 1 unused Assets / (1.0 KB). Loaded Objects now: 8698.
+Memory consumption went from 249.5 MB to 249.5 MB.
+Total: 7.743792 ms (FindLiveObjects: 0.167500 ms CreateObjectMapping: 0.583000 ms MarkObjects: 6.982916 ms  DeleteObjects: 0.010250 ms)
+
+Unloading 1 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.096833 ms
+Loaded scene 'Assets/_Game/Scenes/MainMenu.unity'
+	Deserialize:            0.416 ms
+	Integration:            182.328 ms
+	Integration of assets:  0.002 ms
+	Thread Wait Time:       0.061 ms
+	Total Operation Time:   182.806 ms
+Unloading 3 unused Assets / (3.5 KB). Loaded Objects now: 8708.
+Memory consumption went from 249.5 MB to 249.5 MB.
+Total: 7.759875 ms (FindLiveObjects: 0.174625 ms CreateObjectMapping: 0.581417 ms MarkObjects: 6.988458 ms  DeleteObjects: 0.015250 ms)
+
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.119000 ms
+Loaded scene 'Assets/_Game/Scenes/Bootstrap.unity'
+	Deserialize:            0.568 ms
+	Integration:            224.163 ms
+	Integration of assets:  0.005 ms
+	Thread Wait Time:       0.047 ms
+	Total Operation Time:   224.783 ms
+CONFIG_RUNTIME_READY source=TextAsset:gameplay_config schema=4 content=0.6.0-sample hash=54885fb2ce8373bad21af796d96a7a4cbc4ce6d8f41def3f909686b14ec87a1d tables=28 records=715 primaryIndexes=331 groupIndexes=56
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/StackTrace.cs:35)
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+OneStrokeDemon.Bootstrap.BootstrapController:Start () (at Assets/_Game/Scripts/Bootstrap/BootstrapController.cs:72)
+
+(Filename: Assets/_Game/Scripts/Bootstrap/BootstrapController.cs Line: 72)
+
+ASSET_REGISTRY_READY source=AssetRegistry:asset_registry configHash=54885fb2ce8373bad21af796d96a7a4cbc4ce6d8f41def3f909686b14ec87a1d entries=76 prefabs=40 sprites=18 audioClips=17 scenes=1
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/StackTrace.cs:35)
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+OneStrokeDemon.Bootstrap.BootstrapController:Start () (at Assets/_Game/Scripts/Bootstrap/BootstrapController.cs:73)
+
+(Filename: Assets/_Game/Scripts/Bootstrap/BootstrapController.cs Line: 73)
+
+POINTER_INPUT_READY source=InputSystem modes=Mouse,Touch reference=1920x1080 safeArea=dynamic uiBeginBlock=true maxActivePointers=1
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/StackTrace.cs:35)
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+OneStrokeDemon.Bootstrap.BootstrapController:Start () (at Assets/_Game/Scripts/Bootstrap/BootstrapController.cs:74)
+
+(Filename: Assets/_Game/Scripts/Bootstrap/BootstrapController.cs Line: 74)
+
+Unloading 1 unused Assets / (1.0 KB). Loaded Objects now: 8697.
+Memory consumption went from 249.0 MB to 249.0 MB.
+Total: 7.695000 ms (FindLiveObjects: 0.189125 ms CreateObjectMapping: 0.584083 ms MarkObjects: 6.911500 ms  DeleteObjects: 0.010042 ms)
+
+Unloading 1 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.098875 ms
+Loaded scene 'Assets/_Game/Scenes/MainMenu.unity'
+	Deserialize:            0.331 ms
+	Integration:            182.217 ms
+	Integration of assets:  0.001 ms
+	Thread Wait Time:       0.053 ms
+	Total Operation Time:   182.602 ms
+Unloading 11 unused Assets / (13.3 KB). Loaded Objects now: 8686.
+Memory consumption went from 249.0 MB to 249.0 MB.
+Total: 7.808167 ms (FindLiveObjects: 0.171000 ms CreateObjectMapping: 0.552875 ms MarkObjects: 7.019959 ms  DeleteObjects: 0.063917 ms)
+
+Unloading 7 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.129417 ms
+Loaded scene 'Assets/_Game/Scenes/Bootstrap.unity'
+	Deserialize:            1.781 ms
+	Integration:            219.188 ms
+	Integration of assets:  0.083 ms
+	Thread Wait Time:       0.043 ms
+	Total Operation Time:   221.095 ms
+CONFIG_RUNTIME_READY source=TextAsset:gameplay_config schema=4 content=0.6.0-sample hash=54885fb2ce8373bad21af796d96a7a4cbc4ce6d8f41def3f909686b14ec87a1d tables=28 records=715 primaryIndexes=331 groupIndexes=56
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/StackTrace.cs:35)
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+OneStrokeDemon.Bootstrap.BootstrapController:Start () (at Assets/_Game/Scripts/Bootstrap/BootstrapController.cs:72)
+
+(Filename: Assets/_Game/Scripts/Bootstrap/BootstrapController.cs Line: 72)
+
+ASSET_REGISTRY_READY source=AssetRegistry:asset_registry configHash=54885fb2ce8373bad21af796d96a7a4cbc4ce6d8f41def3f909686b14ec87a1d entries=76 prefabs=40 sprites=18 audioClips=17 scenes=1
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/StackTrace.cs:35)
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+OneStrokeDemon.Bootstrap.BootstrapController:Start () (at Assets/_Game/Scripts/Bootstrap/BootstrapController.cs:73)
+
+(Filename: Assets/_Game/Scripts/Bootstrap/BootstrapController.cs Line: 73)
+
+POINTER_INPUT_READY source=InputSystem modes=Mouse,Touch reference=1920x1080 safeArea=dynamic uiBeginBlock=true maxActivePointers=1
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/StackTrace.cs:35)
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+OneStrokeDemon.Bootstrap.BootstrapController:Start () (at Assets/_Game/Scripts/Bootstrap/BootstrapController.cs:74)
+
+(Filename: Assets/_Game/Scripts/Bootstrap/BootstrapController.cs Line: 74)
+
+Unloading 1 unused Assets / (1.0 KB). Loaded Objects now: 8697.
+Memory consumption went from 249.1 MB to 249.1 MB.
+Total: 7.683750 ms (FindLiveObjects: 0.157667 ms CreateObjectMapping: 0.545750 ms MarkObjects: 6.968958 ms  DeleteObjects: 0.011292 ms)
+
+Unloading 1 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.101833 ms
+Loaded scene 'Assets/_Game/Scenes/MainMenu.unity'
+	Deserialize:            0.353 ms
+	Integration:            181.384 ms
+	Integration of assets:  0.001 ms
+	Thread Wait Time:       0.040 ms
+	Total Operation Time:   181.777 ms
+Unloading 11 unused Assets / (11.9 KB). Loaded Objects now: 8686.
+Memory consumption went from 249.0 MB to 249.0 MB.
+Total: 7.702167 ms (FindLiveObjects: 0.169791 ms CreateObjectMapping: 0.563250 ms MarkObjects: 6.898917 ms  DeleteObjects: 0.070167 ms)
+
+Unloading 7 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.123458 ms
+Loaded scene 'Assets/_Game/Scenes/Bootstrap.unity'
+	Deserialize:            0.843 ms
+	Integration:            218.492 ms
+	Integration of assets:  0.114 ms
+	Thread Wait Time:       0.046 ms
+	Total Operation Time:   219.495 ms
+CONFIG_RUNTIME_READY source=TextAsset:gameplay_config schema=4 content=0.6.0-sample hash=54885fb2ce8373bad21af796d96a7a4cbc4ce6d8f41def3f909686b14ec87a1d tables=28 records=715 primaryIndexes=331 groupIndexes=56
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/StackTrace.cs:35)
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+OneStrokeDemon.Bootstrap.BootstrapController:Start () (at Assets/_Game/Scripts/Bootstrap/BootstrapController.cs:72)
+
+(Filename: Assets/_Game/Scripts/Bootstrap/BootstrapController.cs Line: 72)
+
+ASSET_REGISTRY_READY source=AssetRegistry:asset_registry configHash=54885fb2ce8373bad21af796d96a7a4cbc4ce6d8f41def3f909686b14ec87a1d entries=76 prefabs=40 sprites=18 audioClips=17 scenes=1
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/StackTrace.cs:35)
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+OneStrokeDemon.Bootstrap.BootstrapController:Start () (at Assets/_Game/Scripts/Bootstrap/BootstrapController.cs:73)
+
+(Filename: Assets/_Game/Scripts/Bootstrap/BootstrapController.cs Line: 73)
+
+POINTER_INPUT_READY source=InputSystem modes=Mouse,Touch reference=1920x1080 safeArea=dynamic uiBeginBlock=true maxActivePointers=1
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/StackTrace.cs:35)
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+OneStrokeDemon.Bootstrap.BootstrapController:Start () (at Assets/_Game/Scripts/Bootstrap/BootstrapController.cs:74)
+
+(Filename: Assets/_Game/Scripts/Bootstrap/BootstrapController.cs Line: 74)
+
+Unloading 1 unused Assets / (1.0 KB). Loaded Objects now: 8698.
+Memory consumption went from 249.7 MB to 249.7 MB.
+Total: 7.744750 ms (FindLiveObjects: 0.179834 ms CreateObjectMapping: 0.559625 ms MarkObjects: 6.996333 ms  DeleteObjects: 0.008791 ms)
+
+Unloading 1 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.111958 ms
+Loaded scene 'Assets/_Game/Scenes/MainMenu.unity'
+	Deserialize:            0.331 ms
+	Integration:            181.356 ms
+	Integration of assets:  0.001 ms
+	Thread Wait Time:       0.058 ms
+	Total Operation Time:   181.746 ms
+Unloading 3 unused Assets / (3.0 KB). Loaded Objects now: 8712.
+Memory consumption went from 249.8 MB to 249.8 MB.
+Total: 7.679708 ms (FindLiveObjects: 0.158500 ms CreateObjectMapping: 0.574792 ms MarkObjects: 6.934459 ms  DeleteObjects: 0.011625 ms)
+
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.120750 ms
+Loaded scene 'Assets/_Game/Scenes/Bootstrap.unity'
+	Deserialize:            0.554 ms
+	Integration:            227.074 ms
+	Integration of assets:  0.005 ms
+	Thread Wait Time:       0.053 ms
+	Total Operation Time:   227.686 ms
+CONFIG_RUNTIME_READY source=TextAsset:gameplay_config schema=4 content=0.6.0-sample hash=54885fb2ce8373bad21af796d96a7a4cbc4ce6d8f41def3f909686b14ec87a1d tables=28 records=715 primaryIndexes=331 groupIndexes=56
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/StackTrace.cs:35)
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+OneStrokeDemon.Bootstrap.BootstrapController:Start () (at Assets/_Game/Scripts/Bootstrap/BootstrapController.cs:72)
+
+(Filename: Assets/_Game/Scripts/Bootstrap/BootstrapController.cs Line: 72)
+
+ASSET_REGISTRY_READY source=AssetRegistry:asset_registry configHash=54885fb2ce8373bad21af796d96a7a4cbc4ce6d8f41def3f909686b14ec87a1d entries=76 prefabs=40 sprites=18 audioClips=17 scenes=1
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/StackTrace.cs:35)
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+OneStrokeDemon.Bootstrap.BootstrapController:Start () (at Assets/_Game/Scripts/Bootstrap/BootstrapController.cs:73)
+
+(Filename: Assets/_Game/Scripts/Bootstrap/BootstrapController.cs Line: 73)
+
+POINTER_INPUT_READY source=InputSystem modes=Mouse,Touch reference=1920x1080 safeArea=dynamic uiBeginBlock=true maxActivePointers=1
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/StackTrace.cs:35)
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+OneStrokeDemon.Bootstrap.BootstrapController:Start () (at Assets/_Game/Scripts/Bootstrap/BootstrapController.cs:74)
+
+(Filename: Assets/_Game/Scripts/Bootstrap/BootstrapController.cs Line: 74)
+
+Unloading 1 unused Assets / (1.0 KB). Loaded Objects now: 8698.
+Memory consumption went from 249.5 MB to 249.5 MB.
+Total: 8.544917 ms (FindLiveObjects: 0.246166 ms CreateObjectMapping: 0.531292 ms MarkObjects: 7.754250 ms  DeleteObjects: 0.013042 ms)
+
+Unloading 1 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.109208 ms
+Loaded scene 'Assets/_Game/Scenes/MainMenu.unity'
+	Deserialize:            0.376 ms
+	Integration:            178.030 ms
+	Integration of assets:  0.001 ms
+	Thread Wait Time:       0.033 ms
+	Total Operation Time:   178.440 ms
+Unloading 3 unused Assets / (3.0 KB). Loaded Objects now: 8855.
+Memory consumption went from 249.7 MB to 249.7 MB.
+Total: 7.851583 ms (FindLiveObjects: 0.274792 ms CreateObjectMapping: 0.537625 ms MarkObjects: 7.018291 ms  DeleteObjects: 0.020458 ms)
+
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.117125 ms
+Loaded scene 'Assets/_Game/Scenes/Bootstrap.unity'
+	Deserialize:            0.519 ms
+	Integration:            221.753 ms
+	Integration of assets:  0.006 ms
+	Thread Wait Time:       0.027 ms
+	Total Operation Time:   222.305 ms
+CONFIG_RUNTIME_READY source=TextAsset:gameplay_config schema=4 content=0.6.0-sample hash=54885fb2ce8373bad21af796d96a7a4cbc4ce6d8f41def3f909686b14ec87a1d tables=28 records=715 primaryIndexes=331 groupIndexes=56
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/StackTrace.cs:35)
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+OneStrokeDemon.Bootstrap.BootstrapController:Start () (at Assets/_Game/Scripts/Bootstrap/BootstrapController.cs:72)
+
+(Filename: Assets/_Game/Scripts/Bootstrap/BootstrapController.cs Line: 72)
+
+ASSET_REGISTRY_READY source=AssetRegistry:asset_registry configHash=54885fb2ce8373bad21af796d96a7a4cbc4ce6d8f41def3f909686b14ec87a1d entries=76 prefabs=40 sprites=18 audioClips=17 scenes=1
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/StackTrace.cs:35)
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+OneStrokeDemon.Bootstrap.BootstrapController:Start () (at Assets/_Game/Scripts/Bootstrap/BootstrapController.cs:73)
+
+(Filename: Assets/_Game/Scripts/Bootstrap/BootstrapController.cs Line: 73)
+
+POINTER_INPUT_READY source=InputSystem modes=Mouse,Touch reference=1920x1080 safeArea=dynamic uiBeginBlock=true maxActivePointers=1
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/StackTrace.cs:35)
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+OneStrokeDemon.Bootstrap.BootstrapController:Start () (at Assets/_Game/Scripts/Bootstrap/BootstrapController.cs:74)
+
+(Filename: Assets/_Game/Scripts/Bootstrap/BootstrapController.cs Line: 74)
+
+Unloading 1 unused Assets / (1.0 KB). Loaded Objects now: 8698.
+Memory consumption went from 249.7 MB to 249.7 MB.
+Total: 7.770667 ms (FindLiveObjects: 0.166458 ms CreateObjectMapping: 0.575083 ms MarkObjects: 7.018542 ms  DeleteObjects: 0.010417 ms)
+
+Unloading 1 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.097167 ms
+Loaded scene 'Assets/_Game/Scenes/MainMenu.unity'
+	Deserialize:            0.307 ms
+	Integration:            180.873 ms
+	Integration of assets:  0.001 ms
+	Thread Wait Time:       0.036 ms
+	Total Operation Time:   181.217 ms
+Unloading 3 unused Assets / (3.0 KB). Loaded Objects now: 8970.
+Memory consumption went from 250.0 MB to 250.0 MB.
+Total: 7.719375 ms (FindLiveObjects: 0.174709 ms CreateObjectMapping: 0.565167 ms MarkObjects: 6.965417 ms  DeleteObjects: 0.013792 ms)
+
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.115541 ms
+Loaded scene 'Assets/_Game/Scenes/Bootstrap.unity'
+	Deserialize:            0.518 ms
+	Integration:            222.427 ms
+	Integration of assets:  0.006 ms
+	Thread Wait Time:       0.028 ms
+	Total Operation Time:   222.979 ms
+CONFIG_RUNTIME_READY source=TextAsset:gameplay_config schema=4 content=0.6.0-sample hash=54885fb2ce8373bad21af796d96a7a4cbc4ce6d8f41def3f909686b14ec87a1d tables=28 records=715 primaryIndexes=331 groupIndexes=56
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/StackTrace.cs:35)
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+OneStrokeDemon.Bootstrap.BootstrapController:Start () (at Assets/_Game/Scripts/Bootstrap/BootstrapController.cs:72)
+
+(Filename: Assets/_Game/Scripts/Bootstrap/BootstrapController.cs Line: 72)
+
+ASSET_REGISTRY_READY source=AssetRegistry:asset_registry configHash=54885fb2ce8373bad21af796d96a7a4cbc4ce6d8f41def3f909686b14ec87a1d entries=76 prefabs=40 sprites=18 audioClips=17 scenes=1
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/StackTrace.cs:35)
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+OneStrokeDemon.Bootstrap.BootstrapController:Start () (at Assets/_Game/Scripts/Bootstrap/BootstrapController.cs:73)
+
+(Filename: Assets/_Game/Scripts/Bootstrap/BootstrapController.cs Line: 73)
+
+POINTER_INPUT_READY source=InputSystem modes=Mouse,Touch reference=1920x1080 safeArea=dynamic uiBeginBlock=true maxActivePointers=1
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/StackTrace.cs:35)
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+OneStrokeDemon.Bootstrap.BootstrapController:Start () (at Assets/_Game/Scripts/Bootstrap/BootstrapController.cs:74)
+
+(Filename: Assets/_Game/Scripts/Bootstrap/BootstrapController.cs Line: 74)
+
+Unloading 1 unused Assets / (1.0 KB). Loaded Objects now: 8698.
+Memory consumption went from 249.9 MB to 249.9 MB.
+Total: 7.783917 ms (FindLiveObjects: 0.163083 ms CreateObjectMapping: 0.569709 ms MarkObjects: 7.040750 ms  DeleteObjects: 0.010000 ms)
+
+Unloading 1 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.099625 ms
+Loaded scene 'Assets/_Game/Scenes/MainMenu.unity'
+	Deserialize:            0.307 ms
+	Integration:            177.541 ms
+	Integration of assets:  0.001 ms
+	Thread Wait Time:       0.032 ms
+	Total Operation Time:   177.881 ms
+Unloading 3 unused Assets / (3.5 KB). Loaded Objects now: 8700.
+Memory consumption went from 250.0 MB to 250.0 MB.
+Total: 7.735958 ms (FindLiveObjects: 0.167500 ms CreateObjectMapping: 0.538375 ms MarkObjects: 7.017125 ms  DeleteObjects: 0.012750 ms)
+
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.108416 ms
+Loaded scene 'Assets/_Game/Scenes/Bootstrap.unity'
+	Deserialize:            0.535 ms
+	Integration:            226.550 ms
+	Integration of assets:  0.006 ms
+	Thread Wait Time:       0.028 ms
+	Total Operation Time:   227.118 ms
+CONFIG_RUNTIME_READY source=TextAsset:gameplay_config schema=4 content=0.6.0-sample hash=54885fb2ce8373bad21af796d96a7a4cbc4ce6d8f41def3f909686b14ec87a1d tables=28 records=715 primaryIndexes=331 groupIndexes=56
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/StackTrace.cs:35)
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+OneStrokeDemon.Bootstrap.BootstrapController:Start () (at Assets/_Game/Scripts/Bootstrap/BootstrapController.cs:72)
+
+(Filename: Assets/_Game/Scripts/Bootstrap/BootstrapController.cs Line: 72)
+
+ASSET_REGISTRY_READY source=AssetRegistry:asset_registry configHash=54885fb2ce8373bad21af796d96a7a4cbc4ce6d8f41def3f909686b14ec87a1d entries=76 prefabs=40 sprites=18 audioClips=17 scenes=1
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/StackTrace.cs:35)
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+OneStrokeDemon.Bootstrap.BootstrapController:Start () (at Assets/_Game/Scripts/Bootstrap/BootstrapController.cs:73)
+
+(Filename: Assets/_Game/Scripts/Bootstrap/BootstrapController.cs Line: 73)
+
+POINTER_INPUT_READY source=InputSystem modes=Mouse,Touch reference=1920x1080 safeArea=dynamic uiBeginBlock=true maxActivePointers=1
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/StackTrace.cs:35)
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+OneStrokeDemon.Bootstrap.BootstrapController:Start () (at Assets/_Game/Scripts/Bootstrap/BootstrapController.cs:74)
+
+(Filename: Assets/_Game/Scripts/Bootstrap/BootstrapController.cs Line: 74)
+
+Unloading 1 unused Assets / (1.0 KB). Loaded Objects now: 8698.
+Memory consumption went from 250.1 MB to 250.1 MB.
+Total: 7.973875 ms (FindLiveObjects: 0.207958 ms CreateObjectMapping: 0.541542 ms MarkObjects: 7.212792 ms  DeleteObjects: 0.011208 ms)
+
+Unloading 1 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.127417 ms
+Loaded scene 'Assets/_Game/Scenes/MainMenu.unity'
+	Deserialize:            0.344 ms
+	Integration:            193.772 ms
+	Integration of assets:  0.001 ms
+	Thread Wait Time:       0.043 ms
+	Total Operation Time:   194.160 ms
+Unloading 3 unused Assets / (3.0 KB). Loaded Objects now: 8700.
+Memory consumption went from 250.0 MB to 250.0 MB.
+Total: 7.795833 ms (FindLiveObjects: 0.184208 ms CreateObjectMapping: 0.581917 ms MarkObjects: 7.013708 ms  DeleteObjects: 0.015833 ms)
+
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.129750 ms
+Loaded scene 'Assets/_Game/Scenes/Bootstrap.unity'
+	Deserialize:            0.546 ms
+	Integration:            218.862 ms
+	Integration of assets:  0.007 ms
+	Thread Wait Time:       0.047 ms
+	Total Operation Time:   219.462 ms
+CONFIG_RUNTIME_READY source=TextAsset:gameplay_config schema=4 content=0.6.0-sample hash=54885fb2ce8373bad21af796d96a7a4cbc4ce6d8f41def3f909686b14ec87a1d tables=28 records=715 primaryIndexes=331 groupIndexes=56
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/StackTrace.cs:35)
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+OneStrokeDemon.Bootstrap.BootstrapController:Start () (at Assets/_Game/Scripts/Bootstrap/BootstrapController.cs:72)
+
+(Filename: Assets/_Game/Scripts/Bootstrap/BootstrapController.cs Line: 72)
+
+ASSET_REGISTRY_READY source=AssetRegistry:asset_registry configHash=54885fb2ce8373bad21af796d96a7a4cbc4ce6d8f41def3f909686b14ec87a1d entries=76 prefabs=40 sprites=18 audioClips=17 scenes=1
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/StackTrace.cs:35)
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+OneStrokeDemon.Bootstrap.BootstrapController:Start () (at Assets/_Game/Scripts/Bootstrap/BootstrapController.cs:73)
+
+(Filename: Assets/_Game/Scripts/Bootstrap/BootstrapController.cs Line: 73)
+
+POINTER_INPUT_READY source=InputSystem modes=Mouse,Touch reference=1920x1080 safeArea=dynamic uiBeginBlock=true maxActivePointers=1
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/StackTrace.cs:35)
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+OneStrokeDemon.Bootstrap.BootstrapController:Start () (at Assets/_Game/Scripts/Bootstrap/BootstrapController.cs:74)
+
+(Filename: Assets/_Game/Scripts/Bootstrap/BootstrapController.cs Line: 74)
+
+Unloading 1 unused Assets / (1.0 KB). Loaded Objects now: 8698.
+Memory consumption went from 250.1 MB to 250.1 MB.
+Total: 7.743958 ms (FindLiveObjects: 0.179541 ms CreateObjectMapping: 0.532875 ms MarkObjects: 7.021250 ms  DeleteObjects: 0.010167 ms)
+
+Unloading 1 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.112541 ms
+Loaded scene 'Assets/_Game/Scenes/MainMenu.unity'
+	Deserialize:            0.350 ms
+	Integration:            184.778 ms
+	Integration of assets:  0.001 ms
+	Thread Wait Time:       0.045 ms
+	Total Operation Time:   185.174 ms
+Unloading 3 unused Assets / (3.0 KB). Loaded Objects now: 8698.
+Memory consumption went from 250.1 MB to 250.1 MB.
+Total: 7.857875 ms (FindLiveObjects: 0.171208 ms CreateObjectMapping: 0.584959 ms MarkObjects: 7.085375 ms  DeleteObjects: 0.016166 ms)
+
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.109458 ms
+Loaded scene 'Assets/_Game/Scenes/Bootstrap.unity'
+	Deserialize:            0.502 ms
+	Integration:            217.836 ms
+	Integration of assets:  0.007 ms
+	Thread Wait Time:       0.043 ms
+	Total Operation Time:   218.388 ms
+CONFIG_RUNTIME_READY source=TextAsset:gameplay_config schema=4 content=0.6.0-sample hash=54885fb2ce8373bad21af796d96a7a4cbc4ce6d8f41def3f909686b14ec87a1d tables=28 records=715 primaryIndexes=331 groupIndexes=56
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/StackTrace.cs:35)
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+OneStrokeDemon.Bootstrap.BootstrapController:Start () (at Assets/_Game/Scripts/Bootstrap/BootstrapController.cs:72)
+
+(Filename: Assets/_Game/Scripts/Bootstrap/BootstrapController.cs Line: 72)
+
+ASSET_REGISTRY_READY source=AssetRegistry:asset_registry configHash=54885fb2ce8373bad21af796d96a7a4cbc4ce6d8f41def3f909686b14ec87a1d entries=76 prefabs=40 sprites=18 audioClips=17 scenes=1
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/StackTrace.cs:35)
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+OneStrokeDemon.Bootstrap.BootstrapController:Start () (at Assets/_Game/Scripts/Bootstrap/BootstrapController.cs:73)
+
+(Filename: Assets/_Game/Scripts/Bootstrap/BootstrapController.cs Line: 73)
+
+POINTER_INPUT_READY source=InputSystem modes=Mouse,Touch reference=1920x1080 safeArea=dynamic uiBeginBlock=true maxActivePointers=1
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/StackTrace.cs:35)
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+OneStrokeDemon.Bootstrap.BootstrapController:Start () (at Assets/_Game/Scripts/Bootstrap/BootstrapController.cs:74)
+
+(Filename: Assets/_Game/Scripts/Bootstrap/BootstrapController.cs Line: 74)
+
+Unloading 1 unused Assets / (1.0 KB). Loaded Objects now: 8698.
+Memory consumption went from 250.1 MB to 250.1 MB.
+Total: 7.870542 ms (FindLiveObjects: 0.296333 ms CreateObjectMapping: 0.537125 ms MarkObjects: 7.025666 ms  DeleteObjects: 0.011125 ms)
+
+Unloading 1 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.096834 ms
+Loaded scene 'Assets/_Game/Scenes/MainMenu.unity'
+	Deserialize:            0.291 ms
+	Integration:            182.709 ms
+	Integration of assets:  0.001 ms
+	Thread Wait Time:       0.049 ms
+	Total Operation Time:   183.050 ms
+Unloading 3 unused Assets / (3.0 KB). Loaded Objects now: 8701.
+Memory consumption went from 250.1 MB to 250.1 MB.
+Total: 7.814000 ms (FindLiveObjects: 0.169583 ms CreateObjectMapping: 0.540084 ms MarkObjects: 7.088125 ms  DeleteObjects: 0.016000 ms)
+
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.136750 ms
+Loaded scene 'Assets/_Game/Scenes/Bootstrap.unity'
+	Deserialize:            0.606 ms
+	Integration:            215.682 ms
+	Integration of assets:  0.007 ms
+	Thread Wait Time:       0.037 ms
+	Total Operation Time:   216.331 ms
+CONFIG_RUNTIME_READY source=TextAsset:gameplay_config schema=4 content=0.6.0-sample hash=54885fb2ce8373bad21af796d96a7a4cbc4ce6d8f41def3f909686b14ec87a1d tables=28 records=715 primaryIndexes=331 groupIndexes=56
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/StackTrace.cs:35)
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+OneStrokeDemon.Bootstrap.BootstrapController:Start () (at Assets/_Game/Scripts/Bootstrap/BootstrapController.cs:72)
+
+(Filename: Assets/_Game/Scripts/Bootstrap/BootstrapController.cs Line: 72)
+
+ASSET_REGISTRY_READY source=AssetRegistry:asset_registry configHash=54885fb2ce8373bad21af796d96a7a4cbc4ce6d8f41def3f909686b14ec87a1d entries=76 prefabs=40 sprites=18 audioClips=17 scenes=1
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/StackTrace.cs:35)
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+OneStrokeDemon.Bootstrap.BootstrapController:Start () (at Assets/_Game/Scripts/Bootstrap/BootstrapController.cs:73)
+
+(Filename: Assets/_Game/Scripts/Bootstrap/BootstrapController.cs Line: 73)
+
+POINTER_INPUT_READY source=InputSystem modes=Mouse,Touch reference=1920x1080 safeArea=dynamic uiBeginBlock=true maxActivePointers=1
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/StackTrace.cs:35)
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+OneStrokeDemon.Bootstrap.BootstrapController:Start () (at Assets/_Game/Scripts/Bootstrap/BootstrapController.cs:74)
+
+(Filename: Assets/_Game/Scripts/Bootstrap/BootstrapController.cs Line: 74)
+
+Unloading 1 unused Assets / (1.0 KB). Loaded Objects now: 8698.
+Memory consumption went from 250.2 MB to 250.2 MB.
+Total: 7.715917 ms (FindLiveObjects: 0.157667 ms CreateObjectMapping: 0.538125 ms MarkObjects: 7.010208 ms  DeleteObjects: 0.009708 ms)
+
+Unloading 1 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.092667 ms
+Loaded scene 'Assets/_Game/Scenes/MainMenu.unity'
+	Deserialize:            0.333 ms
+	Integration:            186.265 ms
+	Integration of assets:  0.001 ms
+	Thread Wait Time:       0.051 ms
+	Total Operation Time:   186.650 ms
+Unloading 3 unused Assets / (3.0 KB). Loaded Objects now: 8703.
+Memory consumption went from 250.2 MB to 250.2 MB.
+Total: 7.826084 ms (FindLiveObjects: 0.189875 ms CreateObjectMapping: 0.576292 ms MarkObjects: 7.042583 ms  DeleteObjects: 0.017125 ms)
+
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.139834 ms
+Loaded scene 'Assets/_Game/Scenes/Bootstrap.unity'
+	Deserialize:            0.568 ms
+	Integration:            183.886 ms
+	Integration of assets:  0.008 ms
+	Thread Wait Time:       0.031 ms
+	Total Operation Time:   184.493 ms
+CONFIG_RUNTIME_READY source=TextAsset:gameplay_config schema=4 content=0.6.0-sample hash=54885fb2ce8373bad21af796d96a7a4cbc4ce6d8f41def3f909686b14ec87a1d tables=28 records=715 primaryIndexes=331 groupIndexes=56
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/StackTrace.cs:35)
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+OneStrokeDemon.Bootstrap.BootstrapController:Start () (at Assets/_Game/Scripts/Bootstrap/BootstrapController.cs:72)
+
+(Filename: Assets/_Game/Scripts/Bootstrap/BootstrapController.cs Line: 72)
+
+ASSET_REGISTRY_READY source=AssetRegistry:asset_registry configHash=54885fb2ce8373bad21af796d96a7a4cbc4ce6d8f41def3f909686b14ec87a1d entries=76 prefabs=40 sprites=18 audioClips=17 scenes=1
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/StackTrace.cs:35)
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+OneStrokeDemon.Bootstrap.BootstrapController:Start () (at Assets/_Game/Scripts/Bootstrap/BootstrapController.cs:73)
+
+(Filename: Assets/_Game/Scripts/Bootstrap/BootstrapController.cs Line: 73)
+
+POINTER_INPUT_READY source=InputSystem modes=Mouse,Touch reference=1920x1080 safeArea=dynamic uiBeginBlock=true maxActivePointers=1
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/StackTrace.cs:35)
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+OneStrokeDemon.Bootstrap.BootstrapController:Start () (at Assets/_Game/Scripts/Bootstrap/BootstrapController.cs:74)
+
+(Filename: Assets/_Game/Scripts/Bootstrap/BootstrapController.cs Line: 74)
+
+Unloading 1 unused Assets / (1.0 KB). Loaded Objects now: 8698.
+Memory consumption went from 250.3 MB to 250.3 MB.
+Total: 8.556458 ms (FindLiveObjects: 0.170625 ms CreateObjectMapping: 0.565208 ms MarkObjects: 7.805584 ms  DeleteObjects: 0.014834 ms)
+
+Unloading 1 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.101583 ms
+Loaded scene 'Assets/_Game/Scenes/MainMenu.unity'
+	Deserialize:            0.353 ms
+	Integration:            166.015 ms
+	Integration of assets:  0.001 ms
+	Thread Wait Time:       0.048 ms
+	Total Operation Time:   166.418 ms
+Unloading 3 unused Assets / (3.0 KB). Loaded Objects now: 8973.
+Memory consumption went from 250.6 MB to 250.6 MB.
+Total: 7.888083 ms (FindLiveObjects: 0.186333 ms CreateObjectMapping: 0.548167 ms MarkObjects: 7.138500 ms  DeleteObjects: 0.014916 ms)
+
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.112500 ms
+Loaded scene 'Assets/_Game/Scenes/Bootstrap.unity'
+	Deserialize:            0.502 ms
+	Integration:            184.230 ms
+	Integration of assets:  0.006 ms
+	Thread Wait Time:       0.033 ms
+	Total Operation Time:   184.771 ms
+CONFIG_RUNTIME_READY source=TextAsset:gameplay_config schema=4 content=0.6.0-sample hash=54885fb2ce8373bad21af796d96a7a4cbc4ce6d8f41def3f909686b14ec87a1d tables=28 records=715 primaryIndexes=331 groupIndexes=56
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/StackTrace.cs:35)
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+OneStrokeDemon.Bootstrap.BootstrapController:Start () (at Assets/_Game/Scripts/Bootstrap/BootstrapController.cs:72)
+
+(Filename: Assets/_Game/Scripts/Bootstrap/BootstrapController.cs Line: 72)
+
+ASSET_REGISTRY_READY source=AssetRegistry:asset_registry configHash=54885fb2ce8373bad21af796d96a7a4cbc4ce6d8f41def3f909686b14ec87a1d entries=76 prefabs=40 sprites=18 audioClips=17 scenes=1
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/StackTrace.cs:35)
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+OneStrokeDemon.Bootstrap.BootstrapController:Start () (at Assets/_Game/Scripts/Bootstrap/BootstrapController.cs:73)
+
+(Filename: Assets/_Game/Scripts/Bootstrap/BootstrapController.cs Line: 73)
+
+POINTER_INPUT_READY source=InputSystem modes=Mouse,Touch reference=1920x1080 safeArea=dynamic uiBeginBlock=true maxActivePointers=1
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/StackTrace.cs:35)
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+OneStrokeDemon.Bootstrap.BootstrapController:Start () (at Assets/_Game/Scripts/Bootstrap/BootstrapController.cs:74)
+
+(Filename: Assets/_Game/Scripts/Bootstrap/BootstrapController.cs Line: 74)
+
+Unloading 1 unused Assets / (1.0 KB). Loaded Objects now: 8698.
+Memory consumption went from 250.4 MB to 250.4 MB.
+Total: 7.822583 ms (FindLiveObjects: 0.172500 ms CreateObjectMapping: 0.604584 ms MarkObjects: 7.033458 ms  DeleteObjects: 0.011917 ms)
+
+Unloading 1 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.100916 ms
+Loaded scene 'Assets/_Game/Scenes/MainMenu.unity'
+	Deserialize:            0.355 ms
+	Integration:            168.656 ms
+	Integration of assets:  0.001 ms
+	Thread Wait Time:       0.035 ms
+	Total Operation Time:   169.047 ms
+Unloading 3 unused Assets / (3.0 KB). Loaded Objects now: 8976.
+Memory consumption went from 250.7 MB to 250.7 MB.
+Total: 7.778625 ms (FindLiveObjects: 0.187167 ms CreateObjectMapping: 0.574375 ms MarkObjects: 7.000833 ms  DeleteObjects: 0.016000 ms)
+
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.117000 ms
+Loaded scene 'Assets/_Game/Scenes/Bootstrap.unity'
+	Deserialize:            0.585 ms
+	Integration:            183.973 ms
+	Integration of assets:  0.005 ms
+	Thread Wait Time:       0.047 ms
+	Total Operation Time:   184.611 ms
+CONFIG_RUNTIME_READY source=TextAsset:gameplay_config schema=4 content=0.6.0-sample hash=54885fb2ce8373bad21af796d96a7a4cbc4ce6d8f41def3f909686b14ec87a1d tables=28 records=715 primaryIndexes=331 groupIndexes=56
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/StackTrace.cs:35)
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+OneStrokeDemon.Bootstrap.BootstrapController:Start () (at Assets/_Game/Scripts/Bootstrap/BootstrapController.cs:72)
+
+(Filename: Assets/_Game/Scripts/Bootstrap/BootstrapController.cs Line: 72)
+
+ASSET_REGISTRY_READY source=AssetRegistry:asset_registry configHash=54885fb2ce8373bad21af796d96a7a4cbc4ce6d8f41def3f909686b14ec87a1d entries=76 prefabs=40 sprites=18 audioClips=17 scenes=1
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/StackTrace.cs:35)
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+OneStrokeDemon.Bootstrap.BootstrapController:Start () (at Assets/_Game/Scripts/Bootstrap/BootstrapController.cs:73)
+
+(Filename: Assets/_Game/Scripts/Bootstrap/BootstrapController.cs Line: 73)
+
+POINTER_INPUT_READY source=InputSystem modes=Mouse,Touch reference=1920x1080 safeArea=dynamic uiBeginBlock=true maxActivePointers=1
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/StackTrace.cs:35)
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+OneStrokeDemon.Bootstrap.BootstrapController:Start () (at Assets/_Game/Scripts/Bootstrap/BootstrapController.cs:74)
+
+(Filename: Assets/_Game/Scripts/Bootstrap/BootstrapController.cs Line: 74)
+
+Unloading 1 unused Assets / (1.0 KB). Loaded Objects now: 8698.
+Memory consumption went from 250.5 MB to 250.5 MB.
+Total: 7.822209 ms (FindLiveObjects: 0.171208 ms CreateObjectMapping: 0.565417 ms MarkObjects: 7.074541 ms  DeleteObjects: 0.010667 ms)
+
+Unloading 1 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.094583 ms
+Loaded scene 'Assets/_Game/Scenes/MainMenu.unity'
+	Deserialize:            0.356 ms
+	Integration:            164.703 ms
+	Integration of assets:  0.001 ms
+	Thread Wait Time:       0.053 ms
+	Total Operation Time:   165.114 ms
+Unloading 3 unused Assets / (3.0 KB). Loaded Objects now: 8973.
+Memory consumption went from 250.7 MB to 250.7 MB.
+Total: 7.735416 ms (FindLiveObjects: 0.228917 ms CreateObjectMapping: 0.593500 ms MarkObjects: 6.899708 ms  DeleteObjects: 0.013083 ms)
+
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.118250 ms
+Loaded scene 'Assets/_Game/Scenes/Bootstrap.unity'
+	Deserialize:            0.572 ms
+	Integration:            181.103 ms
+	Integration of assets:  0.005 ms
+	Thread Wait Time:       0.049 ms
+	Total Operation Time:   181.729 ms
+CONFIG_RUNTIME_READY source=TextAsset:gameplay_config schema=4 content=0.6.0-sample hash=54885fb2ce8373bad21af796d96a7a4cbc4ce6d8f41def3f909686b14ec87a1d tables=28 records=715 primaryIndexes=331 groupIndexes=56
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/StackTrace.cs:35)
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+OneStrokeDemon.Bootstrap.BootstrapController:Start () (at Assets/_Game/Scripts/Bootstrap/BootstrapController.cs:72)
+
+(Filename: Assets/_Game/Scripts/Bootstrap/BootstrapController.cs Line: 72)
+
+ASSET_REGISTRY_READY source=AssetRegistry:asset_registry configHash=54885fb2ce8373bad21af796d96a7a4cbc4ce6d8f41def3f909686b14ec87a1d entries=76 prefabs=40 sprites=18 audioClips=17 scenes=1
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/StackTrace.cs:35)
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+OneStrokeDemon.Bootstrap.BootstrapController:Start () (at Assets/_Game/Scripts/Bootstrap/BootstrapController.cs:73)
+
+(Filename: Assets/_Game/Scripts/Bootstrap/BootstrapController.cs Line: 73)
+
+POINTER_INPUT_READY source=InputSystem modes=Mouse,Touch reference=1920x1080 safeArea=dynamic uiBeginBlock=true maxActivePointers=1
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/StackTrace.cs:35)
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+OneStrokeDemon.Bootstrap.BootstrapController:Start () (at Assets/_Game/Scripts/Bootstrap/BootstrapController.cs:74)
+
+(Filename: Assets/_Game/Scripts/Bootstrap/BootstrapController.cs Line: 74)
+
+Unloading 1 unused Assets / (1.0 KB). Loaded Objects now: 8698.
+Memory consumption went from 250.5 MB to 250.5 MB.
+Total: 7.732500 ms (FindLiveObjects: 0.166750 ms CreateObjectMapping: 0.527125 ms MarkObjects: 7.029125 ms  DeleteObjects: 0.009416 ms)
+
+Unloading 1 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.093500 ms
+Loaded scene 'Assets/_Game/Scenes/MainMenu.unity'
+	Deserialize:            0.346 ms
+	Integration:            168.243 ms
+	Integration of assets:  0.001 ms
+	Thread Wait Time:       0.048 ms
+	Total Operation Time:   168.638 ms
+Unloading 3 unused Assets / (3.0 KB). Loaded Objects now: 8702.
+Memory consumption went from 250.5 MB to 250.5 MB.
+Total: 8.346958 ms (FindLiveObjects: 0.344125 ms CreateObjectMapping: 0.564458 ms MarkObjects: 7.419917 ms  DeleteObjects: 0.017958 ms)
+
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.137417 ms
+Loaded scene 'Assets/_Game/Scenes/Bootstrap.unity'
+	Deserialize:            0.548 ms
+	Integration:            183.344 ms
+	Integration of assets:  0.007 ms
+	Thread Wait Time:       0.027 ms
+	Total Operation Time:   183.926 ms
+CONFIG_RUNTIME_READY source=TextAsset:gameplay_config schema=4 content=0.6.0-sample hash=54885fb2ce8373bad21af796d96a7a4cbc4ce6d8f41def3f909686b14ec87a1d tables=28 records=715 primaryIndexes=331 groupIndexes=56
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/StackTrace.cs:35)
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+OneStrokeDemon.Bootstrap.BootstrapController:Start () (at Assets/_Game/Scripts/Bootstrap/BootstrapController.cs:72)
+
+(Filename: Assets/_Game/Scripts/Bootstrap/BootstrapController.cs Line: 72)
+
+ASSET_REGISTRY_READY source=AssetRegistry:asset_registry configHash=54885fb2ce8373bad21af796d96a7a4cbc4ce6d8f41def3f909686b14ec87a1d entries=76 prefabs=40 sprites=18 audioClips=17 scenes=1
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/StackTrace.cs:35)
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+OneStrokeDemon.Bootstrap.BootstrapController:Start () (at Assets/_Game/Scripts/Bootstrap/BootstrapController.cs:73)
+
+(Filename: Assets/_Game/Scripts/Bootstrap/BootstrapController.cs Line: 73)
+
+POINTER_INPUT_READY source=InputSystem modes=Mouse,Touch reference=1920x1080 safeArea=dynamic uiBeginBlock=true maxActivePointers=1
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/StackTrace.cs:35)
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+OneStrokeDemon.Bootstrap.BootstrapController:Start () (at Assets/_Game/Scripts/Bootstrap/BootstrapController.cs:74)
+
+(Filename: Assets/_Game/Scripts/Bootstrap/BootstrapController.cs Line: 74)
+
+Unloading 1 unused Assets / (1.0 KB). Loaded Objects now: 8698.
+Memory consumption went from 250.6 MB to 250.6 MB.
+Total: 8.141750 ms (FindLiveObjects: 0.207375 ms CreateObjectMapping: 0.580250 ms MarkObjects: 7.344625 ms  DeleteObjects: 0.009334 ms)
+
+Unloading 1 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.091541 ms
+Loaded scene 'Assets/_Game/Scenes/MainMenu.unity'
+	Deserialize:            0.371 ms
+	Integration:            167.683 ms
+	Integration of assets:  0.001 ms
+	Thread Wait Time:       0.057 ms
+	Total Operation Time:   168.112 ms
+Unloading 13 unused Assets / (3.0 KB). Loaded Objects now: 8708.
+Memory consumption went from 253.2 MB to 253.2 MB.
+Total: 8.395750 ms (FindLiveObjects: 0.199667 ms CreateObjectMapping: 0.558125 ms MarkObjects: 7.617083 ms  DeleteObjects: 0.020625 ms)
+
+Unloading 9 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.132625 ms
+Loaded scene 'Assets/_Game/Scenes/Bootstrap.unity'
+	Deserialize:            0.577 ms
+	Integration:            182.022 ms
+	Integration of assets:  0.007 ms
+	Thread Wait Time:       0.035 ms
+	Total Operation Time:   182.640 ms
+CONFIG_RUNTIME_READY source=TextAsset:gameplay_config schema=4 content=0.6.0-sample hash=54885fb2ce8373bad21af796d96a7a4cbc4ce6d8f41def3f909686b14ec87a1d tables=28 records=715 primaryIndexes=331 groupIndexes=56
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/StackTrace.cs:35)
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+OneStrokeDemon.Bootstrap.BootstrapController:Start () (at Assets/_Game/Scripts/Bootstrap/BootstrapController.cs:72)
+
+(Filename: Assets/_Game/Scripts/Bootstrap/BootstrapController.cs Line: 72)
+
+ASSET_REGISTRY_READY source=AssetRegistry:asset_registry configHash=54885fb2ce8373bad21af796d96a7a4cbc4ce6d8f41def3f909686b14ec87a1d entries=76 prefabs=40 sprites=18 audioClips=17 scenes=1
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/StackTrace.cs:35)
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+OneStrokeDemon.Bootstrap.BootstrapController:Start () (at Assets/_Game/Scripts/Bootstrap/BootstrapController.cs:73)
+
+(Filename: Assets/_Game/Scripts/Bootstrap/BootstrapController.cs Line: 73)
+
+POINTER_INPUT_READY source=InputSystem modes=Mouse,Touch reference=1920x1080 safeArea=dynamic uiBeginBlock=true maxActivePointers=1
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/StackTrace.cs:35)
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+OneStrokeDemon.Bootstrap.BootstrapController:Start () (at Assets/_Game/Scripts/Bootstrap/BootstrapController.cs:74)
+
+(Filename: Assets/_Game/Scripts/Bootstrap/BootstrapController.cs Line: 74)
+
+Unloading 1 unused Assets / (1.0 KB). Loaded Objects now: 8708.
+Memory consumption went from 252.9 MB to 252.9 MB.
+Total: 8.327292 ms (FindLiveObjects: 0.171375 ms CreateObjectMapping: 0.538000 ms MarkObjects: 7.548584 ms  DeleteObjects: 0.069042 ms)
+
+Unloading 1 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.112125 ms
+Loaded scene 'Assets/_Game/Scenes/MainMenu.unity'
+	Deserialize:            0.363 ms
+	Integration:            167.018 ms
+	Integration of assets:  0.001 ms
+	Thread Wait Time:       0.063 ms
+	Total Operation Time:   167.445 ms
+Unloading 3 unused Assets / (3.0 KB). Loaded Objects now: 9022.
+Memory consumption went from 255.8 MB to 255.8 MB.
+Total: 8.002250 ms (FindLiveObjects: 0.183291 ms CreateObjectMapping: 0.533542 ms MarkObjects: 7.261292 ms  DeleteObjects: 0.024084 ms)
+
+<b><color=#2EA3FF>MCP-FOR-UNITY</color></b>: [TestRunnerNoThrottle] Restored Interaction Mode after test run.
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/StackTrace.cs:35)
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+MCPForUnity.Editor.Helpers.McpLog:Info (string,bool) (at ./Library/PackageCache/com.coplaydev.unity-mcp@4ee62b097584/Editor/Helpers/McpLog.cs:40)
+MCPForUnity.Editor.Services.TestRunnerNoThrottle:RestoreThrottling () (at ./Library/PackageCache/com.coplaydev.unity-mcp@4ee62b097584/Editor/Services/TestRunnerNoThrottle.cs:114)
+MCPForUnity.Editor.Services.TestRunnerNoThrottle/TestCallbacks:RunFinished (UnityEditor.TestTools.TestRunner.Api.ITestResultAdaptor) (at ./Library/PackageCache/com.coplaydev.unity-mcp@4ee62b097584/Editor/Services/TestRunnerNoThrottle.cs:143)
+UnityEditor.TestTools.TestRunner.Api.CallbacksDelegator/<>c__DisplayClass9_0:<RunFinished>b__0 (UnityEditor.TestTools.TestRunner.Api.ICallbacks) (at ./Library/PackageCache/com.unity.test-framework@f3e6c9a02477/UnityEditor.TestRunner/Api/CallbacksDelegator.cs:55)
+UnityEditor.TestTools.TestRunner.Api.CallbacksDelegator:TryInvokeAllCallbacks (System.Action`1<UnityEditor.TestTools.TestRunner.Api.ICallbacks>) (at ./Library/PackageCache/com.unity.test-framework@f3e6c9a02477/UnityEditor.TestRunner/Api/CallbacksDelegator.cs:135)
+UnityEditor.TestTools.TestRunner.Api.CallbacksDelegator:RunFinished (NUnit.Framework.Interfaces.ITestResult) (at ./Library/PackageCache/com.unity.test-framework@f3e6c9a02477/UnityEditor.TestRunner/Api/CallbacksDelegator.cs:55)
+UnityEngine.Events.InvokableCall`1<NUnit.Framework.Interfaces.ITestResult>:Invoke (NUnit.Framework.Interfaces.ITestResult) (at /Users/bokken/build/output/unity/unity/Runtime/Export/UnityEvent/UnityEvent.cs:222)
+UnityEngine.Events.UnityEvent`1<NUnit.Framework.Interfaces.ITestResult>:Invoke (NUnit.Framework.Interfaces.ITestResult) (at /Users/bokken/build/output/unity/unity/artifacts/generated/UnityEvent/UnityEvent_1.cs:59)
+UnityEngine.Events.InvokableCall`1<NUnit.Framework.Interfaces.ITestResult>:Invoke (NUnit.Framework.Interfaces.ITestResult) (at /Users/bokken/build/output/unity/unity/Runtime/Export/UnityEvent/UnityEvent.cs:222)
+UnityEngine.Events.UnityEvent`1<NUnit.Framework.Interfaces.ITestResult>:Invoke (NUnit.Framework.Interfaces.ITestResult) (at /Users/bokken/build/output/unity/unity/artifacts/generated/UnityEvent/UnityEvent_1.cs:59)
+UnityEngine.TestTools.TestRunner.PlaymodeTestsController/<TestRunnerCoroutine>d__24:MoveNext () (at ./Library/PackageCache/com.unity.test-framework@f3e6c9a02477/UnityEngine.TestRunner/TestRunner/PlaymodeTestsController.cs:109)
+UnityEngine.SetupCoroutine:InvokeMoveNext (System.Collections.IEnumerator,intptr) (at /Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/Coroutines.cs:17)
+
+(Filename: ./Library/PackageCache/com.coplaydev.unity-mcp@4ee62b097584/Editor/Helpers/McpLog.cs Line: 40)
+
+Saving results to: /Users/cqmizhangxiaoyu2/Library/Application Support/DefaultCompany/onedraw_2/TestResults.xml
+Saving results to: /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/evals/T610/playmode-full-results.xml
+Thread 0x3339bf000 may have been prematurely finalized
+Unloading 1 Unused Serialized files (Serialized files now loaded: 0)
+Loaded scene 'Temp/__Backupscenes/0.backup'
+	Deserialize:            0.239 ms
+	Integration:            172.150 ms
+	Integration of assets:  0.000 ms
+	Thread Wait Time:       0.006 ms
+	Total Operation Time:   172.395 ms
+Unloading 0 unused Assets / (0 B). Loaded Objects now: 8678.
+Memory consumption went from 256.0 MB to 256.0 MB.
+Total: 8.793000 ms (FindLiveObjects: 0.251291 ms CreateObjectMapping: 0.562792 ms MarkObjects: 7.973333 ms  DeleteObjects: 0.005250 ms)
+
+Importing 'GUID: 2bcd2660ca9b64942af0de543d8d7100 - Path: Assets/InputSystem_Actions.inputactions' with importer (ScriptedImporter : Unity.InputSystem:UnityEngine.InputSystem.Editor:InputActionImporter)
+Imported 'GUID: 2bcd2660ca9b64942af0de543d8d7100' -> (Import Result ID: 'd9c33fc6970a6d8e44b3b64d132a9d1d') in 0.038 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=947f2444588e8a7c5fdf1e760cb0c366 DependenciesID=289176e9c1d7c134d1fb83e2064ce7f3 StaticDependenciesID=b30d4990c1574208797a10b17472e127
+Asset Pipeline Refresh (id=22085c85beb254674a99abf88da90081): Total: 0.231 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Executing IPostBuildCleanup for: Unity.PerformanceTesting.Editor.TestRunBuilder.
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/StackTrace.cs:35)
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+UnityEditor.TestTools.TestRunner.TestRun.Tasks.BuildActionTaskBase`1/<ExecuteMethods>d__8<UnityEngine.TestTools.IPostBuildCleanup>:MoveNext () (at ./Library/PackageCache/com.unity.test-framework@f3e6c9a02477/UnityEditor.TestRunner/TestRun/Tasks/BuildActionTaskBase.cs:48)
+UnityEditor.TestTools.TestRunner.TestRun.Tasks.BuildActionTaskBase`1/<Execute>d__7<UnityEngine.TestTools.IPostBuildCleanup>:MoveNext () (at ./Library/PackageCache/com.unity.test-framework@f3e6c9a02477/UnityEditor.TestRunner/TestRun/Tasks/BuildActionTaskBase.cs:34)
+UnityEditor.TestTools.TestRunner.TestRun.TestJobRunner:ExecuteStep () (at ./Library/PackageCache/com.unity.test-framework@f3e6c9a02477/UnityEditor.TestRunner/TestRun/TestJobRunner.cs:194)
+UnityEditor.TestTools.TestRunner.TestRun.TestJobRunner:ExecuteCallback () (at ./Library/PackageCache/com.unity.test-framework@f3e6c9a02477/UnityEditor.TestRunner/TestRun/TestJobRunner.cs:129)
+UnityEditor.EditorApplication:Internal_CallUpdateFunctions () (at /Users/bokken/build/output/unity/unity/Editor/Mono/EditorApplication.cs:403)
+
+(Filename: ./Library/PackageCache/com.unity.test-framework@f3e6c9a02477/UnityEditor.TestRunner/TestRun/Tasks/BuildActionTaskBase.cs Line: 48)
+
+Unloading 1 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 61 unused Assets / (1.3 KB). Loaded Objects now: 8680.
+Memory consumption went from 256.9 MB to 256.9 MB.
+Total: 9.456625 ms (FindLiveObjects: 0.144458 ms CreateObjectMapping: 0.566917 ms MarkObjects: 8.708666 ms  DeleteObjects: 0.036417 ms)
+
+Refreshing native plugins compatible for Editor in 2.72 ms, found 6 plugins.
+Asset Pipeline Refresh (id=a54a12b80cf054c0db77e98a6489d10f): Total: 0.059 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+DisplayProgressbar: Undo
+Test run completed. Exiting with code 0 (Ok). Run completed.
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/StackTrace.cs:35)
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+UnityEditor.TestTools.TestRunner.CommandLineTest.Executer:ExitApplication (UnityEditor.TestTools.TestRunner.CommandLineTest.Executer/ReturnCodes,string) (at ./Library/PackageCache/com.unity.test-framework@f3e6c9a02477/UnityEditor.TestRunner/CommandLineTest/Executer.cs:81)
+UnityEditor.TestTools.TestRunner.CommandLineTest.Executer:ExitIfRunIsCompleted () (at ./Library/PackageCache/com.unity.test-framework@f3e6c9a02477/UnityEditor.TestRunner/CommandLineTest/Executer.cs:74)
+UnityEditor.EditorApplication:Internal_CallUpdateFunctions () (at /Users/bokken/build/output/unity/unity/Editor/Mono/EditorApplication.cs:403)
+
+(Filename: ./Library/PackageCache/com.unity.test-framework@f3e6c9a02477/UnityEditor.TestRunner/CommandLineTest/Executer.cs Line: 81)
+
+MonoPathRemapper: Attempts to remap: 46696; Successful remaps: 6942
+Serialized file version minimum: 22, current 23
+Killing ADB server in 0.122077 seconds.
+Importing 'GUID: 00000000000000004000000000000000 - Path: ProjectSettings/ProjectSettings.asset' with importer (LibraryAssetImporter)
+Imported 'GUID: 00000000000000004000000000000000' -> (Import Result ID: '7b590aebac695fcc3ad48e1f08fcee54') in 0.001 seconds [static dependencies only]. Details - ImportResultOutputID=276a810dac73e1f29404d5e5f692e214 DependenciesID=7147713bbe9e4221d2959c59b798a85e StaticDependenciesID=0d8074e761a9f24e3d605b03729988af
+Importing 'GUID: 0000000000000000b000000000000000 - Path: ProjectSettings/EditorBuildSettings.asset' with importer (LibraryAssetImporter)
+Imported 'GUID: 0000000000000000b000000000000000' -> (Import Result ID: 'b7533dcca0de4e4369c79894664184e8') in 0.000 seconds [static dependencies only]. Details - ImportResultOutputID=4647dd083cfc32cebcd7526e8846440c DependenciesID=d08be829aa669f73b38edcaefeafe98f StaticDependenciesID=ce742807db89aef850fb5c20f4c1e5c5
+Importing 'GUID: 2e4374dcac44545f4b3b34cb58ca89d1 - Path: Assets/_Game/Art/UI/Fonts/Resources/Fonts/OneStrokeDemon UI Latin SDF.asset' with importer (NativeFormatImporter)
+Imported 'GUID: 2e4374dcac44545f4b3b34cb58ca89d1' -> (Import Result ID: 'd15e6c90dd143fc4010d246ff9b39ca7') in 0.003 seconds [static dependencies only]. Details - ImportResultOutputID=28e269f6382e043a441e2d3155218e12 DependenciesID=6ebb252fb458d38334e4216a313ae247 StaticDependenciesID=6c64f8cc6e85a33c7fa64b77b62560f3
+Refreshing native plugins compatible for Editor in 2.20 ms, found 6 plugins.
+Asset Pipeline Refresh (id=227dc7cf2128c4d97a3f693bab05fc71): Total: 0.070 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Thread 0x33dcfb000 may have been prematurely finalized
+Input System module state changed to: ShutdownInProgress.
+Input Polling Thread exited.
+Input System module state changed to: Shutdown.
+[Physics::Module] Cleanup current backend.
+[Physics::Module] Id: 0xf2b8ea05
+[Licensing::IpcConnector] LicenseClient-cqmizhangxiaoyu2-6000.5.1-notifications channel disconnected successfully.
+[Licensing::IpcConnector] LicenseClient-cqmizhangxiaoyu2-6000.5.1 channel disconnected successfully.
+Thread 0x17c587000 may have been prematurely finalized
+Thread 0x17c613000 may have been prematurely finalized
+Thread 0x17c69f000 may have been prematurely finalized
+Thread 0x17c7b7000 may have been prematurely finalized
+Thread 0x17c843000 may have been prematurely finalized
+Thread 0x17c95b000 may have been prematurely finalized
+Thread 0x17c72b000 may have been prematurely finalized
+Thread 0x17c8cf000 may have been prematurely finalized
+Thread 0x17c9e7000 may have been prematurely finalized
+正在关闭 MSBuild 服务器...
+正在关闭 VB/C# 编译器服务器...
+成功关闭 VB/C# 编译器服务器。
+成功关闭 MSBuild 服务器。
+AcceleratorClientConnectionCallback - disconnected - :0
+Thread 0x32d387000 may have been prematurely finalized
+info: Microsoft.Hosting.Lifetime[0]
+      Application is shutting down...
+Cleanup mono
+CodeReloadManager destroyed
+info: Unity.ILPP.Runner.PostProcessingAssemblyLoadContext[0]
+      ALC ILPP context 1 is unloading
+debugger-agent: Unable to listen on 44

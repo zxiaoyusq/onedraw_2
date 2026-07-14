@@ -10,6 +10,8 @@ namespace OneStrokeDemon.Presentation
 {
     public static class BattleHudViewFactory
     {
+        public const string HudFontResourcePath = "Fonts/OneStrokeDemon UI Latin SDF";
+
         private static readonly Color PanelColor = new Color32(15, 28, 48, 220);
         private static readonly Color OverlayColor = new Color32(4, 9, 18, 225);
         private static readonly Color AccentColor = new Color32(74, 210, 226, 255);
@@ -82,7 +84,7 @@ namespace OneStrokeDemon.Presentation
                 new Vector2(32f, -32f), new Vector2(740f, 190f), new Vector2(0f, 1f));
             ui.LevelName = CreateText("LevelName", panel, 28f, TextAlignmentOptions.MidlineLeft);
             SetAnchored(ui.LevelName.rectTransform, new Vector2(0f, 1f), new Vector2(1f, 1f),
-                new Vector2(20f, -12f), new Vector2(-40f, 38f), new Vector2(0f, 1f));
+                new Vector2(20f, -12f), new Vector2(-40f, 46f), new Vector2(0f, 1f));
 
             HudBar hp = CreateBar("HP", panel, new Vector2(20f, -62f), DangerColor);
             ui.HpLabel = hp.Label;
@@ -192,20 +194,20 @@ namespace OneStrokeDemon.Presentation
                 Vector2.zero, new Vector2(920f, 720f), new Vector2(0.5f, 0.5f));
             ui.ResultTitle = CreateText("ResultTitle", card, 58f, TextAlignmentOptions.Center);
             SetAnchored(ui.ResultTitle.rectTransform, new Vector2(0f, 1f), new Vector2(1f, 1f),
-                new Vector2(0f, -32f), new Vector2(0f, 84f), new Vector2(0.5f, 1f));
+                new Vector2(0f, -32f), new Vector2(0f, 96f), new Vector2(0.5f, 1f));
 
             ui.ResultScoreLabel = CreateText("ResultScoreLabel", card, 24f, TextAlignmentOptions.MidlineLeft);
             SetAnchored(ui.ResultScoreLabel.rectTransform, new Vector2(0f, 1f), new Vector2(0.5f, 1f),
                 new Vector2(72f, -150f), new Vector2(-20f, 46f), new Vector2(0f, 1f));
             ui.ResultScoreValue = CreateText("ResultScoreValue", card, 44f, TextAlignmentOptions.MidlineRight);
             SetAnchored(ui.ResultScoreValue.rectTransform, new Vector2(0.5f, 1f), new Vector2(1f, 1f),
-                new Vector2(20f, -150f), new Vector2(-72f, 54f), new Vector2(1f, 1f));
+                new Vector2(20f, -150f), new Vector2(-72f, 68f), new Vector2(1f, 1f));
             ui.StarsLabel = CreateText("StarsLabel", card, 24f, TextAlignmentOptions.MidlineLeft);
             SetAnchored(ui.StarsLabel.rectTransform, new Vector2(0f, 1f), new Vector2(0.5f, 1f),
                 new Vector2(72f, -220f), new Vector2(-20f, 46f), new Vector2(0f, 1f));
             ui.StarsValue = CreateText("StarsValue", card, 36f, TextAlignmentOptions.MidlineRight);
             SetAnchored(ui.StarsValue.rectTransform, new Vector2(0.5f, 1f), new Vector2(1f, 1f),
-                new Vector2(20f, -220f), new Vector2(-72f, 46f), new Vector2(1f, 1f));
+                new Vector2(20f, -220f), new Vector2(-72f, 58f), new Vector2(1f, 1f));
 
             RectTransform rewards = CreateRect("Rewards", card);
             SetAnchored(rewards, new Vector2(0f, 0f), new Vector2(1f, 1f),
@@ -350,6 +352,14 @@ namespace OneStrokeDemon.Presentation
         {
             RectTransform rect = CreateRect(name, parent);
             var text = rect.gameObject.AddComponent<TextMeshProUGUI>();
+            TMP_FontAsset hudFont = Resources.Load<TMP_FontAsset>(HudFontResourcePath);
+            if (hudFont == null)
+            {
+                throw new InvalidOperationException(
+                    $"Configured HUD font is missing from Resources: {HudFontResourcePath}");
+            }
+
+            text.font = hudFont;
             text.text = string.Empty;
             text.fontSize = size;
             text.color = TextColor;
