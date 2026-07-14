@@ -45,7 +45,7 @@ namespace OneStrokeDemon.Tests.PlayMode.T610
         {
             LogAssert.Expect(
                 LogType.Log,
-                new Regex("CONFIG_RUNTIME_READY.*content=0\\.6\\.2-sample.*records=742"));
+                new Regex("CONFIG_RUNTIME_READY.*content=0\\.6\\.3-sample.*records=745"));
             LogAssert.Expect(LogType.Log, new Regex("ASSET_REGISTRY_READY.*entries=76"));
             yield return SceneManager.LoadSceneAsync(SceneNames.Bootstrap, LoadSceneMode.Single);
             yield return WaitForScene(SceneNames.MainMenu);
@@ -212,8 +212,7 @@ namespace OneStrokeDemon.Tests.PlayMode.T610
         private static void DisableNonHudRenderers(Transform hudRoot)
         {
             Canvas[] canvases = UnityEngine.Object.FindObjectsByType<Canvas>(
-                FindObjectsInactive.Include,
-                FindObjectsSortMode.None);
+                FindObjectsInactive.Include);
             foreach (Canvas candidate in canvases)
             {
                 if (candidate.transform != hudRoot && !candidate.transform.IsChildOf(hudRoot))
@@ -223,8 +222,7 @@ namespace OneStrokeDemon.Tests.PlayMode.T610
             }
 
             Renderer[] renderers = UnityEngine.Object.FindObjectsByType<Renderer>(
-                FindObjectsInactive.Include,
-                FindObjectsSortMode.None);
+                FindObjectsInactive.Include);
             foreach (Renderer renderer in renderers)
             {
                 if (renderer.transform != hudRoot && !renderer.transform.IsChildOf(hudRoot))
@@ -290,6 +288,7 @@ namespace OneStrokeDemon.Tests.PlayMode.T610
         private sealed class NoOpCommands : IBattleHudCommandSink
         {
             public void SetPlayerPaused(bool paused) { }
+            public void SwitchStance() { }
             public void BeginUltimateDrawing() { }
             public void Restart() { }
             public void GoNext() { }

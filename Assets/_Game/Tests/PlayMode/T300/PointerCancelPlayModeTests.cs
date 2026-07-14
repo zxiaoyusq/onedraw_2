@@ -14,6 +14,7 @@ namespace OneStrokeDemon.Tests.PlayMode.T300
     public sealed class PointerCancelPlayModeTests : InputTestFixture
     {
         private readonly List<GameObject> createdObjects = new List<GameObject>();
+        private GameObject disabledSceneUi;
 
         [SetUp]
         public override void Setup()
@@ -34,6 +35,12 @@ namespace OneStrokeDemon.Tests.PlayMode.T300
             }
 
             createdObjects.Clear();
+            if (disabledSceneUi != null)
+            {
+                disabledSceneUi.SetActive(true);
+                disabledSceneUi = null;
+            }
+
             base.TearDown();
         }
 
@@ -217,6 +224,12 @@ namespace OneStrokeDemon.Tests.PlayMode.T300
 
         private void CreateBlockingUi()
         {
+            if (EventSystem.current != null)
+            {
+                disabledSceneUi = EventSystem.current.transform.root.gameObject;
+                disabledSceneUi.SetActive(false);
+            }
+
             var eventSystemObject = new GameObject("T300 EventSystem");
             createdObjects.Add(eventSystemObject);
             eventSystemObject.AddComponent<EventSystem>();

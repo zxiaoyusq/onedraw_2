@@ -6,10 +6,10 @@ namespace OneStrokeDemon.Config
     public static class ConfigIds
     {
         public const int SchemaVersion = 5;
-        public const string ContentVersion = "0.6.2-sample";
-        public const string ContentHash = "7e2a0880c289b4dc7299dee0149bfe2bcc86ed55fa92fa392e5cd874ad77b91e";
+        public const string ContentVersion = "0.6.3-sample";
+        public const string ContentHash = "2c005061c9a4bf806afcc6d6c16e7504b2df8b4bbecfec6edcc262900cd1dfdc";
         public const int IdSetCount = 28;
-        public const int IdConstantCount = 374;
+        public const int IdConstantCount = 377;
 
         public static class GlobalKeys
         {
@@ -300,6 +300,7 @@ namespace OneStrokeDemon.Config
             public const string TextEnemyStoneTurtle = "text_enemy_stone_turtle";
             public const string TextEnemyTalismanBat = "text_enemy_talisman_bat";
             public const string TextEnemyWheelZombie = "text_enemy_wheel_zombie";
+            public const string TextGameTitle = "text_game_title";
             public const string TextLevel001 = "text_level_001";
             public const string TextLevel002 = "text_level_002";
             public const string TextLevel003 = "text_level_003";
@@ -338,8 +339,10 @@ namespace OneStrokeDemon.Config
             public const string TextUiRewardScoreToken = "text_ui_reward_score_token";
             public const string TextUiRewards = "text_ui_rewards";
             public const string TextUiScore = "text_ui_score";
+            public const string TextUiSelectLevel = "text_ui_select_level";
             public const string TextUiStance = "text_ui_stance";
             public const string TextUiStars = "text_ui_stars";
+            public const string TextUiStartGame = "text_ui_start_game";
             public const string TextUiTutorialReview = "text_ui_tutorial_review";
             public const string TextUiTutorialSkip = "text_ui_tutorial_skip";
             public const string TextUiVictory = "text_ui_victory";

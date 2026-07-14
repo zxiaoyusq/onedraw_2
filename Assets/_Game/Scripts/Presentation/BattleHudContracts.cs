@@ -183,6 +183,7 @@ namespace OneStrokeDemon.Presentation
     public interface IBattleHudCommandSink
     {
         void SetPlayerPaused(bool paused);
+        void SwitchStance();
         void BeginUltimateDrawing();
         void Restart();
         void GoNext();
@@ -192,6 +193,7 @@ namespace OneStrokeDemon.Presentation
     public interface IBattleHudView
     {
         event Action PauseToggleRequested;
+        event Action StanceSwitchRequested;
         event Action UltimateRequested;
         event Action RestartRequested;
         event Action NextLevelRequested;
@@ -217,6 +219,7 @@ namespace OneStrokeDemon.Presentation
             string scoreValue,
             string stanceLabel,
             string stanceValue,
+            bool stanceInteractable,
             string ultimateLabel,
             string ultimateStatus,
             float ultimateCooldownNormalized,
@@ -256,6 +259,7 @@ namespace OneStrokeDemon.Presentation
             ScoreValue = scoreValue;
             StanceLabel = stanceLabel;
             StanceValue = stanceValue;
+            StanceInteractable = stanceInteractable;
             UltimateLabel = ultimateLabel;
             UltimateStatus = ultimateStatus;
             UltimateCooldownNormalized = ultimateCooldownNormalized;
@@ -296,6 +300,7 @@ namespace OneStrokeDemon.Presentation
         public string ScoreValue { get; }
         public string StanceLabel { get; }
         public string StanceValue { get; }
+        public bool StanceInteractable { get; }
         public string UltimateLabel { get; }
         public string UltimateStatus { get; }
         public float UltimateCooldownNormalized { get; }

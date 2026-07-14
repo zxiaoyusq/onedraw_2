@@ -48,7 +48,8 @@
 | T630 | P6 表现与资源 | DONE | T450, T600 | 2.0 | 接入PSD解析出的背景、主角、怪物、UI和特效作为原型资源。 |
 | T640 | P6 表现与资源 | BACKLOG | T600, T120 | 1.5 | 适配横屏比例、刘海/圆角、安全区和触控遮挡。 |
 | T650 | P6 表现与资源 | DONE | T520, T600 | 1.5 | 完成事件驱动教程遮罩、手势示意和跳过/回看。 |
-| T700 | P7 质量发布 | READY | T540 | 2.0 | 补齐纯规则EditMode回归矩阵。 |
+| T660 | P6 表现与资源 | REVIEW | T540, T550, T630, T650 | 3.0 | 建立生产可玩入口与Battle组合根。 |
+| T700 | P7 质量发布 | BACKLOG | T540, T660 | 2.0 | 补齐纯规则EditMode回归矩阵。 |
 | T710 | P7 质量发布 | BACKLOG | T550, T650 | 3.0 | 补齐Unity集成、完整单局、暂停、重开和生命周期PlayMode测试。 |
 | T720 | P7 质量发布 | BACKLOG | T710, T250 | 1.0 | 审计所有玩法数值、内容和文案是否来自配置表。 |
 | T730 | P7 质量发布 | BACKLOG | T710, T630 | 3.0 | 在目标低端机收敛CPU、GC、内存、DrawCall、纹理和包体。 |
@@ -580,13 +581,26 @@
 - **证据：** `artifacts/evals/T650/`
 - **提交：** `T650: add event-driven tutorial overlay`
 
+### T660 · 建立生产可玩入口与Battle组合根。
+
+- **状态：** `REVIEW`
+- **依赖：** T540, T550, T630, T650
+- **估算：** 3.0 人日
+- **产出：** 主菜单开始按钮与配置关卡选择；跨场景启动意图；玩家、敌人、波次、战斗输入、HUD、教程、结算和导航的生产组合根。
+- **明确不做：** 不在场景/Inspector复制玩法数值或文案；不把测试夹具当生产运行时；不实现T640多设备适配、T700回归矩阵或微信平台验收。
+- **验收：** 从Bootstrap点击Play进入MainMenu；点击开始后可选择普通关或Boss关；选择后进入Battle并能通过真实划线输入造成伤害、推进波次、显示HUD/教程与结算；Restart创建全新会话，Main Menu返回正式入口。
+- **验证：** T660 EditMode；Bootstrap→MainMenu→Battle生产路径PlayMode；普通关与Boss玩家路径；Unity Editor手动点击冒烟与1920×1080截图；全量EditMode/PlayMode。
+- **当前评审：** 自动化生产按钮/真实InputSystem路径、Metal 1920×1080截图及全量回归已通过；主工程Unity Editor未连接MCP且Computer Use不可用，人工窗口点击冒烟待用户确认，未伪报PASS。
+- **证据：** `artifacts/evals/T660/`
+- **提交：** `T660: add production playable battle entry`
+
 
 ## P7 质量发布
 
 ### T700 · 补齐纯规则EditMode回归矩阵。
 
-- **状态：** `READY`
-- **依赖：** T540
+- **状态：** `BACKLOG`
+- **依赖：** T540, T660
 - **估算：** 2.0 人日
 - **产出：** 手势/伤害/配置/技能/状态机/Boss测试。
 - **明确不做：** 纯算法不使用场景测试。

@@ -97,6 +97,8 @@ Tests.EditMode / Tests.PlayMode
 ### 流程
 
 - 游戏：Boot → MainMenu → Loading → Battle → Result。
+- `MainMenuCompositionRoot`与`BattleCompositionRoot`是生产场景的唯一装配所有者；二者必须位于Unity Editor保存的独立单位变换根，运行时UI/参考像素世界作为其子对象随场景确定释放，不能挂在带展示缩放的灰盒对象下。
+- 主菜单从配置Levels和进度快照生成关卡按钮，只把已解锁且经配置目录验证的levelId写入`BattleLaunchContext`；Battle按该选择组合既有Player/Enemy/Wave/Input/HUD/Tutorial或Boss/Feedback/Result/Navigation，不在组合根重写任何子系统规则。
 - 战斗：Countdown → Playing ↔ Paused → UltimateDrawing → Playing → Victory/Defeat。
 - 必须由玩家完成的门使用事件，不允许超时自动确认。
 - `TutorialSequence`只根据配置的玩法事件推进；`TutorialDirector`只消费其运行时事件并投影遮罩、高亮、手势示意和配置文案，不反向伪造步骤完成。
@@ -152,3 +154,10 @@ Tests.EditMode / Tests.PlayMode
 - 运行时不动态扩Atlas。默认Latin主字体和中文fallback均为Static、单Atlas，最大尺寸分别为512×512和1024×1024；HUD显式加载项目字体，不允许静默退回系统字体。
 - TMP `.asset`、Settings与shader资源只能由Unity Editor作者工具生成/导入。固定uGUI包的Essential Resources导入后只保留移动SDF shader、Settings、样式及中文换行规则，删除未使用的默认大Atlas和源字体。
 - PlayMode必须逐字符验证实际`TMP_CharacterInfo`没有替换字形，同时检查活动HUD/结算文本无overflow或truncate，并保存带中文HUD和动态伤害数字的1920×1080实际渲染截图。
+
+## 11. 生产入口与场景生命周期
+
+- `BootstrapController`仍负责配置、Registry和统一指针输入先于MainMenu就绪；MainMenu/Battle组合根检测运行时未就绪时不得创建半套UI或战斗。
+- 生产View可以运行时创建Unity对象，但所有标题、按钮、关卡名、锁定与战斗内容都必须读取配置/进度；硬编码只允许布局、颜色和引用像素表现，不允许形成第二玩法或文案库。
+- 战斗参考像素根按当前Camera视口映射Global参考宽高；玩家和敌人Transform、Collider、轨迹命中必须共享该根。组合根自身必须为单位变换，避免灰盒缩放导致敌人出屏或命中空间漂移。
+- Scene卸载、Restart和MainMenu返回必须先经会话所有者Dispose，解除事件、回收池租约并恢复反馈对象，再销毁其子层级；不能把会话对象放成无所有者的独立场景根。

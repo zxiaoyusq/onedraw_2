@@ -36,7 +36,7 @@ namespace OneStrokeDemon.Tests.PlayMode.T600
         {
             LogAssert.Expect(
                 LogType.Log,
-                new Regex("CONFIG_RUNTIME_READY.*content=0\\.6\\.2-sample.*records=742"));
+                new Regex("CONFIG_RUNTIME_READY.*content=0\\.6\\.3-sample.*records=745"));
             LogAssert.Expect(
                 LogType.Log,
                 new Regex("ASSET_REGISTRY_READY.*entries=76"));
@@ -182,6 +182,7 @@ namespace OneStrokeDemon.Tests.PlayMode.T600
             public int MainMenuCount { get; private set; }
 
             public void SetPlayerPaused(bool paused) => LastPauseRequest = paused;
+            public void SwitchStance() { }
             public void BeginUltimateDrawing() => UltimateCount += 1;
             public void Restart() => RestartCount += 1;
             public void GoNext() => NextCount += 1;

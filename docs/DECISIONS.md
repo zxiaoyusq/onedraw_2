@@ -297,7 +297,7 @@
 
 - 状态：ACCEPTED
 - 决定：字体源固定为Google Fonts官方仓库提交`2894aab31764f10f29c421bdfd2340d3b382d384`的OFL Noto Sans SC。上游完整字体只作本地构建输入；交付物实例化weight 500、去除保留字体名并重命名为`One Stroke Demon UI`，只保留项目字符清单，同时随包保存OFL全文、来源和SHA-256。
-- 决定：字符清单是全部受管`texts[].zhCN`、可打印ASCII、NBSP及常用中文UI标点的确定性并集。TMP使用96字符512×512静态Latin主Atlas与198字符1024×1024静态中文fallback，关闭运行时多Atlas；TMP Settings全局fallback和HUD显式资源路径均指向这条链。Unity作者工具导入固定uGUI包的Essential Resources并删除未使用的LiberationSans大Atlas、源字体及非移动shader。
+- 决定：字符清单是全部受管`texts[].zhCN`、可打印ASCII、NBSP及常用中文UI标点的确定性并集。T660新增入口文案后当前清单为299码点，TMP使用96字符512×512静态Latin主Atlas与203字符1024×1024静态中文fallback，关闭运行时多Atlas；TMP Settings全局fallback和HUD显式资源路径均指向这条链。Unity作者工具导入固定uGUI包的Essential Resources并删除未使用的LiberationSans大Atlas、源字体及非移动shader。
 - 决定：验收不以“无Console报错”代替字形证据。EditMode逐码点核对配置、清单、子集hash、静态Atlas预算和fallback；PlayMode读取实际`TMP_CharacterInfo`拒绝replacement glyph，检查HUD/结算无overflow/truncate，并用图形设备保存1920×1080中文HUD与动态伤害数字截图。
 - 理由：完整CJK源字体和动态Atlas会增加包体、运行时内存与首次缺字抖动；系统字体不可再分发且跨设备不一致；只验证配置静态文案又会漏掉数值格式字符。固定许可来源、最小子集、静态分层Atlas和配置漂移测试使中文显示可复现且包体边界明确。
 - 限制：T610的Metal截图不替代Web/微信压缩包、低端机字体内存、DevTools或真机验证；多比例/刘海/左右手布局仍属T640，战斗反馈、正式美术和教程遮罩分别属T620/T630/T650。
@@ -327,3 +327,12 @@
 - 决定：跳过是显式`TutorialSkipped`事实，同时结束教程序列，但不伪造任何步骤完成事件。T520最终玩家确认门只在出生调度完成且活跃敌人归零后消费，因此跳过只取消教程展示/动作门，不跳过本关战斗。首次完成或跳过经`ITutorialCompletionProgress`写后发布到存档v2的`completedTutorialIds`，内建v1→v2迁移保持旧存档兼容。
 - 理由：若遮罩自己用定时器推进会产生第二份教程真相；若跳过直接确认最终波会在敌人尚未出生或存活时结算；若只保存UI布尔值则不能校验配置教程ID。事件投影、延迟战斗门与配置ID集合使显示、规则和进度各有单一所有者。
 - 限制：T650在1920×1080 Metal与自动化玩家路径上证明遮罩、手势、跳过/回看及两局Victory；不替代T640多比例/安全区/触控遮挡验收，也不证明T130平台持久化、Web/微信DevTools或真机体验。
+
+## D-039 · T660以独立单位变换场景根组合生产菜单与战斗会话
+
+- 状态：ACCEPTED_IMPLEMENTATION / MANUAL_SMOKE_PENDING
+- 决定：配置保持schema `5`并升级content到`0.6.3-sample`，只新增游戏标题、开始游戏和选择关卡三条`Texts`。主菜单按完整Levels顺序生成按钮，锁定只读T550进度；已解锁levelId经配置目录验证后才作为一次性启动意图进入Battle。
+- 决定：生产Battle组合根复用既有Player、EnemyArchetypePool、Level/Tutorial/Boss协调器、PointerInput、Damage/Combo/Score/Skill、HUD、Feedback、Result和Navigation；组合根只做对象所有权、事件接线和配置对象映射，不重新实现子系统数值。主菜单与Battle组件由Unity Editor保存到独立、位置零/旋转零/缩放一的场景根，其运行时对象保留父子所有权以保证卸载前确定Dispose。
+- 决定：当前Editor/Web进度实现经`IProgressSaveStore`使用PlayerPrefs和T550版本化编码；Gameplay不调用微信SDK静态API，T130仍负责未来平台存储。Metal图形专项通过实际Button监听器进入教学关，并以真实InputSystem鼠标笔迹造成伤害；普通关、Boss、HUD/教程、Defeat、Restart和MainMenu返回均由生产路径PlayMode验证。
+- 理由：若继续只在测试夹具装配，Bootstrap可运行并不代表玩家可进入战斗；若把组合组件挂到现有缩放灰盒，参考像素敌人会被放大到屏外；若为避开缩放把会话放成独立场景根，Unity卸载顺序又会先销毁反馈组件。独立单位根加明确子对象所有权同时解决可玩入口、坐标一致性和释放时序。
+- 限制：1920×1080截图、197/197 EditMode和49/49 PlayMode不能冒充人手操作当前Unity窗口。主工程Editor未连接MCP且Computer Use不可用，因此人工`Play → 开始游戏 → 幽菌古道 → 划线`冒烟仍待用户确认；T640多比例、T130平台存储、标准Web、微信DevTools和真机不属于T660本次PASS范围。

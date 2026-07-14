@@ -1,8 +1,8 @@
 project: OneStrokeDemon
 project_cn: 一笔镇妖
 plan_generated: 2026-07-11
-current_task: T700
-current_task_status: READY
+current_task: T660
+current_task_status: REVIEW
 unity:
   project_root: .
   preferred_family: "6000.5"
@@ -23,9 +23,9 @@ config:
   generated_hash: Assets/_Game/Config/Generated/gameplay_config.hash
   generated_ids: Assets/_Game/Scripts/Config/Generated/ConfigIds.g.cs
   schema_version: 5
-  content_version: 0.6.2-sample
-  content_hash: 7e2a0880c289b4dc7299dee0149bfe2bcc86ed55fa92fa392e5cd874ad77b91e
-  workbook_sha256: 1278124703f32c4d6b5c3ac017984e148b0fb3ab5378d9fba04c47236620ffa2
+  content_version: 0.6.3-sample
+  content_hash: 2c005061c9a4bf806afcc6d6c16e7504b2df8b4bbecfec6edcc262900cd1dfdc
+  workbook_sha256: 9f2330c94bc86f67563feba816cd2b8acb3f05cbd2f2f5811431ee891a4233ee
   mirror_status: byte_identical
   contract_audit: pass
   exporter:
@@ -35,9 +35,9 @@ config:
     status: pass
     test_count: 8
     exported_tables: 29
-    exported_records: 742
-    output_bytes: 193859
-    output_sha256: 24bd59276c34ca59a8e74ad9d27fcbb4ad503c88ad93752b95e21e916b80195e
+    exported_records: 745
+    output_bytes: 194319
+    output_sha256: 0f7d3c304ef52ed03d5197846cac3a29eb2acf308933d38851b9c01c59b4d5b3
     runtime_snapshot_committed: true
   validator:
     path: Tools/ConfigExporter/Validation
@@ -54,11 +54,11 @@ config:
     compatibility: schema_5_content_0_6_x
     dto_tables: 29
     dto_fields: 266
-    loaded_records: 742
-    readonly_primary_indexes: 338
+    loaded_records: 745
+    readonly_primary_indexes: 341
     readonly_group_indexes: 56
-    full_editmode_tests: 195
-    full_playmode_tests: 46
+    full_editmode_tests: 197
+    full_playmode_tests: 49
     bootstrap_smoke: pass
   asset_registry:
     status: pass
@@ -79,19 +79,19 @@ config:
     default_read_only: true
     update_flag: --update
     drift_diagnostic: CFG013
-    generated_json_bytes: 193859
-    generated_json_sha256: 24bd59276c34ca59a8e74ad9d27fcbb4ad503c88ad93752b95e21e916b80195e
+    generated_json_bytes: 194319
+    generated_json_sha256: 0f7d3c304ef52ed03d5197846cac3a29eb2acf308933d38851b9c01c59b4d5b3
     generated_hash_bytes: 65
-    generated_hash_sha256: af6265cf2c4a10db420cfb8bf04f27b524f66cee14f0543a3891d88d21df2ae5
-    generated_ids_bytes: 27953
-    generated_ids_sha256: 339ac189c22dadcab133d5e6bd1f272a6a44a21060decf4fd7646ec0b1d54fd1
+    generated_hash_sha256: 180f77508b89100955e33db6a3e8e6bd4ac4312b61ae29c9485a6355b733e966
+    generated_ids_bytes: 28168
+    generated_ids_sha256: 85f2a06c5f7e19568e0ded2a3376a543fd0dcddc121c92150f4367ade6e5513f
     id_sets: 28
-    id_constants: 374
+    id_constants: 377
     dotnet_tests: 58
     config_editmode_tests: 19
     config_playmode_tests: 3
-    full_editmode_tests: 195
-    full_playmode_tests: 46
+    full_editmode_tests: 197
+    full_playmode_tests: 49
     full_command_smoke: pass_via_readonly_drift_gate_plus_isolated_unity_batch_project
 result_progress:
   status: pass
@@ -141,7 +141,7 @@ battle_hud:
   view_policy: render_readonly_view_model_and_forward_intents_only
   localized_text_source: Texts
   display_name_sources: [Levels.displayNameKey, Stances.displayNameKey, Skills.displayNameKey]
-  buttons: [PauseResume, Ultimate, Restart, NextLevel, MainMenu]
+  buttons: [PauseResume, StanceSwitch, Ultimate, Restart, NextLevel, MainMenu]
   button_gates: [flow_state, player_alive, energy_cost, required_stance, cooldown, can_go_next]
   reference_resolution_source: Global.reference_width_and_reference_height
   safe_area: single_dynamic_normalized_anchor_root
@@ -158,12 +158,12 @@ localization_fonts:
   upstream_commit: 2894aab31764f10f29c421bdfd2340d3b382d384
   license: SIL_OFL_1_1
   upstream_source_committed: false
-  delivered_subset_bytes: 124488
-  delivered_subset_sha256: fd0ab5d8ce0c0210a6439084423ebc6c599110d6e928028b6275dd8bb9291ac5
-  character_inventory: 294
+  delivered_subset_bytes: 126168
+  delivered_subset_sha256: 9de334f2650055fa13b55c14200a55b5d87486c7f4e0ba5a3d1a23efeff8c0e4
+  character_inventory: 299
   character_sources: [all_Texts_zhCN, printable_ASCII, NBSP, common_zhCN_UI_punctuation]
   primary: {characters: 96, atlas: 512x512, population: Static, multi_atlas: false}
-  fallback: {characters: 198, atlas: 1024x1024, population: Static, multi_atlas: false}
+  fallback: {characters: 203, atlas: 1024x1024, population: Static, multi_atlas: false}
   tmp_essential_retained_bytes: 20172
   hud_font_resource: "Fonts/OneStrokeDemon UI Latin SDF"
   screenshot: artifacts/evals/T610/chinese-hud-1920x1080.png
@@ -728,8 +728,30 @@ tutorial_presentation:
   perceptual_screenshot: artifacts/evals/T650/tutorial-overlay-1920x1080.png
   perceptual_screenshot_sha256: 86587e44620e6064e197cb4bb7b3fd1ad159b33a0af6b8d3a4531c6f8603599f
   perceptual_resolution: 1920x1080_Metal
+production_playable_entry:
+  status: review_manual_editor_click_pending
+  main_menu_root: MainMenuCompositionRoot
+  battle_root: BattleCompositionRoot
+  scene_root_policy: editor_authored_identity_transform_with_owned_runtime_children
+  config_texts: [text_game_title, text_ui_start_game, text_ui_select_level]
+  level_source: Levels
+  unlock_source: ProgressSnapshot
+  launch_context: BattleLaunchContext
+  progress_store: PlayerPrefsProgressSaveStore_via_IProgressSaveStore
+  composed_runtime: [PlayerCombatController, EnemyArchetypePool, BattleFlowCoordinator, TutorialLevelCoordinator, BossLevelCoordinator, PointerInputRuntime, BattleHudRuntime, TutorialOverlayRuntime, CombatFeedbackRuntime, ResultService, BattleResultNavigation]
+  production_paths: [tutorial, normal, boss, defeat, restart, main_menu]
+  editmode_focused: 2
+  playmode_focused: 3
+  full_editmode_tests: 197
+  full_playmode_tests: 49
+  graphics_path: production_buttons_then_real_InputSystem_mouse_stroke
+  screenshot: artifacts/evals/T660/production-entry-1920x1080.png
+  screenshot_sha256: 5077c53c4af436934344a75c4faca60a850fe354396f9efe8f8d988064e1a0cf
+  screenshot_resolution: 1920x1080_Metal
+  manual_editor_click: blocked_main_editor_without_mcp_and_computer_use_unavailable
 manual_gates:
   unity_editor_smoke: pass
+  t660_production_manual_click: blocked_ui_control_unavailable
   standard_web_build: pass_with_known_issues
   wechat_sdk_source_verified: pass_with_local_patch
   wechat_conversion: pass_with_known_issues
@@ -773,7 +795,9 @@ wechat_conversion:
 execution_order:
   deferred_tasks: [T120, T130]
   deferral_reason: user_prioritized_main_game_content_over_wechat_devtools_device_and_packaging_work
-  next_content_task: T700
+  next_content_task: T660
+  paused_content_task: T700
+  reprioritization_reason: production_scenes_lack_player_clickable_main_menu_and_battle_composition_root
   resume_platform_before: [T640, T750]
 workflow:
   config_verify_command: Tools/CI/verify-config.sh

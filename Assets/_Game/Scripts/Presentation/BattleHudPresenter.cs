@@ -41,6 +41,7 @@ namespace OneStrokeDemon.Presentation
 
             source.Changed += OnStateChanged;
             view.PauseToggleRequested += OnPauseToggleRequested;
+            view.StanceSwitchRequested += OnStanceSwitchRequested;
             view.UltimateRequested += OnUltimateRequested;
             view.RestartRequested += OnRestartRequested;
             view.NextLevelRequested += OnNextLevelRequested;
@@ -60,6 +61,7 @@ namespace OneStrokeDemon.Presentation
             disposed = true;
             source.Changed -= OnStateChanged;
             view.PauseToggleRequested -= OnPauseToggleRequested;
+            view.StanceSwitchRequested -= OnStanceSwitchRequested;
             view.UltimateRequested -= OnUltimateRequested;
             view.RestartRequested -= OnRestartRequested;
             view.NextLevelRequested -= OnNextLevelRequested;
@@ -128,6 +130,7 @@ namespace OneStrokeDemon.Presentation
                 Integer(state.LiveScore),
                 text.Stance,
                 text.Get(stance.DisplayNameKey),
+                state.FlowState == BattleFlowState.Playing && playerAlive && !terminal,
                 text.Get(ultimateSkill.DisplayNameKey),
                 ultimateStatus,
                 NormalizeCooldown(cooldownRemaining, ultimateSkill.CooldownSec),
@@ -157,6 +160,14 @@ namespace OneStrokeDemon.Presentation
                 text.MainMenu,
                 paused || resultVisible);
             view.Render(current);
+        }
+
+        private void OnStanceSwitchRequested()
+        {
+            if (current != null && current.StanceInteractable)
+            {
+                commands.SwitchStance();
+            }
         }
 
         private string BuildUltimateStatus(

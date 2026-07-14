@@ -1,19 +1,25 @@
 # PROGRESS
 
 - 日期：2026-07-14
-- 当前成熟度：P3手势战斗核心、P4玩家/敌人技能、P5完整单局闭环与P6 HUD/结算UI、中文字体、战斗反馈、原型美术和教程表现均已完成；进入P7质量回归
-- 当前任务：T700
-- 状态：READY
+- 当前成熟度：生产主菜单与Battle组合根已接入并通过自动化/图形回归；等待一次主Unity Editor人工点击冒烟确认
+- 当前任务：T660
+- 状态：REVIEW
 - Unity精确版本：6000.5.1f1（已由ProjectVersion.txt与本机安装核验）
 - 微信SDK来源或版本：官方 `minigame-tuanjie-transform-sdk` v0.1.33 / commit `ed4ad28f433c6b52b5fd3f22a6fa155a0c98c228` / embedded最小补丁
 - Active Scene：Assets/_Game/Scenes/Bootstrap.unity
-- 配置版本：schema 5 / content 0.6.2-sample / hash `7e2a0880c289b4dc7299dee0149bfe2bcc86ed55fa92fa392e5cd874ad77b91e`
+- 配置版本：schema 5 / content 0.6.3-sample / hash `2c005061c9a4bf806afcc6d6c16e7504b2df8b4bbecfec6edcc262900cd1dfdc`
 
 ## 进行中
 
-- 当前无`IN_PROGRESS`任务；T650已完成并提交，T700是第一个依赖均DONE的`READY`任务。T640仍依赖已延期且BLOCKED的T120，不能提前开始。
+- T660实现与可重复验证已完成，当前为唯一`REVIEW`任务。生产按钮、关卡选择、教学/普通/Boss组合、真实InputSystem划线伤害、HUD/教程、结算、Restart和MainMenu返回均通过；主工程Unity Editor未连接MCP且Computer Use服务不可用，人工窗口点击冒烟明确待用户确认。T700继续`BACKLOG`，不能在T660转为DONE前启动；T640仍依赖已延期且BLOCKED的T120。
 
 ## 已完成
+
+- T660：新增配置驱动生产主菜单、关卡锁定/选择和跨场景启动意图；Battle生产会话组合现有Player、Enemy、Wave、PointerInput、Damage/Combo/Score/Skill、HUD、Tutorial/Boss、Feedback、Result与Navigation。主菜单和Battle由Unity Editor保存到独立单位变换场景根，避免继承灰盒`8×4`缩放；会话保留父子所有权，修复场景卸载时反馈池对象先销毁后释放的异常。
+- T660：HUD新增架势切换按钮意图并沿既有`StanceService/SkillService`执行；Editor/Web进度适配通过`IProgressSaveStore`使用T550版本化JSON与PlayerPrefs，不进入Gameplay规则或直接调用微信SDK。Restart创建新会话，主菜单返回正式入口，普通关/Boss选择继续服从配置进度解锁。
+- T660：工作簿新增`text_game_title/text_ui_start_game/text_ui_select_level`并升级为schema 5/content `0.6.3-sample`；双工作簿95,553字节且SHA-256同为`9f2330c9...233ee`。受管JSON 194,319字节/745条/content hash `2c005061...1dfdc`，28组377个ID常量；30个Sheet重渲染目检、严格漂移门和ConfigExporter .NET 58/58通过。
+- T660：新增“开始游戏/选择关卡”5个汉字后，固定上游Noto Sans SC子集重建为126,168字节、SHA-256 `9de334f2...8c0e4`；当前字符清单299码点，静态Latin 96 + 中文fallback 203仍保持512×512/1024×1024单Atlas，图形日志无缺字警告。
+- T660：专项EditMode 2/2、PlayMode 3/3，最终全量EditMode 197/197、PlayMode 49/49；Metal 1920×1080生产关卡选择截图SHA-256为`5077c53c...a0cf`。真实鼠标笔迹命中屏内敌人并扣HP/刷新评分，普通关/Boss均进入正确生产协调器，Defeat后Restart生成第二代会话并可返回MainMenu。Unity启动时先连到旧License通道并报告协议/Token错误，随后自动连接`6000.5.1`通道、解析Personal授权并以code 0完成；产品编译与运行无新增Error/Warning。人工Unity窗口点击因主Editor无MCP连接且Computer Use不可用，保持BLOCKED并将任务置于REVIEW；未运行标准Web、微信转换、DevTools或真机。
 
 - T650：新增事件驱动`TutorialDirector`、遮罩View/运行时工厂与高亮目标注册表；已有T520步骤事件是唯一推进真相，View只渲染配置提示、目标框、程序化横/竖/斜/弧/圆/蓄力示意并转发跳过/回看意图。回看不改变序列，显式跳过不伪造`StepCompleted`，且必须等全部出生完成、活跃敌人归零后才放行最终战斗门。
 - T650：进度存档升级到v2，以经配置目录验证的`completedTutorialIds`保存一次性标记；写成功后才发布当前快照，内建v1→v2迁移补空列表。首次跳过后重开会自动跳过教程展示，但两局都需击败15怪才Victory，存储端口只写入一次。
@@ -31,8 +37,8 @@
 - T620：专项EditMode 4/4、PlayMode 1/1，ConfigPipeline Unity EditMode 19/19、PlayMode 3/3，最终全量EditMode 187/187、PlayMode 45/45。Metal 1920×1080画廊清楚展示普通命中白字、弱点黄字、破甲橙字、弹反无伤害数字和玩家受击红字，截图SHA-256为`8c687c19...97d`；测试日志无新增编译错误、运行异常或失败，重编译只报告T610既有且本任务未改动的4处CS0618测试API弃用warning。
 - T620：未修改Scene、Prefab、Registry、Input Actions、Packages、ProjectSettings、微信SDK或Builds；T240黑色占位VFX/音频的正式品质留给T630，微信震动适配仍留给T130，未提前实现T640/T650。
 
-- T610：采用Google Fonts官方仓库固定提交`2894aab3...d384`的OFL Noto Sans SC作为一次性构建输入，实例化weight 500并按保留字体名规则重命名为`One Stroke Demon UI`。未提交17,772,300字节上游原字体，只交付124,488字节子集、OFL全文和来源/hash记录；子集SHA-256为`fd0ab5d8...1ac5`。
-- T610：字符清单确定性覆盖全部`texts[].zhCN`、可打印ASCII、NBSP和常用中文UI标点，共294个唯一码点；TMP拆为96字符512×512 Latin静态主Atlas和198字符1024×1024中文静态fallback，均关闭多Atlas。全局TMP Settings及BattleHUD显式资源路径指向主字体，主字体与全局fallback均指向中文资产；TMP Essential Resources经Unity Editor导入后删去未使用的LiberationSans大Atlas/源字体和非移动shader，仅保留约20KB移动SDF、设置、样式与中文换行规则。
+- T610（当前字库随T660入口文案同步重建）：采用Google Fonts官方仓库固定提交`2894aab3...d384`的OFL Noto Sans SC作为一次性构建输入，实例化weight 500并按保留字体名规则重命名为`One Stroke Demon UI`。未提交17,772,300字节上游原字体，当前交付126,168字节子集、OFL全文和来源/hash记录；子集SHA-256为`9de334f2...8c0e4`。
+- T610（当前基线）：字符清单确定性覆盖全部`texts[].zhCN`、可打印ASCII、NBSP和常用中文UI标点，共299个唯一码点；TMP拆为96字符512×512 Latin静态主Atlas和203字符1024×1024中文静态fallback，均关闭多Atlas。全局TMP Settings及BattleHUD显式资源路径指向主字体，主字体与全局fallback均指向中文资产；TMP Essential Resources经Unity Editor导入后删去未使用的LiberationSans大Atlas/源字体和非移动shader，仅保留约20KB移动SDF、设置、样式与中文换行规则。
 - T610：调整Noto行高下LevelName、结算标题/分数/星级容器高度。专项EditMode 3/3、PlayMode 1/1，最终全量EditMode 183/183、PlayMode 44/44；1920×1080 Metal渲染截图显示中文生命/能量/连斩/评分/架势/终极和动态`-12345 暴击`，字符信息逐字断言无replacement glyph，活动HUD与结算文案均无overflow/truncate。配置只读漂移门与.NET 56/56通过，最终专项/全量日志无编译错误、缺字警告、异常或测试失败。
 - T610：未修改工作簿、schema、FieldDictionary、DTO、受管JSON/hash/ConfigIds、场景、Prefab、Registry、Input Actions、Packages、ProjectSettings、微信SDK或Builds；未提前实现T620反馈、T630正式美术、T640完整适配或T650教程遮罩，也未恢复T120/T130平台工作。
 - T600：新增只读`BattleHudState/BattleHudViewModel`、`BattleHudPresenter`与`BattleHudStateBinding`。Presenter单向订阅玩家、连斩、评分、流程和结算状态，View只渲染模型并转发暂停、终极、重开、下一关和主菜单意图；按钮按Playing/Paused/终态、能量、冷却和后继关可用性门控，不直接修改战斗Model。
@@ -178,7 +184,7 @@
 - T200：按GAME_DESIGN修正关卡玩法ID为 `lv_001_tutorial`、`lv_002_cave`、`lv_003_boss`，Boss玩法ID为 `boss_tomb_king`；所有Level/Wave/Spawn/BossPhase/Reward依赖引用同步，文案键和资源键保持独立命名空间。
 - T200：FieldDictionary保留248条非递归字段记录，修正Global互斥类型列及10个主键/条件字段的必填语义；冻结Schema属性存在与Excel单元格非空的差异、空值转换、普通/分组/通配符/conditional外键和数据所有权。
 - T200：29表、14公式、248字段、Schema/样例、类型/范围/枚举、主键、外键、连续order、关卡-Boss语义和规范化contentHash的只读契约审计全部PASS；29表最终渲染经4张总览拼图复核，无结构或版式异常。
-- 执行顺序调整：用户明确要求暂时绕过T120及微信开发者工具/打包问题，先完成游戏主要内容；T120保持`BLOCKED`、T130保持`BACKLOG`，不删除MVP平台验收要求；P6内容任务已完成，T700现为第一个依赖均DONE的`READY`任务。
+- 执行顺序调整：用户明确要求暂时绕过T120及微信开发者工具/打包问题，先完成游戏主要内容；T120保持`BLOCKED`、T130保持`BACKLOG`，不删除MVP平台验收要求。T700曾在P6内容任务完成后进入`READY`，但发现缺少玩家可点击的正式入口后已暂停为`BACKLOG`，当前先评审T660。
 - T120 G2：Unity `6000.5.1f1` 基于固定 embedded WXSDK 成功生成 `Builds/WeChat/T120`；84个文件、总计101,901,218字节，其中`minigame` 12,008,520字节，JSON结构、关键文件、SHA-256清单与敏感占位扫描均通过。
 - T120构建参数：空AppID、横屏、256MB、触摸启用、Development、关闭渲染线程与性能分析、清理构建，并使用SDK受支持的多线程Brotli；可复现入口为`Tools/CI/build-wechat.sh`。
 - T120 G2结论为`PASS WITH KNOWN ISSUES`：默认单线程Brotli在当前macOS Unity安装布局下引用错误路径（BUG-0005，已用配置规避）；转换含93条未匹配替换规则及6条Emscripten warning（BUG-0006），需要G3实际运行判定影响。
@@ -223,7 +229,7 @@
 6. 长Web构建后Unity MCP实例桥接未自动恢复，见BUG-0003；Unity batch测试与Web运行未受影响。
 7. PSD主角和怪物大多为单张Sprite；T610两个静态TMP资产约2.78MB，实际Web压缩包、运行内存和真机触摸延迟仍需T730及平台门验证。
 8. T630已替换18个Sprite和40个Prefab视觉占位，但17个AudioClip仍使用T240静音占位；单帧角色尚无正式动画或逐对象身体碰撞，ImageGen补图与PSD原画的细节密度存在差异，全部美术仅获原型授权，不能外推为发布品质。
-9. 三个MVP关卡、结算/进度/重开、HUD、中文字体、战斗反馈、原型视觉和教程遮罩路径已闭环；但`IProgressSaveStore`与震动仍待T130平台适配，T640多比例/安全区又依赖T120，因此当前证据不能外推为平台持久化、多设备布局或真机体验。
+9. 三个MVP关卡已接入生产主菜单和Battle组合根；自动化生产按钮/真实输入路径与1920×1080图形截图通过，但当前主Unity Editor无MCP连接且Computer Use不可用，人手窗口点击尚未确认。`IProgressSaveStore`与震动仍待T130平台适配，T640多比例/安全区又依赖T120，因此当前证据不能外推为平台持久化、多设备布局或真机体验。
 ## 下一步
 
-只执行T700：补齐纯规则EditMode回归矩阵；不提前实现T710或依赖T120的T640，也不恢复T120/T130。平台任务最迟在T640/T750前恢复。
+只评审T660：在主工程Unity Editor打开Bootstrap，点击Play→开始游戏→幽菌古道并划线命中首个敌人；确认HUD/教程/结算/重开可见后把T660转DONE，再将T700置READY。确认前不启动T700/T710或依赖T120的T640，也不恢复T120/T130。

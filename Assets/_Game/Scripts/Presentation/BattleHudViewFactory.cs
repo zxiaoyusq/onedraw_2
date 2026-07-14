@@ -121,6 +121,9 @@ namespace OneStrokeDemon.Presentation
         {
             RectTransform stance = CreatePanel("Stance", parent, PanelColor);
             ui.StanceRoot = stance;
+            ui.StanceButton = stance.gameObject.AddComponent<Button>();
+            ui.StanceButton.targetGraphic = stance.GetComponent<Image>();
+            ui.StanceButton.navigation = new Navigation { mode = Navigation.Mode.None };
             SetAnchored(stance, new Vector2(0f, 0f), new Vector2(0f, 0f),
                 new Vector2(32f, 32f), new Vector2(310f, 96f), Vector2.zero);
             ui.StanceLabel = CreateText("StanceLabel", stance, 18f, TextAlignmentOptions.MidlineLeft);

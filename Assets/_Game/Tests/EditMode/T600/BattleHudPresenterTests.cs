@@ -66,6 +66,8 @@ namespace OneStrokeDemon.Tests.EditMode.T600
 
             view.RequestPauseToggle();
             Assert.That(commands.PauseRequests, Is.EqualTo(new[] { true }));
+            view.RequestStanceSwitch();
+            Assert.That(commands.StanceSwitchCount, Is.EqualTo(1));
             source.Emit(CreateState(
                 energy: 100L,
                 flow: BattleFlowState.Paused));
@@ -220,6 +222,7 @@ namespace OneStrokeDemon.Tests.EditMode.T600
         private sealed class RecordingHudView : IBattleHudView
         {
             public event Action PauseToggleRequested;
+            public event Action StanceSwitchRequested;
             public event Action UltimateRequested;
             public event Action RestartRequested;
             public event Action NextLevelRequested;
@@ -235,6 +238,7 @@ namespace OneStrokeDemon.Tests.EditMode.T600
             }
 
             public void RequestPauseToggle() => PauseToggleRequested?.Invoke();
+            public void RequestStanceSwitch() => StanceSwitchRequested?.Invoke();
             public void RequestUltimate() => UltimateRequested?.Invoke();
             public void RequestRestart() => RestartRequested?.Invoke();
             public void RequestNextLevel() => NextLevelRequested?.Invoke();
@@ -246,11 +250,13 @@ namespace OneStrokeDemon.Tests.EditMode.T600
             public System.Collections.Generic.List<bool> PauseRequests { get; } =
                 new System.Collections.Generic.List<bool>();
             public int UltimateCount { get; private set; }
+            public int StanceSwitchCount { get; private set; }
             public int RestartCount { get; private set; }
             public int NextCount { get; private set; }
             public int MainMenuCount { get; private set; }
 
             public void SetPlayerPaused(bool paused) => PauseRequests.Add(paused);
+            public void SwitchStance() => StanceSwitchCount += 1;
             public void BeginUltimateDrawing() => UltimateCount += 1;
             public void Restart() => RestartCount += 1;
             public void GoNext() => NextCount += 1;

@@ -38,7 +38,7 @@ namespace OneStrokeDemon.Tests.EditMode.T610
                 expected.UnionWith(row.Value<string>("zhCN"));
             }
 
-            Assert.That(actualText.Length, Is.EqualTo(294));
+            Assert.That(actualText.Length, Is.EqualTo(299));
             Assert.That(actual.Count, Is.EqualTo(actualText.Length), "Character list contains duplicates.");
             Assert.That(actual, Is.EquivalentTo(expected));
             Assert.That("-1234567890 +98765 暴击".All(actual.Contains), Is.True);
@@ -63,7 +63,7 @@ namespace OneStrokeDemon.Tests.EditMode.T610
             Assert.That(fallback.atlasTexture.width, Is.EqualTo(1024));
             Assert.That(fallback.atlasTexture.height, Is.EqualTo(1024));
             Assert.That(primary.characterTable.Count, Is.EqualTo(96));
-            Assert.That(fallback.characterTable.Count, Is.EqualTo(198));
+            Assert.That(fallback.characterTable.Count, Is.EqualTo(203));
             Assert.That(primary.fallbackFontAssetTable, Is.EqualTo(new[] { fallback }));
 
             foreach (char character in characters)
@@ -96,10 +96,10 @@ namespace OneStrokeDemon.Tests.EditMode.T610
         {
             string fontPath = Absolute(LocalizationFontAssetAuthoring.SourceFontPath);
             var file = new FileInfo(fontPath);
-            Assert.That(file.Length, Is.EqualTo(124488));
+            Assert.That(file.Length, Is.EqualTo(126168));
             Assert.That(file.Length, Is.LessThan(200_000));
             Assert.That(Sha256(fontPath), Is.EqualTo(
-                "fd0ab5d8ce0c0210a6439084423ebc6c599110d6e928028b6275dd8bb9291ac5"));
+                "9de334f2650055fa13b55c14200a55b5d87486c7f4e0ba5a3d1a23efeff8c0e4"));
             Assert.That(AssetDatabase.LoadAssetAtPath<Font>(
                 LocalizationFontAssetAuthoring.SourceFontPath).name,
                 Is.EqualTo("OneStrokeDemonUI-Regular"));

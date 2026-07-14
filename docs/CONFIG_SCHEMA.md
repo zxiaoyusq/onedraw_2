@@ -2,7 +2,7 @@
 
 ## 1. 版本与唯一真相源
 
-- 当前冻结版本：`schemaVersion = 5`、`contentVersion = 0.6.2-sample`。
+- 当前冻结版本：`schemaVersion = 5`、`contentVersion = 0.6.3-sample`。
 - 正式内容唯一源：`Design/Config/GameConfig.xlsx`。
 - `config/一笔镇妖_游戏配置表模板.xlsx` 只是随正式源同步的示例镜像，不接受独立内容修改。
 - `Assets/_Game/Config/Generated/gameplay_config.json`和`gameplay_config.hash`由T250导出器生成，是可审查、可构建的只读Runtime快照与hash旁车。
@@ -275,7 +275,7 @@ T360新增的`Stances.damageFormulaId -> DamageFormulas.formulaId`是必填普�
 
 ## 27. T610配置文案字符覆盖与字体资产语义
 
-- T610不改变工作簿、JSON字段、FieldDictionary、schema、content版本或hash。字体字符清单以受管JSON全部`texts[].zhCN`为内容输入，并与可打印ASCII、NBSP和固定中文UI标点求唯一并集；当前结果为294个码点。该清单是构建派生物，不是第二套文案源。
+- T610不改变工作簿、JSON字段、FieldDictionary、schema、content版本或hash。字体字符清单以受管JSON全部`texts[].zhCN`为内容输入，并与可打印ASCII、NBSP和固定中文UI标点求唯一并集；T660新增入口文案后当前结果为299个码点。该清单是构建派生物，不是第二套文案源。
 - 任一配置中文文案新增码点后，字符清单、OFL重命名子集、TMP静态资产与覆盖测试必须同步重建；运行时不得下载字体、解析xlsx、动态扩Atlas或用Inspector维护额外常用字列表。
 - HUD的数值格式仍由T600 Presenter生成，但数字、负号、加号、斜杠、冒号、空格及动态`暴击`示例必须被同一主字体/fallback链覆盖。配置内容、运行时格式字符和字体资产之间的漂移由EditMode/PlayMode共同拒绝。
 
@@ -288,6 +288,12 @@ T360新增的`Stances.damageFormulaId -> DamageFormulas.formulaId`是必填普�
 
 ## 29. T650教程遮罩、跳过与回看语义
 
-- T650不改变JSON字段形状、FieldDictionary或schema，content升级为`0.6.2-sample`。`Texts`新增`text_ui_tutorial_skip`/`text_ui_tutorial_review`两条中英文按钮文案；步骤提示、高亮目标和手势类型继续只读既有`Tutorials -> Texts`。新增中文均已在T610的294字符清单内，因此不重建字体二进制或TMP资产。
+- T650不改变JSON字段形状、FieldDictionary或schema，content升级为`0.6.2-sample`。`Texts`新增`text_ui_tutorial_skip`/`text_ui_tutorial_review`两条中英文按钮文案；步骤提示、高亮目标和手势类型继续只读既有`Tutorials -> Texts`。该任务新增中文均已在当时T610字符清单内，因此T650本身未重建字体二进制或TMP资产。
 - `TutorialDirector`消费T520的`StepStarted/StepCompleted/TutorialSkipped/TutorialCompleted`运行时事件，把配置提示、高亮目标和手势投影到遮罩。回看只重现最近步骤，不改变`TutorialSequence`状态或重发玩法事件。
 - 显式跳过直接把教程序列置为Completed并发布跳过/完成事实，不伪造任何`StepCompleted`。跳过不删除敌人、不跳过出生时间线；只有最终波已全部出生且活跃敌人为0时才能消费`PlayerConfirmed`门。首次完成或跳过通过`ITutorialCompletionProgress`写入存档v2，后续重开可自动跳过教程展示，但仍须正常完成战斗。
+
+## 30. T660生产入口、关卡选择与Battle组合语义
+
+- T660不改变JSON字段形状、FieldDictionary或schema，content升级为`0.6.3-sample`。`Texts`新增`text_game_title`、`text_ui_start_game`和`text_ui_select_level`三条中英文入口文案；标题、开始按钮、选择标题、关卡名和锁定状态全部沿`Texts/Levels/ProgressSnapshot`取得，场景与Inspector不保存第二套文案、关卡列表或解锁规则。
+- `MainMenuCompositionRoot`只创建生产Canvas、显示配置Levels并把已解锁选择写入经配置校验的跨场景启动意图；`BattleCompositionRoot`按该levelId组合现有Player、Enemy、Wave、Input、HUD、Tutorial/Boss、Feedback、Result和Navigation，不复制其数值或规则。正式组合根由Unity Editor写入单位变换的独立场景对象，运行时子对象不得继承灰盒展示物的缩放。
+- Editor/Web最小进度适配使用版本化T550编码和`IProgressSaveStore`边界；`PlayerPrefs`只作为当前生产入口的本地存储实现，不进入Gameplay规则，也不替代T130未来的`IPlatformService`/微信存储适配。Restart必须释放后重建同关全新会话，下一关和主菜单仍只经T550回执与场景流服务导航。

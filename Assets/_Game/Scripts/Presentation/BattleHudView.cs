@@ -13,6 +13,7 @@ namespace OneStrokeDemon.Presentation
         private Vector2 lastScreenSize;
 
         public event Action PauseToggleRequested;
+        public event Action StanceSwitchRequested;
         public event Action UltimateRequested;
         public event Action RestartRequested;
         public event Action NextLevelRequested;
@@ -23,6 +24,7 @@ namespace OneStrokeDemon.Presentation
         public int RenderCount { get; private set; }
         public RectTransform SafeAreaRoot => RequireReferences().SafeAreaRoot;
         public RectTransform StanceTarget => RequireReferences().StanceRoot;
+        public Button StanceButton => RequireReferences().StanceButton;
         public Button PauseButton => RequireReferences().PauseButton;
         public Button UltimateButton => RequireReferences().UltimateButton;
         public Button RestartButton => RequireReferences().RestartButton;
@@ -47,6 +49,7 @@ namespace OneStrokeDemon.Presentation
             references.Validate();
             references.PauseButton.onClick.AddListener(HandlePauseToggle);
             references.ResumeButton.onClick.AddListener(HandlePauseToggle);
+            references.StanceButton.onClick.AddListener(HandleStanceSwitch);
             references.UltimateButton.onClick.AddListener(HandleUltimate);
             references.RestartButton.onClick.AddListener(HandleRestart);
             references.NextLevelButton.onClick.AddListener(HandleNextLevel);
@@ -79,6 +82,7 @@ namespace OneStrokeDemon.Presentation
             ui.ScoreValue.text = model.ScoreValue;
             ui.StanceLabel.text = model.StanceLabel;
             ui.StanceValue.text = model.StanceValue;
+            ui.StanceButton.interactable = model.StanceInteractable;
             ui.UltimateLabel.text = model.UltimateLabel;
             ui.UltimateStatus.text = model.UltimateStatus;
             ui.UltimateCooldown.value = model.UltimateCooldownNormalized;
@@ -154,6 +158,7 @@ namespace OneStrokeDemon.Presentation
 
             references.PauseButton.onClick.RemoveListener(HandlePauseToggle);
             references.ResumeButton.onClick.RemoveListener(HandlePauseToggle);
+            references.StanceButton.onClick.RemoveListener(HandleStanceSwitch);
             references.UltimateButton.onClick.RemoveListener(HandleUltimate);
             references.RestartButton.onClick.RemoveListener(HandleRestart);
             references.NextLevelButton.onClick.RemoveListener(HandleNextLevel);
@@ -168,6 +173,7 @@ namespace OneStrokeDemon.Presentation
         }
 
         private void HandlePauseToggle() => PauseToggleRequested?.Invoke();
+        private void HandleStanceSwitch() => StanceSwitchRequested?.Invoke();
         private void HandleUltimate() => UltimateRequested?.Invoke();
         private void HandleRestart() => RestartRequested?.Invoke();
         private void HandleNextLevel() => NextLevelRequested?.Invoke();
@@ -193,6 +199,7 @@ namespace OneStrokeDemon.Presentation
     {
         public RectTransform SafeAreaRoot;
         public RectTransform StanceRoot;
+        public Button StanceButton;
         public TMP_Text LevelName;
         public TMP_Text HpLabel;
         public TMP_Text HpValue;
@@ -237,7 +244,7 @@ namespace OneStrokeDemon.Presentation
         {
             foreach (UnityEngine.Object item in new UnityEngine.Object[]
                      {
-                         SafeAreaRoot, StanceRoot, LevelName, HpLabel, HpValue, HpSlider,
+                         SafeAreaRoot, StanceRoot, StanceButton, LevelName, HpLabel, HpValue, HpSlider,
                          EnergyLabel, EnergyValue, EnergySlider, ComboRoot,
                          ComboLabel, ComboValue, ScoreLabel, ScoreValue,
                          StanceLabel, StanceValue, UltimateButton, UltimateLabel,
