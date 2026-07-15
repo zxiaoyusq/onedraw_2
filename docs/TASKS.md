@@ -590,7 +590,7 @@
 - **明确不做：** 不在场景/Inspector复制玩法数值或文案；不把测试夹具当生产运行时；不实现T640多设备适配、T700回归矩阵或微信平台验收。
 - **验收：** 从Bootstrap点击Play进入MainMenu；点击开始后可选择普通关或Boss关；选择后进入Battle并能通过真实划线输入造成伤害、推进波次、显示HUD/教程与结算；Restart创建全新会话，Main Menu返回正式入口。
 - **验证：** T660 EditMode；Bootstrap→MainMenu→Battle生产路径PlayMode；普通关与Boss玩家路径；Unity Editor手动点击冒烟与1920×1080截图；全量EditMode/PlayMode。
-- **当前评审：** 自动化生产按钮/真实InputSystem路径、Metal 1920×1080截图及全量回归已通过；主工程Unity Editor未连接MCP且Computer Use不可用，人工窗口点击冒烟待用户确认，未伪报PASS。
+- **当前评审：** 用户已确认主Unity可从入口进入游戏；评审发现生产会话漏装可见笔迹池，且技能`audioKey`被误当Registry键导致`ARREG009 sfx_switch`。两项已修复并由真实InputSystem笔迹可见性、命中和配置音效映射回归覆盖，专项EditMode 2/2、PlayMode 4/4及全量197/197、50/50通过；等待用户用触控板“按住并拖动”复测后再转DONE。
 - **证据：** `artifacts/evals/T660/`
 - **提交：** `T660: add production playable battle entry`
 

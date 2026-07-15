@@ -174,6 +174,8 @@ namespace OneStrokeDemon.Bootstrap
         private readonly ScoreService score;
         private readonly SkillService skills;
         private readonly StrokeInputCollector strokeCollector;
+        private readonly StrokeTrailPool trailPool;
+        private readonly Material trailMaterial;
         private readonly GestureClassifier classifier;
         private readonly StrokeHitResolver resolver;
         private readonly HitRecord[] hits;
@@ -278,6 +280,15 @@ namespace OneStrokeDemon.Bootstrap
                 PointerInputRuntime.Current,
                 StrokeSamplingSettingsFactory.FromConfig(sampling));
             strokeCollector.StrokeCompleted += OnStrokeCompleted;
+            trailMaterial = CreateTrailMaterial();
+            var trailRoot = new GameObject("Stroke Trail Pool");
+            trailRoot.transform.SetParent(referenceRoot, false);
+            trailPool = trailRoot.AddComponent<StrokeTrailPool>();
+            trailPool.Initialize(
+                StrokeTrailSettingsFactory.CreatePoolSettings(
+                    config,
+                    ConfigIds.VfxCues.VfxSlash),
+                trailMaterial);
 
             hudBinding = new BattleHudStateBinding(
                 LevelId,
@@ -471,6 +482,7 @@ namespace OneStrokeDemon.Bootstrap
             world.AttackExecuted -= OnAttackExecuted;
             strokeCollector.StrokeCompleted -= OnStrokeCompleted;
             strokeCollector.Dispose();
+            trailPool.Clear();
             tutorialOverlay?.Dispose();
             hud?.Dispose();
             hudBinding.Dispose();
@@ -478,6 +490,7 @@ namespace OneStrokeDemon.Bootstrap
             boss?.Dispose();
             world.Dispose();
             Destroy(root);
+            Destroy(trailMaterial);
         }
 
         private void OnStrokeCompleted(StrokeData stroke)
@@ -496,6 +509,15 @@ namespace OneStrokeDemon.Bootstrap
             StrokeGeometryData geometry = StrokeGeometry.Process(
                 stroke,
                 StrokeGeometrySettingsFactory.FromConfig(sampling));
+            if (geometry.PointCount >= 2)
+            {
+                trailPool.Show(
+                    StrokeTrailPath.FromGeometry(geometry),
+                    StrokeTrailSettingsFactory.CreateStyle(
+                        config,
+                        player.Current.StanceId,
+                        ConfigIds.VfxCues.VfxSlash));
+            }
             GestureMatchResult gesture = classifier.Classify(geometry);
             if (!gesture.IsMatch)
             {
@@ -810,6 +832,21 @@ namespace OneStrokeDemon.Bootstrap
             };
         }
 
+        private static Material CreateTrailMaterial()
+        {
+            Shader shader = Shader.Find("Sprites/Default");
+            if (shader == null)
+            {
+                throw new InvalidOperationException(
+                    "Production stroke trails require the built-in Sprites/Default shader.");
+            }
+
+            return new Material(shader)
+            {
+                name = "Production Stroke Trail Material",
+            };
+        }
+
         private static void ConfigureReferenceSpace(
             Transform referenceSpace,
             Camera camera,
@@ -853,6 +890,18 @@ namespace OneStrokeDemon.Bootstrap
             else
             {
                 UnityEngine.Object.DestroyImmediate(gameObject);
+            }
+        }
+
+        private static void Destroy(UnityEngine.Object value)
+        {
+            if (Application.isPlaying)
+            {
+                UnityEngine.Object.Destroy(value);
+            }
+            else
+            {
+                UnityEngine.Object.DestroyImmediate(value);
             }
         }
 

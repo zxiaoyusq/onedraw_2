@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="1" result="Failed(Child)" total="1" passed="0" failed="1" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-07-15 02:01:08Z" end-time="2026-07-15 02:01:11Z" duration="3.1001069">
+  <test-suite type="TestSuite" id="1117" name="onedraw_2" fullname="onedraw_2" runstate="Runnable" testcasecount="50" result="Failed" site="Child" start-time="2026-07-15 02:01:08Z" end-time="2026-07-15 02:01:11Z" duration="3.100107" total="1" passed="0" failed="1" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="PlayMode" />
+    </properties>
+    <failure>
+      <message><![CDATA[One or more child tests had errors]]></message>
+    </failure>
+    <test-suite type="Assembly" id="1082" name="OneStrokeDemon.Tests.PlayMode.dll" fullname="/Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Library/ScriptAssemblies/OneStrokeDemon.Tests.PlayMode.dll" runstate="Runnable" testcasecount="50" result="Failed" site="Child" start-time="2026-07-15 02:01:08Z" end-time="2026-07-15 02:01:11Z" duration="3.091476" total="1" passed="0" failed="1" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="41194" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="PlayMode" />
+        <property name="EditorOnly" value="False" />
+      </properties>
+      <failure>
+        <message><![CDATA[One or more child tests had errors]]></message>
+      </failure>
+      <test-suite type="TestSuite" id="1083" name="OneStrokeDemon" fullname="OneStrokeDemon" runstate="Runnable" testcasecount="50" result="Failed" site="Child" start-time="2026-07-15 02:01:08Z" end-time="2026-07-15 02:01:11Z" duration="3.089452" total="1" passed="0" failed="1" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <failure>
+          <message><![CDATA[One or more child tests had errors]]></message>
+        </failure>
+        <test-suite type="TestSuite" id="1084" name="Tests" fullname="OneStrokeDemon.Tests" runstate="Runnable" testcasecount="50" result="Failed" site="Child" start-time="2026-07-15 02:01:08Z" end-time="2026-07-15 02:01:11Z" duration="3.087603" total="1" passed="0" failed="1" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <failure>
+            <message><![CDATA[One or more child tests had errors]]></message>
+          </failure>
+          <test-suite type="TestSuite" id="1085" name="PlayMode" fullname="OneStrokeDemon.Tests.PlayMode" runstate="Runnable" testcasecount="50" result="Failed" site="Child" start-time="2026-07-15 02:01:08Z" end-time="2026-07-15 02:01:11Z" duration="3.085703" total="1" passed="0" failed="1" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <failure>
+              <message><![CDATA[One or more child tests had errors]]></message>
+            </failure>
+            <test-suite type="TestSuite" id="1086" name="T660" fullname="OneStrokeDemon.Tests.PlayMode.T660" runstate="Runnable" testcasecount="4" result="Failed" site="Child" start-time="2026-07-15 02:01:08Z" end-time="2026-07-15 02:01:11Z" duration="3.081784" total="1" passed="0" failed="1" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <failure>
+                <message><![CDATA[One or more child tests had errors]]></message>
+              </failure>
+              <test-suite type="TestFixture" id="1005" name="ProductionPlayableEntryPlayModeTests" fullname="OneStrokeDemon.Tests.PlayMode.T660.ProductionPlayableEntryPlayModeTests" classname="OneStrokeDemon.Tests.PlayMode.T660.ProductionPlayableEntryPlayModeTests" runstate="Runnable" testcasecount="4" result="Failed" site="Child" start-time="2026-07-15 02:01:08Z" end-time="2026-07-15 02:01:11Z" duration="3.080793" total="1" passed="0" failed="1" inconclusive="0" skipped="0" asserts="0">
+                <properties>
+                  <property name="Category" value="T660" />
+                </properties>
+                <failure>
+                  <message><![CDATA[One or more child tests had errors]]></message>
+                </failure>
+                <test-case id="1008" name="StanceSwitchResolvesConfiguredAudioCueToRegistryAsset" fullname="OneStrokeDemon.Tests.PlayMode.T660.ProductionPlayableEntryPlayModeTests.StanceSwitchResolvesConfiguredAudioCueToRegistryAsset" methodname="StanceSwitchResolvesConfiguredAudioCueToRegistryAsset" classname="OneStrokeDemon.Tests.PlayMode.T660.ProductionPlayableEntryPlayModeTests" runstate="Runnable" seed="1538467879" result="Failed" label="Error" start-time="2026-07-15 02:01:08Z" end-time="2026-07-15 02:01:11Z" duration="3.070248" asserts="0">
+                  <properties>
+                    <property name="_JOINTYPE" value="UnityCombinatorial" />
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                  <failure>
+                    <message><![CDATA[OneStrokeDemon.Config.AssetRegistryException : ARREG009 [source=AssetRegistry:asset_registry, context=sfx_switch]: Unknown asset key 'sfx_switch'.]]></message>
+                    <stack-trace><![CDATA[  at OneStrokeDemon.Config.AssetRegistryService.GetObject (System.String assetKey) [0x00017] in /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Assets/_Game/Scripts/Config/AssetRegistryService.cs:164
+  at OneStrokeDemon.Config.AssetRegistryService.Get[T] (System.String assetKey) [0x00000] in /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Assets/_Game/Scripts/Config/AssetRegistryService.cs:173
+  at OneStrokeDemon.Config.AssetRegistryService.GetAudioClip (System.String assetKey) [0x00000] in /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Assets/_Game/Scripts/Config/AssetRegistryService.cs:190
+  at OneStrokeDemon.Bootstrap.ProductionBattleWorld.PlayAudio (System.String audioKey, System.String sourceId, System.Double timestamp) [0x00008] in /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Assets/_Game/Scripts/Bootstrap/ProductionBattleWorld.cs:421
+  at OneStrokeDemon.Skills.SkillService.ExecutePreparedEffects (OneStrokeDemon.Config.SkillEffectConfig[] effects, OneStrokeDemon.Skills.SkillEffectContext effectContext, System.String sourceId) [0x000e0] in /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Assets/_Game/Scripts/Skills/SkillService.cs:265
+  at OneStrokeDemon.Skills.SkillService.ExecuteEffectGroup (System.String effectGroupId, System.String sourceId, OneStrokeDemon.Skills.SkillEffectContext effectContext) [0x0001d] in /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Assets/_Game/Scripts/Skills/SkillService.cs:64
+  at OneStrokeDemon.Bootstrap.ProductionBattleSession.SwitchStance () [0x0009b] in /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Assets/_Game/Scripts/Bootstrap/BattleCompositionRoot.cs:413
+  at OneStrokeDemon.Presentation.BattleHudPresenter.OnStanceSwitchRequested () [0x00015] in /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Assets/_Game/Scripts/Presentation/BattleHudPresenter.cs:169
+  at OneStrokeDemon.Presentation.BattleHudView.HandleStanceSwitch () [0x00000] in /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Assets/_Game/Scripts/Presentation/BattleHudView.cs:176
+  at UnityEngine.Events.InvokableCall.Invoke () [0x0000d] in /Users/bokken/build/output/unity/unity/Runtime/Export/UnityEvent/UnityEvent.cs:181
+  at UnityEngine.Events.UnityEvent.Invoke () [0x0001b] in /Users/bokken/build/output/unity/unity/artifacts/generated/UnityEvent/UnityEvent_0.cs:59
+  at OneStrokeDemon.Tests.PlayMode.T660.ProductionPlayableEntryPlayModeTests+<StanceSwitchResolvesConfiguredAudioCueToRegistryAsset>d__4.MoveNext () [0x000ec] in /Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/artifacts/tmp/T600-unity-project/Assets/_Game/Tests/PlayMode/T660/ProductionPlayableEntryPlayModeTests.cs:193
+  at UnityEngine.TestTools.TestEnumerator+<Execute>d__7.MoveNext () [0x0003a] in ./Library/PackageCache/com.unity.test-framework@f3e6c9a02477/UnityEngine.TestRunner/NUnitExtensions/Attributes/TestEnumerator.cs:44 ]]></stack-trace>
+                  </failure>
+                  <output><![CDATA[CONFIG_RUNTIME_READY source=TextAsset:gameplay_config schema=5 content=0.6.3-sample hash=2c005061c9a4bf806afcc6d6c16e7504b2df8b4bbecfec6edcc262900cd1dfdc tables=29 records=745 primaryIndexes=341 groupIndexes=56
+ASSET_REGISTRY_READY source=AssetRegistry:asset_registry configHash=2c005061c9a4bf806afcc6d6c16e7504b2df8b4bbecfec6edcc262900cd1dfdc entries=76 prefabs=40 sprites=18 audioClips=17 scenes=1
+POINTER_INPUT_READY source=InputSystem modes=Mouse,Touch reference=1920x1080 safeArea=dynamic uiBeginBlock=true maxActivePointers=1
+<b><color=#2EA3FF>MCP-FOR-UNITY</color></b>: [TestRunnerNoThrottle] Restored Interaction Mode after test run.
+Saving results to: /Users/cqmizhangxiaoyu2/Library/Application Support/DefaultCompany/onedraw_2/TestResults.xml
+]]></output>
+                </test-case>
+              </test-suite>
+            </test-suite>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

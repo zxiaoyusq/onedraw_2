@@ -418,7 +418,8 @@ namespace OneStrokeDemon.Bootstrap
         {
             if (!string.IsNullOrEmpty(audioKey))
             {
-                audioSource.PlayOneShot(assets.GetAudioClip(audioKey));
+                AudioCueConfig cue = config.GetAudioCue(audioKey);
+                audioSource.PlayOneShot(assets.GetAudioClip(cue.AssetKey));
             }
         }
 

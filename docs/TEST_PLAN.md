@@ -69,7 +69,7 @@ T630专项必须覆盖：Runtime不存在PSD/PSB/JPG/JPEG，全部目标PNG可�
 
 T650专项必须覆盖：提示、高亮目标、手势与跳过/回看文案只来自`Tutorials/Texts`；计时、错误事件和回看都不能代替正确玩家动作；显式跳过不伪造`StepCompleted`，只持久化一次完成标记；v1存档迁移到v2后标记可确定性往返。PlayMode必须从Bootstrap真实配置创建HUD/遮罩，验证中文提示、手势、高亮、跳过和回看无overflow/truncate，并走通“首局跳过但仍击败15怪后Victory → 重开自动跳过但仍击败15怪后Victory”，存储只写一次。
 
-T660专项必须覆盖：主菜单标题/开始/选择文案和Levels按钮只来自配置，锁定状态只来自ProgressSnapshot，非法或未解锁跨场景选择不得进入Battle。PlayMode必须从Bootstrap进入生产MainMenu，触发实际Button监听器选择教学关，并以InputSystem鼠标笔迹命中屏内真实敌人、扣减HP和刷新HUD；还要解锁并分别进入普通关与Boss关，验证教程/HUD存在、Defeat结算、Restart全新会话和MainMenu返回。专项须保存1920×1080图形设备菜单截图并目检；全量EditMode/PlayMode必须排除生产EventSystem、场景卸载和测试顺序回归。人工Unity窗口点击若缺可用UI控制链必须明确标为BLOCKED，不能用自动化截图冒充。
+T660专项必须覆盖：主菜单标题/开始/选择文案和Levels按钮只来自配置，锁定状态只来自ProgressSnapshot，非法或未解锁跨场景选择不得进入Battle。PlayMode必须从Bootstrap进入生产MainMenu，触发实际Button监听器选择教学关，并以InputSystem鼠标笔迹命中屏内真实敌人、扣减HP、刷新HUD且显示与处理后几何一致的可见轨迹；架势切换等技能音效必须沿`AudioCues.audioKey -> assetKey -> AssetRegistry`配置链解析。还要解锁并分别进入普通关与Boss关，验证教程/HUD存在、Defeat结算、Restart全新会话和MainMenu返回。专项须保存1920×1080图形设备菜单截图并目检；全量EditMode/PlayMode必须排除生产EventSystem、场景卸载和测试顺序回归。人工Unity窗口点击若缺可用UI控制链必须明确标为BLOCKED，不能用自动化截图冒充。
 
 ## 证据模板
 

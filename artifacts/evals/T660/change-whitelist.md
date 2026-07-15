@@ -7,6 +7,13 @@
 
 ## 预计改动白名单
 
+### 2026-07-15 人工评审修复增补
+
+- 评审基线：`main@9d2f35e06ee56b5835e76ece774594d3873f0f9b`；工作树仅有受保护且保持未跟踪的`artifacts/evals/T700/**`。
+- 现场缺陷：生产战斗没有装配T340既有`StrokeTrailPool`，完成笔迹虽可结算但玩家看不到轨迹；技能效果的`audioKey`协议ID被直接当作AssetRegistry资源键，切换架势时以`ARREG009 sfx_switch`失败。
+- 本轮只允许修改`Assets/_Game/Scripts/Bootstrap/BattleCompositionRoot.cs`、`Assets/_Game/Scripts/Bootstrap/ProductionBattleWorld.cs`、`Assets/_Game/Tests/PlayMode/T660/ProductionPlayableEntryPlayModeTests.cs`及本任务证据/状态文档；如Unity导入产生现有脚本`.meta`变化则拒绝纳入。
+- 继续禁止修改Scene/Prefab/Registry/Input Actions、玩法配置、Packages、ProjectSettings、微信SDK、Builds与`artifacts/evals/T700/**`。音频修复必须沿`AudioCues.audioKey -> assetKey`既有配置关系解析，不新增第二映射或吞掉未知键。
+
 - `Assets/_Game/Scripts/Bootstrap/**`：新增主菜单入口、关卡选择、跨场景启动意图与Battle生产组合根；允许更新程序集引用。
 - `Assets/_Game/Scripts/Actors/**`、`Assets/_Game/Scripts/Levels/**`、`Assets/_Game/Scripts/Presentation/**`：仅允许补充生产组合所需、可复用且不复制规则的运行时适配器/只读端口。
 - `Assets/_Game/Scripts/Editor/**`：仅允许新增Unity Editor场景装配命令；场景和资源引用必须由Unity Editor写入。

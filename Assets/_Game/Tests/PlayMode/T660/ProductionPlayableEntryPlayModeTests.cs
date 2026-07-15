@@ -8,6 +8,7 @@ using OneStrokeDemon.Config;
 using OneStrokeDemon.Core;
 using OneStrokeDemon.Input;
 using OneStrokeDemon.Levels;
+using OneStrokeDemon.Presentation;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Rendering;
@@ -124,6 +125,18 @@ namespace OneStrokeDemon.Tests.PlayMode.T660
             Assert.That(session.LastResolvedHitCount, Is.GreaterThan(0));
             Assert.That(enemy.Damage.CurrentHp, Is.LessThan(hpBefore));
             Assert.That(session.HudView.ScoreValueText.text, Is.Not.EqualTo("0"));
+
+            StrokeTrailView visibleTrail = FindVisibleTrail();
+            Assert.That(visibleTrail, Is.Not.Null,
+                "The production battle must render the processed pointer stroke.");
+            Assert.That(visibleTrail.SourcePoints.Count, Is.GreaterThanOrEqualTo(2));
+            Assert.That(visibleTrail.LineRenderer.enabled, Is.True);
+            Assert.That(visibleTrail.LineRenderer.startWidth, Is.GreaterThan(0f));
+
+            string stanceBefore = session.Player.Current.StanceId;
+            session.HudView.StanceButton.onClick.Invoke();
+            yield return null;
+            Assert.That(session.Player.Current.StanceId, Is.Not.EqualTo(stanceBefore));
         }
 
         [UnityTest]
@@ -163,6 +176,24 @@ namespace OneStrokeDemon.Tests.PlayMode.T660
             Assert.That(bossSession.IsBossSession, Is.True);
             yield return WaitForPlaying(bossSession);
             yield return WaitForEnemy(bossSession);
+        }
+
+        [UnityTest]
+        public IEnumerator StanceSwitchResolvesConfiguredAudioCueToRegistryAsset()
+        {
+            yield return LoadBootstrapToMenu();
+            MainMenuCompositionRoot menu = FindMenu();
+            menu.View.StartButton.onClick.Invoke();
+            FindChoice(menu.View, ConfigIds.Levels.Lv001Tutorial).Button.onClick.Invoke();
+            yield return WaitForScene(SceneNames.Battle);
+            ProductionBattleSession session = FindBattle().CurrentSession;
+            yield return WaitForPlaying(session);
+
+            string stanceBefore = session.Player.Current.StanceId;
+            session.HudView.StanceButton.onClick.Invoke();
+            yield return null;
+
+            Assert.That(session.Player.Current.StanceId, Is.Not.EqualTo(stanceBefore));
         }
 
         [UnityTest]
@@ -296,6 +327,21 @@ namespace OneStrokeDemon.Tests.PlayMode.T660
             Set(mouse.position, end, queueEventOnly: true);
             Release(mouse.leftButton, queueEventOnly: true);
             yield return null;
+        }
+
+        private static StrokeTrailView FindVisibleTrail()
+        {
+            StrokeTrailView[] views = Object.FindObjectsByType<StrokeTrailView>(
+                FindObjectsInactive.Include);
+            for (int index = 0; index < views.Length; index++)
+            {
+                if (views[index].IsActive)
+                {
+                    return views[index];
+                }
+            }
+
+            return null;
         }
 
         private static void CaptureMenu(MainMenuView view, string outputPath)

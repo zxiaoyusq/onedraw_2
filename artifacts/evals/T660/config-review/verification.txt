@@ -1,0 +1,15 @@
+T660 REVIEW CONFIG VERIFICATION
+date=2026-07-15
+command=Tools/CI/verify-config.sh --skip-unity --results-root artifacts/evals/T660/config-review
+build_warnings=0
+build_errors=0
+schema=5
+content=0.6.3-sample
+hash=2c005061c9a4bf806afcc6d6c16e7504b2df8b4bbecfec6edcc262900cd1dfdc
+tables=29
+records=745
+generated_diff=PASS
+dotnet_tests=58/58
+result=CONFIG_PIPELINE_PARTIAL_PASS
+unity=NOT_RUN reason=explicit_skip
+note=Unity coverage is supplied separately by T660 focused and full EditMode/PlayMode XML results.
