@@ -57,7 +57,7 @@ config:
     loaded_records: 745
     readonly_primary_indexes: 341
     readonly_group_indexes: 56
-    full_editmode_tests: 197
+    full_editmode_tests: 198
     full_playmode_tests: 50
     bootstrap_smoke: pass
   asset_registry:
@@ -90,7 +90,7 @@ config:
     dotnet_tests: 58
     config_editmode_tests: 19
     config_playmode_tests: 3
-    full_editmode_tests: 197
+    full_editmode_tests: 198
     full_playmode_tests: 50
     full_command_smoke: pass_via_readonly_drift_gate_plus_isolated_unity_batch_project
 result_progress:
@@ -310,6 +310,9 @@ stroke_trail:
   view: StrokeTrailView
   pool: StrokeTrailPool
   renderer: LineRenderer
+  live_preview: accepted_sample_points_before_pointer_release
+  renderer_transform_policy: identity_root_with_separate_reference_space_conversion
+  world_space_width_policy: Stances.strokeWidthRefPx_times_reference_pixel_world_scale
   geometry_source: same_StrokeGeometryData_points_reference
   config_sources: [Stances.strokeWidthRefPx, StrokeRules.maxPointCount, VfxCues.lifeSec, VfxCues.poolPrewarm, VfxCues.sortingLayer, VfxCues.sortingOrder]
   stance_widths_reference_pixels: {blade: 18, talisman: 28}
@@ -729,10 +732,11 @@ tutorial_presentation:
   perceptual_screenshot_sha256: 86587e44620e6064e197cb4bb7b3fd1ad159b33a0af6b8d3a4531c6f8603599f
   perceptual_resolution: 1920x1080_Metal
 production_playable_entry:
-  status: review_post_fix_trackpad_retest_pending
+  status: review_post_visual_fix_confirmation_pending
   main_menu_root: MainMenuCompositionRoot
   battle_root: BattleCompositionRoot
   scene_root_policy: editor_authored_identity_transform_with_owned_runtime_children
+  development_graybox: inactive_in_Battle_scene
   config_texts: [text_game_title, text_ui_start_game, text_ui_select_level]
   level_source: Levels
   unlock_source: ProgressSnapshot
@@ -742,17 +746,19 @@ production_playable_entry:
   production_paths: [tutorial, normal, boss, defeat, restart, main_menu]
   editmode_focused: 2
   playmode_focused: 4
-  full_editmode_tests: 197
+  full_editmode_tests: 198
   full_playmode_tests: 50
-  graphics_path: production_buttons_then_real_InputSystem_mouse_stroke_with_visible_trail
+  graphics_path: production_buttons_then_real_InputSystem_mouse_live_preview_then_processed_residual_trail
   audio_resolution: AudioCues.audioKey_to_assetKey_to_AssetRegistry
   screenshot: artifacts/evals/T660/production-entry-1920x1080.png
   screenshot_sha256: 5077c53c4af436934344a75c4faca60a850fe354396f9efe8f8d988064e1a0cf
   screenshot_resolution: 1920x1080_Metal
-  manual_editor_click: user_confirmed_entry_post_fix_trackpad_retest_pending
+  live_trail_review_screenshot: artifacts/evals/T660/production-live-trail-review-2026-07-15.jpg
+  live_trail_review_screenshot_sha256: 289d97a907f6846371778f58e3e15d7e5ded0a5306ddd891923acd1294fd3f95
+  manual_editor_click: user_confirmed_entry_and_trackpad_input_post_visual_fix_confirmation_pending
 manual_gates:
   unity_editor_smoke: pass
-  t660_production_manual_click: review_post_fix_trackpad_retest_pending
+  t660_production_manual_click: review_post_visual_fix_confirmation_pending
   standard_web_build: pass_with_known_issues
   wechat_sdk_source_verified: pass_with_local_patch
   wechat_conversion: pass_with_known_issues

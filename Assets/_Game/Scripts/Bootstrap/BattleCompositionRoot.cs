@@ -279,16 +279,20 @@ namespace OneStrokeDemon.Bootstrap
             strokeCollector = new StrokeInputCollector(
                 PointerInputRuntime.Current,
                 StrokeSamplingSettingsFactory.FromConfig(sampling));
+            strokeCollector.StrokeStarted += OnStrokeStarted;
+            strokeCollector.StrokePointAdded += OnStrokePointAdded;
             strokeCollector.StrokeCompleted += OnStrokeCompleted;
+            strokeCollector.StrokeCanceled += OnStrokeCanceled;
             trailMaterial = CreateTrailMaterial();
             var trailRoot = new GameObject("Stroke Trail Pool");
-            trailRoot.transform.SetParent(referenceRoot, false);
+            trailRoot.transform.SetParent(root.transform, false);
             trailPool = trailRoot.AddComponent<StrokeTrailPool>();
             trailPool.Initialize(
                 StrokeTrailSettingsFactory.CreatePoolSettings(
                     config,
                     ConfigIds.VfxCues.VfxSlash),
-                trailMaterial);
+                trailMaterial,
+                referenceRoot);
 
             hudBinding = new BattleHudStateBinding(
                 LevelId,
@@ -480,7 +484,10 @@ namespace OneStrokeDemon.Bootstrap
             world.EnemySpawned -= OnEnemySpawned;
             world.EnemyReleased -= OnEnemyReleased;
             world.AttackExecuted -= OnAttackExecuted;
+            strokeCollector.StrokeStarted -= OnStrokeStarted;
+            strokeCollector.StrokePointAdded -= OnStrokePointAdded;
             strokeCollector.StrokeCompleted -= OnStrokeCompleted;
+            strokeCollector.StrokeCanceled -= OnStrokeCanceled;
             strokeCollector.Dispose();
             trailPool.Clear();
             tutorialOverlay?.Dispose();
@@ -499,6 +506,7 @@ namespace OneStrokeDemon.Bootstrap
                 (battle.Flow.State != BattleFlowState.Playing &&
                  battle.Flow.State != BattleFlowState.UltimateDrawing))
             {
+                trailPool.CancelPreview(stroke.StrokeId);
                 return;
             }
 
@@ -511,12 +519,16 @@ namespace OneStrokeDemon.Bootstrap
                 StrokeGeometrySettingsFactory.FromConfig(sampling));
             if (geometry.PointCount >= 2)
             {
-                trailPool.Show(
+                trailPool.CompletePreview(
                     StrokeTrailPath.FromGeometry(geometry),
                     StrokeTrailSettingsFactory.CreateStyle(
                         config,
                         player.Current.StanceId,
                         ConfigIds.VfxCues.VfxSlash));
+            }
+            else
+            {
+                trailPool.CancelPreview(stroke.StrokeId);
             }
             GestureMatchResult gesture = classifier.Classify(geometry);
             if (!gesture.IsMatch)
@@ -626,6 +638,36 @@ namespace OneStrokeDemon.Bootstrap
                     NotifyEnemyDefeated(entityId);
                 }
             }
+        }
+
+        private void OnStrokeStarted(StrokePreviewPointEvent preview)
+        {
+            if (disposed ||
+                (battle.Flow.State != BattleFlowState.Playing &&
+                 battle.Flow.State != BattleFlowState.UltimateDrawing))
+            {
+                return;
+            }
+
+            trailPool.BeginPreview(
+                preview.StrokeId,
+                preview.ReferencePosition,
+                StrokeTrailSettingsFactory.CreateStyle(
+                    config,
+                    player.Current.StanceId,
+                    ConfigIds.VfxCues.VfxSlash));
+        }
+
+        private void OnStrokePointAdded(StrokePreviewPointEvent preview)
+        {
+            trailPool.TryAppendPreviewPoint(
+                preview.StrokeId,
+                preview.ReferencePosition);
+        }
+
+        private void OnStrokeCanceled(StrokeCanceledEvent canceled)
+        {
+            trailPool.CancelPreview(canceled.StrokeId);
         }
 
         private void ResolveUltimate(StrokeData stroke, GestureMatchResult gesture)

@@ -176,6 +176,39 @@ namespace OneStrokeDemon.Tests.EditMode.T310
         }
 
         [Test]
+        public void CollectorPublishesAcceptedPreviewPointsBeforeCompletion()
+        {
+            var pointer = new FakePointerInput();
+            using var collector = new StrokeInputCollector(
+                pointer,
+                new StrokeSamplingSettings(5f, 100f, 10));
+            var started = new List<StrokePreviewPointEvent>();
+            var added = new List<StrokePreviewPointEvent>();
+            var completed = new List<StrokeData>();
+            collector.StrokeStarted += started.Add;
+            collector.StrokePointAdded += added.Add;
+            collector.StrokeCompleted += completed.Add;
+
+            pointer.Emit(Event(9, PointerPhase.Began, Vector2.zero, 1d));
+            pointer.Emit(Event(9, PointerPhase.Moved, new Vector2(2f, 0f), 2d));
+            pointer.Emit(Event(9, PointerPhase.Moved, new Vector2(10f, 0f), 3d));
+
+            Assert.That(started.Count, Is.EqualTo(1));
+            Assert.That(started[0].StrokeId, Is.EqualTo(1));
+            AssertVector(started[0].ReferencePosition, Vector2.zero);
+            Assert.That(added.Count, Is.EqualTo(1));
+            AssertVector(added[0].ReferencePosition, new Vector2(10f, 0f));
+            Assert.That(completed, Is.Empty);
+
+            pointer.Emit(Event(9, PointerPhase.Ended, new Vector2(20f, 0f), 4d));
+
+            Assert.That(added.Count, Is.EqualTo(2));
+            AssertVector(added[1].ReferencePosition, new Vector2(20f, 0f));
+            Assert.That(completed.Count, Is.EqualTo(1));
+            Assert.That(completed[0].PointCount, Is.EqualTo(3));
+        }
+
+        [Test]
         public void InvalidSamplingLimitsAreRejectedBeforeCapture()
         {
             Assert.Throws<ArgumentOutOfRangeException>(() =>

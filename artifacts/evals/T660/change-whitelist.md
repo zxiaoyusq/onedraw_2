@@ -14,6 +14,16 @@
 - 本轮只允许修改`Assets/_Game/Scripts/Bootstrap/BattleCompositionRoot.cs`、`Assets/_Game/Scripts/Bootstrap/ProductionBattleWorld.cs`、`Assets/_Game/Tests/PlayMode/T660/ProductionPlayableEntryPlayModeTests.cs`及本任务证据/状态文档；如Unity导入产生现有脚本`.meta`变化则拒绝纳入。
 - 继续禁止修改Scene/Prefab/Registry/Input Actions、玩法配置、Packages、ProjectSettings、微信SDK、Builds与`artifacts/evals/T700/**`。音频修复必须沿`AudioCues.audioKey -> assetKey`既有配置关系解析，不新增第二映射或吞掉未知键。
 
+### 2026-07-15 轨迹视觉复评增补
+
+- 复评基线：`main@b73f55d4e58658b5c921c3f5e485e94e7d4049f4`；工作树仍仅有受保护且保持未跟踪的`artifacts/evals/T700/**`。
+- 初步现场证据：生产参考根`lossyScale=(0.009835,0.009249,1)`，现有LineRenderer以局部参考点、`Sprites/Default`和固定宽度绘制，且只在`StrokeCompleted`后显示0.3秒，缺少拖动中实时反馈；当时强制轨迹画面同时出现中央白矩形，后续无遮挡对照已把该矩形另行锁定为`BattleGraybox`，不是轨迹本身。
+- 本轮额外允许修改`Assets/_Game/Scripts/Input/StrokeInputCollector.cs`、`Assets/_Game/Scripts/Presentation/StrokeTrailPool.cs`、`Assets/_Game/Scripts/Presentation/StrokeTrailView.cs`以及直接受影响的T310/T340/T660测试；允许更新T660证据和状态文档。
+- 用户同时询问Console红色报错，允许在`docs/BUGS.md`中登记本次已修复轨迹缺陷和无产品堆栈的Unity Editor断言，禁止借此处理任务外问题。
+- 现场进一步证明中央白板来自Battle场景仍启用的开发灰盒`BattleGraybox`；额外允许仅通过Unity Editor把该对象设为inactive并保存`Assets/_Game/Scenes/Battle.unity`，不得手工编辑YAML或改动场景内其他对象。
+- 允许同步直接受该场景状态影响的`Assets/_Game/Tests/PlayMode/T030/SceneFlowSmokePlayModeTests.cs`：继续验证灰盒骨架对象存在，同时明确Battle灰盒必须inactive；不得扩展T030其他范围。
+- 除上述单一Battle场景状态外，仍禁止修改其他场景、Prefab、Registry、Input Actions、配置表/生成物、Packages、ProjectSettings、SDK、Builds及T700。轨迹宽度继续只读`Stances.strokeWidthRefPx`，寿命/池/排序继续只读`VfxCues.vfx_slash`；不得新增硬编码玩法或效果数值库。
+
 - `Assets/_Game/Scripts/Bootstrap/**`：新增主菜单入口、关卡选择、跨场景启动意图与Battle生产组合根；允许更新程序集引用。
 - `Assets/_Game/Scripts/Actors/**`、`Assets/_Game/Scripts/Levels/**`、`Assets/_Game/Scripts/Presentation/**`：仅允许补充生产组合所需、可复用且不复制规则的运行时适配器/只读端口。
 - `Assets/_Game/Scripts/Editor/**`：仅允许新增Unity Editor场景装配命令；场景和资源引用必须由Unity Editor写入。

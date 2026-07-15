@@ -1,0 +1,30 @@
+T660 main Editor visual review — 2026-07-15 Asia/Shanghai
+
+Unity: 6000.5.1f1
+Instance: onedraw_2@272e911286835fad
+Scene path: Bootstrap -> MainMenu -> Battle
+
+Post-refresh product console errors/warnings: 0
+
+Forced production preview geometry:
+transform.lossyScale=(1.000000,1.000000,1.000000)
+referencePixelWorldScale=0.009835
+configuredWidthReferencePixels=18
+lineRenderer.startWidth=0.177025
+positionCount=4
+useWorldSpace=True
+enabled=True
+preview=True
+
+Whiteboard source: active scene object BattleGraybox, MeshRenderer bounds=8x4.
+Control check: setting BattleGraybox inactive removed the whiteboard immediately.
+Persisted fix: Unity Editor saved BattleGraybox active=false; scene YAML diff is only m_IsActive 1 -> 0.
+Visual result: continuous thin polyline visible; center whiteboard absent.
+Screenshot: production-live-trail-review-2026-07-15.jpg
+Screenshot bytes: 150029
+Screenshot sha256: 289d97a907f6846371778f58e3e15d7e5ded0a5306ddd891923acd1294fd3f95
+
+Separate Editor assertion still present:
+currentFileSystemTime.ticks != 0 using check file Temp/FSTimeGet-*
+Type: Assert
+Product script file/line/stack: none

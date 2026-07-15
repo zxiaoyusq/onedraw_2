@@ -90,6 +90,36 @@
 - 回归测试：G3 DevTools Console、启动/交互冒烟，以及转换日志未匹配规则计数。
 - 证据：`artifacts/evals/T120/g2-conversion-unity.log`、`warnings-summary.log`、`g3-devtools-probe.log`。
 
+## BUG-0007 · Battle开发灰盒遮挡画面且轨迹只在松开后闪现
+
+- 状态：FIXED
+- 严重度：S1
+- 发现版本或commit：Unity `6000.5.1f1` / `b73f55d4`
+- 配置hash：`2c005061c9a4bf806afcc6d6c16e7504b2df8b4bbecfec6edcc262900cd1dfdc`
+- 环境：macOS Editor，生产Bootstrap→MainMenu→Battle，Mac触控板/InputSystem Mouse路径
+- 复现步骤：进入教学关，在非UI区域按住触控板拖动并观察画面中央和松开后的笔迹。
+- 期望：轨迹随有效采样点连续增长，宽度来自当前架势配置，松开后短暂淡出。
+- 实际：Battle场景的8×4开发对象`BattleGraybox`仍为active，其MeshRenderer形成中央白板；另一路径的LineRenderer继承参考根`(0.009835,0.009249,1)`且采样完成前不显示，松开后只出现一次粗白光。
+- 可证伪假设：若通过Unity Editor把开发灰盒设为inactive，同时把轨迹渲染器置于单位变换根、单独转换参考坐标/宽度并在完成前发布有效采样点，白板应消失且能辨认拖动路径。
+- 最小修复范围：Battle场景只变更`BattleGraybox`的active状态；代码只调整采样预览事件、轨迹View/Pool生命周期和生产组合根的渲染空间，不修改配置、Prefab或Input Actions。
+- 回归测试：白板红测T660 PlayMode 3/4失败后绿测4/4；StrokeSampling 10/10、StrokeTrail 5/5、全量EditMode 198/198、PlayMode 50/50；主Editor冻结4点折线目检。
+- 证据：`artifacts/evals/T660/review-diagnosis-2026-07-15.md`、`main-editor-visual-review-2026-07-15.txt`、`production-live-trail-review-2026-07-15.jpg`。
+
+## BUG-0008 · Unity Editor资源时间检查产生FSTimeGet断言
+
+- 状态：OPEN
+- 严重度：S3
+- 发现版本或commit：Unity `6000.5.1f1` / T660评审现场
+- 配置hash：不适用
+- 环境：macOS Editor，资源刷新与Play Mode切换
+- 复现步骤：刷新工程脚本并进入/退出Play Mode，读取Editor Console。
+- 期望：资源时间检查不产生红色Assert。
+- 实际：Editor报告`currentFileSystemTime.ticks != 0 using check file Temp/FSTimeGet-*`；条目没有产品脚本文件、行号或堆栈，专项和全量测试仍通过。
+- 可证伪假设：该条目来自Editor资源管线而非游戏脚本；如果后续出现产品堆栈、编译错误或运行异常，应重新归类而不能继续视为噪声。
+- 最小修复范围：不在T660修改Unity内部文件系统逻辑；升级Editor或出现可定位产品堆栈时另开任务处理。
+- 回归测试：每次主Editor刷新后分别扫描产品异常与无堆栈Editor Assert，不能只按红色计数判定产品失败。
+- 证据：`artifacts/evals/T660/main-editor-visual-review-2026-07-15.txt`、`verification.md`。
+
 ## 缺陷模板
 
 ### BUG-XXXX · 标题

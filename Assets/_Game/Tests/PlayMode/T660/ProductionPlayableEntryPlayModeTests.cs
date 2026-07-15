@@ -86,6 +86,12 @@ namespace OneStrokeDemon.Tests.PlayMode.T660
             Assert.That(session, Is.Not.Null);
             Assert.That(session.LevelId, Is.EqualTo(ConfigIds.Levels.Lv001Tutorial));
             Assert.That(session.HudView, Is.Not.Null);
+            MeshRenderer graybox = FindMeshRenderer("BattleGraybox");
+            Assert.That(graybox, Is.Not.Null);
+            Assert.That(
+                graybox.gameObject.activeSelf,
+                Is.False,
+                "The production Battle scene must not render its development graybox over the configured background.");
             yield return WaitForPlaying(session);
             yield return new WaitForSecondsRealtime(0.6f);
 
@@ -116,22 +122,43 @@ namespace OneStrokeDemon.Tests.PlayMode.T660
                     InputSystemPointerAdapter.MousePointerId),
                 Is.False,
                 $"Configured enemy stroke began over UI at {strokeStart} for enemy {screenPoint}.");
-            yield return Stroke(
-                mouse,
-                strokeStart,
-                screenPoint);
+            Vector2 strokeMidpoint = Vector2.Lerp(strokeStart, screenPoint, 0.5f);
+            Set(mouse.position, strokeStart, queueEventOnly: true);
+            Press(mouse.leftButton, queueEventOnly: true);
+            yield return null;
+            Set(mouse.position, strokeMidpoint, queueEventOnly: true);
+            yield return null;
+
+            StrokeTrailView liveTrail = FindVisibleTrail();
+            Assert.That(liveTrail, Is.Not.Null,
+                "The production battle must show the sampled trail before pointer release.");
+            Assert.That(liveTrail.LineRenderer.enabled, Is.True);
+            Assert.That(liveTrail.LineRenderer.positionCount, Is.GreaterThanOrEqualTo(2));
+            Assert.That(liveTrail.LineRenderer.useWorldSpace, Is.True);
+            float expectedWorldWidth =
+                GameplayConfigRuntime.Current
+                    .GetStance(session.Player.Current.StanceId)
+                    .StrokeWidthRefPx * liveTrail.ReferencePixelWorldScale;
+            Assert.That(
+                liveTrail.LineRenderer.startWidth,
+                Is.EqualTo(expectedWorldWidth).Within(0.001f),
+                "Reference-pixel trail width must be converted to world width exactly once.");
+
+            Set(mouse.position, screenPoint, queueEventOnly: true);
+            Release(mouse.leftButton, queueEventOnly: true);
+            yield return null;
 
             Assert.That(session.CompletedStrokeCount, Is.EqualTo(1));
             Assert.That(session.LastResolvedHitCount, Is.GreaterThan(0));
             Assert.That(enemy.Damage.CurrentHp, Is.LessThan(hpBefore));
             Assert.That(session.HudView.ScoreValueText.text, Is.Not.EqualTo("0"));
 
-            StrokeTrailView visibleTrail = FindVisibleTrail();
-            Assert.That(visibleTrail, Is.Not.Null,
+            StrokeTrailView completedTrail = FindVisibleTrail();
+            Assert.That(completedTrail, Is.Not.Null,
                 "The production battle must render the processed pointer stroke.");
-            Assert.That(visibleTrail.SourcePoints.Count, Is.GreaterThanOrEqualTo(2));
-            Assert.That(visibleTrail.LineRenderer.enabled, Is.True);
-            Assert.That(visibleTrail.LineRenderer.startWidth, Is.GreaterThan(0f));
+            Assert.That(completedTrail.SourcePoints.Count, Is.GreaterThanOrEqualTo(2));
+            Assert.That(completedTrail.LineRenderer.enabled, Is.True);
+            Assert.That(completedTrail.LineRenderer.startWidth, Is.GreaterThan(0f));
 
             string stanceBefore = session.Player.Current.StanceId;
             session.HudView.StanceButton.onClick.Invoke();
@@ -317,18 +344,6 @@ namespace OneStrokeDemon.Tests.PlayMode.T660
             Assert.That(session.ActiveEnemyCount, Is.GreaterThan(0));
         }
 
-        private IEnumerator Stroke(Mouse mouse, Vector2 start, Vector2 end)
-        {
-            Set(mouse.position, start, queueEventOnly: true);
-            Press(mouse.leftButton, queueEventOnly: true);
-            yield return null;
-            Set(mouse.position, Vector2.Lerp(start, end, 0.5f), queueEventOnly: true);
-            yield return null;
-            Set(mouse.position, end, queueEventOnly: true);
-            Release(mouse.leftButton, queueEventOnly: true);
-            yield return null;
-        }
-
         private static StrokeTrailView FindVisibleTrail()
         {
             StrokeTrailView[] views = Object.FindObjectsByType<StrokeTrailView>(
@@ -338,6 +353,25 @@ namespace OneStrokeDemon.Tests.PlayMode.T660
                 if (views[index].IsActive)
                 {
                     return views[index];
+                }
+            }
+
+            return null;
+        }
+
+        private static MeshRenderer FindMeshRenderer(string objectName)
+        {
+            MeshRenderer[] renderers = Object.FindObjectsByType<MeshRenderer>(
+                FindObjectsInactive.Include,
+                FindObjectsSortMode.None);
+            for (int index = 0; index < renderers.Length; index++)
+            {
+                if (string.Equals(
+                    renderers[index].gameObject.name,
+                    objectName,
+                    StringComparison.Ordinal))
+                {
+                    return renderers[index];
                 }
             }
 

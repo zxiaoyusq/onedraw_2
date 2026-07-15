@@ -1,7 +1,7 @@
 # PROGRESS
 
 - 日期：2026-07-15
-- 当前成熟度：生产入口已由用户确认可进入；可见笔迹与配置音效映射缺陷已修复并通过全量回归，等待触控板复测确认
+- 当前成熟度：生产入口与触控板输入已由用户确认；中央白块和松开后闪线的轨迹渲染缺陷已修复并通过全量回归，等待用户确认修复后的实际视觉
 - 当前任务：T660
 - 状态：REVIEW
 - Unity精确版本：6000.5.1f1（已由ProjectVersion.txt与本机安装核验）
@@ -11,7 +11,7 @@
 
 ## 进行中
 
-- T660仍是唯一`REVIEW`任务。用户已在主Unity确认生产入口能进入游戏，随后报告Mac触控板划线无可见反馈并伴随报错；代码审查与主Editor Console确认两项生产接线缺陷，现已修复并完成专项/全量回归。主Editor MCP可连接并进入Battle，但Computer Use窗口坐标拖拽返回`noWindowsAvailable`，因此不把自动化InputSystem测试冒充用户触控板确认；等待用户按住触控板拖动复测。T700继续`BACKLOG`，不能在T660转为DONE前启动；T640仍依赖已延期且BLOCKED的T120。
+- T660仍是唯一`REVIEW`任务。用户已在主Unity确认生产入口与Mac触控板输入可用，随后报告中央持续白板和只能看到粗白光闪烁。无遮挡现场证明白板是Battle场景仍启用的8×4开发灰盒`BattleGraybox`；轨迹则另有只在完成后显示、渲染器继承非等比参考层的问题。修复后灰盒由Unity Editor设为inactive，主Editor冻结复查确认渲染对象单位缩放、世界坐标4点连续轨迹、配置18参考像素换算宽度约0.177且画面无白板。等待用户确认最终视觉；T700继续`BACKLOG`，不能在T660转为DONE前启动；T640仍依赖已延期且BLOCKED的T120。
 
 ## 已完成
 
@@ -19,7 +19,7 @@
 - T660：HUD新增架势切换按钮意图并沿既有`StanceService/SkillService`执行；Editor/Web进度适配通过`IProgressSaveStore`使用T550版本化JSON与PlayerPrefs，不进入Gameplay规则或直接调用微信SDK。Restart创建新会话，主菜单返回正式入口，普通关/Boss选择继续服从配置进度解锁。
 - T660：工作簿新增`text_game_title/text_ui_start_game/text_ui_select_level`并升级为schema 5/content `0.6.3-sample`；双工作簿95,553字节且SHA-256同为`9f2330c9...233ee`。受管JSON 194,319字节/745条/content hash `2c005061...1dfdc`，28组377个ID常量；30个Sheet重渲染目检、严格漂移门和ConfigExporter .NET 58/58通过。
 - T660：新增“开始游戏/选择关卡”5个汉字后，固定上游Noto Sans SC子集重建为126,168字节、SHA-256 `9de334f2...8c0e4`；当前字符清单299码点，静态Latin 96 + 中文fallback 203仍保持512×512/1024×1024单Atlas，图形日志无缺字警告。
-- T660：2026-07-15评审修复将T340既有`StrokeTrailPool`装配进生产会话，完成笔迹现在按配置架势/VFX样式可见；技能效果音频改为先以协议`audioKey`查询`AudioCues`，再用配置`assetKey`访问Registry，消除切换架势的`ARREG009 sfx_switch`。新增红→绿回归分别捕获“无可见轨迹”和错误资源键，最终专项EditMode 2/2、PlayMode 4/4，全量EditMode 197/197、PlayMode 50/50；配置只读漂移门及.NET 58/58通过。主工程编译无产品Error/Warning；Console剩余`Temp/FSTimeGet-*` Assert为Unity 6.5资源管线临时文件检查，无产品脚本堆栈。用户已确认入口可进入，触控板修复后人工按住拖动复测仍待确认；未运行标准Web、微信转换、DevTools或真机。
+- T660：2026-07-15首轮评审将T340既有`StrokeTrailPool`装配进生产会话，并把技能音效修正为`AudioCues.audioKey -> assetKey -> AssetRegistry`，消除`ARREG009 sfx_switch`。视觉复评进一步让`StrokeInputCollector`在开始和每个有效采样点发布预览事件，生产轨迹在按住拖动时连续增长；LineRenderer本体移到单位变换根，参考像素点与配置宽度经独立参考空间转换。中央白板另经现场禁用对照锁定为场景`BattleGraybox`，Unity Editor保存的场景diff只把该对象`m_IsActive`从1改为0。红测分别以“松开前无轨迹”和“开发灰盒仍active”失败，最终StrokeSampling 10/10、StrokeTrail 5/5、T660 PlayMode 4/4、全量EditMode 198/198、PlayMode 50/50，配置只读漂移门及.NET 58/58通过。主工程刷新编译后产品Error/Warning为0；Console仍可见无产品堆栈的`Temp/FSTimeGet-*` Editor Assert，作为Unity内部已知噪声单独记录。未运行标准Web、微信转换、DevTools或真机。
 
 - T650：新增事件驱动`TutorialDirector`、遮罩View/运行时工厂与高亮目标注册表；已有T520步骤事件是唯一推进真相，View只渲染配置提示、目标框、程序化横/竖/斜/弧/圆/蓄力示意并转发跳过/回看意图。回看不改变序列，显式跳过不伪造`StepCompleted`，且必须等全部出生完成、活跃敌人归零后才放行最终战斗门。
 - T650：进度存档升级到v2，以经配置目录验证的`completedTutorialIds`保存一次性标记；写成功后才发布当前快照，内建v1→v2迁移补空列表。首次跳过后重开会自动跳过教程展示，但两局都需击败15怪才Victory，存储端口只写入一次。

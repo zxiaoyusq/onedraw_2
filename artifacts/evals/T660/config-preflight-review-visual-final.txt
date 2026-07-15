@@ -1,0 +1,13 @@
+Command:
+Tools/CI/verify-config.sh --skip-unity --results-root artifacts/evals/T660/config-preflight-review-visual-final
+
+Result:
+ConfigExporter build: 0 warnings, 0 errors
+Generated artifacts drift check: PASS (json/hash/ConfigIds.g.cs)
+ConfigExporter .NET tests: 58 passed, 0 failed, 0 skipped
+Unity config tests: NOT RUN (explicit --skip-unity)
+Final marker: CONFIG_PIPELINE_PARTIAL_PASS unity=NOT_RUN reason=explicit_skip
+
+Unity coverage for this change is recorded separately in:
+- test-results/editmode-review-visual-full-final.xml (198/198)
+- test-results/playmode-review-visual-full-final-3.xml (50/50)

@@ -590,7 +590,7 @@
 - **明确不做：** 不在场景/Inspector复制玩法数值或文案；不把测试夹具当生产运行时；不实现T640多设备适配、T700回归矩阵或微信平台验收。
 - **验收：** 从Bootstrap点击Play进入MainMenu；点击开始后可选择普通关或Boss关；选择后进入Battle并能通过真实划线输入造成伤害、推进波次、显示HUD/教程与结算；Restart创建全新会话，Main Menu返回正式入口。
 - **验证：** T660 EditMode；Bootstrap→MainMenu→Battle生产路径PlayMode；普通关与Boss玩家路径；Unity Editor手动点击冒烟与1920×1080截图；全量EditMode/PlayMode。
-- **当前评审：** 用户已确认主Unity可从入口进入游戏；评审发现生产会话漏装可见笔迹池，且技能`audioKey`被误当Registry键导致`ARREG009 sfx_switch`。两项已修复并由真实InputSystem笔迹可见性、命中和配置音效映射回归覆盖，专项EditMode 2/2、PlayMode 4/4及全量197/197、50/50通过；等待用户用触控板“按住并拖动”复测后再转DONE。
+- **当前评审：** 用户已确认主Unity可进入游戏且触控板能够产生笔迹；随后发现Battle场景的8×4开发灰盒仍处于active状态，形成中央白板，而轨迹又只在松开后短暂闪现。现已通过Unity Editor仅把`BattleGraybox`设为inactive；轨迹渲染对象移到单位变换根、单独转换参考坐标/配置宽度，并在每个被采样器接受的点到达时实时延长。配置音效映射修复继续保持。白板红→绿T660 PlayMode 3/4→4/4，专项StrokeSampling 10/10、StrokeTrail 5/5及全量EditMode 198/198、PlayMode 50/50通过；等待用户确认修复后的实际视觉后再转DONE。
 - **证据：** `artifacts/evals/T660/`
 - **提交：** `T660: add production playable battle entry`
 

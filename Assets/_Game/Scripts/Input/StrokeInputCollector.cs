@@ -1,7 +1,26 @@
 using System;
+using UnityEngine;
 
 namespace OneStrokeDemon.Input
 {
+    public readonly struct StrokePreviewPointEvent
+    {
+        public StrokePreviewPointEvent(ulong strokeId, Vector2 referencePosition)
+        {
+            if (strokeId == 0)
+            {
+                throw new ArgumentOutOfRangeException(nameof(strokeId));
+            }
+
+            StrokeId = strokeId;
+            ReferencePosition = referencePosition;
+        }
+
+        public ulong StrokeId { get; }
+
+        public Vector2 ReferencePosition { get; }
+    }
+
     public readonly struct StrokeCanceledEvent
     {
         public StrokeCanceledEvent(
@@ -33,6 +52,7 @@ namespace OneStrokeDemon.Input
         private ulong nextStrokeId;
         private int activePointerId;
         private PointerSource activeSource;
+        private int previewPointCount;
         private bool awaitingPointerTerminal;
         private bool disposed;
 
@@ -51,6 +71,10 @@ namespace OneStrokeDemon.Input
 
         public event Action<StrokeCanceledEvent> StrokeCanceled;
 
+        public event Action<StrokePreviewPointEvent> StrokeStarted;
+
+        public event Action<StrokePreviewPointEvent> StrokePointAdded;
+
         public bool IsCollecting => sampler.IsSampling;
 
         public void Dispose()
@@ -62,6 +86,7 @@ namespace OneStrokeDemon.Input
 
             pointerInput.PointerChanged -= OnPointerChanged;
             sampler.Cancel();
+            previewPointCount = 0;
             awaitingPointerTerminal = false;
             disposed = true;
         }
@@ -106,6 +131,10 @@ namespace OneStrokeDemon.Input
             activeSource = pointerEvent.Source;
             nextStrokeId++;
             sampler.Begin(nextStrokeId, pointerEvent.ReferencePosition, pointerEvent.Timestamp);
+            previewPointCount = 1;
+            StrokeStarted?.Invoke(new StrokePreviewPointEvent(
+                nextStrokeId,
+                pointerEvent.ReferencePosition));
         }
 
         private void Move(PointerInputEvent pointerEvent)
@@ -118,10 +147,15 @@ namespace OneStrokeDemon.Input
             StrokeSampleResult result = sampler.AddPoint(
                 pointerEvent.ReferencePosition,
                 pointerEvent.Timestamp);
-            if (result == StrokeSampleResult.CompletedMaximumLength ||
+            if (result == StrokeSampleResult.Accepted)
+            {
+                PublishPreviewPoint(pointerEvent.ReferencePosition);
+            }
+            else if (result == StrokeSampleResult.CompletedMaximumLength ||
                 result == StrokeSampleResult.CompletedMaximumPointCount)
             {
                 awaitingPointerTerminal = true;
+                PublishMissingPreviewPoints(sampler.CompletedStroke);
                 StrokeCompleted?.Invoke(sampler.CompletedStroke);
             }
         }
@@ -138,9 +172,11 @@ namespace OneStrokeDemon.Input
                 StrokeData stroke = sampler.End(
                     pointerEvent.ReferencePosition,
                     pointerEvent.Timestamp);
+                PublishMissingPreviewPoints(stroke);
                 StrokeCompleted?.Invoke(stroke);
             }
 
+            previewPointCount = 0;
             awaitingPointerTerminal = false;
         }
 
@@ -155,6 +191,7 @@ namespace OneStrokeDemon.Input
             {
                 ulong canceledStrokeId = nextStrokeId;
                 sampler.Cancel();
+                previewPointCount = 0;
                 StrokeCanceled?.Invoke(new StrokeCanceledEvent(
                     canceledStrokeId,
                     pointerEvent.Timestamp,
@@ -162,6 +199,22 @@ namespace OneStrokeDemon.Input
             }
 
             awaitingPointerTerminal = false;
+        }
+
+        private void PublishMissingPreviewPoints(StrokeData stroke)
+        {
+            while (previewPointCount < stroke.PointCount)
+            {
+                PublishPreviewPoint(stroke.Points[previewPointCount]);
+            }
+        }
+
+        private void PublishPreviewPoint(Vector2 referencePosition)
+        {
+            previewPointCount += 1;
+            StrokePointAdded?.Invoke(new StrokePreviewPointEvent(
+                nextStrokeId,
+                referencePosition));
         }
 
         private bool MatchesActivePointer(PointerInputEvent pointerEvent)
