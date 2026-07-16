@@ -1,0 +1,515 @@
+Assets/_Game/Tests/EditMode/T370/ProjectileCutTests.cs:11:    [Category("ProjectileCut")]
+Assets/_Game/Tests/EditMode/T370/ProjectileCutTests.cs:12:    public sealed class ProjectileCutTests
+Assets/_Game/Tests/EditMode/T370/ProjectileCutTests.cs:19:        public void SetUp()
+Assets/_Game/Tests/EditMode/T370/ProjectileCutTests.cs:26:        [Test]
+Assets/_Game/Tests/EditMode/T370/ProjectileCutTests.cs:27:        public void FactoryMapsEveryRuntimeValueFromProjectileTable()
+Assets/_Game/Tests/EditMode/T370/ProjectileCutTests.cs:44:        [Test]
+Assets/_Game/Tests/EditMode/T370/ProjectileCutTests.cs:45:        public void ReflectableRuleTakesPrecedenceAndPreservesOriginalEnemySource()
+Assets/_Game/Tests/EditMode/T370/ProjectileCutTests.cs:69:        [Test]
+Assets/_Game/Tests/EditMode/T370/ProjectileCutTests.cs:70:        public void CuttableNonReflectableRuleReleasesProjectile()
+Assets/_Game/Tests/EditMode/T370/ProjectileCutTests.cs:83:        [Test]
+Assets/_Game/Tests/EditMode/T370/ProjectileCutTests.cs:84:        public void BothInteractionFlagsFalseProducesConfiguredUncuttableBranch()
+Assets/_Game/Tests/EditMode/T370/ProjectileCutTests.cs:114:        [Test]
+Assets/_Game/Tests/EditMode/T370/ProjectileCutTests.cs:115:        public void RequiredStanceGatesBothCutAndReflectionBeforeFlags()
+Assets/_Game/Tests/EditMode/T370/ProjectileCutTests.cs:137:        [Test]
+Assets/_Game/Tests/EditMode/T370/ProjectileCutTests.cs:138:        public void ReflectedFriendlyProjectileCannotBeProcessedBySameFactionAgain()
+Assets/_Game/Tests/EditMode/T370/ProjectileCutTests.cs:154:        [Test]
+Assets/_Game/Tests/EditMode/T370/ProjectileCutTests.cs:155:        public void InvalidOwnershipStanceAndReflectionAreRejectedWithoutFallback()
+Assets/_Game/Tests/EditMode/T370/ProjectileCutTests.cs:171:        [Test]
+Assets/_Game/Tests/EditMode/T370/ProjectileCutTests.cs:172:        public void WarmCutResolutionPathAllocatesNoManagedMemory()
+Assets/_Game/Tests/EditMode/T430/EnemyStrategyTests.cs:10:    [Category("T430")]
+Assets/_Game/Tests/EditMode/T430/EnemyStrategyTests.cs:11:    public sealed class EnemyStrategyTests
+Assets/_Game/Tests/EditMode/T430/EnemyStrategyTests.cs:16:        public void SetUp()
+Assets/_Game/Tests/EditMode/T430/EnemyStrategyTests.cs:22:        [Test]
+Assets/_Game/Tests/EditMode/T430/EnemyStrategyTests.cs:23:        public void MovementRegistryMapsEveryConfiguredPatternAndRejectsUnknownType()
+Assets/_Game/Tests/EditMode/T430/EnemyStrategyTests.cs:51:        [Test]
+Assets/_Game/Tests/EditMode/T430/EnemyStrategyTests.cs:52:        public void ApproachHoverAndDiveUseOnlyConfiguredPathValues()
+Assets/_Game/Tests/EditMode/T430/EnemyStrategyTests.cs:102:        [Test]
+Assets/_Game/Tests/EditMode/T430/EnemyStrategyTests.cs:103:        public void AttackRegistrySelectsConfiguredProjectileChargeMeleeAndSupportActions()
+Assets/_Game/Tests/EditMode/T430/EnemyStrategyTests.cs:141:        [Test]
+Assets/_Game/Tests/EditMode/T430/EnemyStrategyTests.cs:142:        public void DefenseServiceReusesConfiguredGestureStanceMultipliersAndReflection()
+Assets/_Game/Tests/EditMode/T430/EnemyStrategyTests.cs:169:        [Test]
+Assets/_Game/Tests/EditMode/T430/EnemyStrategyTests.cs:170:        public void DamageReductionBuffUsesConfiguredMagnitudeAndExpiresAtConfiguredBoundary()
+Assets/_Game/Tests/EditMode/T120/WechatBuildEntryTests.cs:7:    public sealed class WechatBuildEntryTests
+Assets/_Game/Tests/EditMode/T120/WechatBuildEntryTests.cs:9:        [Test]
+Assets/_Game/Tests/EditMode/T120/WechatBuildEntryTests.cs:10:        public void DefaultOutputIsIsolatedUnderWechatBuildDirectory()
+Assets/_Game/Tests/EditMode/T120/WechatBuildEntryTests.cs:20:        [Test]
+Assets/_Game/Tests/EditMode/T120/WechatBuildEntryTests.cs:21:        public void OutputOutsideWechatBuildDirectoryIsRejected()
+Assets/_Game/Tests/EditMode/T120/WechatBuildEntryTests.cs:27:        [Test]
+Assets/_Game/Tests/EditMode/T120/WechatBuildEntryTests.cs:28:        public void SpikeConfigurationContainsNoAppIdAndUsesLandscapeMultiThreadedBrotli()
+Assets/_Game/Tests/EditMode/T540/BossLevelConfigTests.cs:12:    [Category("T540")]
+Assets/_Game/Tests/EditMode/T540/BossLevelConfigTests.cs:13:    public sealed class BossLevelConfigTests
+Assets/_Game/Tests/EditMode/T540/BossLevelConfigTests.cs:19:        public void SetUp()
+Assets/_Game/Tests/EditMode/T540/BossLevelConfigTests.cs:25:        [Test]
+Assets/_Game/Tests/EditMode/T540/BossLevelConfigTests.cs:26:        public void BossLevelFitsFourMinuteCapAndStagesMixedGateBeforeOnlyBoss()
+Assets/_Game/Tests/EditMode/T540/BossLevelConfigTests.cs:70:        [Test]
+Assets/_Game/Tests/EditMode/T540/BossLevelConfigTests.cs:71:        public void ThreePhasePromptsMatchConfiguredInterruptAndExecutionFlow()
+Assets/_Game/Tests/EditMode/T540/BossLevelConfigTests.cs:103:        [Test]
+Assets/_Game/Tests/EditMode/T540/BossLevelConfigTests.cs:104:        public void LevelWaveSpawnPhaseAndPromptChangesFlowThroughReloadOnly()
+Assets/_Game/Tests/EditMode/T510/NoAdvanceBeforePlayerActionTests.cs:11:    [Category("T510")]
+Assets/_Game/Tests/EditMode/T510/NoAdvanceBeforePlayerActionTests.cs:12:    public sealed class NoAdvanceBeforePlayerActionTests
+Assets/_Game/Tests/EditMode/T510/NoAdvanceBeforePlayerActionTests.cs:14:        [Test]
+Assets/_Game/Tests/EditMode/T510/NoAdvanceBeforePlayerActionTests.cs:15:        public void LargeTimeAdvanceCannotCrossConfiguredPlayerConfirmedGate()
+Assets/_Game/Tests/EditMode/T510/NoAdvanceBeforePlayerActionTests.cs:51:        [Test]
+Assets/_Game/Tests/EditMode/T510/NoAdvanceBeforePlayerActionTests.cs:52:        public void UltimateTimerOnlyCancelsAndNeverCreatesSuccess()
+Assets/_Game/Tests/EditMode/T020/RenderPipelineBaselineTests.cs:13:    public sealed class RenderPipelineBaselineTests
+Assets/_Game/Tests/EditMode/T020/RenderPipelineBaselineTests.cs:18:        [Test]
+Assets/_Game/Tests/EditMode/T020/RenderPipelineBaselineTests.cs:19:        public void GraphicsAndLowHighQualityProfilesUseUrp2DRenderer()
+Assets/_Game/Tests/EditMode/T020/RenderPipelineBaselineTests.cs:43:        [Test]
+Assets/_Game/Tests/EditMode/T020/RenderPipelineBaselineTests.cs:44:        public void InputActionsDeclareMouseAndTouchPointerBindings()
+Assets/_Game/Tests/EditMode/T020/RenderPipelineBaselineTests.cs:58:        [Test]
+Assets/_Game/Tests/EditMode/T020/RenderPipelineBaselineTests.cs:59:        public void TmpAndTestFrameworkAssembliesAreLoaded()
+Assets/_Game/Tests/EditMode/T520/TutorialFlowTests.cs:11:    [Category("T520")]
+Assets/_Game/Tests/EditMode/T520/TutorialFlowTests.cs:12:    public sealed class TutorialFlowTests
+Assets/_Game/Tests/EditMode/T520/TutorialFlowTests.cs:17:        public void SetUp()
+Assets/_Game/Tests/EditMode/T520/TutorialFlowTests.cs:23:        [Test]
+Assets/_Game/Tests/EditMode/T520/TutorialFlowTests.cs:24:        public void TutorialLevelUsesSixConfiguredEventDrivenStepsAndWaves()
+Assets/_Game/Tests/EditMode/T520/TutorialFlowTests.cs:70:        [Test]
+Assets/_Game/Tests/EditMode/T520/TutorialFlowTests.cs:71:        public void SequenceRejectsWrongEventsAndTimerCannotCompleteAnAction()
+Assets/_Game/Tests/EditMode/T520/TutorialFlowTests.cs:102:        [Test]
+Assets/_Game/Tests/EditMode/T520/TutorialFlowTests.cs:103:        public void ValidCompletionLatchesUntilMinimumDisplayAndThresholdIsInclusive()
+Assets/_Game/Tests/EditMode/T520/TutorialFlowTests.cs:150:        [Test]
+Assets/_Game/Tests/EditMode/T520/TutorialFlowTests.cs:151:        public void CoordinatorBlocksWaveCompletionOnlyWhileCurrentActionIsActive()
+Assets/_Game/Tests/EditMode/T520/TutorialFlowTests.cs:195:        [Test]
+Assets/_Game/Tests/EditMode/T520/TutorialFlowTests.cs:196:        public void UnsupportedOrMalformedTutorialProtocolsFailBeforeRuntimeUse()
+Assets/_Game/Tests/EditMode/T520/TutorialFlowTests.cs:269:            public void Release(long entityId)
+Assets/_Game/Tests/EditMode/T030/AssemblyDependencyTests.cs:10:    public sealed class AssemblyDependencyTests
+Assets/_Game/Tests/EditMode/T030/AssemblyDependencyTests.cs:40:        [Test]
+Assets/_Game/Tests/EditMode/T030/AssemblyDependencyTests.cs:41:        public void RuntimeAssemblyDefinitionsMatchTechnicalDependencyGraphWithoutCycles()
+Assets/_Game/Tests/EditMode/T530/NormalLevelConfigTests.cs:12:    [Category("T530")]
+Assets/_Game/Tests/EditMode/T530/NormalLevelConfigTests.cs:13:    public sealed class NormalLevelConfigTests
+Assets/_Game/Tests/EditMode/T530/NormalLevelConfigTests.cs:19:        public void SetUp()
+Assets/_Game/Tests/EditMode/T530/NormalLevelConfigTests.cs:25:        [Test]
+Assets/_Game/Tests/EditMode/T530/NormalLevelConfigTests.cs:26:        public void CaveUsesEightWavesAllSixArchetypesAndThreeEliteSupportEncounters()
+Assets/_Game/Tests/EditMode/T530/NormalLevelConfigTests.cs:72:        [Test]
+Assets/_Game/Tests/EditMode/T530/NormalLevelConfigTests.cs:73:        public void ConfiguredDurabilityRisesAcrossFourTwoWaveActs()
+Assets/_Game/Tests/EditMode/T530/NormalLevelConfigTests.cs:93:        [Test]
+Assets/_Game/Tests/EditMode/T530/NormalLevelConfigTests.cs:94:        public void EveryWaveFitsCapacityAndStagesConflictingHardStancesAfterCooldown()
+Assets/_Game/Tests/EditMode/T530/NormalLevelConfigTests.cs:159:        [Test]
+Assets/_Game/Tests/EditMode/T530/NormalLevelConfigTests.cs:160:        public void TimingAndPopulationChangesFlowThroughReloadedConfigOnly()
+Assets/_Game/Tests/EditMode/T510/BattleFlowTests.cs:13:    [Category("T510")]
+Assets/_Game/Tests/EditMode/T510/BattleFlowTests.cs:14:    public sealed class BattleFlowTests
+Assets/_Game/Tests/EditMode/T510/BattleFlowTests.cs:20:        public void SetUp()
+Assets/_Game/Tests/EditMode/T510/BattleFlowTests.cs:27:        public void TearDown()
+Assets/_Game/Tests/EditMode/T510/BattleFlowTests.cs:37:        [Test]
+Assets/_Game/Tests/EditMode/T510/BattleFlowTests.cs:38:        public void SettingsReadCountdownLifecycleAndUltimateWindowFromConfiguration()
+Assets/_Game/Tests/EditMode/T510/BattleFlowTests.cs:52:        [Test]
+Assets/_Game/Tests/EditMode/T510/BattleFlowTests.cs:53:        public void CountdownSplitsLargeDeltaAndUnifiedScaleDrivesLevelClock()
+Assets/_Game/Tests/EditMode/T510/BattleFlowTests.cs:85:        [Test]
+Assets/_Game/Tests/EditMode/T510/BattleFlowTests.cs:86:        public void FocusAndApplicationPauseNestFreezeAndResumeTheSameWay()
+Assets/_Game/Tests/EditMode/T510/BattleFlowTests.cs:130:        [Test]
+Assets/_Game/Tests/EditMode/T510/BattleFlowTests.cs:131:        public void UltimateRequiresSkillServiceResultAndInclusiveBoundaryRemainsValid()
+Assets/_Game/Tests/EditMode/T510/BattleFlowTests.cs:184:        [Test]
+Assets/_Game/Tests/EditMode/T510/BattleFlowTests.cs:185:        public void SameFrameDefeatWinsAndSettlementPublishesExactlyOnce()
+Assets/_Game/Tests/EditMode/T510/BattleFlowTests.cs:217:        [Test]
+Assets/_Game/Tests/EditMode/T510/BattleFlowTests.cs:218:        public void InvalidDeltasAndCombinedPauseReasonsFailExplicitly()
+Assets/_Game/Tests/EditMode/T510/BattleFlowTests.cs:346:            public void PlayVfx(string vfxKey, IReadOnlyList<ISkillEffectTarget> targets, string sourceId, double timestamp)
+Assets/_Game/Tests/EditMode/T510/BattleFlowTests.cs:350:            public void PlayAudio(string audioKey, string sourceId, double timestamp)
+Assets/_Game/Tests/EditMode/T250/GeneratedConfigPipelineTests.cs:16:    [Category("ConfigPipeline")]
+Assets/_Game/Tests/EditMode/T250/GeneratedConfigPipelineTests.cs:17:    public sealed class GeneratedConfigPipelineTests
+Assets/_Game/Tests/EditMode/T250/GeneratedConfigPipelineTests.cs:25:        [Test]
+Assets/_Game/Tests/EditMode/T250/GeneratedConfigPipelineTests.cs:26:        public void GeneratedHashMetadataAndAssemblyMatchRuntimeSnapshot()
+Assets/_Game/Tests/EditMode/T250/GeneratedConfigPipelineTests.cs:48:        [Test]
+Assets/_Game/Tests/EditMode/T250/GeneratedConfigPipelineTests.cs:49:        public void GeneratedConstantsCoverStableIdsAndDriveTypedConfigLookups()
+Assets/_Game/Tests/EditMode/T320/StrokeGeometryTests.cs:12:    [Category("StrokeGeometry")]
+Assets/_Game/Tests/EditMode/T320/StrokeGeometryTests.cs:13:    public sealed class StrokeGeometryTests
+Assets/_Game/Tests/EditMode/T320/StrokeGeometryTests.cs:15:        [Test]
+Assets/_Game/Tests/EditMode/T320/StrokeGeometryTests.cs:16:        public void RdpSimplifiesACollinearStrokeAndPreservesItsEndpoints()
+Assets/_Game/Tests/EditMode/T320/StrokeGeometryTests.cs:33:        [Test]
+Assets/_Game/Tests/EditMode/T320/StrokeGeometryTests.cs:34:        public void RdpUsesAnInclusiveToleranceAndKeepsAnOutsideCorner()
+Assets/_Game/Tests/EditMode/T320/StrokeGeometryTests.cs:51:        [Test]
+Assets/_Game/Tests/EditMode/T320/StrokeGeometryTests.cs:52:        public void ResamplePlacesPointsAtUniformPathDistancesAcrossACorner()
+Assets/_Game/Tests/EditMode/T320/StrokeGeometryTests.cs:72:        [Test]
+Assets/_Game/Tests/EditMode/T320/StrokeGeometryTests.cs:73:        public void ProcessSimplifiesThenCapsPointsWithArcLengthResampling()
+Assets/_Game/Tests/EditMode/T320/StrokeGeometryTests.cs:103:        [Test]
+Assets/_Game/Tests/EditMode/T320/StrokeGeometryTests.cs:104:        public void RectangleMetricsUseTheSameClosedPointSet()
+Assets/_Game/Tests/EditMode/T320/StrokeGeometryTests.cs:143:        [Test]
+Assets/_Game/Tests/EditMode/T320/StrokeGeometryTests.cs:144:        public void CurvatureSeparatesDirectionFromTotalTurning()
+Assets/_Game/Tests/EditMode/T320/StrokeGeometryTests.cs:184:        [Test]
+Assets/_Game/Tests/EditMode/T320/StrokeGeometryTests.cs:185:        public void QuarterArcCurvatureIsStableAcrossReferencePixelScale()
+Assets/_Game/Tests/EditMode/T320/StrokeGeometryTests.cs:200:        [Test]
+Assets/_Game/Tests/EditMode/T320/StrokeGeometryTests.cs:201:        public void CircleMetricsRemainStableAndReplayableAfterProcessing()
+Assets/_Game/Tests/EditMode/T320/StrokeGeometryTests.cs:231:        [Test]
+Assets/_Game/Tests/EditMode/T320/StrokeGeometryTests.cs:232:        public void EmptyDuplicateAndSinglePointInputsHaveDefinedDegenerateResults()
+Assets/_Game/Tests/EditMode/T320/StrokeGeometryTests.cs:270:        [Test]
+Assets/_Game/Tests/EditMode/T320/StrokeGeometryTests.cs:271:        public void ProcessedPointsAreImmutableAndPreserveSourceMetadata()
+Assets/_Game/Tests/EditMode/T320/StrokeGeometryTests.cs:292:        [Test]
+Assets/_Game/Tests/EditMode/T320/StrokeGeometryTests.cs:293:        public void GeometrySettingsAreMappedFromTheSelectedStrokeRule()
+Assets/_Game/Tests/EditMode/T320/StrokeGeometryTests.cs:311:        [Test]
+Assets/_Game/Tests/EditMode/T320/StrokeGeometryTests.cs:312:        public void InvalidToleranceCountsAndCoordinatesFailExplicitly()
+Assets/_Game/Tests/EditMode/T110/WechatSdkIntegrationTests.cs:10:    public sealed class WechatSdkIntegrationTests
+Assets/_Game/Tests/EditMode/T110/WechatSdkIntegrationTests.cs:17:        [Test]
+Assets/_Game/Tests/EditMode/T110/WechatSdkIntegrationTests.cs:18:        public void OfficialWechatSdkDependencyIsPinnedToReviewedCommit()
+Assets/_Game/Tests/EditMode/T110/WechatSdkIntegrationTests.cs:32:        [Test]
+Assets/_Game/Tests/EditMode/T110/WechatSdkIntegrationTests.cs:33:        public void ImportedWechatSdkMatchesReviewedReleaseAndLoadsAssemblies()
+Assets/_Game/Tests/EditMode/T230/InvalidConfigTests.cs:8:    [Category("ConfigPipeline")]
+Assets/_Game/Tests/EditMode/T230/InvalidConfigTests.cs:9:    public sealed class InvalidConfigTests
+Assets/_Game/Tests/EditMode/T230/InvalidConfigTests.cs:12:        public void SetUp()
+Assets/_Game/Tests/EditMode/T230/InvalidConfigTests.cs:17:        [Test]
+Assets/_Game/Tests/EditMode/T230/InvalidConfigTests.cs:18:        public void EmptyJsonFailsAndServiceCannotRetryOrPublishPartialState()
+Assets/_Game/Tests/EditMode/T230/InvalidConfigTests.cs:33:        [Test]
+Assets/_Game/Tests/EditMode/T230/InvalidConfigTests.cs:34:        public void UnsupportedSchemaVersionFailsBeforePublication()
+Assets/_Game/Tests/EditMode/T230/InvalidConfigTests.cs:43:        [Test]
+Assets/_Game/Tests/EditMode/T230/InvalidConfigTests.cs:44:        public void IncompatibleAndMalformedContentVersionsFail()
+Assets/_Game/Tests/EditMode/T230/InvalidConfigTests.cs:53:        [Test]
+Assets/_Game/Tests/EditMode/T230/InvalidConfigTests.cs:54:        public void MissingNullAndUnknownMembersFailStrictJsonContract()
+Assets/_Game/Tests/EditMode/T230/InvalidConfigTests.cs:65:        [Test]
+Assets/_Game/Tests/EditMode/T230/InvalidConfigTests.cs:66:        public void DuplicateJsonPropertyFailsStrictParsing()
+Assets/_Game/Tests/EditMode/T230/InvalidConfigTests.cs:77:        [Test]
+Assets/_Game/Tests/EditMode/T230/InvalidConfigTests.cs:78:        public void JsonCommentsFailStrictParsing()
+Assets/_Game/Tests/EditMode/T230/InvalidConfigTests.cs:86:        [Test]
+Assets/_Game/Tests/EditMode/T230/InvalidConfigTests.cs:87:        public void EmptyOrDuplicateRuntimeIndexKeyRejectsWholeDocument()
+Assets/_Game/Tests/EditMode/T230/InvalidConfigTests.cs:98:        [Test]
+Assets/_Game/Tests/EditMode/T230/InvalidConfigTests.cs:99:        public void TamperedContentAndMalformedHashFailHashVerification()
+Assets/_Game/Tests/EditMode/T230/InvalidConfigTests.cs:112:        [Test]
+Assets/_Game/Tests/EditMode/T230/InvalidConfigTests.cs:113:        public void RootAndGlobalVersionsMustAgreeEvenWhenHashIsValid()
+Assets/_Game/Tests/EditMode/T420/EnemyStateMachineTests.cs:14:    [Category("T420")]
+Assets/_Game/Tests/EditMode/T420/EnemyStateMachineTests.cs:15:    public sealed class EnemyStateMachineTests
+Assets/_Game/Tests/EditMode/T420/EnemyStateMachineTests.cs:21:        public void SetUp()
+Assets/_Game/Tests/EditMode/T420/EnemyStateMachineTests.cs:28:        public void TearDown()
+Assets/_Game/Tests/EditMode/T420/EnemyStateMachineTests.cs:38:        [Test]
+Assets/_Game/Tests/EditMode/T420/EnemyStateMachineTests.cs:39:        public void DefinitionMapsEnemyDefenseAndWeakpointWithoutInspectorValues()
+Assets/_Game/Tests/EditMode/T420/EnemyStateMachineTests.cs:67:        [Test]
+Assets/_Game/Tests/EditMode/T420/EnemyStateMachineTests.cs:68:        public void AttackTimelineCrossesEveryStateAtConfiguredInclusiveBoundaries()
+Assets/_Game/Tests/EditMode/T420/EnemyStateMachineTests.cs:114:        [Test]
+Assets/_Game/Tests/EditMode/T420/EnemyStateMachineTests.cs:115:        public void InterruptRequiresConfiguredGestureAndWindowAndIsIdempotent()
+Assets/_Game/Tests/EditMode/T420/EnemyStateMachineTests.cs:147:        [Test]
+Assets/_Game/Tests/EditMode/T420/EnemyStateMachineTests.cs:148:        public void DeathAndReleaseAreIdempotentAndReuseResetsTheClock()
+Assets/_Game/Tests/EditMode/T420/EnemyStateMachineTests.cs:174:        [Test]
+Assets/_Game/Tests/EditMode/T420/EnemyStateMachineTests.cs:175:        public void DamageModelConsumesArmorThenHpAndResetsAcrossReuse()
+Assets/_Game/Tests/EditMode/T420/EnemyStateMachineTests.cs:213:        [Test]
+Assets/_Game/Tests/EditMode/T420/EnemyStateMachineTests.cs:214:        public void ControllerAppliesResolvedWeakpointDamageAndPublishesOneDeathAndRelease()
+Assets/_Game/Tests/EditMode/T420/EnemyStateMachineTests.cs:271:        [Test]
+Assets/_Game/Tests/EditMode/T420/EnemyStateMachineTests.cs:272:        public void SkillAdapterAppliesConfiguredBuffDamageArmorKnockbackAndCounter()
+Assets/_Game/Tests/EditMode/T600/BattleHudPresenterTests.cs:10:    [Category("T600")]
+Assets/_Game/Tests/EditMode/T600/BattleHudPresenterTests.cs:11:    public sealed class BattleHudPresenterTests
+Assets/_Game/Tests/EditMode/T600/BattleHudPresenterTests.cs:16:        public void SetUp()
+Assets/_Game/Tests/EditMode/T600/BattleHudPresenterTests.cs:22:        [Test]
+Assets/_Game/Tests/EditMode/T600/BattleHudPresenterTests.cs:23:        public void ConfiguredChineseHudTracksCombatPauseAndUltimateReadiness()
+Assets/_Game/Tests/EditMode/T600/BattleHudPresenterTests.cs:80:        [Test]
+Assets/_Game/Tests/EditMode/T600/BattleHudPresenterTests.cs:81:        public void ResultPanelFormatsConfiguredVictoryRewardsAndGatesCommands()
+Assets/_Game/Tests/EditMode/T600/BattleHudPresenterTests.cs:150:        [Test]
+Assets/_Game/Tests/EditMode/T600/BattleHudPresenterTests.cs:151:        public void EnglishLocaleAndDisposalRemainDeterministic()
+Assets/_Game/Tests/EditMode/T600/BattleHudPresenterTests.cs:213:            public void Emit(BattleHudState state)
+Assets/_Game/Tests/EditMode/T600/BattleHudPresenterTests.cs:231:            public void Render(BattleHudViewModel model)
+Assets/_Game/Tests/EditMode/T600/BattleHudPresenterTests.cs:237:            public void RequestPauseToggle() => PauseToggleRequested?.Invoke();
+Assets/_Game/Tests/EditMode/T600/BattleHudPresenterTests.cs:238:            public void RequestUltimate() => UltimateRequested?.Invoke();
+Assets/_Game/Tests/EditMode/T600/BattleHudPresenterTests.cs:239:            public void RequestRestart() => RestartRequested?.Invoke();
+Assets/_Game/Tests/EditMode/T600/BattleHudPresenterTests.cs:240:            public void RequestNextLevel() => NextLevelRequested?.Invoke();
+Assets/_Game/Tests/EditMode/T600/BattleHudPresenterTests.cs:241:            public void RequestMainMenu() => MainMenuRequested?.Invoke();
+Assets/_Game/Tests/EditMode/T600/BattleHudPresenterTests.cs:253:            public void SetPlayerPaused(bool paused) => PauseRequests.Add(paused);
+Assets/_Game/Tests/EditMode/T600/BattleHudPresenterTests.cs:254:            public void BeginUltimateDrawing() => UltimateCount += 1;
+Assets/_Game/Tests/EditMode/T600/BattleHudPresenterTests.cs:255:            public void Restart() => RestartCount += 1;
+Assets/_Game/Tests/EditMode/T600/BattleHudPresenterTests.cs:256:            public void GoNext() => NextCount += 1;
+Assets/_Game/Tests/EditMode/T600/BattleHudPresenterTests.cs:257:            public void ReturnToMainMenu() => MainMenuCount += 1;
+Assets/_Game/Tests/EditMode/T100/WebBuildSmokeTests.cs:10:    public sealed class WebBuildSmokeTests
+Assets/_Game/Tests/EditMode/T100/WebBuildSmokeTests.cs:12:        [Test]
+Assets/_Game/Tests/EditMode/T100/WebBuildSmokeTests.cs:13:        public void WebSmokeDefineIsIncludedOnlyWhenExplicitlyRequested()
+Assets/_Game/Tests/EditMode/T100/WebBuildSmokeTests.cs:25:        [Test]
+Assets/_Game/Tests/EditMode/T100/WebBuildSmokeTests.cs:26:        public void WebSmokeProbeAndBridgeRemainTestBuildOnly()
+Assets/_Game/Tests/EditMode/T440/PoolResetTests.cs:9:    [Category("T440")]
+Assets/_Game/Tests/EditMode/T440/PoolResetTests.cs:10:    public sealed class PoolResetTests
+Assets/_Game/Tests/EditMode/T440/PoolResetTests.cs:15:        public void SetUp()
+Assets/_Game/Tests/EditMode/T440/PoolResetTests.cs:21:        [Test]
+Assets/_Game/Tests/EditMode/T440/PoolResetTests.cs:22:        public void RejectPolicyPrewarmsAndNeverExceedsSharedFamilyCapacity()
+Assets/_Game/Tests/EditMode/T440/PoolResetTests.cs:56:        [Test]
+Assets/_Game/Tests/EditMode/T440/PoolResetTests.cs:57:        public void ReuseOldestPolicyFullyReleasesOldestAcrossFamilyBeforeAcquire()
+Assets/_Game/Tests/EditMode/T440/PoolResetTests.cs:93:        [Test]
+Assets/_Game/Tests/EditMode/T440/PoolResetTests.cs:94:        public void ReleaseRejectsStaleAndDoubleLeaseWithoutTouchingCurrentItem()
+Assets/_Game/Tests/EditMode/T440/PoolResetTests.cs:129:        [Test]
+Assets/_Game/Tests/EditMode/T440/PoolResetTests.cs:130:        public void LeakReportNamesActiveLeasesAndRestartInvalidatesAllOfThem()
+Assets/_Game/Tests/EditMode/T440/PoolResetTests.cs:160:        [Test]
+Assets/_Game/Tests/EditMode/T440/PoolResetTests.cs:161:        public void ConfigurationMapsAllFourFamiliesAndConfiguredPrewarmValues()
+Assets/_Game/Tests/EditMode/T440/PoolResetTests.cs:228:            public void AcquireFromPool(in PoolLease lease)
+Assets/_Game/Tests/EditMode/T440/PoolResetTests.cs:235:            public void ReleaseToPool(in PoolReleaseContext context)
+Assets/_Game/Tests/EditMode/T400/PlayerCombatTests.cs:13:    [Category("PlayerCombat")]
+Assets/_Game/Tests/EditMode/T400/PlayerCombatTests.cs:14:    public sealed class PlayerCombatTests
+Assets/_Game/Tests/EditMode/T400/PlayerCombatTests.cs:20:        public void SetUp()
+Assets/_Game/Tests/EditMode/T400/PlayerCombatTests.cs:29:        [Test]
+Assets/_Game/Tests/EditMode/T400/PlayerCombatTests.cs:30:        public void FactoryMapsPlayerAndDefaultStanceWithoutInspectorValues()
+Assets/_Game/Tests/EditMode/T400/PlayerCombatTests.cs:49:        [Test]
+Assets/_Game/Tests/EditMode/T400/PlayerCombatTests.cs:50:        public void DamageUsesConfiguredInvulnerabilityAndDeathTransitionsOnce()
+Assets/_Game/Tests/EditMode/T400/PlayerCombatTests.cs:77:        [Test]
+Assets/_Game/Tests/EditMode/T400/PlayerCombatTests.cs:78:        public void ControllerPublishesOrderedHpAndSingleDeathEvents()
+Assets/_Game/Tests/EditMode/T400/PlayerCombatTests.cs:108:        [Test]
+Assets/_Game/Tests/EditMode/T400/PlayerCombatTests.cs:109:        public void DamageEnergyAwardSaturatesAtConfiguredCapacityWithoutOverflow()
+Assets/_Game/Tests/EditMode/T400/PlayerCombatTests.cs:125:        [Test]
+Assets/_Game/Tests/EditMode/T400/PlayerCombatTests.cs:126:        public void SkillEnergyCostAndRequiredStanceComeFromSkillRows()
+Assets/_Game/Tests/EditMode/T400/PlayerCombatTests.cs:167:        [Test]
+Assets/_Game/Tests/EditMode/T400/PlayerCombatTests.cs:168:        public void StanceSwitchUsesDestinationCooldownAndPublishesConfiguredEffectIntent()
+Assets/_Game/Tests/EditMode/T400/PlayerCombatTests.cs:193:        [Test]
+Assets/_Game/Tests/EditMode/T400/PlayerCombatTests.cs:194:        public void CurrentStanceExposesAllConfiguredCombatAndPresentationModifiers()
+Assets/_Game/Tests/EditMode/T400/PlayerCombatTests.cs:212:        [Test]
+Assets/_Game/Tests/EditMode/T400/PlayerCombatTests.cs:213:        public void InvalidAmountsAndBackwardsTimestampsFailBeforeStateMutation()
+Assets/_Game/Tests/EditMode/T410/SkillEffectPipelineTests.cs:14:    [Category("T410")]
+Assets/_Game/Tests/EditMode/T410/SkillEffectPipelineTests.cs:15:    public sealed class SkillEffectPipelineTests
+Assets/_Game/Tests/EditMode/T410/SkillEffectPipelineTests.cs:20:        public void TearDown()
+Assets/_Game/Tests/EditMode/T410/SkillEffectPipelineTests.cs:30:        [Test]
+Assets/_Game/Tests/EditMode/T410/SkillEffectPipelineTests.cs:31:        public void UltimateExecutesStableConfiguredOrderAndTargetFilters()
+Assets/_Game/Tests/EditMode/T410/SkillEffectPipelineTests.cs:116:        [Test]
+Assets/_Game/Tests/EditMode/T410/SkillEffectPipelineTests.cs:117:        public void InvalidGestureExpiredWindowAndCooldownNeverPartiallySpendEnergy()
+Assets/_Game/Tests/EditMode/T410/SkillEffectPipelineTests.cs:181:        [Test]
+Assets/_Game/Tests/EditMode/T410/SkillEffectPipelineTests.cs:182:        public void ConfigConditionControlsExistingRepeatStrokeExecutor()
+Assets/_Game/Tests/EditMode/T410/SkillEffectPipelineTests.cs:236:        [Test]
+Assets/_Game/Tests/EditMode/T410/SkillEffectPipelineTests.cs:237:        public void NewHealSkillNeedsOnlyConfigRowsAndCannotResurrectPlayer()
+Assets/_Game/Tests/EditMode/T410/SkillEffectPipelineTests.cs:421:            public void PlayVfx(
+Assets/_Game/Tests/EditMode/T410/SkillEffectPipelineTests.cs:431:            public void PlayAudio(string audioKey, string sourceId, double timestamp)
+Assets/_Game/Tests/EditMode/T230/RuntimeConfigLoadTests.cs:12:    [Category("ConfigPipeline")]
+Assets/_Game/Tests/EditMode/T230/RuntimeConfigLoadTests.cs:13:    public sealed class RuntimeConfigLoadTests
+Assets/_Game/Tests/EditMode/T230/RuntimeConfigLoadTests.cs:49:        [Test]
+Assets/_Game/Tests/EditMode/T230/RuntimeConfigLoadTests.cs:50:        public void GeneratedSnapshotLoadsOnceAndBuildsReadOnlyIndexes()
+Assets/_Game/Tests/EditMode/T230/RuntimeConfigLoadTests.cs:109:        [Test]
+Assets/_Game/Tests/EditMode/T230/RuntimeConfigLoadTests.cs:110:        public void UnknownLookupFailsWithTableFieldAndRequestedId()
+Assets/_Game/Tests/EditMode/T230/RuntimeConfigLoadTests.cs:124:        [Test]
+Assets/_Game/Tests/EditMode/T230/RuntimeConfigLoadTests.cs:125:        public void RuntimeDtosExactlyMatchFrozenJsonSchemaAndExposeNoPublicSetters()
+Assets/_Game/Tests/EditMode/T600/BattleHudStateBindingTests.cs:15:    [Category("T600")]
+Assets/_Game/Tests/EditMode/T600/BattleHudStateBindingTests.cs:16:    public sealed class BattleHudStateBindingTests
+Assets/_Game/Tests/EditMode/T600/BattleHudStateBindingTests.cs:22:        public void SetUp()
+Assets/_Game/Tests/EditMode/T600/BattleHudStateBindingTests.cs:30:        public void TearDown()
+Assets/_Game/Tests/EditMode/T600/BattleHudStateBindingTests.cs:35:        [Test]
+Assets/_Game/Tests/EditMode/T600/BattleHudStateBindingTests.cs:36:        public void BindingPublishesOneStateFromPlayerComboScoreFlowAndResultServices()
+Assets/_Game/Tests/EditMode/T600/BattleHudStateBindingTests.cs:85:        [Test]
+Assets/_Game/Tests/EditMode/T600/BattleHudStateBindingTests.cs:86:        public void UltimateClockPublishesOnlyOnVisibleSecondOrReadyBoundary()
+Assets/_Game/Tests/EditMode/T600/BattleHudStateBindingTests.cs:120:        [Test]
+Assets/_Game/Tests/EditMode/T600/BattleHudStateBindingTests.cs:121:        public void DisposedBindingUnsubscribesAndRejectsStateReads()
+Assets/_Game/Tests/EditMode/T600/BattleHudStateBindingTests.cs:183:            public void Write(string value)
+Assets/_Game/Tests/EditMode/T240/AssetRegistryValidationTests.cs:15:    [Category("ConfigPipeline")]
+Assets/_Game/Tests/EditMode/T240/AssetRegistryValidationTests.cs:16:    public sealed class AssetRegistryValidationTests
+Assets/_Game/Tests/EditMode/T240/AssetRegistryValidationTests.cs:23:        public void SetUp()
+Assets/_Game/Tests/EditMode/T240/AssetRegistryValidationTests.cs:31:        public void TearDown()
+Assets/_Game/Tests/EditMode/T240/AssetRegistryValidationTests.cs:44:        [Test]
+Assets/_Game/Tests/EditMode/T240/AssetRegistryValidationTests.cs:45:        public void CanonicalRegistryCoversEveryManifestKeyWithPersistentTypedAssets()
+Assets/_Game/Tests/EditMode/T240/AssetRegistryValidationTests.cs:76:        [Test]
+Assets/_Game/Tests/EditMode/T240/AssetRegistryValidationTests.cs:77:        public void EmptyNullDuplicateMissingExtraAndWrongTypeEntriesRejectWholeRegistry()
+Assets/_Game/Tests/EditMode/T240/AssetRegistryValidationTests.cs:106:        [Test]
+Assets/_Game/Tests/EditMode/T240/AssetRegistryValidationTests.cs:107:        public void BuildGateConvertsInvalidRegistryIntoBuildFailure()
+Assets/_Game/Tests/EditMode/T240/AssetRegistryValidationTests.cs:124:        [Test]
+Assets/_Game/Tests/EditMode/T240/AssetRegistryValidationTests.cs:125:        public void ReplacingObjectKeepsStableConfigIdAndTypedLookup()
+Assets/_Game/Tests/EditMode/T240/AssetRegistryValidationTests.cs:151:        [Test]
+Assets/_Game/Tests/EditMode/T240/AssetRegistryValidationTests.cs:152:        public void RegistrySerializedFieldsContainOnlyKeysObjectAndSceneReference()
+Assets/_Game/Tests/EditMode/T450/EnemyArchetypeConfigTests.cs:11:    [Category("T450")]
+Assets/_Game/Tests/EditMode/T450/EnemyArchetypeConfigTests.cs:12:    public sealed class EnemyArchetypeConfigTests
+Assets/_Game/Tests/EditMode/T450/EnemyArchetypeConfigTests.cs:18:        public void SetUp()
+Assets/_Game/Tests/EditMode/T450/EnemyArchetypeConfigTests.cs:24:        [Test]
+Assets/_Game/Tests/EditMode/T450/EnemyArchetypeConfigTests.cs:25:        public void RosterComesFromConfigAsFiveNormalEnemiesAndOneElite()
+Assets/_Game/Tests/EditMode/T450/EnemyArchetypeConfigTests.cs:56:        [Test]
+Assets/_Game/Tests/EditMode/T450/EnemyArchetypeConfigTests.cs:57:        public void EveryEnemyHasUniqueConfiguredTeachingPointAndClearTelegraph()
+Assets/_Game/Tests/EditMode/T450/EnemyArchetypeConfigTests.cs:106:        [Test]
+Assets/_Game/Tests/EditMode/T450/EnemyArchetypeConfigTests.cs:107:        public void HpSpeedAndAttackChangesFlowThroughReloadedConfigWithoutRuntimeBranches()
+Assets/_Game/Tests/EditMode/T360/DamageFormulaTests.cs:10:    [Category("DamageFormula")]
+Assets/_Game/Tests/EditMode/T360/DamageFormulaTests.cs:11:    public sealed class DamageFormulaTests
+Assets/_Game/Tests/EditMode/T360/DamageFormulaTests.cs:17:        public void SetUp()
+Assets/_Game/Tests/EditMode/T360/DamageFormulaTests.cs:23:        [Test]
+Assets/_Game/Tests/EditMode/T360/DamageFormulaTests.cs:24:        public void StanceSelectsDamageFormulaThroughRequiredConfigForeignKey()
+Assets/_Game/Tests/EditMode/T360/DamageFormulaTests.cs:45:        [Test]
+Assets/_Game/Tests/EditMode/T360/DamageFormulaTests.cs:46:        public void BodyHitUsesBaseAndStanceTablesWithAwayFromZeroRounding()
+Assets/_Game/Tests/EditMode/T360/DamageFormulaTests.cs:71:        [Test]
+Assets/_Game/Tests/EditMode/T360/DamageFormulaTests.cs:72:        public void WeakpointMultipliersAndBonusesAreIndependentlyAssertable()
+Assets/_Game/Tests/EditMode/T360/DamageFormulaTests.cs:105:        [Test]
+Assets/_Game/Tests/EditMode/T360/DamageFormulaTests.cs:106:        public void DirectionMatchAndMissUseBothConfiguredDefenseBranches()
+Assets/_Game/Tests/EditMode/T360/DamageFormulaTests.cs:142:        [Test]
+Assets/_Game/Tests/EditMode/T360/DamageFormulaTests.cs:143:        public void RequiredStanceParticipatesInDirectionMatch()
+Assets/_Game/Tests/EditMode/T360/DamageFormulaTests.cs:162:        [Test]
+Assets/_Game/Tests/EditMode/T360/DamageFormulaTests.cs:163:        public void CriticalThresholdIsDeterministicAndAddsConfiguredDamageScore()
+Assets/_Game/Tests/EditMode/T360/DamageFormulaTests.cs:190:        [Test]
+Assets/_Game/Tests/EditMode/T360/DamageFormulaTests.cs:191:        public void InvalidContextRandomAndStanceMismatchFailBeforePublication()
+Assets/_Game/Tests/EditMode/T360/DamageFormulaTests.cs:223:        [Test]
+Assets/_Game/Tests/EditMode/T360/DamageFormulaTests.cs:224:        public void WarmCalculationHotPathAllocatesNoManagedMemory()
+Assets/_Game/Tests/EditMode/T610/LocalizationGlyphTests.cs:15:    [Category("T610")]
+Assets/_Game/Tests/EditMode/T610/LocalizationGlyphTests.cs:16:    public sealed class LocalizationGlyphTests
+Assets/_Game/Tests/EditMode/T610/LocalizationGlyphTests.cs:20:        [Test]
+Assets/_Game/Tests/EditMode/T610/LocalizationGlyphTests.cs:21:        public void CharacterInventoryExactlyCoversConfigurationAndDynamicUiText()
+Assets/_Game/Tests/EditMode/T610/LocalizationGlyphTests.cs:47:        [Test]
+Assets/_Game/Tests/EditMode/T610/LocalizationGlyphTests.cs:48:        public void StaticPrimaryAndChineseFallbackCoverEveryListedGlyphWithinAtlasBudget()
+Assets/_Game/Tests/EditMode/T610/LocalizationGlyphTests.cs:94:        [Test]
+Assets/_Game/Tests/EditMode/T610/LocalizationGlyphTests.cs:95:        public void DeliveredSubsetIsPinnedRenamedLicensedAndSmall()
+Assets/_Game/Tests/EditMode/T650/TutorialGateTests.cs:11:    [Category("T650")]
+Assets/_Game/Tests/EditMode/T650/TutorialGateTests.cs:12:    public sealed class TutorialGateTests
+Assets/_Game/Tests/EditMode/T650/TutorialGateTests.cs:17:        public void SetUp()
+Assets/_Game/Tests/EditMode/T650/TutorialGateTests.cs:23:        [Test]
+Assets/_Game/Tests/EditMode/T650/TutorialGateTests.cs:24:        public void DirectorShowsConfiguredPromptAndOnlyGameplayActionAdvancesGate()
+Assets/_Game/Tests/EditMode/T650/TutorialGateTests.cs:81:        [Test]
+Assets/_Game/Tests/EditMode/T650/TutorialGateTests.cs:82:        public void ExplicitSkipMarksOnceWithoutPublishingFakeStepCompletions()
+Assets/_Game/Tests/EditMode/T650/TutorialGateTests.cs:139:        [Test]
+Assets/_Game/Tests/EditMode/T650/TutorialGateTests.cs:140:        public void TutorialMarkerRoundTripsThroughBuiltInVersionOneMigration()
+Assets/_Game/Tests/EditMode/T650/TutorialGateTests.cs:197:            public void Render(TutorialOverlayState state) => Last = state;
+Assets/_Game/Tests/EditMode/T650/TutorialGateTests.cs:199:            public void RequestSkip() => SkipRequested?.Invoke();
+Assets/_Game/Tests/EditMode/T650/TutorialGateTests.cs:201:            public void RequestReview() => ReviewRequested?.Invoke();
+Assets/_Game/Tests/EditMode/T650/TutorialGateTests.cs:216:            public void Write(string payload)
+Assets/_Game/Tests/EditMode/T310/StrokeSamplerBoundaryTests.cs:12:    [Category("StrokeSampling")]
+Assets/_Game/Tests/EditMode/T310/StrokeSamplerBoundaryTests.cs:13:    public sealed class StrokeSamplerBoundaryTests
+Assets/_Game/Tests/EditMode/T310/StrokeSamplerBoundaryTests.cs:15:        [Test]
+Assets/_Game/Tests/EditMode/T310/StrokeSamplerBoundaryTests.cs:16:        public void ShortJitterIsFilteredAndThresholdDistanceIsAccepted()
+Assets/_Game/Tests/EditMode/T310/StrokeSamplerBoundaryTests.cs:37:        [Test]
+Assets/_Game/Tests/EditMode/T310/StrokeSamplerBoundaryTests.cs:38:        public void SegmentCrossingMaximumLengthIsClippedAtExactPathDistance()
+Assets/_Game/Tests/EditMode/T310/StrokeSamplerBoundaryTests.cs:58:        [Test]
+Assets/_Game/Tests/EditMode/T310/StrokeSamplerBoundaryTests.cs:59:        public void MaximumPointCountCompletesOnceAtTheLastAcceptedPoint()
+Assets/_Game/Tests/EditMode/T310/StrokeSamplerBoundaryTests.cs:82:        [Test]
+Assets/_Game/Tests/EditMode/T310/StrokeSamplerBoundaryTests.cs:83:        public void CompletedDataIsImmutableAndUnaffectedBySamplerReuse()
+Assets/_Game/Tests/EditMode/T310/StrokeSamplerBoundaryTests.cs:102:        [Test]
+Assets/_Game/Tests/EditMode/T310/StrokeSamplerBoundaryTests.cs:103:        public void RuntimeSettingsAreMappedFromTheSelectedStrokeRule()
+Assets/_Game/Tests/EditMode/T310/StrokeSamplerBoundaryTests.cs:123:        [Test]
+Assets/_Game/Tests/EditMode/T310/StrokeSamplerBoundaryTests.cs:124:        public void CollectorConvertsPointerEndAndCancellationIntoDistinctStrokeEvents()
+Assets/_Game/Tests/EditMode/T310/StrokeSamplerBoundaryTests.cs:157:        [Test]
+Assets/_Game/Tests/EditMode/T310/StrokeSamplerBoundaryTests.cs:158:        public void CollectorPublishesAnAutomaticallyClippedStrokeOnlyOnce()
+Assets/_Game/Tests/EditMode/T310/StrokeSamplerBoundaryTests.cs:178:        [Test]
+Assets/_Game/Tests/EditMode/T310/StrokeSamplerBoundaryTests.cs:179:        public void InvalidSamplingLimitsAreRejectedBeforeCapture()
+Assets/_Game/Tests/EditMode/T310/StrokeSamplerBoundaryTests.cs:189:        [Test]
+Assets/_Game/Tests/EditMode/T310/StrokeSamplerBoundaryTests.cs:190:        public void AcceptedPointHotPathDoesNotAllocateManagedMemory()
+Assets/_Game/Tests/EditMode/T310/StrokeSamplerBoundaryTests.cs:241:            public void Cancel(PointerCancelReason reason)
+Assets/_Game/Tests/EditMode/T310/StrokeSamplerBoundaryTests.cs:256:            public void Emit(PointerInputEvent pointerEvent)
+Assets/_Game/Tests/EditMode/T300/PointerInputTests.cs:9:    [Category("PointerInput")]
+Assets/_Game/Tests/EditMode/T300/PointerInputTests.cs:10:    public sealed class PointerInputTests
+Assets/_Game/Tests/EditMode/T300/PointerInputTests.cs:12:        [Test]
+Assets/_Game/Tests/EditMode/T300/PointerInputTests.cs:13:        public void ReferencePixelConverterMapsSafeAreaToConfiguredReferencePixels()
+Assets/_Game/Tests/EditMode/T300/PointerInputTests.cs:26:        [Test]
+Assets/_Game/Tests/EditMode/T300/PointerInputTests.cs:27:        public void ReferencePixelConverterRejectsOutsideBeginsAndClampsActiveMotion()
+Assets/_Game/Tests/EditMode/T300/PointerInputTests.cs:49:        [Test]
+Assets/_Game/Tests/EditMode/T300/PointerInputTests.cs:50:        public void ProcessorBlocksUiOnlyAtBeginAndKeepsAcceptedPointerContinuous()
+Assets/_Game/Tests/EditMode/T300/PointerInputTests.cs:80:        [Test]
+Assets/_Game/Tests/EditMode/T300/PointerInputTests.cs:81:        public void ProcessorAllowsOnlyOneActivePointer()
+Assets/_Game/Tests/EditMode/T300/PointerInputTests.cs:95:        [Test]
+Assets/_Game/Tests/EditMode/T300/PointerInputTests.cs:96:        public void CancellationIsTerminalExplicitAndIdempotent()
+Assets/_Game/Tests/EditMode/T630/AssetImportValidationTests.cs:18:    [Category("AssetImport")]
+Assets/_Game/Tests/EditMode/T630/AssetImportValidationTests.cs:19:    public sealed class AssetImportValidationTests
+Assets/_Game/Tests/EditMode/T630/AssetImportValidationTests.cs:25:        [Test]
+Assets/_Game/Tests/EditMode/T630/AssetImportValidationTests.cs:26:        public void RuntimeArtUsesOnlyRgbaPngWithTransparentForegrounds()
+Assets/_Game/Tests/EditMode/T630/AssetImportValidationTests.cs:63:        [Test]
+Assets/_Game/Tests/EditMode/T630/AssetImportValidationTests.cs:64:        public void ImportersUseCategoryPpuPivotMeshCompressionAndSizeContract()
+Assets/_Game/Tests/EditMode/T630/AssetImportValidationTests.cs:104:        [Test]
+Assets/_Game/Tests/EditMode/T630/AssetImportValidationTests.cs:105:        public void SpriteAtlasV2AssetsAreIncludedAndBindEveryCategory()
+Assets/_Game/Tests/EditMode/T630/AssetImportValidationTests.cs:136:        [Test]
+Assets/_Game/Tests/EditMode/T630/AssetImportValidationTests.cs:137:        public void SortingLayersHaveStableBackToFrontOrder()
+Assets/_Game/Tests/EditMode/T630/AssetImportValidationTests.cs:153:        [Test]
+Assets/_Game/Tests/EditMode/T630/AssetImportValidationTests.cs:154:        public void CanonicalVisualRegistryUsesRealSpritesAndRenderablePrefabs()
+Assets/_Game/Tests/EditMode/T360/ComboScoreTests.cs:10:    [Category("ComboScore")]
+Assets/_Game/Tests/EditMode/T360/ComboScoreTests.cs:11:    public sealed class ComboScoreTests
+Assets/_Game/Tests/EditMode/T360/ComboScoreTests.cs:17:        public void SetUp()
+Assets/_Game/Tests/EditMode/T360/ComboScoreTests.cs:23:        [Test]
+Assets/_Game/Tests/EditMode/T360/ComboScoreTests.cs:24:        public void ComboTimeoutComesFromGlobalAndBoundaryIsInclusive()
+Assets/_Game/Tests/EditMode/T360/ComboScoreTests.cs:39:        [Test]
+Assets/_Game/Tests/EditMode/T360/ComboScoreTests.cs:40:        public void SameStrokeTargetsAdvanceComboAndConfiguredMultiplierCaps()
+Assets/_Game/Tests/EditMode/T360/ComboScoreTests.cs:67:        [Test]
+Assets/_Game/Tests/EditMode/T360/ComboScoreTests.cs:68:        public void ScoreServiceAggregatesDamageScoreEnergyAndHitDimensions()
+Assets/_Game/Tests/EditMode/T360/ComboScoreTests.cs:107:        [Test]
+Assets/_Game/Tests/EditMode/T360/ComboScoreTests.cs:108:        public void ResetAndMonotonicGuardsPreventStaleStatePublication()
+Assets/_Game/Tests/EditMode/T350/StrokeHitResolverTests.cs:11:    [Category("StrokeHitResolver")]
+Assets/_Game/Tests/EditMode/T350/StrokeHitResolverTests.cs:12:    public sealed class StrokeHitResolverTests
+Assets/_Game/Tests/EditMode/T350/StrokeHitResolverTests.cs:19:        public void SetUp()
+Assets/_Game/Tests/EditMode/T350/StrokeHitResolverTests.cs:27:        [Test]
+Assets/_Game/Tests/EditMode/T350/StrokeHitResolverTests.cs:28:        public void RuntimeConfigMapsRuleRadiusAndActiveTargetCapacity()
+Assets/_Game/Tests/EditMode/T350/StrokeHitResolverTests.cs:42:        [Test]
+Assets/_Game/Tests/EditMode/T350/StrokeHitResolverTests.cs:43:        public void ResolveSortsByFirstPathContactAndAggregatesWeakpointPerTarget()
+Assets/_Game/Tests/EditMode/T350/StrokeHitResolverTests.cs:91:        [Test]
+Assets/_Game/Tests/EditMode/T350/StrokeHitResolverTests.cs:92:        public void DisabledTargetsAreSkippedAndEqualPathUsesStableTargetIdOrder()
+Assets/_Game/Tests/EditMode/T350/StrokeHitResolverTests.cs:118:        [Test]
+Assets/_Game/Tests/EditMode/T350/StrokeHitResolverTests.cs:119:        public void NoGestureDoesNotQueryAndMismatchedRuleOrSmallBufferFails()
+Assets/_Game/Tests/EditMode/T350/StrokeHitResolverTests.cs:153:        [Test]
+Assets/_Game/Tests/EditMode/T350/StrokeHitResolverTests.cs:154:        public void ReplayProducesSameSortedRecordsWithoutRetainingInternalTargets()
+Assets/_Game/Tests/EditMode/T350/StrokeHitResolverTests.cs:180:        [Test]
+Assets/_Game/Tests/EditMode/T350/StrokeHitResolverTests.cs:181:        public void WarmResolveHotPathAllocatesNoManagedMemory()
+Assets/_Game/Tests/EditMode/T460/BossPhaseTests.cs:11:    [Category("T460")]
+Assets/_Game/Tests/EditMode/T460/BossPhaseTests.cs:12:    public sealed class BossPhaseTests
+Assets/_Game/Tests/EditMode/T460/BossPhaseTests.cs:18:        public void SetUp()
+Assets/_Game/Tests/EditMode/T460/BossPhaseTests.cs:26:        [Test]
+Assets/_Game/Tests/EditMode/T460/BossPhaseTests.cs:27:        public void TombKingProfilesMapThreeContinuousConfiguredPhases()
+Assets/_Game/Tests/EditMode/T460/BossPhaseTests.cs:70:        [Test]
+Assets/_Game/Tests/EditMode/T460/BossPhaseTests.cs:71:        public void ExactThresholdsAdvanceInOrderOnceAndLargeDamageCannotSkipEvents()
+Assets/_Game/Tests/EditMode/T460/BossPhaseTests.cs:99:        [Test]
+Assets/_Game/Tests/EditMode/T460/BossPhaseTests.cs:100:        public void RuntimeCatalogRejectsGapOverlapAndNonBossOwnership()
+Assets/_Game/Tests/EditMode/T460/BossPhaseTests.cs:126:        [Test]
+Assets/_Game/Tests/EditMode/T460/BossPhaseTests.cs:127:        public void ThresholdSpeedDefenseAndWeakpointChangesNeedOnlyReloadedConfig()
+Assets/_Game/Tests/EditMode/T620/FeedbackEventTests.cs:10:    [Category("T620")]
+Assets/_Game/Tests/EditMode/T620/FeedbackEventTests.cs:11:    public sealed class FeedbackEventTests
+Assets/_Game/Tests/EditMode/T620/FeedbackEventTests.cs:16:        public void SetUp()
+Assets/_Game/Tests/EditMode/T620/FeedbackEventTests.cs:21:        [Test]
+Assets/_Game/Tests/EditMode/T620/FeedbackEventTests.cs:22:        public void FiveSemanticEventsSelectConfiguredProfilesWithoutChangingEventTruth()
+Assets/_Game/Tests/EditMode/T620/FeedbackEventTests.cs:63:        [Test]
+Assets/_Game/Tests/EditMode/T620/FeedbackEventTests.cs:64:        public void VibrationMasterSwitchSuppressesPlatformRequestsButKeepsVisualCommand()
+Assets/_Game/Tests/EditMode/T620/FeedbackEventTests.cs:88:        [Test]
+Assets/_Game/Tests/EditMode/T620/FeedbackEventTests.cs:89:        public void StrengthAndCueChangesFlowFromReloadedConfigWithoutCodeChanges()
+Assets/_Game/Tests/EditMode/T620/FeedbackEventTests.cs:117:        [Test]
+Assets/_Game/Tests/EditMode/T620/FeedbackEventTests.cs:118:        public void DefaultEventIsRejectedBeforeAnyOutput()
+Assets/_Game/Tests/EditMode/T620/FeedbackEventTests.cs:151:            public void Emit(in CombatFeedbackCommand command)
+Assets/_Game/Tests/EditMode/T620/FeedbackEventTests.cs:162:            public void Request(FeedbackVibrationPattern pattern)
+Assets/_Game/Tests/EditMode/T500/SpawnTimelineTests.cs:11:    [Category("T500")]
+Assets/_Game/Tests/EditMode/T500/SpawnTimelineTests.cs:12:    public sealed class SpawnTimelineTests
+Assets/_Game/Tests/EditMode/T500/SpawnTimelineTests.cs:17:        public void SetUp()
+Assets/_Game/Tests/EditMode/T500/SpawnTimelineTests.cs:22:        [Test]
+Assets/_Game/Tests/EditMode/T500/SpawnTimelineTests.cs:23:        public void CatalogMapsEveryConfiguredWaveSpawnRegionAndModifier()
+Assets/_Game/Tests/EditMode/T500/SpawnTimelineTests.cs:60:        [Test]
+Assets/_Game/Tests/EditMode/T500/SpawnTimelineTests.cs:61:        public void TimelineIsStableAndRequiresExplicitCommit()
+Assets/_Game/Tests/EditMode/T500/SpawnTimelineTests.cs:87:        [Test]
+Assets/_Game/Tests/EditMode/T500/SpawnTimelineTests.cs:88:        public void EverySpawnPatternStaysInsideConfiguredNormalizedRegion()
+Assets/_Game/Tests/EditMode/T500/SpawnTimelineTests.cs:140:        [Test]
+Assets/_Game/Tests/EditMode/T500/SpawnTimelineTests.cs:141:        public void RejectedWorldSpawnRemainsPendingForRetry()
+Assets/_Game/Tests/EditMode/T500/SpawnTimelineTests.cs:160:        [Test]
+Assets/_Game/Tests/EditMode/T500/SpawnTimelineTests.cs:161:        public void MaxAliveBackpressureReleasesOnlyOnePendingSpawnPerDefeat()
+Assets/_Game/Tests/EditMode/T500/SpawnTimelineTests.cs:188:        [Test]
+Assets/_Game/Tests/EditMode/T500/SpawnTimelineTests.cs:189:        public void PausedClockAndLargeDeltaCannotCrossPlayerConfirmationGate()
+Assets/_Game/Tests/EditMode/T500/SpawnTimelineTests.cs:226:        [Test]
+Assets/_Game/Tests/EditMode/T500/SpawnTimelineTests.cs:227:        public void TimeElapsedAndPlayerConfirmedEndConditionsAreExplicit()
+Assets/_Game/Tests/EditMode/T500/SpawnTimelineTests.cs:269:        [Test]
+Assets/_Game/Tests/EditMode/T500/SpawnTimelineTests.cs:270:        public void CatalogRejectsWrongSpawnPointScopeAndBossWithoutConfiguredBossSpawn()
+Assets/_Game/Tests/EditMode/T040/WorkflowContractTests.cs:9:    public sealed class WorkflowContractTests
+Assets/_Game/Tests/EditMode/T040/WorkflowContractTests.cs:11:        [Test]
+Assets/_Game/Tests/EditMode/T040/WorkflowContractTests.cs:12:        public void WebBuildEntryUsesEnabledScenesAndWebGlWithoutMutatingSettings()
+Assets/_Game/Tests/EditMode/T040/WorkflowContractTests.cs:27:        [Test]
+Assets/_Game/Tests/EditMode/T040/WorkflowContractTests.cs:28:        public void WorkflowFilesExposeTestEvidenceAndWhitelistContracts()
+Assets/_Game/Tests/EditMode/T550/SaveMigrationTests.cs:9:    [Category("T550")]
+Assets/_Game/Tests/EditMode/T550/SaveMigrationTests.cs:10:    public sealed class SaveMigrationTests
+Assets/_Game/Tests/EditMode/T550/SaveMigrationTests.cs:15:        public void SetUp()
+Assets/_Game/Tests/EditMode/T550/SaveMigrationTests.cs:21:        [Test]
+Assets/_Game/Tests/EditMode/T550/SaveMigrationTests.cs:22:        public void MissingSaveStartsAtConfiguredLevelGraphRoot()
+Assets/_Game/Tests/EditMode/T550/SaveMigrationTests.cs:33:        [Test]
+Assets/_Game/Tests/EditMode/T550/SaveMigrationTests.cs:34:        public void SavedProgressRoundTripsDeterministically()
+Assets/_Game/Tests/EditMode/T550/SaveMigrationTests.cs:57:        [Test]
+Assets/_Game/Tests/EditMode/T550/SaveMigrationTests.cs:58:        public void MalformedJsonFallsBackWithoutOverwritingSource()
+Assets/_Game/Tests/EditMode/T550/SaveMigrationTests.cs:71:        [Test]
+Assets/_Game/Tests/EditMode/T550/SaveMigrationTests.cs:72:        public void FutureVersionFallsBackAsIncompatible()
+Assets/_Game/Tests/EditMode/T550/SaveMigrationTests.cs:84:        [Test]
+Assets/_Game/Tests/EditMode/T550/SaveMigrationTests.cs:85:        public void VersionZeroUsesRegisteredMigration()
+Assets/_Game/Tests/EditMode/T550/SaveMigrationTests.cs:105:        [Test]
+Assets/_Game/Tests/EditMode/T550/SaveMigrationTests.cs:106:        public void UnknownCatalogIdsAreRejectedAndRecovered()
+Assets/_Game/Tests/EditMode/T330/GestureClassifierTests.cs:12:    [Category("GestureClassifier")]
+Assets/_Game/Tests/EditMode/T330/GestureClassifierTests.cs:13:    public sealed class GestureClassifierTests
+Assets/_Game/Tests/EditMode/T330/GestureClassifierTests.cs:19:        public void SetUp()
+Assets/_Game/Tests/EditMode/T330/GestureClassifierTests.cs:26:        [Test]
+Assets/_Game/Tests/EditMode/T330/GestureClassifierTests.cs:27:        public void RuntimeStrokeRulesMapAllRecognitionThresholdsIntoReadOnlyRules()
+Assets/_Game/Tests/EditMode/T330/GestureClassifierTests.cs:51:        [TestCase(200f, 0f, GestureType.Horizontal, 0f)]
+Assets/_Game/Tests/EditMode/T330/GestureClassifierTests.cs:52:        [TestCase(-200f, 0f, GestureType.Horizontal, 0f)]
+Assets/_Game/Tests/EditMode/T330/GestureClassifierTests.cs:53:        [TestCase(0f, 200f, GestureType.Vertical, 90f)]
+Assets/_Game/Tests/EditMode/T330/GestureClassifierTests.cs:54:        [TestCase(0f, -200f, GestureType.Vertical, 90f)]
+Assets/_Game/Tests/EditMode/T330/GestureClassifierTests.cs:55:        [TestCase(200f, 200f, GestureType.Diagonal, 45f)]
+Assets/_Game/Tests/EditMode/T330/GestureClassifierTests.cs:56:        [TestCase(-200f, 200f, GestureType.Diagonal, 135f)]
+Assets/_Game/Tests/EditMode/T330/GestureClassifierTests.cs:57:        public void StraightStrokesUseUndirectedConfiguredAngleClasses(
+Assets/_Game/Tests/EditMode/T330/GestureClassifierTests.cs:80:        [Test]
+Assets/_Game/Tests/EditMode/T330/GestureClassifierTests.cs:81:        public void OpenArcMatchesArcBeforeItsDiagonalChord()
+Assets/_Game/Tests/EditMode/T330/GestureClassifierTests.cs:94:        [Test]
+Assets/_Game/Tests/EditMode/T330/GestureClassifierTests.cs:95:        public void LargeClosedLoopMatchesCircleBeforeArc()
+Assets/_Game/Tests/EditMode/T330/GestureClassifierTests.cs:109:        [Test]
+Assets/_Game/Tests/EditMode/T330/GestureClassifierTests.cs:110:        public void ChargeUsesInitialHoldInsteadOfWholeSlowDrawingDuration()
+Assets/_Game/Tests/EditMode/T330/GestureClassifierTests.cs:137:        [Test]
+Assets/_Game/Tests/EditMode/T330/GestureClassifierTests.cs:138:        public void AnyIsOnlyAConfiguredFallbackAndTooShortStrokeDoesNotMatch()
+Assets/_Game/Tests/EditMode/T330/GestureClassifierTests.cs:154:        [Test]
+Assets/_Game/Tests/EditMode/T330/GestureClassifierTests.cs:155:        public void TableBoundariesPreventNearHorizontalAndSmallLoopMisclassification()
+Assets/_Game/Tests/EditMode/T330/GestureClassifierTests.cs:174:        [Test]
+Assets/_Game/Tests/EditMode/T330/GestureClassifierTests.cs:175:        public void ReplayProducesExactlyTheSameClassificationAndSummary()
+Assets/_Game/Tests/EditMode/T330/GestureClassifierTests.cs:195:        [Test]
+Assets/_Game/Tests/EditMode/T330/GestureClassifierTests.cs:196:        public void UnknownConfiguredTypeAndDuplicatePureRuleIdsFailExplicitly()
+Assets/_Game/Tests/EditMode/T550/ResultTests.cs:9:    [Category("T550")]
+Assets/_Game/Tests/EditMode/T550/ResultTests.cs:10:    public sealed class ResultTests
+Assets/_Game/Tests/EditMode/T550/ResultTests.cs:15:        public void SetUp()
+Assets/_Game/Tests/EditMode/T550/ResultTests.cs:20:        [Test]
+Assets/_Game/Tests/EditMode/T550/ResultTests.cs:21:        public void VictoryScoreUsesConfiguredReflectNoDamageAndRemainingTimeValues()
+Assets/_Game/Tests/EditMode/T550/ResultTests.cs:49:        [Test]
+Assets/_Game/Tests/EditMode/T550/ResultTests.cs:50:        public void DefeatKeepsCombatScoreButDoesNotGrantVictoryBonusesOrStars()
+Assets/_Game/Tests/EditMode/T550/ResultTests.cs:67:        [Test]
+Assets/_Game/Tests/EditMode/T550/ResultTests.cs:68:        public void VictoryAppliesConfiguredRewardsAndUnlocksNextLevel()
+Assets/_Game/Tests/EditMode/T550/ResultTests.cs:94:        [Test]
+Assets/_Game/Tests/EditMode/T550/ResultTests.cs:95:        public void DuplicateSettlementDoesNotWriteOrApplyRewardsAgain()
+Assets/_Game/Tests/EditMode/T550/ResultTests.cs:116:        [Test]
+Assets/_Game/Tests/EditMode/T550/ResultTests.cs:117:        public void FailedSaveDoesNotPublishPartiallyAppliedProgress()
+Assets/_Game/Tests/EditMode/T550/ResultTests.cs:133:        [Test]
+Assets/_Game/Tests/EditMode/T550/ResultTests.cs:134:        public void ChangedGlobalValuesChangeScoreWithoutCodeChanges()
+Assets/_Game/Tests/EditMode/T550/ResultTests.cs:198:        public void Write(string payload)
