@@ -9,8 +9,10 @@ using WeChatWASM;
 
 namespace OneStrokeDemon.Editor.Build
 {
+    // 定义 WechatBuildPolicy 的编辑器工具职责，集中管理资源生成、验证或构建入口。
     public readonly struct WechatBuildPolicy
     {
+        // 初始化 WechatBuildPolicy，并建立编辑器工具所需的输入与资源上下文。
         public WechatBuildPolicy(bool development)
         {
             AppId = string.Empty;
@@ -35,6 +37,7 @@ namespace OneStrokeDemon.Editor.Build
         public bool MultiThreadedBrotli { get; }
     }
 
+    // 定义 WechatBuildEntry 的编辑器工具职责，集中管理资源生成、验证或构建入口。
     public static class WechatBuildEntry
     {
         public const string DefaultOutputPath = "Builds/WeChat/T120";
@@ -50,11 +53,13 @@ namespace OneStrokeDemon.Editor.Build
         };
 
         [MenuItem("One Stroke Demon/Build/WeChat T120 Spike")]
+        // 构建 BuildFromMenu 对应的编辑器流程，并保持资源写入与校验结果可追踪。
         public static void BuildFromMenu()
         {
             Build(DefaultOutputPath, false);
         }
 
+        // 构建 BuildFromCommandLine 对应的编辑器流程，并保持资源写入与校验结果可追踪。
         public static void BuildFromCommandLine()
         {
             string[] arguments = Environment.GetCommandLineArgs();
@@ -63,8 +68,10 @@ namespace OneStrokeDemon.Editor.Build
             Build(outputPath, development);
         }
 
+        // 处理 ResolveOutputPath 对应的编辑器流程，并保持资源写入与校验结果可追踪。
         public static string ResolveOutputPath(string outputPath)
         {
+            // 检查编辑器输入、资源状态或写入边界，避免生成不完整资产。
             if (string.IsNullOrWhiteSpace(outputPath))
             {
                 throw new ArgumentException("WeChat build output path cannot be empty.", nameof(outputPath));
@@ -76,6 +83,7 @@ namespace OneStrokeDemon.Editor.Build
                 Path.IsPathRooted(outputPath) ? outputPath : Path.Combine(projectRoot, outputPath));
             string allowedPrefix = allowedRoot.TrimEnd(Path.DirectorySeparatorChar) + Path.DirectorySeparatorChar;
 
+            // 检查编辑器输入、资源状态或写入边界，避免生成不完整资产。
             if (!absoluteOutput.StartsWith(allowedPrefix, StringComparison.Ordinal))
             {
                 throw new BuildFailedException(
@@ -85,16 +93,19 @@ namespace OneStrokeDemon.Editor.Build
             return absoluteOutput;
         }
 
+        // 创建 CreatePolicy 对应的编辑器流程，并保持资源写入与校验结果可追踪。
         public static WechatBuildPolicy CreatePolicy(bool development)
         {
             return new WechatBuildPolicy(development);
         }
 
+        // 应用 ApplyConfiguration 对应的编辑器流程，并保持资源写入与校验结果可追踪。
         private static void ApplyConfiguration(
             WXEditorScriptObject config,
             string absoluteOutput,
             WechatBuildPolicy policy)
         {
+            // 检查编辑器输入、资源状态或写入边界，避免生成不完整资产。
             if (config == null)
             {
                 throw new ArgumentNullException(nameof(config));
@@ -150,10 +161,12 @@ namespace OneStrokeDemon.Editor.Build
             config.CompileOptions.showMonitorSuggestModal = false;
         }
 
+        // 构建 Build 对应的编辑器流程，并保持资源写入与校验结果可追踪。
         private static void Build(string outputPath, bool development)
         {
             ValidateScenes();
             string absoluteOutput = ResolveOutputPath(outputPath);
+            // 检查编辑器输入、资源状态或写入边界，避免生成不完整资产。
             if (Directory.Exists(absoluteOutput))
             {
                 Directory.Delete(absoluteOutput, true);
@@ -161,6 +174,7 @@ namespace OneStrokeDemon.Editor.Build
             Directory.CreateDirectory(absoluteOutput);
 
             WXEditorScriptObject config = UnityUtil.GetEditorConf();
+            // 检查编辑器输入、资源状态或写入边界，避免生成不完整资产。
             if (config == null)
             {
                 throw new BuildFailedException("WXSDK MiniGameConfig could not be loaded.");
@@ -175,6 +189,7 @@ namespace OneStrokeDemon.Editor.Build
 
                 WXConvertCore.RefreshEnableRenderThread();
                 WXConvertCore.WXExportError result = WXConvertCore.DoExport(true);
+                // 检查编辑器输入、资源状态或写入边界，避免生成不完整资产。
                 if (result != WXConvertCore.WXExportError.SUCCEED)
                 {
                     throw new BuildFailedException($"WXSDK conversion failed with {result}.");
@@ -195,16 +210,19 @@ namespace OneStrokeDemon.Editor.Build
             }
         }
 
+        // 校验 ValidateScenes 对应的编辑器流程，并保持资源写入与校验结果可追踪。
         private static void ValidateScenes()
         {
             string[] scenes = EditorBuildSettings.scenes
                 .Where(scene => scene.enabled)
                 .Select(scene => scene.path)
                 .ToArray();
+            // 检查编辑器输入、资源状态或写入边界，避免生成不完整资产。
             if (scenes.Length == 0)
             {
                 throw new BuildFailedException("No enabled scenes are configured in Build Settings.");
             }
+            // 检查编辑器输入、资源状态或写入边界，避免生成不完整资产。
             if (scenes[0] != WebBuildEntry.BootstrapScenePath)
             {
                 throw new BuildFailedException(
@@ -212,11 +230,14 @@ namespace OneStrokeDemon.Editor.Build
             }
         }
 
+        // 校验 ValidateOutput 对应的编辑器流程，并保持资源写入与校验结果可追踪。
         private static void ValidateOutput(string absoluteOutput)
         {
+            // 逐项处理资源或配置条目，保证生成与验证顺序稳定。
             foreach (string relativePath in RequiredMiniGameFiles)
             {
                 string path = Path.Combine(absoluteOutput, relativePath);
+                // 检查编辑器输入、资源状态或写入边界，避免生成不完整资产。
                 if (!File.Exists(path) || new FileInfo(path).Length == 0)
                 {
                     throw new BuildFailedException($"WXSDK conversion output is missing: {path}");
@@ -224,6 +245,7 @@ namespace OneStrokeDemon.Editor.Build
             }
 
             string webBuildDirectory = Path.Combine(absoluteOutput, "webgl", "Build");
+            // 检查编辑器输入、资源状态或写入边界，避免生成不完整资产。
             if (!Directory.Exists(webBuildDirectory) ||
                 !Directory.EnumerateFiles(webBuildDirectory).Any())
             {
@@ -232,16 +254,20 @@ namespace OneStrokeDemon.Editor.Build
             }
         }
 
+        // 获取 GetProjectRoot 对应的编辑器流程，并保持资源写入与校验结果可追踪。
         private static string GetProjectRoot()
         {
             return Directory.GetParent(Application.dataPath)?.FullName
                 ?? throw new BuildFailedException("Unable to resolve Unity project root.");
         }
 
+        // 处理 ReadArgument 对应的编辑器流程，并保持资源写入与校验结果可追踪。
         private static string ReadArgument(string[] arguments, string name)
         {
+            // 逐项处理资源或配置条目，保证生成与验证顺序稳定。
             for (int i = 0; i < arguments.Length - 1; i++)
             {
+                // 检查编辑器输入、资源状态或写入边界，避免生成不完整资产。
                 if (arguments[i] == name)
                 {
                     return arguments[i + 1];

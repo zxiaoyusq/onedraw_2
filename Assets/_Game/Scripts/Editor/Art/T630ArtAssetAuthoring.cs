@@ -13,6 +13,7 @@ using UnityObject = UnityEngine.Object;
 
 namespace OneStrokeDemon.Editor.Art
 {
+    // 定义 T630ArtAssetPaths 的编辑器工具职责，集中管理资源生成、验证或构建入口。
     public static class T630ArtAssetPaths
     {
         public const string ArtRoot = "Assets/_Game/Art";
@@ -39,10 +40,12 @@ namespace OneStrokeDemon.Editor.Art
         };
     }
 
+    // 定义 T630ArtAssetAuthoring 的编辑器工具职责，集中管理资源生成、验证或构建入口。
     public static class T630ArtAssetAuthoring
     {
         private const float PixelsPerUnit = 100f;
 
+        // 处理 readonly 对应的编辑器流程，并保持资源写入与校验结果可追踪。
         private static readonly (string Name, int UniqueId)[] RequiredSortingLayers =
         {
             ("Background", 630001001),
@@ -53,6 +56,7 @@ namespace OneStrokeDemon.Editor.Art
         };
 
         [MenuItem("One Stroke Demon/Art/Create or Repair T630 Prototype Assets")]
+        // 创建 CreateOrRepairPrototypeAssets 对应的编辑器流程，并保持资源写入与校验结果可追踪。
         public static void CreateOrRepairPrototypeAssets()
         {
             RequireGeneratedActorSources();
@@ -72,14 +76,17 @@ namespace OneStrokeDemon.Editor.Art
                 summary.ToLogMessage());
         }
 
+        // 处理 RequireGeneratedActorSources 对应的编辑器流程，并保持资源写入与校验结果可追踪。
         private static void RequireGeneratedActorSources()
         {
+            // 逐项处理资源或配置条目，保证生成与验证顺序稳定。
             foreach (string path in new[]
                      {
                          T630ArtAssetPaths.SoulPuppetSprite,
                          T630ArtAssetPaths.TombArmorKingSprite,
                      })
             {
+                // 检查编辑器输入、资源状态或写入边界，避免生成不完整资产。
                 if (!File.Exists(path))
                 {
                     throw new FileNotFoundException(
@@ -89,10 +96,12 @@ namespace OneStrokeDemon.Editor.Art
             }
         }
 
+        // 确保存在 EnsureSortingLayers 对应的编辑器流程，并保持资源写入与校验结果可追踪。
         private static void EnsureSortingLayers()
         {
             UnityObject tagManagerObject = AssetDatabase.LoadAllAssetsAtPath("ProjectSettings/TagManager.asset")
                 .FirstOrDefault();
+            // 检查编辑器输入、资源状态或写入边界，避免生成不完整资产。
             if (tagManagerObject == null)
             {
                 throw new InvalidOperationException("Unable to load ProjectSettings/TagManager.asset.");
@@ -100,12 +109,14 @@ namespace OneStrokeDemon.Editor.Art
 
             var serialized = new SerializedObject(tagManagerObject);
             SerializedProperty layers = serialized.FindProperty("m_SortingLayers");
+            // 检查编辑器输入、资源状态或写入边界，避免生成不完整资产。
             if (layers == null || !layers.isArray)
             {
                 throw new InvalidOperationException("TagManager m_SortingLayers was not found.");
             }
 
             var existing = new List<(string Name, int UniqueId, bool Locked)>();
+            // 逐项处理资源或配置条目，保证生成与验证顺序稳定。
             for (int index = 0; index < layers.arraySize; index += 1)
             {
                 SerializedProperty item = layers.GetArrayElementAtIndex(index);
@@ -116,6 +127,7 @@ namespace OneStrokeDemon.Editor.Art
             }
 
             var ordered = new List<(string Name, int UniqueId, bool Locked)>();
+            // 逐项处理资源或配置条目，保证生成与验证顺序稳定。
             foreach ((string name, int uniqueId) in RequiredSortingLayers)
             {
                 int existingIndex = existing.FindIndex(item => item.Name == name);
@@ -126,12 +138,14 @@ namespace OneStrokeDemon.Editor.Art
 
             ordered.AddRange(existing.Where(item =>
                 RequiredSortingLayers.All(required => required.Name != item.Name)));
+            // 检查编辑器输入、资源状态或写入边界，避免生成不完整资产。
             if (ordered.Select(item => item.UniqueId).Distinct().Count() != ordered.Count)
             {
                 throw new InvalidOperationException("Sorting Layer unique IDs are not unique.");
             }
 
             layers.arraySize = ordered.Count;
+            // 逐项处理资源或配置条目，保证生成与验证顺序稳定。
             for (int index = 0; index < ordered.Count; index += 1)
             {
                 SerializedProperty item = layers.GetArrayElementAtIndex(index);
@@ -145,11 +159,14 @@ namespace OneStrokeDemon.Editor.Art
             AssetDatabase.SaveAssets();
         }
 
+        // 配置 ConfigurePngImporters 对应的编辑器流程，并保持资源写入与校验结果可追踪。
         private static void ConfigurePngImporters()
         {
+            // 逐项处理资源或配置条目，保证生成与验证顺序稳定。
             foreach (string path in EnumeratePngPaths())
             {
                 var importer = AssetImporter.GetAtPath(path) as TextureImporter;
+                // 检查编辑器输入、资源状态或写入边界，避免生成不完整资产。
                 if (importer == null)
                 {
                     throw new InvalidOperationException($"TextureImporter is missing for '{path}'.");
@@ -185,6 +202,7 @@ namespace OneStrokeDemon.Editor.Art
             }
         }
 
+        // 创建 CreateSpriteAtlases 对应的编辑器流程，并保持资源写入与校验结果可追踪。
         private static void CreateSpriteAtlases()
         {
             EnsureAssetFolder(T630ArtAssetPaths.AtlasRoot);
@@ -212,6 +230,7 @@ namespace OneStrokeDemon.Editor.Art
                 2048);
         }
 
+        // 创建 CreateSpriteAtlas 对应的编辑器流程，并保持资源写入与校验结果可追踪。
         private static void CreateSpriteAtlas(
             string atlasPath,
             IEnumerable<string> spritePaths,
@@ -223,6 +242,7 @@ namespace OneStrokeDemon.Editor.Art
                 .Select(path => AssetDatabase.LoadAssetAtPath<Texture2D>(path))
                 .Cast<UnityObject>()
                 .ToArray();
+            // 检查编辑器输入、资源状态或写入边界，避免生成不完整资产。
             if (textures.Length == 0 || textures.Any(texture => texture == null))
             {
                 throw new InvalidOperationException($"Sprite Atlas '{atlasPath}' has missing Texture2D inputs.");
@@ -237,6 +257,7 @@ namespace OneStrokeDemon.Editor.Art
                 ImportAssetOptions.ForceSynchronousImport | ImportAssetOptions.ForceUpdate);
 
             var importer = AssetImporter.GetAtPath(atlasPath) as SpriteAtlasImporter;
+            // 检查编辑器输入、资源状态或写入边界，避免生成不完整资产。
             if (importer == null)
             {
                 throw new InvalidOperationException($"SpriteAtlasImporter is missing for '{atlasPath}'.");
@@ -272,6 +293,7 @@ namespace OneStrokeDemon.Editor.Art
             importer.SaveAndReimport();
         }
 
+        // 创建 CreateActorPrefabs 对应的编辑器流程，并保持资源写入与校验结果可追踪。
         private static void CreateActorPrefabs()
         {
             CreateSpritePrefab(
@@ -286,9 +308,11 @@ namespace OneStrokeDemon.Editor.Art
                 "Actors");
         }
 
+        // 创建 CreateVfxPrefabs 对应的编辑器流程，并保持资源写入与校验结果可追踪。
         private static void CreateVfxPrefabs()
         {
             GameplayConfigService config = AssetRegistryEditorValidator.LoadCanonicalConfig();
+            // 逐项处理资源或配置条目，保证生成与验证顺序稳定。
             foreach (AssetManifestConfig row in config.GetAssetManifest()
                          .Where(row => row.AssetType == "Prefab" &&
                              row.AssetKey.StartsWith("vfx_", StringComparison.Ordinal)))
@@ -302,6 +326,7 @@ namespace OneStrokeDemon.Editor.Art
                     renderer.sortingOrder = 0;
                     root.AddComponent<VfxPoolItem>();
                     GameObject prefab = PrefabUtility.SaveAsPrefabAsset(root, row.AddressOrPath);
+                    // 检查编辑器输入、资源状态或写入边界，避免生成不完整资产。
                     if (prefab == null)
                     {
                         throw new InvalidOperationException($"Failed to save VFX Prefab '{row.AddressOrPath}'.");
@@ -314,18 +339,22 @@ namespace OneStrokeDemon.Editor.Art
             }
         }
 
+        // 处理 SelectVfxSprite 对应的编辑器流程，并保持资源写入与校验结果可追踪。
         private static string SelectVfxSprite(string assetKey)
         {
+            // 检查编辑器输入、资源状态或写入边界，避免生成不完整资产。
             if (ContainsAny(assetKey, "slash", "cut", "wave", "dive", "echo"))
             {
                 return T630ArtAssetPaths.SlashArcSprite;
             }
 
+            // 检查编辑器输入、资源状态或写入边界，避免生成不完整资产。
             if (ContainsAny(assetKey, "ghost", "puppet", "slow", "vulnerable", "bind", "burn"))
             {
                 return T630ArtAssetPaths.GhostFlameSprite;
             }
 
+            // 检查编辑器输入、资源状态或写入边界，避免生成不完整资产。
             if (ContainsAny(assetKey, "hit", "critical", "stun", "switch", "burst"))
             {
                 return T630ArtAssetPaths.ImpactGlowSprite;
@@ -334,9 +363,11 @@ namespace OneStrokeDemon.Editor.Art
             return T630ArtAssetPaths.SmokeBurstSprite;
         }
 
+        // 处理 ContainsAny 对应的编辑器流程，并保持资源写入与校验结果可追踪。
         private static bool ContainsAny(string value, params string[] fragments) =>
             fragments.Any(fragment => value.Contains(fragment, StringComparison.Ordinal));
 
+        // 创建 CreateSpritePrefab 对应的编辑器流程，并保持资源写入与校验结果可追踪。
         private static void CreateSpritePrefab(
             string name,
             string spritePath,
@@ -351,6 +382,7 @@ namespace OneStrokeDemon.Editor.Art
                 renderer.sortingLayerName = sortingLayer;
                 renderer.sortingOrder = 0;
                 GameObject prefab = PrefabUtility.SaveAsPrefabAsset(root, prefabPath);
+                // 检查编辑器输入、资源状态或写入边界，避免生成不完整资产。
                 if (prefab == null)
                 {
                     throw new InvalidOperationException($"Failed to save actor Prefab '{prefabPath}'.");
@@ -362,11 +394,13 @@ namespace OneStrokeDemon.Editor.Art
             }
         }
 
+        // 处理 BindCanonicalRegistry 对应的编辑器流程，并保持资源写入与校验结果可追踪。
         private static void BindCanonicalRegistry()
         {
             GameplayConfigService config = AssetRegistryEditorValidator.LoadCanonicalConfig();
             AssetRegistrySO registry = AssetDatabase.LoadAssetAtPath<AssetRegistrySO>(
                 AssetRegistryPaths.CanonicalRegistry);
+            // 检查编辑器输入、资源状态或写入边界，避免生成不完整资产。
             if (registry == null)
             {
                 throw new InvalidOperationException("Canonical AssetRegistry is missing.");
@@ -377,6 +411,7 @@ namespace OneStrokeDemon.Editor.Art
                 .GroupBy(entry => entry.AssetKey, StringComparer.Ordinal)
                 .ToDictionary(group => group.Key, group => group.First().Asset, StringComparer.Ordinal);
             var replacement = new List<AssetRegistryEntry>();
+            // 逐项处理资源或配置条目，保证生成与验证顺序稳定。
             foreach (AssetManifestConfig row in config.GetAssetManifest())
             {
                 UnityObject asset = row.AssetType switch
@@ -388,6 +423,7 @@ namespace OneStrokeDemon.Editor.Art
                         : null,
                     _ => null,
                 };
+                // 检查编辑器输入、资源状态或写入边界，避免生成不完整资产。
                 if (asset == null)
                 {
                     throw new InvalidOperationException(
@@ -402,9 +438,11 @@ namespace OneStrokeDemon.Editor.Art
             AssetDatabase.SaveAssets();
         }
 
+        // 加载 LoadRequiredSprite 对应的编辑器流程，并保持资源写入与校验结果可追踪。
         private static Sprite LoadRequiredSprite(string path)
         {
             Sprite sprite = AssetDatabase.LoadAssetAtPath<Sprite>(path);
+            // 检查编辑器输入、资源状态或写入边界，避免生成不完整资产。
             if (sprite == null)
             {
                 throw new InvalidOperationException($"Sprite is missing at '{path}'.");
@@ -413,8 +451,10 @@ namespace OneStrokeDemon.Editor.Art
             return sprite;
         }
 
+        // 处理 EnumeratePngPaths 对应的编辑器流程，并保持资源写入与校验结果可追踪。
         private static IReadOnlyList<string> EnumeratePngPaths()
         {
+            // 检查编辑器输入、资源状态或写入边界，避免生成不完整资产。
             if (!Directory.Exists(T630ArtAssetPaths.ArtRoot))
             {
                 return Array.Empty<string>();
@@ -426,8 +466,10 @@ namespace OneStrokeDemon.Editor.Art
                 .ToArray();
         }
 
+        // 确保存在 EnsureAssetFolder 对应的编辑器流程，并保持资源写入与校验结果可追踪。
         private static void EnsureAssetFolder(string path)
         {
+            // 检查编辑器输入、资源状态或写入边界，避免生成不完整资产。
             if (AssetDatabase.IsValidFolder(path))
             {
                 return;
@@ -439,6 +481,7 @@ namespace OneStrokeDemon.Editor.Art
             AssetDatabase.CreateFolder(parent, name);
         }
 
+        // 处理 ToPascalCase 对应的编辑器流程，并保持资源写入与校验结果可追踪。
         private static string ToPascalCase(string value) => string.Concat(
             value.Split(new[] { '_' }, StringSplitOptions.RemoveEmptyEntries)
                 .Select(part => char.ToUpperInvariant(part[0]) + part.Substring(1)));

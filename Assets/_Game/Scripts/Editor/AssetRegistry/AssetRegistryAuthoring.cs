@@ -8,9 +8,11 @@ using UnityObject = UnityEngine.Object;
 
 namespace OneStrokeDemon.Editor.AssetRegistry
 {
+    // 定义 AssetRegistryAuthoring 的编辑器工具职责，集中管理资源生成、验证或构建入口。
     public static class AssetRegistryAuthoring
     {
         [MenuItem("One Stroke Demon/Config/Create or Repair Asset Registry")]
+        // 创建 CreateOrRepairCanonicalRegistry 对应的编辑器流程，并保持资源写入与校验结果可追踪。
         public static void CreateOrRepairCanonicalRegistry()
         {
             EnsureFolder(AssetRegistryPaths.PlaceholderFolder);
@@ -23,6 +25,7 @@ namespace OneStrokeDemon.Editor.AssetRegistry
 
             AssetRegistrySO registry = AssetDatabase.LoadAssetAtPath<AssetRegistrySO>(
                 AssetRegistryPaths.CanonicalRegistry);
+            // 检查编辑器输入、资源状态或写入边界，避免生成不完整资产。
             if (registry == null)
             {
                 registry = ScriptableObject.CreateInstance<AssetRegistrySO>();
@@ -32,6 +35,7 @@ namespace OneStrokeDemon.Editor.AssetRegistry
 
             IReadOnlyDictionary<string, UnityObject> existing = FirstValidEntriesByKey(registry);
             var entries = new List<AssetRegistryEntry>(config.GetAssetManifest().Count);
+            // 逐项处理资源或配置条目，保证生成与验证顺序稳定。
             foreach (AssetManifestConfig expected in config.GetAssetManifest())
             {
                 UnityObject asset = existing.TryGetValue(expected.AssetKey, out UnityObject current) &&
@@ -57,11 +61,14 @@ namespace OneStrokeDemon.Editor.AssetRegistry
                 $"{summary.ToLogMessage()}");
         }
 
+        // 处理 FirstValidEntriesByKey 对应的编辑器流程，并保持资源写入与校验结果可追踪。
         private static IReadOnlyDictionary<string, UnityObject> FirstValidEntriesByKey(AssetRegistrySO registry)
         {
             var result = new Dictionary<string, UnityObject>(StringComparer.Ordinal);
+            // 逐项处理资源或配置条目，保证生成与验证顺序稳定。
             foreach (AssetRegistryEntry entry in registry.Entries)
             {
+                // 检查编辑器输入、资源状态或写入边界，避免生成不完整资产。
                 if (entry != null && !string.IsNullOrEmpty(entry.AssetKey) && entry.Asset != null &&
                     !result.ContainsKey(entry.AssetKey))
                 {
@@ -72,6 +79,7 @@ namespace OneStrokeDemon.Editor.AssetRegistry
             return result;
         }
 
+        // 处理 PlaceholderFor 对应的编辑器流程，并保持资源写入与校验结果可追踪。
         private static UnityObject PlaceholderFor(
             string assetType,
             Sprite sprite,
@@ -89,6 +97,7 @@ namespace OneStrokeDemon.Editor.AssetRegistry
             };
         }
 
+        // 处理 MatchesExpectedType 对应的编辑器流程，并保持资源写入与校验结果可追踪。
         private static bool MatchesExpectedType(UnityObject asset, string assetType)
         {
             return assetType switch
@@ -101,11 +110,13 @@ namespace OneStrokeDemon.Editor.AssetRegistry
             };
         }
 
+        // 确保存在 EnsurePlaceholderSprite 对应的编辑器流程，并保持资源写入与校验结果可追踪。
         private static Sprite EnsurePlaceholderSprite()
         {
             Sprite existing = AssetDatabase.LoadAllAssetsAtPath(AssetRegistryPaths.PlaceholderSprite)
                 .OfType<Sprite>()
                 .FirstOrDefault();
+            // 检查编辑器输入、资源状态或写入边界，避免生成不完整资产。
             if (existing != null)
             {
                 return existing;
@@ -135,9 +146,11 @@ namespace OneStrokeDemon.Editor.AssetRegistry
                 .Single();
         }
 
+        // 确保存在 EnsurePlaceholderAudio 对应的编辑器流程，并保持资源写入与校验结果可追踪。
         private static AudioClip EnsurePlaceholderAudio()
         {
             AudioClip existing = AssetDatabase.LoadAssetAtPath<AudioClip>(AssetRegistryPaths.PlaceholderAudio);
+            // 检查编辑器输入、资源状态或写入边界，避免生成不完整资产。
             if (existing != null)
             {
                 return existing;
@@ -154,9 +167,11 @@ namespace OneStrokeDemon.Editor.AssetRegistry
             return AssetDatabase.LoadAssetAtPath<AudioClip>(AssetRegistryPaths.PlaceholderAudio);
         }
 
+        // 确保存在 EnsurePlaceholderPrefab 对应的编辑器流程，并保持资源写入与校验结果可追踪。
         private static GameObject EnsurePlaceholderPrefab(Sprite sprite)
         {
             GameObject existing = AssetDatabase.LoadAssetAtPath<GameObject>(AssetRegistryPaths.PlaceholderPrefab);
+            // 检查编辑器输入、资源状态或写入边界，避免生成不完整资产。
             if (existing != null)
             {
                 return existing;
@@ -167,6 +182,7 @@ namespace OneStrokeDemon.Editor.AssetRegistry
             {
                 root.AddComponent<SpriteRenderer>().sprite = sprite;
                 GameObject prefab = PrefabUtility.SaveAsPrefabAsset(root, AssetRegistryPaths.PlaceholderPrefab);
+                // 检查编辑器输入、资源状态或写入边界，避免生成不完整资产。
                 if (prefab == null)
                 {
                     throw new InvalidOperationException("Unity failed to save the T240 placeholder prefab.");
@@ -180,10 +196,12 @@ namespace OneStrokeDemon.Editor.AssetRegistry
             }
         }
 
+        // 确保存在 EnsureSceneReference 对应的编辑器流程，并保持资源写入与校验结果可追踪。
         private static AssetSceneReference EnsureSceneReference()
         {
             AssetSceneReference scene = AssetDatabase.LoadAssetAtPath<AssetSceneReference>(
                 AssetRegistryPaths.BattleSceneReference);
+            // 检查编辑器输入、资源状态或写入边界，避免生成不完整资产。
             if (scene == null)
             {
                 scene = ScriptableObject.CreateInstance<AssetSceneReference>();
@@ -196,8 +214,10 @@ namespace OneStrokeDemon.Editor.AssetRegistry
             return scene;
         }
 
+        // 确保存在 EnsureFolder 对应的编辑器流程，并保持资源写入与校验结果可追踪。
         private static void EnsureFolder(string path)
         {
+            // 检查编辑器输入、资源状态或写入边界，避免生成不完整资产。
             if (AssetDatabase.IsValidFolder(path))
             {
                 return;
@@ -205,6 +225,7 @@ namespace OneStrokeDemon.Editor.AssetRegistry
 
             string parent = path.Substring(0, path.LastIndexOf('/'));
             string name = path.Substring(path.LastIndexOf('/') + 1);
+            // 检查编辑器输入、资源状态或写入边界，避免生成不完整资产。
             if (!AssetDatabase.IsValidFolder(parent))
             {
                 EnsureFolder(parent);

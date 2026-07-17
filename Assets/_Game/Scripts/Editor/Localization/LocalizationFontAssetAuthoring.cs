@@ -9,6 +9,7 @@ using UnityEngine.TextCore.LowLevel;
 
 namespace OneStrokeDemon.Editor.Localization
 {
+    // 定义 LocalizationFontAssetAuthoring 的编辑器工具职责，集中管理资源生成、验证或构建入口。
     public static class LocalizationFontAssetAuthoring
     {
         public const string SourceFontPath =
@@ -23,20 +24,24 @@ namespace OneStrokeDemon.Editor.Localization
             "Assets/TextMesh Pro/Resources/TMP Settings.asset";
 
         [MenuItem("One Stroke Demon/Localization/Rebuild TMP Font Assets")]
+        // 处理 RebuildFromMenu 对应的编辑器流程，并保持资源写入与校验结果可追踪。
         public static void RebuildFromMenu()
         {
             BuildAssets();
         }
 
+        // 构建 BuildForCommandLine 对应的编辑器流程，并保持资源写入与校验结果可追踪。
         public static void BuildForCommandLine()
         {
             BuildAssets();
         }
 
+        // 构建 BuildAssets 对应的编辑器流程，并保持资源写入与校验结果可追踪。
         public static void BuildAssets()
         {
             AssetDatabase.Refresh(ImportAssetOptions.ForceSynchronousImport);
             Font sourceFont = AssetDatabase.LoadAssetAtPath<Font>(SourceFontPath);
+            // 检查编辑器输入、资源状态或写入边界，避免生成不完整资产。
             if (sourceFont == null)
             {
                 throw new InvalidOperationException(
@@ -51,6 +56,7 @@ namespace OneStrokeDemon.Editor.Localization
             uint[] fallbackCharacters = allCharacters
                 .Where(value => value > 0x7E && value != 0xA0)
                 .ToArray();
+            // 检查编辑器输入、资源状态或写入边界，避免生成不完整资产。
             if (primaryCharacters.Length != 96 || fallbackCharacters.Length == 0)
             {
                 throw new InvalidOperationException(
@@ -91,6 +97,7 @@ namespace OneStrokeDemon.Editor.Localization
                 "atlases=512x512+1024x1024 static=true multiAtlas=false");
         }
 
+        // 构建 BuildStaticFontAsset 对应的编辑器流程，并保持资源写入与校验结果可追踪。
         private static TMP_FontAsset BuildStaticFontAsset(
             Font sourceFont,
             string assetPath,
@@ -101,6 +108,7 @@ namespace OneStrokeDemon.Editor.Localization
             int atlasWidth,
             int atlasHeight)
         {
+            // 检查编辑器输入、资源状态或写入边界，避免生成不完整资产。
             if (AssetDatabase.LoadMainAssetAtPath(assetPath) != null &&
                 !AssetDatabase.DeleteAsset(assetPath))
             {
@@ -116,6 +124,7 @@ namespace OneStrokeDemon.Editor.Localization
                 atlasHeight,
                 AtlasPopulationMode.Dynamic,
                 enableMultiAtlasSupport: false);
+            // 检查编辑器输入、资源状态或写入边界，避免生成不完整资产。
             if (fontAsset == null)
             {
                 throw new InvalidOperationException($"Unable to create TMP font asset: {assetPath}");
@@ -125,6 +134,7 @@ namespace OneStrokeDemon.Editor.Localization
             fontAsset.atlasTexture.name = assetName + " Atlas";
             fontAsset.material.name = assetName + " Material";
             bool added = fontAsset.TryAddCharacters(characters, out uint[] missingCharacters);
+            // 检查编辑器输入、资源状态或写入边界，避免生成不完整资产。
             if (!added || (missingCharacters != null && missingCharacters.Length > 0))
             {
                 string missing = missingCharacters == null
@@ -146,6 +156,7 @@ namespace OneStrokeDemon.Editor.Localization
             return fontAsset;
         }
 
+        // 配置 ConfigureTmpSettings 对应的编辑器流程，并保持资源写入与校验结果可追踪。
         private static void ConfigureTmpSettings(TMP_FontAsset primary, TMP_FontAsset fallback)
         {
             TMP_Settings settings = EnsureTmpSettingsExists();
@@ -166,6 +177,7 @@ namespace OneStrokeDemon.Editor.Localization
             EditorUtility.SetDirty(settings);
         }
 
+        // 处理 PruneUnusedTmpEssentialAssets 对应的编辑器流程，并保持资源写入与校验结果可追踪。
         private static void PruneUnusedTmpEssentialAssets()
         {
             AssetDatabase.DeleteAsset("Assets/TextMesh Pro/Fonts");
@@ -178,9 +190,11 @@ namespace OneStrokeDemon.Editor.Localization
                 shaderRoot + "/TMPro_Properties.cginc",
             };
             string[] shaderGuids = AssetDatabase.FindAssets(string.Empty, new[] { shaderRoot });
+            // 逐项处理资源或配置条目，保证生成与验证顺序稳定。
             foreach (string guid in shaderGuids)
             {
                 string assetPath = AssetDatabase.GUIDToAssetPath(guid);
+                // 检查编辑器输入、资源状态或写入边界，避免生成不完整资产。
                 if (!AssetDatabase.IsValidFolder(assetPath) && !retained.Contains(assetPath))
                 {
                     AssetDatabase.DeleteAsset(assetPath);
@@ -188,9 +202,11 @@ namespace OneStrokeDemon.Editor.Localization
             }
         }
 
+        // 确保存在 EnsureTmpSettingsExists 对应的编辑器流程，并保持资源写入与校验结果可追踪。
         private static TMP_Settings EnsureTmpSettingsExists()
         {
             TMP_Settings settings = AssetDatabase.LoadAssetAtPath<TMP_Settings>(TmpSettingsPath);
+            // 检查编辑器输入、资源状态或写入边界，避免生成不完整资产。
             if (settings != null)
             {
                 return settings;
@@ -200,14 +216,17 @@ namespace OneStrokeDemon.Editor.Localization
                 $"TMP Essential Resources did not provide settings at {TmpSettingsPath}.");
         }
 
+        // 确保存在 EnsureTmpEssentialResources 对应的编辑器流程，并保持资源写入与校验结果可追踪。
         private static void EnsureTmpEssentialResources()
         {
             TMP_Settings settings = AssetDatabase.LoadAssetAtPath<TMP_Settings>(TmpSettingsPath);
             Shader distanceField = Shader.Find("TextMeshPro/Mobile/Distance Field");
+            // 检查编辑器输入、资源状态或写入边界，避免生成不完整资产。
             if (settings == null || distanceField == null)
             {
                 UnityEditor.PackageManager.PackageInfo package =
                     UnityEditor.PackageManager.PackageInfo.FindForAssembly(typeof(TMP_Settings).Assembly);
+                // 检查编辑器输入、资源状态或写入边界，避免生成不完整资产。
                 if (package == null)
                 {
                     throw new InvalidOperationException(
@@ -218,6 +237,7 @@ namespace OneStrokeDemon.Editor.Localization
                     package.resolvedPath,
                     "Package Resources",
                     "TMP Essential Resources.unitypackage");
+                // 检查编辑器输入、资源状态或写入边界，避免生成不完整资产。
                 if (!File.Exists(packagePath))
                 {
                     throw new FileNotFoundException(
@@ -231,6 +251,7 @@ namespace OneStrokeDemon.Editor.Localization
                 distanceField = Shader.Find("TextMeshPro/Mobile/Distance Field");
             }
 
+            // 检查编辑器输入、资源状态或写入边界，避免生成不完整资产。
             if (settings == null || distanceField == null)
             {
                 throw new InvalidOperationException(
@@ -238,11 +259,14 @@ namespace OneStrokeDemon.Editor.Localization
             }
         }
 
+        // 处理 EnumerateCodePoints 对应的编辑器流程，并保持资源写入与校验结果可追踪。
         private static IEnumerable<uint> EnumerateCodePoints(string text)
         {
+            // 逐项处理资源或配置条目，保证生成与验证顺序稳定。
             for (int index = 0; index < text.Length; index += 1)
             {
                 char current = text[index];
+                // 检查编辑器输入、资源状态或写入边界，避免生成不完整资产。
                 if (char.IsHighSurrogate(current) &&
                     index + 1 < text.Length &&
                     char.IsLowSurrogate(text[index + 1]))
@@ -252,6 +276,7 @@ namespace OneStrokeDemon.Editor.Localization
                     continue;
                 }
 
+                // 检查编辑器输入、资源状态或写入边界，避免生成不完整资产。
                 if (!char.IsSurrogate(current))
                 {
                     yield return current;
@@ -259,8 +284,10 @@ namespace OneStrokeDemon.Editor.Localization
             }
         }
 
+        // 确保存在 EnsureDirectory 对应的编辑器流程，并保持资源写入与校验结果可追踪。
         private static void EnsureDirectory(string assetDirectory)
         {
+            // 检查编辑器输入、资源状态或写入边界，避免生成不完整资产。
             if (string.IsNullOrEmpty(assetDirectory) || AssetDatabase.IsValidFolder(assetDirectory))
             {
                 return;

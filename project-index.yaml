@@ -1,7 +1,7 @@
 project: OneStrokeDemon
 project_cn: 一笔镇妖
 plan_generated: 2026-07-11
-current_task: T679
+current_task: T680
 current_task_status: READY
 unity:
   project_root: .
@@ -763,14 +763,14 @@ code_commenting:
   baseline_lines: 31727
   policy: chinese_type_method_and_major_logic_comments_without_runtime_semantic_changes
   generated_file_policy: ConfigIds_g_cs_via_exporter_only
-  completed_tasks: [T670, T671, T672, T673, T674, T675, T676, T677, T678]
-  completed_modules: [Core, Platform, Config, Input, Combat, Actors, Skills, Levels, Presentation, Bootstrap]
-  completed_files: 137
-  completed_baseline_lines: 29668
-  current_task: T679
-  current_module: Editor
-  focused_editmode_tests: 21
-  focused_playmode_tests: 7
+  completed_tasks: [T670, T671, T672, T673, T674, T675, T676, T677, T678, T679]
+  completed_modules: [Core, Platform, Config, Input, Combat, Actors, Skills, Levels, Presentation, Bootstrap, Editor]
+  completed_files: 146
+  completed_baseline_lines: 31224
+  current_task: T680
+  current_module: ConfigIdsGenerator
+  focused_editmode_tests: 29
+  focused_playmode_tests: 8
   full_editmode_tests: 198
   full_playmode_tests: 50
 manual_gates:
@@ -819,7 +819,7 @@ wechat_conversion:
 execution_order:
   deferred_tasks: [T120, T130]
   deferral_reason: user_prioritized_main_game_content_over_wechat_devtools_device_and_packaging_work
-  next_content_task: T679
+  next_content_task: T680
   paused_content_task: T700
   reprioritization_reason: user_requested_full_chinese_comments_before_quality_release_tasks
   resume_platform_before: [T640, T750]
