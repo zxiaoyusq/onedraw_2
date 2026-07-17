@@ -3,29 +3,35 @@ using OneStrokeDemon.Config;
 
 namespace OneStrokeDemon.Levels
 {
+    // 定义 BattleResultMetrics 的关卡领域契约，用于描述时间线、流程或持久化边界。
     public readonly struct BattleResultMetrics
     {
+        // 初始化 BattleResultMetrics，并建立关卡流程所需的初始状态。
         public BattleResultMetrics(
             long combatScore,
             int reflectedProjectileCount,
             long playerDamageTaken,
             double gameplayElapsedSeconds)
         {
+            // 检查关卡条件或生命周期边界，避免流程进入不一致状态。
             if (combatScore < 0L)
             {
                 throw new ArgumentOutOfRangeException(nameof(combatScore));
             }
 
+            // 检查关卡条件或生命周期边界，避免流程进入不一致状态。
             if (reflectedProjectileCount < 0)
             {
                 throw new ArgumentOutOfRangeException(nameof(reflectedProjectileCount));
             }
 
+            // 检查关卡条件或生命周期边界，避免流程进入不一致状态。
             if (playerDamageTaken < 0L)
             {
                 throw new ArgumentOutOfRangeException(nameof(playerDamageTaken));
             }
 
+            // 检查关卡条件或生命周期边界，避免流程进入不一致状态。
             if (double.IsNaN(gameplayElapsedSeconds) ||
                 double.IsInfinity(gameplayElapsedSeconds) ||
                 gameplayElapsedSeconds < 0d)
@@ -48,8 +54,10 @@ namespace OneStrokeDemon.Levels
         public double GameplayElapsedSeconds { get; }
     }
 
+    // 定义 ResultScoreSettings 的关卡领域契约，用于描述时间线、流程或持久化边界。
     public sealed class ResultScoreSettings
     {
+        // 初始化 ResultScoreSettings，并建立关卡流程所需的初始状态。
         internal ResultScoreSettings(
             long scorePerReflect,
             long noDamageBonus,
@@ -67,10 +75,13 @@ namespace OneStrokeDemon.Levels
         public long ScorePerRemainingSecond { get; }
     }
 
+    // 定义 ResultScoreSettingsFactory 的关卡领域契约，用于描述时间线、流程或持久化边界。
     public static class ResultScoreSettingsFactory
     {
+        // 创建 Create 对应的关卡逻辑，并保持时间线、进度与结算状态一致。
         public static ResultScoreSettings Create(IConfigProvider configProvider)
         {
+            // 检查关卡条件或生命周期边界，避免流程进入不一致状态。
             if (configProvider == null)
             {
                 throw new ArgumentNullException(nameof(configProvider));
@@ -82,9 +93,11 @@ namespace OneStrokeDemon.Levels
                 ReadNonNegativeInt(configProvider, ConfigIds.GlobalKeys.ResultScorePerRemainingSecond));
         }
 
+        // 处理 ReadNonNegativeInt 对应的关卡逻辑，并保持时间线、进度与结算状态一致。
         private static long ReadNonNegativeInt(IConfigProvider configProvider, string key)
         {
             GlobalConfig row = configProvider.GetGlobal(key);
+            // 检查关卡条件或生命周期边界，避免流程进入不一致状态。
             if (!string.Equals(row.ValueType, "int", StringComparison.Ordinal) ||
                 !row.IntValue.HasValue ||
                 row.IntValue.Value < 0L)
@@ -98,8 +111,10 @@ namespace OneStrokeDemon.Levels
         }
     }
 
+    // 定义 ResultScoreBreakdown 的关卡领域契约，用于描述时间线、流程或持久化边界。
     public readonly struct ResultScoreBreakdown
     {
+        // 初始化 ResultScoreBreakdown，并建立关卡流程所需的初始状态。
         internal ResultScoreBreakdown(
             long combatScore,
             long reflectedProjectileScore,
@@ -133,24 +148,29 @@ namespace OneStrokeDemon.Levels
         public int Stars { get; }
     }
 
+    // 定义 ResultScoring 的关卡领域契约，用于描述时间线、流程或持久化边界。
     public static class ResultScoring
     {
+        // 计算 Calculate 对应的关卡逻辑，并保持时间线、进度与结算状态一致。
         public static ResultScoreBreakdown Calculate(
             ResultScoreSettings settings,
             LevelConfig level,
             BattleSettlement settlement,
             in BattleResultMetrics metrics)
         {
+            // 检查关卡条件或生命周期边界，避免流程进入不一致状态。
             if (settings == null)
             {
                 throw new ArgumentNullException(nameof(settings));
             }
 
+            // 检查关卡条件或生命周期边界，避免流程进入不一致状态。
             if (level == null)
             {
                 throw new ArgumentNullException(nameof(level));
             }
 
+            // 检查关卡条件或生命周期边界，避免流程进入不一致状态。
             if (settlement != BattleSettlement.Victory &&
                 settlement != BattleSettlement.Defeat)
             {
@@ -161,6 +181,7 @@ namespace OneStrokeDemon.Levels
             long noDamageScore = 0L;
             long remainingTimeScore = 0L;
             long remainingWholeSeconds = 0L;
+            // 检查关卡条件或生命周期边界，避免流程进入不一致状态。
             if (settlement == BattleSettlement.Victory)
             {
                 double remainingSeconds = Math.Max(
@@ -197,13 +218,16 @@ namespace OneStrokeDemon.Levels
                 stars);
         }
 
+        // 计算 CalculateStars 对应的关卡逻辑，并保持时间线、进度与结算状态一致。
         private static int CalculateStars(LevelConfig level, long score)
         {
+            // 检查关卡条件或生命周期边界，避免流程进入不一致状态。
             if (score >= level.StarScore3)
             {
                 return 3;
             }
 
+            // 检查关卡条件或生命周期边界，避免流程进入不一致状态。
             if (score >= level.StarScore2)
             {
                 return 2;

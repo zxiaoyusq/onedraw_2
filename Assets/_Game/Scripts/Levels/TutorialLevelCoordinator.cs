@@ -4,6 +4,7 @@ using OneStrokeDemon.Skills;
 
 namespace OneStrokeDemon.Levels
 {
+    // 定义 TutorialLevelCoordinator 的关卡领域契约，用于描述时间线、流程或持久化边界。
     public sealed class TutorialLevelCoordinator
     {
         private readonly BattleFlowCoordinator battle;
@@ -11,6 +12,7 @@ namespace OneStrokeDemon.Levels
         private bool battleReadyPublished;
         private bool tutorialCompletionGatePending;
 
+        // 初始化 TutorialLevelCoordinator，并建立关卡流程所需的初始状态。
         public TutorialLevelCoordinator(
             IConfigProvider configProvider,
             string playerId,
@@ -27,6 +29,7 @@ namespace OneStrokeDemon.Levels
         {
         }
 
+        // 初始化 TutorialLevelCoordinator，并建立关卡流程所需的初始状态。
         public TutorialLevelCoordinator(
             BattleFlowCoordinator battleFlow,
             TutorialSequence tutorialSequence)
@@ -34,6 +37,7 @@ namespace OneStrokeDemon.Levels
             battle = battleFlow ?? throw new ArgumentNullException(nameof(battleFlow));
             tutorial = tutorialSequence ??
                 throw new ArgumentNullException(nameof(tutorialSequence));
+            // 检查关卡条件或生命周期边界，避免流程进入不一致状态。
             if (!string.Equals(
                     battle.Level.Definition.LevelId,
                     tutorial.Definition.LevelId,
@@ -51,6 +55,7 @@ namespace OneStrokeDemon.Levels
 
         public TutorialSequence Tutorial => tutorial;
 
+        // 推进 Advance 对应的关卡逻辑，并保持时间线、进度与结算状态一致。
         public BattleFlowAdvanceReport Advance(
             double unscaledDeltaSeconds,
             bool playerDied = false)
@@ -59,6 +64,7 @@ namespace OneStrokeDemon.Levels
                 unscaledDeltaSeconds,
                 playerDied);
 
+            // 检查关卡条件或生命周期边界，避免流程进入不一致状态。
             if (!battleReadyPublished &&
                 IsGameplayActive(report.State) &&
                 tutorial.State != TutorialSequenceState.Completed)
@@ -75,6 +81,7 @@ namespace OneStrokeDemon.Levels
             return report;
         }
 
+        // 处理 SkipTutorial 对应的关卡逻辑，并保持时间线、进度与结算状态一致。
         public TutorialUpdateReport SkipTutorial()
         {
             TutorialUpdateReport report = tutorial.Skip();
@@ -84,9 +91,11 @@ namespace OneStrokeDemon.Levels
             return report;
         }
 
+        // 处理 NotifyGameplayEvent 对应的关卡逻辑，并保持时间线、进度与结算状态一致。
         public TutorialUpdateReport NotifyGameplayEvent(
             in TutorialGameplayEvent gameplayEvent)
         {
+            // 检查关卡条件或生命周期边界，避免流程进入不一致状态。
             if (!gameplayEvent.IsValid)
             {
                 throw new ArgumentException(
@@ -94,6 +103,7 @@ namespace OneStrokeDemon.Levels
                     nameof(gameplayEvent));
             }
 
+            // 检查关卡条件或生命周期边界，避免流程进入不一致状态。
             if (!IsGameplayActive(battle.Flow.State) ||
                 tutorial.State == TutorialSequenceState.Completed)
             {
@@ -106,9 +116,11 @@ namespace OneStrokeDemon.Levels
             return report;
         }
 
+        // 处理 NotifyEnemyDefeated 对应的关卡逻辑，并保持时间线、进度与结算状态一致。
         public bool NotifyEnemyDefeated(long entityId)
         {
             bool accepted = battle.NotifyEnemyDefeated(entityId);
+            // 检查关卡条件或生命周期边界，避免流程进入不一致状态。
             if (accepted)
             {
                 TryConfirmCompletedTutorialGate();
@@ -117,21 +129,25 @@ namespace OneStrokeDemon.Levels
             return accepted;
         }
 
+        // 尝试执行 TryBeginUltimateDrawing 对应的关卡逻辑，并保持时间线、进度与结算状态一致。
         public bool TryBeginUltimateDrawing()
         {
             return battle.TryBeginUltimateDrawing();
         }
 
+        // 判断是否允许 CanAcceptUltimateGestureEvent 对应的关卡逻辑，并保持时间线、进度与结算状态一致。
         public bool CanAcceptUltimateGestureEvent(ulong gestureEventId)
         {
             return battle.CanAcceptUltimateGestureEvent(gestureEventId);
         }
 
+        // 解析 ResolveUltimate 对应的关卡逻辑，并保持时间线、进度与结算状态一致。
         public bool ResolveUltimate(
             ulong gestureEventId,
             in SkillActivationResult result)
         {
             bool resolved = battle.ResolveUltimate(gestureEventId, result);
+            // 检查关卡条件或生命周期边界，避免流程进入不一致状态。
             if (resolved && result.Succeeded)
             {
                 NotifyGameplayEvent(new TutorialGameplayEvent(
@@ -148,11 +164,13 @@ namespace OneStrokeDemon.Levels
             return resolved;
         }
 
+        // 判断是否允许 CancelUltimateDrawing 对应的关卡逻辑，并保持时间线、进度与结算状态一致。
         public bool CancelUltimateDrawing()
         {
             return battle.CancelUltimateDrawing();
         }
 
+        // 设置 SetPlayerPaused 对应的关卡逻辑，并保持时间线、进度与结算状态一致。
         public bool SetPlayerPaused(bool paused)
         {
             bool changed = battle.SetPlayerPaused(paused);
@@ -160,6 +178,7 @@ namespace OneStrokeDemon.Levels
             return changed;
         }
 
+        // 设置 SetApplicationFocus 对应的关卡逻辑，并保持时间线、进度与结算状态一致。
         public bool SetApplicationFocus(bool hasFocus)
         {
             bool changed = battle.SetApplicationFocus(hasFocus);
@@ -167,6 +186,7 @@ namespace OneStrokeDemon.Levels
             return changed;
         }
 
+        // 设置 SetApplicationPaused 对应的关卡逻辑，并保持时间线、进度与结算状态一致。
         public bool SetApplicationPaused(bool paused)
         {
             bool changed = battle.SetApplicationPaused(paused);
@@ -174,13 +194,16 @@ namespace OneStrokeDemon.Levels
             return changed;
         }
 
+        // 应用 ApplyGameplayScale 对应的关卡逻辑，并保持时间线、进度与结算状态一致。
         public void ApplyGameplayScale(double scale, double durationSeconds)
         {
             battle.ApplyGameplayScale(scale, durationSeconds);
         }
 
+        // 应用 ApplyTutorialUpdate 对应的关卡逻辑，并保持时间线、进度与结算状态一致。
         private void ApplyTutorialUpdate(in TutorialUpdateReport report)
         {
+            // 检查关卡条件或生命周期边界，避免流程进入不一致状态。
             if (!report.TutorialCompleted)
             {
                 return;
@@ -190,13 +213,16 @@ namespace OneStrokeDemon.Levels
             TryConfirmCompletedTutorialGate();
         }
 
+        // 尝试执行 TryConfirmCompletedTutorialGate 对应的关卡逻辑，并保持时间线、进度与结算状态一致。
         private void TryConfirmCompletedTutorialGate()
         {
+            // 检查关卡条件或生命周期边界，避免流程进入不一致状态。
             if (!tutorialCompletionGatePending)
             {
                 return;
             }
 
+            // 检查关卡条件或生命周期边界，避免流程进入不一致状态。
             if (battle.Level.State == LevelRunnerState.Completed)
             {
                 tutorialCompletionGatePending = false;
@@ -204,6 +230,7 @@ namespace OneStrokeDemon.Levels
             }
 
             WaveRunner wave = battle.Level.CurrentWave;
+            // 检查关卡条件或生命周期边界，避免流程进入不一致状态。
             if (wave.Definition.EndCondition != WaveEndCondition.PlayerConfirmed ||
                 !wave.Scheduler.IsComplete ||
                 wave.ActiveCount != 0)
@@ -211,15 +238,18 @@ namespace OneStrokeDemon.Levels
                 return;
             }
 
+            // 检查关卡条件或生命周期边界，避免流程进入不一致状态。
             if (battle.ConfirmPlayerAction())
             {
                 tutorialCompletionGatePending = false;
             }
         }
 
+        // 处理 SynchronizeLevelProgressGate 对应的关卡逻辑，并保持时间线、进度与结算状态一致。
         private void SynchronizeLevelProgressGate()
         {
             bool blocked = false;
+            // 检查关卡条件或生命周期边界，避免流程进入不一致状态。
             if (battle.Level.State != LevelRunnerState.Completed &&
                 tutorial.State == TutorialSequenceState.Active)
             {
@@ -230,6 +260,7 @@ namespace OneStrokeDemon.Levels
             battle.Level.SetProgressBlocked(blocked);
         }
 
+        // 判断是否 IsGameplayActive 对应的关卡逻辑，并保持时间线、进度与结算状态一致。
         private static bool IsGameplayActive(BattleFlowState state)
         {
             return state == BattleFlowState.Playing ||

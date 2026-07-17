@@ -3,8 +3,10 @@ using System.Collections.Generic;
 
 namespace OneStrokeDemon.Levels
 {
+    // 定义 LevelSpawnRequest 的关卡领域契约，用于描述时间线、流程或持久化边界。
     public readonly struct LevelSpawnRequest
     {
+        // 初始化 LevelSpawnRequest，并建立关卡流程所需的初始状态。
         internal LevelSpawnRequest(
             long scheduleSequence,
             string levelId,
@@ -76,29 +78,35 @@ namespace OneStrokeDemon.Levels
             Pattern != SpawnPattern.None &&
             Modifier.IsConfigured;
 
+        // 判断是否 IsFinite 对应的关卡逻辑，并保持时间线、进度与结算状态一致。
         private static bool IsFinite(double value)
         {
             return !double.IsNaN(value) && !double.IsInfinity(value);
         }
     }
 
+    // 定义 SpawnScheduler 的关卡领域契约，用于描述时间线、流程或持久化边界。
     public sealed class SpawnScheduler
     {
         private const double TimelineEpsilon = 0.000001d;
         private readonly LevelSpawnRequest[] schedule;
         private int nextIndex;
 
+        // 初始化 SpawnScheduler，并建立关卡流程所需的初始状态。
         public SpawnScheduler(WaveDefinition wave)
         {
+            // 检查关卡条件或生命周期边界，避免流程进入不一致状态。
             if (wave == null)
             {
                 throw new ArgumentNullException(nameof(wave));
             }
 
             var entries = new List<PendingSpawn>();
+            // 按确定顺序处理时间线或配置集合，保证关卡结果可复现。
             for (int spawnIndex = 0; spawnIndex < wave.Spawns.Count; spawnIndex++)
             {
                 SpawnDefinition spawn = wave.Spawns[spawnIndex];
+                // 按确定顺序处理时间线或配置集合，保证关卡结果可复现。
                 for (int occurrence = 0; occurrence < spawn.Count; occurrence++)
                 {
                     entries.Add(new PendingSpawn(
@@ -110,6 +118,7 @@ namespace OneStrokeDemon.Levels
 
             entries.Sort(PendingSpawnComparer.Instance);
             schedule = new LevelSpawnRequest[entries.Count];
+            // 按确定顺序处理时间线或配置集合，保证关卡结果可复现。
             for (int index = 0; index < entries.Count; index++)
             {
                 PendingSpawn pending = entries[index];
@@ -145,11 +154,13 @@ namespace OneStrokeDemon.Levels
 
         public bool IsComplete => nextIndex >= schedule.Length;
 
+        // 尝试执行 TryGetNextDue 对应的关卡逻辑，并保持时间线、进度与结算状态一致。
         public bool TryGetNextDue(
             double waveElapsedSeconds,
             out LevelSpawnRequest request)
         {
             ValidateElapsed(waveElapsedSeconds);
+            // 检查关卡条件或生命周期边界，避免流程进入不一致状态。
             if (nextIndex >= schedule.Length ||
                 schedule[nextIndex].ScheduledWaveSeconds - waveElapsedSeconds >
                 TimelineEpsilon)
@@ -162,14 +173,17 @@ namespace OneStrokeDemon.Levels
             return true;
         }
 
+        // 处理 Commit 对应的关卡逻辑，并保持时间线、进度与结算状态一致。
         public void Commit(in LevelSpawnRequest request)
         {
+            // 检查关卡条件或生命周期边界，避免流程进入不一致状态。
             if (nextIndex >= schedule.Length)
             {
                 throw new InvalidOperationException("Spawn schedule is already complete.");
             }
 
             LevelSpawnRequest expected = schedule[nextIndex];
+            // 检查关卡条件或生命周期边界，避免流程进入不一致状态。
             if (!request.IsValid ||
                 request.ScheduleSequence != expected.ScheduleSequence ||
                 !string.Equals(request.SpawnId, expected.SpawnId, StringComparison.Ordinal) ||
@@ -182,8 +196,10 @@ namespace OneStrokeDemon.Levels
             nextIndex++;
         }
 
+        // 校验 ValidateElapsed 对应的关卡逻辑，并保持时间线、进度与结算状态一致。
         private static void ValidateElapsed(double value)
         {
+            // 检查关卡条件或生命周期边界，避免流程进入不一致状态。
             if (double.IsNaN(value) || double.IsInfinity(value) || value < 0d)
             {
                 throw new ArgumentOutOfRangeException(
@@ -193,8 +209,10 @@ namespace OneStrokeDemon.Levels
             }
         }
 
+        // 定义 PendingSpawn 的关卡领域契约，用于描述时间线、流程或持久化边界。
         private readonly struct PendingSpawn
         {
+            // 初始化 PendingSpawn，并建立关卡流程所需的初始状态。
             public PendingSpawn(
                 SpawnDefinition spawn,
                 int occurrenceIndex,
@@ -212,14 +230,17 @@ namespace OneStrokeDemon.Levels
             public double DueSeconds { get; }
         }
 
+        // 定义 PendingSpawnComparer 的关卡领域契约，用于描述时间线、流程或持久化边界。
         private sealed class PendingSpawnComparer : IComparer<PendingSpawn>
         {
             public static readonly PendingSpawnComparer Instance =
                 new PendingSpawnComparer();
 
+            // 处理 Compare 对应的关卡逻辑，并保持时间线、进度与结算状态一致。
             public int Compare(PendingSpawn left, PendingSpawn right)
             {
                 int time = left.DueSeconds.CompareTo(right.DueSeconds);
+                // 检查关卡条件或生命周期边界，避免流程进入不一致状态。
                 if (time != 0)
                 {
                     return time;
@@ -235,8 +256,10 @@ namespace OneStrokeDemon.Levels
         }
     }
 
+    // 定义 SpawnRegionSampler 的关卡领域契约，用于描述时间线、流程或持久化边界。
     internal static class SpawnRegionSampler
     {
+        // 处理 Sample 对应的关卡逻辑，并保持时间线、进度与结算状态一致。
         public static NormalizedSpawnPosition Sample(
             in SpawnPointDefinition point,
             SpawnPattern pattern,
@@ -244,16 +267,19 @@ namespace OneStrokeDemon.Levels
             int occurrenceIndex,
             int count)
         {
+            // 检查关卡条件或生命周期边界，避免流程进入不一致状态。
             if (!point.IsConfigured)
             {
                 throw new ArgumentException("Spawn point must be configured.", nameof(point));
             }
 
+            // 检查关卡条件或生命周期边界，避免流程进入不一致状态。
             if (string.IsNullOrEmpty(spawnId))
             {
                 throw new ArgumentException("Spawn id must be non-empty.", nameof(spawnId));
             }
 
+            // 检查关卡条件或生命周期边界，避免流程进入不一致状态。
             if (occurrenceIndex < 0 || count <= 0 || occurrenceIndex >= count)
             {
                 throw new ArgumentOutOfRangeException(
@@ -264,6 +290,7 @@ namespace OneStrokeDemon.Levels
 
             double xOffset = 0d;
             double yOffset = 0d;
+            // 按当前流程、事件或奖励类型选择对应处理分支。
             switch (pattern)
             {
                 case SpawnPattern.Single:
@@ -293,11 +320,13 @@ namespace OneStrokeDemon.Levels
                 point.NormalizedY + (yOffset * point.JitterY));
         }
 
+        // 处理 StableUnit 对应的关卡逻辑，并保持时间线、进度与结算状态一致。
         private static double StableUnit(string spawnId, int occurrenceIndex, uint salt)
         {
             const uint offsetBasis = 2166136261u;
             const uint prime = 16777619u;
             uint hash = offsetBasis ^ salt;
+            // 按确定顺序处理时间线或配置集合，保证关卡结果可复现。
             for (int index = 0; index < spawnId.Length; index++)
             {
                 hash ^= spawnId[index];
@@ -309,6 +338,7 @@ namespace OneStrokeDemon.Levels
             return (hash & 0x00FFFFFFu) / 16777215d;
         }
 
+        // 处理 Lerp 对应的关卡逻辑，并保持时间线、进度与结算状态一致。
         private static double Lerp(double from, double to, double t)
         {
             return from + ((to - from) * t);

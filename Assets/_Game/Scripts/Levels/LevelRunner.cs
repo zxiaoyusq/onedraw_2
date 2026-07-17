@@ -4,11 +4,13 @@ using OneStrokeDemon.Config;
 
 namespace OneStrokeDemon.Levels
 {
+    // 定义 ILevelSpawnWorld 的关卡领域契约，用于描述时间线、流程或持久化边界。
     public interface ILevelSpawnWorld
     {
         bool TrySpawn(in LevelSpawnRequest request, out long entityId);
     }
 
+    // 定义 LevelRunnerState 的关卡领域契约，用于描述时间线、流程或持久化边界。
     public enum LevelRunnerState
     {
         Ready = 0,
@@ -16,6 +18,7 @@ namespace OneStrokeDemon.Levels
         Completed = 2,
     }
 
+    // 定义 LevelRuntimeEventKind 的关卡领域契约，用于描述时间线、流程或持久化边界。
     public enum LevelRuntimeEventKind
     {
         None = 0,
@@ -25,8 +28,10 @@ namespace OneStrokeDemon.Levels
         LevelCompleted = 4,
     }
 
+    // 定义 LevelRuntimeEvent 的关卡领域契约，用于描述时间线、流程或持久化边界。
     public readonly struct LevelRuntimeEvent
     {
+        // 初始化 LevelRuntimeEvent，并建立关卡流程所需的初始状态。
         private LevelRuntimeEvent(
             LevelRuntimeEventKind kind,
             string levelId,
@@ -63,6 +68,7 @@ namespace OneStrokeDemon.Levels
 
         public long EntityId { get; }
 
+        // 处理 WaveStarted 对应的关卡逻辑，并保持时间线、进度与结算状态一致。
         internal static LevelRuntimeEvent WaveStarted(
             WaveDefinition wave,
             double levelSeconds)
@@ -78,6 +84,7 @@ namespace OneStrokeDemon.Levels
                 0L);
         }
 
+        // 处理 EnemySpawned 对应的关卡逻辑，并保持时间线、进度与结算状态一致。
         internal static LevelRuntimeEvent EnemySpawned(
             in LevelSpawnRequest request,
             long entityId,
@@ -94,6 +101,7 @@ namespace OneStrokeDemon.Levels
                 entityId);
         }
 
+        // 处理 WaveCompleted 对应的关卡逻辑，并保持时间线、进度与结算状态一致。
         internal static LevelRuntimeEvent WaveCompleted(
             WaveDefinition wave,
             double levelSeconds)
@@ -109,6 +117,7 @@ namespace OneStrokeDemon.Levels
                 0L);
         }
 
+        // 处理 LevelCompleted 对应的关卡逻辑，并保持时间线、进度与结算状态一致。
         internal static LevelRuntimeEvent LevelCompleted(
             LevelDefinition level,
             double levelSeconds)
@@ -125,8 +134,10 @@ namespace OneStrokeDemon.Levels
         }
     }
 
+    // 定义 LevelAdvanceReport 的关卡领域契约，用于描述时间线、流程或持久化边界。
     public sealed class LevelAdvanceReport
     {
+        // 初始化 LevelAdvanceReport，并建立关卡流程所需的初始状态。
         internal LevelAdvanceReport(IReadOnlyList<LevelRuntimeEvent> events)
         {
             Events = events;
@@ -137,6 +148,7 @@ namespace OneStrokeDemon.Levels
         public int Count => Events.Count;
     }
 
+    // 定义 LevelRunner 的关卡领域契约，用于描述时间线、流程或持久化边界。
     public sealed class LevelRunner
     {
         private readonly LevelDefinition definition;
@@ -144,6 +156,7 @@ namespace OneStrokeDemon.Levels
         private int currentWaveIndex;
         private WaveRunner currentWave;
 
+        // 初始化 LevelRunner，并建立关卡流程所需的初始状态。
         public LevelRunner(
             IConfigProvider configProvider,
             string levelId,
@@ -152,6 +165,7 @@ namespace OneStrokeDemon.Levels
         {
         }
 
+        // 初始化 LevelRunner，并建立关卡流程所需的初始状态。
         public LevelRunner(
             LevelDefinition configuredDefinition,
             ILevelSpawnWorld spawnWorld)
@@ -184,22 +198,27 @@ namespace OneStrokeDemon.Levels
         public bool DurationLimitReached =>
             ElapsedSeconds >= definition.DurationLimitSeconds;
 
+        // 设置 SetPaused 对应的关卡逻辑，并保持时间线、进度与结算状态一致。
         public void SetPaused(bool paused)
         {
+            // 检查关卡条件或生命周期边界，避免流程进入不一致状态。
             if (State != LevelRunnerState.Completed)
             {
                 IsPaused = paused;
             }
         }
 
+        // 设置 SetProgressBlocked 对应的关卡逻辑，并保持时间线、进度与结算状态一致。
         public void SetProgressBlocked(bool blocked)
         {
+            // 检查关卡条件或生命周期边界，避免流程进入不一致状态。
             if (State != LevelRunnerState.Completed)
             {
                 IsProgressBlocked = blocked;
             }
         }
 
+        // 处理 ConfirmPlayerAction 对应的关卡逻辑，并保持时间线、进度与结算状态一致。
         public bool ConfirmPlayerAction()
         {
             return !IsPaused &&
@@ -207,27 +226,32 @@ namespace OneStrokeDemon.Levels
                    currentWave.ConfirmPlayerAction(ElapsedSeconds);
         }
 
+        // 处理 NotifyEnemyDefeated 对应的关卡逻辑，并保持时间线、进度与结算状态一致。
         public bool NotifyEnemyDefeated(long entityId)
         {
             return State != LevelRunnerState.Completed &&
                    currentWave.NotifyEnemyDefeated(entityId);
         }
 
+        // 推进 Advance 对应的关卡逻辑，并保持时间线、进度与结算状态一致。
         public LevelAdvanceReport Advance(double deltaSeconds)
         {
             ValidateDelta(deltaSeconds);
             var events = new List<LevelRuntimeEvent>();
+            // 检查关卡条件或生命周期边界，避免流程进入不一致状态。
             if (IsPaused || State == LevelRunnerState.Completed)
             {
                 return new LevelAdvanceReport(Array.AsReadOnly(events.ToArray()));
             }
 
+            // 检查关卡条件或生命周期边界，避免流程进入不一致状态。
             if (State == LevelRunnerState.Ready)
             {
                 State = LevelRunnerState.Running;
             }
 
             ElapsedSeconds += deltaSeconds;
+            // 按确定顺序处理时间线或配置集合，保证关卡结果可复现。
             while (State == LevelRunnerState.Running)
             {
                 currentWave.Advance(
@@ -235,11 +259,13 @@ namespace OneStrokeDemon.Levels
                     world,
                     events,
                     IsProgressBlocked);
+                // 检查关卡条件或生命周期边界，避免流程进入不一致状态。
                 if (!currentWave.IsCompleted)
                 {
                     break;
                 }
 
+                // 检查关卡条件或生命周期边界，避免流程进入不一致状态。
                 if (currentWaveIndex + 1 >= definition.Waves.Count)
                 {
                     State = LevelRunnerState.Completed;
@@ -262,8 +288,10 @@ namespace OneStrokeDemon.Levels
             return new LevelAdvanceReport(Array.AsReadOnly(events.ToArray()));
         }
 
+        // 校验 ValidateDelta 对应的关卡逻辑，并保持时间线、进度与结算状态一致。
         private static void ValidateDelta(double value)
         {
+            // 检查关卡条件或生命周期边界，避免流程进入不一致状态。
             if (double.IsNaN(value) || double.IsInfinity(value) || value < 0d)
             {
                 throw new ArgumentOutOfRangeException(

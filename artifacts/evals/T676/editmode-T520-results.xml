@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="5" result="Passed" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-07-17 06:16:14Z" end-time="2026-07-17 06:16:15Z" duration="0.6329004">
+  <test-suite type="TestSuite" id="1000" name="onedraw_2" fullname="onedraw_2" runstate="Runnable" testcasecount="198" result="Passed" start-time="2026-07-17 06:16:14Z" end-time="2026-07-17 06:16:15Z" duration="0.632900" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="EditMode" />
+    </properties>
+    <test-suite type="Assembly" id="1241" name="OneStrokeDemon.Tests.EditMode.dll" fullname="/Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/Library/ScriptAssemblies/OneStrokeDemon.Tests.EditMode.dll" runstate="Runnable" testcasecount="198" result="Passed" start-time="2026-07-17 06:16:14Z" end-time="2026-07-17 06:16:15Z" duration="0.625280" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="35833" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="EditMode" />
+        <property name="EditorOnly" value="True" />
+      </properties>
+      <test-suite type="TestSuite" id="1242" name="OneStrokeDemon" fullname="OneStrokeDemon" runstate="Runnable" testcasecount="198" result="Passed" start-time="2026-07-17 06:16:14Z" end-time="2026-07-17 06:16:15Z" duration="0.621861" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1243" name="Tests" fullname="OneStrokeDemon.Tests" runstate="Runnable" testcasecount="198" result="Passed" start-time="2026-07-17 06:16:14Z" end-time="2026-07-17 06:16:15Z" duration="0.618798" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestSuite" id="1244" name="EditMode" fullname="OneStrokeDemon.Tests.EditMode" runstate="Runnable" testcasecount="198" result="Passed" start-time="2026-07-17 06:16:14Z" end-time="2026-07-17 06:16:15Z" duration="0.615896" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-suite type="TestSuite" id="1254" name="T520" fullname="OneStrokeDemon.Tests.EditMode.T520" runstate="Runnable" testcasecount="5" result="Passed" start-time="2026-07-17 06:16:14Z" end-time="2026-07-17 06:16:15Z" duration="0.611851" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-suite type="TestFixture" id="1074" name="TutorialFlowTests" fullname="OneStrokeDemon.Tests.EditMode.T520.TutorialFlowTests" classname="OneStrokeDemon.Tests.EditMode.T520.TutorialFlowTests" runstate="Runnable" testcasecount="5" result="Passed" start-time="2026-07-17 06:16:14Z" end-time="2026-07-17 06:16:15Z" duration="0.611204" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
+                <properties>
+                  <property name="Category" value="T520" />
+                </properties>
+                <test-case id="1078" name="CoordinatorBlocksWaveCompletionOnlyWhileCurrentActionIsActive" fullname="OneStrokeDemon.Tests.EditMode.T520.TutorialFlowTests.CoordinatorBlocksWaveCompletionOnlyWhileCurrentActionIsActive" methodname="CoordinatorBlocksWaveCompletionOnlyWhileCurrentActionIsActive" classname="OneStrokeDemon.Tests.EditMode.T520.TutorialFlowTests" runstate="Runnable" seed="1546383360" result="Passed" start-time="2026-07-17 06:16:14Z" end-time="2026-07-17 06:16:14Z" duration="0.240673" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1076" name="SequenceRejectsWrongEventsAndTimerCannotCompleteAnAction" fullname="OneStrokeDemon.Tests.EditMode.T520.TutorialFlowTests.SequenceRejectsWrongEventsAndTimerCannotCompleteAnAction" methodname="SequenceRejectsWrongEventsAndTimerCannotCompleteAnAction" classname="OneStrokeDemon.Tests.EditMode.T520.TutorialFlowTests" runstate="Runnable" seed="243282870" result="Passed" start-time="2026-07-17 06:16:14Z" end-time="2026-07-17 06:16:14Z" duration="0.075132" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1075" name="TutorialLevelUsesSixConfiguredEventDrivenStepsAndWaves" fullname="OneStrokeDemon.Tests.EditMode.T520.TutorialFlowTests.TutorialLevelUsesSixConfiguredEventDrivenStepsAndWaves" methodname="TutorialLevelUsesSixConfiguredEventDrivenStepsAndWaves" classname="OneStrokeDemon.Tests.EditMode.T520.TutorialFlowTests" runstate="Runnable" seed="1576022419" result="Passed" start-time="2026-07-17 06:16:14Z" end-time="2026-07-17 06:16:14Z" duration="0.045131" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1079" name="UnsupportedOrMalformedTutorialProtocolsFailBeforeRuntimeUse" fullname="OneStrokeDemon.Tests.EditMode.T520.TutorialFlowTests.UnsupportedOrMalformedTutorialProtocolsFailBeforeRuntimeUse" methodname="UnsupportedOrMalformedTutorialProtocolsFailBeforeRuntimeUse" classname="OneStrokeDemon.Tests.EditMode.T520.TutorialFlowTests" runstate="Runnable" seed="938256439" result="Passed" start-time="2026-07-17 06:16:14Z" end-time="2026-07-17 06:16:15Z" duration="0.221977" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1077" name="ValidCompletionLatchesUntilMinimumDisplayAndThresholdIsInclusive" fullname="OneStrokeDemon.Tests.EditMode.T520.TutorialFlowTests.ValidCompletionLatchesUntilMinimumDisplayAndThresholdIsInclusive" methodname="ValidCompletionLatchesUntilMinimumDisplayAndThresholdIsInclusive" classname="OneStrokeDemon.Tests.EditMode.T520.TutorialFlowTests" runstate="Runnable" seed="1976363948" result="Passed" start-time="2026-07-17 06:16:15Z" end-time="2026-07-17 06:16:15Z" duration="0.017910" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                  <output><![CDATA[<b><color=#2EA3FF>MCP-FOR-UNITY</color></b>: [TestRunnerNoThrottle] Restored Interaction Mode after test run.
+Saving results to: /Users/cqmizhangxiaoyu2/Library/Application Support/DefaultCompany/onedraw_2/TestResults.xml
+]]></output>
+                </test-case>
+              </test-suite>
+            </test-suite>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

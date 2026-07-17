@@ -55,8 +55,8 @@
 | T673 | P6 代码可读性 | DONE | T672 | 1.0 | 为Combat脚本补齐中文注释。 |
 | T674 | P6 代码可读性 | DONE | T673 | 1.5 | 为Actors脚本补齐中文注释。 |
 | T675 | P6 代码可读性 | DONE | T674 | 1.0 | 为Skills脚本补齐中文注释。 |
-| T676 | P6 代码可读性 | READY | T675 | 1.5 | 为Levels脚本补齐中文注释。 |
-| T677 | P6 代码可读性 | BACKLOG | T676 | 1.5 | 为Presentation脚本补齐中文注释。 |
+| T676 | P6 代码可读性 | DONE | T675 | 1.5 | 为Levels脚本补齐中文注释。 |
+| T677 | P6 代码可读性 | READY | T676 | 1.5 | 为Presentation脚本补齐中文注释。 |
 | T678 | P6 代码可读性 | BACKLOG | T677 | 1.0 | 为Bootstrap脚本补齐中文注释。 |
 | T679 | P6 代码可读性 | BACKLOG | T678 | 1.0 | 为Editor脚本补齐中文注释。 |
 | T680 | P6 代码可读性 | BACKLOG | T679 | 0.5 | 通过导出器为ConfigIds生成中文注释。 |
@@ -624,7 +624,7 @@
 
 ### T671–T681 · 分模块补齐其余中文注释并审计。
 
-- **状态：** T671–T675为`DONE`，T676为`READY`，T677–T681为`BACKLOG`
+- **状态：** T671–T676为`DONE`，T677为`READY`，T678–T681为`BACKLOG`
 - **依赖：** 按T671→T681顺序串行，首任务依赖T670。
 - **产出：** Config手写Runtime、Input、Combat、Actors、Skills、Levels、Presentation、Bootstrap、Editor、ConfigIds生成器/生成物，以及最终全量审计。
 - **明确不做：** 不把注释批次变成功能重构；不手改受管生成文件。
@@ -638,8 +638,8 @@
 | T673 | DONE | T672 | Combat |
 | T674 | DONE | T673 | Actors |
 | T675 | DONE | T674 | Skills |
-| T676 | READY | T675 | Levels |
-| T677 | BACKLOG | T676 | Presentation |
+| T676 | DONE | T675 | Levels |
+| T677 | READY | T676 | Presentation |
 | T678 | BACKLOG | T677 | Bootstrap |
 | T679 | BACKLOG | T678 | Editor |
 | T680 | BACKLOG | T679 | ConfigExporter注释生成逻辑与重新生成`ConfigIds.g.cs` |

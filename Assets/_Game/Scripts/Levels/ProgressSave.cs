@@ -7,6 +7,7 @@ using Newtonsoft.Json.Linq;
 
 namespace OneStrokeDemon.Levels
 {
+    // 定义 IProgressSaveStore 的关卡领域契约，用于描述时间线、流程或持久化边界。
     public interface IProgressSaveStore
     {
         bool TryRead(out string payload);
@@ -14,6 +15,7 @@ namespace OneStrokeDemon.Levels
         void Write(string payload);
     }
 
+    // 定义 IProgressSaveMigration 的关卡领域契约，用于描述时间线、流程或持久化边界。
     public interface IProgressSaveMigration
     {
         int SourceVersion { get; }
@@ -23,6 +25,7 @@ namespace OneStrokeDemon.Levels
         JObject Migrate(JObject source);
     }
 
+    // 定义 ITutorialCompletionProgress 的关卡领域契约，用于描述时间线、流程或持久化边界。
     public interface ITutorialCompletionProgress
     {
         bool IsTutorialCompleted(string tutorialId);
@@ -30,6 +33,7 @@ namespace OneStrokeDemon.Levels
         bool MarkTutorialCompleted(string tutorialId);
     }
 
+    // 定义 ProgressLoadStatus 的关卡领域契约，用于描述时间线、流程或持久化边界。
     public enum ProgressLoadStatus
     {
         Missing = 0,
@@ -39,8 +43,10 @@ namespace OneStrokeDemon.Levels
         RecoveredIncompatible = 4,
     }
 
+    // 定义 LevelProgress 的关卡领域契约，用于描述时间线、流程或持久化边界。
     public readonly struct LevelProgress
     {
+        // 初始化 LevelProgress，并建立关卡流程所需的初始状态。
         internal LevelProgress(
             string levelId,
             long bestScore,
@@ -62,6 +68,7 @@ namespace OneStrokeDemon.Levels
         public long ClearCount { get; }
     }
 
+    // 定义 ProgressSnapshot 的关卡领域契约，用于描述时间线、流程或持久化边界。
     public sealed class ProgressSnapshot
     {
         private readonly Dictionary<string, LevelProgress> levelsById;
@@ -70,6 +77,7 @@ namespace OneStrokeDemon.Levels
         private readonly HashSet<string> appliedSettlementSet;
         private readonly HashSet<string> completedTutorialSet;
 
+        // 初始化 ProgressSnapshot，并建立关卡流程所需的初始状态。
         internal ProgressSnapshot(
             long revision,
             long scoreTokens,
@@ -79,11 +87,13 @@ namespace OneStrokeDemon.Levels
             IEnumerable<string> appliedSettlementIds,
             IEnumerable<string> completedTutorialIds)
         {
+            // 检查关卡条件或生命周期边界，避免流程进入不一致状态。
             if (revision < 0L)
             {
                 throw new ArgumentOutOfRangeException(nameof(revision));
             }
 
+            // 检查关卡条件或生命周期边界，避免流程进入不一致状态。
             if (scoreTokens < 0L)
             {
                 throw new ArgumentOutOfRangeException(nameof(scoreTokens));
@@ -122,28 +132,34 @@ namespace OneStrokeDemon.Levels
 
         public IReadOnlyList<string> CompletedTutorialIds { get; }
 
+        // 判断是否 IsLevelUnlocked 对应的关卡逻辑，并保持时间线、进度与结算状态一致。
         public bool IsLevelUnlocked(string levelId)
         {
             return levelId != null && unlockedLevelSet.Contains(levelId);
         }
 
+        // 判断是否 IsFeatureUnlocked 对应的关卡逻辑，并保持时间线、进度与结算状态一致。
         public bool IsFeatureUnlocked(string featureId)
         {
             return featureId != null && unlockedFeatureSet.Contains(featureId);
         }
 
+        // 处理 HasAppliedSettlement 对应的关卡逻辑，并保持时间线、进度与结算状态一致。
         public bool HasAppliedSettlement(string settlementId)
         {
             return settlementId != null && appliedSettlementSet.Contains(settlementId);
         }
 
+        // 判断是否 IsTutorialCompleted 对应的关卡逻辑，并保持时间线、进度与结算状态一致。
         public bool IsTutorialCompleted(string tutorialId)
         {
             return tutorialId != null && completedTutorialSet.Contains(tutorialId);
         }
 
+        // 尝试执行 TryGetLevel 对应的关卡逻辑，并保持时间线、进度与结算状态一致。
         public bool TryGetLevel(string levelId, out LevelProgress progress)
         {
+            // 检查关卡条件或生命周期边界，避免流程进入不一致状态。
             if (levelId != null && levelsById.TryGetValue(levelId, out progress))
             {
                 return true;
@@ -153,6 +169,7 @@ namespace OneStrokeDemon.Levels
             return false;
         }
 
+        // 处理 Empty 对应的关卡逻辑，并保持时间线、进度与结算状态一致。
         internal static ProgressSnapshot Empty(IEnumerable<string> rootLevelIds)
         {
             return new ProgressSnapshot(
@@ -165,6 +182,7 @@ namespace OneStrokeDemon.Levels
                 Array.Empty<string>());
         }
 
+        // 应用 Apply 对应的关卡逻辑，并保持时间线、进度与结算状态一致。
         internal ProgressSnapshot Apply(
             string settlementId,
             string levelId,
@@ -181,6 +199,7 @@ namespace OneStrokeDemon.Levels
             };
             long nextScoreTokens = ScoreTokens;
 
+            // 检查关卡条件或生命周期边界，避免流程进入不一致状态。
             if (settlement == BattleSettlement.Victory)
             {
                 nextLevels.TryGetValue(levelId, out LevelProgress existing);
@@ -196,9 +215,11 @@ namespace OneStrokeDemon.Levels
                     Math.Max(existing.BestStars, score.Stars),
                     clearCount);
 
+                // 按确定顺序处理时间线或配置集合，保证关卡结果可复现。
                 for (int index = 0; index < grants.Count; index += 1)
                 {
                     RewardGrant grant = grants[index];
+                    // 按当前流程、事件或奖励类型选择对应处理分支。
                     switch (grant.Type)
                     {
                         case RewardGrantType.UnlockLevel:
@@ -236,9 +257,11 @@ namespace OneStrokeDemon.Levels
                 completedTutorialSet);
         }
 
+        // 完成 CompleteTutorial 对应的关卡逻辑，并保持时间线、进度与结算状态一致。
         internal ProgressSnapshot CompleteTutorial(string tutorialId)
         {
             ValidateId(tutorialId, nameof(tutorialId));
+            // 检查关卡条件或生命周期边界，避免流程进入不一致状态。
             if (completedTutorialSet.Contains(tutorialId))
             {
                 return this;
@@ -266,8 +289,10 @@ namespace OneStrokeDemon.Levels
                 nextCompletedTutorials);
         }
 
+        // 处理 NormalizeLevels 对应的关卡逻辑，并保持时间线、进度与结算状态一致。
         private static LevelProgress[] NormalizeLevels(IEnumerable<LevelProgress> levels)
         {
+            // 检查关卡条件或生命周期边界，避免流程进入不一致状态。
             if (levels == null)
             {
                 throw new ArgumentNullException(nameof(levels));
@@ -275,15 +300,18 @@ namespace OneStrokeDemon.Levels
 
             LevelProgress[] result = levels.OrderBy(row => row.LevelId, StringComparer.Ordinal).ToArray();
             var ids = new HashSet<string>(StringComparer.Ordinal);
+            // 按确定顺序处理时间线或配置集合，保证关卡结果可复现。
             for (int index = 0; index < result.Length; index += 1)
             {
                 LevelProgress row = result[index];
                 ValidateId(row.LevelId, nameof(levels));
+                // 检查关卡条件或生命周期边界，避免流程进入不一致状态。
                 if (!ids.Add(row.LevelId))
                 {
                     throw new ArgumentException($"Duplicate level progress '{row.LevelId}'.", nameof(levels));
                 }
 
+                // 检查关卡条件或生命周期边界，避免流程进入不一致状态。
                 if (row.BestScore < 0L ||
                     row.BestStars < 0 || row.BestStars > 3 ||
                     row.ClearCount < 0L)
@@ -295,17 +323,21 @@ namespace OneStrokeDemon.Levels
             return result;
         }
 
+        // 处理 NormalizeIds 对应的关卡逻辑，并保持时间线、进度与结算状态一致。
         private static string[] NormalizeIds(IEnumerable<string> ids, string argumentName)
         {
+            // 检查关卡条件或生命周期边界，避免流程进入不一致状态。
             if (ids == null)
             {
                 throw new ArgumentNullException(argumentName);
             }
 
             string[] result = ids.OrderBy(id => id, StringComparer.Ordinal).ToArray();
+            // 按确定顺序处理时间线或配置集合，保证关卡结果可复现。
             for (int index = 0; index < result.Length; index += 1)
             {
                 ValidateId(result[index], argumentName);
+                // 检查关卡条件或生命周期边界，避免流程进入不一致状态。
                 if (index > 0 && string.Equals(result[index - 1], result[index], StringComparison.Ordinal))
                 {
                     throw new ArgumentException($"Duplicate id '{result[index]}'.", argumentName);
@@ -315,8 +347,10 @@ namespace OneStrokeDemon.Levels
             return result;
         }
 
+        // 校验 ValidateId 对应的关卡逻辑，并保持时间线、进度与结算状态一致。
         private static void ValidateId(string id, string argumentName)
         {
+            // 检查关卡条件或生命周期边界，避免流程进入不一致状态。
             if (string.IsNullOrWhiteSpace(id) || !string.Equals(id, id.Trim(), StringComparison.Ordinal))
             {
                 throw new ArgumentException("IDs must be non-empty and trimmed.", argumentName);
@@ -324,8 +358,10 @@ namespace OneStrokeDemon.Levels
         }
     }
 
+    // 定义 ProgressLoadResult 的关卡领域契约，用于描述时间线、流程或持久化边界。
     public sealed class ProgressLoadResult
     {
+        // 初始化 ProgressLoadResult，并建立关卡流程所需的初始状态。
         internal ProgressLoadResult(
             ProgressLoadStatus status,
             ProgressSnapshot progress,
@@ -343,34 +379,41 @@ namespace OneStrokeDemon.Levels
         public string Diagnostic { get; }
     }
 
+    // 定义 ProgressSaveCodec 的关卡领域契约，用于描述时间线、流程或持久化边界。
     public sealed class ProgressSaveCodec
     {
         public const int CurrentVersion = 2;
 
         private readonly Dictionary<int, IProgressSaveMigration> migrations;
 
+        // 初始化 ProgressSaveCodec，并建立关卡流程所需的初始状态。
         public ProgressSaveCodec(IEnumerable<IProgressSaveMigration> migrations = null)
         {
             this.migrations = new Dictionary<int, IProgressSaveMigration>();
             AddMigration(new VersionOneTutorialMigration(), nameof(migrations));
+            // 检查关卡条件或生命周期边界，避免流程进入不一致状态。
             if (migrations == null)
             {
                 return;
             }
 
+            // 按确定顺序处理时间线或配置集合，保证关卡结果可复现。
             foreach (IProgressSaveMigration migration in migrations)
             {
                 AddMigration(migration, nameof(migrations));
             }
         }
 
+        // 处理 Decode 对应的关卡逻辑，并保持时间线、进度与结算状态一致。
         public ProgressLoadResult Decode(string payload, ProgressSnapshot fallback)
         {
+            // 检查关卡条件或生命周期边界，避免流程进入不一致状态。
             if (fallback == null)
             {
                 throw new ArgumentNullException(nameof(fallback));
             }
 
+            // 检查关卡条件或生命周期边界，避免流程进入不一致状态。
             if (string.IsNullOrWhiteSpace(payload))
             {
                 return new ProgressLoadResult(ProgressLoadStatus.Missing, fallback, "save_missing");
@@ -385,6 +428,7 @@ namespace OneStrokeDemon.Levels
                         DuplicatePropertyNameHandling = DuplicatePropertyNameHandling.Error,
                     });
                 int version = ReadVersion(root);
+                // 检查关卡条件或生命周期边界，避免流程进入不一致状态。
                 if (version > CurrentVersion)
                 {
                     return new ProgressLoadResult(
@@ -394,8 +438,10 @@ namespace OneStrokeDemon.Levels
                 }
 
                 bool migrated = false;
+                // 按确定顺序处理时间线或配置集合，保证关卡结果可复现。
                 while (version < CurrentVersion)
                 {
+                    // 检查关卡条件或生命周期边界，避免流程进入不一致状态。
                     if (!migrations.TryGetValue(version, out IProgressSaveMigration migration))
                     {
                         return new ProgressLoadResult(
@@ -405,6 +451,7 @@ namespace OneStrokeDemon.Levels
                     }
 
                     JObject next = migration.Migrate((JObject)root.DeepClone());
+                    // 检查关卡条件或生命周期边界，避免流程进入不一致状态。
                     if (next == null || ReadVersion(next) != migration.TargetVersion)
                     {
                         throw new JsonSerializationException(
@@ -436,8 +483,10 @@ namespace OneStrokeDemon.Levels
             }
         }
 
+        // 处理 Encode 对应的关卡逻辑，并保持时间线、进度与结算状态一致。
         public string Encode(ProgressSnapshot progress)
         {
+            // 检查关卡条件或生命周期边界，避免流程进入不一致状态。
             if (progress == null)
             {
                 throw new ArgumentNullException(nameof(progress));
@@ -446,6 +495,7 @@ namespace OneStrokeDemon.Levels
             return JsonConvert.SerializeObject(ToDto(progress), Formatting.None);
         }
 
+        // 处理 RecoverInvalidCatalog 对应的关卡逻辑，并保持时间线、进度与结算状态一致。
         internal static ProgressLoadResult RecoverInvalidCatalog(
             ProgressSnapshot fallback,
             string diagnostic)
@@ -456,9 +506,11 @@ namespace OneStrokeDemon.Levels
                 diagnostic);
         }
 
+        // 处理 ReadVersion 对应的关卡逻辑，并保持时间线、进度与结算状态一致。
         private static int ReadVersion(JObject root)
         {
             JToken token = root["version"];
+            // 检查关卡条件或生命周期边界，避免流程进入不一致状态。
             if (token == null || token.Type != JTokenType.Integer)
             {
                 throw new JsonSerializationException("Progress save version must be an integer.");
@@ -467,13 +519,16 @@ namespace OneStrokeDemon.Levels
             return token.Value<int>();
         }
 
+        // 处理 FromDto 对应的关卡逻辑，并保持时间线、进度与结算状态一致。
         private static ProgressSnapshot FromDto(ProgressSaveDto dto)
         {
+            // 检查关卡条件或生命周期边界，避免流程进入不一致状态。
             if (dto == null || dto.Version != CurrentVersion)
             {
                 throw new JsonSerializationException("Progress save DTO version is invalid.");
             }
 
+            // 检查关卡条件或生命周期边界，避免流程进入不一致状态。
             if (dto.Levels == null ||
                 dto.UnlockedLevelIds == null ||
                 dto.UnlockedFeatureIds == null ||
@@ -495,6 +550,7 @@ namespace OneStrokeDemon.Levels
                 dto.CompletedTutorialIds);
         }
 
+        // 处理 ToDto 对应的关卡逻辑，并保持时间线、进度与结算状态一致。
         private static ProgressSaveDto ToDto(ProgressSnapshot progress)
         {
             return new ProgressSaveDto
@@ -516,10 +572,12 @@ namespace OneStrokeDemon.Levels
             };
         }
 
+        // 添加 AddMigration 对应的关卡逻辑，并保持时间线、进度与结算状态一致。
         private void AddMigration(
             IProgressSaveMigration migration,
             string argumentName)
         {
+            // 检查关卡条件或生命周期边界，避免流程进入不一致状态。
             if (migration == null ||
                 migration.SourceVersion < 0 ||
                 migration.TargetVersion <= migration.SourceVersion ||
@@ -528,6 +586,7 @@ namespace OneStrokeDemon.Levels
                 throw new ArgumentException("Invalid progress migration.", argumentName);
             }
 
+            // 检查关卡条件或生命周期边界，避免流程进入不一致状态。
             if (migrations.ContainsKey(migration.SourceVersion))
             {
                 throw new ArgumentException(
@@ -539,6 +598,7 @@ namespace OneStrokeDemon.Levels
         }
 
         [JsonObject(MemberSerialization.OptIn)]
+        // 定义 ProgressSaveDto 的关卡领域契约，用于描述时间线、流程或持久化边界。
         private sealed class ProgressSaveDto
         {
             [JsonProperty("version", Order = 1, Required = Required.Always)]
@@ -566,14 +626,17 @@ namespace OneStrokeDemon.Levels
             public string[] CompletedTutorialIds { get; set; }
         }
 
+        // 定义 VersionOneTutorialMigration 的关卡领域契约，用于描述时间线、流程或持久化边界。
         private sealed class VersionOneTutorialMigration : IProgressSaveMigration
         {
             public int SourceVersion => 1;
 
             public int TargetVersion => 2;
 
+            // 迁移 Migrate 对应的关卡逻辑，并保持时间线、进度与结算状态一致。
             public JObject Migrate(JObject source)
             {
+                // 检查关卡条件或生命周期边界，避免流程进入不一致状态。
                 if (source == null)
                 {
                     throw new ArgumentNullException(nameof(source));
@@ -586,6 +649,7 @@ namespace OneStrokeDemon.Levels
         }
 
         [JsonObject(MemberSerialization.OptIn)]
+        // 定义 LevelProgressDto 的关卡领域契约，用于描述时间线、流程或持久化边界。
         private sealed class LevelProgressDto
         {
             [JsonProperty("levelId", Order = 1, Required = Required.Always)]

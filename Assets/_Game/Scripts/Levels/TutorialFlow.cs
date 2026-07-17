@@ -5,6 +5,7 @@ using OneStrokeDemon.Config;
 
 namespace OneStrokeDemon.Levels
 {
+    // 定义 TutorialEventType 的关卡领域契约，用于描述时间线、流程或持久化边界。
     public enum TutorialEventType
     {
         None = 0,
@@ -24,6 +25,7 @@ namespace OneStrokeDemon.Levels
         UltimateSucceeded = 14,
     }
 
+    // 定义 TutorialGestureType 的关卡领域契约，用于描述时间线、流程或持久化边界。
     public enum TutorialGestureType
     {
         None = 0,
@@ -36,6 +38,7 @@ namespace OneStrokeDemon.Levels
         Charged = 7,
     }
 
+    // 定义 TutorialSequenceState 的关卡领域契约，用于描述时间线、流程或持久化边界。
     public enum TutorialSequenceState
     {
         WaitingForTrigger = 0,
@@ -43,6 +46,7 @@ namespace OneStrokeDemon.Levels
         Completed = 2,
     }
 
+    // 定义 TutorialRuntimeEventType 的关卡领域契约，用于描述时间线、流程或持久化边界。
     public enum TutorialRuntimeEventType
     {
         None = 0,
@@ -52,13 +56,16 @@ namespace OneStrokeDemon.Levels
         TutorialSkipped = 4,
     }
 
+    // 定义 TutorialGameplayEvent 的关卡领域契约，用于描述时间线、流程或持久化边界。
     public readonly struct TutorialGameplayEvent
     {
+        // 初始化 TutorialGameplayEvent，并建立关卡流程所需的初始状态。
         public TutorialGameplayEvent(
             TutorialEventType eventType,
             long value = 1L,
             TutorialGestureType gestureType = TutorialGestureType.Any)
         {
+            // 检查关卡条件或生命周期边界，避免流程进入不一致状态。
             if (eventType == TutorialEventType.None)
             {
                 throw new ArgumentOutOfRangeException(
@@ -67,6 +74,7 @@ namespace OneStrokeDemon.Levels
                     "Tutorial gameplay events require a concrete event type.");
             }
 
+            // 检查关卡条件或生命周期边界，避免流程进入不一致状态。
             if (value < 0L)
             {
                 throw new ArgumentOutOfRangeException(
@@ -75,6 +83,7 @@ namespace OneStrokeDemon.Levels
                     "Tutorial event values must be non-negative.");
             }
 
+            // 检查关卡条件或生命周期边界，避免流程进入不一致状态。
             if (gestureType == TutorialGestureType.None)
             {
                 throw new ArgumentOutOfRangeException(
@@ -98,8 +107,10 @@ namespace OneStrokeDemon.Levels
         public bool IsValid { get; }
     }
 
+    // 定义 TutorialEventRequirement 的关卡领域契约，用于描述时间线、流程或持久化边界。
     public readonly struct TutorialEventRequirement
     {
+        // 初始化 TutorialEventRequirement，并建立关卡流程所需的初始状态。
         internal TutorialEventRequirement(
             TutorialEventType eventType,
             long minimumValue)
@@ -115,6 +126,7 @@ namespace OneStrokeDemon.Levels
 
         public bool IsConfigured { get; }
 
+        // 处理 Matches 对应的关卡逻辑，并保持时间线、进度与结算状态一致。
         public bool Matches(in TutorialGameplayEvent gameplayEvent)
         {
             return gameplayEvent.IsValid &&
@@ -123,8 +135,10 @@ namespace OneStrokeDemon.Levels
         }
     }
 
+    // 定义 TutorialStepDefinition 的关卡领域契约，用于描述时间线、流程或持久化边界。
     public sealed class TutorialStepDefinition
     {
+        // 初始化 TutorialStepDefinition，并建立关卡流程所需的初始状态。
         internal TutorialStepDefinition(
             string tutorialId,
             int order,
@@ -165,8 +179,10 @@ namespace OneStrokeDemon.Levels
 
         public TutorialGestureType GestureType { get; }
 
+        // 处理 MatchesCompletion 对应的关卡逻辑，并保持时间线、进度与结算状态一致。
         internal bool MatchesCompletion(in TutorialGameplayEvent gameplayEvent)
         {
+            // 检查关卡条件或生命周期边界，避免流程进入不一致状态。
             if (!Completion.Matches(gameplayEvent))
             {
                 return false;
@@ -177,8 +193,10 @@ namespace OneStrokeDemon.Levels
         }
     }
 
+    // 定义 TutorialDefinition 的关卡领域契约，用于描述时间线、流程或持久化边界。
     public sealed class TutorialDefinition
     {
+        // 初始化 TutorialDefinition，并建立关卡流程所需的初始状态。
         internal TutorialDefinition(
             string levelId,
             string tutorialId,
@@ -196,19 +214,23 @@ namespace OneStrokeDemon.Levels
         public IReadOnlyList<TutorialStepDefinition> Steps { get; }
     }
 
+    // 定义 TutorialDefinitionFactory 的关卡领域契约，用于描述时间线、流程或持久化边界。
     public static class TutorialDefinitionFactory
     {
         private const string ComparisonOperator = ">=";
 
+        // 创建 Create 对应的关卡逻辑，并保持时间线、进度与结算状态一致。
         public static TutorialDefinition Create(
             IConfigProvider configProvider,
             string levelId)
         {
+            // 检查关卡条件或生命周期边界，避免流程进入不一致状态。
             if (configProvider == null)
             {
                 throw new ArgumentNullException(nameof(configProvider));
             }
 
+            // 检查关卡条件或生命周期边界，避免流程进入不一致状态。
             if (string.IsNullOrWhiteSpace(levelId))
             {
                 throw new ArgumentException(
@@ -217,6 +239,7 @@ namespace OneStrokeDemon.Levels
             }
 
             LevelConfig level = configProvider.GetLevel(levelId);
+            // 检查关卡条件或生命周期边界，避免流程进入不一致状态。
             if (string.IsNullOrWhiteSpace(level.TutorialId))
             {
                 throw Invalid(level.LevelId, "tutorialId must be non-empty");
@@ -224,12 +247,14 @@ namespace OneStrokeDemon.Levels
 
             IReadOnlyList<TutorialConfig> configured =
                 configProvider.GetTutorialSteps(level.TutorialId);
+            // 检查关卡条件或生命周期边界，避免流程进入不一致状态。
             if (configured.Count == 0)
             {
                 throw Invalid(level.TutorialId, "tutorial must contain at least one step");
             }
 
             var rows = new TutorialConfig[configured.Count];
+            // 按确定顺序处理时间线或配置集合，保证关卡结果可复现。
             for (int index = 0; index < rows.Length; index++)
             {
                 rows[index] = configured[index] ??
@@ -238,10 +263,12 @@ namespace OneStrokeDemon.Levels
 
             Array.Sort(rows, TutorialOrderComparer.Instance);
             var steps = new TutorialStepDefinition[rows.Length];
+            // 按确定顺序处理时间线或配置集合，保证关卡结果可复现。
             for (int index = 0; index < rows.Length; index++)
             {
                 TutorialConfig row = rows[index];
                 int expectedOrder = index + 1;
+                // 检查关卡条件或生命周期边界，避免流程进入不一致状态。
                 if (!string.Equals(
                         row.TutorialId,
                         level.TutorialId,
@@ -253,6 +280,7 @@ namespace OneStrokeDemon.Levels
                         "steps must have matching ownership and contiguous order starting at 1");
                 }
 
+                // 检查关卡条件或生命周期边界，避免流程进入不一致状态。
                 if (row.Order > int.MaxValue)
                 {
                     throw Invalid(level.TutorialId, "step order exceeds Int32 range");
@@ -302,12 +330,14 @@ namespace OneStrokeDemon.Levels
                 Array.AsReadOnly(steps));
         }
 
+        // 处理 ParseTrigger 对应的关卡逻辑，并保持时间线、进度与结算状态一致。
         private static TutorialEventRequirement ParseTrigger(
             string configured,
             string tutorialId,
             int order)
         {
             RequireNonEmpty(configured, tutorialId, order, "triggerEvent");
+            // 检查关卡条件或生命周期边界，避免流程进入不一致状态。
             if (configured.IndexOf(ComparisonOperator, StringComparison.Ordinal) >= 0)
             {
                 throw Invalid(
@@ -321,6 +351,7 @@ namespace OneStrokeDemon.Levels
                 1L);
         }
 
+        // 处理 ParseCompletion 对应的关卡逻辑，并保持时间线、进度与结算状态一致。
         private static TutorialEventRequirement ParseCompletion(
             string configured,
             string tutorialId,
@@ -330,6 +361,7 @@ namespace OneStrokeDemon.Levels
             int operatorIndex = configured.IndexOf(
                 ComparisonOperator,
                 StringComparison.Ordinal);
+            // 检查关卡条件或生命周期边界，避免流程进入不一致状态。
             if (operatorIndex < 0)
             {
                 return new TutorialEventRequirement(
@@ -341,6 +373,7 @@ namespace OneStrokeDemon.Levels
                     1L);
             }
 
+            // 检查关卡条件或生命周期边界，避免流程进入不一致状态。
             if (operatorIndex == 0 ||
                 operatorIndex + ComparisonOperator.Length >= configured.Length ||
                 configured.IndexOf(
@@ -357,6 +390,7 @@ namespace OneStrokeDemon.Levels
             string eventName = configured.Substring(0, operatorIndex);
             string thresholdText = configured.Substring(
                 operatorIndex + ComparisonOperator.Length);
+            // 检查关卡条件或生命周期边界，避免流程进入不一致状态。
             if (!long.TryParse(
                     thresholdText,
                     NumberStyles.None,
@@ -379,24 +413,28 @@ namespace OneStrokeDemon.Levels
                 minimum);
         }
 
+        // 处理 RequireNonEmpty 对应的关卡逻辑，并保持时间线、进度与结算状态一致。
         private static void RequireNonEmpty(
             string value,
             string tutorialId,
             int order,
             string field)
         {
+            // 检查关卡条件或生命周期边界，避免流程进入不一致状态。
             if (string.IsNullOrWhiteSpace(value))
             {
                 throw Invalid(tutorialId, order, $"{field} must be non-empty");
             }
         }
 
+        // 处理 RequireFiniteNonNegative 对应的关卡逻辑，并保持时间线、进度与结算状态一致。
         private static void RequireFiniteNonNegative(
             float value,
             string tutorialId,
             int order,
             string field)
         {
+            // 检查关卡条件或生命周期边界，避免流程进入不一致状态。
             if (float.IsNaN(value) || float.IsInfinity(value) || value < 0f)
             {
                 throw Invalid(
@@ -406,6 +444,7 @@ namespace OneStrokeDemon.Levels
             }
         }
 
+        // 处理 Invalid 对应的关卡逻辑，并保持时间线、进度与结算状态一致。
         private static ArgumentException Invalid(string owner, string message)
         {
             return new ArgumentException(
@@ -413,6 +452,7 @@ namespace OneStrokeDemon.Levels
                 "configProvider");
         }
 
+        // 处理 Invalid 对应的关卡逻辑，并保持时间线、进度与结算状态一致。
         private static ArgumentException Invalid(
             string tutorialId,
             int order,
@@ -421,11 +461,13 @@ namespace OneStrokeDemon.Levels
             return Invalid($"{tutorialId}' step {order}", message);
         }
 
+        // 定义 TutorialOrderComparer 的关卡领域契约，用于描述时间线、流程或持久化边界。
         private sealed class TutorialOrderComparer : IComparer<TutorialConfig>
         {
             public static readonly TutorialOrderComparer Instance =
                 new TutorialOrderComparer();
 
+            // 处理 Compare 对应的关卡逻辑，并保持时间线、进度与结算状态一致。
             public int Compare(TutorialConfig x, TutorialConfig y)
             {
                 return x.Order.CompareTo(y.Order);
@@ -433,8 +475,10 @@ namespace OneStrokeDemon.Levels
         }
     }
 
+    // 定义 TutorialUpdateReport 的关卡领域契约，用于描述时间线、流程或持久化边界。
     public readonly struct TutorialUpdateReport
     {
+        // 初始化 TutorialUpdateReport，并建立关卡流程所需的初始状态。
         internal TutorialUpdateReport(
             bool eventAccepted,
             bool stepStarted,
@@ -467,8 +511,10 @@ namespace OneStrokeDemon.Levels
             StepStarted || StepCompleted || TutorialCompleted || TutorialSkipped;
     }
 
+    // 定义 TutorialRuntimeEvent 的关卡领域契约，用于描述时间线、流程或持久化边界。
     public readonly struct TutorialRuntimeEvent
     {
+        // 初始化 TutorialRuntimeEvent，并建立关卡流程所需的初始状态。
         internal TutorialRuntimeEvent(
             ulong sequence,
             TutorialRuntimeEventType eventType,
@@ -498,6 +544,7 @@ namespace OneStrokeDemon.Levels
         public double DisplayElapsedSeconds { get; }
     }
 
+    // 定义 TutorialSequence 的关卡领域契约，用于描述时间线、流程或持久化边界。
     public sealed class TutorialSequence
     {
         private readonly TutorialDefinition definition;
@@ -506,10 +553,12 @@ namespace OneStrokeDemon.Levels
         private TutorialGameplayEvent observedCompletion;
         private ulong nextEventSequence = 1UL;
 
+        // 初始化 TutorialSequence，并建立关卡流程所需的初始状态。
         public TutorialSequence(TutorialDefinition configuredDefinition)
         {
             definition = configuredDefinition ??
                 throw new ArgumentNullException(nameof(configuredDefinition));
+            // 检查关卡条件或生命周期边界，避免流程进入不一致状态。
             if (definition.Steps == null || definition.Steps.Count == 0)
             {
                 throw new ArgumentException(
@@ -541,8 +590,10 @@ namespace OneStrokeDemon.Levels
             State == TutorialSequenceState.Active &&
             CurrentStep.BlockProgress;
 
+        // 处理 Notify 对应的关卡逻辑，并保持时间线、进度与结算状态一致。
         public TutorialUpdateReport Notify(in TutorialGameplayEvent gameplayEvent)
         {
+            // 检查关卡条件或生命周期边界，避免流程进入不一致状态。
             if (!gameplayEvent.IsValid)
             {
                 throw new ArgumentException(
@@ -550,14 +601,17 @@ namespace OneStrokeDemon.Levels
                     nameof(gameplayEvent));
             }
 
+            // 检查关卡条件或生命周期边界，避免流程进入不一致状态。
             if (State == TutorialSequenceState.Completed)
             {
                 return default;
             }
 
             TutorialStepDefinition step = CurrentStep;
+            // 检查关卡条件或生命周期边界，避免流程进入不一致状态。
             if (State == TutorialSequenceState.WaitingForTrigger)
             {
+                // 检查关卡条件或生命周期边界，避免流程进入不一致状态。
                 if (!step.Trigger.Matches(gameplayEvent))
                 {
                     return default;
@@ -580,6 +634,7 @@ namespace OneStrokeDemon.Levels
                     completedStepOrder: 0);
             }
 
+            // 检查关卡条件或生命周期边界，避免流程进入不一致状态。
             if (completionObserved || !step.MatchesCompletion(gameplayEvent))
             {
                 return default;
@@ -587,6 +642,7 @@ namespace OneStrokeDemon.Levels
 
             completionObserved = true;
             observedCompletion = gameplayEvent;
+            // 检查关卡条件或生命周期边界，避免流程进入不一致状态。
             if (DisplayElapsedSeconds >= step.MinimumDisplaySeconds)
             {
                 return CompleteCurrentStep(eventAccepted: true);
@@ -600,15 +656,18 @@ namespace OneStrokeDemon.Levels
                 completedStepOrder: 0);
         }
 
+        // 推进 Advance 对应的关卡逻辑，并保持时间线、进度与结算状态一致。
         public TutorialUpdateReport Advance(double unscaledGameplayDeltaSeconds)
         {
             ValidateDelta(unscaledGameplayDeltaSeconds);
+            // 检查关卡条件或生命周期边界，避免流程进入不一致状态。
             if (State != TutorialSequenceState.Active)
             {
                 return default;
             }
 
             double next = DisplayElapsedSeconds + unscaledGameplayDeltaSeconds;
+            // 检查关卡条件或生命周期边界，避免流程进入不一致状态。
             if (double.IsNaN(next) || double.IsInfinity(next))
             {
                 throw new OverflowException(
@@ -616,6 +675,7 @@ namespace OneStrokeDemon.Levels
             }
 
             DisplayElapsedSeconds = next;
+            // 检查关卡条件或生命周期边界，避免流程进入不一致状态。
             if (completionObserved &&
                 DisplayElapsedSeconds >= CurrentStep.MinimumDisplaySeconds)
             {
@@ -625,8 +685,10 @@ namespace OneStrokeDemon.Levels
             return default;
         }
 
+        // 处理 Skip 对应的关卡逻辑，并保持时间线、进度与结算状态一致。
         public TutorialUpdateReport Skip()
         {
+            // 检查关卡条件或生命周期边界，避免流程进入不一致状态。
             if (State == TutorialSequenceState.Completed)
             {
                 return default;
@@ -657,6 +719,7 @@ namespace OneStrokeDemon.Levels
                 tutorialSkipped: true);
         }
 
+        // 完成 CompleteCurrentStep 对应的关卡逻辑，并保持时间线、进度与结算状态一致。
         private TutorialUpdateReport CompleteCurrentStep(bool eventAccepted)
         {
             TutorialStepDefinition completed = CurrentStep;
@@ -672,6 +735,7 @@ namespace OneStrokeDemon.Levels
             observedCompletion = default;
             DisplayElapsedSeconds = 0d;
             bool allCompleted = currentStepIndex >= definition.Steps.Count;
+            // 检查关卡条件或生命周期边界，避免流程进入不一致状态。
             if (allCompleted)
             {
                 State = TutorialSequenceState.Completed;
@@ -694,6 +758,7 @@ namespace OneStrokeDemon.Levels
                 completedStepOrder: completed.Order);
         }
 
+        // 处理 Publish 对应的关卡逻辑，并保持时间线、进度与结算状态一致。
         private void Publish(
             TutorialRuntimeEventType eventType,
             TutorialStepDefinition step,
@@ -701,6 +766,7 @@ namespace OneStrokeDemon.Levels
             long sourceValue)
         {
             ulong sequence = nextEventSequence;
+            // 检查关卡条件或生命周期边界，避免流程进入不一致状态。
             if (sequence == 0UL || sequence == ulong.MaxValue)
             {
                 throw new OverflowException(
@@ -717,8 +783,10 @@ namespace OneStrokeDemon.Levels
                 DisplayElapsedSeconds));
         }
 
+        // 校验 ValidateDelta 对应的关卡逻辑，并保持时间线、进度与结算状态一致。
         private static void ValidateDelta(double value)
         {
+            // 检查关卡条件或生命周期边界，避免流程进入不一致状态。
             if (double.IsNaN(value) || double.IsInfinity(value) || value < 0d)
             {
                 throw new ArgumentOutOfRangeException(
@@ -729,14 +797,17 @@ namespace OneStrokeDemon.Levels
         }
     }
 
+    // 定义 TutorialProtocol 的关卡领域契约，用于描述时间线、流程或持久化边界。
     internal static class TutorialProtocol
     {
+        // 处理 ParseEvent 对应的关卡逻辑，并保持时间线、进度与结算状态一致。
         public static TutorialEventType ParseEvent(
             string value,
             string tutorialId,
             int order,
             string field)
         {
+            // 按当前流程、事件或奖励类型选择对应处理分支。
             switch (value)
             {
                 case "BattleReady": return TutorialEventType.BattleReady;
@@ -761,11 +832,13 @@ namespace OneStrokeDemon.Levels
             }
         }
 
+        // 处理 ParseGesture 对应的关卡逻辑，并保持时间线、进度与结算状态一致。
         public static TutorialGestureType ParseGesture(
             string value,
             string tutorialId,
             int order)
         {
+            // 按当前流程、事件或奖励类型选择对应处理分支。
             switch (value)
             {
                 case "Any": return TutorialGestureType.Any;

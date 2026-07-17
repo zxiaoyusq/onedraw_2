@@ -4,6 +4,7 @@ using OneStrokeDemon.Skills;
 
 namespace OneStrokeDemon.Levels
 {
+    // 定义 BattleFlowState 的关卡领域契约，用于描述时间线、流程或持久化边界。
     public enum BattleFlowState
     {
         Countdown = 0,
@@ -15,6 +16,7 @@ namespace OneStrokeDemon.Levels
     }
 
     [Flags]
+    // 定义 BattlePauseReason 的关卡领域契约，用于描述时间线、流程或持久化边界。
     public enum BattlePauseReason
     {
         None = 0,
@@ -23,6 +25,7 @@ namespace OneStrokeDemon.Levels
         ApplicationPaused = 1 << 2,
     }
 
+    // 定义 UltimateCancelReason 的关卡领域契约，用于描述时间线、流程或持久化边界。
     public enum UltimateCancelReason
     {
         None = 0,
@@ -33,6 +36,7 @@ namespace OneStrokeDemon.Levels
         BattleSettled = 5,
     }
 
+    // 定义 BattleSettlement 的关卡领域契约，用于描述时间线、流程或持久化边界。
     public enum BattleSettlement
     {
         None = 0,
@@ -40,6 +44,7 @@ namespace OneStrokeDemon.Levels
         Defeat = 2,
     }
 
+    // 定义 BattleFlowEventType 的关卡领域契约，用于描述时间线、流程或持久化边界。
     public enum BattleFlowEventType
     {
         None = 0,
@@ -50,8 +55,10 @@ namespace OneStrokeDemon.Levels
         Settled = 5,
     }
 
+    // 定义 BattleFlowSettings 的关卡领域契约，用于描述时间线、流程或持久化边界。
     public sealed class BattleFlowSettings
     {
+        // 初始化 BattleFlowSettings，并建立关卡流程所需的初始状态。
         internal BattleFlowSettings(
             double countdownDurationSeconds,
             bool pauseOnFocusLost,
@@ -77,17 +84,21 @@ namespace OneStrokeDemon.Levels
         public double UltimateInputWindowSeconds { get; }
     }
 
+    // 定义 BattleFlowSettingsFactory 的关卡领域契约，用于描述时间线、流程或持久化边界。
     public static class BattleFlowSettingsFactory
     {
+        // 创建 Create 对应的关卡逻辑，并保持时间线、进度与结算状态一致。
         public static BattleFlowSettings Create(
             IConfigProvider configProvider,
             string playerId)
         {
+            // 检查关卡条件或生命周期边界，避免流程进入不一致状态。
             if (configProvider == null)
             {
                 throw new ArgumentNullException(nameof(configProvider));
             }
 
+            // 检查关卡条件或生命周期边界，避免流程进入不一致状态。
             if (string.IsNullOrWhiteSpace(playerId))
             {
                 throw new ArgumentException(
@@ -102,6 +113,7 @@ namespace OneStrokeDemon.Levels
                 configProvider,
                 ConfigIds.GlobalKeys.PauseOnFocusLost);
             PlayerConfig player = configProvider.GetPlayer(playerId);
+            // 检查关卡条件或生命周期边界，避免流程进入不一致状态。
             if (string.IsNullOrWhiteSpace(player.UltimateSkillId))
             {
                 throw InvalidConfig(
@@ -109,6 +121,7 @@ namespace OneStrokeDemon.Levels
             }
 
             SkillConfig ultimate = configProvider.GetSkill(player.UltimateSkillId);
+            // 检查关卡条件或生命周期边界，避免流程进入不一致状态。
             if (!string.Equals(
                     ultimate.TriggerType,
                     SkillTriggerTypes.Ultimate,
@@ -118,6 +131,7 @@ namespace OneStrokeDemon.Levels
                     $"Skill '{ultimate.SkillId}' must use the Ultimate trigger.");
             }
 
+            // 检查关卡条件或生命周期边界，避免流程进入不一致状态。
             if (string.IsNullOrWhiteSpace(ultimate.GestureType) ||
                 !IsFinite(ultimate.InputWindowSec) ||
                 ultimate.InputWindowSec <= 0f)
@@ -134,11 +148,13 @@ namespace OneStrokeDemon.Levels
                 ultimate.InputWindowSec);
         }
 
+        // 处理 ReadNonNegativeFloat 对应的关卡逻辑，并保持时间线、进度与结算状态一致。
         private static double ReadNonNegativeFloat(
             IConfigProvider configProvider,
             string key)
         {
             GlobalConfig row = configProvider.GetGlobal(key);
+            // 检查关卡条件或生命周期边界，避免流程进入不一致状态。
             if (!string.Equals(row.ValueType, "float", StringComparison.Ordinal) ||
                 !row.FloatValue.HasValue ||
                 !IsFinite(row.FloatValue.Value) ||
@@ -151,9 +167,11 @@ namespace OneStrokeDemon.Levels
             return row.FloatValue.Value;
         }
 
+        // 处理 ReadBool 对应的关卡逻辑，并保持时间线、进度与结算状态一致。
         private static bool ReadBool(IConfigProvider configProvider, string key)
         {
             GlobalConfig row = configProvider.GetGlobal(key);
+            // 检查关卡条件或生命周期边界，避免流程进入不一致状态。
             if (!string.Equals(row.ValueType, "bool", StringComparison.Ordinal) ||
                 !row.BoolValue.HasValue)
             {
@@ -163,19 +181,23 @@ namespace OneStrokeDemon.Levels
             return row.BoolValue.Value;
         }
 
+        // 判断是否 IsFinite 对应的关卡逻辑，并保持时间线、进度与结算状态一致。
         private static bool IsFinite(float value)
         {
             return !float.IsNaN(value) && !float.IsInfinity(value);
         }
 
+        // 处理 InvalidConfig 对应的关卡逻辑，并保持时间线、进度与结算状态一致。
         private static ArgumentException InvalidConfig(string message)
         {
             return new ArgumentException(message, "configProvider");
         }
     }
 
+    // 定义 BattleTimeSnapshot 的关卡领域契约，用于描述时间线、流程或持久化边界。
     public readonly struct BattleTimeSnapshot
     {
+        // 初始化 BattleTimeSnapshot，并建立关卡流程所需的初始状态。
         internal BattleTimeSnapshot(
             double flowElapsedSeconds,
             double gameplayUnscaledElapsedSeconds,
@@ -201,8 +223,10 @@ namespace OneStrokeDemon.Levels
         public double GameplayScaleRemainingSeconds { get; }
     }
 
+    // 定义 BattleTimeSlice 的关卡领域契约，用于描述时间线、流程或持久化边界。
     public readonly struct BattleTimeSlice
     {
+        // 初始化 BattleTimeSlice，并建立关卡流程所需的初始状态。
         internal BattleTimeSlice(
             double requestedUnscaledDeltaSeconds,
             double flowDeltaSeconds,
@@ -228,6 +252,7 @@ namespace OneStrokeDemon.Levels
         public BattleTimeSnapshot Current { get; }
     }
 
+    // 定义 BattleTimeSource 的关卡领域契约，用于描述时间线、流程或持久化边界。
     public sealed class BattleTimeSource
     {
         private const double TimelineEpsilon = 0.000001d;
@@ -247,10 +272,12 @@ namespace OneStrokeDemon.Levels
 
         public double GameplayElapsedSeconds { get; private set; }
 
+        // 应用 ApplyGameplayScale 对应的关卡逻辑，并保持时间线、进度与结算状态一致。
         public void ApplyGameplayScale(double scale, double durationSeconds)
         {
             ValidateFiniteNonNegative(scale, nameof(scale));
             ValidateFiniteNonNegative(durationSeconds, nameof(durationSeconds));
+            // 检查关卡条件或生命周期边界，避免流程进入不一致状态。
             if (durationSeconds == 0d)
             {
                 gameplayScale = 1d;
@@ -262,6 +289,7 @@ namespace OneStrokeDemon.Levels
             gameplayScaleRemainingSeconds = durationSeconds;
         }
 
+        // 推进 AdvanceFlowOnly 对应的关卡逻辑，并保持时间线、进度与结算状态一致。
         internal void AdvanceFlowOnly(double unscaledDeltaSeconds)
         {
             ValidateFiniteNonNegative(unscaledDeltaSeconds, nameof(unscaledDeltaSeconds));
@@ -271,6 +299,7 @@ namespace OneStrokeDemon.Levels
                 "Flow elapsed time");
         }
 
+        // 推进 AdvanceGameplay 对应的关卡逻辑，并保持时间线、进度与结算状态一致。
         internal double AdvanceGameplay(double unscaledDeltaSeconds)
         {
             ValidateFiniteNonNegative(unscaledDeltaSeconds, nameof(unscaledDeltaSeconds));
@@ -284,6 +313,7 @@ namespace OneStrokeDemon.Levels
                 "Gameplay unscaled elapsed time");
 
             double scaledDelta = unscaledDeltaSeconds;
+            // 检查关卡条件或生命周期边界，避免流程进入不一致状态。
             if (gameplayScaleRemainingSeconds > 0d)
             {
                 double affectedSeconds = Math.Min(
@@ -292,6 +322,7 @@ namespace OneStrokeDemon.Levels
                 double remainder = unscaledDeltaSeconds - affectedSeconds;
                 scaledDelta = (affectedSeconds * gameplayScale) + remainder;
                 gameplayScaleRemainingSeconds -= affectedSeconds;
+                // 检查关卡条件或生命周期边界，避免流程进入不一致状态。
                 if (gameplayScaleRemainingSeconds <= TimelineEpsilon)
                 {
                     gameplayScale = 1d;
@@ -306,9 +337,11 @@ namespace OneStrokeDemon.Levels
             return scaledDelta;
         }
 
+        // 添加 AddChecked 对应的关卡逻辑，并保持时间线、进度与结算状态一致。
         private static double AddChecked(double current, double delta, string field)
         {
             double result = current + delta;
+            // 检查关卡条件或生命周期边界，避免流程进入不一致状态。
             if (double.IsNaN(result) || double.IsInfinity(result))
             {
                 throw new OverflowException($"{field} exceeded finite range.");
@@ -317,8 +350,10 @@ namespace OneStrokeDemon.Levels
             return result;
         }
 
+        // 校验 ValidateFiniteNonNegative 对应的关卡逻辑，并保持时间线、进度与结算状态一致。
         internal static void ValidateFiniteNonNegative(double value, string parameterName)
         {
+            // 检查关卡条件或生命周期边界，避免流程进入不一致状态。
             if (double.IsNaN(value) || double.IsInfinity(value) || value < 0d)
             {
                 throw new ArgumentOutOfRangeException(
@@ -329,8 +364,10 @@ namespace OneStrokeDemon.Levels
         }
     }
 
+    // 定义 BattleOutcomeFacts 的关卡领域契约，用于描述时间线、流程或持久化边界。
     public readonly struct BattleOutcomeFacts
     {
+        // 初始化 BattleOutcomeFacts，并建立关卡流程所需的初始状态。
         public BattleOutcomeFacts(
             bool playerDied,
             bool levelCompleted,
@@ -348,8 +385,10 @@ namespace OneStrokeDemon.Levels
         public bool DurationLimitReached { get; }
     }
 
+    // 定义 BattleFlowEvent 的关卡领域契约，用于描述时间线、流程或持久化边界。
     public readonly struct BattleFlowEvent
     {
+        // 初始化 BattleFlowEvent，并建立关卡流程所需的初始状态。
         internal BattleFlowEvent(
             ulong sequence,
             BattleFlowEventType eventType,
@@ -391,6 +430,7 @@ namespace OneStrokeDemon.Levels
         public BattleTimeSnapshot Time { get; }
     }
 
+    // 定义 BattleFlowStateMachine 的关卡领域契约，用于描述时间线、流程或持久化边界。
     public sealed class BattleFlowStateMachine
     {
         private readonly BattleFlowSettings settings;
@@ -401,6 +441,7 @@ namespace OneStrokeDemon.Levels
         private BattlePauseReason activePauseReasons;
         private ulong lastUltimateGestureEventId;
 
+        // 初始化 BattleFlowStateMachine，并建立关卡流程所需的初始状态。
         public BattleFlowStateMachine(BattleFlowSettings configuredSettings)
         {
             settings = configuredSettings ??
@@ -427,6 +468,7 @@ namespace OneStrokeDemon.Levels
         public bool IsTerminal =>
             State == BattleFlowState.Victory || State == BattleFlowState.Defeat;
 
+        // 推进 Advance 对应的关卡逻辑，并保持时间线、进度与结算状态一致。
         public BattleTimeSlice Advance(double unscaledDeltaSeconds)
         {
             BattleTimeSource.ValidateFiniteNonNegative(
@@ -436,6 +478,7 @@ namespace OneStrokeDemon.Levels
             double beforeGameplayUnscaled = Time.GameplayUnscaledElapsedSeconds;
             double beforeGameplay = Time.GameplayElapsedSeconds;
 
+            // 检查关卡条件或生命周期边界，避免流程进入不一致状态。
             if (State == BattleFlowState.Paused || IsTerminal)
             {
                 return CreateSlice(
@@ -446,14 +489,17 @@ namespace OneStrokeDemon.Levels
             }
 
             double remaining = unscaledDeltaSeconds;
+            // 检查关卡条件或生命周期边界，避免流程进入不一致状态。
             if (State == BattleFlowState.Countdown &&
                 stateElapsedSeconds >= settings.CountdownDurationSeconds)
             {
                 TransitionTo(BattleFlowState.Playing);
             }
 
+            // 按确定顺序处理时间线或配置集合，保证关卡结果可复现。
             while (remaining > 0d)
             {
+                // 按当前流程、事件或奖励类型选择对应处理分支。
                 switch (State)
                 {
                     case BattleFlowState.Countdown:
@@ -480,8 +526,10 @@ namespace OneStrokeDemon.Levels
                 beforeGameplay);
         }
 
+        // 尝试执行 TryBeginUltimateDrawing 对应的关卡逻辑，并保持时间线、进度与结算状态一致。
         public bool TryBeginUltimateDrawing()
         {
+            // 检查关卡条件或生命周期边界，避免流程进入不一致状态。
             if (State != BattleFlowState.Playing)
             {
                 return false;
@@ -491,6 +539,7 @@ namespace OneStrokeDemon.Levels
             return true;
         }
 
+        // 判断是否允许 CanAcceptUltimateGestureEvent 对应的关卡逻辑，并保持时间线、进度与结算状态一致。
         public bool CanAcceptUltimateGestureEvent(ulong gestureEventId)
         {
             return State == BattleFlowState.UltimateDrawing &&
@@ -498,10 +547,12 @@ namespace OneStrokeDemon.Levels
                    gestureEventId > lastUltimateGestureEventId;
         }
 
+        // 解析 ResolveUltimate 对应的关卡逻辑，并保持时间线、进度与结算状态一致。
         public bool ResolveUltimate(
             ulong gestureEventId,
             in SkillActivationResult result)
         {
+            // 检查关卡条件或生命周期边界，避免流程进入不一致状态。
             if (!result.IsValid)
             {
                 throw new ArgumentException(
@@ -509,6 +560,7 @@ namespace OneStrokeDemon.Levels
                     nameof(result));
             }
 
+            // 检查关卡条件或生命周期边界，避免流程进入不一致状态。
             if (!string.Equals(
                     result.SkillId,
                     settings.UltimateSkillId,
@@ -519,11 +571,13 @@ namespace OneStrokeDemon.Levels
                     nameof(result));
             }
 
+            // 检查关卡条件或生命周期边界，避免流程进入不一致状态。
             if (State != BattleFlowState.UltimateDrawing)
             {
                 return false;
             }
 
+            // 检查关卡条件或生命周期边界，避免流程进入不一致状态。
             if (gestureEventId == 0UL)
             {
                 throw new ArgumentOutOfRangeException(
@@ -532,6 +586,7 @@ namespace OneStrokeDemon.Levels
                     "Ultimate gesture event id must be non-zero.");
             }
 
+            // 检查关卡条件或生命周期边界，避免流程进入不一致状态。
             if (!CanAcceptUltimateGestureEvent(gestureEventId))
             {
                 throw new InvalidOperationException(
@@ -540,6 +595,7 @@ namespace OneStrokeDemon.Levels
 
             lastUltimateGestureEventId = gestureEventId;
 
+            // 检查关卡条件或生命周期边界，避免流程进入不一致状态。
             if (result.Succeeded)
             {
                 Publish(
@@ -561,8 +617,10 @@ namespace OneStrokeDemon.Levels
             return true;
         }
 
+        // 判断是否允许 CancelUltimateDrawing 对应的关卡逻辑，并保持时间线、进度与结算状态一致。
         public bool CancelUltimateDrawing()
         {
+            // 检查关卡条件或生命周期边界，避免流程进入不一致状态。
             if (State != BattleFlowState.UltimateDrawing)
             {
                 return false;
@@ -575,39 +633,47 @@ namespace OneStrokeDemon.Levels
             return true;
         }
 
+        // 设置 SetPlayerPaused 对应的关卡逻辑，并保持时间线、进度与结算状态一致。
         public bool SetPlayerPaused(bool paused)
         {
             return SetPauseReason(BattlePauseReason.PlayerRequested, paused);
         }
 
+        // 设置 SetApplicationFocus 对应的关卡逻辑，并保持时间线、进度与结算状态一致。
         public bool SetApplicationFocus(bool hasFocus)
         {
             return settings.PauseOnFocusLost &&
                    SetPauseReason(BattlePauseReason.FocusLost, !hasFocus);
         }
 
+        // 设置 SetApplicationPaused 对应的关卡逻辑，并保持时间线、进度与结算状态一致。
         public bool SetApplicationPaused(bool paused)
         {
             return settings.PauseOnFocusLost &&
                    SetPauseReason(BattlePauseReason.ApplicationPaused, paused);
         }
 
+        // 设置 SetPauseReason 对应的关卡逻辑，并保持时间线、进度与结算状态一致。
         public bool SetPauseReason(BattlePauseReason reason, bool paused)
         {
             ValidateSinglePauseReason(reason);
+            // 检查关卡条件或生命周期边界，避免流程进入不一致状态。
             if (IsTerminal)
             {
                 return false;
             }
 
+            // 检查关卡条件或生命周期边界，避免流程进入不一致状态。
             if (paused)
             {
+                // 检查关卡条件或生命周期边界，避免流程进入不一致状态。
                 if ((activePauseReasons & reason) != 0)
                 {
                     return false;
                 }
 
                 activePauseReasons |= reason;
+                // 检查关卡条件或生命周期边界，避免流程进入不一致状态。
                 if (State == BattleFlowState.Paused)
                 {
                     return true;
@@ -619,6 +685,7 @@ namespace OneStrokeDemon.Levels
                 resumeStateElapsedSeconds = State == BattleFlowState.UltimateDrawing
                     ? 0d
                     : stateElapsedSeconds;
+                // 检查关卡条件或生命周期边界，避免流程进入不一致状态。
                 if (State == BattleFlowState.UltimateDrawing)
                 {
                     CancelUltimateDrawing(
@@ -639,12 +706,14 @@ namespace OneStrokeDemon.Levels
                 return true;
             }
 
+            // 检查关卡条件或生命周期边界，避免流程进入不一致状态。
             if ((activePauseReasons & reason) == 0)
             {
                 return false;
             }
 
             activePauseReasons &= ~reason;
+            // 检查关卡条件或生命周期边界，避免流程进入不一致状态。
             if (State == BattleFlowState.Paused &&
                 activePauseReasons == BattlePauseReason.None)
             {
@@ -655,28 +724,34 @@ namespace OneStrokeDemon.Levels
             return true;
         }
 
+        // 解析 ResolveOutcome 对应的关卡逻辑，并保持时间线、进度与结算状态一致。
         public bool ResolveOutcome(in BattleOutcomeFacts facts)
         {
+            // 检查关卡条件或生命周期边界，避免流程进入不一致状态。
             if (IsTerminal)
             {
                 return false;
             }
 
             BattleSettlement settlement = BattleSettlement.None;
+            // 检查关卡条件或生命周期边界，避免流程进入不一致状态。
             if (facts.PlayerDied || facts.DurationLimitReached)
             {
                 settlement = BattleSettlement.Defeat;
             }
+            // 检查关卡条件或生命周期边界，避免流程进入不一致状态。
             else if (facts.LevelCompleted)
             {
                 settlement = BattleSettlement.Victory;
             }
 
+            // 检查关卡条件或生命周期边界，避免流程进入不一致状态。
             if (settlement == BattleSettlement.None)
             {
                 return false;
             }
 
+            // 检查关卡条件或生命周期边界，避免流程进入不一致状态。
             if (State == BattleFlowState.UltimateDrawing)
             {
                 CancelUltimateDrawing(
@@ -701,6 +776,7 @@ namespace OneStrokeDemon.Levels
             return true;
         }
 
+        // 推进 AdvanceCountdown 对应的关卡逻辑，并保持时间线、进度与结算状态一致。
         private void AdvanceCountdown(ref double remaining)
         {
             double untilPlaying =
@@ -709,16 +785,19 @@ namespace OneStrokeDemon.Levels
             stateElapsedSeconds += consumed;
             Time.AdvanceFlowOnly(consumed);
             remaining -= consumed;
+            // 检查关卡条件或生命周期边界，避免流程进入不一致状态。
             if (stateElapsedSeconds >= settings.CountdownDurationSeconds)
             {
                 TransitionTo(BattleFlowState.Playing);
             }
         }
 
+        // 推进 AdvanceUltimateDrawing 对应的关卡逻辑，并保持时间线、进度与结算状态一致。
         private void AdvanceUltimateDrawing(ref double remaining)
         {
             double untilBoundary =
                 settings.UltimateInputWindowSeconds - stateElapsedSeconds;
+            // 检查关卡条件或生命周期边界，避免流程进入不一致状态。
             if (remaining <= untilBoundary)
             {
                 stateElapsedSeconds += remaining;
@@ -727,6 +806,7 @@ namespace OneStrokeDemon.Levels
                 return;
             }
 
+            // 检查关卡条件或生命周期边界，避免流程进入不一致状态。
             if (untilBoundary > 0d)
             {
                 stateElapsedSeconds += untilBoundary;
@@ -740,6 +820,7 @@ namespace OneStrokeDemon.Levels
                 transitionToPlaying: true);
         }
 
+        // 判断是否允许 CancelUltimateDrawing 对应的关卡逻辑，并保持时间线、进度与结算状态一致。
         private void CancelUltimateDrawing(
             UltimateCancelReason reason,
             SkillActivationStatus skillStatus,
@@ -753,14 +834,17 @@ namespace OneStrokeDemon.Levels
                 reason,
                 skillStatus,
                 BattleSettlement.None);
+            // 检查关卡条件或生命周期边界，避免流程进入不一致状态。
             if (transitionToPlaying)
             {
                 TransitionTo(BattleFlowState.Playing);
             }
         }
 
+        // 处理 TransitionTo 对应的关卡逻辑，并保持时间线、进度与结算状态一致。
         private void TransitionTo(BattleFlowState next)
         {
+            // 检查关卡条件或生命周期边界，避免流程进入不一致状态。
             if (State == next)
             {
                 return;
@@ -779,6 +863,7 @@ namespace OneStrokeDemon.Levels
                 BattleSettlement.None);
         }
 
+        // 创建 CreateSlice 对应的关卡逻辑，并保持时间线、进度与结算状态一致。
         private BattleTimeSlice CreateSlice(
             double requested,
             double beforeFlow,
@@ -794,6 +879,7 @@ namespace OneStrokeDemon.Levels
                 current);
         }
 
+        // 处理 Publish 对应的关卡逻辑，并保持时间线、进度与结算状态一致。
         private void Publish(
             BattleFlowEventType eventType,
             BattleFlowState previous,
@@ -804,6 +890,7 @@ namespace OneStrokeDemon.Levels
             BattleSettlement settlement)
         {
             ulong sequence = nextEventSequence;
+            // 检查关卡条件或生命周期边界，避免流程进入不一致状态。
             if (sequence == 0UL || sequence == ulong.MaxValue)
             {
                 throw new OverflowException("Battle flow event sequence is exhausted.");
@@ -823,6 +910,7 @@ namespace OneStrokeDemon.Levels
                 time));
         }
 
+        // 校验 ValidateSinglePauseReason 对应的关卡逻辑，并保持时间线、进度与结算状态一致。
         private static void ValidateSinglePauseReason(BattlePauseReason reason)
         {
             int value = (int)reason;
@@ -830,6 +918,7 @@ namespace OneStrokeDemon.Levels
                 (int)BattlePauseReason.PlayerRequested |
                 (int)BattlePauseReason.FocusLost |
                 (int)BattlePauseReason.ApplicationPaused;
+            // 检查关卡条件或生命周期边界，避免流程进入不一致状态。
             if (value == 0 || (value & (value - 1)) != 0 || (value & ~supported) != 0)
             {
                 throw new ArgumentOutOfRangeException(
