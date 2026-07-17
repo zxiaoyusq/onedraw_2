@@ -1,8 +1,8 @@
 # PROGRESS
 
 - 日期：2026-07-17
-- 当前成熟度：T660生产入口与轨迹视觉已由用户确认通过；Runtime除Bootstrap外的中文注释批次完成
-- 当前任务：T678
+- 当前成熟度：T660生产入口与轨迹视觉已由用户确认通过；全部手写Runtime模块中文注释批次完成
+- 当前任务：T679
 - 状态：READY
 - Unity精确版本：6000.5.1f1（已由ProjectVersion.txt与本机安装核验）
 - 微信SDK来源或版本：官方 `minigame-tuanjie-transform-sdk` v0.1.33 / commit `ed4ad28f433c6b52b5fd3f22a6fa155a0c98c228` / embedded最小补丁
@@ -11,10 +11,11 @@
 
 ## 进行中
 
-- T678是唯一`READY`任务，范围为Bootstrap脚本。T679–T681按Editor、生成器和全量审计串行处理；T700在T681完成前保持`BACKLOG`。
+- T679是唯一`READY`任务，范围为Editor脚本。T680–T681按生成器和全量审计串行处理；T700在T681完成前保持`BACKLOG`。
 
 ## 已完成
 
+- T678：为Bootstrap目录6个手写C#脚本、2,193行基线代码补充239行中文类型、方法和主要逻辑注释，覆盖生产入口、主菜单/战斗组合根、跨场景启动上下文、战斗世界与会话释放；删除0行且无语义变化。配置漂移门与ConfigExporter 58/58、ConfigPipeline/T660专项EditMode 21/21和PlayMode 7/7、全量EditMode 198/198及PlayMode 50/50通过；TMP测试漂移已恢复，用户`AGENTS.md`未修改/未暂存。
 - T677：为Presentation目录17个手写C#脚本、4,989行基线代码补充526行中文类型、方法和主要逻辑注释，覆盖轨迹池、HUD绑定/视图、反馈运行时、伤害数字/VFX池与教程遮罩；删除0行且无语义变化。配置漂移门与ConfigExporter 58/58、表现专项EditMode 16/16和PlayMode 9/9、全量EditMode 198/198及PlayMode 50/50通过；TMP测试漂移已恢复，用户`AGENTS.md`未修改/未暂存。
 - T676：为Levels目录14个手写C#脚本、5,288行基线代码补充579行中文类型、方法和主要逻辑注释，覆盖出生/波次、战斗状态、教程、Boss关、结果评分、存档迁移与重开导航；删除0行且无语义变化。配置漂移门与ConfigExporter 58/58、T500–T550专项EditMode 40/40和PlayMode 9/9、全量EditMode 198/198及PlayMode 50/50通过。T540首次运行在测试完成后的Burst退出阶段发生Bus error，作为无效证据保留；同命令重试3/3通过。TMP测试漂移已恢复，用户`AGENTS.md`未修改/未暂存。
 - T675：为Skills目录9个手写C#脚本、1,966行基线代码补充217行中文类型、方法和主要逻辑注释，覆盖技能条件、目标选择、效果注册/执行、玩家与敌人效果目标及Boss阶段控制；删除0行且无语义变化。配置漂移门与ConfigExporter 58/58、T410专项EditMode 4/4和PlayMode 1/1、全量EditMode 198/198及PlayMode 50/50通过；TMP测试漂移已恢复，用户`AGENTS.md`未修改/未暂存。
@@ -242,4 +243,4 @@
 9. 三个MVP关卡已接入生产主菜单和Battle组合根，用户已确认Unity Editor入口、Mac触控板笔迹与修复后视觉。`IProgressSaveStore`与震动仍待T130平台适配，T640多比例/安全区又依赖T120，因此当前证据不能外推为平台持久化、多设备布局或真机体验。
 ## 下一步
 
-执行T678：只为Bootstrap脚本补齐中文注释，不改生产入口、装配行为、配置或Unity资源。完成证据和独立提交后才将T679置READY。
+执行T679：只为Editor脚本补齐中文注释，不改编辑器菜单、资源生成语义或Unity资源。完成证据和独立提交后才将T680置READY。

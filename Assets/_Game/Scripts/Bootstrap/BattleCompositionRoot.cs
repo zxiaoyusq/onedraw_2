@@ -11,6 +11,7 @@ using UnityEngine;
 namespace OneStrokeDemon.Bootstrap
 {
     [DisallowMultipleComponent]
+    // 定义 BattleCompositionRoot 的入口装配契约，集中管理场景、服务与战斗会话所有权。
     public sealed class BattleCompositionRoot : MonoBehaviour
     {
         private ResultService results;
@@ -22,8 +23,10 @@ namespace OneStrokeDemon.Bootstrap
 
         public uint SessionGeneration => navigation?.Generation ?? 0U;
 
+        // 启动 Start 对应的入口装配逻辑，并维护会话所有权和跨场景边界。
         private void Start()
         {
+            // 检查入口状态、依赖或生命周期边界，避免重复装配和悬空引用。
             if (!GameplayConfigRuntime.IsReady ||
                 !AssetRegistryRuntime.IsReady ||
                 !PointerInputRuntime.IsReady)
@@ -46,59 +49,71 @@ namespace OneStrokeDemon.Bootstrap
             navigation = new BattleResultNavigation(factory, levelId);
         }
 
+        // 响应 OnDestroy 对应的入口装配逻辑，并维护会话所有权和跨场景边界。
         private void OnDestroy()
         {
             navigation?.Dispose();
             navigation = null;
         }
 
+        // 响应 OnApplicationFocus 对应的入口装配逻辑，并维护会话所有权和跨场景边界。
         private void OnApplicationFocus(bool hasFocus)
         {
             CurrentSession?.SetApplicationFocus(hasFocus);
         }
 
+        // 响应 OnApplicationPause 对应的入口装配逻辑，并维护会话所有权和跨场景边界。
         private void OnApplicationPause(bool paused)
         {
             CurrentSession?.SetApplicationPaused(paused);
         }
 
+        // 处理 Restart 对应的入口装配逻辑，并维护会话所有权和跨场景边界。
         private void Restart()
         {
             navigation.Restart();
         }
 
+        // 处理 GoNext 对应的入口装配逻辑，并维护会话所有权和跨场景边界。
         private void GoNext()
         {
             ProductionBattleSession current = CurrentSession;
+            // 检查入口状态、依赖或生命周期边界，避免重复装配和悬空引用。
             if (current?.Receipt != null && current.Receipt.CanGoNext)
             {
                 navigation.GoNext(current.Receipt);
             }
         }
 
+        // 处理 ReturnToMainMenu 对应的入口装配逻辑，并维护会话所有权和跨场景边界。
         private void ReturnToMainMenu()
         {
             BattleLaunchContext.Clear();
             sceneFlow.LoadMainMenu();
         }
 
+        // 处理 ResolveInitialLevel 对应的入口装配逻辑，并维护会话所有权和跨场景边界。
         private static string ResolveInitialLevel(
             IConfigProvider config,
             ProgressSnapshot progress)
         {
+            // 检查入口状态、依赖或生命周期边界，避免重复装配和悬空引用。
             if (BattleLaunchContext.HasSelection)
             {
                 string selected = config.GetLevel(
                     BattleLaunchContext.SelectedLevelId).LevelId;
+                // 检查入口状态、依赖或生命周期边界，避免重复装配和悬空引用。
                 if (progress.IsLevelUnlocked(selected))
                 {
                     return selected;
                 }
             }
 
+            // 逐项装配或释放会话资源，保持创建与回收顺序一致。
             for (int index = 0; index < config.GetLevels().Count; index++)
             {
                 LevelConfig level = config.GetLevels()[index];
+                // 检查入口状态、依赖或生命周期边界，避免重复装配和悬空引用。
                 if (progress.IsLevelUnlocked(level.LevelId))
                 {
                     return level.LevelId;
@@ -110,6 +125,7 @@ namespace OneStrokeDemon.Bootstrap
         }
     }
 
+    // 定义 ProductionBattleSessionFactory 的入口装配契约，集中管理场景、服务与战斗会话所有权。
     internal sealed class ProductionBattleSessionFactory : IBattleSessionFactory
     {
         private readonly IConfigProvider config;
@@ -120,6 +136,7 @@ namespace OneStrokeDemon.Bootstrap
         private readonly Action goNext;
         private readonly Action mainMenu;
 
+        // 初始化 ProductionBattleSessionFactory，并建立生产入口或战斗会话的依赖关系。
         public ProductionBattleSessionFactory(
             IConfigProvider configProvider,
             IAssetRegistry assetRegistry,
@@ -138,6 +155,7 @@ namespace OneStrokeDemon.Bootstrap
             mainMenu = mainMenuAction;
         }
 
+        // 创建 Create 对应的入口装配逻辑，并维护会话所有权和跨场景边界。
         public IBattleSession Create(string levelId)
         {
             return new ProductionBattleSession(
@@ -152,6 +170,7 @@ namespace OneStrokeDemon.Bootstrap
         }
     }
 
+    // 定义 ProductionBattleSession 的入口装配契约，集中管理场景、服务与战斗会话所有权。
     public sealed class ProductionBattleSession : IBattleSession, IBattleHudCommandSink
     {
         private const int PlayerFeedbackTargetId = -1;
@@ -195,6 +214,7 @@ namespace OneStrokeDemon.Bootstrap
         private int lastResolvedHitCount;
         private bool disposed;
 
+        // 初始化 ProductionBattleSession，并建立生产入口或战斗会话的依赖关系。
         public ProductionBattleSession(
             IConfigProvider configProvider,
             IAssetRegistry assetRegistry,
@@ -228,6 +248,7 @@ namespace OneStrokeDemon.Bootstrap
             world = new ProductionBattleWorld(config, assets, player, referenceRoot);
 
             LevelConfig level = config.GetLevel(LevelId);
+            // 检查入口状态、依赖或生命周期边界，避免重复装配和悬空引用。
             if (!string.IsNullOrEmpty(level.BossEnemyId))
             {
                 boss = new BossLevelCoordinator(
@@ -238,6 +259,7 @@ namespace OneStrokeDemon.Bootstrap
                     world);
                 battle = boss.Battle;
             }
+            // 检查入口状态、依赖或生命周期边界，避免重复装配和悬空引用。
             else if (!string.IsNullOrEmpty(level.TutorialId))
             {
                 tutorial = new TutorialLevelCoordinator(
@@ -308,6 +330,7 @@ namespace OneStrokeDemon.Bootstrap
                 playerConfig.PlayerId,
                 BattleHudLanguage.ZhCN,
                 root.transform);
+            // 检查入口状态、依赖或生命周期边界，避免重复装配和悬空引用。
             if (tutorial != null)
             {
                 tutorialOverlay = TutorialOverlayRuntime.Create(
@@ -358,18 +381,22 @@ namespace OneStrokeDemon.Bootstrap
 
         public int LastResolvedHitCount => lastResolvedHitCount;
 
+        // 处理 Advance 对应的入口装配逻辑，并维护会话所有权和跨场景边界。
         public void Advance(float unscaledDeltaSeconds)
         {
+            // 检查入口状态、依赖或生命周期边界，避免重复装配和悬空引用。
             if (disposed)
             {
                 return;
             }
 
             BattleFlowAdvanceReport report;
+            // 检查入口状态、依赖或生命周期边界，避免重复装配和悬空引用。
             if (boss != null)
             {
                 report = boss.Advance(unscaledDeltaSeconds);
             }
+            // 检查入口状态、依赖或生命周期边界，避免重复装配和悬空引用。
             else if (tutorial != null)
             {
                 report = tutorial.Advance(unscaledDeltaSeconds, player.Current.IsDead);
@@ -382,6 +409,7 @@ namespace OneStrokeDemon.Bootstrap
             double gameplayTimestamp = report.Time.Current.GameplayElapsedSeconds;
             combo.AdvanceTime(gameplayTimestamp);
             world.Advance(battle.Level.ElapsedSeconds, gameplayTimestamp);
+            // 检查入口状态、依赖或生命周期边界，避免重复装配和悬空引用。
             if (boss != null)
             {
                 world.AdvanceBoss(boss.BossPhases);
@@ -392,19 +420,23 @@ namespace OneStrokeDemon.Bootstrap
             hudBinding.UpdateUltimateClock(
                 gameplayTimestamp,
                 skills.GetCooldownUntil(battle.Flow.Settings.UltimateSkillId));
+            // 检查入口状态、依赖或生命周期边界，避免重复装配和悬空引用。
             if (report.SettledThisAdvance && receipt == null)
             {
                 Settle(report.State);
             }
         }
 
+        // 设置 SetPlayerPaused 对应的入口装配逻辑，并维护会话所有权和跨场景边界。
         public void SetPlayerPaused(bool paused)
         {
             battle.SetPlayerPaused(paused);
         }
 
+        // 处理 SwitchStance 对应的入口装配逻辑，并维护会话所有权和跨场景边界。
         public void SwitchStance()
         {
+            // 检查入口状态、依赖或生命周期边界，避免重复装配和悬空引用。
             if (battle.Flow.State != BattleFlowState.Playing || player.Current.IsDead)
             {
                 return;
@@ -418,11 +450,13 @@ namespace OneStrokeDemon.Bootstrap
                 : ConfigIds.Stances.StanceBlade;
             double timestamp = battle.Flow.Time.Current.GameplayElapsedSeconds;
             StanceSwitchResult switched = player.TrySwitchStance(next, timestamp);
+            // 检查入口状态、依赖或生命周期边界，避免重复装配和悬空引用。
             if (!switched.DidSwitch)
             {
                 return;
             }
 
+            // 检查入口状态、依赖或生命周期边界，避免重复装配和悬空引用。
             if (!string.IsNullOrEmpty(switched.OnSwitchEffectGroupId))
             {
                 skills.ExecuteEffectGroup(
@@ -434,47 +468,57 @@ namespace OneStrokeDemon.Bootstrap
             NotifyTutorial(TutorialEventType.StanceChanged);
         }
 
+        // 处理 BeginUltimateDrawing 对应的入口装配逻辑，并维护会话所有权和跨场景边界。
         public void BeginUltimateDrawing()
         {
             battle.TryBeginUltimateDrawing();
         }
 
+        // 处理 Restart 对应的入口装配逻辑，并维护会话所有权和跨场景边界。
         public void Restart()
         {
             restart();
         }
 
+        // 处理 GoNext 对应的入口装配逻辑，并维护会话所有权和跨场景边界。
         public void GoNext()
         {
+            // 检查入口状态、依赖或生命周期边界，避免重复装配和悬空引用。
             if (receipt != null && receipt.CanGoNext)
             {
                 goNext();
             }
         }
 
+        // 处理 ReturnToMainMenu 对应的入口装配逻辑，并维护会话所有权和跨场景边界。
         public void ReturnToMainMenu()
         {
             mainMenu();
         }
 
+        // 设置 SetApplicationFocus 对应的入口装配逻辑，并维护会话所有权和跨场景边界。
         public void SetApplicationFocus(bool hasFocus)
         {
             battle.SetApplicationFocus(hasFocus);
         }
 
+        // 设置 SetApplicationPaused 对应的入口装配逻辑，并维护会话所有权和跨场景边界。
         public void SetApplicationPaused(bool paused)
         {
             battle.SetApplicationPaused(paused);
         }
 
+        // 释放 Dispose 对应的入口装配逻辑，并维护会话所有权和跨场景边界。
         public void Dispose()
         {
+            // 检查入口状态、依赖或生命周期边界，避免重复装配和悬空引用。
             if (disposed)
             {
                 return;
             }
 
             disposed = true;
+            // 检查入口状态、依赖或生命周期边界，避免重复装配和悬空引用。
             if (driver != null)
             {
                 driver.Detach();
@@ -500,8 +544,10 @@ namespace OneStrokeDemon.Bootstrap
             Destroy(trailMaterial);
         }
 
+        // 响应 OnStrokeCompleted 对应的入口装配逻辑，并维护会话所有权和跨场景边界。
         private void OnStrokeCompleted(StrokeData stroke)
         {
+            // 检查入口状态、依赖或生命周期边界，避免重复装配和悬空引用。
             if (disposed ||
                 (battle.Flow.State != BattleFlowState.Playing &&
                  battle.Flow.State != BattleFlowState.UltimateDrawing))
@@ -517,6 +563,7 @@ namespace OneStrokeDemon.Bootstrap
             StrokeGeometryData geometry = StrokeGeometry.Process(
                 stroke,
                 StrokeGeometrySettingsFactory.FromConfig(sampling));
+            // 检查入口状态、依赖或生命周期边界，避免重复装配和悬空引用。
             if (geometry.PointCount >= 2)
             {
                 trailPool.CompletePreview(
@@ -531,8 +578,10 @@ namespace OneStrokeDemon.Bootstrap
                 trailPool.CancelPreview(stroke.StrokeId);
             }
             GestureMatchResult gesture = classifier.Classify(geometry);
+            // 检查入口状态、依赖或生命周期边界，避免重复装配和悬空引用。
             if (!gesture.IsMatch)
             {
+                // 检查入口状态、依赖或生命周期边界，避免重复装配和悬空引用。
                 if (battle.Flow.State == BattleFlowState.UltimateDrawing)
                 {
                     battle.CancelUltimateDrawing();
@@ -541,6 +590,7 @@ namespace OneStrokeDemon.Bootstrap
                 return;
             }
 
+            // 检查入口状态、依赖或生命周期边界，避免重复装配和悬空引用。
             if (battle.Flow.State == BattleFlowState.UltimateDrawing)
             {
                 ResolveUltimate(stroke, gesture);
@@ -551,6 +601,7 @@ namespace OneStrokeDemon.Bootstrap
                 TutorialEventType.ValidStroke,
                 1L,
                 ToTutorialGesture(gesture.GestureType));
+            // 检查入口状态、依赖或生命周期边界，避免重复装配和悬空引用。
             if (world.TryCutProjectile())
             {
                 reflectedProjectileCount += 1;
@@ -562,6 +613,7 @@ namespace OneStrokeDemon.Bootstrap
                 config.GetStrokeRule(gesture.RuleId));
             int count = resolver.Resolve(geometry, gesture, hitRule, hits);
             lastResolvedHitCount = count;
+            // 检查入口状态、依赖或生命周期边界，避免重复装配和悬空引用。
             if (count > 0)
             {
                 NotifyTutorial(
@@ -573,9 +625,11 @@ namespace OneStrokeDemon.Bootstrap
             world.ClearStrokeSelection();
             double gameplayTimestamp = battle.Flow.Time.Current.GameplayElapsedSeconds;
             float extraMultiplier = world.ConsumeNextStrokeDamageMultiplier();
+            // 逐项装配或释放会话资源，保持创建与回收顺序一致。
             for (int index = 0; index < count; index++)
             {
                 HitRecord hit = hits[index];
+                // 检查入口状态、依赖或生命周期边界，避免重复装配和悬空引用。
                 if (!world.TryGetByHitTarget(
                         hit.TargetId,
                         out long entityId,
@@ -605,6 +659,7 @@ namespace OneStrokeDemon.Bootstrap
                     hit.GestureType.ToString(),
                     Math.Max(Time.timeAsDouble, enemy.State.LastTimestamp),
                     $"stroke:{hit.StrokeId}");
+                // 检查入口状态、依赖或生命周期边界，避免重复装配和悬空引用。
                 if (extraMultiplier > 1f && enemy.IsAlive)
                 {
                     long extraDamage = checked((long)Math.Round(
@@ -623,16 +678,19 @@ namespace OneStrokeDemon.Bootstrap
                     applied,
                     $"stroke:{hit.StrokeId}",
                     gameplayTimestamp);
+                // 检查入口状态、依赖或生命周期边界，避免重复装配和悬空引用。
                 if (hit.IsWeakpoint)
                 {
                     NotifyTutorial(TutorialEventType.WeakpointHit);
                 }
 
+                // 检查入口状态、依赖或生命周期边界，避免重复装配和悬空引用。
                 if (applied.Damage.ArmorBroken)
                 {
                     NotifyTutorial(TutorialEventType.ArmorBroken);
                 }
 
+                // 检查入口状态、依赖或生命周期边界，避免重复装配和悬空引用。
                 if (!enemy.IsAlive)
                 {
                     NotifyEnemyDefeated(entityId);
@@ -640,8 +698,10 @@ namespace OneStrokeDemon.Bootstrap
             }
         }
 
+        // 响应 OnStrokeStarted 对应的入口装配逻辑，并维护会话所有权和跨场景边界。
         private void OnStrokeStarted(StrokePreviewPointEvent preview)
         {
+            // 检查入口状态、依赖或生命周期边界，避免重复装配和悬空引用。
             if (disposed ||
                 (battle.Flow.State != BattleFlowState.Playing &&
                  battle.Flow.State != BattleFlowState.UltimateDrawing))
@@ -658,6 +718,7 @@ namespace OneStrokeDemon.Bootstrap
                     ConfigIds.VfxCues.VfxSlash));
         }
 
+        // 响应 OnStrokePointAdded 对应的入口装配逻辑，并维护会话所有权和跨场景边界。
         private void OnStrokePointAdded(StrokePreviewPointEvent preview)
         {
             trailPool.TryAppendPreviewPoint(
@@ -665,13 +726,16 @@ namespace OneStrokeDemon.Bootstrap
                 preview.ReferencePosition);
         }
 
+        // 响应 OnStrokeCanceled 对应的入口装配逻辑，并维护会话所有权和跨场景边界。
         private void OnStrokeCanceled(StrokeCanceledEvent canceled)
         {
             trailPool.CancelPreview(canceled.StrokeId);
         }
 
+        // 处理 ResolveUltimate 对应的入口装配逻辑，并维护会话所有权和跨场景边界。
         private void ResolveUltimate(StrokeData stroke, GestureMatchResult gesture)
         {
+            // 检查入口状态、依赖或生命周期边界，避免重复装配和悬空引用。
             if (!battle.CanAcceptUltimateGestureEvent(stroke.StrokeId))
             {
                 return;
@@ -687,6 +751,7 @@ namespace OneStrokeDemon.Bootstrap
                     stroke.Duration,
                     timestamp),
                 new SkillEffectContext(world, timestamp));
+            // 检查入口状态、依赖或生命周期边界，避免重复装配和悬空引用。
             if (tutorial != null)
             {
                 tutorial.ResolveUltimate(stroke.StrokeId, activation);
@@ -697,6 +762,7 @@ namespace OneStrokeDemon.Bootstrap
             }
         }
 
+        // 处理 NotifyEnemyDefeated 对应的入口装配逻辑，并维护会话所有权和跨场景边界。
         private void NotifyEnemyDefeated(long entityId)
         {
             bool accepted = boss != null
@@ -704,12 +770,14 @@ namespace OneStrokeDemon.Bootstrap
                 : tutorial != null
                     ? tutorial.NotifyEnemyDefeated(entityId)
                     : battle.NotifyEnemyDefeated(entityId);
+            // 检查入口状态、依赖或生命周期边界，避免重复装配和悬空引用。
             if (accepted)
             {
                 world.Release(entityId);
             }
         }
 
+        // 响应 OnEnemySpawned 对应的入口装配逻辑，并维护会话所有权和跨场景边界。
         private void OnEnemySpawned(
             long entityId,
             EnemyController controller,
@@ -719,16 +787,19 @@ namespace OneStrokeDemon.Bootstrap
                 controller.Damage.HitTargetId,
                 controller.transform,
                 renderers);
+            // 检查入口状态、依赖或生命周期边界，避免重复装配和悬空引用。
             if (controller.Definition.Weakpoint.HasHitbox)
             {
                 NotifyTutorial(TutorialEventType.EnemyWeakpointShown);
             }
 
+            // 检查入口状态、依赖或生命周期边界，避免重复装配和悬空引用。
             if (controller.Damage.MaximumArmor > 0L)
             {
                 NotifyTutorial(TutorialEventType.ArmoredEnemySpawned);
             }
 
+            // 检查入口状态、依赖或生命周期边界，避免重复装配和悬空引用。
             if (string.Equals(
                     controller.Definition.EnemyId,
                     ConfigIds.Enemies.EnemySkeletonGhost,
@@ -737,27 +808,33 @@ namespace OneStrokeDemon.Bootstrap
                 NotifyTutorial(TutorialEventType.GhostSpawned);
             }
 
+            // 检查入口状态、依赖或生命周期边界，避免重复装配和悬空引用。
             if (world.ActiveCount >= 3)
             {
                 NotifyTutorial(TutorialEventType.WaveMultiTarget, world.ActiveCount);
             }
         }
 
+        // 响应 OnEnemyReleased 对应的入口装配逻辑，并维护会话所有权和跨场景边界。
         private void OnEnemyReleased(int hitTargetId)
         {
             feedbackRuntime.UnregisterTarget(hitTargetId);
         }
 
+        // 响应 OnAttackExecuted 对应的入口装配逻辑，并维护会话所有权和跨场景边界。
         private void OnAttackExecuted(EnemyAttackAction action)
         {
+            // 检查入口状态、依赖或生命周期边界，避免重复装配和悬空引用。
             if (!string.IsNullOrEmpty(action.ProjectileId))
             {
                 NotifyTutorial(TutorialEventType.ProjectileSpawned);
             }
         }
 
+        // 响应 OnPlayerCombatEvent 对应的入口装配逻辑，并维护会话所有权和跨场景边界。
         private void OnPlayerCombatEvent(PlayerCombatEvent combatEvent)
         {
+            // 检查入口状态、依赖或生命周期边界，避免重复装配和悬空引用。
             if (combatEvent.EventType == PlayerCombatEventType.HpChanged &&
                 combatEvent.SignedAmount < 0L)
             {
@@ -766,25 +843,30 @@ namespace OneStrokeDemon.Bootstrap
             }
         }
 
+        // 处理 PublishRecurringTutorialEvents 对应的入口装配逻辑，并维护会话所有权和跨场景边界。
         private void PublishRecurringTutorialEvents()
         {
+            // 检查入口状态、依赖或生命周期边界，避免重复装配和悬空引用。
             if (tutorial == null || tutorial.Tutorial.State == TutorialSequenceState.Completed)
             {
                 return;
             }
 
             SkillConfig ultimate = config.GetSkill(playerConfig.UltimateSkillId);
+            // 检查入口状态、依赖或生命周期边界，避免重复装配和悬空引用。
             if (player.Current.CurrentEnergy >= ultimate.EnergyCost)
             {
                 NotifyTutorial(TutorialEventType.UltimateReady);
             }
 
+            // 检查入口状态、依赖或生命周期边界，避免重复装配和悬空引用。
             if (world.ActiveCount >= 3)
             {
                 NotifyTutorial(TutorialEventType.WaveMultiTarget, world.ActiveCount);
             }
         }
 
+        // 处理 NotifyTutorial 对应的入口装配逻辑，并维护会话所有权和跨场景边界。
         private void NotifyTutorial(
             TutorialEventType eventType,
             long value = 1L,
@@ -796,6 +878,7 @@ namespace OneStrokeDemon.Bootstrap
                 gesture));
         }
 
+        // 设置 Settle 对应的入口装配逻辑，并维护会话所有权和跨场景边界。
         private void Settle(BattleFlowState state)
         {
             BattleSettlement settlement = state == BattleFlowState.Victory
@@ -812,6 +895,7 @@ namespace OneStrokeDemon.Bootstrap
                     battle.Flow.Time.Current.GameplayElapsedSeconds)));
         }
 
+        // 创建 CreateBackground 对应的入口装配逻辑，并维护会话所有权和跨场景边界。
         private void CreateBackground(LevelConfig level)
         {
             Sprite sprite = assets.GetSprite(level.BackgroundAssetKey);
@@ -829,6 +913,7 @@ namespace OneStrokeDemon.Bootstrap
                 1f);
         }
 
+        // 创建 CreatePlayerVisual 对应的入口装配逻辑，并维护会话所有权和跨场景边界。
         private SpriteRenderer CreatePlayerVisual(PlayerConfig configuredPlayer)
         {
             Sprite sprite = assets.GetSprite(configuredPlayer.AssetKey);
@@ -847,9 +932,11 @@ namespace OneStrokeDemon.Bootstrap
             return renderer;
         }
 
+        // 处理 ReadReference 对应的入口装配逻辑，并维护会话所有权和跨场景边界。
         private float ReadReference(string key)
         {
             GlobalConfig row = config.GetGlobal(key);
+            // 检查入口状态、依赖或生命周期边界，避免重复装配和悬空引用。
             if (!row.IntValue.HasValue || row.IntValue.Value <= 0L)
             {
                 throw new InvalidOperationException(
@@ -859,6 +946,7 @@ namespace OneStrokeDemon.Bootstrap
             return row.IntValue.Value;
         }
 
+        // 处理 ToTutorialGesture 对应的入口装配逻辑，并维护会话所有权和跨场景边界。
         private static TutorialGestureType ToTutorialGesture(GestureType gesture)
         {
             return gesture switch
@@ -874,9 +962,11 @@ namespace OneStrokeDemon.Bootstrap
             };
         }
 
+        // 创建 CreateTrailMaterial 对应的入口装配逻辑，并维护会话所有权和跨场景边界。
         private static Material CreateTrailMaterial()
         {
             Shader shader = Shader.Find("Sprites/Default");
+            // 检查入口状态、依赖或生命周期边界，避免重复装配和悬空引用。
             if (shader == null)
             {
                 throw new InvalidOperationException(
@@ -889,6 +979,7 @@ namespace OneStrokeDemon.Bootstrap
             };
         }
 
+        // 处理 ConfigureReferenceSpace 对应的入口装配逻辑，并维护会话所有权和跨场景边界。
         private static void ConfigureReferenceSpace(
             Transform referenceSpace,
             Camera camera,
@@ -910,9 +1001,11 @@ namespace OneStrokeDemon.Bootstrap
                 1f);
         }
 
+        // 处理 ReadPositive 对应的入口装配逻辑，并维护会话所有权和跨场景边界。
         private static float ReadPositive(IConfigProvider configProvider, string key)
         {
             GlobalConfig row = configProvider.GetGlobal(key);
+            // 检查入口状态、依赖或生命周期边界，避免重复装配和悬空引用。
             if (!row.IntValue.HasValue || row.IntValue.Value <= 0L)
             {
                 throw new ArgumentException(
@@ -923,8 +1016,10 @@ namespace OneStrokeDemon.Bootstrap
             return row.IntValue.Value;
         }
 
+        // 处理 Destroy 对应的入口装配逻辑，并维护会话所有权和跨场景边界。
         private static void Destroy(GameObject gameObject)
         {
+            // 检查入口状态、依赖或生命周期边界，避免重复装配和悬空引用。
             if (Application.isPlaying)
             {
                 UnityEngine.Object.Destroy(gameObject);
@@ -935,8 +1030,10 @@ namespace OneStrokeDemon.Bootstrap
             }
         }
 
+        // 处理 Destroy 对应的入口装配逻辑，并维护会话所有权和跨场景边界。
         private static void Destroy(UnityEngine.Object value)
         {
+            // 检查入口状态、依赖或生命周期边界，避免重复装配和悬空引用。
             if (Application.isPlaying)
             {
                 UnityEngine.Object.Destroy(value);
@@ -947,30 +1044,36 @@ namespace OneStrokeDemon.Bootstrap
             }
         }
 
+        // 定义 SystemRandomSource 的入口装配契约，集中管理场景、服务与战斗会话所有权。
         private sealed class SystemRandomSource : IRandomSource
         {
             private readonly System.Random value = new System.Random();
 
+            // 处理 NextUnitInterval 对应的入口装配逻辑，并维护会话所有权和跨场景边界。
             public double NextUnitInterval()
             {
                 return value.NextDouble();
             }
         }
 
+        // 定义 SessionDriver 的入口装配契约，集中管理场景、服务与战斗会话所有权。
         private sealed class SessionDriver : MonoBehaviour
         {
             private ProductionBattleSession session;
 
+            // 处理 Initialize 对应的入口装配逻辑，并维护会话所有权和跨场景边界。
             public void Initialize(ProductionBattleSession configuredSession)
             {
                 session = configuredSession;
             }
 
+            // 处理 Detach 对应的入口装配逻辑，并维护会话所有权和跨场景边界。
             public void Detach()
             {
                 session = null;
             }
 
+            // 更新 Update 对应的入口装配逻辑，并维护会话所有权和跨场景边界。
             private void Update()
             {
                 session?.Advance(Time.unscaledDeltaTime);

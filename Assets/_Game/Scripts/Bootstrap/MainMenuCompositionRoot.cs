@@ -12,6 +12,7 @@ using UnityEngine.UI;
 namespace OneStrokeDemon.Bootstrap
 {
     [DisallowMultipleComponent]
+    // 定义 MainMenuCompositionRoot 的入口装配契约，集中管理场景、服务与战斗会话所有权。
     public sealed class MainMenuCompositionRoot : MonoBehaviour
     {
         private MainMenuView view;
@@ -20,8 +21,10 @@ namespace OneStrokeDemon.Bootstrap
 
         public MainMenuView View => view;
 
+        // 启动 Start 对应的入口装配逻辑，并维护会话所有权和跨场景边界。
         private void Start()
         {
+            // 检查入口状态、依赖或生命周期边界，避免重复装配和悬空引用。
             if (!GameplayConfigRuntime.IsReady || !AssetRegistryRuntime.IsReady)
             {
                 return;
@@ -39,8 +42,10 @@ namespace OneStrokeDemon.Bootstrap
             view.LevelRequested += OnLevelRequested;
         }
 
+        // 响应 OnDestroy 对应的入口装配逻辑，并维护会话所有权和跨场景边界。
         private void OnDestroy()
         {
+            // 检查入口状态、依赖或生命周期边界，避免重复装配和悬空引用。
             if (view != null)
             {
                 view.StartRequested -= OnStartRequested;
@@ -48,13 +53,16 @@ namespace OneStrokeDemon.Bootstrap
             }
         }
 
+        // 响应 OnStartRequested 对应的入口装配逻辑，并维护会话所有权和跨场景边界。
         private void OnStartRequested()
         {
             view.ShowLevelSelection();
         }
 
+        // 响应 OnLevelRequested 对应的入口装配逻辑，并维护会话所有权和跨场景边界。
         private void OnLevelRequested(string levelId)
         {
+            // 检查入口状态、依赖或生命周期边界，避免重复装配和悬空引用。
             if (!progress.Current.IsLevelUnlocked(levelId))
             {
                 return;
@@ -65,6 +73,7 @@ namespace OneStrokeDemon.Bootstrap
         }
     }
 
+    // 定义 MainMenuView 的入口装配契约，集中管理场景、服务与战斗会话所有权。
     public sealed class MainMenuView : MonoBehaviour
     {
         private readonly List<MainMenuLevelChoice> choices =
@@ -78,6 +87,7 @@ namespace OneStrokeDemon.Bootstrap
 
         public IReadOnlyList<MainMenuLevelChoice> LevelChoices => choices;
 
+        // 处理 Initialize 对应的入口装配逻辑，并维护会话所有权和跨场景边界。
         internal void Initialize(
             Button configuredStartButton,
             GameObject configuredLevelSelection,
@@ -90,6 +100,7 @@ namespace OneStrokeDemon.Bootstrap
             choices.AddRange(configuredChoices ??
                 throw new ArgumentNullException(nameof(configuredChoices)));
             StartButton.onClick.AddListener(() => StartRequested?.Invoke());
+            // 逐项装配或释放会话资源，保持创建与回收顺序一致。
             for (int index = 0; index < choices.Count; index++)
             {
                 MainMenuLevelChoice choice = choices[index];
@@ -99,6 +110,7 @@ namespace OneStrokeDemon.Bootstrap
             }
         }
 
+        // 处理 ShowLevelSelection 对应的入口装配逻辑，并维护会话所有权和跨场景边界。
         public void ShowLevelSelection()
         {
             StartButton.gameObject.SetActive(false);
@@ -106,8 +118,10 @@ namespace OneStrokeDemon.Bootstrap
         }
     }
 
+    // 定义 MainMenuLevelChoice 的入口装配契约，集中管理场景、服务与战斗会话所有权。
     public sealed class MainMenuLevelChoice
     {
+        // 初始化 MainMenuLevelChoice，并建立生产入口或战斗会话的依赖关系。
         internal MainMenuLevelChoice(string levelId, Button button, bool unlocked)
         {
             LevelId = levelId;
@@ -122,6 +136,7 @@ namespace OneStrokeDemon.Bootstrap
         public bool IsUnlocked { get; }
     }
 
+    // 定义 MainMenuViewFactory 的入口装配契约，集中管理场景、服务与战斗会话所有权。
     internal static class MainMenuViewFactory
     {
         private static readonly Color PanelColor = new Color32(17, 22, 34, 226);
@@ -129,12 +144,14 @@ namespace OneStrokeDemon.Bootstrap
         private static readonly Color UnlockedColor = new Color32(170, 61, 48, 255);
         private static readonly Color LockedColor = new Color32(66, 71, 82, 255);
 
+        // 创建 Create 对应的入口装配逻辑，并维护会话所有权和跨场景边界。
         public static MainMenuView Create(
             IConfigProvider config,
             IAssetRegistry assets,
             ProgressSnapshot progress,
             Transform parent)
         {
+            // 检查入口状态、依赖或生命周期边界，避免重复装配和悬空引用。
             if (config == null)
             {
                 throw new ArgumentNullException(nameof(config));
@@ -220,6 +237,7 @@ namespace OneStrokeDemon.Bootstrap
             IReadOnlyList<LevelConfig> levels = config.GetLevels();
             float buttonHeight = 104f;
             float spacing = 28f;
+            // 逐项装配或释放会话资源，保持创建与回收顺序一致。
             for (int index = 0; index < levels.Count; index++)
             {
                 LevelConfig level = levels[index];
@@ -242,10 +260,12 @@ namespace OneStrokeDemon.Bootstrap
             return view;
         }
 
+        // 处理 ReadReferenceResolution 对应的入口装配逻辑，并维护会话所有权和跨场景边界。
         private static Vector2 ReadReferenceResolution(IConfigProvider config)
         {
             GlobalConfig width = config.GetGlobal(ConfigIds.GlobalKeys.ReferenceWidth);
             GlobalConfig height = config.GetGlobal(ConfigIds.GlobalKeys.ReferenceHeight);
+            // 检查入口状态、依赖或生命周期边界，避免重复装配和悬空引用。
             if (!width.IntValue.HasValue || !height.IntValue.HasValue ||
                 width.IntValue.Value <= 0L || height.IntValue.Value <= 0L)
             {
@@ -256,11 +276,13 @@ namespace OneStrokeDemon.Bootstrap
             return new Vector2(width.IntValue.Value, height.IntValue.Value);
         }
 
+        // 处理 Localize 对应的入口装配逻辑，并维护会话所有权和跨场景边界。
         private static string Localize(TextConfig text)
         {
             return text.ZhCN;
         }
 
+        // 创建 CreateButton 对应的入口装配逻辑，并维护会话所有权和跨场景边界。
         private static Button CreateButton(
             string name,
             Transform parent,
@@ -283,6 +305,7 @@ namespace OneStrokeDemon.Bootstrap
             return button;
         }
 
+        // 创建 CreatePanel 对应的入口装配逻辑，并维护会话所有权和跨场景边界。
         private static Image CreatePanel(string name, Transform parent, Color color)
         {
             RectTransform rect = CreateRect(name, parent);
@@ -291,6 +314,7 @@ namespace OneStrokeDemon.Bootstrap
             return image;
         }
 
+        // 创建 CreateText 对应的入口装配逻辑，并维护会话所有权和跨场景边界。
         private static TMP_Text CreateText(
             string name,
             Transform parent,
@@ -301,6 +325,7 @@ namespace OneStrokeDemon.Bootstrap
             var text = rect.gameObject.AddComponent<TextMeshProUGUI>();
             TMP_FontAsset font = Resources.Load<TMP_FontAsset>(
                 BattleHudViewFactory.HudFontResourcePath);
+            // 检查入口状态、依赖或生命周期边界，避免重复装配和悬空引用。
             if (font == null)
             {
                 throw new InvalidOperationException(
@@ -315,6 +340,7 @@ namespace OneStrokeDemon.Bootstrap
             return text;
         }
 
+        // 创建 CreateRect 对应的入口装配逻辑，并维护会话所有权和跨场景边界。
         private static RectTransform CreateRect(string name, Transform parent)
         {
             var gameObject = new GameObject(name, typeof(RectTransform));
@@ -324,6 +350,7 @@ namespace OneStrokeDemon.Bootstrap
             return rect;
         }
 
+        // 设置 SetAnchored 对应的入口装配逻辑，并维护会话所有权和跨场景边界。
         private static void SetAnchored(
             RectTransform rect,
             Vector2 anchorMin,
@@ -339,6 +366,7 @@ namespace OneStrokeDemon.Bootstrap
             rect.sizeDelta = size;
         }
 
+        // 处理 Stretch 对应的入口装配逻辑，并维护会话所有权和跨场景边界。
         private static void Stretch(RectTransform rect)
         {
             rect.anchorMin = Vector2.zero;
@@ -347,8 +375,10 @@ namespace OneStrokeDemon.Bootstrap
             rect.offsetMax = Vector2.zero;
         }
 
+        // 处理 EnsureEventSystem 对应的入口装配逻辑，并维护会话所有权和跨场景边界。
         private static void EnsureEventSystem(Transform parent)
         {
+            // 检查入口状态、依赖或生命周期边界，避免重复装配和悬空引用。
             if (EventSystem.current != null)
             {
                 return;
