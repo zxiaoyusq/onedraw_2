@@ -4,6 +4,7 @@ using UnityEngine;
 
 namespace OneStrokeDemon.Combat
 {
+    /// <summary>沿处理后笔迹逐段查询、按目标 ID 去重、聚合弱点并按路径稳定排序。</summary>
     public sealed class StrokeHitResolver
     {
         private readonly StrokeHitResolverSettings settings;
@@ -14,6 +15,7 @@ namespace OneStrokeDemon.Combat
         private readonly bool[] weakpointBuffer;
         private readonly float[] distanceBuffer;
 
+        /// <summary>按设置一次性分配候选、目标、ID、弱点和距离缓冲。</summary>
         public StrokeHitResolver(
             StrokeHitResolverSettings resolverSettings,
             IStrokeHitQuery hitQuery)
@@ -27,8 +29,10 @@ namespace OneStrokeDemon.Combat
             distanceBuffer = new float[settings.MaximumUniqueTargets];
         }
 
+        /// <summary>获取解析器容量设置。</summary>
         public StrokeHitResolverSettings Settings => settings;
 
+        /// <summary>解析一笔命中并写入调用方结果缓冲，返回唯一目标数量。</summary>
         public int Resolve(
             StrokeGeometryData geometry,
             GestureMatchResult gesture,
@@ -65,6 +69,7 @@ namespace OneStrokeDemon.Combat
                     nameof(gesture));
             }
 
+            // 不匹配、退化或零长度笔迹没有可命中语义，直接返回空结果。
             if (!gesture.IsMatch || geometry.PointCount < 2 || geometry.LengthReferencePixels <= 0f)
             {
                 return 0;
@@ -77,6 +82,7 @@ namespace OneStrokeDemon.Combat
                     nameof(hitRule));
             }
 
+            // 累计段长把每段局部接触参数转换为整条笔迹上的绝对路径距离。
             int uniqueTargetCount = 0;
             float cumulativeDistance = 0f;
             try
@@ -120,6 +126,7 @@ namespace OneStrokeDemon.Combat
 
                         float hitDistance = cumulativeDistance +
                             candidate.SegmentParameter * segmentLength;
+                        // 同目标多 Collider 只保留最早路径距离，并把任一弱点命中聚合为 true。
                         int existingIndex = FindTarget(targetId, uniqueTargetCount);
                         if (existingIndex >= 0)
                         {
@@ -148,6 +155,7 @@ namespace OneStrokeDemon.Combat
                     cumulativeDistance += segmentLength;
                 }
 
+                // 按首次路径接触排序，同距离再按稳定目标 ID 排序。
                 SortByPath(uniqueTargetCount);
                 for (int index = 0; index < uniqueTargetCount; index++)
                 {
@@ -168,6 +176,7 @@ namespace OneStrokeDemon.Combat
             }
             finally
             {
+                // 无论成功或异常都清空引用和临时事实，避免跨笔残留及对象持有。
                 Array.Clear(candidateBuffer, 0, candidateBuffer.Length);
                 Array.Clear(targetBuffer, 0, targetBuffer.Length);
                 Array.Clear(targetIdBuffer, 0, targetIdBuffer.Length);
@@ -176,6 +185,7 @@ namespace OneStrokeDemon.Combat
             }
         }
 
+        /// <summary>在线性预分配 ID 缓冲中查找已有目标。</summary>
         private int FindTarget(int targetId, int count)
         {
             for (int index = 0; index < count; index++)
@@ -189,6 +199,7 @@ namespace OneStrokeDemon.Combat
             return -1;
         }
 
+        /// <summary>对小型固定缓冲执行稳定插入排序，并同步移动所有并行数组。</summary>
         private void SortByPath(int count)
         {
             for (int index = 1; index < count; index++)
@@ -218,6 +229,7 @@ namespace OneStrokeDemon.Combat
             }
         }
 
+        /// <summary>比较两目标是否应按距离优先、ID 次优先排列。</summary>
         private static bool ComesBefore(
             float leftDistance,
             int leftTargetId,

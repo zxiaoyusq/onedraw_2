@@ -5,8 +5,10 @@ using OneStrokeDemon.Input;
 
 namespace OneStrokeDemon.Combat
 {
+    /// <summary>把配置 StrokeRules 表映射为 Input 程序集可消费的不可变识别规则。</summary>
     public static class GestureRuleSetFactory
     {
+        /// <summary>读取全部笔势配置，显式转换类型并按规则 ID 稳定排序。</summary>
         public static IReadOnlyList<GestureRule> FromConfig(IConfigProvider configProvider)
         {
             if (configProvider == null)
@@ -39,10 +41,12 @@ namespace OneStrokeDemon.Combat
                     row.ChargeHoldSec);
             }
 
+            // 返回前复制并排序，使分类行为不依赖配置提供者的集合实现。
             Array.Sort(rules, CompareRuleIds);
             return Array.AsReadOnly(rules);
         }
 
+        /// <summary>把配置字符串显式映射为支持的笔势类型，未知值立即失败。</summary>
         private static GestureType ParseGestureType(string ruleId, string configuredType)
         {
             switch (configuredType)
@@ -68,6 +72,7 @@ namespace OneStrokeDemon.Combat
             }
         }
 
+        /// <summary>按规则 ID 的序数顺序比较两条规则。</summary>
         private static int CompareRuleIds(GestureRule left, GestureRule right)
         {
             return string.CompareOrdinal(left.RuleId, right.RuleId);

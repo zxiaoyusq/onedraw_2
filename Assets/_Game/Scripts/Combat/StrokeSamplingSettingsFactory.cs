@@ -4,8 +4,10 @@ using OneStrokeDemon.Input;
 
 namespace OneStrokeDemon.Combat
 {
+    /// <summary>把选中的 StrokeRules 行映射为 Input 采样设置。</summary>
     public static class StrokeSamplingSettingsFactory
     {
+        /// <summary>读取最小点距、最大长度和最大点数，并验证运行时整数范围。</summary>
         public static StrokeSamplingSettings FromConfig(StrokeRuleConfig strokeRule)
         {
             if (strokeRule == null)

@@ -2,8 +2,10 @@ using OneStrokeDemon.Input;
 
 namespace OneStrokeDemon.Combat
 {
+    /// <summary>冻结一次伤害计算所需的公式、架势、防御、弱点和奖励参数。</summary>
     public readonly struct DamageRuleSet
     {
+        /// <summary>由配置工厂创建完整规则快照。</summary>
         internal DamageRuleSet(
             string formulaId,
             string stanceId,
@@ -56,6 +58,7 @@ namespace OneStrokeDemon.Combat
             ReflectedDamage = reflectedDamage;
         }
 
+        // 所有属性均来自配置关联链，计算器不再访问配置服务或 Inspector。
         public string FormulaId { get; }
         public string StanceId { get; }
         public string DefenseRuleId { get; }

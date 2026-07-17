@@ -3,8 +3,10 @@ using OneStrokeDemon.Input;
 
 namespace OneStrokeDemon.Combat
 {
+    /// <summary>保存一笔对一个去重目标的稳定路径顺序、弱点和笔势事实。</summary>
     public readonly struct HitRecord
     {
+        /// <summary>由命中解析器创建并验证完整命中记录。</summary>
         internal HitRecord(
             ulong strokeId,
             IHittable target,
@@ -54,6 +56,7 @@ namespace OneStrokeDemon.Combat
             Timestamp = timestamp;
         }
 
+        // 路径参数、距离和目标 ID 可共同复现一笔多目标的确定顺序。
         public ulong StrokeId { get; }
 
         public IHittable Target { get; }
@@ -74,6 +77,7 @@ namespace OneStrokeDemon.Combat
 
         public double Timestamp { get; }
 
+        /// <summary>判断浮点数不是 NaN 或无穷。</summary>
         private static bool IsFinite(float value)
         {
             return !float.IsNaN(value) && !float.IsInfinity(value);

@@ -1,7 +1,9 @@
 namespace OneStrokeDemon.Combat
 {
+    /// <summary>冻结一个投射物运行时所需的配置字段。</summary>
     public readonly struct ProjectileRuleSet
     {
+        /// <summary>由配置工厂创建并标记完整规则集。</summary>
         internal ProjectileRuleSet(
             string projectileId,
             string movePatternId,
@@ -29,6 +31,7 @@ namespace OneStrokeDemon.Combat
             IsConfigured = true;
         }
 
+        // 默认结构 IsConfigured=false；控制器只接受工厂构造的完整快照。
         public string ProjectileId { get; }
 
         public string MovePatternId { get; }

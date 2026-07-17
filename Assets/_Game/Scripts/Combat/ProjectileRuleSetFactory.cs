@@ -3,8 +3,10 @@ using OneStrokeDemon.Config;
 
 namespace OneStrokeDemon.Combat
 {
+    /// <summary>从 Projectiles 配置行创建经运行时范围验证的投射物规则。</summary>
     public static class ProjectileRuleSetFactory
     {
+        /// <summary>读取指定投射物并验证文本、数值和资源键后冻结规则。</summary>
         public static ProjectileRuleSet Create(
             IConfigProvider configProvider,
             string projectileId)
@@ -38,6 +40,7 @@ namespace OneStrokeDemon.Combat
                 row.VfxKey);
         }
 
+        /// <summary>验证配置文本非空。</summary>
         private static void RequireText(string rowId, string field, string value)
         {
             if (string.IsNullOrWhiteSpace(value))
@@ -48,6 +51,7 @@ namespace OneStrokeDemon.Combat
             }
         }
 
+        /// <summary>验证整数配置非负。</summary>
         private static void RequireNonNegative(string rowId, string field, long value)
         {
             if (value < 0L)
@@ -56,6 +60,7 @@ namespace OneStrokeDemon.Combat
             }
         }
 
+        /// <summary>验证浮点配置有限且非负。</summary>
         private static void RequireNonNegative(string rowId, string field, float value)
         {
             if (float.IsNaN(value) || float.IsInfinity(value) || value < 0f)
@@ -64,6 +69,7 @@ namespace OneStrokeDemon.Combat
             }
         }
 
+        /// <summary>创建包含配置行、字段和值的范围异常。</summary>
         private static ArgumentOutOfRangeException Invalid(
             string rowId,
             string field,

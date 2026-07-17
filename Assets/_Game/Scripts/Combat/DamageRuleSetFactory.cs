@@ -4,8 +4,10 @@ using OneStrokeDemon.Input;
 
 namespace OneStrokeDemon.Combat
 {
+    /// <summary>沿架势、伤害公式、防御和弱点配置外键构造伤害规则快照。</summary>
     public static class DamageRuleSetFactory
     {
+        /// <summary>读取并验证四类配置行，创建一次可直接计算的规则集。</summary>
         public static DamageRuleSet Create(
             IConfigProvider configProvider,
             string stanceId,
@@ -23,6 +25,7 @@ namespace OneStrokeDemon.Combat
             WeakpointRuleConfig weakpoint = configProvider.GetWeakpointRule(weakpointRuleId);
             GestureType requiredGesture = ParseGestureType(defense.DefenseRuleId, defense.RequiredGestureType);
 
+            // 在发布快照前重新验证运行时可计算范围，坏配置不能部分进入战斗。
             RequireNonNegative(formula.FormulaId, nameof(formula.BaseDamage), formula.BaseDamage);
             RequireRange(formula.FormulaId, nameof(formula.CriticalChance), formula.CriticalChance, 0d, 1d);
             RequireNonNegative(formula.FormulaId, nameof(formula.CriticalMultiplier), formula.CriticalMultiplier);
@@ -68,6 +71,7 @@ namespace OneStrokeDemon.Combat
                 defense.ReflectDamage);
         }
 
+        /// <summary>按敌人配置自动解析其防御与弱点规则，再创建当前架势规则集。</summary>
         public static DamageRuleSet CreateForEnemy(
             IConfigProvider configProvider,
             string stanceId,
@@ -86,6 +90,7 @@ namespace OneStrokeDemon.Combat
                 enemy.WeakpointRuleId);
         }
 
+        /// <summary>把配置登记的笔势名称显式映射到输入枚举。</summary>
         private static GestureType ParseGestureType(string ruleId, string configuredType)
         {
             switch (configuredType)
@@ -111,6 +116,7 @@ namespace OneStrokeDemon.Combat
             }
         }
 
+        /// <summary>验证整数配置非负。</summary>
         private static void RequireNonNegative(string rowId, string field, long value)
         {
             if (value < 0)
@@ -119,11 +125,13 @@ namespace OneStrokeDemon.Combat
             }
         }
 
+        /// <summary>验证双精度配置非负且有限。</summary>
         private static void RequireNonNegative(string rowId, string field, double value)
         {
             RequireRange(rowId, field, value, 0d, double.MaxValue);
         }
 
+        /// <summary>验证双精度配置位于闭区间且有限。</summary>
         private static void RequireRange(
             string rowId,
             string field,
@@ -137,6 +145,7 @@ namespace OneStrokeDemon.Combat
             }
         }
 
+        /// <summary>创建带配置行和字段上下文的范围异常。</summary>
         private static ArgumentOutOfRangeException Invalid(string rowId, string field, object value)
         {
             return new ArgumentOutOfRangeException(

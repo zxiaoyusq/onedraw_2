@@ -4,6 +4,7 @@ using UnityEngine;
 
 namespace OneStrokeDemon.Combat
 {
+    /// <summary>投射物离开活动状态的原因。</summary>
     public enum ProjectileReleaseReason
     {
         None = 0,
@@ -13,8 +14,10 @@ namespace OneStrokeDemon.Combat
         Manual = 4
     }
 
+    /// <summary>保存投射物回收前的 ID、归属、位置和寿命快照。</summary>
     public readonly struct ProjectileReleaseSnapshot
     {
+        /// <summary>创建有效回收快照。</summary>
         internal ProjectileReleaseSnapshot(
             ProjectileReleaseReason reason,
             string projectileId,
@@ -32,6 +35,7 @@ namespace OneStrokeDemon.Combat
             IsValid = true;
         }
 
+        // 默认结构 IsValid=false，调用方可区分“本次没有发生回收”。
         public ProjectileReleaseReason Reason { get; }
 
         public string ProjectileId { get; }
@@ -47,8 +51,10 @@ namespace OneStrokeDemon.Combat
         public bool IsValid { get; }
     }
 
+    /// <summary>保存一笔切弹交互前后的归属、方向和可选回收事实。</summary>
     public readonly struct ProjectileStrokeResult
     {
+        /// <summary>创建有效切弹结果。</summary>
         internal ProjectileStrokeResult(
             ulong strokeId,
             int hitTargetId,
@@ -72,6 +78,7 @@ namespace OneStrokeDemon.Combat
             IsValid = true;
         }
 
+        // 前后快照让反馈和测试无需读取已可能回收的 MonoBehaviour 状态。
         public ulong StrokeId { get; }
 
         public int HitTargetId { get; }
@@ -93,8 +100,10 @@ namespace OneStrokeDemon.Combat
         public bool IsValid { get; }
     }
 
+    /// <summary>保存投射物有效撞击目标时的伤害来源和回收事实。</summary>
     public readonly struct ProjectileImpactResult
     {
+        /// <summary>创建有效撞击结果。</summary>
         internal ProjectileImpactResult(
             ProjectileOwner target,
             in ProjectileDamageSource damageSource,
@@ -106,6 +115,7 @@ namespace OneStrokeDemon.Combat
             IsValid = true;
         }
 
+        // 结果在控制器清空状态后仍保留完整伤害归属。
         public ProjectileOwner Target { get; }
 
         public ProjectileDamageSource DamageSource { get; }
@@ -115,6 +125,7 @@ namespace OneStrokeDemon.Combat
         public bool IsValid { get; }
     }
 
+    /// <summary>管理配置投射物的确定移动、阵营、切弹、撞击和对象池重置生命周期。</summary>
     [DisallowMultipleComponent]
     [RequireComponent(typeof(ProjectileHitTarget), typeof(CircleCollider2D))]
     public sealed class ProjectileController : MonoBehaviour, IPoolable
@@ -132,25 +143,35 @@ namespace OneStrokeDemon.Combat
         private bool hasPoolParent;
         private bool isActive;
 
+        /// <summary>获取投射物玩法生命周期是否活动。</summary>
         public bool IsActive => isActive;
 
+        /// <summary>获取对象是否持有有效池租约。</summary>
         public bool IsPoolActive => poolLease.IsValid;
 
+        /// <summary>获取当前是否为可被玩家笔迹处理的敌方投射物。</summary>
         public bool CanReceiveStrokeHit =>
             isActive && ownership.CurrentOwner.Faction == ProjectileFaction.Enemy;
 
+        /// <summary>获取当前规则快照。</summary>
         public ProjectileRuleSet Rules => rules;
 
+        /// <summary>获取当前与原始归属快照。</summary>
         public ProjectileOwnership Ownership => ownership;
 
+        /// <summary>获取参考像素空间根。</summary>
         public Transform ReferenceSpace => referenceSpace;
 
+        /// <summary>获取参考像素位置。</summary>
         public Vector2 ReferencePosition => referencePosition;
 
+        /// <summary>获取归一化运动方向。</summary>
         public Vector2 TravelDirection => travelDirection;
 
+        /// <summary>获取当前生命周期已推进秒数。</summary>
         public float ElapsedSeconds => elapsedSeconds;
 
+        /// <summary>获取并确保存在命中目标组件。</summary>
         public ProjectileHitTarget HitTarget
         {
             get
@@ -160,6 +181,7 @@ namespace OneStrokeDemon.Combat
             }
         }
 
+        /// <summary>获取并确保存在圆形碰撞体。</summary>
         public CircleCollider2D HitCollider
         {
             get
@@ -169,6 +191,7 @@ namespace OneStrokeDemon.Combat
             }
         }
 
+        /// <summary>缓存必需组件并把未生成对象的碰撞体保持禁用。</summary>
         private void Awake()
         {
             EnsureComponents();
@@ -179,6 +202,7 @@ namespace OneStrokeDemon.Combat
             }
         }
 
+        /// <summary>活动时使用 Unity 传入的 delta 推进确定运动。</summary>
         private void Update()
         {
             if (isActive)
@@ -187,6 +211,7 @@ namespace OneStrokeDemon.Combat
             }
         }
 
+        /// <summary>对象被外部禁用时清空运行状态，防止池外残留。</summary>
         private void OnDisable()
         {
             if (isActive)
@@ -195,6 +220,7 @@ namespace OneStrokeDemon.Combat
             }
         }
 
+        /// <summary>用完整规则、目标 ID、归属、参考空间、位置和方向生成投射物。</summary>
         public void Spawn(
             in ProjectileRuleSet configuredRules,
             int hitTargetId,
@@ -238,6 +264,7 @@ namespace OneStrokeDemon.Combat
                     "Projectile travel direction must be non-zero.");
             }
 
+            // 生成时完整覆盖所有可变运行状态，不能依赖上一个池生命周期的值。
             EnsureComponents();
             rules = configuredRules;
             ownership = ProjectileOwnership.FromInitialOwner(initialOwner);
@@ -259,6 +286,7 @@ namespace OneStrokeDemon.Combat
             }
         }
 
+        /// <summary>按外部非负时间推进参考像素位置，并在寿命边界自动回收。</summary>
         public ProjectileReleaseSnapshot Tick(float deltaSeconds)
         {
             if (float.IsNaN(deltaSeconds) || float.IsInfinity(deltaSeconds) || deltaSeconds < 0f)
@@ -273,6 +301,7 @@ namespace OneStrokeDemon.Combat
                 return default;
             }
 
+            // 超大 delta 只推进剩余寿命对应的位移，避免越过配置生命终点。
             float remainingLifetime = Mathf.Max(0f, rules.LifetimeSeconds - elapsedSeconds);
             float appliedSeconds = Mathf.Min(deltaSeconds, remainingLifetime);
             Vector2 displacement =
@@ -291,6 +320,7 @@ namespace OneStrokeDemon.Combat
             return default;
         }
 
+        /// <summary>若当前归属可伤目标，则冻结伤害来源并以 Impact 原因回收。</summary>
         public bool TryResolveImpact(
             ProjectileOwner target,
             out ProjectileImpactResult result)
@@ -307,6 +337,7 @@ namespace OneStrokeDemon.Combat
             return true;
         }
 
+        /// <summary>以明确原因冻结回收快照、清空状态并停用对象。</summary>
         public ProjectileReleaseSnapshot Release(ProjectileReleaseReason reason)
         {
             if (reason == ProjectileReleaseReason.None)
@@ -321,6 +352,7 @@ namespace OneStrokeDemon.Combat
                 return default;
             }
 
+            // 快照必须在清空 rules、目标 ID 和归属之前创建。
             var snapshot = new ProjectileReleaseSnapshot(
                 reason,
                 rules.ProjectileId,
@@ -337,6 +369,7 @@ namespace OneStrokeDemon.Combat
             return snapshot;
         }
 
+        /// <summary>取得新池租约，记住池父级并将对象恢复为干净待生成状态。</summary>
         public void AcquireFromPool(in PoolLease lease)
         {
             if (!lease.IsValid)
@@ -360,6 +393,7 @@ namespace OneStrokeDemon.Combat
             }
         }
 
+        /// <summary>校验租约、必要时手动回收，并完整清理后归还对象池。</summary>
         public void ReleaseToPool(in PoolReleaseContext context)
         {
             if (!hasPoolParent)
@@ -386,6 +420,7 @@ namespace OneStrokeDemon.Combat
             }
         }
 
+        /// <summary>解析一笔对活动投射物的交互，并原子应用反弹或切断。</summary>
         internal ProjectileStrokeResult ResolveStroke(
             ulong strokeId,
             int hitTargetId,
@@ -409,6 +444,7 @@ namespace OneStrokeDemon.Combat
                     nameof(hitTargetId));
             }
 
+            // 先保留前态；反弹改变归属与方向，切断则在创建结果前回收。
             string projectileId = rules.ProjectileId;
             ProjectileOwnership ownershipBefore = ownership;
             Vector2 directionBefore = travelDirection;
@@ -441,6 +477,7 @@ namespace OneStrokeDemon.Combat
                 release);
         }
 
+        /// <summary>缓存并验证必需组件，同时建立命中目标到控制器的引用。</summary>
         private void EnsureComponents()
         {
             if (hitTarget == null)
@@ -462,6 +499,7 @@ namespace OneStrokeDemon.Combat
             hitTarget.AttachController(this);
         }
 
+        /// <summary>把参考像素位置与运动方向同步到局部 Transform。</summary>
         private void ApplyTransform()
         {
             transform.localPosition = new Vector3(referencePosition.x, referencePosition.y, 0f);
@@ -471,6 +509,7 @@ namespace OneStrokeDemon.Combat
                 Mathf.Atan2(travelDirection.y, travelDirection.x) * Mathf.Rad2Deg);
         }
 
+        /// <summary>清除全部玩法、碰撞和可选 Transform 状态，供回收与异常禁用复用。</summary>
         private void ClearRuntimeState(bool resetTransform)
         {
             isActive = false;
@@ -492,6 +531,7 @@ namespace OneStrokeDemon.Combat
                 hitCollider.isTrigger = true;
             }
 
+            // Transform 重置时回到记录的池父级，避免跨会话继承参考空间。
             if (resetTransform)
             {
                 transform.SetParent(hasPoolParent ? poolParent : null, false);
@@ -501,6 +541,7 @@ namespace OneStrokeDemon.Combat
             }
         }
 
+        /// <summary>验证二维向量的两个分量均为有限值。</summary>
         private static void ValidateVector(Vector2 value, string parameterName)
         {
             if (float.IsNaN(value.x) || float.IsInfinity(value.x) ||

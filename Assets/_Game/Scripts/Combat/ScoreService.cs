@@ -2,6 +2,7 @@ using System;
 
 namespace OneStrokeDemon.Combat
 {
+    /// <summary>累计已解析伤害结果中的战斗分、能量、伤害和命中分类统计。</summary>
     public sealed class ScoreService
     {
         private long totalScore;
@@ -12,8 +13,10 @@ namespace OneStrokeDemon.Combat
         private int directionMatchCount;
         private int criticalHitCount;
 
+        /// <summary>累计快照变化时发布。</summary>
         public event Action<CombatScoreSnapshot> Changed;
 
+        /// <summary>获取当前不可变累计快照。</summary>
         public CombatScoreSnapshot Current => new CombatScoreSnapshot(
             totalScore,
             totalEnergyEarned,
@@ -23,6 +26,7 @@ namespace OneStrokeDemon.Combat
             directionMatchCount,
             criticalHitCount);
 
+        /// <summary>原子累加一个已解析结果；任何溢出发生时旧状态保持不变。</summary>
         public CombatScoreSnapshot Record(in DamageResult result)
         {
             if (!result.IsResolved)
@@ -37,6 +41,7 @@ namespace OneStrokeDemon.Combat
             int nextWeakpointCount;
             int nextDirectionCount;
             int nextCriticalCount;
+            // 先在 checked 局部候选中完成全部运算，再统一发布，避免半更新。
             checked
             {
                 nextScore = totalScore + result.ScoreAward;
@@ -60,6 +65,7 @@ namespace OneStrokeDemon.Combat
             return snapshot;
         }
 
+        /// <summary>清空全部累计值，仅在实际变化时发布零快照。</summary>
         public void Reset()
         {
             bool changed = totalScore != 0L ||
@@ -83,8 +89,10 @@ namespace OneStrokeDemon.Combat
         }
     }
 
+    /// <summary>保存当前战斗评分与命中统计的不可变快照。</summary>
     public readonly struct CombatScoreSnapshot
     {
+        /// <summary>创建完整累计快照。</summary>
         internal CombatScoreSnapshot(
             long totalScore,
             long totalEnergyEarned,
@@ -103,6 +111,7 @@ namespace OneStrokeDemon.Combat
             CriticalHitCount = criticalHitCount;
         }
 
+        // 这些统计是战斗事实，关卡结算只能在其上追加配置定义的额外奖励。
         public long TotalScore { get; }
         public long TotalEnergyEarned { get; }
         public long TotalDamage { get; }
