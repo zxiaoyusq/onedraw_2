@@ -4,6 +4,7 @@ using OneStrokeDemon.Config;
 
 namespace OneStrokeDemon.Actors
 {
+    // 定义 EnemyTier 的角色领域数据与行为边界，供上层流程以明确契约使用。
     public enum EnemyTier
     {
         None = 0,
@@ -12,8 +13,10 @@ namespace OneStrokeDemon.Actors
         Boss = 3
     }
 
+    // 定义 EnemyDefenseDefinition 的角色领域数据与行为边界，供上层流程以明确契约使用。
     public readonly struct EnemyDefenseDefinition
     {
+        // 初始化 EnemyDefenseDefinition，并建立角色运行时所需的初始状态。
         internal EnemyDefenseDefinition(
             string defenseRuleId,
             long maximumArmor,
@@ -34,8 +37,10 @@ namespace OneStrokeDemon.Actors
         public bool IsConfigured { get; }
     }
 
+    // 定义 EnemyWeakpointDefinition 的角色领域数据与行为边界，供上层流程以明确契约使用。
     public readonly struct EnemyWeakpointDefinition
     {
+        // 初始化 EnemyWeakpointDefinition，并建立角色运行时所需的初始状态。
         internal EnemyWeakpointDefinition(
             string weakpointRuleId,
             double windowStartSeconds,
@@ -81,6 +86,7 @@ namespace OneStrokeDemon.Actors
 
         public bool HasHitbox => IsConfigured && RadiusReferencePixels > 0f;
 
+        // 判断是否 IsOpenAt 对应的角色逻辑，并返回或发布一致的状态结果。
         public bool IsOpenAt(double elapsedSeconds)
         {
             return HasHitbox &&
@@ -89,14 +95,17 @@ namespace OneStrokeDemon.Actors
                    elapsedSeconds <= WindowEndSeconds;
         }
 
+        // 判断是否 IsFinite 对应的角色逻辑，并返回或发布一致的状态结果。
         private static bool IsFinite(double value)
         {
             return !double.IsNaN(value) && !double.IsInfinity(value);
         }
     }
 
+    // 定义 EnemyDefinition 的角色领域数据与行为边界，供上层流程以明确契约使用。
     public readonly struct EnemyDefinition
     {
+        // 初始化 EnemyDefinition，并建立角色运行时所需的初始状态。
         internal EnemyDefinition(
             string enemyId,
             string displayNameKey,
@@ -161,10 +170,13 @@ namespace OneStrokeDemon.Actors
         public bool IsConfigured { get; }
     }
 
+    // 定义 EnemyDefinitionFactory 的角色领域数据与行为边界，供上层流程以明确契约使用。
     public static class EnemyDefinitionFactory
     {
+        // 创建 Create 对应的角色逻辑，并返回或发布一致的状态结果。
         public static EnemyDefinition Create(IConfigProvider configProvider, string enemyId)
         {
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (configProvider == null)
             {
                 throw new ArgumentNullException(nameof(configProvider));
@@ -180,6 +192,7 @@ namespace OneStrokeDemon.Actors
                 enemy.WeakpointRuleId);
         }
 
+        // 创建 CreateBossPhase 对应的角色逻辑，并返回或发布一致的状态结果。
         public static EnemyDefinition CreateBossPhase(
             IConfigProvider configProvider,
             string enemyId,
@@ -188,12 +201,14 @@ namespace OneStrokeDemon.Actors
             string defenseRuleId,
             string weakpointRuleId)
         {
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (configProvider == null)
             {
                 throw new ArgumentNullException(nameof(configProvider));
             }
 
             EnemyConfig enemy = configProvider.GetEnemy(enemyId);
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (ParseTier(enemy.EnemyId, enemy.Tier) != EnemyTier.Boss)
             {
                 throw new ArgumentException(
@@ -210,6 +225,7 @@ namespace OneStrokeDemon.Actors
                 weakpointRuleId);
         }
 
+        // 创建 Create 对应的角色逻辑，并返回或发布一致的状态结果。
         private static EnemyDefinition Create(
             IConfigProvider configProvider,
             EnemyConfig enemy,
@@ -223,6 +239,7 @@ namespace OneStrokeDemon.Actors
             RequireNonEmpty(enemy.EnemyId, nameof(defenseRuleId), defenseRuleId);
             RequireNonEmpty(enemy.EnemyId, nameof(weakpointRuleId), weakpointRuleId);
             configProvider.GetMovePattern(movePatternId);
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (configProvider.GetEnemyAttacks(attackSetId).Count == 0)
             {
                 throw Invalid(
@@ -253,6 +270,7 @@ namespace OneStrokeDemon.Actors
                 weakpoint.WeakpointRuleId,
                 nameof(weakpoint.WindowEndSec),
                 weakpoint.WindowEndSec);
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (weakpoint.WindowEndSec < weakpoint.WindowStartSec)
             {
                 throw Invalid(
@@ -308,8 +326,10 @@ namespace OneStrokeDemon.Actors
                 checked((int)enemy.PoolPrewarm));
         }
 
+        // 处理 ParseTier 对应的角色逻辑，并返回或发布一致的状态结果。
         private static EnemyTier ParseTier(string enemyId, string configuredTier)
         {
+            // 按当前枚举或状态选择对应的角色行为分支。
             switch (configuredTier)
             {
                 case "Normal": return EnemyTier.Normal;
@@ -322,32 +342,40 @@ namespace OneStrokeDemon.Actors
             }
         }
 
+        // 处理 RequireNonEmpty 对应的角色逻辑，并返回或发布一致的状态结果。
         private static void RequireNonEmpty(string rowId, string field, string value)
         {
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (string.IsNullOrWhiteSpace(value))
             {
                 throw Invalid(rowId, field, value, "Configured string must be non-empty.");
             }
         }
 
+        // 处理 RequirePositive 对应的角色逻辑，并返回或发布一致的状态结果。
         private static void RequirePositive(string rowId, string field, long value)
         {
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (value <= 0)
             {
                 throw Invalid(rowId, field, value, "Configured value must be positive.");
             }
         }
 
+        // 处理 RequireNonNegative 对应的角色逻辑，并返回或发布一致的状态结果。
         private static void RequireNonNegative(string rowId, string field, long value)
         {
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (value < 0)
             {
                 throw Invalid(rowId, field, value, "Configured value must be non-negative.");
             }
         }
 
+        // 处理 RequireInt32NonNegative 对应的角色逻辑，并返回或发布一致的状态结果。
         private static void RequireInt32NonNegative(string rowId, string field, long value)
         {
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (value < 0 || value > int.MaxValue)
             {
                 throw Invalid(
@@ -358,11 +386,13 @@ namespace OneStrokeDemon.Actors
             }
         }
 
+        // 处理 RequireFiniteNonNegative 对应的角色逻辑，并返回或发布一致的状态结果。
         private static void RequireFiniteNonNegative(
             string rowId,
             string field,
             double value)
         {
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (double.IsNaN(value) || double.IsInfinity(value) || value < 0d)
             {
                 throw Invalid(
@@ -373,6 +403,7 @@ namespace OneStrokeDemon.Actors
             }
         }
 
+        // 处理 Invalid 对应的角色逻辑，并返回或发布一致的状态结果。
         private static ArgumentOutOfRangeException Invalid(
             string rowId,
             string field,
@@ -386,8 +417,10 @@ namespace OneStrokeDemon.Actors
         }
     }
 
+    // 定义 EnemyAttackTimeline 的角色领域数据与行为边界，供上层流程以明确契约使用。
     public readonly struct EnemyAttackTimeline
     {
+        // 初始化 EnemyAttackTimeline，并建立角色运行时所需的初始状态。
         internal EnemyAttackTimeline(
             string attackId,
             string attackSetId,
@@ -436,12 +469,14 @@ namespace OneStrokeDemon.Actors
 
         public bool IsConfigured { get; }
 
+        // 处理 GestureMatches 对应的角色逻辑，并返回或发布一致的状态结果。
         public bool GestureMatches(string gestureType)
         {
             return string.Equals(InterruptGestureType, "Any", StringComparison.Ordinal) ||
                    string.Equals(InterruptGestureType, gestureType, StringComparison.Ordinal);
         }
 
+        // 判断是否 IsInsideInterruptWindow 对应的角色逻辑，并返回或发布一致的状态结果。
         public bool IsInsideInterruptWindow(double elapsedSeconds)
         {
             return IsFinite(elapsedSeconds) &&
@@ -449,24 +484,29 @@ namespace OneStrokeDemon.Actors
                    elapsedSeconds <= InterruptEndSeconds;
         }
 
+        // 判断是否 IsFinite 对应的角色逻辑，并返回或发布一致的状态结果。
         private static bool IsFinite(double value)
         {
             return !double.IsNaN(value) && !double.IsInfinity(value);
         }
     }
 
+    // 定义 EnemyAttackTimelineFactory 的角色领域数据与行为边界，供上层流程以明确契约使用。
     public static class EnemyAttackTimelineFactory
     {
+        // 创建 Create 对应的角色逻辑，并返回或发布一致的状态结果。
         public static EnemyAttackTimeline Create(
             IConfigProvider configProvider,
             string attackSetId,
             string attackId)
         {
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (configProvider == null)
             {
                 throw new ArgumentNullException(nameof(configProvider));
             }
 
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (string.IsNullOrWhiteSpace(attackSetId))
             {
                 throw new ArgumentException(
@@ -474,6 +514,7 @@ namespace OneStrokeDemon.Actors
                     nameof(attackSetId));
             }
 
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (string.IsNullOrWhiteSpace(attackId))
             {
                 throw new ArgumentException("Attack id must be non-empty.", nameof(attackId));
@@ -481,9 +522,11 @@ namespace OneStrokeDemon.Actors
 
             IReadOnlyList<EnemyAttackConfig> attacks =
                 configProvider.GetEnemyAttacks(attackSetId);
+            // 逐项推进本组角色数据，确保每个元素都遵循同一规则。
             for (int index = 0; index < attacks.Count; index++)
             {
                 EnemyAttackConfig attack = attacks[index];
+                // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
                 if (string.Equals(attack.AttackId, attackId, StringComparison.Ordinal))
                 {
                     return Create(attack);
@@ -494,8 +537,10 @@ namespace OneStrokeDemon.Actors
                 $"Enemy attack '{attackId}' does not belong to attack set '{attackSetId}'.");
         }
 
+        // 创建 Create 对应的角色逻辑，并返回或发布一致的状态结果。
         public static EnemyAttackTimeline Create(EnemyAttackConfig attack)
         {
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (attack == null)
             {
                 throw new ArgumentNullException(nameof(attack));
@@ -512,6 +557,7 @@ namespace OneStrokeDemon.Actors
                 attack.AttackId,
                 nameof(attack.InterruptEndSec),
                 attack.InterruptEndSec);
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (attack.InterruptEndSec < attack.InterruptStartSec)
             {
                 throw Invalid(
@@ -522,6 +568,7 @@ namespace OneStrokeDemon.Actors
             }
 
             double activeEnd = attack.WindupSec + attack.ActiveSec;
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (attack.CooldownSec < activeEnd)
             {
                 throw Invalid(
@@ -531,6 +578,7 @@ namespace OneStrokeDemon.Actors
                     "Cooldown must cover the complete windup and active interval.");
             }
 
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (attack.InterruptEndSec > activeEnd)
             {
                 throw Invalid(
@@ -553,8 +601,10 @@ namespace OneStrokeDemon.Actors
                 attack.EffectGroupId ?? string.Empty);
         }
 
+        // 校验 ValidateGestureType 对应的角色逻辑，并返回或发布一致的状态结果。
         private static void ValidateGestureType(string attackId, string gestureType)
         {
+            // 按当前枚举或状态选择对应的角色行为分支。
             switch (gestureType)
             {
                 case "Any":
@@ -572,8 +622,10 @@ namespace OneStrokeDemon.Actors
             }
         }
 
+        // 处理 RequireDuration 对应的角色逻辑，并返回或发布一致的状态结果。
         private static void RequireDuration(string attackId, string field, double value)
         {
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (double.IsNaN(value) || double.IsInfinity(value) || value < 0d)
             {
                 throw Invalid(
@@ -584,6 +636,7 @@ namespace OneStrokeDemon.Actors
             }
         }
 
+        // 处理 Invalid 对应的角色逻辑，并返回或发布一致的状态结果。
         private static ArgumentOutOfRangeException Invalid(
             string attackId,
             string field,

@@ -3,8 +3,10 @@ using OneStrokeDemon.Config;
 
 namespace OneStrokeDemon.Actors
 {
+    // 定义 StanceSnapshot 的角色领域数据与行为边界，供上层流程以明确契约使用。
     public readonly struct StanceSnapshot
     {
+        // 初始化 StanceSnapshot，并建立角色运行时所需的初始状态。
         private StanceSnapshot(
             string stanceId,
             string damageFormulaId,
@@ -48,8 +50,10 @@ namespace OneStrokeDemon.Actors
 
         public bool IsConfigured { get; }
 
+        // 处理 FromConfig 对应的角色逻辑，并返回或发布一致的状态结果。
         internal static StanceSnapshot FromConfig(StanceConfig stance)
         {
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (stance == null)
             {
                 throw new ArgumentNullException(nameof(stance));
@@ -69,6 +73,7 @@ namespace OneStrokeDemon.Actors
                 stance.StanceId,
                 nameof(stance.ProjectileCutMultiplier),
                 stance.ProjectileCutMultiplier);
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (stance.StrokeWidthRefPx <= 0)
             {
                 throw Invalid(
@@ -96,8 +101,10 @@ namespace OneStrokeDemon.Actors
                 stance.AssetKey);
         }
 
+        // 处理 RequireText 对应的角色逻辑，并返回或发布一致的状态结果。
         private static void RequireText(string value, string field)
         {
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (string.IsNullOrWhiteSpace(value))
             {
                 throw new ArgumentException(
@@ -106,17 +113,20 @@ namespace OneStrokeDemon.Actors
             }
         }
 
+        // 处理 RequireFiniteNonNegative 对应的角色逻辑，并返回或发布一致的状态结果。
         private static void RequireFiniteNonNegative(
             string rowId,
             string field,
             double value)
         {
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (double.IsNaN(value) || double.IsInfinity(value) || value < 0d)
             {
                 throw Invalid(rowId, field, value);
             }
         }
 
+        // 处理 Invalid 对应的角色逻辑，并返回或发布一致的状态结果。
         private static ArgumentOutOfRangeException Invalid(
             string rowId,
             string field,
@@ -129,6 +139,7 @@ namespace OneStrokeDemon.Actors
         }
     }
 
+    // 定义 StanceSwitchStatus 的角色领域数据与行为边界，供上层流程以明确契约使用。
     public enum StanceSwitchStatus
     {
         None = 0,
@@ -138,8 +149,10 @@ namespace OneStrokeDemon.Actors
         PlayerDead = 4
     }
 
+    // 定义 StanceSwitchResult 的角色领域数据与行为边界，供上层流程以明确契约使用。
     public readonly struct StanceSwitchResult
     {
+        // 初始化 StanceSwitchResult，并建立角色运行时所需的初始状态。
         internal StanceSwitchResult(
             StanceSwitchStatus status,
             string requestedStanceId,
@@ -182,6 +195,7 @@ namespace OneStrokeDemon.Actors
         public bool DidSwitch => Status == StanceSwitchStatus.Switched;
     }
 
+    // 定义 StanceService 的角色领域数据与行为边界，供上层流程以明确契约使用。
     public sealed class StanceService
     {
         private readonly IConfigProvider configProvider;
@@ -190,10 +204,12 @@ namespace OneStrokeDemon.Actors
         private double lastObservedTimestamp;
         private bool hasObservedTimestamp;
 
+        // 初始化 StanceService，并建立角色运行时所需的初始状态。
         public StanceService(IConfigProvider configProvider, string defaultStanceId)
         {
             this.configProvider = configProvider ??
                 throw new ArgumentNullException(nameof(configProvider));
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (string.IsNullOrWhiteSpace(defaultStanceId))
             {
                 throw new ArgumentException(
@@ -209,10 +225,12 @@ namespace OneStrokeDemon.Actors
 
         public double NextSwitchAvailableAt => nextSwitchAvailableAt;
 
+        // 尝试执行 TrySwitch 对应的角色逻辑，并返回或发布一致的状态结果。
         public StanceSwitchResult TrySwitch(string stanceId, double timestamp)
         {
             StanceSnapshot requested = ValidateRequest(stanceId, timestamp);
 
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (string.Equals(current.StanceId, requested.StanceId, StringComparison.Ordinal))
             {
                 return new StanceSwitchResult(
@@ -224,6 +242,7 @@ namespace OneStrokeDemon.Actors
                     nextSwitchAvailableAt);
             }
 
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (timestamp < nextSwitchAvailableAt)
             {
                 return new StanceSwitchResult(
@@ -236,6 +255,7 @@ namespace OneStrokeDemon.Actors
             }
 
             double nextAvailable = timestamp + requested.SwitchCooldownSeconds;
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (double.IsInfinity(nextAvailable) || double.IsNaN(nextAvailable))
             {
                 throw new OverflowException(
@@ -254,6 +274,7 @@ namespace OneStrokeDemon.Actors
                 nextSwitchAvailableAt);
         }
 
+        // 处理 RejectBecausePlayerDead 对应的角色逻辑，并返回或发布一致的状态结果。
         internal StanceSwitchResult RejectBecausePlayerDead(
             string stanceId,
             double timestamp)
@@ -268,19 +289,23 @@ namespace OneStrokeDemon.Actors
                 nextSwitchAvailableAt);
         }
 
+        // 获取 GetRemainingCooldown 对应的角色逻辑，并返回或发布一致的状态结果。
         public double GetRemainingCooldown(double timestamp)
         {
             ValidateTimestamp(timestamp);
             return Math.Max(0d, nextSwitchAvailableAt - timestamp);
         }
 
+        // 处理 Load 对应的角色逻辑，并返回或发布一致的状态结果。
         private StanceSnapshot Load(string stanceId)
         {
             return StanceSnapshot.FromConfig(configProvider.GetStance(stanceId));
         }
 
+        // 校验 ValidateRequest 对应的角色逻辑，并返回或发布一致的状态结果。
         private StanceSnapshot ValidateRequest(string stanceId, double timestamp)
         {
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (string.IsNullOrWhiteSpace(stanceId))
             {
                 throw new ArgumentException(
@@ -294,8 +319,10 @@ namespace OneStrokeDemon.Actors
             return requested;
         }
 
+        // 校验 ValidateTimestamp 对应的角色逻辑，并返回或发布一致的状态结果。
         private void ValidateTimestamp(double timestamp)
         {
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (double.IsNaN(timestamp) || double.IsInfinity(timestamp) || timestamp < 0d)
             {
                 throw new ArgumentOutOfRangeException(
@@ -303,6 +330,7 @@ namespace OneStrokeDemon.Actors
                     "Stance timestamp must be finite and non-negative.");
             }
 
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (hasObservedTimestamp && timestamp < lastObservedTimestamp)
             {
                 throw new ArgumentOutOfRangeException(
@@ -312,6 +340,7 @@ namespace OneStrokeDemon.Actors
             }
         }
 
+        // 处理 Observe 对应的角色逻辑，并返回或发布一致的状态结果。
         private void Observe(double timestamp)
         {
             lastObservedTimestamp = timestamp;

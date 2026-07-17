@@ -2,6 +2,7 @@ using System;
 
 namespace OneStrokeDemon.Actors
 {
+    // 定义 EnemyState 的角色领域数据与行为边界，供上层流程以明确契约使用。
     public enum EnemyState
     {
         None = 0,
@@ -14,6 +15,7 @@ namespace OneStrokeDemon.Actors
         Dead = 7
     }
 
+    // 定义 EnemyTransitionReason 的角色领域数据与行为边界，供上层流程以明确契约使用。
     public enum EnemyTransitionReason
     {
         None = 0,
@@ -31,6 +33,7 @@ namespace OneStrokeDemon.Actors
         PhaseChanged = 12
     }
 
+    // 定义 EnemyInterruptStatus 的角色领域数据与行为边界，供上层流程以明确契约使用。
     public enum EnemyInterruptStatus
     {
         None = 0,
@@ -43,6 +46,7 @@ namespace OneStrokeDemon.Actors
         OutsideWindow = 7
     }
 
+    // 定义 EnemyKillStatus 的角色领域数据与行为边界，供上层流程以明确契约使用。
     public enum EnemyKillStatus
     {
         None = 0,
@@ -51,6 +55,7 @@ namespace OneStrokeDemon.Actors
         AlreadyDead = 3
     }
 
+    // 定义 EnemyReleaseStatus 的角色领域数据与行为边界，供上层流程以明确契约使用。
     public enum EnemyReleaseStatus
     {
         None = 0,
@@ -58,8 +63,10 @@ namespace OneStrokeDemon.Actors
         AlreadyReleased = 2
     }
 
+    // 定义 EnemyStateSnapshot 的角色领域数据与行为边界，供上层流程以明确契约使用。
     public readonly struct EnemyStateSnapshot
     {
+        // 初始化 EnemyStateSnapshot，并建立角色运行时所需的初始状态。
         internal EnemyStateSnapshot(
             EnemyState state,
             double enteredAt,
@@ -111,8 +118,10 @@ namespace OneStrokeDemon.Actors
             State == EnemyState.Stun;
     }
 
+    // 定义 EnemyStateTransition 的角色领域数据与行为边界，供上层流程以明确契约使用。
     public readonly struct EnemyStateTransition
     {
+        // 初始化 EnemyStateTransition，并建立角色运行时所需的初始状态。
         internal EnemyStateTransition(
             ulong sequence,
             EnemyState previousState,
@@ -145,8 +154,10 @@ namespace OneStrokeDemon.Actors
         public bool IsValid { get; }
     }
 
+    // 定义 EnemyInterruptResult 的角色领域数据与行为边界，供上层流程以明确契约使用。
     public readonly struct EnemyInterruptResult
     {
+        // 初始化 EnemyInterruptResult，并建立角色运行时所需的初始状态。
         internal EnemyInterruptResult(
             EnemyInterruptStatus status,
             string attackId,
@@ -173,6 +184,7 @@ namespace OneStrokeDemon.Actors
         public bool DidInterrupt => Status == EnemyInterruptStatus.Interrupted;
     }
 
+    // 定义 EnemyStateMachine 的角色领域数据与行为边界，供上层流程以明确契约使用。
     public sealed class EnemyStateMachine
     {
         private EnemyState state;
@@ -196,9 +208,11 @@ namespace OneStrokeDemon.Actors
             stunUntil,
             hasClock);
 
+        // 生成 Spawn 对应的角色逻辑，并返回或发布一致的状态结果。
         public void Spawn(double timestamp)
         {
             ValidateTimestamp(timestamp, nameof(timestamp));
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (state != EnemyState.None)
             {
                 throw new InvalidOperationException(
@@ -218,9 +232,11 @@ namespace OneStrokeDemon.Actors
                 string.Empty);
         }
 
+        // 完成 CompleteSpawn 对应的角色逻辑，并返回或发布一致的状态结果。
         public bool CompleteSpawn(double timestamp)
         {
             ObserveTimestamp(timestamp, nameof(timestamp));
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (state != EnemyState.Spawn)
             {
                 return false;
@@ -234,9 +250,11 @@ namespace OneStrokeDemon.Actors
             return true;
         }
 
+        // 处理 ChangePhase 对应的角色逻辑，并返回或发布一致的状态结果。
         public bool ChangePhase(double timestamp)
         {
             ObserveTimestamp(timestamp, nameof(timestamp));
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (state == EnemyState.None || state == EnemyState.Dead)
             {
                 return false;
@@ -256,8 +274,10 @@ namespace OneStrokeDemon.Actors
             return true;
         }
 
+        // 开始 BeginAttack 对应的角色逻辑，并返回或发布一致的状态结果。
         public bool BeginAttack(in EnemyAttackTimeline attack, double timestamp)
         {
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (!attack.IsConfigured)
             {
                 throw new ArgumentException(
@@ -266,6 +286,7 @@ namespace OneStrokeDemon.Actors
             }
 
             ObserveTimestamp(timestamp, nameof(timestamp));
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (state != EnemyState.Move)
             {
                 return false;
@@ -282,14 +303,17 @@ namespace OneStrokeDemon.Actors
             return true;
         }
 
+        // 按时间推进 Tick 对应的角色逻辑，并返回或发布一致的状态结果。
         public int Tick(double timestamp)
         {
             ObserveTimestamp(timestamp, nameof(timestamp));
             return AdvanceTimedTransitions(timestamp);
         }
 
+        // 尝试执行 TryInterrupt 对应的角色逻辑，并返回或发布一致的状态结果。
         public EnemyInterruptResult TryInterrupt(string gestureType, double timestamp)
         {
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (string.IsNullOrWhiteSpace(gestureType))
             {
                 throw new ArgumentException(
@@ -298,21 +322,25 @@ namespace OneStrokeDemon.Actors
             }
 
             ObserveTimestamp(timestamp, nameof(timestamp));
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (state == EnemyState.None)
             {
                 return InterruptResult(EnemyInterruptStatus.Inactive, string.Empty, 0d);
             }
 
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (state == EnemyState.Dead)
             {
                 return InterruptResult(EnemyInterruptStatus.Dead, string.Empty, 0d);
             }
 
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (state == EnemyState.Stun)
             {
                 return InterruptResult(EnemyInterruptStatus.AlreadyStunned, string.Empty, 0d);
             }
 
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if ((state != EnemyState.Windup && state != EnemyState.Attack) ||
                 !activeAttack.IsConfigured)
             {
@@ -321,6 +349,7 @@ namespace OneStrokeDemon.Actors
 
             string attackId = activeAttack.AttackId;
             double elapsed = timestamp - attackStartedAt;
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (!activeAttack.GestureMatches(gestureType))
             {
                 return InterruptResult(
@@ -329,6 +358,7 @@ namespace OneStrokeDemon.Actors
                     elapsed);
             }
 
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (!activeAttack.IsInsideInterruptWindow(elapsed))
             {
                 return InterruptResult(
@@ -348,16 +378,19 @@ namespace OneStrokeDemon.Actors
             return InterruptResult(EnemyInterruptStatus.Interrupted, attackId, elapsed);
         }
 
+        // 应用 ApplyTimedStun 对应的角色逻辑，并返回或发布一致的状态结果。
         public bool ApplyTimedStun(double durationSeconds, double timestamp)
         {
             ValidateFiniteNonNegative(durationSeconds, nameof(durationSeconds));
             ObserveTimestamp(timestamp, nameof(timestamp));
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (durationSeconds <= 0d || state == EnemyState.None || state == EnemyState.Dead)
             {
                 return false;
             }
 
             double requestedUntil = timestamp + durationSeconds;
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (double.IsInfinity(requestedUntil) || double.IsNaN(requestedUntil))
             {
                 throw new ArgumentOutOfRangeException(
@@ -365,8 +398,10 @@ namespace OneStrokeDemon.Actors
                     "Timed stun end must remain finite.");
             }
 
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (state == EnemyState.Stun)
             {
+                // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
                 if (!double.IsPositiveInfinity(stunUntil))
                 {
                     stunUntil = Math.Max(stunUntil, requestedUntil);
@@ -389,9 +424,11 @@ namespace OneStrokeDemon.Actors
             return true;
         }
 
+        // 处理 RecoverFromStun 对应的角色逻辑，并返回或发布一致的状态结果。
         public bool RecoverFromStun(double timestamp)
         {
             ObserveTimestamp(timestamp, nameof(timestamp));
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (state != EnemyState.Stun)
             {
                 return false;
@@ -406,14 +443,17 @@ namespace OneStrokeDemon.Actors
             return true;
         }
 
+        // 尝试执行 TryKill 对应的角色逻辑，并返回或发布一致的状态结果。
         public EnemyKillStatus TryKill(double timestamp)
         {
             ObserveTimestamp(timestamp, nameof(timestamp));
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (state == EnemyState.None)
             {
                 return EnemyKillStatus.Inactive;
             }
 
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (state == EnemyState.Dead)
             {
                 return EnemyKillStatus.AlreadyDead;
@@ -433,9 +473,11 @@ namespace OneStrokeDemon.Actors
             return EnemyKillStatus.Killed;
         }
 
+        // 释放 Release 对应的角色逻辑，并返回或发布一致的状态结果。
         public EnemyReleaseStatus Release(double timestamp)
         {
             ValidateTimestamp(timestamp, nameof(timestamp));
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (state == EnemyState.None)
             {
                 return EnemyReleaseStatus.AlreadyReleased;
@@ -459,6 +501,7 @@ namespace OneStrokeDemon.Actors
             return EnemyReleaseStatus.Released;
         }
 
+        // 处理 AdvanceTimedTransitions 对应的角色逻辑，并返回或发布一致的状态结果。
         private int AdvanceTimedTransitions(double timestamp)
         {
             int transitionCount = 0;
@@ -466,9 +509,11 @@ namespace OneStrokeDemon.Actors
             do
             {
                 advanced = false;
+                // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
                 if (state == EnemyState.Windup && activeAttack.IsConfigured)
                 {
                     double boundary = attackStartedAt + activeAttack.WindupSeconds;
+                    // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
                     if (timestamp >= boundary)
                     {
                         TransitionTo(
@@ -480,11 +525,13 @@ namespace OneStrokeDemon.Actors
                         advanced = true;
                     }
                 }
+                // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
                 else if (state == EnemyState.Attack && activeAttack.IsConfigured)
                 {
                     double boundary = attackStartedAt +
                                       activeAttack.WindupSeconds +
                                       activeAttack.ActiveSeconds;
+                    // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
                     if (timestamp >= boundary)
                     {
                         TransitionTo(
@@ -496,9 +543,11 @@ namespace OneStrokeDemon.Actors
                         advanced = true;
                     }
                 }
+                // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
                 else if (state == EnemyState.Recovery && activeAttack.IsConfigured)
                 {
                     double boundary = attackStartedAt + activeAttack.CooldownSeconds;
+                    // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
                     if (timestamp >= boundary)
                     {
                         string completedAttack = activeAttack.AttackId;
@@ -513,6 +562,7 @@ namespace OneStrokeDemon.Actors
                         advanced = true;
                     }
                 }
+                // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
                 else if (state == EnemyState.Stun &&
                          !double.IsPositiveInfinity(stunUntil) &&
                          timestamp >= stunUntil)
@@ -528,11 +578,13 @@ namespace OneStrokeDemon.Actors
                     advanced = true;
                 }
             }
+            // 逐项推进本组角色数据，确保每个元素都遵循同一规则。
             while (advanced);
 
             return transitionCount;
         }
 
+        // 中断 InterruptResult 对应的角色逻辑，并返回或发布一致的状态结果。
         private EnemyInterruptResult InterruptResult(
             EnemyInterruptStatus status,
             string attackId,
@@ -541,6 +593,7 @@ namespace OneStrokeDemon.Actors
             return new EnemyInterruptResult(status, attackId, elapsed, Current);
         }
 
+        // 切换状态 TransitionTo 对应的角色逻辑，并返回或发布一致的状态结果。
         private void TransitionTo(
             EnemyState nextState,
             EnemyTransitionReason reason,
@@ -551,6 +604,7 @@ namespace OneStrokeDemon.Actors
             state = nextState;
             enteredAt = timestamp;
             ulong sequence = transitionSequence + 1UL;
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (sequence == 0UL)
             {
                 throw new OverflowException("Enemy transition sequence is exhausted.");
@@ -566,11 +620,14 @@ namespace OneStrokeDemon.Actors
                 attackId));
         }
 
+        // 处理 ObserveTimestamp 对应的角色逻辑，并返回或发布一致的状态结果。
         private void ObserveTimestamp(double timestamp, string parameterName)
         {
             ValidateTimestamp(timestamp, parameterName);
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (!hasClock)
             {
+                // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
                 if (state == EnemyState.None)
                 {
                     return;
@@ -579,6 +636,7 @@ namespace OneStrokeDemon.Actors
                 throw new InvalidOperationException("Spawned enemy state has no active clock.");
             }
 
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (timestamp < lastTimestamp)
             {
                 throw new ArgumentOutOfRangeException(
@@ -590,8 +648,10 @@ namespace OneStrokeDemon.Actors
             lastTimestamp = timestamp;
         }
 
+        // 校验 ValidateTimestamp 对应的角色逻辑，并返回或发布一致的状态结果。
         private static void ValidateTimestamp(double timestamp, string parameterName)
         {
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (double.IsNaN(timestamp) || double.IsInfinity(timestamp) || timestamp < 0d)
             {
                 throw new ArgumentOutOfRangeException(
@@ -601,8 +661,10 @@ namespace OneStrokeDemon.Actors
             }
         }
 
+        // 校验 ValidateFiniteNonNegative 对应的角色逻辑，并返回或发布一致的状态结果。
         private static void ValidateFiniteNonNegative(double value, string parameterName)
         {
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (double.IsNaN(value) || double.IsInfinity(value) || value < 0d)
             {
                 throw new ArgumentOutOfRangeException(

@@ -4,6 +4,7 @@ using OneStrokeDemon.Config;
 
 namespace OneStrokeDemon.Actors
 {
+    // 定义 EnemyAttackTriggerTypes 的角色领域数据与行为边界，供上层流程以明确契约使用。
     public static class EnemyAttackTriggerTypes
     {
         public const string Cooldown = "Cooldown";
@@ -12,6 +13,7 @@ namespace OneStrokeDemon.Actors
         public const string HpThreshold = "HpThreshold";
     }
 
+    // 定义 EnemyAttackActionKind 的角色领域数据与行为边界，供上层流程以明确契约使用。
     public enum EnemyAttackActionKind
     {
         None = 0,
@@ -21,8 +23,10 @@ namespace OneStrokeDemon.Actors
         Support = 4
     }
 
+    // 定义 EnemyAttackTriggerContext 的角色领域数据与行为边界，供上层流程以明确契约使用。
     public readonly struct EnemyAttackTriggerContext
     {
+        // 初始化 EnemyAttackTriggerContext，并建立角色运行时所需的初始状态。
         public EnemyAttackTriggerContext(
             bool cooldownReady,
             bool targetInDistance,
@@ -49,8 +53,10 @@ namespace OneStrokeDemon.Actors
         public bool IsValid { get; }
     }
 
+    // 定义 EnemyAttackDefinition 的角色领域数据与行为边界，供上层流程以明确契约使用。
     public readonly struct EnemyAttackDefinition
     {
+        // 初始化 EnemyAttackDefinition，并建立角色运行时所需的初始状态。
         internal EnemyAttackDefinition(
             string attackId,
             string attackSetId,
@@ -98,8 +104,10 @@ namespace OneStrokeDemon.Actors
 
         public bool IsConfigured { get; }
 
+        // 创建 CreateAction 对应的角色逻辑，并返回或发布一致的状态结果。
         public EnemyAttackAction CreateAction(in EnemyAttackTriggerContext context)
         {
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (!context.IsValid)
             {
                 throw new ArgumentException(
@@ -110,6 +118,7 @@ namespace OneStrokeDemon.Actors
             string supportTargetId = ActionKind == EnemyAttackActionKind.Support
                 ? context.SupportTargetId
                 : string.Empty;
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (ActionKind == EnemyAttackActionKind.Support &&
                 string.IsNullOrWhiteSpace(supportTargetId))
             {
@@ -127,8 +136,10 @@ namespace OneStrokeDemon.Actors
         }
     }
 
+    // 定义 EnemyAttackAction 的角色领域数据与行为边界，供上层流程以明确契约使用。
     public readonly struct EnemyAttackAction
     {
+        // 初始化 EnemyAttackAction，并建立角色运行时所需的初始状态。
         internal EnemyAttackAction(
             string attackId,
             EnemyAttackActionKind kind,
@@ -161,6 +172,7 @@ namespace OneStrokeDemon.Actors
         public bool IsConfigured { get; }
     }
 
+    // 定义 IEnemyAttackStrategy 的角色领域数据与行为边界，供上层流程以明确契约使用。
     public interface IEnemyAttackStrategy
     {
         string TriggerType { get; }
@@ -168,20 +180,25 @@ namespace OneStrokeDemon.Actors
         bool IsEligible(in EnemyAttackTriggerContext context);
     }
 
+    // 定义 AttackStrategyRegistry 的角色领域数据与行为边界，供上层流程以明确契约使用。
     public sealed class AttackStrategyRegistry
     {
         private readonly Dictionary<string, IEnemyAttackStrategy> strategies =
             new Dictionary<string, IEnemyAttackStrategy>(StringComparer.Ordinal);
 
+        // 初始化 AttackStrategyRegistry，并建立角色运行时所需的初始状态。
         public AttackStrategyRegistry(IEnumerable<IEnemyAttackStrategy> configuredStrategies)
         {
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (configuredStrategies == null)
             {
                 throw new ArgumentNullException(nameof(configuredStrategies));
             }
 
+            // 逐项推进本组角色数据，确保每个元素都遵循同一规则。
             foreach (IEnemyAttackStrategy strategy in configuredStrategies)
             {
+                // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
                 if (strategy == null || string.IsNullOrWhiteSpace(strategy.TriggerType))
                 {
                     throw new ArgumentException(
@@ -189,6 +206,7 @@ namespace OneStrokeDemon.Actors
                         nameof(configuredStrategies));
                 }
 
+                // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
                 if (!strategies.TryAdd(strategy.TriggerType, strategy))
                 {
                     throw new ArgumentException(
@@ -198,6 +216,7 @@ namespace OneStrokeDemon.Actors
             }
         }
 
+        // 创建 CreateDefault 对应的角色逻辑，并返回或发布一致的状态结果。
         public static AttackStrategyRegistry CreateDefault()
         {
             return new AttackStrategyRegistry(new IEnemyAttackStrategy[]
@@ -209,8 +228,10 @@ namespace OneStrokeDemon.Actors
             });
         }
 
+        // 获取 Get 对应的角色逻辑，并返回或发布一致的状态结果。
         public IEnemyAttackStrategy Get(string triggerType)
         {
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (triggerType != null && strategies.TryGetValue(triggerType, out IEnemyAttackStrategy strategy))
             {
                 return strategy;
@@ -220,10 +241,12 @@ namespace OneStrokeDemon.Actors
                 $"No enemy attack strategy is registered for trigger type '{triggerType}'.");
         }
 
+        // 判断是否 IsEligible 对应的角色逻辑，并返回或发布一致的状态结果。
         public bool IsEligible(
             in EnemyAttackDefinition attack,
             in EnemyAttackTriggerContext context)
         {
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (!attack.IsConfigured)
             {
                 throw new ArgumentException(
@@ -231,6 +254,7 @@ namespace OneStrokeDemon.Actors
                     nameof(attack));
             }
 
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (!context.IsValid)
             {
                 throw new ArgumentException(
@@ -241,16 +265,19 @@ namespace OneStrokeDemon.Actors
             return Get(attack.TriggerType).IsEligible(context);
         }
 
+        // 选择 Select 对应的角色逻辑，并返回或发布一致的状态结果。
         public EnemyAttackDefinition Select(
             IReadOnlyList<EnemyAttackDefinition> attacks,
             in EnemyAttackTriggerContext context,
             double unitSelection)
         {
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (attacks == null)
             {
                 throw new ArgumentNullException(nameof(attacks));
             }
 
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (double.IsNaN(unitSelection) ||
                 double.IsInfinity(unitSelection) ||
                 unitSelection < 0d ||
@@ -263,15 +290,18 @@ namespace OneStrokeDemon.Actors
             }
 
             double totalWeight = 0d;
+            // 逐项推进本组角色数据，确保每个元素都遵循同一规则。
             for (int index = 0; index < attacks.Count; index++)
             {
                 EnemyAttackDefinition attack = attacks[index];
+                // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
                 if (IsEligible(attack, context))
                 {
                     totalWeight += attack.Weight;
                 }
             }
 
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (totalWeight <= 0d || double.IsInfinity(totalWeight))
             {
                 return default;
@@ -280,9 +310,11 @@ namespace OneStrokeDemon.Actors
             double target = unitSelection * totalWeight;
             double accumulated = 0d;
             EnemyAttackDefinition lastEligible = default;
+            // 逐项推进本组角色数据，确保每个元素都遵循同一规则。
             for (int index = 0; index < attacks.Count; index++)
             {
                 EnemyAttackDefinition attack = attacks[index];
+                // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
                 if (!IsEligible(attack, context))
                 {
                     continue;
@@ -290,6 +322,7 @@ namespace OneStrokeDemon.Actors
 
                 lastEligible = attack;
                 accumulated += attack.Weight;
+                // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
                 if (target < accumulated)
                 {
                     return attack;
@@ -300,18 +333,22 @@ namespace OneStrokeDemon.Actors
         }
     }
 
+    // 定义 EnemyAttackDefinitionFactory 的角色领域数据与行为边界，供上层流程以明确契约使用。
     public static class EnemyAttackDefinitionFactory
     {
+        // 创建 Create 对应的角色逻辑，并返回或发布一致的状态结果。
         public static IReadOnlyList<EnemyAttackDefinition> Create(
             IConfigProvider configProvider,
             string attackSetId,
             AttackStrategyRegistry registry = null)
         {
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (configProvider == null)
             {
                 throw new ArgumentNullException(nameof(configProvider));
             }
 
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (string.IsNullOrWhiteSpace(attackSetId))
             {
                 throw new ArgumentException(
@@ -324,6 +361,7 @@ namespace OneStrokeDemon.Actors
             IReadOnlyList<EnemyAttackConfig> configured =
                 configProvider.GetEnemyAttacks(attackSetId);
             var rows = new EnemyAttackConfig[configured.Count];
+            // 逐项推进本组角色数据，确保每个元素都遵循同一规则。
             for (int index = 0; index < configured.Count; index++)
             {
                 rows[index] = configured[index] ??
@@ -334,10 +372,12 @@ namespace OneStrokeDemon.Actors
 
             Array.Sort(rows, AttackOrderComparer.Instance);
             var definitions = new EnemyAttackDefinition[rows.Length];
+            // 逐项推进本组角色数据，确保每个元素都遵循同一规则。
             for (int index = 0; index < rows.Length; index++)
             {
                 EnemyAttackConfig row = rows[index];
                 long expectedOrder = index + 1L;
+                // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
                 if (!string.Equals(row.AttackSetId, attackSetId, StringComparison.Ordinal) ||
                     row.Order != expectedOrder)
                 {
@@ -365,8 +405,10 @@ namespace OneStrokeDemon.Actors
             return Array.AsReadOnly(definitions);
         }
 
+        // 校验 ValidateRow 对应的角色逻辑，并返回或发布一致的状态结果。
         private static void ValidateRow(IConfigProvider configProvider, EnemyAttackConfig row)
         {
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (string.IsNullOrWhiteSpace(row.AttackId) ||
                 string.IsNullOrWhiteSpace(row.EffectGroupId) ||
                 row.Damage < 0L ||
@@ -379,9 +421,11 @@ namespace OneStrokeDemon.Actors
                     nameof(row));
             }
 
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (!string.IsNullOrEmpty(row.ProjectileId))
             {
                 ProjectileConfig projectile = configProvider.GetProjectile(row.ProjectileId);
+                // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
                 if (projectile.Damage != row.Damage)
                 {
                     throw new ArgumentException(
@@ -391,10 +435,13 @@ namespace OneStrokeDemon.Actors
             }
         }
 
+        // 解析 ResolveActionKind 对应的角色逻辑，并返回或发布一致的状态结果。
         private static EnemyAttackActionKind ResolveActionKind(EnemyAttackConfig row)
         {
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (string.Equals(row.TriggerType, EnemyAttackTriggerTypes.Support, StringComparison.Ordinal))
             {
+                // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
                 if (row.Damage != 0L || !string.IsNullOrEmpty(row.ProjectileId))
                 {
                     throw new ArgumentException(
@@ -405,11 +452,13 @@ namespace OneStrokeDemon.Actors
                 return EnemyAttackActionKind.Support;
             }
 
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (!string.IsNullOrEmpty(row.ProjectileId))
             {
                 return EnemyAttackActionKind.Projectile;
             }
 
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (row.Damage <= 0L)
             {
                 throw new ArgumentException(
@@ -417,6 +466,7 @@ namespace OneStrokeDemon.Actors
                     nameof(row));
             }
 
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (string.Equals(row.TriggerType, EnemyAttackTriggerTypes.Distance, StringComparison.Ordinal) ||
                 string.Equals(row.TriggerType, EnemyAttackTriggerTypes.HpThreshold, StringComparison.Ordinal))
             {
@@ -426,10 +476,12 @@ namespace OneStrokeDemon.Actors
             return EnemyAttackActionKind.Melee;
         }
 
+        // 定义 AttackOrderComparer 的角色领域数据与行为边界，供上层流程以明确契约使用。
         private sealed class AttackOrderComparer : IComparer<EnemyAttackConfig>
         {
             public static readonly AttackOrderComparer Instance = new AttackOrderComparer();
 
+            // 比较 Compare 对应的角色逻辑，并返回或发布一致的状态结果。
             public int Compare(EnemyAttackConfig left, EnemyAttackConfig right)
             {
                 int order = left.Order.CompareTo(right.Order);
@@ -440,31 +492,39 @@ namespace OneStrokeDemon.Actors
         }
     }
 
+    // 定义 CooldownAttackStrategy 的角色领域数据与行为边界，供上层流程以明确契约使用。
     public sealed class CooldownAttackStrategy : IEnemyAttackStrategy
     {
         public string TriggerType => EnemyAttackTriggerTypes.Cooldown;
 
+        // 判断是否 IsEligible 对应的角色逻辑，并返回或发布一致的状态结果。
         public bool IsEligible(in EnemyAttackTriggerContext context) => context.CooldownReady;
     }
 
+    // 定义 DistanceAttackStrategy 的角色领域数据与行为边界，供上层流程以明确契约使用。
     public sealed class DistanceAttackStrategy : IEnemyAttackStrategy
     {
         public string TriggerType => EnemyAttackTriggerTypes.Distance;
 
+        // 判断是否 IsEligible 对应的角色逻辑，并返回或发布一致的状态结果。
         public bool IsEligible(in EnemyAttackTriggerContext context) => context.TargetInDistance;
     }
 
+    // 定义 SupportAttackStrategy 的角色领域数据与行为边界，供上层流程以明确契约使用。
     public sealed class SupportAttackStrategy : IEnemyAttackStrategy
     {
         public string TriggerType => EnemyAttackTriggerTypes.Support;
 
+        // 判断是否 IsEligible 对应的角色逻辑，并返回或发布一致的状态结果。
         public bool IsEligible(in EnemyAttackTriggerContext context) => context.HasSupportTarget;
     }
 
+    // 定义 HpThresholdAttackStrategy 的角色领域数据与行为边界，供上层流程以明确契约使用。
     public sealed class HpThresholdAttackStrategy : IEnemyAttackStrategy
     {
         public string TriggerType => EnemyAttackTriggerTypes.HpThreshold;
 
+        // 判断是否 IsEligible 对应的角色逻辑，并返回或发布一致的状态结果。
         public bool IsEligible(in EnemyAttackTriggerContext context) => context.HpThresholdReached;
     }
 }

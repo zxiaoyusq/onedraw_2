@@ -4,8 +4,10 @@ using OneStrokeDemon.Config;
 
 namespace OneStrokeDemon.Actors
 {
+    // 定义 BossPhaseDefinition 的角色领域数据与行为边界，供上层流程以明确契约使用。
     public readonly struct BossPhaseDefinition
     {
+        // 初始化 BossPhaseDefinition，并建立角色运行时所需的初始状态。
         internal BossPhaseDefinition(
             string bossPhaseId,
             string enemyId,
@@ -66,22 +68,26 @@ namespace OneStrokeDemon.Actors
         public bool IsConfigured { get; }
     }
 
+    // 定义 BossPhaseCatalog 的角色领域数据与行为边界，供上层流程以明确契约使用。
     public static class BossPhaseCatalog
     {
         private const double RatioTolerance = 0.000001d;
 
+        // 创建 Create 对应的角色逻辑，并返回或发布一致的状态结果。
         public static IReadOnlyList<BossPhaseDefinition> Create(
             IConfigProvider configProvider,
             string enemyId,
             MovementStrategyRegistry movementRegistry = null,
             AttackStrategyRegistry attackRegistry = null)
         {
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (configProvider == null)
             {
                 throw new ArgumentNullException(nameof(configProvider));
             }
 
             EnemyDefinition boss = EnemyDefinitionFactory.Create(configProvider, enemyId);
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (boss.Tier != EnemyTier.Boss)
             {
                 throw new ArgumentException(
@@ -91,6 +97,7 @@ namespace OneStrokeDemon.Actors
 
             IReadOnlyList<BossPhaseConfig> configured =
                 configProvider.GetBossPhases(boss.EnemyId);
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (configured.Count == 0)
             {
                 throw new ArgumentException(
@@ -99,6 +106,7 @@ namespace OneStrokeDemon.Actors
             }
 
             var rows = new BossPhaseConfig[configured.Count];
+            // 逐项推进本组角色数据，确保每个元素都遵循同一规则。
             for (int index = 0; index < configured.Count; index++)
             {
                 rows[index] = configured[index] ??
@@ -115,12 +123,14 @@ namespace OneStrokeDemon.Actors
                 AttackStrategyRegistry.CreateDefault();
             var defenseService = new DefenseRuleService(configProvider);
             var phases = new BossPhaseDefinition[rows.Length];
+            // 逐项推进本组角色数据，确保每个元素都遵循同一规则。
             for (int index = 0; index < rows.Length; index++)
             {
                 BossPhaseConfig row = rows[index];
                 RequireNonEmpty(row.BossPhaseId, nameof(row.BossPhaseId), row.BossPhaseId);
                 RequireNonEmpty(row.BossPhaseId, nameof(row.OnEnterEffectGroupId), row.OnEnterEffectGroupId);
                 RequireNonEmpty(row.BossPhaseId, nameof(row.DescriptionKey), row.DescriptionKey);
+                // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
                 if (configProvider.GetSkillEffects(row.OnEnterEffectGroupId).Count == 0)
                 {
                     throw Invalid(
@@ -166,8 +176,10 @@ namespace OneStrokeDemon.Actors
             return Array.AsReadOnly(phases);
         }
 
+        // 校验 ValidateCoverage 对应的角色逻辑，并返回或发布一致的状态结果。
         private static void ValidateCoverage(string enemyId, BossPhaseConfig[] phases)
         {
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (!Approximately(phases[0].EnterHpRatio, 1d))
             {
                 throw Invalid(
@@ -177,6 +189,7 @@ namespace OneStrokeDemon.Actors
                     $"Boss '{enemyId}' first phase must enter at HP ratio 1.");
             }
 
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (!Approximately(phases[phases.Length - 1].ExitHpRatio, 0d))
             {
                 throw Invalid(
@@ -187,10 +200,12 @@ namespace OneStrokeDemon.Actors
             }
 
             double previousExit = 1d;
+            // 逐项推进本组角色数据，确保每个元素都遵循同一规则。
             for (int index = 0; index < phases.Length; index++)
             {
                 BossPhaseConfig phase = phases[index];
                 long expectedOrder = index + 1L;
+                // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
                 if (!string.Equals(phase.EnemyId, enemyId, StringComparison.Ordinal) ||
                     phase.Order != expectedOrder)
                 {
@@ -203,6 +218,7 @@ namespace OneStrokeDemon.Actors
 
                 RequireRatio(phase.BossPhaseId, nameof(phase.EnterHpRatio), phase.EnterHpRatio);
                 RequireRatio(phase.BossPhaseId, nameof(phase.ExitHpRatio), phase.ExitHpRatio);
+                // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
                 if (phase.EnterHpRatio <= phase.ExitHpRatio)
                 {
                     throw Invalid(
@@ -212,6 +228,7 @@ namespace OneStrokeDemon.Actors
                         "Phase enter ratio must be greater than exit ratio.");
                 }
 
+                // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
                 if (!Approximately(previousExit, phase.EnterHpRatio))
                 {
                     throw Invalid(
@@ -225,8 +242,10 @@ namespace OneStrokeDemon.Actors
             }
         }
 
+        // 处理 RequireRatio 对应的角色逻辑，并返回或发布一致的状态结果。
         private static void RequireRatio(string phaseId, string field, double value)
         {
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (double.IsNaN(value) ||
                 double.IsInfinity(value) ||
                 value < 0d ||
@@ -240,11 +259,13 @@ namespace OneStrokeDemon.Actors
             }
         }
 
+        // 处理 RequireNonEmpty 对应的角色逻辑，并返回或发布一致的状态结果。
         private static void RequireNonEmpty(
             string phaseId,
             string field,
             string value)
         {
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (string.IsNullOrWhiteSpace(value))
             {
                 throw Invalid(
@@ -255,11 +276,13 @@ namespace OneStrokeDemon.Actors
             }
         }
 
+        // 处理 Approximately 对应的角色逻辑，并返回或发布一致的状态结果。
         private static bool Approximately(double left, double right)
         {
             return Math.Abs(left - right) <= RatioTolerance;
         }
 
+        // 处理 Invalid 对应的角色逻辑，并返回或发布一致的状态结果。
         private static ArgumentException Invalid(
             string phaseId,
             string field,
@@ -271,15 +294,20 @@ namespace OneStrokeDemon.Actors
                 field);
         }
 
+        // 定义 PhaseOrderComparer 的角色领域数据与行为边界，供上层流程以明确契约使用。
         private sealed class PhaseOrderComparer : IComparer<BossPhaseConfig>
         {
             public static readonly PhaseOrderComparer Instance =
                 new PhaseOrderComparer();
 
+            // 比较 Compare 对应的角色逻辑，并返回或发布一致的状态结果。
             public int Compare(BossPhaseConfig left, BossPhaseConfig right)
             {
+                // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
                 if (ReferenceEquals(left, right)) return 0;
+                // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
                 if (left == null) return -1;
+                // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
                 if (right == null) return 1;
                 int order = left.Order.CompareTo(right.Order);
                 return order != 0
@@ -289,8 +317,10 @@ namespace OneStrokeDemon.Actors
         }
     }
 
+    // 定义 BossPhaseTransition 的角色领域数据与行为边界，供上层流程以明确契约使用。
     public readonly struct BossPhaseTransition
     {
+        // 初始化 BossPhaseTransition，并建立角色运行时所需的初始状态。
         internal BossPhaseTransition(
             ulong sequence,
             string previousPhaseId,
@@ -315,6 +345,7 @@ namespace OneStrokeDemon.Actors
         public bool IsValid { get; }
     }
 
+    // 定义 BossPhaseStateMachine 的角色领域数据与行为边界，供上层流程以明确契约使用。
     public sealed class BossPhaseStateMachine
     {
         private static readonly IReadOnlyList<BossPhaseTransition> NoTransitions =
@@ -324,10 +355,12 @@ namespace OneStrokeDemon.Actors
         private int currentIndex = -1;
         private ulong nextSequence = 1UL;
 
+        // 初始化 BossPhaseStateMachine，并建立角色运行时所需的初始状态。
         public BossPhaseStateMachine(IReadOnlyList<BossPhaseDefinition> configuredPhases)
         {
             phases = configuredPhases ??
                 throw new ArgumentNullException(nameof(configuredPhases));
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (phases.Count == 0)
             {
                 throw new ArgumentException(
@@ -342,15 +375,18 @@ namespace OneStrokeDemon.Actors
             ? phases[currentIndex]
             : default;
 
+        // 处理 Start 对应的角色逻辑，并返回或发布一致的状态结果。
         public BossPhaseTransition Start(double hpRatio)
         {
             ValidateRatio(hpRatio);
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (IsStarted)
             {
                 throw new InvalidOperationException(
                     "Boss phase state machine can only start once.");
             }
 
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (hpRatio <= 0d || hpRatio > phases[0].EnterHpRatio)
             {
                 throw new ArgumentOutOfRangeException(
@@ -363,15 +399,18 @@ namespace OneStrokeDemon.Actors
             return CreateTransition(string.Empty, phases[0], hpRatio);
         }
 
+        // 处理 Advance 对应的角色逻辑，并返回或发布一致的状态结果。
         public IReadOnlyList<BossPhaseTransition> Advance(double hpRatio)
         {
             ValidateRatio(hpRatio);
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (!IsStarted)
             {
                 throw new InvalidOperationException(
                     "Boss phase state machine must start before it advances.");
             }
 
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (currentIndex >= phases.Count - 1 ||
                 hpRatio > phases[currentIndex].ExitHpRatio)
             {
@@ -379,6 +418,7 @@ namespace OneStrokeDemon.Actors
             }
 
             var transitions = new List<BossPhaseTransition>();
+            // 逐项推进本组角色数据，确保每个元素都遵循同一规则。
             while (currentIndex < phases.Count - 1 &&
                    hpRatio <= phases[currentIndex].ExitHpRatio)
             {
@@ -390,12 +430,14 @@ namespace OneStrokeDemon.Actors
             return transitions.AsReadOnly();
         }
 
+        // 创建 CreateTransition 对应的角色逻辑，并返回或发布一致的状态结果。
         private BossPhaseTransition CreateTransition(
             string previousPhaseId,
             in BossPhaseDefinition phase,
             double hpRatio)
         {
             ulong sequence = nextSequence;
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (sequence == 0UL || sequence == ulong.MaxValue)
             {
                 throw new OverflowException("Boss phase transition sequence is exhausted.");
@@ -405,8 +447,10 @@ namespace OneStrokeDemon.Actors
             return new BossPhaseTransition(sequence, previousPhaseId, phase, hpRatio);
         }
 
+        // 校验 ValidateRatio 对应的角色逻辑，并返回或发布一致的状态结果。
         private static void ValidateRatio(double hpRatio)
         {
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (double.IsNaN(hpRatio) ||
                 double.IsInfinity(hpRatio) ||
                 hpRatio < 0d ||

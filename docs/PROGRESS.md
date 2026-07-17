@@ -1,8 +1,8 @@
 # PROGRESS
 
 - 日期：2026-07-17
-- 当前成熟度：T660生产入口与轨迹视觉已由用户确认通过；Core、Platform、Config、Input与Combat中文注释批次完成
-- 当前任务：T674
+- 当前成熟度：T660生产入口与轨迹视觉已由用户确认通过；Core、Platform、Config、Input、Combat与Actors中文注释批次完成
+- 当前任务：T675
 - 状态：READY
 - Unity精确版本：6000.5.1f1（已由ProjectVersion.txt与本机安装核验）
 - 微信SDK来源或版本：官方 `minigame-tuanjie-transform-sdk` v0.1.33 / commit `ed4ad28f433c6b52b5fd3f22a6fa155a0c98c228` / embedded最小补丁
@@ -11,10 +11,11 @@
 
 ## 进行中
 
-- T674是唯一`READY`任务，范围为Actors脚本。T675–T681按Skills、Levels、Presentation、Bootstrap、Editor、生成器和全量审计串行处理；T700在T681完成前保持`BACKLOG`。
+- T675是唯一`READY`任务，范围为Skills脚本。T676–T681按Levels、Presentation、Bootstrap、Editor、生成器和全量审计串行处理；T700在T681完成前保持`BACKLOG`。
 
 ## 已完成
 
+- T674：为Actors目录19个手写C#脚本、7,305行基线代码补充747行中文类型、方法和主要逻辑注释，覆盖玩家战斗/架势、敌人状态机、移动/攻击策略、弱点/Buff、原型运行时与Boss阶段；删除0行且无运行语义变化。配置漂移门与ConfigExporter 58/58、专项EditMode 27/27和PlayMode 6/6、全量EditMode 198/198及PlayMode 50/50通过；TMP测试漂移已恢复，用户`AGENTS.md`未修改/未暂存。
 - T673：为Combat目录25个手写C#脚本、2,520行基线代码补充中文类型、方法、属性职责和主要逻辑注释，重点说明连击单调时间、伤害方向/弱点/暴击、配置规则映射、命中排序去重、弹体所有权/反射/切割及对象池生命周期。脚本仅新增201行注释、删除0行。配置漂移门与ConfigExporter 58/58、专项EditMode 26/26和PlayMode 10/10、全量EditMode 198/198及PlayMode 50/50通过；测试产生的TMP序列化漂移已恢复，用户`AGENTS.md`未修改/未暂存。
 - T672：为Input目录19个手写C#脚本、2,397行基线代码补充中文类型、方法、属性职责和主要逻辑注释，重点说明单活动指针所有权、Safe Area与UI起笔门、设备/焦点取消、实时预览、固定缓冲采样、精确长度裁剪、RDP/弧长重采样及笔势优先级。脚本仅新增285行注释、删除0行。配置漂移门与ConfigExporter 58/58、Input四分类专项EditMode 41/41和PlayMode 10/10、全量EditMode 198/198及PlayMode 50/50通过；首次逗号组合分类得到0测试，被明确标为无效调用且未计入结论。测试产生的TMP序列化漂移已恢复，用户`AGENTS.md`未修改/未暂存。
 - T671：为Config目录22个手写Runtime C#脚本、2,113行基线代码补充中文类型、方法、属性职责和主要逻辑注释；重点说明严格JSON解析、规范化哈希、版本兼容、不可变索引、一次性原子发布、AssetManifest双向覆盖与对象池配置转换。脚本差异仅401行注释新增、删除0行，未修改`Generated/ConfigIds.g.cs`或运行语义。配置生成漂移门与ConfigExporter 58/58、ConfigPipeline EditMode 19/19和PlayMode 3/3、全量EditMode 198/198及PlayMode 50/50通过。Unity测试引发的TMP材质序列化漂移已恢复到Git基线；日志仅重报未修改异常类声明已有的两条CS0114警告，用户`AGENTS.md`改动全程未修改/未暂存。
@@ -238,4 +239,4 @@
 9. 三个MVP关卡已接入生产主菜单和Battle组合根，用户已确认Unity Editor入口、Mac触控板笔迹与修复后视觉。`IProgressSaveStore`与震动仍待T130平台适配，T640多比例/安全区又依赖T120，因此当前证据不能外推为平台持久化、多设备布局或真机体验。
 ## 下一步
 
-执行T674：只为Actors脚本补齐中文注释，不改角色规则、配置或Unity资源。完成证据和独立提交后才将T675置READY。
+执行T675：只为Skills脚本补齐中文注释，不改技能规则、配置或Unity资源。完成证据和独立提交后才将T676置READY。

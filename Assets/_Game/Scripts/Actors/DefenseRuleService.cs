@@ -3,8 +3,10 @@ using OneStrokeDemon.Config;
 
 namespace OneStrokeDemon.Actors
 {
+    // 定义 EnemyDefenseRule 的角色领域数据与行为边界，供上层流程以明确契约使用。
     public readonly struct EnemyDefenseRule
     {
+        // 初始化 EnemyDefenseRule，并建立角色运行时所需的初始状态。
         internal EnemyDefenseRule(
             string defenseRuleId,
             long armorHp,
@@ -45,8 +47,10 @@ namespace OneStrokeDemon.Actors
         public bool IsConfigured { get; }
     }
 
+    // 定义 EnemyDefenseEvaluation 的角色领域数据与行为边界，供上层流程以明确契约使用。
     public readonly struct EnemyDefenseEvaluation
     {
+        // 初始化 EnemyDefenseEvaluation，并建立角色运行时所需的初始状态。
         internal EnemyDefenseEvaluation(
             string defenseRuleId,
             bool gestureMatches,
@@ -81,18 +85,22 @@ namespace OneStrokeDemon.Actors
         public bool IsValid { get; }
     }
 
+    // 定义 DefenseRuleService 的角色领域数据与行为边界，供上层流程以明确契约使用。
     public sealed class DefenseRuleService
     {
         private readonly IConfigProvider configProvider;
 
+        // 初始化 DefenseRuleService，并建立角色运行时所需的初始状态。
         public DefenseRuleService(IConfigProvider configuredProvider)
         {
             configProvider = configuredProvider ??
                 throw new ArgumentNullException(nameof(configuredProvider));
         }
 
+        // 获取 Get 对应的角色逻辑，并返回或发布一致的状态结果。
         public EnemyDefenseRule Get(string defenseRuleId)
         {
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (string.IsNullOrWhiteSpace(defenseRuleId))
             {
                 throw new ArgumentException(
@@ -113,11 +121,13 @@ namespace OneStrokeDemon.Actors
                 row.BreakEffectGroupId);
         }
 
+        // 处理 Evaluate 对应的角色逻辑，并返回或发布一致的状态结果。
         public EnemyDefenseEvaluation Evaluate(
             string defenseRuleId,
             string gestureType,
             string stanceId)
         {
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (string.IsNullOrWhiteSpace(gestureType))
             {
                 throw new ArgumentException(
@@ -125,6 +135,7 @@ namespace OneStrokeDemon.Actors
                     nameof(gestureType));
             }
 
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (string.IsNullOrWhiteSpace(stanceId))
             {
                 throw new ArgumentException(
@@ -151,13 +162,16 @@ namespace OneStrokeDemon.Actors
                 rule.BreakEffectGroupId);
         }
 
+        // 校验 Validate 对应的角色逻辑，并返回或发布一致的状态结果。
         private static void Validate(DefenseRuleConfig row)
         {
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (row == null)
             {
                 throw new ArgumentNullException(nameof(row));
             }
 
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (string.IsNullOrWhiteSpace(row.DefenseRuleId) ||
                 !IsSupportedGesture(row.RequiredGestureType) ||
                 row.ArmorHp < 0L ||
@@ -171,8 +185,10 @@ namespace OneStrokeDemon.Actors
             }
         }
 
+        // 判断是否 IsSupportedGesture 对应的角色逻辑，并返回或发布一致的状态结果。
         private static bool IsSupportedGesture(string gestureType)
         {
+            // 按当前枚举或状态选择对应的角色行为分支。
             switch (gestureType)
             {
                 case "Any":
@@ -188,6 +204,7 @@ namespace OneStrokeDemon.Actors
             }
         }
 
+        // 判断是否 IsFiniteNonNegative 对应的角色逻辑，并返回或发布一致的状态结果。
         private static bool IsFiniteNonNegative(double value)
         {
             return !double.IsNaN(value) &&

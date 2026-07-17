@@ -5,6 +5,7 @@ using UnityEngine;
 
 namespace OneStrokeDemon.Actors
 {
+    // 定义 PlayerCombatEventType 的角色领域数据与行为边界，供上层流程以明确契约使用。
     public enum PlayerCombatEventType
     {
         None = 0,
@@ -14,8 +15,10 @@ namespace OneStrokeDemon.Actors
         Died = 4
     }
 
+    // 定义 PlayerCombatEvent 的角色领域数据与行为边界，供上层流程以明确契约使用。
     public readonly struct PlayerCombatEvent
     {
+        // 初始化 PlayerCombatEvent，并建立角色运行时所需的初始状态。
         internal PlayerCombatEvent(
             ulong sequence,
             PlayerCombatEventType eventType,
@@ -60,6 +63,7 @@ namespace OneStrokeDemon.Actors
         public bool IsValid { get; }
     }
 
+    // 定义 SkillEnergySpendStatus 的角色领域数据与行为边界，供上层流程以明确契约使用。
     public enum SkillEnergySpendStatus
     {
         None = 0,
@@ -69,8 +73,10 @@ namespace OneStrokeDemon.Actors
         PlayerDead = 4
     }
 
+    // 定义 SkillEnergySpendResult 的角色领域数据与行为边界，供上层流程以明确契约使用。
     public readonly struct SkillEnergySpendResult
     {
+        // 初始化 SkillEnergySpendResult，并建立角色运行时所需的初始状态。
         internal SkillEnergySpendResult(
             SkillEnergySpendStatus status,
             string skillId,
@@ -102,6 +108,7 @@ namespace OneStrokeDemon.Actors
     }
 
     [DisallowMultipleComponent]
+    // 定义 PlayerCombatController 的角色领域数据与行为边界，供上层流程以明确契约使用。
     public sealed class PlayerCombatController : MonoBehaviour
     {
         private IConfigProvider configProvider;
@@ -117,8 +124,10 @@ namespace OneStrokeDemon.Actors
 
         public PlayerCombatSnapshot Current => Model.Current;
 
+        // 处理 Initialize 对应的角色逻辑，并返回或发布一致的状态结果。
         public void Initialize(IConfigProvider configuredProvider, string playerId)
         {
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (IsInitialized)
             {
                 throw new InvalidOperationException(
@@ -134,12 +143,14 @@ namespace OneStrokeDemon.Actors
             model = new PlayerCombatModel(settings, stances);
         }
 
+        // 应用 ApplyDamage 对应的角色逻辑，并返回或发布一致的状态结果。
         public PlayerDamageResult ApplyDamage(
             long damage,
             double timestamp,
             string sourceId = "")
         {
             PlayerDamageResult result = Model.ApplyDamage(damage, timestamp);
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (!result.ChangedHp)
             {
                 return result;
@@ -154,6 +165,7 @@ namespace OneStrokeDemon.Actors
                 result.State.StanceId,
                 string.Empty,
                 timestamp);
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (result.DeathTriggered)
             {
                 Publish(
@@ -170,12 +182,14 @@ namespace OneStrokeDemon.Actors
             return result;
         }
 
+        // 增加 GainEnergy 对应的角色逻辑，并返回或发布一致的状态结果。
         public PlayerEnergyResult GainEnergy(
             in DamageResult damageResult,
             double timestamp)
         {
             ValidateTimestamp(timestamp);
             PlayerEnergyResult result = Model.GainEnergy(damageResult);
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (result.ChangedEnergy)
             {
                 Publish(
@@ -192,6 +206,7 @@ namespace OneStrokeDemon.Actors
             return result;
         }
 
+        // 恢复 Heal 对应的角色逻辑，并返回或发布一致的状态结果。
         public PlayerHealResult Heal(
             long amount,
             double timestamp,
@@ -199,6 +214,7 @@ namespace OneStrokeDemon.Actors
         {
             ValidateTimestamp(timestamp);
             PlayerHealResult result = Model.Heal(amount);
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (result.ChangedHp)
             {
                 Publish(
@@ -215,6 +231,7 @@ namespace OneStrokeDemon.Actors
             return result;
         }
 
+        // 增加 GainEnergy 对应的角色逻辑，并返回或发布一致的状态结果。
         public PlayerEnergyResult GainEnergy(
             long amount,
             double timestamp,
@@ -222,6 +239,7 @@ namespace OneStrokeDemon.Actors
         {
             ValidateTimestamp(timestamp);
             PlayerEnergyResult result = Model.GainEnergy(amount);
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (result.ChangedEnergy)
             {
                 Publish(
@@ -238,17 +256,20 @@ namespace OneStrokeDemon.Actors
             return result;
         }
 
+        // 尝试执行 TrySpendSkillEnergy 对应的角色逻辑，并返回或发布一致的状态结果。
         public SkillEnergySpendResult TrySpendSkillEnergy(
             string skillId,
             double timestamp)
         {
             ValidateTimestamp(timestamp);
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (string.IsNullOrWhiteSpace(skillId))
             {
                 throw new ArgumentException("Skill id must be non-empty.", nameof(skillId));
             }
 
             SkillConfig skill = configProvider.GetSkill(skillId);
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (skill.EnergyCost < 0)
             {
                 throw new ArgumentOutOfRangeException(
@@ -257,6 +278,7 @@ namespace OneStrokeDemon.Actors
                     $"Skill '{skill.SkillId}' energy cost must be non-negative.");
             }
 
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (Current.IsDead)
             {
                 return new SkillEnergySpendResult(
@@ -267,6 +289,7 @@ namespace OneStrokeDemon.Actors
                     default);
             }
 
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (!string.IsNullOrEmpty(skill.RequiredStanceId) &&
                 !string.Equals(
                     skill.RequiredStanceId,
@@ -283,6 +306,7 @@ namespace OneStrokeDemon.Actors
 
             PlayerEnergyResult energyResult = Model.TrySpendEnergy(skill.EnergyCost);
             SkillEnergySpendStatus status;
+            // 按当前枚举或状态选择对应的角色行为分支。
             switch (energyResult.Status)
             {
                 case PlayerEnergyStatus.Spent:
@@ -306,6 +330,7 @@ namespace OneStrokeDemon.Actors
                 skill.RequiredStanceId,
                 skill.EnergyCost,
                 energyResult);
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (result.Succeeded && energyResult.ChangedEnergy)
             {
                 Publish(
@@ -322,14 +347,17 @@ namespace OneStrokeDemon.Actors
             return result;
         }
 
+        // 尝试执行 TrySpendUltimateEnergy 对应的角色逻辑，并返回或发布一致的状态结果。
         public SkillEnergySpendResult TrySpendUltimateEnergy(double timestamp)
         {
             return TrySpendSkillEnergy(Model.Settings.UltimateSkillId, timestamp);
         }
 
+        // 尝试执行 TrySwitchStance 对应的角色逻辑，并返回或发布一致的状态结果。
         public StanceSwitchResult TrySwitchStance(string stanceId, double timestamp)
         {
             StanceSwitchResult result = Model.TrySwitchStance(stanceId, timestamp);
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (result.DidSwitch)
             {
                 Publish(
@@ -346,6 +374,7 @@ namespace OneStrokeDemon.Actors
             return result;
         }
 
+        // 创建 CreateDamageRules 对应的角色逻辑，并返回或发布一致的状态结果。
         public DamageRuleSet CreateDamageRules(
             string defenseRuleId,
             string weakpointRuleId)
@@ -357,6 +386,7 @@ namespace OneStrokeDemon.Actors
                 weakpointRuleId);
         }
 
+        // 处理 Publish 对应的角色逻辑，并返回或发布一致的状态结果。
         private void Publish(
             PlayerCombatEventType eventType,
             in PlayerCombatSnapshot state,
@@ -368,6 +398,7 @@ namespace OneStrokeDemon.Actors
             double timestamp)
         {
             ulong sequence = nextEventSequence;
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (sequence == 0 || sequence == ulong.MaxValue)
             {
                 throw new OverflowException("Player combat event sequence is exhausted.");
@@ -386,8 +417,10 @@ namespace OneStrokeDemon.Actors
                 timestamp));
         }
 
+        // 校验 ValidateTimestamp 对应的角色逻辑，并返回或发布一致的状态结果。
         private static void ValidateTimestamp(double timestamp)
         {
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (double.IsNaN(timestamp) || double.IsInfinity(timestamp) || timestamp < 0d)
             {
                 throw new ArgumentOutOfRangeException(

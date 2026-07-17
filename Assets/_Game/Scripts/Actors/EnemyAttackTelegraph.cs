@@ -2,8 +2,10 @@ using System;
 
 namespace OneStrokeDemon.Actors
 {
+    // 定义 EnemyAttackTelegraphSnapshot 的角色领域数据与行为边界，供上层流程以明确契约使用。
     public readonly struct EnemyAttackTelegraphSnapshot
     {
+        // 初始化 EnemyAttackTelegraphSnapshot，并建立角色运行时所需的初始状态。
         internal EnemyAttackTelegraphSnapshot(
             ulong sequence,
             string attackId,
@@ -48,6 +50,7 @@ namespace OneStrokeDemon.Actors
         public bool IsValid { get; }
     }
 
+    // 定义 EnemyAttackTelegraph 的角色领域数据与行为边界，供上层流程以明确契约使用。
     public sealed class EnemyAttackTelegraph
     {
         private ulong sequence;
@@ -72,11 +75,13 @@ namespace OneStrokeDemon.Actors
                 closedAt,
                 isVisible);
 
+        // 处理 Open 对应的角色逻辑，并返回或发布一致的状态结果。
         public void Open(
             in EnemyAttackAction action,
             in EnemyAttackTimeline timeline,
             double timestamp)
         {
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (!action.IsConfigured)
             {
                 throw new ArgumentException(
@@ -84,6 +89,7 @@ namespace OneStrokeDemon.Actors
                     nameof(action));
             }
 
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (!timeline.IsConfigured ||
                 !string.Equals(action.AttackId, timeline.AttackId, StringComparison.Ordinal))
             {
@@ -93,6 +99,7 @@ namespace OneStrokeDemon.Actors
             }
 
             ValidateTimestamp(timestamp);
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (isVisible)
             {
                 throw new InvalidOperationException(
@@ -110,14 +117,17 @@ namespace OneStrokeDemon.Actors
             isVisible = true;
         }
 
+        // 处理 Close 对应的角色逻辑，并返回或发布一致的状态结果。
         public bool Close(double timestamp)
         {
             ValidateTimestamp(timestamp);
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (!isVisible)
             {
                 return false;
             }
 
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (timestamp < openedAt)
             {
                 throw new ArgumentOutOfRangeException(
@@ -132,9 +142,11 @@ namespace OneStrokeDemon.Actors
             return true;
         }
 
+        // 处理 NextSequence 对应的角色逻辑，并返回或发布一致的状态结果。
         private static ulong NextSequence(ulong current)
         {
             ulong next = current + 1UL;
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (next == 0UL)
             {
                 throw new OverflowException("Enemy telegraph sequence is exhausted.");
@@ -143,8 +155,10 @@ namespace OneStrokeDemon.Actors
             return next;
         }
 
+        // 校验 ValidateTimestamp 对应的角色逻辑，并返回或发布一致的状态结果。
         private static void ValidateTimestamp(double timestamp)
         {
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (double.IsNaN(timestamp) ||
                 double.IsInfinity(timestamp) ||
                 timestamp < 0d)

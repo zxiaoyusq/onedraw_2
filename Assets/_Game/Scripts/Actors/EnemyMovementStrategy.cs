@@ -4,6 +4,7 @@ using OneStrokeDemon.Config;
 
 namespace OneStrokeDemon.Actors
 {
+    // 定义 EnemyMovementPatternTypes 的角色领域数据与行为边界，供上层流程以明确契约使用。
     public static class EnemyMovementPatternTypes
     {
         public const string Linear = "Linear";
@@ -13,8 +14,10 @@ namespace OneStrokeDemon.Actors
         public const string Boss = "Boss";
     }
 
+    // 定义 EnemyMovementDefinition 的角色领域数据与行为边界，供上层流程以明确契约使用。
     public readonly struct EnemyMovementDefinition
     {
+        // 初始化 EnemyMovementDefinition，并建立角色运行时所需的初始状态。
         internal EnemyMovementDefinition(
             string movePatternId,
             string patternType,
@@ -73,8 +76,10 @@ namespace OneStrokeDemon.Actors
         }
     }
 
+    // 定义 EnemyMovementSample 的角色领域数据与行为边界，供上层流程以明确契约使用。
     public readonly struct EnemyMovementSample
     {
+        // 初始化 EnemyMovementSample，并建立角色运行时所需的初始状态。
         internal EnemyMovementSample(
             double xReferencePixels,
             double yReferencePixels,
@@ -99,6 +104,7 @@ namespace OneStrokeDemon.Actors
         public bool IsValid { get; }
     }
 
+    // 定义 IEnemyMovementStrategy 的角色领域数据与行为边界，供上层流程以明确契约使用。
     public interface IEnemyMovementStrategy
     {
         string PatternType { get; }
@@ -108,20 +114,25 @@ namespace OneStrokeDemon.Actors
             double elapsedSeconds);
     }
 
+    // 定义 MovementStrategyRegistry 的角色领域数据与行为边界，供上层流程以明确契约使用。
     public sealed class MovementStrategyRegistry
     {
         private readonly Dictionary<string, IEnemyMovementStrategy> strategies =
             new Dictionary<string, IEnemyMovementStrategy>(StringComparer.Ordinal);
 
+        // 初始化 MovementStrategyRegistry，并建立角色运行时所需的初始状态。
         public MovementStrategyRegistry(IEnumerable<IEnemyMovementStrategy> configuredStrategies)
         {
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (configuredStrategies == null)
             {
                 throw new ArgumentNullException(nameof(configuredStrategies));
             }
 
+            // 逐项推进本组角色数据，确保每个元素都遵循同一规则。
             foreach (IEnemyMovementStrategy strategy in configuredStrategies)
             {
+                // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
                 if (strategy == null || string.IsNullOrWhiteSpace(strategy.PatternType))
                 {
                     throw new ArgumentException(
@@ -129,6 +140,7 @@ namespace OneStrokeDemon.Actors
                         nameof(configuredStrategies));
                 }
 
+                // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
                 if (!strategies.TryAdd(strategy.PatternType, strategy))
                 {
                     throw new ArgumentException(
@@ -138,6 +150,7 @@ namespace OneStrokeDemon.Actors
             }
         }
 
+        // 创建 CreateDefault 对应的角色逻辑，并返回或发布一致的状态结果。
         public static MovementStrategyRegistry CreateDefault()
         {
             return new MovementStrategyRegistry(new IEnemyMovementStrategy[]
@@ -150,8 +163,10 @@ namespace OneStrokeDemon.Actors
             });
         }
 
+        // 获取 Get 对应的角色逻辑，并返回或发布一致的状态结果。
         public IEnemyMovementStrategy Get(string patternType)
         {
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (patternType != null && strategies.TryGetValue(patternType, out IEnemyMovementStrategy strategy))
             {
                 return strategy;
@@ -161,10 +176,12 @@ namespace OneStrokeDemon.Actors
                 $"No enemy movement strategy is registered for pattern type '{patternType}'.");
         }
 
+        // 处理 Sample 对应的角色逻辑，并返回或发布一致的状态结果。
         public EnemyMovementSample Sample(
             in EnemyMovementDefinition definition,
             double elapsedSeconds)
         {
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (!definition.IsConfigured)
             {
                 throw new ArgumentException(
@@ -176,13 +193,16 @@ namespace OneStrokeDemon.Actors
         }
     }
 
+    // 定义 EnemyMovementDefinitionFactory 的角色领域数据与行为边界，供上层流程以明确契约使用。
     public static class EnemyMovementDefinitionFactory
     {
+        // 创建 Create 对应的角色逻辑，并返回或发布一致的状态结果。
         public static EnemyMovementDefinition Create(
             IConfigProvider configProvider,
             string enemyId,
             MovementStrategyRegistry registry = null)
         {
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (configProvider == null)
             {
                 throw new ArgumentNullException(nameof(configProvider));
@@ -192,16 +212,19 @@ namespace OneStrokeDemon.Actors
             return Create(configProvider, enemy, registry);
         }
 
+        // 创建 Create 对应的角色逻辑，并返回或发布一致的状态结果。
         public static EnemyMovementDefinition Create(
             IConfigProvider configProvider,
             in EnemyDefinition enemy,
             MovementStrategyRegistry registry = null)
         {
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (configProvider == null)
             {
                 throw new ArgumentNullException(nameof(configProvider));
             }
 
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (!enemy.IsConfigured)
             {
                 throw new ArgumentException(
@@ -241,9 +264,11 @@ namespace OneStrokeDemon.Actors
                 pattern.Loop);
         }
 
+        // 处理 RequirePositiveGlobalInt 对应的角色逻辑，并返回或发布一致的状态结果。
         private static long RequirePositiveGlobalInt(IConfigProvider configProvider, string key)
         {
             GlobalConfig row = configProvider.GetGlobal(key);
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (!string.Equals(row.ValueType, "int", StringComparison.Ordinal) ||
                 !row.IntValue.HasValue ||
                 row.IntValue.Value <= 0L)
@@ -256,11 +281,13 @@ namespace OneStrokeDemon.Actors
             return row.IntValue.Value;
         }
 
+        // 处理 RequireNormalized 对应的角色逻辑，并返回或发布一致的状态结果。
         private static void RequireNormalized(string rowId, string field, double value)
         {
             RequireFiniteRange(rowId, field, value, 0d, 1d);
         }
 
+        // 处理 RequireFiniteRange 对应的角色逻辑，并返回或发布一致的状态结果。
         private static void RequireFiniteRange(
             string rowId,
             string field,
@@ -268,6 +295,7 @@ namespace OneStrokeDemon.Actors
             double minimum,
             double maximum)
         {
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (double.IsNaN(value) ||
                 double.IsInfinity(value) ||
                 value < minimum ||
@@ -281,10 +309,13 @@ namespace OneStrokeDemon.Actors
         }
     }
 
+    // 定义 EnemyMovementMath 的角色领域数据与行为边界，供上层流程以明确契约使用。
     internal static class EnemyMovementMath
     {
+        // 校验 ValidateElapsed 对应的角色逻辑，并返回或发布一致的状态结果。
         public static void ValidateElapsed(double elapsedSeconds)
         {
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (double.IsNaN(elapsedSeconds) ||
                 double.IsInfinity(elapsedSeconds) ||
                 elapsedSeconds < 0d)
@@ -296,6 +327,7 @@ namespace OneStrokeDemon.Actors
             }
         }
 
+        // 处理 Progress 对应的角色逻辑，并返回或发布一致的状态结果。
         public static double Progress(
             in EnemyMovementDefinition definition,
             double elapsedSeconds,
@@ -303,6 +335,7 @@ namespace OneStrokeDemon.Actors
         {
             ValidateElapsed(elapsedSeconds);
             double distance = definition.DirectDistanceReferencePixels;
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (distance <= 0d || definition.SpeedReferencePixelsPerSecond <= 0d)
             {
                 completed = !definition.Loop;
@@ -310,6 +343,7 @@ namespace OneStrokeDemon.Actors
             }
 
             double raw = elapsedSeconds * definition.SpeedReferencePixelsPerSecond / distance;
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (!definition.Loop)
             {
                 completed = raw >= 1d;
@@ -321,6 +355,7 @@ namespace OneStrokeDemon.Actors
             return phase <= 1d ? phase : 2d - phase;
         }
 
+        // 处理 Lerp 对应的角色逻辑，并返回或发布一致的状态结果。
         public static EnemyMovementSample Lerp(
             in EnemyMovementDefinition definition,
             double progress,
@@ -335,6 +370,7 @@ namespace OneStrokeDemon.Actors
             return new EnemyMovementSample(x, y, progress, completed);
         }
 
+        // 处理 Oscillation 对应的角色逻辑，并返回或发布一致的状态结果。
         public static double Oscillation(
             in EnemyMovementDefinition definition,
             double elapsedSeconds)
@@ -344,10 +380,12 @@ namespace OneStrokeDemon.Actors
         }
     }
 
+    // 定义 LinearMovementStrategy 的角色领域数据与行为边界，供上层流程以明确契约使用。
     public sealed class LinearMovementStrategy : IEnemyMovementStrategy
     {
         public string PatternType => EnemyMovementPatternTypes.Linear;
 
+        // 处理 Sample 对应的角色逻辑，并返回或发布一致的状态结果。
         public EnemyMovementSample Sample(
             in EnemyMovementDefinition definition,
             double elapsedSeconds)
@@ -357,10 +395,12 @@ namespace OneStrokeDemon.Actors
         }
     }
 
+    // 定义 SineMovementStrategy 的角色领域数据与行为边界，供上层流程以明确契约使用。
     public sealed class SineMovementStrategy : IEnemyMovementStrategy
     {
         public string PatternType => EnemyMovementPatternTypes.Sine;
 
+        // 处理 Sample 对应的角色逻辑，并返回或发布一致的状态结果。
         public EnemyMovementSample Sample(
             in EnemyMovementDefinition definition,
             double elapsedSeconds)
@@ -374,10 +414,12 @@ namespace OneStrokeDemon.Actors
         }
     }
 
+    // 定义 DiveMovementStrategy 的角色领域数据与行为边界，供上层流程以明确契约使用。
     public sealed class DiveMovementStrategy : IEnemyMovementStrategy
     {
         public string PatternType => EnemyMovementPatternTypes.Dive;
 
+        // 处理 Sample 对应的角色逻辑，并返回或发布一致的状态结果。
         public EnemyMovementSample Sample(
             in EnemyMovementDefinition definition,
             double elapsedSeconds)
@@ -387,10 +429,12 @@ namespace OneStrokeDemon.Actors
         }
     }
 
+    // 定义 HoverMovementStrategy 的角色领域数据与行为边界，供上层流程以明确契约使用。
     public sealed class HoverMovementStrategy : IEnemyMovementStrategy
     {
         public string PatternType => EnemyMovementPatternTypes.Hover;
 
+        // 处理 Sample 对应的角色逻辑，并返回或发布一致的状态结果。
         public EnemyMovementSample Sample(
             in EnemyMovementDefinition definition,
             double elapsedSeconds)
@@ -404,10 +448,12 @@ namespace OneStrokeDemon.Actors
         }
     }
 
+    // 定义 BossMovementStrategy 的角色领域数据与行为边界，供上层流程以明确契约使用。
     public sealed class BossMovementStrategy : IEnemyMovementStrategy
     {
         public string PatternType => EnemyMovementPatternTypes.Boss;
 
+        // 处理 Sample 对应的角色逻辑，并返回或发布一致的状态结果。
         public EnemyMovementSample Sample(
             in EnemyMovementDefinition definition,
             double elapsedSeconds)

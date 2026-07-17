@@ -3,8 +3,10 @@ using OneStrokeDemon.Combat;
 
 namespace OneStrokeDemon.Actors
 {
+    // 定义 PlayerCombatSnapshot 的角色领域数据与行为边界，供上层流程以明确契约使用。
     public readonly struct PlayerCombatSnapshot
     {
+        // 初始化 PlayerCombatSnapshot，并建立角色运行时所需的初始状态。
         internal PlayerCombatSnapshot(
             string playerId,
             long currentHp,
@@ -41,6 +43,7 @@ namespace OneStrokeDemon.Actors
         public bool IsInitialized { get; }
     }
 
+    // 定义 PlayerDamageStatus 的角色领域数据与行为边界，供上层流程以明确契约使用。
     public enum PlayerDamageStatus
     {
         None = 0,
@@ -50,8 +53,10 @@ namespace OneStrokeDemon.Actors
         AlreadyDead = 4
     }
 
+    // 定义 PlayerDamageResult 的角色领域数据与行为边界，供上层流程以明确契约使用。
     public readonly struct PlayerDamageResult
     {
+        // 初始化 PlayerDamageResult，并建立角色运行时所需的初始状态。
         internal PlayerDamageResult(
             PlayerDamageStatus status,
             long requestedDamage,
@@ -90,6 +95,7 @@ namespace OneStrokeDemon.Actors
         public bool ChangedHp => AppliedDamage > 0;
     }
 
+    // 定义 PlayerHealStatus 的角色领域数据与行为边界，供上层流程以明确契约使用。
     public enum PlayerHealStatus
     {
         None = 0,
@@ -99,8 +105,10 @@ namespace OneStrokeDemon.Actors
         AlreadyDead = 4
     }
 
+    // 定义 PlayerHealResult 的角色领域数据与行为边界，供上层流程以明确契约使用。
     public readonly struct PlayerHealResult
     {
+        // 初始化 PlayerHealResult，并建立角色运行时所需的初始状态。
         internal PlayerHealResult(
             PlayerHealStatus status,
             long requestedHealing,
@@ -127,6 +135,7 @@ namespace OneStrokeDemon.Actors
         public bool ChangedHp => AppliedHealing > 0;
     }
 
+    // 定义 PlayerEnergyStatus 的角色领域数据与行为边界，供上层流程以明确契约使用。
     public enum PlayerEnergyStatus
     {
         None = 0,
@@ -138,8 +147,10 @@ namespace OneStrokeDemon.Actors
         AlreadyDead = 6
     }
 
+    // 定义 PlayerEnergyResult 的角色领域数据与行为边界，供上层流程以明确契约使用。
     public readonly struct PlayerEnergyResult
     {
+        // 初始化 PlayerEnergyResult，并建立角色运行时所需的初始状态。
         internal PlayerEnergyResult(
             PlayerEnergyStatus status,
             long requestedAmount,
@@ -174,6 +185,7 @@ namespace OneStrokeDemon.Actors
             Status == PlayerEnergyStatus.Spent;
     }
 
+    // 定义 PlayerCombatModel 的角色领域数据与行为边界，供上层流程以明确契约使用。
     public sealed class PlayerCombatModel
     {
         private readonly PlayerCombatSettings settings;
@@ -184,10 +196,12 @@ namespace OneStrokeDemon.Actors
         private double lastDamageTimestamp;
         private bool hasDamageTimestamp;
 
+        // 初始化 PlayerCombatModel，并建立角色运行时所需的初始状态。
         public PlayerCombatModel(
             in PlayerCombatSettings configuredSettings,
             StanceService configuredStanceService)
         {
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (!configuredSettings.IsConfigured)
             {
                 throw new ArgumentException(
@@ -197,6 +211,7 @@ namespace OneStrokeDemon.Actors
 
             stanceService = configuredStanceService ??
                 throw new ArgumentNullException(nameof(configuredStanceService));
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (!string.Equals(
                     configuredSettings.DefaultStanceId,
                     stanceService.Current.StanceId,
@@ -225,8 +240,10 @@ namespace OneStrokeDemon.Actors
             settings.MaximumEnergy,
             stanceService.Current);
 
+        // 应用 ApplyDamage 对应的角色逻辑，并返回或发布一致的状态结果。
         public PlayerDamageResult ApplyDamage(long damage, double timestamp)
         {
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (damage < 0)
             {
                 throw new ArgumentOutOfRangeException(
@@ -236,6 +253,7 @@ namespace OneStrokeDemon.Actors
 
             ValidateDamageTimestamp(timestamp);
             ObserveDamageTimestamp(timestamp);
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (currentHp == 0)
             {
                 return DamageResult(
@@ -246,6 +264,7 @@ namespace OneStrokeDemon.Actors
                     deathTriggered: false);
             }
 
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (damage == 0)
             {
                 return DamageResult(
@@ -256,6 +275,7 @@ namespace OneStrokeDemon.Actors
                     deathTriggered: false);
             }
 
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (timestamp < invulnerableUntil)
             {
                 return DamageResult(
@@ -269,6 +289,7 @@ namespace OneStrokeDemon.Actors
             long applied = Math.Min(damage, currentHp);
             long nextHp = currentHp - applied;
             double nextInvulnerableUntil = timestamp + settings.HitInvulnerabilitySeconds;
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (double.IsInfinity(nextInvulnerableUntil) || double.IsNaN(nextInvulnerableUntil))
             {
                 throw new OverflowException(
@@ -286,8 +307,10 @@ namespace OneStrokeDemon.Actors
                 deathTriggered);
         }
 
+        // 增加 GainEnergy 对应的角色逻辑，并返回或发布一致的状态结果。
         public PlayerEnergyResult GainEnergy(long amount)
         {
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (amount < 0)
             {
                 throw new ArgumentOutOfRangeException(
@@ -295,17 +318,20 @@ namespace OneStrokeDemon.Actors
                     "Player energy gain must be non-negative.");
             }
 
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (currentHp == 0)
             {
                 return EnergyResult(PlayerEnergyStatus.AlreadyDead, amount, 0L);
             }
 
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (amount == 0)
             {
                 return EnergyResult(PlayerEnergyStatus.NoChange, amount, 0L);
             }
 
             long remainingCapacity = settings.MaximumEnergy - currentEnergy;
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (remainingCapacity == 0)
             {
                 return EnergyResult(PlayerEnergyStatus.AtCapacity, amount, 0L);
@@ -316,8 +342,10 @@ namespace OneStrokeDemon.Actors
             return EnergyResult(PlayerEnergyStatus.Gained, amount, applied);
         }
 
+        // 恢复 Heal 对应的角色逻辑，并返回或发布一致的状态结果。
         public PlayerHealResult Heal(long amount)
         {
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (amount < 0)
             {
                 throw new ArgumentOutOfRangeException(
@@ -325,17 +353,20 @@ namespace OneStrokeDemon.Actors
                     "Player healing must be non-negative.");
             }
 
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (currentHp == 0)
             {
                 return HealResult(PlayerHealStatus.AlreadyDead, amount, 0L);
             }
 
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (amount == 0)
             {
                 return HealResult(PlayerHealStatus.NoHealing, amount, 0L);
             }
 
             long missingHp = settings.MaximumHp - currentHp;
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (missingHp == 0)
             {
                 return HealResult(PlayerHealStatus.AtMaximum, amount, 0L);
@@ -346,8 +377,10 @@ namespace OneStrokeDemon.Actors
             return HealResult(PlayerHealStatus.Applied, amount, applied);
         }
 
+        // 增加 GainEnergy 对应的角色逻辑，并返回或发布一致的状态结果。
         public PlayerEnergyResult GainEnergy(in DamageResult damageResult)
         {
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (!damageResult.IsResolved)
             {
                 throw new ArgumentException(
@@ -358,8 +391,10 @@ namespace OneStrokeDemon.Actors
             return GainEnergy(damageResult.EnergyAward);
         }
 
+        // 尝试执行 TrySpendEnergy 对应的角色逻辑，并返回或发布一致的状态结果。
         public PlayerEnergyResult TrySpendEnergy(long amount)
         {
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (amount < 0)
             {
                 throw new ArgumentOutOfRangeException(
@@ -367,11 +402,13 @@ namespace OneStrokeDemon.Actors
                     "Player energy cost must be non-negative.");
             }
 
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (currentHp == 0)
             {
                 return EnergyResult(PlayerEnergyStatus.AlreadyDead, amount, 0L);
             }
 
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (amount > currentEnergy)
             {
                 return EnergyResult(
@@ -380,6 +417,7 @@ namespace OneStrokeDemon.Actors
                     0L);
             }
 
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (amount == 0)
             {
                 return EnergyResult(PlayerEnergyStatus.NoChange, amount, 0L);
@@ -389,8 +427,10 @@ namespace OneStrokeDemon.Actors
             return EnergyResult(PlayerEnergyStatus.Spent, amount, amount);
         }
 
+        // 尝试执行 TrySwitchStance 对应的角色逻辑，并返回或发布一致的状态结果。
         public StanceSwitchResult TrySwitchStance(string stanceId, double timestamp)
         {
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (currentHp == 0)
             {
                 return stanceService.RejectBecausePlayerDead(stanceId, timestamp);
@@ -399,6 +439,7 @@ namespace OneStrokeDemon.Actors
             return stanceService.TrySwitch(stanceId, timestamp);
         }
 
+        // 处理 DamageResult 对应的角色逻辑，并返回或发布一致的状态结果。
         private PlayerDamageResult DamageResult(
             PlayerDamageStatus status,
             long requested,
@@ -416,6 +457,7 @@ namespace OneStrokeDemon.Actors
                 Current);
         }
 
+        // 处理 EnergyResult 对应的角色逻辑，并返回或发布一致的状态结果。
         private PlayerEnergyResult EnergyResult(
             PlayerEnergyStatus status,
             long requested,
@@ -424,6 +466,7 @@ namespace OneStrokeDemon.Actors
             return new PlayerEnergyResult(status, requested, applied, Current);
         }
 
+        // 恢复 HealResult 对应的角色逻辑，并返回或发布一致的状态结果。
         private PlayerHealResult HealResult(
             PlayerHealStatus status,
             long requested,
@@ -432,8 +475,10 @@ namespace OneStrokeDemon.Actors
             return new PlayerHealResult(status, requested, applied, Current);
         }
 
+        // 校验 ValidateDamageTimestamp 对应的角色逻辑，并返回或发布一致的状态结果。
         private void ValidateDamageTimestamp(double timestamp)
         {
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (double.IsNaN(timestamp) || double.IsInfinity(timestamp) || timestamp < 0d)
             {
                 throw new ArgumentOutOfRangeException(
@@ -441,6 +486,7 @@ namespace OneStrokeDemon.Actors
                     "Damage timestamp must be finite and non-negative.");
             }
 
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (hasDamageTimestamp && timestamp < lastDamageTimestamp)
             {
                 throw new ArgumentOutOfRangeException(
@@ -450,6 +496,7 @@ namespace OneStrokeDemon.Actors
             }
         }
 
+        // 处理 ObserveDamageTimestamp 对应的角色逻辑，并返回或发布一致的状态结果。
         private void ObserveDamageTimestamp(double timestamp)
         {
             lastDamageTimestamp = timestamp;

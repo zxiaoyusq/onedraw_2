@@ -4,6 +4,7 @@ using OneStrokeDemon.Config;
 
 namespace OneStrokeDemon.Actors
 {
+    // 定义 EnemyBuffApplyStatus 的角色领域数据与行为边界，供上层流程以明确契约使用。
     public enum EnemyBuffApplyStatus
     {
         None = 0,
@@ -14,8 +15,10 @@ namespace OneStrokeDemon.Actors
         Inactive = 5
     }
 
+    // 定义 EnemyBuffSnapshot 的角色领域数据与行为边界，供上层流程以明确契约使用。
     public readonly struct EnemyBuffSnapshot
     {
+        // 初始化 EnemyBuffSnapshot，并建立角色运行时所需的初始状态。
         internal EnemyBuffSnapshot(
             string buffId,
             string type,
@@ -56,8 +59,10 @@ namespace OneStrokeDemon.Actors
         public bool IsValid { get; }
     }
 
+    // 定义 EnemyBuffApplyResult 的角色领域数据与行为边界，供上层流程以明确契约使用。
     public readonly struct EnemyBuffApplyResult
     {
+        // 初始化 EnemyBuffApplyResult，并建立角色运行时所需的初始状态。
         internal EnemyBuffApplyResult(
             EnemyBuffApplyStatus status,
             EnemyBuffSnapshot buff)
@@ -80,6 +85,7 @@ namespace OneStrokeDemon.Actors
             Status == EnemyBuffApplyStatus.StackAdded;
     }
 
+    // 定义 EnemyBuffContainer 的角色领域数据与行为边界，供上层流程以明确契约使用。
     public sealed class EnemyBuffContainer
     {
         private readonly Dictionary<string, ActiveBuff> active =
@@ -93,9 +99,11 @@ namespace OneStrokeDemon.Actors
 
         public int Count => active.Count;
 
+        // 生成 Spawn 对应的角色逻辑，并返回或发布一致的状态结果。
         public void Spawn(double timestamp)
         {
             ValidateTimestamp(timestamp, nameof(timestamp));
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (isActive)
             {
                 throw new InvalidOperationException(
@@ -109,12 +117,14 @@ namespace OneStrokeDemon.Actors
             hasTimestamp = true;
         }
 
+        // 应用 Apply 对应的角色逻辑，并返回或发布一致的状态结果。
         public EnemyBuffApplyResult Apply(
             BuffConfig buff,
             double durationSeconds,
             string sourceId,
             double timestamp)
         {
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (buff == null)
             {
                 throw new ArgumentNullException(nameof(buff));
@@ -122,6 +132,7 @@ namespace OneStrokeDemon.Actors
 
             ValidateDuration(durationSeconds, nameof(durationSeconds));
             ObserveTimestamp(timestamp);
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (!isActive)
             {
                 return new EnemyBuffApplyResult(
@@ -131,6 +142,7 @@ namespace OneStrokeDemon.Actors
 
             ValidateBuff(buff);
             double expiresAt = timestamp + durationSeconds;
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (double.IsNaN(expiresAt) || double.IsInfinity(expiresAt))
             {
                 throw new ArgumentOutOfRangeException(
@@ -140,6 +152,7 @@ namespace OneStrokeDemon.Actors
 
             EnemyBuffApplyStatus status;
             int stacks;
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (!active.TryGetValue(buff.BuffId, out ActiveBuff existing))
             {
                 stacks = 1;
@@ -147,6 +160,7 @@ namespace OneStrokeDemon.Actors
             }
             else
             {
+                // 按当前枚举或状态选择对应的角色行为分支。
                 switch (buff.RefreshPolicy)
                 {
                     case "Refresh":
@@ -182,23 +196,28 @@ namespace OneStrokeDemon.Actors
             return new EnemyBuffApplyResult(status, runtime.Snapshot());
         }
 
+        // 按时间推进 Tick 对应的角色逻辑，并返回或发布一致的状态结果。
         public int Tick(double timestamp)
         {
             ObserveTimestamp(timestamp);
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (!isActive || active.Count == 0)
             {
                 return 0;
             }
 
             expiredIds.Clear();
+            // 逐项推进本组角色数据，确保每个元素都遵循同一规则。
             foreach (KeyValuePair<string, ActiveBuff> pair in active)
             {
+                // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
                 if (timestamp >= pair.Value.ExpiresAt)
                 {
                     expiredIds.Add(pair.Key);
                 }
             }
 
+            // 逐项推进本组角色数据，确保每个元素都遵循同一规则。
             for (int index = 0; index < expiredIds.Count; index++)
             {
                 active.Remove(expiredIds[index]);
@@ -209,8 +228,10 @@ namespace OneStrokeDemon.Actors
             return removed;
         }
 
+        // 尝试执行 TryGet 对应的角色逻辑，并返回或发布一致的状态结果。
         public bool TryGet(string buffId, out EnemyBuffSnapshot snapshot)
         {
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (buffId != null && active.TryGetValue(buffId, out ActiveBuff buff))
             {
                 snapshot = buff.Snapshot();
@@ -221,15 +242,19 @@ namespace OneStrokeDemon.Actors
             return false;
         }
 
+        // 获取 GetIncomingDamageMultiplier 对应的角色逻辑，并返回或发布一致的状态结果。
         public double GetIncomingDamageMultiplier()
         {
             double multiplier = 1d;
+            // 逐项推进本组角色数据，确保每个元素都遵循同一规则。
             foreach (ActiveBuff buff in active.Values)
             {
+                // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
                 if (string.Equals(buff.Type, "DamageTaken", StringComparison.Ordinal))
                 {
                     multiplier *= 1d + (buff.Magnitude * buff.Stacks);
                 }
+                // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
                 else if (string.Equals(
                              buff.Type,
                              "DamageReduction",
@@ -241,6 +266,7 @@ namespace OneStrokeDemon.Actors
                 }
             }
 
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (double.IsNaN(multiplier) || double.IsInfinity(multiplier) || multiplier < 0d)
             {
                 throw new OverflowException(
@@ -250,11 +276,14 @@ namespace OneStrokeDemon.Actors
             return multiplier;
         }
 
+        // 获取 GetMovementMultiplier 对应的角色逻辑，并返回或发布一致的状态结果。
         public double GetMovementMultiplier()
         {
             double multiplier = 1d;
+            // 逐项推进本组角色数据，确保每个元素都遵循同一规则。
             foreach (ActiveBuff buff in active.Values)
             {
+                // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
                 if (string.Equals(buff.Type, "Slow", StringComparison.Ordinal))
                 {
                     multiplier *= Math.Max(0d, 1d - (buff.Magnitude * buff.Stacks));
@@ -264,10 +293,13 @@ namespace OneStrokeDemon.Actors
             return multiplier;
         }
 
+        // 判断是否具有 HasType 对应的角色逻辑，并返回或发布一致的状态结果。
         public bool HasType(string type)
         {
+            // 逐项推进本组角色数据，确保每个元素都遵循同一规则。
             foreach (ActiveBuff buff in active.Values)
             {
+                // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
                 if (string.Equals(buff.Type, type, StringComparison.Ordinal))
                 {
                     return true;
@@ -277,8 +309,10 @@ namespace OneStrokeDemon.Actors
             return false;
         }
 
+        // 释放 Release 对应的角色逻辑，并返回或发布一致的状态结果。
         public bool Release()
         {
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (!isActive)
             {
                 return false;
@@ -292,9 +326,11 @@ namespace OneStrokeDemon.Actors
             return true;
         }
 
+        // 处理 ObserveTimestamp 对应的角色逻辑，并返回或发布一致的状态结果。
         private void ObserveTimestamp(double timestamp)
         {
             ValidateTimestamp(timestamp, nameof(timestamp));
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (hasTimestamp && timestamp < lastTimestamp)
             {
                 throw new ArgumentOutOfRangeException(
@@ -307,8 +343,10 @@ namespace OneStrokeDemon.Actors
             hasTimestamp = true;
         }
 
+        // 校验 ValidateBuff 对应的角色逻辑，并返回或发布一致的状态结果。
         private static void ValidateBuff(BuffConfig buff)
         {
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (string.IsNullOrWhiteSpace(buff.BuffId) ||
                 string.IsNullOrWhiteSpace(buff.Type) ||
                 buff.MaxStacks <= 0L ||
@@ -323,8 +361,10 @@ namespace OneStrokeDemon.Actors
             }
         }
 
+        // 校验 ValidateDuration 对应的角色逻辑，并返回或发布一致的状态结果。
         private static void ValidateDuration(double value, string parameterName)
         {
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (double.IsNaN(value) || double.IsInfinity(value) || value <= 0d)
             {
                 throw new ArgumentOutOfRangeException(
@@ -334,8 +374,10 @@ namespace OneStrokeDemon.Actors
             }
         }
 
+        // 校验 ValidateTimestamp 对应的角色逻辑，并返回或发布一致的状态结果。
         private static void ValidateTimestamp(double value, string parameterName)
         {
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (double.IsNaN(value) || double.IsInfinity(value) || value < 0d)
             {
                 throw new ArgumentOutOfRangeException(
@@ -345,8 +387,10 @@ namespace OneStrokeDemon.Actors
             }
         }
 
+        // 定义 ActiveBuff 的角色领域数据与行为边界，供上层流程以明确契约使用。
         private readonly struct ActiveBuff
         {
+            // 初始化 ActiveBuff，并建立角色运行时所需的初始状态。
             public ActiveBuff(
                 string buffId,
                 string type,
@@ -379,6 +423,7 @@ namespace OneStrokeDemon.Actors
 
             public string SourceId { get; }
 
+            // 处理 Snapshot 对应的角色逻辑，并返回或发布一致的状态结果。
             public EnemyBuffSnapshot Snapshot()
             {
                 return new EnemyBuffSnapshot(

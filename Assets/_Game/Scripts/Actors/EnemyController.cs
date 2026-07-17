@@ -7,6 +7,7 @@ using UnityEngine;
 
 namespace OneStrokeDemon.Actors
 {
+    // 定义 EnemyCombatEventType 的角色领域数据与行为边界，供上层流程以明确契约使用。
     public enum EnemyCombatEventType
     {
         None = 0,
@@ -23,6 +24,7 @@ namespace OneStrokeDemon.Actors
         PhaseChanged = 11
     }
 
+    // 定义 EnemyReleaseReason 的角色领域数据与行为边界，供上层流程以明确契约使用。
     public enum EnemyReleaseReason
     {
         None = 0,
@@ -31,8 +33,10 @@ namespace OneStrokeDemon.Actors
         Cleared = 3
     }
 
+    // 定义 EnemyCombatEvent 的角色领域数据与行为边界，供上层流程以明确契约使用。
     public readonly struct EnemyCombatEvent
     {
+        // 初始化 EnemyCombatEvent，并建立角色运行时所需的初始状态。
         internal EnemyCombatEvent(
             ulong sequence,
             EnemyCombatEventType eventType,
@@ -89,8 +93,10 @@ namespace OneStrokeDemon.Actors
         public bool IsValid { get; }
     }
 
+    // 定义 EnemyHitResolution 的角色领域数据与行为边界，供上层流程以明确契约使用。
     public readonly struct EnemyHitResolution
     {
+        // 初始化 EnemyHitResolution，并建立角色运行时所需的初始状态。
         internal EnemyHitResolution(
             EnemyDamageResult damage,
             EnemyInterruptResult interrupt)
@@ -107,8 +113,10 @@ namespace OneStrokeDemon.Actors
         public bool IsValid { get; }
     }
 
+    // 定义 EnemyReleaseSnapshot 的角色领域数据与行为边界，供上层流程以明确契约使用。
     public readonly struct EnemyReleaseSnapshot
     {
+        // 初始化 EnemyReleaseSnapshot，并建立角色运行时所需的初始状态。
         internal EnemyReleaseSnapshot(
             EnemyReleaseReason reason,
             string enemyId,
@@ -147,6 +155,7 @@ namespace OneStrokeDemon.Actors
 
     [DisallowMultipleComponent]
     [RequireComponent(typeof(Damageable))]
+    // 定义 EnemyController 的角色领域数据与行为边界，供上层流程以明确契约使用。
     public sealed class EnemyController : MonoBehaviour, IPoolable
     {
         private readonly EnemyStateMachine stateMachine = new EnemyStateMachine();
@@ -195,22 +204,27 @@ namespace OneStrokeDemon.Actors
 
         public bool IsRooted => buffContainer.HasType("Root");
 
+        // 处理 Awake 对应的角色逻辑，并返回或发布一致的状态结果。
         private void Awake()
         {
             EnsureComponents();
             EnsureStateEvents();
         }
 
+        // 更新 Update 对应的角色逻辑，并返回或发布一致的状态结果。
         private void Update()
         {
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (isSpawned)
             {
                 Tick(Time.timeAsDouble);
             }
         }
 
+        // 响应 OnDisable 对应的角色逻辑，并返回或发布一致的状态结果。
         private void OnDisable()
         {
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (isSpawned)
             {
                 double timestamp = stateMachine.Current.HasClock
@@ -220,6 +234,7 @@ namespace OneStrokeDemon.Actors
             }
         }
 
+        // 生成 Spawn 对应的角色逻辑，并返回或发布一致的状态结果。
         public void Spawn(
             IConfigProvider configuredProvider,
             string enemyId,
@@ -227,11 +242,13 @@ namespace OneStrokeDemon.Actors
             double timestamp,
             WeakpointController configuredWeakpoint = null)
         {
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (configuredProvider == null)
             {
                 throw new ArgumentNullException(nameof(configuredProvider));
             }
 
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (isSpawned)
             {
                 throw new InvalidOperationException(
@@ -244,6 +261,7 @@ namespace OneStrokeDemon.Actors
                 EnemyDefinitionFactory.Create(configuredProvider, enemyId);
             WeakpointController resolvedWeakpoint = configuredWeakpoint ??
                 GetComponentInChildren<WeakpointController>(true);
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (configuredDefinition.Weakpoint.HasHitbox && resolvedWeakpoint == null)
             {
                 throw new InvalidOperationException(
@@ -256,6 +274,7 @@ namespace OneStrokeDemon.Actors
             counters.Clear();
             damageable.Spawn(definition, hitTargetId);
             buffContainer.Spawn(timestamp);
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (weakpoint != null)
             {
                 weakpoint.Configure(definition.Weakpoint, damageable);
@@ -263,12 +282,14 @@ namespace OneStrokeDemon.Actors
 
             isSpawned = true;
             stateMachine.Spawn(timestamp);
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (!gameObject.activeSelf)
             {
                 gameObject.SetActive(true);
             }
         }
 
+        // 完成 CompleteSpawn 对应的角色逻辑，并返回或发布一致的状态结果。
         public bool CompleteSpawn(double timestamp)
         {
             RequireSpawned();
@@ -277,12 +298,14 @@ namespace OneStrokeDemon.Actors
             return completed;
         }
 
+        // 应用 ApplyBossPhaseProfile 对应的角色逻辑，并返回或发布一致的状态结果。
         public EnemyPhaseProfileResult ApplyBossPhaseProfile(
             in EnemyDefinition phaseDefinition,
             string bossPhaseId,
             double timestamp)
         {
             RequireAliveCombatState();
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (string.IsNullOrWhiteSpace(bossPhaseId))
             {
                 throw new ArgumentException(
@@ -290,6 +313,7 @@ namespace OneStrokeDemon.Actors
                     nameof(bossPhaseId));
             }
 
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (!phaseDefinition.IsConfigured ||
                 phaseDefinition.Tier != EnemyTier.Boss ||
                 definition.Tier != EnemyTier.Boss ||
@@ -303,12 +327,14 @@ namespace OneStrokeDemon.Actors
                     nameof(phaseDefinition));
             }
 
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (phaseDefinition.Weakpoint.HasHitbox && weakpoint == null)
             {
                 throw new InvalidOperationException(
                     $"Boss phase '{bossPhaseId}' requires a WeakpointController child.");
             }
 
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (!stateMachine.ChangePhase(timestamp))
             {
                 throw new InvalidOperationException(
@@ -318,11 +344,13 @@ namespace OneStrokeDemon.Actors
             EnemyPhaseProfileResult result =
                 damageable.ApplyPhaseProfile(phaseDefinition);
             definition = phaseDefinition;
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (weakpoint != null)
             {
                 weakpoint.Configure(definition.Weakpoint, damageable);
             }
 
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (result.ArmorChanged)
             {
                 Publish(
@@ -349,6 +377,7 @@ namespace OneStrokeDemon.Actors
             return result;
         }
 
+        // 开始 BeginAttack 对应的角色逻辑，并返回或发布一致的状态结果。
         public bool BeginAttack(string attackId, double timestamp)
         {
             RequireSpawned();
@@ -361,6 +390,7 @@ namespace OneStrokeDemon.Actors
             return began;
         }
 
+        // 按时间推进 Tick 对应的角色逻辑，并返回或发布一致的状态结果。
         public int Tick(double timestamp)
         {
             RequireSpawned();
@@ -370,6 +400,7 @@ namespace OneStrokeDemon.Actors
             return transitions;
         }
 
+        // 处理 RecoverFromStun 对应的角色逻辑，并返回或发布一致的状态结果。
         public bool RecoverFromStun(double timestamp)
         {
             RequireSpawned();
@@ -378,6 +409,7 @@ namespace OneStrokeDemon.Actors
             return recovered;
         }
 
+        // 应用 ApplyStrokeDamage 对应的角色逻辑，并返回或发布一致的状态结果。
         public EnemyHitResolution ApplyStrokeDamage(
             in DamageResult resolvedDamage,
             string gestureType,
@@ -385,6 +417,7 @@ namespace OneStrokeDemon.Actors
             string sourceId)
         {
             RequireSpawned();
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (!resolvedDamage.IsResolved)
             {
                 throw new ArgumentException(
@@ -392,6 +425,7 @@ namespace OneStrokeDemon.Actors
                     nameof(resolvedDamage));
             }
 
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (resolvedDamage.TargetId != damageable.HitTargetId)
             {
                 throw new ArgumentException(
@@ -399,6 +433,7 @@ namespace OneStrokeDemon.Actors
                     nameof(resolvedDamage));
             }
 
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (!damageable.CanReceiveStrokeHit)
             {
                 throw new InvalidOperationException(
@@ -410,10 +445,12 @@ namespace OneStrokeDemon.Actors
             EnemyDamageResult damage = damageable.ApplyDamage(amount);
             PublishDamage(damage, sourceId, timestamp);
             EnemyInterruptResult interrupt = default;
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (damage.DeathTriggered)
             {
                 stateMachine.TryKill(timestamp);
             }
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             else if (damage.Changed && resolvedDamage.ShouldInterruptAttack)
             {
                 interrupt = stateMachine.TryInterrupt(gestureType, timestamp);
@@ -423,6 +460,7 @@ namespace OneStrokeDemon.Actors
             return new EnemyHitResolution(damage, interrupt);
         }
 
+        // 应用 ApplyDamage 对应的角色逻辑，并返回或发布一致的状态结果。
         public EnemyDamageResult ApplyDamage(
             long amount,
             string sourceId,
@@ -432,6 +470,7 @@ namespace OneStrokeDemon.Actors
             Tick(timestamp);
             EnemyDamageResult result = damageable.ApplyDamage(ScaleIncomingDamage(amount));
             PublishDamage(result, sourceId, timestamp);
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (result.DeathTriggered)
             {
                 stateMachine.TryKill(timestamp);
@@ -441,10 +480,12 @@ namespace OneStrokeDemon.Actors
             return result;
         }
 
+        // 应用 ApplyProjectileDamage 对应的角色逻辑，并返回或发布一致的状态结果。
         public EnemyDamageResult ApplyProjectileDamage(
             in ProjectileDamageSource source,
             double timestamp)
         {
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (!source.IsValid)
             {
                 throw new ArgumentException(
@@ -452,6 +493,7 @@ namespace OneStrokeDemon.Actors
                     nameof(source));
             }
 
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (source.CurrentOwner.Faction != ProjectileFaction.Player)
             {
                 throw new ArgumentException(
@@ -465,11 +507,13 @@ namespace OneStrokeDemon.Actors
                 timestamp);
         }
 
+        // 恢复 Heal 对应的角色逻辑，并返回或发布一致的状态结果。
         public EnemyHealingResult Heal(long amount, string sourceId, double timestamp)
         {
             RequireSpawned();
             Tick(timestamp);
             EnemyHealingResult result = damageable.Heal(amount);
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (result.Changed)
             {
                 Publish(
@@ -486,6 +530,7 @@ namespace OneStrokeDemon.Actors
             return result;
         }
 
+        // 移除 RemoveArmor 对应的角色逻辑，并返回或发布一致的状态结果。
         public EnemyDamageResult RemoveArmor(
             long amount,
             string sourceId,
@@ -498,6 +543,7 @@ namespace OneStrokeDemon.Actors
             return result;
         }
 
+        // 尝试执行 TryExecute 对应的角色逻辑，并返回或发布一致的状态结果。
         public EnemyExecuteResult TryExecute(
             double threshold,
             string sourceId,
@@ -506,6 +552,7 @@ namespace OneStrokeDemon.Actors
             RequireDamageableState();
             Tick(timestamp);
             EnemyExecuteResult result = damageable.TryExecute(threshold);
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (result.AppliedHpDamage > 0L)
             {
                 Publish(
@@ -519,6 +566,7 @@ namespace OneStrokeDemon.Actors
                     timestamp);
             }
 
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (result.DeathTriggered)
             {
                 stateMachine.TryKill(timestamp);
@@ -528,6 +576,7 @@ namespace OneStrokeDemon.Actors
             return result;
         }
 
+        // 应用 ApplyBuff 对应的角色逻辑，并返回或发布一致的状态结果。
         public EnemyBuffApplyResult ApplyBuff(
             BuffConfig buff,
             double durationSeconds,
@@ -541,6 +590,7 @@ namespace OneStrokeDemon.Actors
                 durationSeconds,
                 sourceId,
                 timestamp);
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (result.Changed)
             {
                 Publish(
@@ -552,6 +602,7 @@ namespace OneStrokeDemon.Actors
                     string.Empty,
                     result.Buff.BuffId,
                     timestamp);
+                // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
                 if (string.Equals(result.Buff.Type, "Stun", StringComparison.Ordinal))
                 {
                     stateMachine.ApplyTimedStun(durationSeconds, timestamp);
@@ -562,6 +613,7 @@ namespace OneStrokeDemon.Actors
             return result;
         }
 
+        // 处理 RequestKnockback 对应的角色逻辑，并返回或发布一致的状态结果。
         public bool RequestKnockback(
             double distanceReferencePixels,
             double durationSeconds,
@@ -586,6 +638,7 @@ namespace OneStrokeDemon.Actors
             return true;
         }
 
+        // 处理 IncrementCounter 对应的角色逻辑，并返回或发布一致的状态结果。
         public bool IncrementCounter(
             string counterId,
             double amount,
@@ -594,6 +647,7 @@ namespace OneStrokeDemon.Actors
             double timestamp)
         {
             RequireAliveCombatState();
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (string.IsNullOrWhiteSpace(counterId))
             {
                 throw new ArgumentException(
@@ -606,6 +660,7 @@ namespace OneStrokeDemon.Actors
             Tick(timestamp);
             counters.TryGetValue(counterId, out double current);
             double next = Math.Min(limit, current + amount);
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (next == current)
             {
                 return false;
@@ -624,8 +679,10 @@ namespace OneStrokeDemon.Actors
             return true;
         }
 
+        // 尝试执行 TryGetCounter 对应的角色逻辑，并返回或发布一致的状态结果。
         public bool TryGetCounter(string counterId, out double value)
         {
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (counterId != null && counters.TryGetValue(counterId, out value))
             {
                 return true;
@@ -635,8 +692,10 @@ namespace OneStrokeDemon.Actors
             return false;
         }
 
+        // 释放 Release 对应的角色逻辑，并返回或发布一致的状态结果。
         public EnemyReleaseSnapshot Release(EnemyReleaseReason reason, double timestamp)
         {
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (reason == EnemyReleaseReason.None)
             {
                 throw new ArgumentOutOfRangeException(
@@ -644,6 +703,7 @@ namespace OneStrokeDemon.Actors
                     "A concrete enemy release reason is required.");
             }
 
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (!isSpawned)
             {
                 return default;
@@ -683,6 +743,7 @@ namespace OneStrokeDemon.Actors
                 enemyId,
                 targetId,
                 EnemyState.None);
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (gameObject.activeSelf)
             {
                 gameObject.SetActive(false);
@@ -694,13 +755,16 @@ namespace OneStrokeDemon.Actors
             return snapshot;
         }
 
+        // 处理 AcquireFromPool 对应的角色逻辑，并返回或发布一致的状态结果。
         public void AcquireFromPool(in PoolLease lease)
         {
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (!lease.IsValid)
             {
                 throw new ArgumentException("A valid pool lease is required.", nameof(lease));
             }
 
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (poolLease.IsValid || isSpawned)
             {
                 throw new InvalidOperationException(
@@ -713,25 +777,30 @@ namespace OneStrokeDemon.Actors
             CombatEventPublished = null;
             nextEventSequence = 1UL;
             ResetPoolTransform();
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (!gameObject.activeSelf)
             {
                 gameObject.SetActive(true);
             }
         }
 
+        // 释放 ReleaseToPool 对应的角色逻辑，并返回或发布一致的状态结果。
         public void ReleaseToPool(in PoolReleaseContext context)
         {
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (!hasPoolParent)
             {
                 poolParent = transform.parent;
                 hasPoolParent = true;
             }
 
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (context.Lease.IsValid && poolLease.IsValid && context.Lease != poolLease)
             {
                 throw new InvalidOperationException("Enemy pool release used a stale lease.");
             }
 
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (isSpawned)
             {
                 double timestamp = stateMachine.Current.HasClock
@@ -755,12 +824,14 @@ namespace OneStrokeDemon.Actors
             nextEventSequence = 1UL;
             poolLease = default;
             ResetPoolTransform();
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (gameObject.activeSelf)
             {
                 gameObject.SetActive(false);
             }
         }
 
+        // 重置 ResetPoolTransform 对应的角色逻辑，并返回或发布一致的状态结果。
         private void ResetPoolTransform()
         {
             transform.SetParent(hasPoolParent ? poolParent : null, false);
@@ -769,13 +840,16 @@ namespace OneStrokeDemon.Actors
             transform.localScale = Vector3.one;
         }
 
+        // 处理 EnsureComponents 对应的角色逻辑，并返回或发布一致的状态结果。
         private void EnsureComponents()
         {
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (damageable == null)
             {
                 damageable = GetComponent<Damageable>();
             }
 
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (damageable == null)
             {
                 throw new InvalidOperationException(
@@ -783,8 +857,10 @@ namespace OneStrokeDemon.Actors
             }
         }
 
+        // 处理 EnsureStateEvents 对应的角色逻辑，并返回或发布一致的状态结果。
         private void EnsureStateEvents()
         {
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (!stateEventsAttached)
             {
                 stateMachine.Transitioned += OnStateTransitioned;
@@ -792,6 +868,7 @@ namespace OneStrokeDemon.Actors
             }
         }
 
+        // 响应 OnStateTransitioned 对应的角色逻辑，并返回或发布一致的状态结果。
         private void OnStateTransitioned(EnemyStateTransition transition)
         {
             bool acceptsHits = transition.CurrentState == EnemyState.Move ||
@@ -801,13 +878,16 @@ namespace OneStrokeDemon.Actors
                                transition.CurrentState == EnemyState.Stun;
             damageable?.SetStrokeHitEnabled(acceptsHits);
 
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (weakpoint != null)
             {
+                // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
                 if (transition.CurrentState == EnemyState.Windup &&
                     transition.Reason == EnemyTransitionReason.AttackStarted)
                 {
                     weakpoint.BeginAttack(transition.Timestamp);
                 }
+                // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
                 else if (transition.CurrentState == EnemyState.Recovery ||
                          transition.CurrentState == EnemyState.Move ||
                          transition.CurrentState == EnemyState.Stun ||
@@ -831,6 +911,7 @@ namespace OneStrokeDemon.Actors
                 damageable != null ? damageable.HitTargetId : 0,
                 transition.CurrentState);
 
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (transition.Reason == EnemyTransitionReason.Interrupted)
             {
                 Publish(
@@ -843,6 +924,7 @@ namespace OneStrokeDemon.Actors
                     string.Empty,
                     transition.Timestamp);
             }
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             else if (transition.Reason == EnemyTransitionReason.Killed)
             {
                 Publish(
@@ -857,11 +939,13 @@ namespace OneStrokeDemon.Actors
             }
         }
 
+        // 处理 PublishDamage 对应的角色逻辑，并返回或发布一致的状态结果。
         private void PublishDamage(
             in EnemyDamageResult result,
             string sourceId,
             double timestamp)
         {
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (result.AppliedArmorDamage > 0L)
             {
                 Publish(
@@ -875,6 +959,7 @@ namespace OneStrokeDemon.Actors
                     timestamp);
             }
 
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (result.AppliedHpDamage > 0L)
             {
                 Publish(
@@ -888,6 +973,7 @@ namespace OneStrokeDemon.Actors
                     timestamp);
             }
 
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (result.ArmorBroken)
             {
                 Publish(
@@ -902,6 +988,7 @@ namespace OneStrokeDemon.Actors
             }
         }
 
+        // 处理 Publish 对应的角色逻辑，并返回或发布一致的状态结果。
         private void Publish(
             EnemyCombatEventType eventType,
             string sourceId,
@@ -916,6 +1003,7 @@ namespace OneStrokeDemon.Actors
             EnemyState? stateOverride = null)
         {
             ulong sequence = nextEventSequence;
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (sequence == 0UL || sequence == ulong.MaxValue)
             {
                 throw new OverflowException("Enemy combat event sequence is exhausted.");
@@ -942,8 +1030,10 @@ namespace OneStrokeDemon.Actors
                 timestamp));
         }
 
+        // 更新 UpdateWeakpoint 对应的角色逻辑，并返回或发布一致的状态结果。
         private void UpdateWeakpoint(double timestamp)
         {
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (weakpoint == null || !definition.IsConfigured)
             {
                 return;
@@ -955,8 +1045,10 @@ namespace OneStrokeDemon.Actors
             weakpoint.Tick(timestamp, attackMayExpose);
         }
 
+        // 处理 ScaleIncomingDamage 对应的角色逻辑，并返回或发布一致的状态结果。
         private long ScaleIncomingDamage(long configuredAmount)
         {
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (configuredAmount < 0L)
             {
                 throw new ArgumentOutOfRangeException(
@@ -965,6 +1057,7 @@ namespace OneStrokeDemon.Actors
             }
 
             double scaled = configuredAmount * buffContainer.GetIncomingDamageMultiplier();
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (double.IsNaN(scaled) ||
                 double.IsInfinity(scaled) ||
                 scaled > long.MaxValue)
@@ -979,18 +1072,22 @@ namespace OneStrokeDemon.Actors
                 MidpointRounding.AwayFromZero));
         }
 
+        // 处理 RequireSpawned 对应的角色逻辑，并返回或发布一致的状态结果。
         private void RequireSpawned()
         {
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (!isSpawned)
             {
                 throw new InvalidOperationException("EnemyController is not spawned.");
             }
         }
 
+        // 处理 RequireDamageableState 对应的角色逻辑，并返回或发布一致的状态结果。
         private void RequireDamageableState()
         {
             RequireSpawned();
             EnemyState state = stateMachine.Current.State;
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (state == EnemyState.Spawn || state == EnemyState.None)
             {
                 throw new InvalidOperationException(
@@ -998,9 +1095,11 @@ namespace OneStrokeDemon.Actors
             }
         }
 
+        // 处理 RequireAliveCombatState 对应的角色逻辑，并返回或发布一致的状态结果。
         private void RequireAliveCombatState()
         {
             RequireDamageableState();
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (stateMachine.Current.State == EnemyState.Dead)
             {
                 throw new InvalidOperationException(
@@ -1008,8 +1107,10 @@ namespace OneStrokeDemon.Actors
             }
         }
 
+        // 校验 ValidateFiniteNonNegative 对应的角色逻辑，并返回或发布一致的状态结果。
         private static void ValidateFiniteNonNegative(double value, string parameterName)
         {
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (double.IsNaN(value) || double.IsInfinity(value) || value < 0d)
             {
                 throw new ArgumentOutOfRangeException(

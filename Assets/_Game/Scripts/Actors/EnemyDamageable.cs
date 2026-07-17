@@ -4,6 +4,7 @@ using UnityEngine;
 
 namespace OneStrokeDemon.Actors
 {
+    // 定义 EnemyDamageStatus 的角色领域数据与行为边界，供上层流程以明确契约使用。
     public enum EnemyDamageStatus
     {
         None = 0,
@@ -14,6 +15,7 @@ namespace OneStrokeDemon.Actors
         Killed = 5
     }
 
+    // 定义 EnemyHealingStatus 的角色领域数据与行为边界，供上层流程以明确契约使用。
     public enum EnemyHealingStatus
     {
         None = 0,
@@ -24,6 +26,7 @@ namespace OneStrokeDemon.Actors
         AlreadyDead = 5
     }
 
+    // 定义 EnemyExecuteStatus 的角色领域数据与行为边界，供上层流程以明确契约使用。
     public enum EnemyExecuteStatus
     {
         None = 0,
@@ -33,8 +36,10 @@ namespace OneStrokeDemon.Actors
         AlreadyDead = 4
     }
 
+    // 定义 EnemyDamageSnapshot 的角色领域数据与行为边界，供上层流程以明确契约使用。
     public readonly struct EnemyDamageSnapshot
     {
+        // 初始化 EnemyDamageSnapshot，并建立角色运行时所需的初始状态。
         internal EnemyDamageSnapshot(
             string enemyId,
             int hitTargetId,
@@ -81,8 +86,10 @@ namespace OneStrokeDemon.Actors
             : 0d;
     }
 
+    // 定义 EnemyDamageResult 的角色领域数据与行为边界，供上层流程以明确契约使用。
     public readonly struct EnemyDamageResult
     {
+        // 初始化 EnemyDamageResult，并建立角色运行时所需的初始状态。
         internal EnemyDamageResult(
             EnemyDamageStatus status,
             long requestedDamage,
@@ -123,8 +130,10 @@ namespace OneStrokeDemon.Actors
         public bool Changed => AppliedArmorDamage > 0L || AppliedHpDamage > 0L;
     }
 
+    // 定义 EnemyHealingResult 的角色领域数据与行为边界，供上层流程以明确契约使用。
     public readonly struct EnemyHealingResult
     {
+        // 初始化 EnemyHealingResult，并建立角色运行时所需的初始状态。
         internal EnemyHealingResult(
             EnemyHealingStatus status,
             long requestedHealing,
@@ -151,8 +160,10 @@ namespace OneStrokeDemon.Actors
         public bool Changed => AppliedHealing > 0L;
     }
 
+    // 定义 EnemyExecuteResult 的角色领域数据与行为边界，供上层流程以明确契约使用。
     public readonly struct EnemyExecuteResult
     {
+        // 初始化 EnemyExecuteResult，并建立角色运行时所需的初始状态。
         internal EnemyExecuteResult(
             EnemyExecuteStatus status,
             double threshold,
@@ -179,8 +190,10 @@ namespace OneStrokeDemon.Actors
         public bool DeathTriggered => Status == EnemyExecuteStatus.Executed;
     }
 
+    // 定义 EnemyPhaseProfileResult 的角色领域数据与行为边界，供上层流程以明确契约使用。
     public readonly struct EnemyPhaseProfileResult
     {
+        // 初始化 EnemyPhaseProfileResult，并建立角色运行时所需的初始状态。
         internal EnemyPhaseProfileResult(
             long previousArmor,
             long currentArmor,
@@ -205,6 +218,7 @@ namespace OneStrokeDemon.Actors
         public bool ArmorChanged => PreviousArmor != CurrentArmor;
     }
 
+    // 定义 EnemyDamageModel 的角色领域数据与行为边界，供上层流程以明确契约使用。
     public sealed class EnemyDamageModel
     {
         private EnemyDefinition definition;
@@ -225,8 +239,10 @@ namespace OneStrokeDemon.Actors
                 : string.Empty,
             isActive);
 
+        // 生成 Spawn 对应的角色逻辑，并返回或发布一致的状态结果。
         public void Spawn(in EnemyDefinition configuredDefinition, int configuredHitTargetId)
         {
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (!configuredDefinition.IsConfigured)
             {
                 throw new ArgumentException(
@@ -234,6 +250,7 @@ namespace OneStrokeDemon.Actors
                     nameof(configuredDefinition));
             }
 
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (configuredHitTargetId == 0)
             {
                 throw new ArgumentOutOfRangeException(
@@ -241,6 +258,7 @@ namespace OneStrokeDemon.Actors
                     "Enemy hit target id must be non-zero.");
             }
 
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (isActive)
             {
                 throw new InvalidOperationException(
@@ -254,9 +272,11 @@ namespace OneStrokeDemon.Actors
             isActive = true;
         }
 
+        // 应用 ApplyPhaseProfile 对应的角色逻辑，并返回或发布一致的状态结果。
         public EnemyPhaseProfileResult ApplyPhaseProfile(
             in EnemyDefinition configuredDefinition)
         {
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (!configuredDefinition.IsConfigured)
             {
                 throw new ArgumentException(
@@ -264,12 +284,14 @@ namespace OneStrokeDemon.Actors
                     nameof(configuredDefinition));
             }
 
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (!isActive || currentHp == 0L)
             {
                 throw new InvalidOperationException(
                     "Only an active living enemy can apply a phase profile.");
             }
 
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (!string.Equals(
                     definition.EnemyId,
                     configuredDefinition.EnemyId,
@@ -288,8 +310,10 @@ namespace OneStrokeDemon.Actors
             return new EnemyPhaseProfileResult(previousArmor, currentArmor, Current);
         }
 
+        // 应用 ApplyDamage 对应的角色逻辑，并返回或发布一致的状态结果。
         public EnemyDamageResult ApplyDamage(long amount)
         {
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (amount < 0L)
             {
                 throw new ArgumentOutOfRangeException(
@@ -297,11 +321,13 @@ namespace OneStrokeDemon.Actors
                     "Enemy damage must be non-negative.");
             }
 
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (!isActive)
             {
                 return DamageResult(EnemyDamageStatus.Inactive, amount, 0L, 0L, false, false);
             }
 
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (currentHp == 0L)
             {
                 return DamageResult(
@@ -313,6 +339,7 @@ namespace OneStrokeDemon.Actors
                     false);
             }
 
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (amount == 0L)
             {
                 return DamageResult(
@@ -341,8 +368,10 @@ namespace OneStrokeDemon.Actors
                 deathTriggered);
         }
 
+        // 移除 RemoveArmor 对应的角色逻辑，并返回或发布一致的状态结果。
         public EnemyDamageResult RemoveArmor(long amount)
         {
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (amount < 0L)
             {
                 throw new ArgumentOutOfRangeException(
@@ -350,11 +379,13 @@ namespace OneStrokeDemon.Actors
                     "Enemy armor removal must be non-negative.");
             }
 
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (!isActive)
             {
                 return DamageResult(EnemyDamageStatus.Inactive, amount, 0L, 0L, false, false);
             }
 
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (currentHp == 0L)
             {
                 return DamageResult(
@@ -366,6 +397,7 @@ namespace OneStrokeDemon.Actors
                     false);
             }
 
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (amount == 0L || currentArmor == 0L)
             {
                 return DamageResult(
@@ -389,8 +421,10 @@ namespace OneStrokeDemon.Actors
                 false);
         }
 
+        // 恢复 Heal 对应的角色逻辑，并返回或发布一致的状态结果。
         public EnemyHealingResult Heal(long amount)
         {
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (amount < 0L)
             {
                 throw new ArgumentOutOfRangeException(
@@ -398,22 +432,26 @@ namespace OneStrokeDemon.Actors
                     "Enemy healing must be non-negative.");
             }
 
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (!isActive)
             {
                 return HealingResult(EnemyHealingStatus.Inactive, amount, 0L);
             }
 
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (currentHp == 0L)
             {
                 return HealingResult(EnemyHealingStatus.AlreadyDead, amount, 0L);
             }
 
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (amount == 0L)
             {
                 return HealingResult(EnemyHealingStatus.NoHealing, amount, 0L);
             }
 
             long missingHp = definition.MaximumHp - currentHp;
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (missingHp == 0L)
             {
                 return HealingResult(EnemyHealingStatus.AtMaximum, amount, 0L);
@@ -424,8 +462,10 @@ namespace OneStrokeDemon.Actors
             return HealingResult(EnemyHealingStatus.Applied, amount, applied);
         }
 
+        // 尝试执行 TryExecute 对应的角色逻辑，并返回或发布一致的状态结果。
         public EnemyExecuteResult TryExecute(double threshold)
         {
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (double.IsNaN(threshold) ||
                 double.IsInfinity(threshold) ||
                 threshold < 0d ||
@@ -436,16 +476,19 @@ namespace OneStrokeDemon.Actors
                     "Enemy execute threshold must be in [0, 1].");
             }
 
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (!isActive)
             {
                 return ExecuteResult(EnemyExecuteStatus.Inactive, threshold, 0L);
             }
 
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (currentHp == 0L)
             {
                 return ExecuteResult(EnemyExecuteStatus.AlreadyDead, threshold, 0L);
             }
 
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if ((double)currentHp / definition.MaximumHp > threshold)
             {
                 return ExecuteResult(EnemyExecuteStatus.AboveThreshold, threshold, 0L);
@@ -456,8 +499,10 @@ namespace OneStrokeDemon.Actors
             return ExecuteResult(EnemyExecuteStatus.Executed, threshold, applied);
         }
 
+        // 释放 Release 对应的角色逻辑，并返回或发布一致的状态结果。
         public bool Release()
         {
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (!isActive)
             {
                 return false;
@@ -471,6 +516,7 @@ namespace OneStrokeDemon.Actors
             return true;
         }
 
+        // 处理 DamageResult 对应的角色逻辑，并返回或发布一致的状态结果。
         private EnemyDamageResult DamageResult(
             EnemyDamageStatus status,
             long requested,
@@ -489,6 +535,7 @@ namespace OneStrokeDemon.Actors
                 Current);
         }
 
+        // 恢复 HealingResult 对应的角色逻辑，并返回或发布一致的状态结果。
         private EnemyHealingResult HealingResult(
             EnemyHealingStatus status,
             long requested,
@@ -497,6 +544,7 @@ namespace OneStrokeDemon.Actors
             return new EnemyHealingResult(status, requested, applied, Current);
         }
 
+        // 处理 ExecuteResult 对应的角色逻辑，并返回或发布一致的状态结果。
         private EnemyExecuteResult ExecuteResult(
             EnemyExecuteStatus status,
             double threshold,
@@ -507,6 +555,7 @@ namespace OneStrokeDemon.Actors
     }
 
     [DisallowMultipleComponent]
+    // 定义 Damageable 的角色领域数据与行为边界，供上层流程以明确契约使用。
     public sealed class Damageable : MonoBehaviour, IHittable
     {
         private readonly EnemyDamageModel model = new EnemyDamageModel();
@@ -519,25 +568,30 @@ namespace OneStrokeDemon.Actors
         public bool CanReceiveStrokeHit =>
             strokeHitEnabled && Current.IsActive && !Current.IsDead;
 
+        // 生成 Spawn 对应的角色逻辑，并返回或发布一致的状态结果。
         internal void Spawn(in EnemyDefinition definition, int hitTargetId)
         {
             model.Spawn(definition, hitTargetId);
             strokeHitEnabled = false;
         }
 
+        // 设置 SetStrokeHitEnabled 对应的角色逻辑，并返回或发布一致的状态结果。
         internal void SetStrokeHitEnabled(bool enabled)
         {
             strokeHitEnabled = enabled && Current.IsActive && !Current.IsDead;
         }
 
+        // 应用 ApplyPhaseProfile 对应的角色逻辑，并返回或发布一致的状态结果。
         internal EnemyPhaseProfileResult ApplyPhaseProfile(
             in EnemyDefinition definition)
         {
             return model.ApplyPhaseProfile(definition);
         }
 
+        // 应用 ApplyResolvedDamage 对应的角色逻辑，并返回或发布一致的状态结果。
         public EnemyDamageResult ApplyResolvedDamage(in DamageResult damage)
         {
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (!damage.IsResolved)
             {
                 throw new ArgumentException(
@@ -545,6 +599,7 @@ namespace OneStrokeDemon.Actors
                     nameof(damage));
             }
 
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (damage.TargetId != HitTargetId)
             {
                 throw new ArgumentException(
@@ -555,13 +610,16 @@ namespace OneStrokeDemon.Actors
             return model.ApplyDamage(damage.Damage);
         }
 
+        // 应用 ApplyDamage 对应的角色逻辑，并返回或发布一致的状态结果。
         public EnemyDamageResult ApplyDamage(long amount)
         {
             return model.ApplyDamage(amount);
         }
 
+        // 应用 ApplyProjectileDamage 对应的角色逻辑，并返回或发布一致的状态结果。
         public EnemyDamageResult ApplyProjectileDamage(in ProjectileDamageSource source)
         {
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (!source.IsValid)
             {
                 throw new ArgumentException(
@@ -569,6 +627,7 @@ namespace OneStrokeDemon.Actors
                     nameof(source));
             }
 
+            // 检查当前条件并处理对应边界，避免角色状态沿错误路径继续推进。
             if (source.CurrentOwner.Faction != ProjectileFaction.Player)
             {
                 throw new ArgumentException(
@@ -579,21 +638,25 @@ namespace OneStrokeDemon.Actors
             return model.ApplyDamage(source.Damage);
         }
 
+        // 移除 RemoveArmor 对应的角色逻辑，并返回或发布一致的状态结果。
         public EnemyDamageResult RemoveArmor(long amount)
         {
             return model.RemoveArmor(amount);
         }
 
+        // 恢复 Heal 对应的角色逻辑，并返回或发布一致的状态结果。
         public EnemyHealingResult Heal(long amount)
         {
             return model.Heal(amount);
         }
 
+        // 尝试执行 TryExecute 对应的角色逻辑，并返回或发布一致的状态结果。
         public EnemyExecuteResult TryExecute(double threshold)
         {
             return model.TryExecute(threshold);
         }
 
+        // 释放 Release 对应的角色逻辑，并返回或发布一致的状态结果。
         internal bool Release()
         {
             strokeHitEnabled = false;
