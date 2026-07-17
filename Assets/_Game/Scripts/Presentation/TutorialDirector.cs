@@ -4,8 +4,10 @@ using OneStrokeDemon.Levels;
 
 namespace OneStrokeDemon.Presentation
 {
+    // 定义 TutorialOverlayState 的表现层契约，隔离战斗状态与具体Unity视图实现。
     public sealed class TutorialOverlayState
     {
+        // 初始化 TutorialOverlayState，并建立表现层所需的引用与初始显示状态。
         internal TutorialOverlayState(
             bool overlayVisible,
             string prompt,
@@ -47,6 +49,7 @@ namespace OneStrokeDemon.Presentation
         public bool IsReview { get; }
     }
 
+    // 定义 ITutorialOverlayView 的表现层契约，隔离战斗状态与具体Unity视图实现。
     public interface ITutorialOverlayView
     {
         event Action SkipRequested;
@@ -56,6 +59,7 @@ namespace OneStrokeDemon.Presentation
         void Render(TutorialOverlayState state);
     }
 
+    // 定义 TutorialDirector 的表现层契约，隔离战斗状态与具体Unity视图实现。
     public sealed class TutorialDirector : IDisposable
     {
         private readonly IConfigProvider configProvider;
@@ -69,6 +73,7 @@ namespace OneStrokeDemon.Presentation
         private bool showingReview;
         private bool disposed;
 
+        // 初始化 TutorialDirector，并建立表现层所需的引用与初始显示状态。
         public TutorialDirector(
             IConfigProvider configuredProvider,
             TutorialLevelCoordinator tutorialCoordinator,
@@ -94,10 +99,12 @@ namespace OneStrokeDemon.Presentation
             view.ReviewRequested += OnReviewRequested;
 
             string tutorialId = coordinator.Tutorial.Definition.TutorialId;
+            // 检查视图状态、资源或生命周期边界，避免产生无效表现。
             if (progress.IsTutorialCompleted(tutorialId))
             {
                 coordinator.SkipTutorial();
             }
+            // 检查视图状态、资源或生命周期边界，避免产生无效表现。
             else if (coordinator.Tutorial.State == TutorialSequenceState.Active)
             {
                 ShowStep(coordinator.Tutorial.CurrentStep, isReview: false);
@@ -110,8 +117,10 @@ namespace OneStrokeDemon.Presentation
 
         public TutorialOverlayState Current { get; private set; }
 
+        // 释放 Dispose 对应的表现逻辑，使视图与只读战斗状态保持同步。
         public void Dispose()
         {
+            // 检查视图状态、资源或生命周期边界，避免产生无效表现。
             if (disposed)
             {
                 return;
@@ -123,13 +132,16 @@ namespace OneStrokeDemon.Presentation
             view.ReviewRequested -= OnReviewRequested;
         }
 
+        // 响应 OnTutorialEvent 对应的表现逻辑，使视图与只读战斗状态保持同步。
         private void OnTutorialEvent(TutorialRuntimeEvent runtimeEvent)
         {
+            // 检查视图状态、资源或生命周期边界，避免产生无效表现。
             if (disposed)
             {
                 return;
             }
 
+            // 按当前表现类型或流程状态选择对应的渲染分支。
             switch (runtimeEvent.EventType)
             {
                 case TutorialRuntimeEventType.StepStarted:
@@ -152,8 +164,10 @@ namespace OneStrokeDemon.Presentation
             }
         }
 
+        // 响应 OnSkipRequested 对应的表现逻辑，使视图与只读战斗状态保持同步。
         private void OnSkipRequested()
         {
+            // 检查视图状态、资源或生命周期边界，避免产生无效表现。
             if (!disposed &&
                 coordinator.Tutorial.State != TutorialSequenceState.Completed)
             {
@@ -161,13 +175,16 @@ namespace OneStrokeDemon.Presentation
             }
         }
 
+        // 响应 OnReviewRequested 对应的表现逻辑，使视图与只读战斗状态保持同步。
         private void OnReviewRequested()
         {
+            // 检查视图状态、资源或生命周期边界，避免产生无效表现。
             if (disposed)
             {
                 return;
             }
 
+            // 检查视图状态、资源或生命周期边界，避免产生无效表现。
             if (showingReview)
             {
                 HideOverlay(reviewVisible: true);
@@ -177,8 +194,10 @@ namespace OneStrokeDemon.Presentation
             ShowStep(lastStep, isReview: true);
         }
 
+        // 显示 ShowStep 对应的表现逻辑，使视图与只读战斗状态保持同步。
         private void ShowStep(TutorialStepDefinition step, bool isReview)
         {
+            // 检查视图状态、资源或生命周期边界，避免产生无效表现。
             if (step == null)
             {
                 throw new ArgumentNullException(nameof(step));
@@ -199,6 +218,7 @@ namespace OneStrokeDemon.Presentation
             view.Render(Current);
         }
 
+        // 隐藏 HideOverlay 对应的表现逻辑，使视图与只读战斗状态保持同步。
         private void HideOverlay(bool reviewVisible)
         {
             showingReview = false;
@@ -215,8 +235,10 @@ namespace OneStrokeDemon.Presentation
             view.Render(Current);
         }
 
+        // 处理 Localize 对应的表现逻辑，使视图与只读战斗状态保持同步。
         private string Localize(TextConfig text)
         {
+            // 检查视图状态、资源或生命周期边界，避免产生无效表现。
             if (text == null)
             {
                 throw new ArgumentNullException(nameof(text));

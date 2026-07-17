@@ -5,24 +5,29 @@ using Levels = OneStrokeDemon.Levels;
 
 namespace OneStrokeDemon.Presentation
 {
+    // 定义 BattleHudLanguage 的表现层契约，隔离战斗状态与具体Unity视图实现。
     public enum BattleHudLanguage
     {
         ZhCN = 0,
         EnUS = 1,
     }
 
+    // 定义 BattleHudRewardState 的表现层契约，隔离战斗状态与具体Unity视图实现。
     public readonly struct BattleHudRewardState
     {
+        // 初始化 BattleHudRewardState，并建立表现层所需的引用与初始显示状态。
         public BattleHudRewardState(
             Levels.RewardGrantType type,
             string rewardId,
             long amount)
         {
+            // 检查视图状态、资源或生命周期边界，避免产生无效表现。
             if (string.IsNullOrWhiteSpace(rewardId))
             {
                 throw new ArgumentException("Reward id must be non-empty.", nameof(rewardId));
             }
 
+            // 检查视图状态、资源或生命周期边界，避免产生无效表现。
             if (amount <= 0L)
             {
                 throw new ArgumentOutOfRangeException(nameof(amount));
@@ -40,8 +45,10 @@ namespace OneStrokeDemon.Presentation
         public long Amount { get; }
     }
 
+    // 定义 BattleHudResultState 的表现层契约，隔离战斗状态与具体Unity视图实现。
     public sealed class BattleHudResultState
     {
+        // 初始化 BattleHudResultState，并建立表现层所需的引用与初始显示状态。
         public BattleHudResultState(
             Levels.BattleSettlement settlement,
             long finalScore,
@@ -49,17 +56,20 @@ namespace OneStrokeDemon.Presentation
             BattleHudRewardState[] rewards,
             bool canGoNext)
         {
+            // 检查视图状态、资源或生命周期边界，避免产生无效表现。
             if (settlement != Levels.BattleSettlement.Victory &&
                 settlement != Levels.BattleSettlement.Defeat)
             {
                 throw new ArgumentOutOfRangeException(nameof(settlement));
             }
 
+            // 检查视图状态、资源或生命周期边界，避免产生无效表现。
             if (finalScore < 0L)
             {
                 throw new ArgumentOutOfRangeException(nameof(finalScore));
             }
 
+            // 检查视图状态、资源或生命周期边界，避免产生无效表现。
             if (stars < 0 || stars > 3)
             {
                 throw new ArgumentOutOfRangeException(nameof(stars));
@@ -86,8 +96,10 @@ namespace OneStrokeDemon.Presentation
         public bool CanGoNext { get; }
     }
 
+    // 定义 BattleHudState 的表现层契约，隔离战斗状态与具体Unity视图实现。
     public readonly struct BattleHudState
     {
+        // 初始化 BattleHudState，并建立表现层所需的引用与初始显示状态。
         public BattleHudState(
             string levelId,
             long currentHp,
@@ -102,31 +114,37 @@ namespace OneStrokeDemon.Presentation
             double ultimateCooldownUntil,
             BattleHudResultState result)
         {
+            // 检查视图状态、资源或生命周期边界，避免产生无效表现。
             if (string.IsNullOrWhiteSpace(levelId))
             {
                 throw new ArgumentException("Level id must be non-empty.", nameof(levelId));
             }
 
+            // 检查视图状态、资源或生命周期边界，避免产生无效表现。
             if (string.IsNullOrWhiteSpace(stanceId))
             {
                 throw new ArgumentException("Stance id must be non-empty.", nameof(stanceId));
             }
 
+            // 检查视图状态、资源或生命周期边界，避免产生无效表现。
             if (maximumHp <= 0L || currentHp < 0L || currentHp > maximumHp)
             {
                 throw new ArgumentOutOfRangeException(nameof(currentHp));
             }
 
+            // 检查视图状态、资源或生命周期边界，避免产生无效表现。
             if (maximumEnergy <= 0L || currentEnergy < 0L || currentEnergy > maximumEnergy)
             {
                 throw new ArgumentOutOfRangeException(nameof(currentEnergy));
             }
 
+            // 检查视图状态、资源或生命周期边界，避免产生无效表现。
             if (comboCount < 0)
             {
                 throw new ArgumentOutOfRangeException(nameof(comboCount));
             }
 
+            // 检查视图状态、资源或生命周期边界，避免产生无效表现。
             if (liveScore < 0L)
             {
                 throw new ArgumentOutOfRangeException(nameof(liveScore));
@@ -164,8 +182,10 @@ namespace OneStrokeDemon.Presentation
         public BattleHudResultState Result { get; }
         public bool IsInitialized { get; }
 
+        // 处理 RequireFiniteNonNegative 对应的表现逻辑，使视图与只读战斗状态保持同步。
         private static void RequireFiniteNonNegative(double value, string parameter)
         {
+            // 检查视图状态、资源或生命周期边界，避免产生无效表现。
             if (double.IsNaN(value) || double.IsInfinity(value) || value < 0d)
             {
                 throw new ArgumentOutOfRangeException(parameter);
@@ -173,6 +193,7 @@ namespace OneStrokeDemon.Presentation
         }
     }
 
+    // 定义 IBattleHudStateSource 的表现层契约，隔离战斗状态与具体Unity视图实现。
     public interface IBattleHudStateSource
     {
         event Action<BattleHudState> Changed;
@@ -180,6 +201,7 @@ namespace OneStrokeDemon.Presentation
         BattleHudState Current { get; }
     }
 
+    // 定义 IBattleHudCommandSink 的表现层契约，隔离战斗状态与具体Unity视图实现。
     public interface IBattleHudCommandSink
     {
         void SetPlayerPaused(bool paused);
@@ -190,6 +212,7 @@ namespace OneStrokeDemon.Presentation
         void ReturnToMainMenu();
     }
 
+    // 定义 IBattleHudView 的表现层契约，隔离战斗状态与具体Unity视图实现。
     public interface IBattleHudView
     {
         event Action PauseToggleRequested;
@@ -202,8 +225,10 @@ namespace OneStrokeDemon.Presentation
         void Render(BattleHudViewModel model);
     }
 
+    // 定义 BattleHudViewModel 的表现层契约，隔离战斗状态与具体Unity视图实现。
     public sealed class BattleHudViewModel
     {
+        // 初始化 BattleHudViewModel，并建立表现层所需的引用与初始显示状态。
         internal BattleHudViewModel(
             string levelName,
             string hpLabel,

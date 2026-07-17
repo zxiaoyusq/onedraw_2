@@ -6,6 +6,7 @@ using UnityEngine;
 namespace OneStrokeDemon.Presentation
 {
     [DisallowMultipleComponent]
+    // 定义 StrokeTrailView 的表现层契约，隔离战斗状态与具体Unity视图实现。
     public sealed class StrokeTrailView : MonoBehaviour
     {
         private static readonly Color OpaqueWhite = Color.white;
@@ -39,11 +40,13 @@ namespace OneStrokeDemon.Presentation
         public float NormalizedLifetime =>
             IsActive && lifetimeSeconds > 0f ? Mathf.Clamp01(elapsedSeconds / lifetimeSeconds) : 0f;
 
+        // 处理 Initialize 对应的表现逻辑，使视图与只读战斗状态保持同步。
         public void Initialize(
             LineRenderer lineRenderer,
             Material sharedMaterial,
             Transform configuredReferenceSpace = null)
         {
+            // 检查视图状态、资源或生命周期边界，避免产生无效表现。
             if (IsInitialized)
             {
                 throw new InvalidOperationException("Stroke trail view is already initialized.");
@@ -52,6 +55,7 @@ namespace OneStrokeDemon.Presentation
             lineRendererComponent = lineRenderer != null
                 ? lineRenderer
                 : throw new ArgumentNullException(nameof(lineRenderer));
+            // 检查视图状态、资源或生命周期边界，避免产生无效表现。
             if (lineRenderer.gameObject != gameObject)
             {
                 throw new ArgumentException(
@@ -76,17 +80,20 @@ namespace OneStrokeDemon.Presentation
             ResetForPool();
         }
 
+        // 显示 Show 对应的表现逻辑，使视图与只读战斗状态保持同步。
         public void Show(
             StrokeTrailPath path,
             StrokeTrailStyle style,
             ulong activationSequence)
         {
             EnsureInitialized();
+            // 检查视图状态、资源或生命周期边界，避免产生无效表现。
             if (path.PointCount < 2)
             {
                 throw new ArgumentException("A visible trail needs at least two points.", nameof(path));
             }
 
+            // 检查视图状态、资源或生命周期边界，避免产生无效表现。
             if (activationSequence == 0)
             {
                 throw new ArgumentOutOfRangeException(
@@ -103,6 +110,7 @@ namespace OneStrokeDemon.Presentation
 
             Configure(style);
             lineRendererComponent.positionCount = path.PointCount;
+            // 逐项更新视图或池对象，保持显示顺序和回收行为一致。
             for (int index = 0; index < path.PointCount; index++)
             {
                 Vector2 point = path.Points[index];
@@ -114,6 +122,7 @@ namespace OneStrokeDemon.Presentation
             lineRendererComponent.enabled = true;
         }
 
+        // 处理 BeginPreview 对应的表现逻辑，使视图与只读战斗状态保持同步。
         public void BeginPreview(
             ulong strokeId,
             Vector2 firstPoint,
@@ -121,11 +130,13 @@ namespace OneStrokeDemon.Presentation
             ulong activationSequence)
         {
             EnsureInitialized();
+            // 检查视图状态、资源或生命周期边界，避免产生无效表现。
             if (strokeId == 0)
             {
                 throw new ArgumentOutOfRangeException(nameof(strokeId));
             }
 
+            // 检查视图状态、资源或生命周期边界，避免产生无效表现。
             if (activationSequence == 0)
             {
                 throw new ArgumentOutOfRangeException(nameof(activationSequence));
@@ -144,9 +155,11 @@ namespace OneStrokeDemon.Presentation
             lineRendererComponent.enabled = false;
         }
 
+        // 处理 AppendPreviewPoint 对应的表现逻辑，使视图与只读战斗状态保持同步。
         public void AppendPreviewPoint(Vector2 point)
         {
             EnsureInitialized();
+            // 检查视图状态、资源或生命周期边界，避免产生无效表现。
             if (!IsActive || !IsPreviewing)
             {
                 throw new InvalidOperationException(
@@ -159,14 +172,17 @@ namespace OneStrokeDemon.Presentation
             lineRendererComponent.enabled = true;
         }
 
+        // 处理 Advance 对应的表现逻辑，使视图与只读战斗状态保持同步。
         public bool Advance(float unscaledDeltaSeconds)
         {
             EnsureInitialized();
+            // 检查视图状态、资源或生命周期边界，避免产生无效表现。
             if (!IsActive)
             {
                 return false;
             }
 
+            // 检查视图状态、资源或生命周期边界，避免产生无效表现。
             if (float.IsNaN(unscaledDeltaSeconds) ||
                 float.IsInfinity(unscaledDeltaSeconds) ||
                 unscaledDeltaSeconds < 0f)
@@ -176,12 +192,14 @@ namespace OneStrokeDemon.Presentation
                     "Delta time must be finite and non-negative.");
             }
 
+            // 检查视图状态、资源或生命周期边界，避免产生无效表现。
             if (IsPreviewing)
             {
                 return false;
             }
 
             elapsedSeconds += unscaledDeltaSeconds;
+            // 检查视图状态、资源或生命周期边界，避免产生无效表现。
             if (elapsedSeconds >= lifetimeSeconds)
             {
                 ResetForPool();
@@ -195,6 +213,7 @@ namespace OneStrokeDemon.Presentation
             return false;
         }
 
+        // 重置 ResetForPool 对应的表现逻辑，使视图与只读战斗状态保持同步。
         public void ResetForPool()
         {
             EnsureInitialized();
@@ -219,6 +238,7 @@ namespace OneStrokeDemon.Presentation
             lineRendererComponent.useWorldSpace = true;
         }
 
+        // 处理 Configure 对应的表现逻辑，使视图与只读战斗状态保持同步。
         private void Configure(StrokeTrailStyle style)
         {
             Transform ownTransform = transform;
@@ -238,13 +258,16 @@ namespace OneStrokeDemon.Presentation
             lineRendererComponent.sortingOrder = style.SortingOrder;
         }
 
+        // 处理 ReferenceToWorld 对应的表现逻辑，使视图与只读战斗状态保持同步。
         private Vector3 ReferenceToWorld(Vector2 point)
         {
             return referenceSpace.TransformPoint(new Vector3(point.x, point.y, 0f));
         }
 
+        // 处理 EnsureInitialized 对应的表现逻辑，使视图与只读战斗状态保持同步。
         private void EnsureInitialized()
         {
+            // 检查视图状态、资源或生命周期边界，避免产生无效表现。
             if (!IsInitialized)
             {
                 throw new InvalidOperationException("Stroke trail view is not initialized.");

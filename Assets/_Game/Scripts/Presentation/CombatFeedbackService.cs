@@ -6,6 +6,7 @@ using OneStrokeDemon.Config;
 
 namespace OneStrokeDemon.Presentation
 {
+    // 定义 CombatFeedbackType 的表现层契约，隔离战斗状态与具体Unity视图实现。
     public enum CombatFeedbackType
     {
         EnemyHit = 0,
@@ -15,6 +16,7 @@ namespace OneStrokeDemon.Presentation
         PlayerHit = 4,
     }
 
+    // 定义 FeedbackVibrationPattern 的表现层契约，隔离战斗状态与具体Unity视图实现。
     public enum FeedbackVibrationPattern
     {
         Off = 0,
@@ -23,8 +25,10 @@ namespace OneStrokeDemon.Presentation
         Heavy = 3,
     }
 
+    // 定义 CombatFeedbackProfile 的表现层契约，隔离战斗状态与具体Unity视图实现。
     public sealed class CombatFeedbackProfile
     {
+        // 初始化 CombatFeedbackProfile，并建立表现层所需的引用与初始显示状态。
         internal CombatFeedbackProfile(CombatFeedbackType type, FeedbackCueConfig row)
         {
             Type = type;
@@ -66,8 +70,10 @@ namespace OneStrokeDemon.Presentation
         public string VfxTintColorHex { get; }
         public float VfxScaleReferencePixels { get; }
 
+        // 校验 Validate 对应的表现逻辑，使视图与只读战斗状态保持同步。
         private void Validate()
         {
+            // 检查视图状态、资源或生命周期边界，避免产生无效表现。
             if (string.IsNullOrWhiteSpace(FeedbackId) ||
                 string.IsNullOrWhiteSpace(VfxKey) ||
                 string.IsNullOrWhiteSpace(AudioKey) ||
@@ -88,8 +94,10 @@ namespace OneStrokeDemon.Presentation
             }
         }
 
+        // 处理 ParseVibration 对应的表现逻辑，使视图与只读战斗状态保持同步。
         private static FeedbackVibrationPattern ParseVibration(string value, string feedbackId)
         {
+            // 检查视图状态、资源或生命周期边界，避免产生无效表现。
             if (!Enum.TryParse(value, false, out FeedbackVibrationPattern parsed) ||
                 !Enum.IsDefined(typeof(FeedbackVibrationPattern), parsed))
             {
@@ -101,8 +109,10 @@ namespace OneStrokeDemon.Presentation
             return parsed;
         }
 
+        // 处理 CheckedPositiveInt 对应的表现逻辑，使视图与只读战斗状态保持同步。
         private static int CheckedPositiveInt(long value, string feedbackId, string field)
         {
+            // 检查视图状态、资源或生命周期边界，避免产生无效表现。
             if (value < 1L || value > int.MaxValue)
             {
                 throw new ArgumentException(
@@ -113,23 +123,30 @@ namespace OneStrokeDemon.Presentation
             return (int)value;
         }
 
+        // 判断是否 IsFiniteInRange 对应的表现逻辑，使视图与只读战斗状态保持同步。
         private static bool IsFiniteInRange(float value, float minimum, float maximum) =>
             !float.IsNaN(value) && !float.IsInfinity(value) && value >= minimum && value <= maximum;
 
+        // 判断是否 IsFinitePositive 对应的表现逻辑，使视图与只读战斗状态保持同步。
         private static bool IsFinitePositive(float value) => IsFiniteInRange(value, float.Epsilon, float.MaxValue);
 
+        // 判断是否 IsFiniteNonNegative 对应的表现逻辑，使视图与只读战斗状态保持同步。
         private static bool IsFiniteNonNegative(float value) => IsFiniteInRange(value, 0f, float.MaxValue);
 
+        // 判断是否 IsColorHex 对应的表现逻辑，使视图与只读战斗状态保持同步。
         private static bool IsColorHex(string value)
         {
+            // 检查视图状态、资源或生命周期边界，避免产生无效表现。
             if (value == null || value.Length != 9 || value[0] != '#')
             {
                 return false;
             }
 
+            // 逐项更新视图或池对象，保持显示顺序和回收行为一致。
             for (int index = 1; index < value.Length; index += 1)
             {
                 char character = value[index];
+                // 检查视图状态、资源或生命周期边界，避免产生无效表现。
                 if (!((character >= '0' && character <= '9') ||
                       (character >= 'a' && character <= 'f') ||
                       (character >= 'A' && character <= 'F')))
@@ -142,18 +159,22 @@ namespace OneStrokeDemon.Presentation
         }
     }
 
+    // 定义 CombatFeedbackSettings 的表现层契约，隔离战斗状态与具体Unity视图实现。
     public sealed class CombatFeedbackSettings
     {
         private readonly IReadOnlyDictionary<CombatFeedbackType, CombatFeedbackProfile> profiles;
 
+        // 初始化 CombatFeedbackSettings，并建立表现层所需的引用与初始显示状态。
         private CombatFeedbackSettings(
             IReadOnlyDictionary<CombatFeedbackType, CombatFeedbackProfile> configuredProfiles)
         {
             profiles = configuredProfiles;
         }
 
+        // 创建 Create 对应的表现逻辑，使视图与只读战斗状态保持同步。
         public static CombatFeedbackSettings Create(IConfigProvider configProvider)
         {
+            // 检查视图状态、资源或生命周期边界，避免产生无效表现。
             if (configProvider == null)
             {
                 throw new ArgumentNullException(nameof(configProvider));
@@ -185,8 +206,10 @@ namespace OneStrokeDemon.Presentation
                 });
         }
 
+        // 获取 Get 对应的表现逻辑，使视图与只读战斗状态保持同步。
         public CombatFeedbackProfile Get(CombatFeedbackType type)
         {
+            // 检查视图状态、资源或生命周期边界，避免产生无效表现。
             if (!profiles.TryGetValue(type, out CombatFeedbackProfile profile))
             {
                 throw new ArgumentOutOfRangeException(nameof(type), type, "Feedback type is not configured.");
@@ -195,6 +218,7 @@ namespace OneStrokeDemon.Presentation
             return profile;
         }
 
+        // 创建 CreateProfile 对应的表现逻辑，使视图与只读战斗状态保持同步。
         private static CombatFeedbackProfile CreateProfile(
             IConfigProvider configProvider,
             CombatFeedbackType type,
@@ -202,8 +226,10 @@ namespace OneStrokeDemon.Presentation
             new CombatFeedbackProfile(type, configProvider.GetFeedbackCue(feedbackId));
     }
 
+    // 定义 CombatFeedbackEvent 的表现层契约，隔离战斗状态与具体Unity视图实现。
     public readonly struct CombatFeedbackEvent
     {
+        // 初始化 CombatFeedbackEvent，并建立表现层所需的引用与初始显示状态。
         public CombatFeedbackEvent(
             CombatFeedbackType type,
             int targetId,
@@ -211,21 +237,25 @@ namespace OneStrokeDemon.Presentation
             long signedAmount,
             double timestamp)
         {
+            // 检查视图状态、资源或生命周期边界，避免产生无效表现。
             if (!Enum.IsDefined(typeof(CombatFeedbackType), type))
             {
                 throw new ArgumentOutOfRangeException(nameof(type));
             }
 
+            // 检查视图状态、资源或生命周期边界，避免产生无效表现。
             if (targetId == 0)
             {
                 throw new ArgumentOutOfRangeException(nameof(targetId));
             }
 
+            // 检查视图状态、资源或生命周期边界，避免产生无效表现。
             if (string.IsNullOrWhiteSpace(sourceId))
             {
                 throw new ArgumentException("Feedback source id must be non-empty.", nameof(sourceId));
             }
 
+            // 检查视图状态、资源或生命周期边界，避免产生无效表现。
             if (double.IsNaN(timestamp) || double.IsInfinity(timestamp) || timestamp < 0d)
             {
                 throw new ArgumentOutOfRangeException(nameof(timestamp));
@@ -247,8 +277,10 @@ namespace OneStrokeDemon.Presentation
         public bool IsValid { get; }
     }
 
+    // 定义 CombatFeedbackCommand 的表现层契约，隔离战斗状态与具体Unity视图实现。
     public readonly struct CombatFeedbackCommand
     {
+        // 初始化 CombatFeedbackCommand，并建立表现层所需的引用与初始显示状态。
         internal CombatFeedbackCommand(in CombatFeedbackEvent feedbackEvent, CombatFeedbackProfile profile)
         {
             Event = feedbackEvent;
@@ -259,22 +291,26 @@ namespace OneStrokeDemon.Presentation
         public CombatFeedbackProfile Profile { get; }
     }
 
+    // 定义 ICombatFeedbackOutput 的表现层契约，隔离战斗状态与具体Unity视图实现。
     public interface ICombatFeedbackOutput
     {
         void Emit(in CombatFeedbackCommand command);
     }
 
+    // 定义 ICombatFeedbackVibration 的表现层契约，隔离战斗状态与具体Unity视图实现。
     public interface ICombatFeedbackVibration
     {
         void Request(FeedbackVibrationPattern pattern);
     }
 
+    // 定义 CombatFeedbackService 的表现层契约，隔离战斗状态与具体Unity视图实现。
     public sealed class CombatFeedbackService
     {
         private readonly CombatFeedbackSettings settings;
         private readonly ICombatFeedbackOutput output;
         private readonly ICombatFeedbackVibration vibration;
 
+        // 初始化 CombatFeedbackService，并建立表现层所需的引用与初始显示状态。
         public CombatFeedbackService(
             CombatFeedbackSettings configuredSettings,
             ICombatFeedbackOutput configuredOutput,
@@ -287,8 +323,10 @@ namespace OneStrokeDemon.Presentation
 
         public bool VibrationEnabled { get; set; } = true;
 
+        // 发布 Publish 对应的表现逻辑，使视图与只读战斗状态保持同步。
         public CombatFeedbackCommand Publish(in CombatFeedbackEvent feedbackEvent)
         {
+            // 检查视图状态、资源或生命周期边界，避免产生无效表现。
             if (!feedbackEvent.IsValid)
             {
                 throw new ArgumentException("Feedback event must be initialized.", nameof(feedbackEvent));
@@ -297,6 +335,7 @@ namespace OneStrokeDemon.Presentation
             CombatFeedbackProfile profile = settings.Get(feedbackEvent.Type);
             var command = new CombatFeedbackCommand(feedbackEvent, profile);
             output.Emit(command);
+            // 检查视图状态、资源或生命周期边界，避免产生无效表现。
             if (VibrationEnabled &&
                 vibration != null &&
                 profile.VibrationPattern != FeedbackVibrationPattern.Off)
@@ -307,12 +346,14 @@ namespace OneStrokeDemon.Presentation
             return command;
         }
 
+        // 处理 HandleEnemyHit 对应的表现逻辑，使视图与只读战斗状态保持同步。
         public bool HandleEnemyHit(
             in DamageResult resolvedDamage,
             in EnemyHitResolution appliedHit,
             string sourceId,
             double timestamp)
         {
+            // 检查视图状态、资源或生命周期边界，避免产生无效表现。
             if (!resolvedDamage.IsResolved || !appliedHit.IsValid || !appliedHit.Damage.Changed)
             {
                 return false;
@@ -332,8 +373,10 @@ namespace OneStrokeDemon.Presentation
             return true;
         }
 
+        // 处理 HandleProjectileStroke 对应的表现逻辑，使视图与只读战斗状态保持同步。
         public bool HandleProjectileStroke(in ProjectileStrokeResult result, double timestamp)
         {
+            // 检查视图状态、资源或生命周期边界，避免产生无效表现。
             if (!result.IsValid || result.Outcome != ProjectileStrokeOutcome.Reflected)
             {
                 return false;
@@ -348,8 +391,10 @@ namespace OneStrokeDemon.Presentation
             return true;
         }
 
+        // 处理 HandlePlayerEvent 对应的表现逻辑，使视图与只读战斗状态保持同步。
         public bool HandlePlayerEvent(in PlayerCombatEvent playerEvent, int targetId)
         {
+            // 检查视图状态、资源或生命周期边界，避免产生无效表现。
             if (!playerEvent.IsValid ||
                 playerEvent.EventType != PlayerCombatEventType.HpChanged ||
                 playerEvent.SignedAmount >= 0L)

@@ -6,6 +6,7 @@ using UnityEngine.UI;
 namespace OneStrokeDemon.Presentation
 {
     [DisallowMultipleComponent]
+    // 定义 BattleHudView 的表现层契约，隔离战斗状态与具体Unity视图实现。
     public sealed class BattleHudView : MonoBehaviour, IBattleHudView
     {
         private BattleHudViewReferences references;
@@ -37,8 +38,10 @@ namespace OneStrokeDemon.Presentation
         public TMP_Text StanceValueText => RequireReferences().StanceValue;
         public TMP_Text ResultTitleText => RequireReferences().ResultTitle;
 
+        // 处理 Initialize 对应的表现逻辑，使视图与只读战斗状态保持同步。
         internal void Initialize(BattleHudViewReferences configuredReferences)
         {
+            // 检查视图状态、资源或生命周期边界，避免产生无效表现。
             if (references != null)
             {
                 throw new InvalidOperationException("Battle HUD view is already initialized.");
@@ -57,8 +60,10 @@ namespace OneStrokeDemon.Presentation
             ApplyScreenSafeArea();
         }
 
+        // 渲染 Render 对应的表现逻辑，使视图与只读战斗状态保持同步。
         public void Render(BattleHudViewModel model)
         {
+            // 检查视图状态、资源或生命周期边界，避免产生无效表现。
             if (model == null)
             {
                 throw new ArgumentNullException(nameof(model));
@@ -114,9 +119,11 @@ namespace OneStrokeDemon.Presentation
             ui.MainMenuButton.interactable = model.MainMenuVisible;
         }
 
+        // 应用 ApplySafeArea 对应的表现逻辑，使视图与只读战斗状态保持同步。
         public void ApplySafeArea(Rect safeAreaPixels, Vector2 screenSizePixels)
         {
             BattleHudViewReferences ui = RequireReferences();
+            // 检查视图状态、资源或生命周期边界，避免产生无效表现。
             if (screenSizePixels.x <= 0f || screenSizePixels.y <= 0f)
             {
                 throw new ArgumentOutOfRangeException(
@@ -138,8 +145,10 @@ namespace OneStrokeDemon.Presentation
             lastScreenSize = screenSizePixels;
         }
 
+        // 更新 Update 对应的表现逻辑，使视图与只读战斗状态保持同步。
         private void Update()
         {
+            // 检查视图状态、资源或生命周期边界，避免产生无效表现。
             if (references != null &&
                 (Screen.safeArea != lastScreenSafeArea ||
                  Screen.width != lastScreenSize.x ||
@@ -149,8 +158,10 @@ namespace OneStrokeDemon.Presentation
             }
         }
 
+        // 响应 OnDestroy 对应的表现逻辑，使视图与只读战斗状态保持同步。
         private void OnDestroy()
         {
+            // 检查视图状态、资源或生命周期边界，避免产生无效表现。
             if (references == null)
             {
                 return;
@@ -165,6 +176,7 @@ namespace OneStrokeDemon.Presentation
             references.MainMenuButton.onClick.RemoveListener(HandleMainMenu);
         }
 
+        // 应用 ApplyScreenSafeArea 对应的表现逻辑，使视图与只读战斗状态保持同步。
         private void ApplyScreenSafeArea()
         {
             ApplySafeArea(
@@ -172,19 +184,27 @@ namespace OneStrokeDemon.Presentation
                 new Vector2(Mathf.Max(1, Screen.width), Mathf.Max(1, Screen.height)));
         }
 
+        // 处理 HandlePauseToggle 对应的表现逻辑，使视图与只读战斗状态保持同步。
         private void HandlePauseToggle() => PauseToggleRequested?.Invoke();
+        // 处理 HandleStanceSwitch 对应的表现逻辑，使视图与只读战斗状态保持同步。
         private void HandleStanceSwitch() => StanceSwitchRequested?.Invoke();
+        // 处理 HandleUltimate 对应的表现逻辑，使视图与只读战斗状态保持同步。
         private void HandleUltimate() => UltimateRequested?.Invoke();
+        // 处理 HandleRestart 对应的表现逻辑，使视图与只读战斗状态保持同步。
         private void HandleRestart() => RestartRequested?.Invoke();
+        // 处理 HandleNextLevel 对应的表现逻辑，使视图与只读战斗状态保持同步。
         private void HandleNextLevel() => NextLevelRequested?.Invoke();
+        // 处理 HandleMainMenu 对应的表现逻辑，使视图与只读战斗状态保持同步。
         private void HandleMainMenu() => MainMenuRequested?.Invoke();
 
+        // 处理 RequireReferences 对应的表现逻辑，使视图与只读战斗状态保持同步。
         private BattleHudViewReferences RequireReferences()
         {
             return references ??
                 throw new InvalidOperationException("Battle HUD view is not initialized.");
         }
 
+        // 处理 Intersect 对应的表现逻辑，使视图与只读战斗状态保持同步。
         private static Rect Intersect(Rect bounds, Rect value)
         {
             float xMin = Mathf.Clamp(value.xMin, bounds.xMin, bounds.xMax);
@@ -195,6 +215,7 @@ namespace OneStrokeDemon.Presentation
         }
     }
 
+    // 定义 BattleHudViewReferences 的表现层契约，隔离战斗状态与具体Unity视图实现。
     internal sealed class BattleHudViewReferences
     {
         public RectTransform SafeAreaRoot;
@@ -240,8 +261,10 @@ namespace OneStrokeDemon.Presentation
         public Button MainMenuButton;
         public TMP_Text MainMenuButtonText;
 
+        // 校验 Validate 对应的表现逻辑，使视图与只读战斗状态保持同步。
         public void Validate()
         {
+            // 逐项更新视图或池对象，保持显示顺序和回收行为一致。
             foreach (UnityEngine.Object item in new UnityEngine.Object[]
                      {
                          SafeAreaRoot, StanceRoot, StanceButton, LevelName, HpLabel, HpValue, HpSlider,
@@ -257,6 +280,7 @@ namespace OneStrokeDemon.Presentation
                          NextLevelButtonText, MainMenuButton, MainMenuButtonText,
                      })
             {
+                // 检查视图状态、资源或生命周期边界，避免产生无效表现。
                 if (item == null)
                 {
                     throw new ArgumentException("Battle HUD view references must be complete.");

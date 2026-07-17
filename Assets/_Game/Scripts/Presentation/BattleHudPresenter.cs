@@ -6,6 +6,7 @@ using OneStrokeDemon.Levels;
 
 namespace OneStrokeDemon.Presentation
 {
+    // 定义 BattleHudPresenter 的表现层契约，隔离战斗状态与具体Unity视图实现。
     public sealed class BattleHudPresenter : IDisposable
     {
         private readonly IConfigProvider configProvider;
@@ -17,6 +18,7 @@ namespace OneStrokeDemon.Presentation
         private BattleHudViewModel current;
         private bool disposed;
 
+        // 初始化 BattleHudPresenter，并建立表现层所需的引用与初始显示状态。
         public BattleHudPresenter(
             IConfigProvider configuredProvider,
             IBattleHudStateSource stateSource,
@@ -30,6 +32,7 @@ namespace OneStrokeDemon.Presentation
             source = stateSource ?? throw new ArgumentNullException(nameof(stateSource));
             view = hudView ?? throw new ArgumentNullException(nameof(hudView));
             commands = commandSink ?? throw new ArgumentNullException(nameof(commandSink));
+            // 检查视图状态、资源或生命周期边界，避免产生无效表现。
             if (string.IsNullOrWhiteSpace(playerId))
             {
                 throw new ArgumentException("Player id must be non-empty.", nameof(playerId));
@@ -51,8 +54,10 @@ namespace OneStrokeDemon.Presentation
 
         public BattleHudViewModel Current => current;
 
+        // 释放 Dispose 对应的表现逻辑，使视图与只读战斗状态保持同步。
         public void Dispose()
         {
+            // 检查视图状态、资源或生命周期边界，避免产生无效表现。
             if (disposed)
             {
                 return;
@@ -68,13 +73,16 @@ namespace OneStrokeDemon.Presentation
             view.MainMenuRequested -= OnMainMenuRequested;
         }
 
+        // 响应 OnStateChanged 对应的表现逻辑，使视图与只读战斗状态保持同步。
         private void OnStateChanged(BattleHudState state)
         {
             Present(state);
         }
 
+        // 处理 Present 对应的表现逻辑，使视图与只读战斗状态保持同步。
         private void Present(in BattleHudState state)
         {
+            // 检查视图状态、资源或生命周期边界，避免产生无效表现。
             if (!state.IsInitialized)
             {
                 throw new ArgumentException("HUD state must be initialized.", nameof(state));
@@ -162,14 +170,17 @@ namespace OneStrokeDemon.Presentation
             view.Render(current);
         }
 
+        // 响应 OnStanceSwitchRequested 对应的表现逻辑，使视图与只读战斗状态保持同步。
         private void OnStanceSwitchRequested()
         {
+            // 检查视图状态、资源或生命周期边界，避免产生无效表现。
             if (current != null && current.StanceInteractable)
             {
                 commands.SwitchStance();
             }
         }
 
+        // 构建 BuildUltimateStatus 对应的表现逻辑，使视图与只读战斗状态保持同步。
         private string BuildUltimateStatus(
             in BattleHudState state,
             double cooldownRemaining,
@@ -177,23 +188,27 @@ namespace OneStrokeDemon.Presentation
             bool enoughEnergy,
             bool terminal)
         {
+            // 检查视图状态、资源或生命周期边界，避免产生无效表现。
             if (terminal || state.CurrentHp == 0L)
             {
                 return string.Empty;
             }
 
+            // 检查视图状态、资源或生命周期边界，避免产生无效表现。
             if (cooldownRemaining > 0d)
             {
                 long displayed = checked((long)Math.Ceiling(cooldownRemaining));
                 return $"{text.Cooldown} {Integer(displayed)}";
             }
 
+            // 检查视图状态、资源或生命周期边界，避免产生无效表现。
             if (!correctStance)
             {
                 StanceConfig required = configProvider.GetStance(ultimateSkill.RequiredStanceId);
                 return $"{text.Stance} {text.Get(required.DisplayNameKey)}";
             }
 
+            // 检查视图状态、资源或生命周期边界，避免产生无效表现。
             if (!enoughEnergy)
             {
                 return $"{text.Energy} {Ratio(state.CurrentEnergy, ultimateSkill.EnergyCost)}";
@@ -204,22 +219,27 @@ namespace OneStrokeDemon.Presentation
                 : string.Empty;
         }
 
+        // 构建 BuildRewardBody 对应的表现逻辑，使视图与只读战斗状态保持同步。
         private string BuildRewardBody(BattleHudResultState result)
         {
+            // 检查视图状态、资源或生命周期边界，避免产生无效表现。
             if (result.Rewards.Count == 0)
             {
                 return string.Empty;
             }
 
             var builder = new StringBuilder();
+            // 逐项更新视图或池对象，保持显示顺序和回收行为一致。
             for (int index = 0; index < result.Rewards.Count; index += 1)
             {
+                // 检查视图状态、资源或生命周期边界，避免产生无效表现。
                 if (index > 0)
                 {
                     builder.Append('\n');
                 }
 
                 BattleHudRewardState reward = result.Rewards[index];
+                // 按当前表现类型或流程状态选择对应的渲染分支。
                 switch (reward.Type)
                 {
                     case RewardGrantType.UnlockLevel:
@@ -247,46 +267,57 @@ namespace OneStrokeDemon.Presentation
             return builder.ToString();
         }
 
+        // 响应 OnPauseToggleRequested 对应的表现逻辑，使视图与只读战斗状态保持同步。
         private void OnPauseToggleRequested()
         {
+            // 检查视图状态、资源或生命周期边界，避免产生无效表现。
             if (current != null && current.PauseButtonInteractable)
             {
                 commands.SetPlayerPaused(source.Current.FlowState != BattleFlowState.Paused);
             }
         }
 
+        // 响应 OnUltimateRequested 对应的表现逻辑，使视图与只读战斗状态保持同步。
         private void OnUltimateRequested()
         {
+            // 检查视图状态、资源或生命周期边界，避免产生无效表现。
             if (current != null && current.UltimateInteractable)
             {
                 commands.BeginUltimateDrawing();
             }
         }
 
+        // 响应 OnRestartRequested 对应的表现逻辑，使视图与只读战斗状态保持同步。
         private void OnRestartRequested()
         {
+            // 检查视图状态、资源或生命周期边界，避免产生无效表现。
             if (current != null && current.ResultVisible)
             {
                 commands.Restart();
             }
         }
 
+        // 响应 OnNextLevelRequested 对应的表现逻辑，使视图与只读战斗状态保持同步。
         private void OnNextLevelRequested()
         {
+            // 检查视图状态、资源或生命周期边界，避免产生无效表现。
             if (current != null && current.ResultVisible && current.NextLevelVisible)
             {
                 commands.GoNext();
             }
         }
 
+        // 响应 OnMainMenuRequested 对应的表现逻辑，使视图与只读战斗状态保持同步。
         private void OnMainMenuRequested()
         {
+            // 检查视图状态、资源或生命周期边界，避免产生无效表现。
             if (current != null && current.MainMenuVisible)
             {
                 commands.ReturnToMainMenu();
             }
         }
 
+        // 判断是否允许 CanTogglePause 对应的表现逻辑，使视图与只读战斗状态保持同步。
         private static bool CanTogglePause(BattleFlowState state)
         {
             return state == BattleFlowState.Countdown ||
@@ -295,13 +326,16 @@ namespace OneStrokeDemon.Presentation
                    state == BattleFlowState.Paused;
         }
 
+        // 处理 Normalize 对应的表现逻辑，使视图与只读战斗状态保持同步。
         private static float Normalize(long current, long maximum)
         {
             return maximum <= 0L ? 0f : (float)((double)current / maximum);
         }
 
+        // 处理 NormalizeCooldown 对应的表现逻辑，使视图与只读战斗状态保持同步。
         private static float NormalizeCooldown(double remaining, double configuredCooldown)
         {
+            // 检查视图状态、资源或生命周期边界，避免产生无效表现。
             if (configuredCooldown <= 0d)
             {
                 return 0f;
@@ -310,22 +344,26 @@ namespace OneStrokeDemon.Presentation
             return (float)Math.Min(1d, Math.Max(0d, remaining / configuredCooldown));
         }
 
+        // 处理 Ratio 对应的表现逻辑，使视图与只读战斗状态保持同步。
         private static string Ratio(long current, long maximum)
         {
             return $"{Integer(current)} / {Integer(maximum)}";
         }
 
+        // 处理 Integer 对应的表现逻辑，使视图与只读战斗状态保持同步。
         private static string Integer(long value)
         {
             return value.ToString(CultureInfo.InvariantCulture);
         }
     }
 
+    // 定义 BattleHudTextCatalog 的表现层契约，隔离战斗状态与具体Unity视图实现。
     internal sealed class BattleHudTextCatalog
     {
         private readonly IConfigProvider configProvider;
         private readonly BattleHudLanguage language;
 
+        // 初始化 BattleHudTextCatalog，并建立表现层所需的引用与初始显示状态。
         public BattleHudTextCatalog(
             IConfigProvider configuredProvider,
             BattleHudLanguage configuredLanguage)
@@ -376,12 +414,14 @@ namespace OneStrokeDemon.Presentation
         public string NextLevel { get; }
         public string MainMenu { get; }
 
+        // 获取 Get 对应的表现逻辑，使视图与只读战斗状态保持同步。
         public string Get(string textKey)
         {
             TextConfig configured = configProvider.GetText(textKey);
             string value = language == BattleHudLanguage.ZhCN
                 ? configured.ZhCN
                 : configured.EnUS;
+            // 检查视图状态、资源或生命周期边界，避免产生无效表现。
             if (string.IsNullOrWhiteSpace(value))
             {
                 throw new InvalidOperationException(

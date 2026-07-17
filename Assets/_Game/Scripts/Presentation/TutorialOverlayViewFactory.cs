@@ -7,6 +7,7 @@ using UnityEngine.UI;
 
 namespace OneStrokeDemon.Presentation
 {
+    // 定义 TutorialOverlayViewFactory 的表现层契约，隔离战斗状态与具体Unity视图实现。
     public static class TutorialOverlayViewFactory
     {
         private static readonly Color MaskColor = new Color32(4, 9, 18, 205);
@@ -15,21 +16,25 @@ namespace OneStrokeDemon.Presentation
         private static readonly Color ReviewColor = new Color32(76, 91, 111, 245);
         private static readonly Color TextColor = new Color32(245, 246, 248, 255);
 
+        // 创建 Create 对应的表现逻辑，使视图与只读战斗状态保持同步。
         public static TutorialOverlayView Create(
             IConfigProvider configProvider,
             BattleHudView hud,
             TutorialHighlightRegistry registry)
         {
+            // 检查视图状态、资源或生命周期边界，避免产生无效表现。
             if (configProvider == null)
             {
                 throw new ArgumentNullException(nameof(configProvider));
             }
 
+            // 检查视图状态、资源或生命周期边界，避免产生无效表现。
             if (hud == null)
             {
                 throw new ArgumentNullException(nameof(hud));
             }
 
+            // 检查视图状态、资源或生命周期边界，避免产生无效表现。
             if (registry == null)
             {
                 throw new ArgumentNullException(nameof(registry));
@@ -141,6 +146,7 @@ namespace OneStrokeDemon.Presentation
             return view;
         }
 
+        // 创建 CreateImage 对应的表现逻辑，使视图与只读战斗状态保持同步。
         private static RectTransform CreateImage(
             string name,
             Transform parent,
@@ -153,6 +159,7 @@ namespace OneStrokeDemon.Presentation
             return rect;
         }
 
+        // 创建 CreateFrameBorder 对应的表现逻辑，使视图与只读战斗状态保持同步。
         private static void CreateFrameBorder(
             string name,
             Transform parent,
@@ -169,6 +176,7 @@ namespace OneStrokeDemon.Presentation
             border.sizeDelta = size;
         }
 
+        // 创建 CreateButton 对应的表现逻辑，使视图与只读战斗状态保持同步。
         private static Button CreateButton(
             string name,
             Transform parent,
@@ -191,6 +199,7 @@ namespace OneStrokeDemon.Presentation
             return button;
         }
 
+        // 创建 CreateText 对应的表现逻辑，使视图与只读战斗状态保持同步。
         private static TMP_Text CreateText(
             string name,
             Transform parent,
@@ -201,6 +210,7 @@ namespace OneStrokeDemon.Presentation
             var text = rect.gameObject.AddComponent<TextMeshProUGUI>();
             TMP_FontAsset font = Resources.Load<TMP_FontAsset>(
                 BattleHudViewFactory.HudFontResourcePath);
+            // 检查视图状态、资源或生命周期边界，避免产生无效表现。
             if (font == null)
             {
                 throw new InvalidOperationException(
@@ -218,6 +228,7 @@ namespace OneStrokeDemon.Presentation
             return text;
         }
 
+        // 创建 CreateRect 对应的表现逻辑，使视图与只读战斗状态保持同步。
         private static RectTransform CreateRect(
             string name,
             Transform parent,
@@ -238,6 +249,7 @@ namespace OneStrokeDemon.Presentation
             return rect;
         }
 
+        // 设置 SetAnchored 对应的表现逻辑，使视图与只读战斗状态保持同步。
         private static void SetAnchored(
             RectTransform rect,
             Vector2 anchorMin,
@@ -253,6 +265,7 @@ namespace OneStrokeDemon.Presentation
             rect.sizeDelta = size;
         }
 
+        // 处理 Stretch 对应的表现逻辑，使视图与只读战斗状态保持同步。
         private static void Stretch(RectTransform rect)
         {
             rect.anchorMin = Vector2.zero;
@@ -261,6 +274,7 @@ namespace OneStrokeDemon.Presentation
             rect.offsetMax = Vector2.zero;
         }
 
+        // 处理 StretchWithInset 对应的表现逻辑，使视图与只读战斗状态保持同步。
         private static void StretchWithInset(RectTransform rect, float inset)
         {
             rect.anchorMin = Vector2.zero;
@@ -270,10 +284,12 @@ namespace OneStrokeDemon.Presentation
         }
     }
 
+    // 定义 TutorialOverlayRuntime 的表现层契约，隔离战斗状态与具体Unity视图实现。
     public sealed class TutorialOverlayRuntime : IDisposable
     {
         private bool disposed;
 
+        // 初始化 TutorialOverlayRuntime，并建立表现层所需的引用与初始显示状态。
         private TutorialOverlayRuntime(
             TutorialOverlayView view,
             TutorialDirector director,
@@ -290,6 +306,7 @@ namespace OneStrokeDemon.Presentation
 
         public TutorialHighlightRegistry HighlightRegistry { get; }
 
+        // 创建 Create 对应的表现逻辑，使视图与只读战斗状态保持同步。
         public static TutorialOverlayRuntime Create(
             IConfigProvider configProvider,
             TutorialLevelCoordinator coordinator,
@@ -321,8 +338,10 @@ namespace OneStrokeDemon.Presentation
             }
         }
 
+        // 释放 Dispose 对应的表现逻辑，使视图与只读战斗状态保持同步。
         public void Dispose()
         {
+            // 检查视图状态、资源或生命周期边界，避免产生无效表现。
             if (disposed)
             {
                 return;
@@ -331,6 +350,7 @@ namespace OneStrokeDemon.Presentation
             disposed = true;
             Director?.Dispose();
             Director = null;
+            // 检查视图状态、资源或生命周期边界，避免产生无效表现。
             if (View != null)
             {
                 Destroy(View.gameObject);
@@ -338,8 +358,10 @@ namespace OneStrokeDemon.Presentation
             }
         }
 
+        // 处理 Destroy 对应的表现逻辑，使视图与只读战斗状态保持同步。
         private static void Destroy(GameObject gameObject)
         {
+            // 检查视图状态、资源或生命周期边界，避免产生无效表现。
             if (Application.isPlaying)
             {
                 UnityEngine.Object.Destroy(gameObject);

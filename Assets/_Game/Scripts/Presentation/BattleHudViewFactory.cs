@@ -8,6 +8,7 @@ using UnityEngine.UI;
 
 namespace OneStrokeDemon.Presentation
 {
+    // 定义 BattleHudViewFactory 的表现层契约，隔离战斗状态与具体Unity视图实现。
     public static class BattleHudViewFactory
     {
         public const string HudFontResourcePath = "Fonts/OneStrokeDemon UI Latin SDF";
@@ -19,10 +20,12 @@ namespace OneStrokeDemon.Presentation
         private static readonly Color DangerColor = new Color32(224, 76, 82, 255);
         private static readonly Color TextColor = new Color32(245, 246, 248, 255);
 
+        // 创建 Create 对应的表现逻辑，使视图与只读战斗状态保持同步。
         public static BattleHudView Create(
             IConfigProvider configProvider,
             Transform parent = null)
         {
+            // 检查视图状态、资源或生命周期边界，避免产生无效表现。
             if (configProvider == null)
             {
                 throw new ArgumentNullException(nameof(configProvider));
@@ -38,6 +41,7 @@ namespace OneStrokeDemon.Presentation
                 typeof(CanvasScaler),
                 typeof(GraphicRaycaster),
                 typeof(BattleHudView));
+            // 检查视图状态、资源或生命周期边界，避免产生无效表现。
             if (parent != null)
             {
                 root.transform.SetParent(parent, false);
@@ -77,6 +81,7 @@ namespace OneStrokeDemon.Presentation
             return view;
         }
 
+        // 构建 BuildTopHud 对应的表现逻辑，使视图与只读战斗状态保持同步。
         private static void BuildTopHud(RectTransform parent, BattleHudViewReferences ui)
         {
             RectTransform panel = CreatePanel("TopHUD", parent, PanelColor);
@@ -117,6 +122,7 @@ namespace OneStrokeDemon.Presentation
                 new Vector2(0f, -20f), Vector2.zero, new Vector2(0.5f, 0.5f));
         }
 
+        // 构建 BuildActionHud 对应的表现逻辑，使视图与只读战斗状态保持同步。
         private static void BuildActionHud(RectTransform parent, BattleHudViewReferences ui)
         {
             RectTransform stance = CreatePanel("Stance", parent, PanelColor);
@@ -169,6 +175,7 @@ namespace OneStrokeDemon.Presentation
                 out ui.PauseButtonText);
         }
 
+        // 构建 BuildPauseOverlay 对应的表现逻辑，使视图与只读战斗状态保持同步。
         private static void BuildPauseOverlay(RectTransform parent, BattleHudViewReferences ui)
         {
             RectTransform overlay = CreatePanel("PauseOverlay", parent, OverlayColor);
@@ -188,6 +195,7 @@ namespace OneStrokeDemon.Presentation
                 out ui.ResumeButtonText);
         }
 
+        // 构建 BuildResultOverlay 对应的表现逻辑，使视图与只读战斗状态保持同步。
         private static void BuildResultOverlay(RectTransform parent, BattleHudViewReferences ui)
         {
             RectTransform overlay = CreatePanel("ResultPanel", parent, OverlayColor);
@@ -244,6 +252,7 @@ namespace OneStrokeDemon.Presentation
                 out ui.NextLevelButtonText);
         }
 
+        // 构建 BuildMainMenuButton 对应的表现逻辑，使视图与只读战斗状态保持同步。
         private static void BuildMainMenuButton(RectTransform parent, BattleHudViewReferences ui)
         {
             ui.MainMenuButton = CreateButton(
@@ -257,6 +266,7 @@ namespace OneStrokeDemon.Presentation
                 out ui.MainMenuButtonText);
         }
 
+        // 创建 CreateBar 对应的表现逻辑，使视图与只读战斗状态保持同步。
         private static HudBar CreateBar(
             string name,
             Transform parent,
@@ -283,6 +293,7 @@ namespace OneStrokeDemon.Presentation
             return new HudBar(label, value, slider);
         }
 
+        // 创建 CreateSlider 对应的表现逻辑，使视图与只读战斗状态保持同步。
         private static Slider CreateSlider(
             string name,
             Transform parent,
@@ -317,6 +328,7 @@ namespace OneStrokeDemon.Presentation
             return slider;
         }
 
+        // 创建 CreateButton 对应的表现逻辑，使视图与只读战斗状态保持同步。
         private static Button CreateButton(
             string name,
             Transform parent,
@@ -339,6 +351,7 @@ namespace OneStrokeDemon.Presentation
             return button;
         }
 
+        // 创建 CreatePanel 对应的表现逻辑，使视图与只读战斗状态保持同步。
         private static RectTransform CreatePanel(string name, Transform parent, Color color)
         {
             RectTransform rect = CreateRect(name, parent);
@@ -348,6 +361,7 @@ namespace OneStrokeDemon.Presentation
             return rect;
         }
 
+        // 创建 CreateText 对应的表现逻辑，使视图与只读战斗状态保持同步。
         private static TMP_Text CreateText(
             string name,
             Transform parent,
@@ -357,6 +371,7 @@ namespace OneStrokeDemon.Presentation
             RectTransform rect = CreateRect(name, parent);
             var text = rect.gameObject.AddComponent<TextMeshProUGUI>();
             TMP_FontAsset hudFont = Resources.Load<TMP_FontAsset>(HudFontResourcePath);
+            // 检查视图状态、资源或生命周期边界，避免产生无效表现。
             if (hudFont == null)
             {
                 throw new InvalidOperationException(
@@ -372,6 +387,7 @@ namespace OneStrokeDemon.Presentation
             return text;
         }
 
+        // 创建 CreateRect 对应的表现逻辑，使视图与只读战斗状态保持同步。
         private static RectTransform CreateRect(string name, Transform parent)
         {
             var gameObject = new GameObject(name, typeof(RectTransform));
@@ -381,6 +397,7 @@ namespace OneStrokeDemon.Presentation
             return rect;
         }
 
+        // 设置 SetAnchored 对应的表现逻辑，使视图与只读战斗状态保持同步。
         private static void SetAnchored(
             RectTransform rect,
             Vector2 anchorMin,
@@ -396,6 +413,7 @@ namespace OneStrokeDemon.Presentation
             rect.sizeDelta = size;
         }
 
+        // 处理 Stretch 对应的表现逻辑，使视图与只读战斗状态保持同步。
         private static void Stretch(RectTransform rect)
         {
             rect.anchorMin = Vector2.zero;
@@ -404,8 +422,10 @@ namespace OneStrokeDemon.Presentation
             rect.offsetMax = Vector2.zero;
         }
 
+        // 处理 EnsureEventSystem 对应的表现逻辑，使视图与只读战斗状态保持同步。
         private static void EnsureEventSystem(Transform owner)
         {
+            // 检查视图状态、资源或生命周期边界，避免产生无效表现。
             if (EventSystem.current != null)
             {
                 return;
@@ -418,9 +438,11 @@ namespace OneStrokeDemon.Presentation
             eventSystemObject.transform.SetParent(owner, false);
         }
 
+        // 处理 ReadPositiveInt 对应的表现逻辑，使视图与只读战斗状态保持同步。
         private static float ReadPositiveInt(IConfigProvider configProvider, string key)
         {
             GlobalConfig row = configProvider.GetGlobal(key);
+            // 检查视图状态、资源或生命周期边界，避免产生无效表现。
             if (!string.Equals(row.ValueType, "int", StringComparison.Ordinal) ||
                 !row.IntValue.HasValue ||
                 row.IntValue.Value <= 0L)
@@ -433,8 +455,10 @@ namespace OneStrokeDemon.Presentation
             return row.IntValue.Value;
         }
 
+        // 定义 HudBar 的表现层契约，隔离战斗状态与具体Unity视图实现。
         private readonly struct HudBar
         {
+            // 初始化 HudBar，并建立表现层所需的引用与初始显示状态。
             public HudBar(TMP_Text label, TMP_Text value, Slider slider)
             {
                 Label = label;
@@ -448,10 +472,12 @@ namespace OneStrokeDemon.Presentation
         }
     }
 
+    // 定义 BattleHudRuntime 的表现层契约，隔离战斗状态与具体Unity视图实现。
     public sealed class BattleHudRuntime : IDisposable
     {
         private bool disposed;
 
+        // 初始化 BattleHudRuntime，并建立表现层所需的引用与初始显示状态。
         private BattleHudRuntime(BattleHudView view, BattleHudPresenter presenter)
         {
             View = view;
@@ -461,6 +487,7 @@ namespace OneStrokeDemon.Presentation
         public BattleHudView View { get; private set; }
         public BattleHudPresenter Presenter { get; private set; }
 
+        // 创建 Create 对应的表现逻辑，使视图与只读战斗状态保持同步。
         public static BattleHudRuntime Create(
             IConfigProvider configProvider,
             IBattleHudStateSource stateSource,
@@ -488,8 +515,10 @@ namespace OneStrokeDemon.Presentation
             }
         }
 
+        // 释放 Dispose 对应的表现逻辑，使视图与只读战斗状态保持同步。
         public void Dispose()
         {
+            // 检查视图状态、资源或生命周期边界，避免产生无效表现。
             if (disposed)
             {
                 return;
@@ -498,6 +527,7 @@ namespace OneStrokeDemon.Presentation
             disposed = true;
             Presenter?.Dispose();
             Presenter = null;
+            // 检查视图状态、资源或生命周期边界，避免产生无效表现。
             if (View != null)
             {
                 Destroy(View.gameObject);
@@ -505,8 +535,10 @@ namespace OneStrokeDemon.Presentation
             }
         }
 
+        // 处理 Destroy 对应的表现逻辑，使视图与只读战斗状态保持同步。
         private static void Destroy(GameObject gameObject)
         {
+            // 检查视图状态、资源或生命周期边界，避免产生无效表现。
             if (Application.isPlaying)
             {
                 UnityEngine.Object.Destroy(gameObject);

@@ -6,6 +6,7 @@ using UnityEngine;
 namespace OneStrokeDemon.Presentation
 {
     [DisallowMultipleComponent]
+    // 定义 DamageNumberPoolItem 的表现层契约，隔离战斗状态与具体Unity视图实现。
     public sealed class DamageNumberPoolItem : MonoBehaviour, IPoolable
     {
         private Transform poolParent;
@@ -40,14 +41,17 @@ namespace OneStrokeDemon.Presentation
 
         public TextMeshPro TextMesh => textMesh;
 
+        // 处理 ConfigureVisual 对应的表现逻辑，使视图与只读战斗状态保持同步。
         public void ConfigureVisual(TMP_FontAsset fontAsset)
         {
+            // 检查视图状态、资源或生命周期边界，避免产生无效表现。
             if (fontAsset == null)
             {
                 throw new ArgumentNullException(nameof(fontAsset));
             }
 
             textMesh = GetComponent<TextMeshPro>();
+            // 检查视图状态、资源或生命周期边界，避免产生无效表现。
             if (textMesh == null)
             {
                 textMesh = gameObject.AddComponent<TextMeshPro>();
@@ -59,6 +63,7 @@ namespace OneStrokeDemon.Presentation
             textMesh.sortingOrder = 100;
         }
 
+        // 显示 Show 对应的表现逻辑，使视图与只读战斗状态保持同步。
         public void Show(long displayedAmount, int displayedTargetId, string displayedSourceId, Vector3 worldPosition)
         {
             Show(
@@ -72,6 +77,7 @@ namespace OneStrokeDemon.Presentation
                 0f);
         }
 
+        // 显示 Show 对应的表现逻辑，使视图与只读战斗状态保持同步。
         public void Show(
             long displayedAmount,
             int displayedTargetId,
@@ -94,6 +100,7 @@ namespace OneStrokeDemon.Presentation
                 configuredRiseWorldUnits);
         }
 
+        // 显示 Show 对应的表现逻辑，使视图与只读战斗状态保持同步。
         public void Show(
             long displayedAmount,
             int displayedTargetId,
@@ -105,12 +112,14 @@ namespace OneStrokeDemon.Presentation
             float lifeSeconds,
             float configuredRiseWorldUnits)
         {
+            // 检查视图状态、资源或生命周期边界，避免产生无效表现。
             if (!IsPoolActive)
             {
                 throw new InvalidOperationException(
                     "Damage number must hold a pool lease before it can be shown.");
             }
 
+            // 检查视图状态、资源或生命周期边界，避免产生无效表现。
             if (displayedAmount == 0L)
             {
                 throw new ArgumentOutOfRangeException(
@@ -118,6 +127,7 @@ namespace OneStrokeDemon.Presentation
                     "Displayed damage amount must be non-zero.");
             }
 
+            // 检查视图状态、资源或生命周期边界，避免产生无效表现。
             if (displayedTargetId == 0)
             {
                 throw new ArgumentOutOfRangeException(
@@ -125,6 +135,7 @@ namespace OneStrokeDemon.Presentation
                     "Displayed damage target id must be non-zero.");
             }
 
+            // 检查视图状态、资源或生命周期边界，避免产生无效表现。
             if (string.IsNullOrWhiteSpace(displayedSourceId))
             {
                 throw new ArgumentException(
@@ -134,6 +145,7 @@ namespace OneStrokeDemon.Presentation
 
             ValidateVector(worldPosition, nameof(worldPosition));
             ValidatePositive(fontSize, nameof(fontSize));
+            // 检查视图状态、资源或生命周期边界，避免产生无效表现。
             if (float.IsNaN(fontHeightWorldUnits) ||
                 float.IsInfinity(fontHeightWorldUnits) ||
                 fontHeightWorldUnits < 0f)
@@ -142,6 +154,7 @@ namespace OneStrokeDemon.Presentation
             }
 
             ValidatePositive(lifeSeconds, nameof(lifeSeconds));
+            // 检查视图状态、资源或生命周期边界，避免产生无效表现。
             if (float.IsNaN(configuredRiseWorldUnits) ||
                 float.IsInfinity(configuredRiseWorldUnits) ||
                 configuredRiseWorldUnits < 0f)
@@ -158,11 +171,13 @@ namespace OneStrokeDemon.Presentation
             lifetimeSeconds = lifeSeconds;
             riseWorldUnits = configuredRiseWorldUnits;
             elapsedSeconds = 0f;
+            // 检查视图状态、资源或生命周期边界，避免产生无效表现。
             if (textMesh != null)
             {
                 textMesh.text = displayedAmount.ToString(System.Globalization.CultureInfo.InvariantCulture);
                 textMesh.fontSize = fontSize;
                 textMesh.color = configuredColor;
+                // 检查视图状态、资源或生命周期边界，避免产生无效表现。
                 if (fontHeightWorldUnits > 0f)
                 {
                     textMesh.ForceMeshUpdate(ignoreActiveState: false, forceTextReparsing: true);
@@ -175,13 +190,16 @@ namespace OneStrokeDemon.Presentation
             isVisible = true;
         }
 
+        // 处理 Advance 对应的表现逻辑，使视图与只读战斗状态保持同步。
         public bool Advance(float deltaSeconds)
         {
+            // 检查视图状态、资源或生命周期边界，避免产生无效表现。
             if (float.IsNaN(deltaSeconds) || float.IsInfinity(deltaSeconds) || deltaSeconds < 0f)
             {
                 throw new ArgumentOutOfRangeException(nameof(deltaSeconds));
             }
 
+            // 检查视图状态、资源或生命周期边界，避免产生无效表现。
             if (!isVisible)
             {
                 return false;
@@ -190,6 +208,7 @@ namespace OneStrokeDemon.Presentation
             elapsedSeconds = Mathf.Min(lifetimeSeconds, elapsedSeconds + deltaSeconds);
             float progress = Mathf.Clamp01(elapsedSeconds / lifetimeSeconds);
             transform.position = startPosition + (Vector3.up * riseWorldUnits * progress);
+            // 检查视图状态、资源或生命周期边界，避免产生无效表现。
             if (textMesh != null)
             {
                 Color fading = configuredColor;
@@ -200,13 +219,16 @@ namespace OneStrokeDemon.Presentation
             return HasCompleted;
         }
 
+        // 处理 AcquireFromPool 对应的表现逻辑，使视图与只读战斗状态保持同步。
         public void AcquireFromPool(in PoolLease lease)
         {
+            // 检查视图状态、资源或生命周期边界，避免产生无效表现。
             if (!lease.IsValid)
             {
                 throw new ArgumentException("A valid pool lease is required.", nameof(lease));
             }
 
+            // 检查视图状态、资源或生命周期边界，避免产生无效表现。
             if (poolLease.IsValid)
             {
                 throw new InvalidOperationException("Damage number already holds a pool lease.");
@@ -216,20 +238,24 @@ namespace OneStrokeDemon.Presentation
             hasPoolParent = true;
             ResetRuntimeState();
             poolLease = lease;
+            // 检查视图状态、资源或生命周期边界，避免产生无效表现。
             if (!gameObject.activeSelf)
             {
                 gameObject.SetActive(true);
             }
         }
 
+        // 处理 ReleaseToPool 对应的表现逻辑，使视图与只读战斗状态保持同步。
         public void ReleaseToPool(in PoolReleaseContext context)
         {
+            // 检查视图状态、资源或生命周期边界，避免产生无效表现。
             if (!hasPoolParent)
             {
                 poolParent = transform.parent;
                 hasPoolParent = true;
             }
 
+            // 检查视图状态、资源或生命周期边界，避免产生无效表现。
             if (context.Lease.IsValid && poolLease.IsValid && context.Lease != poolLease)
             {
                 throw new InvalidOperationException("Damage-number pool release used a stale lease.");
@@ -237,12 +263,14 @@ namespace OneStrokeDemon.Presentation
 
             ResetRuntimeState();
             poolLease = default;
+            // 检查视图状态、资源或生命周期边界，避免产生无效表现。
             if (gameObject.activeSelf)
             {
                 gameObject.SetActive(false);
             }
         }
 
+        // 重置 ResetRuntimeState 对应的表现逻辑，使视图与只读战斗状态保持同步。
         private void ResetRuntimeState()
         {
             amount = 0L;
@@ -254,6 +282,7 @@ namespace OneStrokeDemon.Presentation
             lifetimeSeconds = 1f;
             elapsedSeconds = 0f;
             riseWorldUnits = 0f;
+            // 检查视图状态、资源或生命周期边界，避免产生无效表现。
             if (textMesh != null)
             {
                 textMesh.text = string.Empty;
@@ -265,16 +294,20 @@ namespace OneStrokeDemon.Presentation
             transform.localScale = Vector3.one;
         }
 
+        // 校验 ValidatePositive 对应的表现逻辑，使视图与只读战斗状态保持同步。
         private static void ValidatePositive(float value, string parameterName)
         {
+            // 检查视图状态、资源或生命周期边界，避免产生无效表现。
             if (float.IsNaN(value) || float.IsInfinity(value) || value <= 0f)
             {
                 throw new ArgumentOutOfRangeException(parameterName);
             }
         }
 
+        // 校验 ValidateVector 对应的表现逻辑，使视图与只读战斗状态保持同步。
         private static void ValidateVector(Vector3 value, string parameterName)
         {
+            // 检查视图状态、资源或生命周期边界，避免产生无效表现。
             if (float.IsNaN(value.x) || float.IsInfinity(value.x) ||
                 float.IsNaN(value.y) || float.IsInfinity(value.y) ||
                 float.IsNaN(value.z) || float.IsInfinity(value.z))
