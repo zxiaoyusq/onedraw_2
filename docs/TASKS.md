@@ -48,8 +48,20 @@
 | T630 | P6 表现与资源 | DONE | T450, T600 | 2.0 | 接入PSD解析出的背景、主角、怪物、UI和特效作为原型资源。 |
 | T640 | P6 表现与资源 | BACKLOG | T600, T120 | 1.5 | 适配横屏比例、刘海/圆角、安全区和触控遮挡。 |
 | T650 | P6 表现与资源 | DONE | T520, T600 | 1.5 | 完成事件驱动教程遮罩、手势示意和跳过/回看。 |
-| T660 | P6 表现与资源 | REVIEW | T540, T550, T630, T650 | 3.0 | 建立生产可玩入口与Battle组合根。 |
-| T700 | P7 质量发布 | BACKLOG | T540, T660 | 2.0 | 补齐纯规则EditMode回归矩阵。 |
+| T660 | P6 表现与资源 | DONE | T540, T550, T630, T650 | 3.0 | 建立生产可玩入口与Battle组合根。 |
+| T670 | P6 代码可读性 | DONE | T660 | 0.5 | 为Core与Platform脚本补齐中文注释。 |
+| T671 | P6 代码可读性 | READY | T670 | 1.0 | 为Config手写运行时脚本补齐中文注释。 |
+| T672 | P6 代码可读性 | BACKLOG | T671 | 1.0 | 为Input脚本补齐中文注释。 |
+| T673 | P6 代码可读性 | BACKLOG | T672 | 1.0 | 为Combat脚本补齐中文注释。 |
+| T674 | P6 代码可读性 | BACKLOG | T673 | 1.5 | 为Actors脚本补齐中文注释。 |
+| T675 | P6 代码可读性 | BACKLOG | T674 | 1.0 | 为Skills脚本补齐中文注释。 |
+| T676 | P6 代码可读性 | BACKLOG | T675 | 1.5 | 为Levels脚本补齐中文注释。 |
+| T677 | P6 代码可读性 | BACKLOG | T676 | 1.5 | 为Presentation脚本补齐中文注释。 |
+| T678 | P6 代码可读性 | BACKLOG | T677 | 1.0 | 为Bootstrap脚本补齐中文注释。 |
+| T679 | P6 代码可读性 | BACKLOG | T678 | 1.0 | 为Editor脚本补齐中文注释。 |
+| T680 | P6 代码可读性 | BACKLOG | T679 | 0.5 | 通过导出器为ConfigIds生成中文注释。 |
+| T681 | P6 代码可读性 | BACKLOG | T680 | 0.5 | 审计Scripts全量中文注释覆盖。 |
+| T700 | P7 质量发布 | BACKLOG | T540, T660, T681 | 2.0 | 补齐纯规则EditMode回归矩阵。 |
 | T710 | P7 质量发布 | BACKLOG | T550, T650 | 3.0 | 补齐Unity集成、完整单局、暂停、重开和生命周期PlayMode测试。 |
 | T720 | P7 质量发布 | BACKLOG | T710, T250 | 1.0 | 审计所有玩法数值、内容和文案是否来自配置表。 |
 | T730 | P7 质量发布 | BACKLOG | T710, T630 | 3.0 | 在目标低端机收敛CPU、GC、内存、DrawCall、纹理和包体。 |
@@ -583,16 +595,55 @@
 
 ### T660 · 建立生产可玩入口与Battle组合根。
 
-- **状态：** `REVIEW`
+- **状态：** `DONE`
 - **依赖：** T540, T550, T630, T650
 - **估算：** 3.0 人日
 - **产出：** 主菜单开始按钮与配置关卡选择；跨场景启动意图；玩家、敌人、波次、战斗输入、HUD、教程、结算和导航的生产组合根。
 - **明确不做：** 不在场景/Inspector复制玩法数值或文案；不把测试夹具当生产运行时；不实现T640多设备适配、T700回归矩阵或微信平台验收。
 - **验收：** 从Bootstrap点击Play进入MainMenu；点击开始后可选择普通关或Boss关；选择后进入Battle并能通过真实划线输入造成伤害、推进波次、显示HUD/教程与结算；Restart创建全新会话，Main Menu返回正式入口。
 - **验证：** T660 EditMode；Bootstrap→MainMenu→Battle生产路径PlayMode；普通关与Boss玩家路径；Unity Editor手动点击冒烟与1920×1080截图；全量EditMode/PlayMode。
-- **当前评审：** 用户已确认主Unity可进入游戏且触控板能够产生笔迹；随后发现Battle场景的8×4开发灰盒仍处于active状态，形成中央白板，而轨迹又只在松开后短暂闪现。现已通过Unity Editor仅把`BattleGraybox`设为inactive；轨迹渲染对象移到单位变换根、单独转换参考坐标/配置宽度，并在每个被采样器接受的点到达时实时延长。配置音效映射修复继续保持。白板红→绿T660 PlayMode 3/4→4/4，专项StrokeSampling 10/10、StrokeTrail 5/5及全量EditMode 198/198、PlayMode 50/50通过；等待用户确认修复后的实际视觉后再转DONE。
+- **当前评审：** 中央白板与松开后闪线问题已修复；专项StrokeSampling 10/10、StrokeTrail 5/5、T660 PlayMode 4/4及全量EditMode 198/198、PlayMode 50/50通过。2026-07-17用户确认视觉复测通过，T660转为DONE。
 - **证据：** `artifacts/evals/T660/`
 - **提交：** `T660: add production playable battle entry`
+
+
+## P6 代码可读性
+
+> 用户要求为`Assets/_Game/Scripts`全量脚本补充中文注释。为遵守“一次一个原子任务”，手写代码按模块顺序处理，生成文件只经导出器修改。所有批次只允许增加注释，不改变运行语义。
+
+### T670 · 为Core与Platform脚本补齐中文注释。
+
+- **状态：** `DONE`
+- **依赖：** T660
+- **产出：** Core/Platform中所有手写C#的类型、方法与主要逻辑中文注释。
+- **明确不做：** 不修改运行语义、测试、配置或Unity资源。
+- **验收：** 六个脚本的公开/内部类型和每个方法均有易懂中文注释，非显而易见分支与池租约生命周期有逻辑说明。
+- **验证：** 静态注释覆盖审查；Core/ObjectPool相关EditMode；全量EditMode/PlayMode。
+- **证据：** `artifacts/evals/T670/`
+- **提交：** `T670: document core and platform scripts in Chinese`
+
+### T671–T681 · 分模块补齐其余中文注释并审计。
+
+- **状态：** T671为`READY`，T672–T681为`BACKLOG`
+- **依赖：** 按T671→T681顺序串行，首任务依赖T670。
+- **产出：** Config手写Runtime、Input、Combat、Actors、Skills、Levels、Presentation、Bootstrap、Editor、ConfigIds生成器/生成物，以及最终全量审计。
+- **明确不做：** 不把注释批次变成功能重构；不手改受管生成文件。
+- **验收：** 每个批次独立证据、回归和可回滚提交；T681最终审计覆盖`Assets/_Game/Scripts`全量C#。
+- **证据：** `artifacts/evals/T671/`至`artifacts/evals/T681/`
+
+| 任务 | 状态 | 依赖 | 原子范围 |
+|---|---|---|---|
+| T671 | READY | T670 | Config手写Runtime，排除`Generated/ConfigIds.g.cs` |
+| T672 | BACKLOG | T671 | Input |
+| T673 | BACKLOG | T672 | Combat |
+| T674 | BACKLOG | T673 | Actors |
+| T675 | BACKLOG | T674 | Skills |
+| T676 | BACKLOG | T675 | Levels |
+| T677 | BACKLOG | T676 | Presentation |
+| T678 | BACKLOG | T677 | Bootstrap |
+| T679 | BACKLOG | T678 | Editor |
+| T680 | BACKLOG | T679 | ConfigExporter注释生成逻辑与重新生成`ConfigIds.g.cs` |
+| T681 | BACKLOG | T680 | `Assets/_Game/Scripts`全量覆盖审计与最终回归 |
 
 
 ## P7 质量发布

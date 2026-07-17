@@ -1,8 +1,8 @@
 project: OneStrokeDemon
 project_cn: 一笔镇妖
 plan_generated: 2026-07-11
-current_task: T660
-current_task_status: REVIEW
+current_task: T671
+current_task_status: READY
 unity:
   project_root: .
   preferred_family: "6000.5"
@@ -732,7 +732,7 @@ tutorial_presentation:
   perceptual_screenshot_sha256: 86587e44620e6064e197cb4bb7b3fd1ad159b33a0af6b8d3a4531c6f8603599f
   perceptual_resolution: 1920x1080_Metal
 production_playable_entry:
-  status: review_post_visual_fix_confirmation_pending
+  status: pass
   main_menu_root: MainMenuCompositionRoot
   battle_root: BattleCompositionRoot
   scene_root_policy: editor_authored_identity_transform_with_owned_runtime_children
@@ -755,10 +755,26 @@ production_playable_entry:
   screenshot_resolution: 1920x1080_Metal
   live_trail_review_screenshot: artifacts/evals/T660/production-live-trail-review-2026-07-15.jpg
   live_trail_review_screenshot_sha256: 289d97a907f6846371778f58e3e15d7e5ded0a5306ddd891923acd1294fd3f95
-  manual_editor_click: user_confirmed_entry_and_trackpad_input_post_visual_fix_confirmation_pending
+  manual_editor_click: user_confirmed_entry_trackpad_input_and_post_visual_fix
+code_commenting:
+  status: in_progress
+  requested_scope: Assets/_Game/Scripts_all_csharp
+  baseline_files: 147
+  baseline_lines: 31727
+  policy: chinese_type_method_and_major_logic_comments_without_runtime_semantic_changes
+  generated_file_policy: ConfigIds_g_cs_via_exporter_only
+  completed_tasks: [T670]
+  completed_modules: [Core, Platform]
+  completed_files: 6
+  completed_baseline_lines: 897
+  current_task: T671
+  current_module: Config_handwritten_runtime
+  focused_editmode_tests: 5
+  full_editmode_tests: 198
+  full_playmode_tests: 50
 manual_gates:
   unity_editor_smoke: pass
-  t660_production_manual_click: review_post_visual_fix_confirmation_pending
+  t660_production_manual_click: pass
   standard_web_build: pass_with_known_issues
   wechat_sdk_source_verified: pass_with_local_patch
   wechat_conversion: pass_with_known_issues
@@ -802,9 +818,9 @@ wechat_conversion:
 execution_order:
   deferred_tasks: [T120, T130]
   deferral_reason: user_prioritized_main_game_content_over_wechat_devtools_device_and_packaging_work
-  next_content_task: T660
+  next_content_task: T671
   paused_content_task: T700
-  reprioritization_reason: production_scenes_lack_player_clickable_main_menu_and_battle_composition_root
+  reprioritization_reason: user_requested_full_chinese_comments_before_quality_release_tasks
   resume_platform_before: [T640, T750]
 workflow:
   config_verify_command: Tools/CI/verify-config.sh

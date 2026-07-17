@@ -1,9 +1,9 @@
 # PROGRESS
 
-- 日期：2026-07-15
-- 当前成熟度：生产入口与触控板输入已由用户确认；中央白块和松开后闪线的轨迹渲染缺陷已修复并通过全量回归，等待用户确认修复后的实际视觉
-- 当前任务：T660
-- 状态：REVIEW
+- 日期：2026-07-17
+- 当前成熟度：T660生产入口与轨迹视觉已由用户确认通过；全量C#中文注释工作已拆为原子批次，Core/Platform首批完成
+- 当前任务：T671
+- 状态：READY
 - Unity精确版本：6000.5.1f1（已由ProjectVersion.txt与本机安装核验）
 - 微信SDK来源或版本：官方 `minigame-tuanjie-transform-sdk` v0.1.33 / commit `ed4ad28f433c6b52b5fd3f22a6fa155a0c98c228` / embedded最小补丁
 - Active Scene：Assets/_Game/Scenes/Bootstrap.unity
@@ -11,9 +11,12 @@
 
 ## 进行中
 
-- T660仍是唯一`REVIEW`任务。用户已在主Unity确认生产入口与Mac触控板输入可用，随后报告中央持续白板和只能看到粗白光闪烁。无遮挡现场证明白板是Battle场景仍启用的8×4开发灰盒`BattleGraybox`；轨迹则另有只在完成后显示、渲染器继承非等比参考层的问题。修复后灰盒由Unity Editor设为inactive，主Editor冻结复查确认渲染对象单位缩放、世界坐标4点连续轨迹、配置18参考像素换算宽度约0.177且画面无白板。等待用户确认最终视觉；T700继续`BACKLOG`，不能在T660转为DONE前启动；T640仍依赖已延期且BLOCKED的T120。
+- T671是唯一`READY`任务，范围为Config手写Runtime脚本，不包括受管生成的`ConfigIds.g.cs`。T672–T681按Input、Combat、Actors、Skills、Levels、Presentation、Bootstrap、Editor、生成器和全量审计串行处理；T700在T681完成前保持`BACKLOG`。
 
 ## 已完成
+
+- T670：为Core/Platform共6个手写C#脚本、897行基线代码补充中文类型、方法、属性和主要逻辑注释；重点说明对象池共享容量、世代租约、最旧复用、异常回滚和Web冒烟探针。脚本差异仅251行注释新增、删除0行，未改运行语义。配置只读漂移门、ConfigExporter 58/58、T440专项EditMode 5/5、全量EditMode 198/198和PlayMode 50/50通过。Unity测试引发的TMP材质序列化漂移已恢复到Git基线，用户`AGENTS.md`改动全程未修改/未暂存。
+- T660：2026-07-17用户确认中央白板与轨迹实时显示修复后的视觉复测通过，状态由REVIEW转为DONE。
 
 - T660：新增配置驱动生产主菜单、关卡锁定/选择和跨场景启动意图；Battle生产会话组合现有Player、Enemy、Wave、PointerInput、Damage/Combo/Score/Skill、HUD、Tutorial/Boss、Feedback、Result与Navigation。主菜单和Battle由Unity Editor保存到独立单位变换场景根，避免继承灰盒`8×4`缩放；会话保留父子所有权，修复场景卸载时反馈池对象先销毁后释放的异常。
 - T660：HUD新增架势切换按钮意图并沿既有`StanceService/SkillService`执行；Editor/Web进度适配通过`IProgressSaveStore`使用T550版本化JSON与PlayerPrefs，不进入Gameplay规则或直接调用微信SDK。Restart创建新会话，主菜单返回正式入口，普通关/Boss选择继续服从配置进度解锁。
@@ -229,7 +232,7 @@
 6. 长Web构建后Unity MCP实例桥接未自动恢复，见BUG-0003；Unity batch测试与Web运行未受影响。
 7. PSD主角和怪物大多为单张Sprite；T610两个静态TMP资产约2.78MB，实际Web压缩包、运行内存和真机触摸延迟仍需T730及平台门验证。
 8. T630已替换18个Sprite和40个Prefab视觉占位，但17个AudioClip仍使用T240静音占位；单帧角色尚无正式动画或逐对象身体碰撞，ImageGen补图与PSD原画的细节密度存在差异，全部美术仅获原型授权，不能外推为发布品质。
-9. 三个MVP关卡已接入生产主菜单和Battle组合根；自动化生产按钮/真实输入路径与1920×1080图形截图通过，但当前主Unity Editor无MCP连接且Computer Use不可用，人手窗口点击尚未确认。`IProgressSaveStore`与震动仍待T130平台适配，T640多比例/安全区又依赖T120，因此当前证据不能外推为平台持久化、多设备布局或真机体验。
+9. 三个MVP关卡已接入生产主菜单和Battle组合根，用户已确认Unity Editor入口、Mac触控板笔迹与修复后视觉。`IProgressSaveStore`与震动仍待T130平台适配，T640多比例/安全区又依赖T120，因此当前证据不能外推为平台持久化、多设备布局或真机体验。
 ## 下一步
 
-只评审T660：在主工程Unity Editor打开Bootstrap，点击Play→开始游戏→幽菌古道并划线命中首个敌人；确认HUD/教程/结算/重开可见后把T660转DONE，再将T700置READY。确认前不启动T700/T710或依赖T120的T640，也不恢复T120/T130。
+执行T671：只为Config手写Runtime脚本补齐中文注释，不手改`Generated/ConfigIds.g.cs`，不改配置或运行语义。完成证据和独立提交后才将T672置READY。

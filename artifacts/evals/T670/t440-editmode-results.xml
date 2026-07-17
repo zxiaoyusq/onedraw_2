@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="5" result="Passed" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-07-17 02:33:52Z" end-time="2026-07-17 02:33:52Z" duration="0.2189478">
+  <test-suite type="TestSuite" id="1000" name="onedraw_2" fullname="onedraw_2" runstate="Runnable" testcasecount="198" result="Passed" start-time="2026-07-17 02:33:52Z" end-time="2026-07-17 02:33:52Z" duration="0.218948" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="EditMode" />
+    </properties>
+    <test-suite type="Assembly" id="1241" name="OneStrokeDemon.Tests.EditMode.dll" fullname="/Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/Library/ScriptAssemblies/OneStrokeDemon.Tests.EditMode.dll" runstate="Runnable" testcasecount="198" result="Passed" start-time="2026-07-17 02:33:52Z" end-time="2026-07-17 02:33:52Z" duration="0.214480" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="47185" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="EditMode" />
+        <property name="EditorOnly" value="True" />
+      </properties>
+      <test-suite type="TestSuite" id="1242" name="OneStrokeDemon" fullname="OneStrokeDemon" runstate="Runnable" testcasecount="198" result="Passed" start-time="2026-07-17 02:33:52Z" end-time="2026-07-17 02:33:52Z" duration="0.207917" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1243" name="Tests" fullname="OneStrokeDemon.Tests" runstate="Runnable" testcasecount="198" result="Passed" start-time="2026-07-17 02:33:52Z" end-time="2026-07-17 02:33:52Z" duration="0.206359" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestSuite" id="1244" name="EditMode" fullname="OneStrokeDemon.Tests.EditMode" runstate="Runnable" testcasecount="198" result="Passed" start-time="2026-07-17 02:33:52Z" end-time="2026-07-17 02:33:52Z" duration="0.205087" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-suite type="TestSuite" id="1259" name="T440" fullname="OneStrokeDemon.Tests.EditMode.T440" runstate="Runnable" testcasecount="5" result="Passed" start-time="2026-07-17 02:33:52Z" end-time="2026-07-17 02:33:52Z" duration="0.202691" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-suite type="TestFixture" id="1108" name="PoolResetTests" fullname="OneStrokeDemon.Tests.EditMode.T440.PoolResetTests" classname="OneStrokeDemon.Tests.EditMode.T440.PoolResetTests" runstate="Runnable" testcasecount="5" result="Passed" start-time="2026-07-17 02:33:52Z" end-time="2026-07-17 02:33:52Z" duration="0.202104" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
+                <properties>
+                  <property name="Category" value="T440" />
+                </properties>
+                <test-case id="1113" name="ConfigurationMapsAllFourFamiliesAndConfiguredPrewarmValues" fullname="OneStrokeDemon.Tests.EditMode.T440.PoolResetTests.ConfigurationMapsAllFourFamiliesAndConfiguredPrewarmValues" methodname="ConfigurationMapsAllFourFamiliesAndConfiguredPrewarmValues" classname="OneStrokeDemon.Tests.EditMode.T440.PoolResetTests" runstate="Runnable" seed="257203807" result="Passed" start-time="2026-07-17 02:33:52Z" end-time="2026-07-17 02:33:52Z" duration="0.106137" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1112" name="LeakReportNamesActiveLeasesAndRestartInvalidatesAllOfThem" fullname="OneStrokeDemon.Tests.EditMode.T440.PoolResetTests.LeakReportNamesActiveLeasesAndRestartInvalidatesAllOfThem" methodname="LeakReportNamesActiveLeasesAndRestartInvalidatesAllOfThem" classname="OneStrokeDemon.Tests.EditMode.T440.PoolResetTests" runstate="Runnable" seed="268494834" result="Passed" start-time="2026-07-17 02:33:52Z" end-time="2026-07-17 02:33:52Z" duration="0.022562" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1109" name="RejectPolicyPrewarmsAndNeverExceedsSharedFamilyCapacity" fullname="OneStrokeDemon.Tests.EditMode.T440.PoolResetTests.RejectPolicyPrewarmsAndNeverExceedsSharedFamilyCapacity" methodname="RejectPolicyPrewarmsAndNeverExceedsSharedFamilyCapacity" classname="OneStrokeDemon.Tests.EditMode.T440.PoolResetTests" runstate="Runnable" seed="1764681871" result="Passed" start-time="2026-07-17 02:33:52Z" end-time="2026-07-17 02:33:52Z" duration="0.017281" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1111" name="ReleaseRejectsStaleAndDoubleLeaseWithoutTouchingCurrentItem" fullname="OneStrokeDemon.Tests.EditMode.T440.PoolResetTests.ReleaseRejectsStaleAndDoubleLeaseWithoutTouchingCurrentItem" methodname="ReleaseRejectsStaleAndDoubleLeaseWithoutTouchingCurrentItem" classname="OneStrokeDemon.Tests.EditMode.T440.PoolResetTests" runstate="Runnable" seed="264533896" result="Passed" start-time="2026-07-17 02:33:52Z" end-time="2026-07-17 02:33:52Z" duration="0.024612" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1110" name="ReuseOldestPolicyFullyReleasesOldestAcrossFamilyBeforeAcquire" fullname="OneStrokeDemon.Tests.EditMode.T440.PoolResetTests.ReuseOldestPolicyFullyReleasesOldestAcrossFamilyBeforeAcquire" methodname="ReuseOldestPolicyFullyReleasesOldestAcrossFamilyBeforeAcquire" classname="OneStrokeDemon.Tests.EditMode.T440.PoolResetTests" runstate="Runnable" seed="580506723" result="Passed" start-time="2026-07-17 02:33:52Z" end-time="2026-07-17 02:33:52Z" duration="0.024182" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                  <output><![CDATA[<b><color=#2EA3FF>MCP-FOR-UNITY</color></b>: [TestRunnerNoThrottle] Restored Interaction Mode after test run.
+Saving results to: /Users/cqmizhangxiaoyu2/Library/Application Support/DefaultCompany/onedraw_2/TestResults.xml
+]]></output>
+                </test-case>
+              </test-suite>
+            </test-suite>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>
