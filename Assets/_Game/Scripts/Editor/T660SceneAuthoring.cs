@@ -27,6 +27,7 @@ namespace OneStrokeDemon.Editor
             Debug.Log("T660_SCENE_AUTHORING_PASS scenes=MainMenu,Battle");
         }
 
+        // 打开指定生产场景并确保只保留一个目标类型的组合根，避免重复装配入口。
         private static void EnsureProductionRoot<T>(string path, string rootName)
             where T : Component
         {

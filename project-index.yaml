@@ -1,7 +1,7 @@
 project: OneStrokeDemon
 project_cn: 一笔镇妖
 plan_generated: 2026-07-11
-current_task: T681
+current_task: T700
 current_task_status: READY
 unity:
   project_root: .
@@ -757,14 +757,14 @@ production_playable_entry:
   live_trail_review_screenshot_sha256: 289d97a907f6846371778f58e3e15d7e5ded0a5306ddd891923acd1294fd3f95
   manual_editor_click: user_confirmed_entry_trackpad_input_and_post_visual_fix
 code_commenting:
-  status: in_progress
+  status: complete
   requested_scope: Assets/_Game/Scripts_all_csharp
   baseline_files: 147
   baseline_lines: 31727
   policy: chinese_type_method_and_major_logic_comments_without_runtime_semantic_changes
   generated_file_policy: ConfigIds_g_cs_via_exporter_only
-  completed_tasks: [T670, T671, T672, T673, T674, T675, T676, T677, T678, T679, T680]
-  completed_modules: [Core, Platform, Config, Input, Combat, Actors, Skills, Levels, Presentation, Bootstrap, Editor, ConfigIdsGenerated]
+  completed_tasks: [T670, T671, T672, T673, T674, T675, T676, T677, T678, T679, T680, T681]
+  completed_modules: [Core, Platform, Config, Input, Combat, Actors, Skills, Levels, Presentation, Bootstrap, Editor, ConfigIdsGenerated, FullAudit]
   completed_files: 147
   completed_baseline_lines: 31727
   current_task: T681
@@ -773,6 +773,12 @@ code_commenting:
   focused_playmode_tests: 3
   full_editmode_tests: 198
   full_playmode_tests: 50
+  audited_current_lines: 35744
+  audited_types: 478
+  audited_methods: 1314
+  missing_chinese_files: 0
+  missing_type_comments: 0
+  missing_method_comments: 0
 manual_gates:
   unity_editor_smoke: pass
   t660_production_manual_click: pass
@@ -819,9 +825,9 @@ wechat_conversion:
 execution_order:
   deferred_tasks: [T120, T130]
   deferral_reason: user_prioritized_main_game_content_over_wechat_devtools_device_and_packaging_work
-  next_content_task: T681
-  paused_content_task: T700
-  reprioritization_reason: user_requested_full_chinese_comments_before_quality_release_tasks
+  next_content_task: T700
+  paused_content_task: none
+  reprioritization_reason: user_requested_full_chinese_comments_completed
   resume_platform_before: [T640, T750]
 workflow:
   config_verify_command: Tools/CI/verify-config.sh
