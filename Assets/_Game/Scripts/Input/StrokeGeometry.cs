@@ -4,8 +4,10 @@ using UnityEngine;
 
 namespace OneStrokeDemon.Input
 {
+    /// <summary>提供确定性的笔迹简化、重采样和几何指标计算纯规则。</summary>
     public static class StrokeGeometry
     {
+        /// <summary>按设置执行 RDP 与必要重采样，并从同一点集创建完整几何快照。</summary>
         public static StrokeGeometryData Process(
             StrokeData stroke,
             StrokeGeometrySettings settings)
@@ -15,6 +17,7 @@ namespace OneStrokeDemon.Input
                 throw new ArgumentNullException(nameof(stroke));
             }
 
+            // 先去重并简化；只有仍超过配置上限时才按弧长等距重采样。
             Vector2[] processedPoints = SimplifyRdp(
                 stroke.Points,
                 settings.RdpEpsilonReferencePixels);
@@ -25,6 +28,7 @@ namespace OneStrokeDemon.Input
                     settings.MaximumProcessedPointCount);
             }
 
+            // 视觉、识别和命中共享该处理后数组及由它计算的全部指标。
             float length = CalculateLengthCore(processedPoints);
             CalculateCurvatureCore(
                 processedPoints,
@@ -43,6 +47,7 @@ namespace OneStrokeDemon.Input
                 totalCurvature);
         }
 
+        /// <summary>使用点到线段距离的迭代 RDP 算法简化点集并精确保留首尾。</summary>
         public static Vector2[] SimplifyRdp(
             IReadOnlyList<Vector2> points,
             float epsilonReferencePixels)
@@ -54,6 +59,7 @@ namespace OneStrokeDemon.Input
                 return uniquePoints;
             }
 
+            // 用显式范围栈代替递归，避免长笔迹造成调用栈增长。
             int lastIndex = uniquePoints.Length - 1;
             var keep = new bool[uniquePoints.Length];
             var rangeStack = new int[uniquePoints.Length * 2];
@@ -81,6 +87,7 @@ namespace OneStrokeDemon.Input
                     }
                 }
 
+                // 小于或等于 epsilon 的中间点都可删除；超过时保留最远点并拆分区间。
                 if (farthestIndex < 0 || farthestDistanceSquared <= epsilonSquared)
                 {
                     continue;
@@ -113,6 +120,7 @@ namespace OneStrokeDemon.Input
             return result;
         }
 
+        /// <summary>沿累计弧长等距重采样为目标点数，并精确保留首尾点。</summary>
         public static Vector2[] Resample(
             IReadOnlyList<Vector2> points,
             int targetPointCount)
@@ -130,6 +138,7 @@ namespace OneStrokeDemon.Input
                 return uniquePoints;
             }
 
+            // 累计长度允许用单调目标距离在线性时间内定位每个输出点所在段。
             var cumulativeLengths = new float[uniquePoints.Length];
             for (int index = 1; index < uniquePoints.Length; index++)
             {
@@ -170,35 +179,41 @@ namespace OneStrokeDemon.Input
             return result;
         }
 
+        /// <summary>验证点集并计算相邻点欧氏距离总和。</summary>
         public static float CalculateLength(IReadOnlyList<Vector2> points)
         {
             ValidatePoints(points);
             return CalculateLengthCore(points);
         }
 
+        /// <summary>验证点集并计算轴对齐参考像素包围盒。</summary>
         public static Rect CalculateBounds(IReadOnlyList<Vector2> points)
         {
             ValidatePoints(points);
             return CalculateBoundsCore(points);
         }
 
+        /// <summary>验证点集并用隐式闭合鞋带公式计算带方向面积。</summary>
         public static float CalculateSignedArea(IReadOnlyList<Vector2> points)
         {
             ValidatePoints(points);
             return CalculateSignedAreaCore(points);
         }
 
+        /// <summary>计算不区分顺逆时针的绝对面积。</summary>
         public static float CalculateArea(IReadOnlyList<Vector2> points)
         {
             return Math.Abs(CalculateSignedArea(points));
         }
 
+        /// <summary>验证点集并计算首尾点直线距离。</summary>
         public static float CalculateClosureDistance(IReadOnlyList<Vector2> points)
         {
             ValidatePoints(points);
             return CalculateClosureDistanceCore(points);
         }
 
+        /// <summary>计算首尾距离与路径长度之比；零长度返回零。</summary>
         public static float CalculateClosureRatio(IReadOnlyList<Vector2> points)
         {
             ValidatePoints(points);
@@ -206,6 +221,7 @@ namespace OneStrokeDemon.Input
             return length > 0f ? CalculateClosureDistanceCore(points) / length : 0f;
         }
 
+        /// <summary>计算保留左右转向符号的累计转角弧度。</summary>
         public static float CalculateSignedCurvatureRadians(IReadOnlyList<Vector2> points)
         {
             ValidatePoints(points);
@@ -213,6 +229,7 @@ namespace OneStrokeDemon.Input
             return signedCurvature;
         }
 
+        /// <summary>计算不区分转向的累计绝对转角弧度。</summary>
         public static float CalculateTotalCurvatureRadians(IReadOnlyList<Vector2> points)
         {
             ValidatePoints(points);
@@ -220,11 +237,13 @@ namespace OneStrokeDemon.Input
             return totalCurvature;
         }
 
+        /// <summary>计算累计绝对转角除以 π 的归一化曲率。</summary>
         public static float CalculateNormalizedCurvature(IReadOnlyList<Vector2> points)
         {
             return CalculateTotalCurvatureRadians(points) / Mathf.PI;
         }
 
+        /// <summary>验证点集并移除连续重复点，不合并路径中非相邻的同坐标点。</summary>
         private static Vector2[] CopyWithoutConsecutiveDuplicates(IReadOnlyList<Vector2> points)
         {
             ValidatePoints(points);
@@ -256,6 +275,7 @@ namespace OneStrokeDemon.Input
             return trimmed;
         }
 
+        /// <summary>在已验证点集上以双精度累计路径长度。</summary>
         private static float CalculateLengthCore(IReadOnlyList<Vector2> points)
         {
             double totalLength = 0d;
@@ -269,6 +289,7 @@ namespace OneStrokeDemon.Input
             return (float)totalLength;
         }
 
+        /// <summary>在已验证点集上计算包围盒；空集返回零矩形。</summary>
         private static Rect CalculateBoundsCore(IReadOnlyList<Vector2> points)
         {
             if (points.Count == 0)
@@ -292,6 +313,7 @@ namespace OneStrokeDemon.Input
             return Rect.MinMaxRect(minimumX, minimumY, maximumX, maximumY);
         }
 
+        /// <summary>在已验证点集上计算隐式闭合带方向面积。</summary>
         private static float CalculateSignedAreaCore(IReadOnlyList<Vector2> points)
         {
             if (points.Count < 3)
@@ -310,11 +332,13 @@ namespace OneStrokeDemon.Input
             return (float)(twiceArea * 0.5d);
         }
 
+        /// <summary>在已验证点集上计算首尾距离。</summary>
         private static float CalculateClosureDistanceCore(IReadOnlyList<Vector2> points)
         {
             return points.Count > 1 ? Vector2.Distance(points[0], points[points.Count - 1]) : 0f;
         }
 
+        /// <summary>跳过零长度段，累计相邻有效段之间的有向和绝对转角。</summary>
         private static void CalculateCurvatureCore(
             IReadOnlyList<Vector2> points,
             out float signedCurvature,
@@ -332,6 +356,7 @@ namespace OneStrokeDemon.Input
                     continue;
                 }
 
+                // Atan2(叉积, 点积)同时得到稳定转向符号和 [-π, π] 最短夹角。
                 if (hasPreviousSegment)
                 {
                     double cross = (double)previousSegment.x * segment.y -
@@ -351,6 +376,7 @@ namespace OneStrokeDemon.Input
             totalCurvature = (float)absoluteTotal;
         }
 
+        /// <summary>计算点到有限线段最近点的平方距离。</summary>
         private static float DistanceToSegmentSquared(Vector2 point, Vector2 start, Vector2 end)
         {
             Vector2 segment = end - start;
@@ -366,6 +392,7 @@ namespace OneStrokeDemon.Input
             return (point - closest).sqrMagnitude;
         }
 
+        /// <summary>把至少包含一个中间点的索引范围压入 RDP 显式栈。</summary>
         private static void PushRange(int[] stack, ref int stackCount, int startIndex, int endIndex)
         {
             if (endIndex - startIndex <= 1)
@@ -377,6 +404,7 @@ namespace OneStrokeDemon.Input
             stack[stackCount++] = endIndex;
         }
 
+        /// <summary>以后进先出顺序弹出一个 RDP 索引范围。</summary>
         private static void PopRange(
             int[] stack,
             ref int stackCount,
@@ -387,6 +415,7 @@ namespace OneStrokeDemon.Input
             startIndex = stack[--stackCount];
         }
 
+        /// <summary>验证几何容差有限且非负。</summary>
         private static void ValidateTolerance(float tolerance, string parameterName)
         {
             if (float.IsNaN(tolerance) || float.IsInfinity(tolerance) || tolerance < 0f)
@@ -397,6 +426,7 @@ namespace OneStrokeDemon.Input
             }
         }
 
+        /// <summary>验证点集存在且每个坐标分量均为有限值。</summary>
         private static void ValidatePoints(IReadOnlyList<Vector2> points)
         {
             if (points == null)

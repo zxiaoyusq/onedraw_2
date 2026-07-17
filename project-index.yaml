@@ -1,7 +1,7 @@
 project: OneStrokeDemon
 project_cn: 一笔镇妖
 plan_generated: 2026-07-11
-current_task: T672
+current_task: T673
 current_task_status: READY
 unity:
   project_root: .
@@ -763,14 +763,14 @@ code_commenting:
   baseline_lines: 31727
   policy: chinese_type_method_and_major_logic_comments_without_runtime_semantic_changes
   generated_file_policy: ConfigIds_g_cs_via_exporter_only
-  completed_tasks: [T670, T671]
-  completed_modules: [Core, Platform, Config]
-  completed_files: 28
-  completed_baseline_lines: 3010
-  current_task: T672
-  current_module: Input
-  focused_editmode_tests: 19
-  focused_playmode_tests: 3
+  completed_tasks: [T670, T671, T672]
+  completed_modules: [Core, Platform, Config, Input]
+  completed_files: 47
+  completed_baseline_lines: 5407
+  current_task: T673
+  current_module: Combat
+  focused_editmode_tests: 41
+  focused_playmode_tests: 10
   full_editmode_tests: 198
   full_playmode_tests: 50
 manual_gates:
@@ -819,7 +819,7 @@ wechat_conversion:
 execution_order:
   deferred_tasks: [T120, T130]
   deferral_reason: user_prioritized_main_game_content_over_wechat_devtools_device_and_packaging_work
-  next_content_task: T672
+  next_content_task: T673
   paused_content_task: T700
   reprioritization_reason: user_requested_full_chinese_comments_before_quality_release_tasks
   resume_platform_before: [T640, T750]
