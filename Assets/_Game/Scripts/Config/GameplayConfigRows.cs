@@ -3,9 +3,11 @@ using JsonRequired = Newtonsoft.Json.Required;
 
 namespace OneStrokeDemon.Config
 {
+    /// <summary>描述一个全局键值及其类型、单位和用途。</summary>
     [JsonObject(MemberSerialization.OptIn)]
     public sealed class GlobalConfig
     {
+        // 属性与导出 JSON 字段一一对应；字段约束和单位以 CONFIG_SCHEMA 为准。
         [JsonProperty("key", Required = JsonRequired.Always)] public string Key { get; private set; } = string.Empty;
         [JsonProperty("valueType", Required = JsonRequired.Always)] public string ValueType { get; private set; } = string.Empty;
         [JsonProperty("intValue", Required = JsonRequired.AllowNull)] public long? IntValue { get; private set; }
@@ -16,9 +18,11 @@ namespace OneStrokeDemon.Config
         [JsonProperty("description", Required = JsonRequired.Always)] public string Description { get; private set; } = string.Empty;
     }
 
+    /// <summary>描述玩家的基础生命、能量、默认架势和资源引用。</summary>
     [JsonObject(MemberSerialization.OptIn)]
     public sealed class PlayerConfig
     {
+        // 私有写入仅供严格 JSON 反序列化，运行时通过只读属性消费配置。
         [JsonProperty("playerId", Required = JsonRequired.Always)] public string PlayerId { get; private set; } = string.Empty;
         [JsonProperty("displayNameKey", Required = JsonRequired.Always)] public string DisplayNameKey { get; private set; } = string.Empty;
         [JsonProperty("maxHp", Required = JsonRequired.Always)] public long MaxHp { get; private set; }
@@ -29,9 +33,11 @@ namespace OneStrokeDemon.Config
         [JsonProperty("assetKey", Required = JsonRequired.Always)] public string AssetKey { get; private set; } = string.Empty;
     }
 
+    /// <summary>描述一种战斗架势及其伤害、笔宽和切换参数。</summary>
     [JsonObject(MemberSerialization.OptIn)]
     public sealed class StanceConfig
     {
+        // 所有数值均来自配置导出物，代码和 Inspector 不保存重复兜底值。
         [JsonProperty("stanceId", Required = JsonRequired.Always)] public string StanceId { get; private set; } = string.Empty;
         [JsonProperty("displayNameKey", Required = JsonRequired.Always)] public string DisplayNameKey { get; private set; } = string.Empty;
         [JsonProperty("damageFormulaId", Required = JsonRequired.Always)] public string DamageFormulaId { get; private set; } = string.Empty;
@@ -44,9 +50,11 @@ namespace OneStrokeDemon.Config
         [JsonProperty("assetKey", Required = JsonRequired.Always)] public string AssetKey { get; private set; } = string.Empty;
     }
 
+    /// <summary>描述手势采样、简化、识别和命中的统一笔画规则。</summary>
     [JsonObject(MemberSerialization.OptIn)]
     public sealed class StrokeRuleConfig
     {
+        // RefPx/RefPx2 字段使用参考分辨率像素或面积，Sec/Deg 字段按名称标注单位。
         [JsonProperty("ruleId", Required = JsonRequired.Always)] public string RuleId { get; private set; } = string.Empty;
         [JsonProperty("gestureType", Required = JsonRequired.Always)] public string GestureType { get; private set; } = string.Empty;
         [JsonProperty("minPointDistanceRefPx", Required = JsonRequired.Always)] public long MinPointDistanceRefPx { get; private set; }
@@ -62,9 +70,11 @@ namespace OneStrokeDemon.Config
         [JsonProperty("hitRadiusRefPx", Required = JsonRequired.Always)] public long HitRadiusRefPx { get; private set; }
     }
 
+    /// <summary>描述一次玩家攻击的基础伤害、暴击、连击、能量和得分公式。</summary>
     [JsonObject(MemberSerialization.OptIn)]
     public sealed class DamageFormulaConfig
     {
+        // 属性保持与冻结 JSON Schema 完全一致，避免运行时产生第二套公式定义。
         [JsonProperty("formulaId", Required = JsonRequired.Always)] public string FormulaId { get; private set; } = string.Empty;
         [JsonProperty("baseDamage", Required = JsonRequired.Always)] public long BaseDamage { get; private set; }
         [JsonProperty("criticalChance", Required = JsonRequired.Always)] public float CriticalChance { get; private set; }
@@ -78,9 +88,11 @@ namespace OneStrokeDemon.Config
         [JsonProperty("scorePerDamage", Required = JsonRequired.Always)] public float ScorePerDamage { get; private set; }
     }
 
+    /// <summary>描述护甲破除所需手势、架势和错误输入反馈。</summary>
     [JsonObject(MemberSerialization.OptIn)]
     public sealed class DefenseRuleConfig
     {
+        // 空字符串表示配置合同允许的“无对应项”，具体约束由导出器校验。
         [JsonProperty("defenseRuleId", Required = JsonRequired.Always)] public string DefenseRuleId { get; private set; } = string.Empty;
         [JsonProperty("armorHp", Required = JsonRequired.Always)] public long ArmorHp { get; private set; }
         [JsonProperty("requiredGestureType", Required = JsonRequired.Always)] public string RequiredGestureType { get; private set; } = string.Empty;
@@ -91,9 +103,11 @@ namespace OneStrokeDemon.Config
         [JsonProperty("breakEffectGroupId", Required = JsonRequired.Always)] public string BreakEffectGroupId { get; private set; } = string.Empty;
     }
 
+    /// <summary>描述敌人弱点窗口、命中半径、倍率和额外奖励。</summary>
     [JsonObject(MemberSerialization.OptIn)]
     public sealed class WeakpointRuleConfig
     {
+        // 时间窗口和参考像素半径由玩法系统直接读取，不在此 DTO 中计算。
         [JsonProperty("weakpointRuleId", Required = JsonRequired.Always)] public string WeakpointRuleId { get; private set; } = string.Empty;
         [JsonProperty("windowStartSec", Required = JsonRequired.Always)] public float WindowStartSec { get; private set; }
         [JsonProperty("windowEndSec", Required = JsonRequired.Always)] public float WindowEndSec { get; private set; }
@@ -105,9 +119,11 @@ namespace OneStrokeDemon.Config
         [JsonProperty("vfxKey", Required = JsonRequired.Always)] public string VfxKey { get; private set; } = string.Empty;
     }
 
+    /// <summary>描述敌人或投射物的移动轨迹及归一化起止位置。</summary>
     [JsonObject(MemberSerialization.OptIn)]
     public sealed class MovePatternConfig
     {
+        // DTO 只承载数据，模式解释和坐标换算由对应移动规则完成。
         [JsonProperty("movePatternId", Required = JsonRequired.Always)] public string MovePatternId { get; private set; } = string.Empty;
         [JsonProperty("patternType", Required = JsonRequired.Always)] public string PatternType { get; private set; } = string.Empty;
         [JsonProperty("speedMultiplier", Required = JsonRequired.Always)] public float SpeedMultiplier { get; private set; }
@@ -121,9 +137,11 @@ namespace OneStrokeDemon.Config
         [JsonProperty("description", Required = JsonRequired.Always)] public string Description { get; private set; } = string.Empty;
     }
 
+    /// <summary>描述敌人的生命、移动、攻击、防御、弱点、得分和池化资源。</summary>
     [JsonObject(MemberSerialization.OptIn)]
     public sealed class EnemyConfig
     {
+        // 各 ID 是配置外键；运行时通过 IConfigProvider 解析关联记录。
         [JsonProperty("enemyId", Required = JsonRequired.Always)] public string EnemyId { get; private set; } = string.Empty;
         [JsonProperty("displayNameKey", Required = JsonRequired.Always)] public string DisplayNameKey { get; private set; } = string.Empty;
         [JsonProperty("tier", Required = JsonRequired.Always)] public string Tier { get; private set; } = string.Empty;
@@ -140,9 +158,11 @@ namespace OneStrokeDemon.Config
         [JsonProperty("poolPrewarm", Required = JsonRequired.Always)] public long PoolPrewarm { get; private set; }
     }
 
+    /// <summary>描述攻击集合中的一项攻击时序、伤害、中断窗口和权重。</summary>
     [JsonObject(MemberSerialization.OptIn)]
     public sealed class EnemyAttackConfig
     {
+        // Order 决定稳定顺序，Weight 只由攻击选择规则解释。
         [JsonProperty("attackId", Required = JsonRequired.Always)] public string AttackId { get; private set; } = string.Empty;
         [JsonProperty("attackSetId", Required = JsonRequired.Always)] public string AttackSetId { get; private set; } = string.Empty;
         [JsonProperty("order", Required = JsonRequired.Always)] public long Order { get; private set; }
@@ -159,9 +179,11 @@ namespace OneStrokeDemon.Config
         [JsonProperty("weight", Required = JsonRequired.Always)] public float Weight { get; private set; }
     }
 
+    /// <summary>描述投射物移动、生命周期、伤害、可切割性和资源引用。</summary>
     [JsonObject(MemberSerialization.OptIn)]
     public sealed class ProjectileConfig
     {
+        // 资源和特效字段保存稳定配置键，不直接保存 Unity 对象。
         [JsonProperty("projectileId", Required = JsonRequired.Always)] public string ProjectileId { get; private set; } = string.Empty;
         [JsonProperty("movePatternId", Required = JsonRequired.Always)] public string MovePatternId { get; private set; } = string.Empty;
         [JsonProperty("speedRefPxSec", Required = JsonRequired.Always)] public long SpeedRefPxSec { get; private set; }
@@ -175,9 +197,11 @@ namespace OneStrokeDemon.Config
         [JsonProperty("vfxKey", Required = JsonRequired.Always)] public string VfxKey { get; private set; } = string.Empty;
     }
 
+    /// <summary>描述可叠加状态的持续时间、强度、刷新策略和表现键。</summary>
     [JsonObject(MemberSerialization.OptIn)]
     public sealed class BuffConfig
     {
+        // 状态行为由 Type 与 RefreshPolicy 驱动，本 DTO 不包含执行逻辑。
         [JsonProperty("buffId", Required = JsonRequired.Always)] public string BuffId { get; private set; } = string.Empty;
         [JsonProperty("type", Required = JsonRequired.Always)] public string Type { get; private set; } = string.Empty;
         [JsonProperty("durationSec", Required = JsonRequired.Always)] public float DurationSec { get; private set; }
@@ -189,9 +213,11 @@ namespace OneStrokeDemon.Config
         [JsonProperty("textKey", Required = JsonRequired.Always)] public string TextKey { get; private set; } = string.Empty;
     }
 
+    /// <summary>描述技能触发条件、架势要求、消耗、冷却和效果组。</summary>
     [JsonObject(MemberSerialization.OptIn)]
     public sealed class SkillConfig
     {
+        // EffectGroupId 关联一组按顺序执行的 SkillEffectConfig。
         [JsonProperty("skillId", Required = JsonRequired.Always)] public string SkillId { get; private set; } = string.Empty;
         [JsonProperty("displayNameKey", Required = JsonRequired.Always)] public string DisplayNameKey { get; private set; } = string.Empty;
         [JsonProperty("triggerType", Required = JsonRequired.Always)] public string TriggerType { get; private set; } = string.Empty;
@@ -205,9 +231,11 @@ namespace OneStrokeDemon.Config
         [JsonProperty("textKey", Required = JsonRequired.Always)] public string TextKey { get; private set; } = string.Empty;
     }
 
+    /// <summary>描述技能效果组中的单个有序效果及其目标和条件。</summary>
     [JsonObject(MemberSerialization.OptIn)]
     public sealed class SkillEffectConfig
     {
+        // Value1/Value2 的含义由 EffectType 决定，并由配置字段字典约束。
         [JsonProperty("effectGroupId", Required = JsonRequired.Always)] public string EffectGroupId { get; private set; } = string.Empty;
         [JsonProperty("order", Required = JsonRequired.Always)] public long Order { get; private set; }
         [JsonProperty("effectType", Required = JsonRequired.Always)] public string EffectType { get; private set; } = string.Empty;
@@ -221,9 +249,11 @@ namespace OneStrokeDemon.Config
         [JsonProperty("condition", Required = JsonRequired.Always)] public string Condition { get; private set; } = string.Empty;
     }
 
+    /// <summary>描述关卡场景、时限、后继关卡、奖励、星级和 Boss。</summary>
     [JsonObject(MemberSerialization.OptIn)]
     public sealed class LevelConfig
     {
+        // SceneKey 和 BackgroundAssetKey 均通过资源注册表解析为 Unity 资源。
         [JsonProperty("levelId", Required = JsonRequired.Always)] public string LevelId { get; private set; } = string.Empty;
         [JsonProperty("displayNameKey", Required = JsonRequired.Always)] public string DisplayNameKey { get; private set; } = string.Empty;
         [JsonProperty("sceneKey", Required = JsonRequired.Always)] public string SceneKey { get; private set; } = string.Empty;
@@ -238,9 +268,11 @@ namespace OneStrokeDemon.Config
         [JsonProperty("bossEnemyId", Required = JsonRequired.Always)] public string BossEnemyId { get; private set; } = string.Empty;
     }
 
+    /// <summary>描述关卡中的一个有序波次及其开始、结束和并发限制。</summary>
     [JsonObject(MemberSerialization.OptIn)]
     public sealed class WaveConfig
     {
+        // 波次按 LevelId 分组并按 Order 保持配置顺序。
         [JsonProperty("waveId", Required = JsonRequired.Always)] public string WaveId { get; private set; } = string.Empty;
         [JsonProperty("levelId", Required = JsonRequired.Always)] public string LevelId { get; private set; } = string.Empty;
         [JsonProperty("order", Required = JsonRequired.Always)] public long Order { get; private set; }
@@ -252,9 +284,11 @@ namespace OneStrokeDemon.Config
         [JsonProperty("maxAlive", Required = JsonRequired.Always)] public long MaxAlive { get; private set; }
     }
 
+    /// <summary>描述关卡中的归一化出生位置、抖动、通道和朝向。</summary>
     [JsonObject(MemberSerialization.OptIn)]
     public sealed class SpawnPointConfig
     {
+        // 归一化坐标由关卡布局转换为当前参考空间位置。
         [JsonProperty("spawnPointId", Required = JsonRequired.Always)] public string SpawnPointId { get; private set; } = string.Empty;
         [JsonProperty("levelId", Required = JsonRequired.Always)] public string LevelId { get; private set; } = string.Empty;
         [JsonProperty("normalizedX", Required = JsonRequired.Always)] public float NormalizedX { get; private set; }
@@ -266,9 +300,11 @@ namespace OneStrokeDemon.Config
         [JsonProperty("notes", Required = JsonRequired.Always)] public string Notes { get; private set; } = string.Empty;
     }
 
+    /// <summary>描述对敌人生命、伤害、速度、得分和外观的组合修饰。</summary>
     [JsonObject(MemberSerialization.OptIn)]
     public sealed class EnemyModifierConfig
     {
+        // 修饰器只声明数据，叠加和应用时机由敌人生成流程负责。
         [JsonProperty("modifierId", Required = JsonRequired.Always)] public string ModifierId { get; private set; } = string.Empty;
         [JsonProperty("displayNameKey", Required = JsonRequired.Always)] public string DisplayNameKey { get; private set; } = string.Empty;
         [JsonProperty("hpMultiplier", Required = JsonRequired.Always)] public float HpMultiplier { get; private set; }
@@ -279,9 +315,11 @@ namespace OneStrokeDemon.Config
         [JsonProperty("extraBuffId", Required = JsonRequired.Always)] public string ExtraBuffId { get; private set; } = string.Empty;
     }
 
+    /// <summary>描述波次中的敌人种类、数量、时间、出生点和修饰器。</summary>
     [JsonObject(MemberSerialization.OptIn)]
     public sealed class SpawnConfig
     {
+        // SpawnTimeSec 与 IntervalSec 共同决定同一条记录的生成时序。
         [JsonProperty("spawnId", Required = JsonRequired.Always)] public string SpawnId { get; private set; } = string.Empty;
         [JsonProperty("waveId", Required = JsonRequired.Always)] public string WaveId { get; private set; } = string.Empty;
         [JsonProperty("spawnTimeSec", Required = JsonRequired.Always)] public float SpawnTimeSec { get; private set; }
@@ -293,9 +331,11 @@ namespace OneStrokeDemon.Config
         [JsonProperty("modifierId", Required = JsonRequired.Always)] public string ModifierId { get; private set; } = string.Empty;
     }
 
+    /// <summary>描述 Boss 在指定生命比例范围内的阶段行为和入场效果。</summary>
     [JsonObject(MemberSerialization.OptIn)]
     public sealed class BossPhaseConfig
     {
+        // 阶段按 EnemyId 分组并按 Order 执行，比例边界在配置导出时校验。
         [JsonProperty("bossPhaseId", Required = JsonRequired.Always)] public string BossPhaseId { get; private set; } = string.Empty;
         [JsonProperty("enemyId", Required = JsonRequired.Always)] public string EnemyId { get; private set; } = string.Empty;
         [JsonProperty("order", Required = JsonRequired.Always)] public long Order { get; private set; }
@@ -309,9 +349,11 @@ namespace OneStrokeDemon.Config
         [JsonProperty("descriptionKey", Required = JsonRequired.Always)] public string DescriptionKey { get; private set; } = string.Empty;
     }
 
+    /// <summary>描述奖励表中的条件、奖励类型、目标 ID 和数量。</summary>
     [JsonObject(MemberSerialization.OptIn)]
     public sealed class RewardConfig
     {
+        // 同一奖励表内的记录按 Order 保持确定顺序。
         [JsonProperty("rewardTableId", Required = JsonRequired.Always)] public string RewardTableId { get; private set; } = string.Empty;
         [JsonProperty("order", Required = JsonRequired.Always)] public long Order { get; private set; }
         [JsonProperty("conditionType", Required = JsonRequired.Always)] public string ConditionType { get; private set; } = string.Empty;
@@ -321,9 +363,11 @@ namespace OneStrokeDemon.Config
         [JsonProperty("amount", Required = JsonRequired.Always)] public long Amount { get; private set; }
     }
 
+    /// <summary>描述教程步骤的触发、阻塞、完成条件、文案和高亮目标。</summary>
     [JsonObject(MemberSerialization.OptIn)]
     public sealed class TutorialConfig
     {
+        // 教程导演只读取这些声明，不把步骤文案或手势规则硬编码在场景中。
         [JsonProperty("tutorialId", Required = JsonRequired.Always)] public string TutorialId { get; private set; } = string.Empty;
         [JsonProperty("order", Required = JsonRequired.Always)] public long Order { get; private set; }
         [JsonProperty("triggerEvent", Required = JsonRequired.Always)] public string TriggerEvent { get; private set; } = string.Empty;
@@ -335,18 +379,22 @@ namespace OneStrokeDemon.Config
         [JsonProperty("gestureType", Required = JsonRequired.Always)] public string GestureType { get; private set; } = string.Empty;
     }
 
+    /// <summary>描述一个本地化文本键及其中英文内容和使用上下文。</summary>
     [JsonObject(MemberSerialization.OptIn)]
     public sealed class TextConfig
     {
+        // 文案以 TextKey 查询，运行时不直接依赖 Excel 行号。
         [JsonProperty("textKey", Required = JsonRequired.Always)] public string TextKey { get; private set; } = string.Empty;
         [JsonProperty("zhCN", Required = JsonRequired.Always)] public string ZhCN { get; private set; } = string.Empty;
         [JsonProperty("enUS", Required = JsonRequired.Always)] public string EnUS { get; private set; } = string.Empty;
         [JsonProperty("context", Required = JsonRequired.Always)] public string Context { get; private set; } = string.Empty;
     }
 
+    /// <summary>描述音频资源键、分类、音量、音高和并发限制。</summary>
     [JsonObject(MemberSerialization.OptIn)]
     public sealed class AudioCueConfig
     {
+        // AssetKey 通过资源注册表解析，音频播放规则读取其余参数。
         [JsonProperty("audioKey", Required = JsonRequired.Always)] public string AudioKey { get; private set; } = string.Empty;
         [JsonProperty("assetKey", Required = JsonRequired.Always)] public string AssetKey { get; private set; } = string.Empty;
         [JsonProperty("category", Required = JsonRequired.Always)] public string Category { get; private set; } = string.Empty;
@@ -357,9 +405,11 @@ namespace OneStrokeDemon.Config
         [JsonProperty("cooldownSec", Required = JsonRequired.Always)] public float CooldownSec { get; private set; }
     }
 
+    /// <summary>描述视觉特效资源、生命周期、预热和渲染顺序。</summary>
     [JsonObject(MemberSerialization.OptIn)]
     public sealed class VfxCueConfig
     {
+        // VfxKey 是玩法引用键，AssetKey 是资源注册表引用键。
         [JsonProperty("vfxKey", Required = JsonRequired.Always)] public string VfxKey { get; private set; } = string.Empty;
         [JsonProperty("assetKey", Required = JsonRequired.Always)] public string AssetKey { get; private set; } = string.Empty;
         [JsonProperty("lifeSec", Required = JsonRequired.Always)] public float LifeSec { get; private set; }
@@ -369,9 +419,11 @@ namespace OneStrokeDemon.Config
         [JsonProperty("sortingOrder", Required = JsonRequired.Always)] public long SortingOrder { get; private set; }
     }
 
+    /// <summary>描述命中等战斗事件的特效、音频、时间、震屏、震动和伤害数字表现。</summary>
     [JsonObject(MemberSerialization.OptIn)]
     public sealed class FeedbackCueConfig
     {
+        // 此表只定义表现参数，不改变伤害、得分或战斗结算真相。
         [JsonProperty("feedbackId", Required = JsonRequired.Always)] public string FeedbackId { get; private set; } = string.Empty;
         [JsonProperty("vfxKey", Required = JsonRequired.Always)] public string VfxKey { get; private set; } = string.Empty;
         [JsonProperty("audioKey", Required = JsonRequired.Always)] public string AudioKey { get; private set; } = string.Empty;
@@ -390,9 +442,11 @@ namespace OneStrokeDemon.Config
         [JsonProperty("description", Required = JsonRequired.Always)] public string Description { get; private set; } = string.Empty;
     }
 
+    /// <summary>描述配置资源键所要求的 Unity 资源类型、路径和 MVP 必需性。</summary>
     [JsonObject(MemberSerialization.OptIn)]
     public sealed class AssetManifestConfig
     {
+        // 运行时注册表必须覆盖清单且类型一致，不能额外注册未声明资源。
         [JsonProperty("assetKey", Required = JsonRequired.Always)] public string AssetKey { get; private set; } = string.Empty;
         [JsonProperty("assetType", Required = JsonRequired.Always)] public string AssetType { get; private set; } = string.Empty;
         [JsonProperty("addressOrPath", Required = JsonRequired.Always)] public string AddressOrPath { get; private set; } = string.Empty;
@@ -400,18 +454,22 @@ namespace OneStrokeDemon.Config
         [JsonProperty("notes", Required = JsonRequired.Always)] public string Notes { get; private set; } = string.Empty;
     }
 
+    /// <summary>描述配置字段允许使用的枚举值及其展示名称。</summary>
     [JsonObject(MemberSerialization.OptIn)]
     public sealed class EnumConfig
     {
+        // EnumType 与 Value 组成复合唯一键，供导出器执行字段约束。
         [JsonProperty("enumType", Required = JsonRequired.Always)] public string EnumType { get; private set; } = string.Empty;
         [JsonProperty("value", Required = JsonRequired.Always)] public string Value { get; private set; } = string.Empty;
         [JsonProperty("displayName", Required = JsonRequired.Always)] public string DisplayName { get; private set; } = string.Empty;
         [JsonProperty("description", Required = JsonRequired.Always)] public string Description { get; private set; } = string.Empty;
     }
 
+    /// <summary>描述每张配置表字段的类型、必填、范围、枚举和外键约束。</summary>
     [JsonObject(MemberSerialization.OptIn)]
     public sealed class FieldDictionaryConfig
     {
+        // 字段字典随配置一同导出，便于追踪数据合同；运行时不重新解释 Excel。
         [JsonProperty("sheet", Required = JsonRequired.Always)] public string Sheet { get; private set; } = string.Empty;
         [JsonProperty("field", Required = JsonRequired.Always)] public string Field { get; private set; } = string.Empty;
         [JsonProperty("type", Required = JsonRequired.Always)] public string Type { get; private set; } = string.Empty;

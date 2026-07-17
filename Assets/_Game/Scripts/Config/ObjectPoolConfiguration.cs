@@ -3,18 +3,27 @@ using OneStrokeDemon.Core;
 
 namespace OneStrokeDemon.Config
 {
+    /// <summary>
+    /// 把配置表中的容量、耗尽策略和预热数量转换为 Core 对象池定义。
+    /// </summary>
     public static class ObjectPoolConfiguration
     {
+        /// <summary>敌人池共享容量族 ID。</summary>
         public const string EnemyFamilyId = "enemy";
+        /// <summary>投射物池共享容量族 ID。</summary>
         public const string ProjectileFamilyId = "projectile";
+        /// <summary>视觉特效池共享容量族 ID。</summary>
         public const string VfxFamilyId = "vfx";
+        /// <summary>伤害数字池共享容量族 ID。</summary>
         public const string DamageNumberFamilyId = "damage-number";
+        /// <summary>唯一伤害数字池 ID。</summary>
         public const string DamageNumberPoolId = "damage-number/default";
 
         private const string EnemyPoolPrefix = "enemy/";
         private const string ProjectilePoolPrefix = "projectile/";
         private const string VfxPoolPrefix = "vfx/";
 
+        /// <summary>从 Global 配置创建敌人池族容量与耗尽策略。</summary>
         public static PoolFamilyDefinition CreateEnemyFamily(IConfigProvider configProvider)
         {
             return CreateFamily(
@@ -24,6 +33,7 @@ namespace OneStrokeDemon.Config
                 ConfigIds.GlobalKeys.EnemyPoolExhaustionPolicy);
         }
 
+        /// <summary>从 Global 配置创建投射物池族容量与耗尽策略。</summary>
         public static PoolFamilyDefinition CreateProjectileFamily(IConfigProvider configProvider)
         {
             return CreateFamily(
@@ -33,6 +43,7 @@ namespace OneStrokeDemon.Config
                 ConfigIds.GlobalKeys.ProjectilePoolExhaustionPolicy);
         }
 
+        /// <summary>从 Global 配置创建视觉特效池族容量与耗尽策略。</summary>
         public static PoolFamilyDefinition CreateVfxFamily(IConfigProvider configProvider)
         {
             return CreateFamily(
@@ -42,6 +53,7 @@ namespace OneStrokeDemon.Config
                 ConfigIds.GlobalKeys.VfxPoolExhaustionPolicy);
         }
 
+        /// <summary>从 Global 配置创建伤害数字池族容量与耗尽策略。</summary>
         public static PoolFamilyDefinition CreateDamageNumberFamily(
             IConfigProvider configProvider)
         {
@@ -52,6 +64,7 @@ namespace OneStrokeDemon.Config
                 ConfigIds.GlobalKeys.DamageNumberPoolExhaustionPolicy);
         }
 
+        /// <summary>按敌人配置的预热数量创建一个具体敌人池。</summary>
         public static PoolDefinition CreateEnemyPool(
             IConfigProvider configProvider,
             string enemyId,
@@ -66,6 +79,7 @@ namespace OneStrokeDemon.Config
                 factory);
         }
 
+        /// <summary>按全局每类型预热数量创建一个具体投射物池。</summary>
         public static PoolDefinition CreateProjectilePool(
             IConfigProvider configProvider,
             string projectileId,
@@ -84,6 +98,7 @@ namespace OneStrokeDemon.Config
                 factory);
         }
 
+        /// <summary>按特效提示配置的预热数量创建一个具体视觉特效池。</summary>
         public static PoolDefinition CreateVfxPool(
             IConfigProvider configProvider,
             string vfxKey,
@@ -98,6 +113,7 @@ namespace OneStrokeDemon.Config
                 factory);
         }
 
+        /// <summary>按全局伤害数字池大小创建唯一伤害数字池。</summary>
         public static PoolDefinition CreateDamageNumberPool(
             IConfigProvider configProvider,
             Func<IPoolable> factory)
@@ -113,15 +129,19 @@ namespace OneStrokeDemon.Config
                 factory);
         }
 
+        /// <summary>把敌人 ID 转换为稳定且带类型前缀的池 ID。</summary>
         public static string GetEnemyPoolId(string enemyId) =>
             EnemyPoolPrefix + RequireId(enemyId, nameof(enemyId));
 
+        /// <summary>把投射物 ID 转换为稳定且带类型前缀的池 ID。</summary>
         public static string GetProjectilePoolId(string projectileId) =>
             ProjectilePoolPrefix + RequireId(projectileId, nameof(projectileId));
 
+        /// <summary>把特效键转换为稳定且带类型前缀的池 ID。</summary>
         public static string GetVfxPoolId(string vfxKey) =>
             VfxPoolPrefix + RequireId(vfxKey, nameof(vfxKey));
 
+        /// <summary>读取指定 Global 容量和策略，创建共享池族定义。</summary>
         private static PoolFamilyDefinition CreateFamily(
             IConfigProvider configProvider,
             string familyId,
@@ -135,6 +155,7 @@ namespace OneStrokeDemon.Config
                 ReadPolicy(configProvider, policyKey));
         }
 
+        /// <summary>读取类型为 int 且可安全转换为正 int 的 Global 配置。</summary>
         private static int ReadPositiveInt(IConfigProvider configProvider, string key)
         {
             GlobalConfig row = configProvider.GetGlobal(key);
@@ -153,6 +174,7 @@ namespace OneStrokeDemon.Config
             return (int)value;
         }
 
+        /// <summary>读取并严格解析对象池耗尽策略，拒绝大小写或未知枚举值。</summary>
         private static PoolExhaustionPolicy ReadPolicy(
             IConfigProvider configProvider,
             string key)
@@ -171,6 +193,7 @@ namespace OneStrokeDemon.Config
             return policy;
         }
 
+        /// <summary>把配置 long 安全转换为允许为零的运行时预热数量。</summary>
         private static int CheckedNonNegativeInt(long value, string field)
         {
             if (value < 0L || value > int.MaxValue)
@@ -184,6 +207,7 @@ namespace OneStrokeDemon.Config
             return (int)value;
         }
 
+        /// <summary>验证配置 ID 非空，并返回原值用于组成池 ID 或查询配置。</summary>
         private static string RequireId(string value, string parameterName)
         {
             if (string.IsNullOrWhiteSpace(value))
@@ -194,6 +218,7 @@ namespace OneStrokeDemon.Config
             return value;
         }
 
+        /// <summary>验证调用方提供了配置查询接口。</summary>
         private static void RequireProvider(IConfigProvider configProvider)
         {
             if (configProvider == null)
@@ -202,6 +227,7 @@ namespace OneStrokeDemon.Config
             }
         }
 
+        /// <summary>创建指向指定 Global 键及其数值要求的参数异常。</summary>
         private static ArgumentException InvalidGlobal(string key, string requirement)
         {
             return new ArgumentException(

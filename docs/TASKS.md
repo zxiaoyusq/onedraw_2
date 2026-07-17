@@ -50,8 +50,8 @@
 | T650 | P6 表现与资源 | DONE | T520, T600 | 1.5 | 完成事件驱动教程遮罩、手势示意和跳过/回看。 |
 | T660 | P6 表现与资源 | DONE | T540, T550, T630, T650 | 3.0 | 建立生产可玩入口与Battle组合根。 |
 | T670 | P6 代码可读性 | DONE | T660 | 0.5 | 为Core与Platform脚本补齐中文注释。 |
-| T671 | P6 代码可读性 | READY | T670 | 1.0 | 为Config手写运行时脚本补齐中文注释。 |
-| T672 | P6 代码可读性 | BACKLOG | T671 | 1.0 | 为Input脚本补齐中文注释。 |
+| T671 | P6 代码可读性 | DONE | T670 | 1.0 | 为Config手写运行时脚本补齐中文注释。 |
+| T672 | P6 代码可读性 | READY | T671 | 1.0 | 为Input脚本补齐中文注释。 |
 | T673 | P6 代码可读性 | BACKLOG | T672 | 1.0 | 为Combat脚本补齐中文注释。 |
 | T674 | P6 代码可读性 | BACKLOG | T673 | 1.5 | 为Actors脚本补齐中文注释。 |
 | T675 | P6 代码可读性 | BACKLOG | T674 | 1.0 | 为Skills脚本补齐中文注释。 |
@@ -624,7 +624,7 @@
 
 ### T671–T681 · 分模块补齐其余中文注释并审计。
 
-- **状态：** T671为`READY`，T672–T681为`BACKLOG`
+- **状态：** T671为`DONE`，T672为`READY`，T673–T681为`BACKLOG`
 - **依赖：** 按T671→T681顺序串行，首任务依赖T670。
 - **产出：** Config手写Runtime、Input、Combat、Actors、Skills、Levels、Presentation、Bootstrap、Editor、ConfigIds生成器/生成物，以及最终全量审计。
 - **明确不做：** 不把注释批次变成功能重构；不手改受管生成文件。
@@ -633,8 +633,8 @@
 
 | 任务 | 状态 | 依赖 | 原子范围 |
 |---|---|---|---|
-| T671 | READY | T670 | Config手写Runtime，排除`Generated/ConfigIds.g.cs` |
-| T672 | BACKLOG | T671 | Input |
+| T671 | DONE | T670 | Config手写Runtime，排除`Generated/ConfigIds.g.cs` |
+| T672 | READY | T671 | Input |
 | T673 | BACKLOG | T672 | Combat |
 | T674 | BACKLOG | T673 | Actors |
 | T675 | BACKLOG | T674 | Skills |
@@ -651,7 +651,7 @@
 ### T700 · 补齐纯规则EditMode回归矩阵。
 
 - **状态：** `BACKLOG`
-- **依赖：** T540, T660
+- **依赖：** T540, T660, T681
 - **估算：** 2.0 人日
 - **产出：** 手势/伤害/配置/技能/状态机/Boss测试。
 - **明确不做：** 纯算法不使用场景测试。

@@ -4,18 +4,25 @@ using JsonRequired = Newtonsoft.Json.Required;
 
 namespace OneStrokeDemon.Config
 {
+    /// <summary>
+    /// 严格映射完整玩法配置 JSON 根对象，保留版本、哈希和全部表记录。
+    /// </summary>
     [JsonObject(MemberSerialization.OptIn)]
     public sealed class GameplayConfigDocument
     {
+        /// <summary>获取配置结构版本。</summary>
         [JsonProperty("schemaVersion", Required = JsonRequired.Always)]
         public long SchemaVersion { get; private set; }
 
+        /// <summary>获取配置内容版本。</summary>
         [JsonProperty("contentVersion", Required = JsonRequired.Always)]
         public string ContentVersion { get; private set; } = string.Empty;
 
+        /// <summary>获取导出器声明的规范化内容哈希。</summary>
         [JsonProperty("contentHash", Required = JsonRequired.Always)]
         public string ContentHash { get; private set; } = string.Empty;
 
+        // 以下数组与冻结 JSON Schema 的 29 张表一一对应，仅供快照构建器建立只读索引。
         [JsonProperty("global", Required = JsonRequired.Always)] internal GlobalConfig[] GlobalRows { get; private set; } = Array.Empty<GlobalConfig>();
         [JsonProperty("players", Required = JsonRequired.Always)] internal PlayerConfig[] PlayerRows { get; private set; } = Array.Empty<PlayerConfig>();
         [JsonProperty("stances", Required = JsonRequired.Always)] internal StanceConfig[] StanceRows { get; private set; } = Array.Empty<StanceConfig>();
@@ -46,6 +53,7 @@ namespace OneStrokeDemon.Config
         [JsonProperty("fieldDictionary", Required = JsonRequired.Always)] internal FieldDictionaryConfig[] FieldDictionaryRows { get; private set; } = Array.Empty<FieldDictionaryConfig>();
         [JsonProperty("feedbackCues", Required = JsonRequired.Always)] internal FeedbackCueConfig[] FeedbackCueRows { get; private set; } = Array.Empty<FeedbackCueConfig>();
 
+        /// <summary>获取所有配置表记录数量之和，用于装载摘要和完整性检查。</summary>
         internal int RecordCount =>
             GlobalRows.Length + PlayerRows.Length + StanceRows.Length + StrokeRuleRows.Length +
             DamageFormulaRows.Length + DefenseRuleRows.Length + WeakpointRuleRows.Length +

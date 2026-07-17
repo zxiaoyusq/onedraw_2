@@ -4,15 +4,21 @@ using System.Collections.ObjectModel;
 
 namespace OneStrokeDemon.Config
 {
+    /// <summary>
+    /// 保存从一份完整配置文档构建的不可变主键索引、分组索引和只读顺序列表。
+    /// </summary>
     internal sealed class GameplayConfigSnapshot
     {
+        /// <summary>验证所有索引键并一次性构建可安全发布的只读快照。</summary>
         private GameplayConfigSnapshot(GameplayConfigDocument document, string source)
         {
+            // 主键索引用序数比较，确保不同文化和平台上的查询行为一致。
             Document = document;
             Globals = BuildIndex(document.GlobalRows, row => row.Key, "Global", "key", source);
             Players = BuildIndex(document.PlayerRows, row => row.PlayerId, "Players", "playerId", source);
             Stances = BuildIndex(document.StanceRows, row => row.StanceId, "Stances", "stanceId", source);
             StrokeRules = BuildIndex(document.StrokeRuleRows, row => row.RuleId, "StrokeRules", "ruleId", source);
+            // 对需要保留原始配置顺序的表复制数组，再以只读集合对外提供。
             StrokeRuleEntries = new ReadOnlyCollection<StrokeRuleConfig>(
                 (StrokeRuleConfig[])document.StrokeRuleRows.Clone());
             DamageFormulas = BuildIndex(document.DamageFormulaRows, row => row.FormulaId, "DamageFormulas", "formulaId", source);
@@ -42,6 +48,7 @@ namespace OneStrokeDemon.Config
             AssetManifestEntries = new ReadOnlyCollection<AssetManifestConfig>(
                 (AssetManifestConfig[])document.AssetManifestRows.Clone());
 
+            // 分组索引保留每组行在导出 JSON 中的稳定顺序。
             AttacksBySet = BuildGroups(document.EnemyAttackRows, row => row.AttackSetId, "EnemyAttacks", "attackSetId", source);
             EffectsByGroup = BuildGroups(document.SkillEffectRows, row => row.EffectGroupId, "SkillEffects", "effectGroupId", source);
             WavesByLevel = BuildGroups(document.WaveRows, row => row.LevelId, "Waves", "levelId", source);
@@ -50,6 +57,7 @@ namespace OneStrokeDemon.Config
             RewardsByTable = BuildGroups(document.RewardRows, row => row.RewardTableId, "Rewards", "rewardTableId", source);
             TutorialsById = BuildGroups(document.TutorialRows, row => row.TutorialId, "Tutorials", "tutorialId", source);
 
+            // 没有单列主键的表必须额外验证业务复合键，避免静默覆盖配置行。
             ValidateCompositeKeys(
                 document.SkillEffectRows,
                 row => $"{row.EffectGroupId}\u001f{row.Order}",
@@ -81,6 +89,7 @@ namespace OneStrokeDemon.Config
                 "sheet+field",
                 source);
 
+            // 摘要统计使用索引实际条目数，便于验证完整装载结果。
             PrimaryIndexCount = Globals.Count + Players.Count + Stances.Count + StrokeRules.Count +
                 DamageFormulas.Count + DefenseRules.Count + WeakpointRules.Count + MovePatterns.Count +
                 Enemies.Count + EnemyAttacks.Count + Projectiles.Count + Buffs.Count + Skills.Count + Levels.Count +
@@ -90,6 +99,7 @@ namespace OneStrokeDemon.Config
                 PhasesByEnemy.Count + RewardsByTable.Count + TutorialsById.Count;
         }
 
+        // 以下属性均为构造完成后不再变化的只读配置视图。
         public GameplayConfigDocument Document { get; }
         public IReadOnlyDictionary<string, GlobalConfig> Globals { get; }
         public IReadOnlyDictionary<string, PlayerConfig> Players { get; }
@@ -129,11 +139,13 @@ namespace OneStrokeDemon.Config
         public int PrimaryIndexCount { get; }
         public int GroupIndexCount { get; }
 
+        /// <summary>从完整配置文档创建并验证不可变快照。</summary>
         public static GameplayConfigSnapshot Create(GameplayConfigDocument document, string source)
         {
             return new GameplayConfigSnapshot(document, source);
         }
 
+        /// <summary>按指定字段建立唯一主键索引，并拒绝空表、空行、空键和重复键。</summary>
         private static IReadOnlyDictionary<string, T> BuildIndex<T>(
             IReadOnlyList<T> rows,
             Func<T, string> keySelector,
@@ -147,6 +159,7 @@ namespace OneStrokeDemon.Config
                 throw StructureFailure(source, table, "Table array is null.");
             }
 
+            // 先在可变字典中完成全部验证，最后才包装为只读字典。
             var result = new Dictionary<string, T>(rows.Count, StringComparer.Ordinal);
             for (int index = 0; index < rows.Count; index += 1)
             {
@@ -173,6 +186,7 @@ namespace OneStrokeDemon.Config
             return new ReadOnlyDictionary<string, T>(result);
         }
 
+        /// <summary>按指定字段建立一对多分组索引，并把字典和各组列表都包装为只读。</summary>
         private static IReadOnlyDictionary<string, IReadOnlyList<T>> BuildGroups<T>(
             IReadOnlyList<T> rows,
             Func<T, string> keySelector,
@@ -181,6 +195,7 @@ namespace OneStrokeDemon.Config
             string source)
             where T : class
         {
+            // 第一阶段按首次出现顺序收集每个分组的行。
             var mutable = new Dictionary<string, List<T>>(StringComparer.Ordinal);
             for (int index = 0; index < rows.Count; index += 1)
             {
@@ -205,6 +220,7 @@ namespace OneStrokeDemon.Config
                 group.Add(row);
             }
 
+            // 第二阶段同时冻结每组列表和最外层字典，调用方无法修改快照。
             var result = new Dictionary<string, IReadOnlyList<T>>(mutable.Count, StringComparer.Ordinal);
             foreach (KeyValuePair<string, List<T>> pair in mutable)
             {
@@ -214,6 +230,7 @@ namespace OneStrokeDemon.Config
             return new ReadOnlyDictionary<string, IReadOnlyList<T>>(result);
         }
 
+        /// <summary>验证由多个字段拼成的业务键在整张表中唯一。</summary>
         private static void ValidateCompositeKeys<T>(
             IReadOnlyList<T> rows,
             Func<T, string> keySelector,
@@ -239,6 +256,7 @@ namespace OneStrokeDemon.Config
             }
         }
 
+        /// <summary>创建统一的配置结构错误。</summary>
         private static GameplayConfigException StructureFailure(string source, string context, string message)
         {
             return new GameplayConfigException("CFGRT006", message, source, context);
