@@ -5,6 +5,7 @@ using OneStrokeDemon.Config;
 
 namespace OneStrokeDemon.Skills
 {
+    // 定义 SkillService 的技能领域契约，明确条件、目标或效果执行边界。
     public sealed class SkillService
     {
         private static readonly IReadOnlyList<SkillEffectStepResult> NoSteps =
@@ -20,6 +21,7 @@ namespace OneStrokeDemon.Skills
         private double lastTimestamp;
         private bool hasTimestamp;
 
+        // 初始化 SkillService，并建立技能运行时所需的初始状态。
         public SkillService(
             IConfigProvider configuredProvider,
             PlayerCombatController playerController,
@@ -29,6 +31,7 @@ namespace OneStrokeDemon.Skills
                 throw new ArgumentNullException(nameof(configuredProvider));
             player = playerController ??
                 throw new ArgumentNullException(nameof(playerController));
+            // 检查技能条件或运行时边界，阻止无效状态继续执行。
             if (!player.IsInitialized)
             {
                 throw new ArgumentException(
@@ -41,8 +44,10 @@ namespace OneStrokeDemon.Skills
 
         public EffectExecutorRegistry Executors => registry;
 
+        // 获取 GetCooldownUntil 对应的技能逻辑，并保持条件、目标与效果结果一致。
         public double GetCooldownUntil(string skillId)
         {
+            // 检查技能条件或运行时边界，阻止无效状态继续执行。
             if (string.IsNullOrWhiteSpace(skillId))
             {
                 throw new ArgumentException("Skill id must be non-empty.", nameof(skillId));
@@ -53,6 +58,7 @@ namespace OneStrokeDemon.Skills
                 : 0d;
         }
 
+        // 执行 ExecuteEffectGroup 对应的技能逻辑，并保持条件、目标与效果结果一致。
         public IReadOnlyList<SkillEffectStepResult> ExecuteEffectGroup(
             string effectGroupId,
             string sourceId,
@@ -64,6 +70,7 @@ namespace OneStrokeDemon.Skills
             return ExecutePreparedEffects(effects, effectContext, sourceId);
         }
 
+        // 尝试执行 TryActivate 对应的技能逻辑，并保持条件、目标与效果结果一致。
         public SkillActivationResult TryActivate(
             in SkillActivationRequest request,
             SkillEffectContext effectContext)
@@ -75,11 +82,13 @@ namespace OneStrokeDemon.Skills
             SkillEffectConfig[] effects = PrepareEffects(skill);
             double cooldownUntil = GetCooldownUntil(skill.SkillId);
 
+            // 检查技能条件或运行时边界，阻止无效状态继续执行。
             if (!string.Equals(request.TriggerType, skill.TriggerType, StringComparison.Ordinal))
             {
                 return Rejected(SkillActivationStatus.TriggerMismatch, skill, cooldownUntil);
             }
 
+            // 检查技能条件或运行时边界，阻止无效状态继续执行。
             if (RequiresGesture(skill) &&
                 (!request.GestureIsValid ||
                  (!string.Equals(skill.GestureType, "Any", StringComparison.Ordinal) &&
@@ -88,17 +97,20 @@ namespace OneStrokeDemon.Skills
                 return Rejected(SkillActivationStatus.GestureInvalid, skill, cooldownUntil);
             }
 
+            // 检查技能条件或运行时边界，阻止无效状态继续执行。
             if (RequiresGesture(skill) && request.InputElapsedSeconds > skill.InputWindowSec)
             {
                 return Rejected(SkillActivationStatus.InputWindowExpired, skill, cooldownUntil);
             }
 
+            // 检查技能条件或运行时边界，阻止无效状态继续执行。
             if (request.Timestamp < cooldownUntil)
             {
                 return Rejected(SkillActivationStatus.CooldownActive, skill, cooldownUntil);
             }
 
             double nextCooldownUntil = request.Timestamp + skill.CooldownSec;
+            // 检查技能条件或运行时边界，阻止无效状态继续执行。
             if (double.IsNaN(nextCooldownUntil) || double.IsInfinity(nextCooldownUntil))
             {
                 throw new SkillEffectConfigurationException(
@@ -110,6 +122,7 @@ namespace OneStrokeDemon.Skills
             SkillEnergySpendResult spend = player.TrySpendSkillEnergy(
                 skill.SkillId,
                 request.Timestamp);
+            // 按效果或目标类型选择对应的技能处理分支。
             switch (spend.Status)
             {
                 case SkillEnergySpendStatus.Spent:
@@ -139,8 +152,10 @@ namespace OneStrokeDemon.Skills
                 steps);
         }
 
+        // 处理 PrepareEffects 对应的技能逻辑，并保持条件、目标与效果结果一致。
         private SkillEffectConfig[] PrepareEffects(SkillConfig skill)
         {
+            // 检查技能条件或运行时边界，阻止无效状态继续执行。
             if (skill.CooldownSec < 0f ||
                 float.IsNaN(skill.CooldownSec) ||
                 float.IsInfinity(skill.CooldownSec) ||
@@ -157,10 +172,12 @@ namespace OneStrokeDemon.Skills
             return PrepareEffectGroup(skill.EffectGroupId);
         }
 
+        // 处理 PrepareEffectGroup 对应的技能逻辑，并保持条件、目标与效果结果一致。
         private SkillEffectConfig[] PrepareEffectGroup(string effectGroupId)
         {
             IReadOnlyList<SkillEffectConfig> configured =
                 configProvider.GetSkillEffects(effectGroupId);
+            // 检查技能条件或运行时边界，阻止无效状态继续执行。
             if (configured.Count == 0)
             {
                 throw new SkillEffectConfigurationException(
@@ -170,6 +187,7 @@ namespace OneStrokeDemon.Skills
             }
 
             var effects = new SkillEffectConfig[configured.Count];
+            // 逐项处理技能目标或效果，保持配置顺序与执行结果稳定。
             for (int i = 0; i < configured.Count; i++)
             {
                 effects[i] = configured[i] ??
@@ -180,10 +198,12 @@ namespace OneStrokeDemon.Skills
             }
 
             Array.Sort(effects, SkillEffectOrderComparer.Instance);
+            // 逐项处理技能目标或效果，保持配置顺序与执行结果稳定。
             for (int i = 0; i < effects.Length; i++)
             {
                 SkillEffectConfig effect = effects[i];
                 long expectedOrder = i + 1L;
+                // 检查技能条件或运行时边界，阻止无效状态继续执行。
                 if (!string.Equals(
                         effect.EffectGroupId,
                         effectGroupId,
@@ -210,15 +230,18 @@ namespace OneStrokeDemon.Skills
             return effects;
         }
 
+        // 执行 ExecutePreparedEffects 对应的技能逻辑，并保持条件、目标与效果结果一致。
         private IReadOnlyList<SkillEffectStepResult> ExecutePreparedEffects(
             SkillEffectConfig[] effects,
             SkillEffectContext effectContext,
             string sourceId)
         {
             var steps = new List<SkillEffectStepResult>(effects.Length);
+            // 逐项处理技能目标或效果，保持配置顺序与执行结果稳定。
             for (int i = 0; i < effects.Length; i++)
             {
                 SkillEffectConfig effect = effects[i];
+                // 检查技能条件或运行时边界，阻止无效状态继续执行。
                 if (!SkillConditionEvaluator.Evaluate(
                         effect.Condition,
                         effectContext,
@@ -245,12 +268,14 @@ namespace OneStrokeDemon.Skills
                     effectContext,
                     selectedTargets,
                     sourceId);
+                // 检查技能条件或运行时边界，阻止无效状态继续执行。
                 if (affected < 0)
                 {
                     throw new InvalidOperationException(
                         $"Effect executor '{executor.EffectType}' returned a negative affected count.");
                 }
 
+                // 检查技能条件或运行时边界，阻止无效状态继续执行。
                 if (!string.IsNullOrEmpty(effect.VfxKey))
                 {
                     effectContext.World.PlayVfx(
@@ -260,6 +285,7 @@ namespace OneStrokeDemon.Skills
                         effectContext.Timestamp);
                 }
 
+                // 检查技能条件或运行时边界，阻止无效状态继续执行。
                 if (!string.IsNullOrEmpty(effect.AudioKey))
                 {
                     effectContext.World.PlayAudio(
@@ -280,12 +306,14 @@ namespace OneStrokeDemon.Skills
             return steps.AsReadOnly();
         }
 
+        // 处理 RequiresGesture 对应的技能逻辑，并保持条件、目标与效果结果一致。
         private static bool RequiresGesture(SkillConfig skill)
         {
             return string.Equals(skill.TriggerType, SkillTriggerTypes.Gesture, StringComparison.Ordinal) ||
                    string.Equals(skill.TriggerType, SkillTriggerTypes.Ultimate, StringComparison.Ordinal);
         }
 
+        // 处理 Rejected 对应的技能逻辑，并保持条件、目标与效果结果一致。
         private static SkillActivationResult Rejected(
             SkillActivationStatus status,
             SkillConfig skill,
@@ -299,10 +327,12 @@ namespace OneStrokeDemon.Skills
                 NoSteps);
         }
 
+        // 校验 ValidateRequest 对应的技能逻辑，并保持条件、目标与效果结果一致。
         private void ValidateRequest(
             in SkillActivationRequest request,
             SkillEffectContext effectContext)
         {
+            // 检查技能条件或运行时边界，阻止无效状态继续执行。
             if (!request.IsValid)
             {
                 throw new ArgumentException(
@@ -310,6 +340,7 @@ namespace OneStrokeDemon.Skills
                     nameof(request));
             }
 
+            // 检查技能条件或运行时边界，阻止无效状态继续执行。
             if (string.IsNullOrWhiteSpace(request.SkillId) ||
                 string.IsNullOrWhiteSpace(request.TriggerType))
             {
@@ -318,6 +349,7 @@ namespace OneStrokeDemon.Skills
                     nameof(request));
             }
 
+            // 检查技能条件或运行时边界，阻止无效状态继续执行。
             if (double.IsNaN(request.Timestamp) ||
                 double.IsInfinity(request.Timestamp) ||
                 request.Timestamp < 0d ||
@@ -330,11 +362,13 @@ namespace OneStrokeDemon.Skills
                     "Skill timestamps and input elapsed seconds must be finite and non-negative.");
             }
 
+            // 检查技能条件或运行时边界，阻止无效状态继续执行。
             if (effectContext == null)
             {
                 throw new ArgumentNullException(nameof(effectContext));
             }
 
+            // 检查技能条件或运行时边界，阻止无效状态继续执行。
             if (effectContext.Timestamp != request.Timestamp)
             {
                 throw new ArgumentException(
@@ -342,6 +376,7 @@ namespace OneStrokeDemon.Skills
                     nameof(effectContext));
             }
 
+            // 检查技能条件或运行时边界，阻止无效状态继续执行。
             if (hasTimestamp && request.Timestamp < lastTimestamp)
             {
                 throw new ArgumentOutOfRangeException(
@@ -351,11 +386,13 @@ namespace OneStrokeDemon.Skills
             }
         }
 
+        // 校验 ValidateEffectGroupRequest 对应的技能逻辑，并保持条件、目标与效果结果一致。
         private void ValidateEffectGroupRequest(
             string effectGroupId,
             string sourceId,
             SkillEffectContext effectContext)
         {
+            // 检查技能条件或运行时边界，阻止无效状态继续执行。
             if (string.IsNullOrWhiteSpace(effectGroupId))
             {
                 throw new ArgumentException(
@@ -363,6 +400,7 @@ namespace OneStrokeDemon.Skills
                     nameof(effectGroupId));
             }
 
+            // 检查技能条件或运行时边界，阻止无效状态继续执行。
             if (string.IsNullOrWhiteSpace(sourceId))
             {
                 throw new ArgumentException(
@@ -370,11 +408,13 @@ namespace OneStrokeDemon.Skills
                     nameof(sourceId));
             }
 
+            // 检查技能条件或运行时边界，阻止无效状态继续执行。
             if (effectContext == null)
             {
                 throw new ArgumentNullException(nameof(effectContext));
             }
 
+            // 检查技能条件或运行时边界，阻止无效状态继续执行。
             if (hasTimestamp && effectContext.Timestamp < lastTimestamp)
             {
                 throw new ArgumentOutOfRangeException(
@@ -384,29 +424,35 @@ namespace OneStrokeDemon.Skills
             }
         }
 
+        // 处理 ObserveTimestamp 对应的技能逻辑，并保持条件、目标与效果结果一致。
         private void ObserveTimestamp(double timestamp)
         {
             lastTimestamp = timestamp;
             hasTimestamp = true;
         }
 
+        // 定义 SkillEffectOrderComparer 的技能领域契约，明确条件、目标或效果执行边界。
         private sealed class SkillEffectOrderComparer : IComparer<SkillEffectConfig>
         {
             public static readonly SkillEffectOrderComparer Instance =
                 new SkillEffectOrderComparer();
 
+            // 处理 Compare 对应的技能逻辑，并保持条件、目标与效果结果一致。
             public int Compare(SkillEffectConfig left, SkillEffectConfig right)
             {
+                // 检查技能条件或运行时边界，阻止无效状态继续执行。
                 if (ReferenceEquals(left, right))
                 {
                     return 0;
                 }
 
+                // 检查技能条件或运行时边界，阻止无效状态继续执行。
                 if (left == null)
                 {
                     return -1;
                 }
 
+                // 检查技能条件或运行时边界，阻止无效状态继续执行。
                 if (right == null)
                 {
                     return 1;

@@ -5,26 +5,31 @@ using OneStrokeDemon.Config;
 
 namespace OneStrokeDemon.Skills
 {
+    // 定义 EffectExecutorRegistry 的技能领域契约，明确条件、目标或效果执行边界。
     public sealed class EffectExecutorRegistry
     {
         private readonly IConfigProvider configProvider;
         private readonly IReadOnlyDictionary<string, IEffectExecutor> executors;
         private readonly IReadOnlyList<string> registeredEffectTypes;
 
+        // 初始化 EffectExecutorRegistry，并建立技能运行时所需的初始状态。
         public EffectExecutorRegistry(
             IConfigProvider configuredProvider,
             IEnumerable<IEffectExecutor> configuredExecutors)
         {
             configProvider = configuredProvider ??
                 throw new ArgumentNullException(nameof(configuredProvider));
+            // 检查技能条件或运行时边界，阻止无效状态继续执行。
             if (configuredExecutors == null)
             {
                 throw new ArgumentNullException(nameof(configuredExecutors));
             }
 
             var mutable = new Dictionary<string, IEffectExecutor>(StringComparer.Ordinal);
+            // 逐项处理技能目标或效果，保持配置顺序与执行结果稳定。
             foreach (IEffectExecutor executor in configuredExecutors)
             {
+                // 检查技能条件或运行时边界，阻止无效状态继续执行。
                 if (executor == null || string.IsNullOrWhiteSpace(executor.EffectType))
                 {
                     throw new ArgumentException(
@@ -32,6 +37,7 @@ namespace OneStrokeDemon.Skills
                         nameof(configuredExecutors));
                 }
 
+                // 检查技能条件或运行时边界，阻止无效状态继续执行。
                 if (!mutable.TryAdd(executor.EffectType, executor))
                 {
                     throw new ArgumentException(
@@ -48,6 +54,7 @@ namespace OneStrokeDemon.Skills
 
         public IReadOnlyList<string> RegisteredEffectTypes => registeredEffectTypes;
 
+        // 创建 CreateDefault 对应的技能逻辑，并保持条件、目标与效果结果一致。
         public static EffectExecutorRegistry CreateDefault(IConfigProvider configProvider)
         {
             return new EffectExecutorRegistry(
@@ -69,13 +76,16 @@ namespace OneStrokeDemon.Skills
                 });
         }
 
+        // 获取 Get 对应的技能逻辑，并保持条件、目标与效果结果一致。
         public IEffectExecutor Get(SkillEffectConfig effect)
         {
+            // 检查技能条件或运行时边界，阻止无效状态继续执行。
             if (effect == null)
             {
                 throw new ArgumentNullException(nameof(effect));
             }
 
+            // 检查技能条件或运行时边界，阻止无效状态继续执行。
             if (executors.TryGetValue(effect.EffectType, out IEffectExecutor executor))
             {
                 return executor;
@@ -87,17 +97,20 @@ namespace OneStrokeDemon.Skills
                 effect.Order);
         }
 
+        // 校验 Validate 对应的技能逻辑，并保持条件、目标与效果结果一致。
         public void Validate(SkillEffectConfig effect)
         {
             Get(effect);
             RequireFinite(effect.Value1, "value1", effect);
             RequireFinite(effect.Value2, "value2", effect);
             RequireFinite(effect.DurationSec, "durationSec", effect);
+            // 检查技能条件或运行时边界，阻止无效状态继续执行。
             if (effect.DurationSec < 0f)
             {
                 Failure("durationSec must be non-negative.", effect);
             }
 
+            // 按效果或目标类型选择对应的技能处理分支。
             switch (effect.EffectType)
             {
                 case SkillEffectTypes.Damage:
@@ -111,24 +124,28 @@ namespace OneStrokeDemon.Skills
                     RequireNonNegative(effect.Value2, "value2", effect);
                     break;
                 case SkillEffectTypes.TimeScale:
+                    // 检查技能条件或运行时边界，阻止无效状态继续执行。
                     if (effect.Value1 <= 0f || effect.Value1 > 1f)
                     {
                         Failure("TimeScale.value1 must be in (0, 1].", effect);
                     }
                     break;
                 case SkillEffectTypes.ExecuteBelowHpRatio:
+                    // 检查技能条件或运行时边界，阻止无效状态继续执行。
                     if (effect.Value1 < 0f || effect.Value1 > 1f)
                     {
                         Failure("ExecuteBelowHpRatio.value1 must be in [0, 1].", effect);
                     }
                     break;
                 case SkillEffectTypes.DamageMultiplier:
+                    // 检查技能条件或运行时边界，阻止无效状态继续执行。
                     if (effect.Value1 <= 0f)
                     {
                         Failure("DamageMultiplier.value1 must be positive.", effect);
                     }
                     break;
                 case SkillEffectTypes.ApplyBuff:
+                    // 检查技能条件或运行时边界，阻止无效状态继续执行。
                     if (string.IsNullOrWhiteSpace(effect.BuffId))
                     {
                         Failure("ApplyBuff requires buffId.", effect);
@@ -137,6 +154,7 @@ namespace OneStrokeDemon.Skills
                     configProvider.GetBuff(effect.BuffId);
                     break;
                 case SkillEffectTypes.PlayVfx:
+                    // 检查技能条件或运行时边界，阻止无效状态继续执行。
                     if (string.IsNullOrWhiteSpace(effect.VfxKey))
                     {
                         Failure("PlayVfx requires vfxKey.", effect);
@@ -145,22 +163,27 @@ namespace OneStrokeDemon.Skills
             }
         }
 
+        // 处理 RequireFinite 对应的技能逻辑，并保持条件、目标与效果结果一致。
         private static void RequireFinite(float value, string field, SkillEffectConfig effect)
         {
+            // 检查技能条件或运行时边界，阻止无效状态继续执行。
             if (float.IsNaN(value) || float.IsInfinity(value))
             {
                 Failure($"{field} must be finite.", effect);
             }
         }
 
+        // 处理 RequireNonNegative 对应的技能逻辑，并保持条件、目标与效果结果一致。
         private static void RequireNonNegative(float value, string field, SkillEffectConfig effect)
         {
+            // 检查技能条件或运行时边界，阻止无效状态继续执行。
             if (value < 0f)
             {
                 Failure($"{field} must be non-negative.", effect);
             }
         }
 
+        // 处理 Failure 对应的技能逻辑，并保持条件、目标与效果结果一致。
         private static void Failure(string message, SkillEffectConfig effect)
         {
             throw new SkillEffectConfigurationException(
@@ -170,10 +193,12 @@ namespace OneStrokeDemon.Skills
         }
     }
 
+    // 定义 TargetEffectExecutor 的技能领域契约，明确条件、目标或效果执行边界。
     internal abstract class TargetEffectExecutor : IEffectExecutor
     {
         public abstract string EffectType { get; }
 
+        // 执行 Execute 对应的技能逻辑，并保持条件、目标与效果结果一致。
         public int Execute(
             SkillEffectConfig effect,
             SkillEffectContext context,
@@ -181,8 +206,10 @@ namespace OneStrokeDemon.Skills
             string sourceId)
         {
             int affected = 0;
+            // 逐项处理技能目标或效果，保持配置顺序与执行结果稳定。
             for (int i = 0; i < targets.Count; i++)
             {
+                // 检查技能条件或运行时边界，阻止无效状态继续执行。
                 if (Apply(targets[i], effect, context, sourceId))
                 {
                     affected++;
@@ -192,6 +219,7 @@ namespace OneStrokeDemon.Skills
             return affected;
         }
 
+        // 应用 Apply 对应的技能逻辑，并保持条件、目标与效果结果一致。
         protected abstract bool Apply(
             ISkillEffectTarget target,
             SkillEffectConfig effect,
@@ -199,10 +227,12 @@ namespace OneStrokeDemon.Skills
             string sourceId);
     }
 
+    // 定义 DamageEffectExecutor 的技能领域契约，明确条件、目标或效果执行边界。
     internal sealed class DamageEffectExecutor : TargetEffectExecutor
     {
         public override string EffectType => SkillEffectTypes.Damage;
 
+        // 应用 Apply 对应的技能逻辑，并保持条件、目标与效果结果一致。
         protected override bool Apply(
             ISkillEffectTarget target,
             SkillEffectConfig effect,
@@ -213,10 +243,12 @@ namespace OneStrokeDemon.Skills
         }
     }
 
+    // 定义 HealEffectExecutor 的技能领域契约，明确条件、目标或效果执行边界。
     internal sealed class HealEffectExecutor : TargetEffectExecutor
     {
         public override string EffectType => SkillEffectTypes.Heal;
 
+        // 应用 Apply 对应的技能逻辑，并保持条件、目标与效果结果一致。
         protected override bool Apply(
             ISkillEffectTarget target,
             SkillEffectConfig effect,
@@ -227,10 +259,12 @@ namespace OneStrokeDemon.Skills
         }
     }
 
+    // 定义 ApplyBuffEffectExecutor 的技能领域契约，明确条件、目标或效果执行边界。
     internal sealed class ApplyBuffEffectExecutor : TargetEffectExecutor
     {
         private readonly IConfigProvider configProvider;
 
+        // 初始化 ApplyBuffEffectExecutor，并建立技能运行时所需的初始状态。
         public ApplyBuffEffectExecutor(IConfigProvider configuredProvider)
         {
             configProvider = configuredProvider ??
@@ -239,6 +273,7 @@ namespace OneStrokeDemon.Skills
 
         public override string EffectType => SkillEffectTypes.ApplyBuff;
 
+        // 应用 Apply 对应的技能逻辑，并保持条件、目标与效果结果一致。
         protected override bool Apply(
             ISkillEffectTarget target,
             SkillEffectConfig effect,
@@ -251,10 +286,12 @@ namespace OneStrokeDemon.Skills
         }
     }
 
+    // 定义 RemoveArmorEffectExecutor 的技能领域契约，明确条件、目标或效果执行边界。
     internal sealed class RemoveArmorEffectExecutor : TargetEffectExecutor
     {
         public override string EffectType => SkillEffectTypes.RemoveArmor;
 
+        // 应用 Apply 对应的技能逻辑，并保持条件、目标与效果结果一致。
         protected override bool Apply(
             ISkillEffectTarget target,
             SkillEffectConfig effect,
@@ -265,10 +302,12 @@ namespace OneStrokeDemon.Skills
         }
     }
 
+    // 定义 KnockbackEffectExecutor 的技能领域契约，明确条件、目标或效果执行边界。
     internal sealed class KnockbackEffectExecutor : TargetEffectExecutor
     {
         public override string EffectType => SkillEffectTypes.Knockback;
 
+        // 应用 Apply 对应的技能逻辑，并保持条件、目标与效果结果一致。
         protected override bool Apply(
             ISkillEffectTarget target,
             SkillEffectConfig effect,
@@ -283,10 +322,12 @@ namespace OneStrokeDemon.Skills
         }
     }
 
+    // 定义 ExecuteBelowHpRatioEffectExecutor 的技能领域契约，明确条件、目标或效果执行边界。
     internal sealed class ExecuteBelowHpRatioEffectExecutor : TargetEffectExecutor
     {
         public override string EffectType => SkillEffectTypes.ExecuteBelowHpRatio;
 
+        // 应用 Apply 对应的技能逻辑，并保持条件、目标与效果结果一致。
         protected override bool Apply(
             ISkillEffectTarget target,
             SkillEffectConfig effect,
@@ -297,10 +338,12 @@ namespace OneStrokeDemon.Skills
         }
     }
 
+    // 定义 IncrementCounterEffectExecutor 的技能领域契约，明确条件、目标或效果执行边界。
     internal sealed class IncrementCounterEffectExecutor : TargetEffectExecutor
     {
         public override string EffectType => SkillEffectTypes.IncrementCounter;
 
+        // 应用 Apply 对应的技能逻辑，并保持条件、目标与效果结果一致。
         protected override bool Apply(
             ISkillEffectTarget target,
             SkillEffectConfig effect,
@@ -315,10 +358,12 @@ namespace OneStrokeDemon.Skills
         }
     }
 
+    // 定义 RepeatStrokeEffectExecutor 的技能领域契约，明确条件、目标或效果执行边界。
     internal sealed class RepeatStrokeEffectExecutor : IEffectExecutor
     {
         public string EffectType => SkillEffectTypes.RepeatStroke;
 
+        // 执行 Execute 对应的技能逻辑，并保持条件、目标与效果结果一致。
         public int Execute(
             SkillEffectConfig effect,
             SkillEffectContext context,
@@ -333,10 +378,12 @@ namespace OneStrokeDemon.Skills
         }
     }
 
+    // 定义 TimeScaleEffectExecutor 的技能领域契约，明确条件、目标或效果执行边界。
     internal sealed class TimeScaleEffectExecutor : IEffectExecutor
     {
         public string EffectType => SkillEffectTypes.TimeScale;
 
+        // 执行 Execute 对应的技能逻辑，并保持条件、目标与效果结果一致。
         public int Execute(
             SkillEffectConfig effect,
             SkillEffectContext context,
@@ -351,10 +398,12 @@ namespace OneStrokeDemon.Skills
         }
     }
 
+    // 定义 DamageMultiplierEffectExecutor 的技能领域契约，明确条件、目标或效果执行边界。
     internal sealed class DamageMultiplierEffectExecutor : IEffectExecutor
     {
         public string EffectType => SkillEffectTypes.DamageMultiplier;
 
+        // 执行 Execute 对应的技能逻辑，并保持条件、目标与效果结果一致。
         public int Execute(
             SkillEffectConfig effect,
             SkillEffectContext context,
@@ -368,10 +417,12 @@ namespace OneStrokeDemon.Skills
         }
     }
 
+    // 定义 ClearProjectilesEffectExecutor 的技能领域契约，明确条件、目标或效果执行边界。
     internal sealed class ClearProjectilesEffectExecutor : IEffectExecutor
     {
         public string EffectType => SkillEffectTypes.ClearProjectiles;
 
+        // 执行 Execute 对应的技能逻辑，并保持条件、目标与效果结果一致。
         public int Execute(
             SkillEffectConfig effect,
             SkillEffectContext context,
@@ -382,10 +433,12 @@ namespace OneStrokeDemon.Skills
         }
     }
 
+    // 定义 PlayVfxEffectExecutor 的技能领域契约，明确条件、目标或效果执行边界。
     internal sealed class PlayVfxEffectExecutor : IEffectExecutor
     {
         public string EffectType => SkillEffectTypes.PlayVfx;
 
+        // 执行 Execute 对应的技能逻辑，并保持条件、目标与效果结果一致。
         public int Execute(
             SkillEffectConfig effect,
             SkillEffectContext context,

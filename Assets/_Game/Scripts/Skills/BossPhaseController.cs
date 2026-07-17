@@ -5,8 +5,10 @@ using OneStrokeDemon.Config;
 
 namespace OneStrokeDemon.Skills
 {
+    // 定义 BossPhaseChangedEvent 的技能领域契约，明确条件、目标或效果执行边界。
     public readonly struct BossPhaseChangedEvent
     {
+        // 初始化 BossPhaseChangedEvent，并建立技能运行时所需的初始状态。
         internal BossPhaseChangedEvent(
             in BossPhaseTransition transition,
             in EnemyPhaseProfileResult profileResult,
@@ -31,6 +33,7 @@ namespace OneStrokeDemon.Skills
         public bool IsValid { get; }
     }
 
+    // 定义 BossPhaseController 的技能领域契约，明确条件、目标或效果执行边界。
     public sealed class BossPhaseController : IDisposable
     {
         private static readonly IReadOnlyList<BossPhaseTransition> NoTransitions =
@@ -53,6 +56,7 @@ namespace OneStrokeDemon.Skills
         private bool ended;
         private bool disposed;
 
+        // 初始化 BossPhaseController，并建立技能运行时所需的初始状态。
         public BossPhaseController(
             IConfigProvider configuredProvider,
             EnemyController bossController,
@@ -68,6 +72,7 @@ namespace OneStrokeDemon.Skills
                 throw new ArgumentNullException(nameof(configuredAttackWorld));
             skillService = configuredSkillService ??
                 throw new ArgumentNullException(nameof(configuredSkillService));
+            // 检查技能条件或运行时边界，阻止无效状态继续执行。
             if (!boss.IsAlive || boss.Definition.Tier != EnemyTier.Boss)
             {
                 throw new ArgumentException(
@@ -75,6 +80,7 @@ namespace OneStrokeDemon.Skills
                     nameof(bossController));
             }
 
+            // 检查技能条件或运行时边界，阻止无效状态继续执行。
             if (boss.State.State != EnemyState.Move)
             {
                 throw new ArgumentException(
@@ -105,10 +111,12 @@ namespace OneStrokeDemon.Skills
             throw new InvalidOperationException(
                 "Boss phase strategy is not active.");
 
+        // 处理 Start 对应的技能逻辑，并保持条件、目标与效果结果一致。
         public BossPhaseChangedEvent Start(double timestamp)
         {
             ThrowIfDisposed();
             ObserveTimestamp(timestamp);
+            // 检查技能条件或运行时边界，阻止无效状态继续执行。
             if (IsStarted)
             {
                 throw new InvalidOperationException(
@@ -135,16 +143,19 @@ namespace OneStrokeDemon.Skills
             }
         }
 
+        // 处理 ObserveCurrentHp 对应的技能逻辑，并保持条件、目标与效果结果一致。
         public IReadOnlyList<BossPhaseTransition> ObserveCurrentHp(double timestamp)
         {
             ThrowIfDisposed();
             RequireStarted();
             ObserveTimestamp(timestamp);
+            // 检查技能条件或运行时边界，阻止无效状态继续执行。
             if (ended || !boss.IsAlive || boss.Damage.IsDead)
             {
                 return NoTransitions;
             }
 
+            // 检查技能条件或运行时边界，阻止无效状态继续执行。
             if (applyingPhase)
             {
                 pendingHpObservation = true;
@@ -159,6 +170,7 @@ namespace OneStrokeDemon.Skills
             return transitions;
         }
 
+        // 处理 SampleMovement 对应的技能逻辑，并保持条件、目标与效果结果一致。
         public EnemyMovementSample SampleMovement(double phaseElapsedSeconds)
         {
             ThrowIfDisposed();
@@ -166,6 +178,7 @@ namespace OneStrokeDemon.Skills
             return Strategy.SampleMovement(phaseElapsedSeconds);
         }
 
+        // 尝试执行 TryBeginAttack 对应的技能逻辑，并保持条件、目标与效果结果一致。
         public bool TryBeginAttack(
             in EnemyAttackTriggerContext context,
             double unitSelection,
@@ -177,6 +190,7 @@ namespace OneStrokeDemon.Skills
             return Strategy.TryBeginAttack(context, unitSelection, timestamp);
         }
 
+        // 按时间推进 Tick 对应的技能逻辑，并保持条件、目标与效果结果一致。
         public int Tick(double timestamp)
         {
             ThrowIfDisposed();
@@ -185,8 +199,10 @@ namespace OneStrokeDemon.Skills
             return Strategy.Tick(timestamp);
         }
 
+        // 释放 Dispose 对应的技能逻辑，并保持条件、目标与效果结果一致。
         public void Dispose()
         {
+            // 检查技能条件或运行时边界，阻止无效状态继续执行。
             if (disposed)
             {
                 return;
@@ -199,13 +215,16 @@ namespace OneStrokeDemon.Skills
             disposed = true;
         }
 
+        // 应用 ApplyTransitions 对应的技能逻辑，并保持条件、目标与效果结果一致。
         private void ApplyTransitions(
             IReadOnlyList<BossPhaseTransition> transitions,
             double timestamp)
         {
+            // 逐项处理技能目标或效果，保持配置顺序与执行结果稳定。
             for (int index = 0; index < transitions.Count; index++)
             {
                 ApplyTransition(transitions[index], timestamp);
+                // 检查技能条件或运行时边界，阻止无效状态继续执行。
                 if (ended || !boss.IsAlive)
                 {
                     break;
@@ -213,6 +232,7 @@ namespace OneStrokeDemon.Skills
             }
         }
 
+        // 应用 ApplyTransition 对应的技能逻辑，并保持条件、目标与效果结果一致。
         private BossPhaseChangedEvent ApplyTransition(
             in BossPhaseTransition transition,
             double timestamp)
@@ -249,8 +269,10 @@ namespace OneStrokeDemon.Skills
             }
         }
 
+        // 处理 ProcessPendingObservation 对应的技能逻辑，并保持条件、目标与效果结果一致。
         private void ProcessPendingObservation(double fallbackTimestamp)
         {
+            // 逐项处理技能目标或效果，保持配置顺序与执行结果稳定。
             while (pendingHpObservation && !ended && boss.IsAlive)
             {
                 double timestamp = Math.Max(fallbackTimestamp, pendingTimestamp);
@@ -263,31 +285,38 @@ namespace OneStrokeDemon.Skills
             }
         }
 
+        // 响应 OnBossCombatEvent 对应的技能逻辑，并保持条件、目标与效果结果一致。
         private void OnBossCombatEvent(EnemyCombatEvent combatEvent)
         {
+            // 检查技能条件或运行时边界，阻止无效状态继续执行。
             if (disposed)
             {
                 return;
             }
 
+            // 检查技能条件或运行时边界，阻止无效状态继续执行。
             if (combatEvent.EventType == EnemyCombatEventType.HpChanged)
             {
                 ObserveCurrentHp(combatEvent.Timestamp);
             }
+            // 检查技能条件或运行时边界，阻止无效状态继续执行。
             else if (combatEvent.EventType == EnemyCombatEventType.Died)
             {
                 ended = true;
                 strategy?.Dispose();
                 strategy = null;
             }
+            // 检查技能条件或运行时边界，阻止无效状态继续执行。
             else if (combatEvent.EventType == EnemyCombatEventType.Released)
             {
                 Dispose();
             }
         }
 
+        // 处理 ObserveTimestamp 对应的技能逻辑，并保持条件、目标与效果结果一致。
         private void ObserveTimestamp(double timestamp)
         {
+            // 检查技能条件或运行时边界，阻止无效状态继续执行。
             if (double.IsNaN(timestamp) ||
                 double.IsInfinity(timestamp) ||
                 timestamp < 0d)
@@ -298,6 +327,7 @@ namespace OneStrokeDemon.Skills
                     "Boss phase timestamp must be finite and non-negative.");
             }
 
+            // 检查技能条件或运行时边界，阻止无效状态继续执行。
             if (hasTimestamp && timestamp < lastTimestamp)
             {
                 throw new ArgumentOutOfRangeException(
@@ -310,8 +340,10 @@ namespace OneStrokeDemon.Skills
             hasTimestamp = true;
         }
 
+        // 处理 RequireStarted 对应的技能逻辑，并保持条件、目标与效果结果一致。
         private void RequireStarted()
         {
+            // 检查技能条件或运行时边界，阻止无效状态继续执行。
             if (!IsStarted)
             {
                 throw new InvalidOperationException(
@@ -319,9 +351,11 @@ namespace OneStrokeDemon.Skills
             }
         }
 
+        // 处理 RequireActive 对应的技能逻辑，并保持条件、目标与效果结果一致。
         private void RequireActive()
         {
             RequireStarted();
+            // 检查技能条件或运行时边界，阻止无效状态继续执行。
             if (ended || strategy == null)
             {
                 throw new InvalidOperationException(
@@ -329,16 +363,20 @@ namespace OneStrokeDemon.Skills
             }
         }
 
+        // 处理 ThrowIfDisposed 对应的技能逻辑，并保持条件、目标与效果结果一致。
         private void ThrowIfDisposed()
         {
+            // 检查技能条件或运行时边界，阻止无效状态继续执行。
             if (disposed)
             {
                 throw new ObjectDisposedException(nameof(BossPhaseController));
             }
         }
 
+        // 处理 Unsubscribe 对应的技能逻辑，并保持条件、目标与效果结果一致。
         private void Unsubscribe()
         {
+            // 检查技能条件或运行时边界，阻止无效状态继续执行。
             if (subscribed)
             {
                 boss.CombatEventPublished -= OnBossCombatEvent;
@@ -346,11 +384,13 @@ namespace OneStrokeDemon.Skills
             }
         }
 
+        // 定义 BossPhaseEffectWorld 的技能领域契约，明确条件、目标或效果执行边界。
         private sealed class BossPhaseEffectWorld : ISkillEffectWorld
         {
             private readonly ISkillEffectWorld inner;
             private readonly EnemySkillEffectTarget bossTarget;
 
+            // 初始化 BossPhaseEffectWorld，并建立技能运行时所需的初始状态。
             public BossPhaseEffectWorld(
                 ISkillEffectWorld configuredInner,
                 EnemySkillEffectTarget configuredBossTarget)
@@ -363,6 +403,7 @@ namespace OneStrokeDemon.Skills
 
             public ISkillEffectTarget PrimaryTarget => bossTarget;
 
+            // 处理 RepeatLastStroke 对应的技能逻辑，并保持条件、目标与效果结果一致。
             public int RepeatLastStroke(
                 float damageMultiplier,
                 float delaySeconds,
@@ -376,6 +417,7 @@ namespace OneStrokeDemon.Skills
                     timestamp);
             }
 
+            // 设置 SetTimeScale 对应的技能逻辑，并保持条件、目标与效果结果一致。
             public int SetTimeScale(
                 float scale,
                 float durationSeconds,
@@ -385,6 +427,7 @@ namespace OneStrokeDemon.Skills
                 return inner.SetTimeScale(scale, durationSeconds, sourceId, timestamp);
             }
 
+            // 设置 SetNextStrokeDamageMultiplier 对应的技能逻辑，并保持条件、目标与效果结果一致。
             public int SetNextStrokeDamageMultiplier(
                 float multiplier,
                 string sourceId,
@@ -396,11 +439,13 @@ namespace OneStrokeDemon.Skills
                     timestamp);
             }
 
+            // 清理 ClearHostileProjectiles 对应的技能逻辑，并保持条件、目标与效果结果一致。
             public int ClearHostileProjectiles(string sourceId, double timestamp)
             {
                 return inner.ClearHostileProjectiles(sourceId, timestamp);
             }
 
+            // 处理 PlayVfx 对应的技能逻辑，并保持条件、目标与效果结果一致。
             public void PlayVfx(
                 string vfxKey,
                 IReadOnlyList<ISkillEffectTarget> targets,
@@ -410,6 +455,7 @@ namespace OneStrokeDemon.Skills
                 inner.PlayVfx(vfxKey, targets, sourceId, timestamp);
             }
 
+            // 处理 PlayAudio 对应的技能逻辑，并保持条件、目标与效果结果一致。
             public void PlayAudio(string audioKey, string sourceId, double timestamp)
             {
                 inner.PlayAudio(audioKey, sourceId, timestamp);

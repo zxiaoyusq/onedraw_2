@@ -4,6 +4,7 @@ using OneStrokeDemon.Config;
 
 namespace OneStrokeDemon.Skills
 {
+    // 定义 SkillEffectTypes 的技能领域契约，明确条件、目标或效果执行边界。
     public static class SkillEffectTypes
     {
         public const string Damage = "Damage";
@@ -20,6 +21,7 @@ namespace OneStrokeDemon.Skills
         public const string ClearProjectiles = "ClearProjectiles";
     }
 
+    // 定义 SkillTargetTypes 的技能领域契约，明确条件、目标或效果执行边界。
     public static class SkillTargetTypes
     {
         public const string Target = "Target";
@@ -33,6 +35,7 @@ namespace OneStrokeDemon.Skills
         public const string Boss = "Boss";
     }
 
+    // 定义 SkillTriggerTypes 的技能领域契约，明确条件、目标或效果执行边界。
     public static class SkillTriggerTypes
     {
         public const string Passive = "Passive";
@@ -40,6 +43,7 @@ namespace OneStrokeDemon.Skills
         public const string Ultimate = "Ultimate";
     }
 
+    // 定义 SkillTargetFaction 的技能领域契约，明确条件、目标或效果执行边界。
     public enum SkillTargetFaction
     {
         Neutral = 0,
@@ -47,6 +51,7 @@ namespace OneStrokeDemon.Skills
         Enemy = 2
     }
 
+    // 定义 SkillEnemyTier 的技能领域契约，明确条件、目标或效果执行边界。
     public enum SkillEnemyTier
     {
         None = 0,
@@ -55,6 +60,7 @@ namespace OneStrokeDemon.Skills
         Boss = 3
     }
 
+    // 定义 ISkillEffectTarget 的技能领域契约，明确条件、目标或效果执行边界。
     public interface ISkillEffectTarget
     {
         string TargetId { get; }
@@ -86,6 +92,7 @@ namespace OneStrokeDemon.Skills
         bool IncrementCounter(float amount, float limit, string sourceId, double timestamp);
     }
 
+    // 定义 ISkillEffectWorld 的技能领域契约，明确条件、目标或效果执行边界。
     public interface ISkillEffectWorld
     {
         IReadOnlyList<ISkillEffectTarget> Targets { get; }
@@ -109,16 +116,19 @@ namespace OneStrokeDemon.Skills
         void PlayAudio(string audioKey, string sourceId, double timestamp);
     }
 
+    // 定义 SkillEffectContext 的技能领域契约，明确条件、目标或效果执行边界。
     public sealed class SkillEffectContext
     {
         private readonly IReadOnlyDictionary<string, double> variables;
 
+        // 初始化 SkillEffectContext，并建立技能运行时所需的初始状态。
         public SkillEffectContext(
             ISkillEffectWorld world,
             double timestamp,
             IReadOnlyDictionary<string, double> conditionVariables = null)
         {
             World = world ?? throw new ArgumentNullException(nameof(world));
+            // 检查技能条件或运行时边界，阻止无效状态继续执行。
             if (double.IsNaN(timestamp) || double.IsInfinity(timestamp) || timestamp < 0d)
             {
                 throw new ArgumentOutOfRangeException(
@@ -134,8 +144,10 @@ namespace OneStrokeDemon.Skills
 
         public double Timestamp { get; }
 
+        // 尝试执行 TryGetConditionValue 对应的技能逻辑，并保持条件、目标与效果结果一致。
         public bool TryGetConditionValue(string name, out double value)
         {
+            // 检查技能条件或运行时边界，阻止无效状态继续执行。
             if (variables != null && name != null && variables.TryGetValue(name, out value))
             {
                 return true;
@@ -146,6 +158,7 @@ namespace OneStrokeDemon.Skills
         }
     }
 
+    // 定义 IEffectExecutor 的技能领域契约，明确条件、目标或效果执行边界。
     public interface IEffectExecutor
     {
         string EffectType { get; }
@@ -157,6 +170,7 @@ namespace OneStrokeDemon.Skills
             string sourceId);
     }
 
+    // 定义 SkillEffectStepStatus 的技能领域契约，明确条件、目标或效果执行边界。
     public enum SkillEffectStepStatus
     {
         None = 0,
@@ -164,8 +178,10 @@ namespace OneStrokeDemon.Skills
         ConditionNotMet = 2
     }
 
+    // 定义 SkillEffectStepResult 的技能领域契约，明确条件、目标或效果执行边界。
     public readonly struct SkillEffectStepResult
     {
+        // 初始化 SkillEffectStepResult，并建立技能运行时所需的初始状态。
         internal SkillEffectStepResult(
             long order,
             string effectType,
@@ -198,6 +214,7 @@ namespace OneStrokeDemon.Skills
         public bool IsValid { get; }
     }
 
+    // 定义 SkillActivationStatus 的技能领域契约，明确条件、目标或效果执行边界。
     public enum SkillActivationStatus
     {
         None = 0,
@@ -211,8 +228,10 @@ namespace OneStrokeDemon.Skills
         PlayerDead = 8
     }
 
+    // 定义 SkillActivationRequest 的技能领域契约，明确条件、目标或效果执行边界。
     public readonly struct SkillActivationRequest
     {
+        // 初始化 SkillActivationRequest，并建立技能运行时所需的初始状态。
         public SkillActivationRequest(
             string skillId,
             string triggerType,
@@ -245,8 +264,10 @@ namespace OneStrokeDemon.Skills
         public bool IsValid { get; }
     }
 
+    // 定义 SkillActivationResult 的技能领域契约，明确条件、目标或效果执行边界。
     public readonly struct SkillActivationResult
     {
+        // 初始化 SkillActivationResult，并建立技能运行时所需的初始状态。
         internal SkillActivationResult(
             SkillActivationStatus status,
             string skillId,
@@ -277,8 +298,10 @@ namespace OneStrokeDemon.Skills
         public bool Succeeded => Status == SkillActivationStatus.Activated;
     }
 
+    // 定义 SkillEffectConfigurationException 的技能领域契约，明确条件、目标或效果执行边界。
     public sealed class SkillEffectConfigurationException : InvalidOperationException
     {
+        // 初始化 SkillEffectConfigurationException，并建立技能运行时所需的初始状态。
         public SkillEffectConfigurationException(
             string message,
             string effectGroupId,
