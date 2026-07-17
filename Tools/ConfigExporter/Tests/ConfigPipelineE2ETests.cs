@@ -4,12 +4,14 @@ using OneStrokeDemon.ConfigExporter.Services;
 
 namespace OneStrokeDemon.ConfigExporter.Tests;
 
+// 验证三份受管配置产物可确定性生成、严格比对且不会被验证流程隐式改写。
 public sealed class ConfigPipelineE2ETests
 {
     private const string ExpectedContentHash =
         "2c005061c9a4bf806afcc6d6c16e7504b2df8b4bbecfec6edcc262900cd1dfdc";
 
     [Fact]
+    // 验证两次导出字节一致，并与仓库受管产物（含中文注释）完全相同。
     public void GeneratedJsonHashAndIdsAreDeterministicAndMatchTrackedArtifacts()
     {
         var repository = TestRepository.Find();
@@ -54,6 +56,9 @@ public sealed class ConfigPipelineE2ETests
         Assert.False(idsBytes.AsSpan().StartsWith(Encoding.UTF8.Preamble));
         var idsText = Encoding.UTF8.GetString(idsBytes);
         Assert.DoesNotContain("\r", idsText, StringComparison.Ordinal);
+        Assert.Contains("此文件由配置导出器自动生成，请勿手工修改", idsText, StringComparison.Ordinal);
+        Assert.Contains("汇总来自Players.playerId的稳定配置ID", idsText, StringComparison.Ordinal);
+        Assert.Contains("配置ID：player_moyan。", idsText, StringComparison.Ordinal);
         Assert.Contains("public const string PlayerMoyan = \"player_moyan\";", idsText, StringComparison.Ordinal);
         Assert.Contains("public const string SceneBattle = \"scene_battle\";", idsText, StringComparison.Ordinal);
     }
@@ -62,6 +67,7 @@ public sealed class ConfigPipelineE2ETests
     [InlineData("gameplay-json")]
     [InlineData("content-hash")]
     [InlineData("config-ids")]
+    // 验证任一受管产物漂移都会失败，且验证命令不会偷偷覆盖现场文件。
     public void VerifyGeneratedRejectsEveryArtifactDriftWithoutRewriting(string artifactName)
     {
         var repository = TestRepository.Find();
@@ -98,6 +104,7 @@ public sealed class ConfigPipelineE2ETests
     }
 
     [Fact]
+    // 验证三个输出路径不能互相别名，避免一个产物覆盖另一个产物。
     public void GenerateRejectsAliasedOutputPathsBeforeWriting()
     {
         var repository = TestRepository.Find();
@@ -117,6 +124,7 @@ public sealed class ConfigPipelineE2ETests
         Assert.False(File.Exists(sharedPath));
     }
 
+    // 为一次隔离导出构造互不冲突的三份临时产物路径。
     private static ArtifactPaths Paths(string root, string prefix)
     {
         return new ArtifactPaths(

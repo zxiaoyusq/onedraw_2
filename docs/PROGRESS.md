@@ -1,8 +1,8 @@
 # PROGRESS
 
 - 日期：2026-07-17
-- 当前成熟度：T660生产入口与轨迹视觉已由用户确认通过；全部手写Runtime与Editor模块中文注释批次完成
-- 当前任务：T680
+- 当前成熟度：T660生产入口与轨迹视觉已由用户确认通过；手写脚本与ConfigIds生成注释批次完成
+- 当前任务：T681
 - 状态：READY
 - Unity精确版本：6000.5.1f1（已由ProjectVersion.txt与本机安装核验）
 - 微信SDK来源或版本：官方 `minigame-tuanjie-transform-sdk` v0.1.33 / commit `ed4ad28f433c6b52b5fd3f22a6fa155a0c98c228` / embedded最小补丁
@@ -11,10 +11,11 @@
 
 ## 进行中
 
-- T680是唯一`READY`任务，范围为ConfigIds注释生成逻辑与生成物。T681在其完成后执行全量审计；T700在T681完成前保持`BACKLOG`。
+- T681是唯一`READY`任务，范围为`Assets/_Game/Scripts`全量中文注释覆盖审计与最终回归；通过后P6代码可读性任务全部完成并转入T700。
 
 ## 已完成
 
+- T680：修改ConfigExporter的ConfigIds模板，使生成物确定性包含中文文件职责、5项元数据、28个来源分组和377个稳定ID说明；`ConfigIds.g.cs`由导出器新增412行注释，未手改。生成器新增23行中文注释，E2E测试新增中文输出断言与8行注释；受管JSON/hash字节及schema/content/hash均不变。ConfigExporter 58/58、完整ConfigPipeline EditMode 19/19与PlayMode 3/3、全量EditMode 198/198及PlayMode 50/50通过，用户`AGENTS.md`未修改/未暂存。
 - T679：为Editor目录及其子目录9个手写C#脚本、1,556行基线代码补充158行中文类型、方法和主要逻辑注释，覆盖美术/Registry/字体/场景资产生成、标准Web与微信构建入口；删除0行且无语义变化。配置漂移门与ConfigExporter 58/58、Editor相关专项EditMode 29/29和PlayMode 8/8、全量EditMode 198/198及PlayMode 50/50通过；TMP测试漂移已恢复，用户`AGENTS.md`未修改/未暂存。
 - T678：为Bootstrap目录6个手写C#脚本、2,193行基线代码补充239行中文类型、方法和主要逻辑注释，覆盖生产入口、主菜单/战斗组合根、跨场景启动上下文、战斗世界与会话释放；删除0行且无语义变化。配置漂移门与ConfigExporter 58/58、ConfigPipeline/T660专项EditMode 21/21和PlayMode 7/7、全量EditMode 198/198及PlayMode 50/50通过；TMP测试漂移已恢复，用户`AGENTS.md`未修改/未暂存。
 - T677：为Presentation目录17个手写C#脚本、4,989行基线代码补充526行中文类型、方法和主要逻辑注释，覆盖轨迹池、HUD绑定/视图、反馈运行时、伤害数字/VFX池与教程遮罩；删除0行且无语义变化。配置漂移门与ConfigExporter 58/58、表现专项EditMode 16/16和PlayMode 9/9、全量EditMode 198/198及PlayMode 50/50通过；TMP测试漂移已恢复，用户`AGENTS.md`未修改/未暂存。
@@ -244,4 +245,4 @@
 9. 三个MVP关卡已接入生产主菜单和Battle组合根，用户已确认Unity Editor入口、Mac触控板笔迹与修复后视觉。`IProgressSaveStore`与震动仍待T130平台适配，T640多比例/安全区又依赖T120，因此当前证据不能外推为平台持久化、多设备布局或真机体验。
 ## 下一步
 
-执行T680：只修改ConfigExporter的注释生成逻辑，并由导出器重新生成`ConfigIds.g.cs`；不手改生成物或配置内容。完成证据和独立提交后才将T681置READY。
+执行T681：审计`Assets/_Game/Scripts`全部147个C#的中文注释覆盖与方法/主要逻辑说明，运行最终配置门和全量回归；不顺手实现T700。

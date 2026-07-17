@@ -59,8 +59,8 @@
 | T677 | P6 代码可读性 | DONE | T676 | 1.5 | 为Presentation脚本补齐中文注释。 |
 | T678 | P6 代码可读性 | DONE | T677 | 1.0 | 为Bootstrap脚本补齐中文注释。 |
 | T679 | P6 代码可读性 | DONE | T678 | 1.0 | 为Editor脚本补齐中文注释。 |
-| T680 | P6 代码可读性 | READY | T679 | 0.5 | 通过导出器为ConfigIds生成中文注释。 |
-| T681 | P6 代码可读性 | BACKLOG | T680 | 0.5 | 审计Scripts全量中文注释覆盖。 |
+| T680 | P6 代码可读性 | DONE | T679 | 0.5 | 通过导出器为ConfigIds生成中文注释。 |
+| T681 | P6 代码可读性 | READY | T680 | 0.5 | 审计Scripts全量中文注释覆盖。 |
 | T700 | P7 质量发布 | BACKLOG | T540, T660, T681 | 2.0 | 补齐纯规则EditMode回归矩阵。 |
 | T710 | P7 质量发布 | BACKLOG | T550, T650 | 3.0 | 补齐Unity集成、完整单局、暂停、重开和生命周期PlayMode测试。 |
 | T720 | P7 质量发布 | BACKLOG | T710, T250 | 1.0 | 审计所有玩法数值、内容和文案是否来自配置表。 |
@@ -624,7 +624,7 @@
 
 ### T671–T681 · 分模块补齐其余中文注释并审计。
 
-- **状态：** T671–T679为`DONE`，T680为`READY`，T681为`BACKLOG`
+- **状态：** T671–T680为`DONE`，T681为`READY`
 - **依赖：** 按T671→T681顺序串行，首任务依赖T670。
 - **产出：** Config手写Runtime、Input、Combat、Actors、Skills、Levels、Presentation、Bootstrap、Editor、ConfigIds生成器/生成物，以及最终全量审计。
 - **明确不做：** 不把注释批次变成功能重构；不手改受管生成文件。
@@ -642,8 +642,8 @@
 | T677 | DONE | T676 | Presentation |
 | T678 | DONE | T677 | Bootstrap |
 | T679 | DONE | T678 | Editor |
-| T680 | READY | T679 | ConfigExporter注释生成逻辑与重新生成`ConfigIds.g.cs` |
-| T681 | BACKLOG | T680 | `Assets/_Game/Scripts`全量覆盖审计与最终回归 |
+| T680 | DONE | T679 | ConfigExporter注释生成逻辑与重新生成`ConfigIds.g.cs` |
+| T681 | READY | T680 | `Assets/_Game/Scripts`全量覆盖审计与最终回归 |
 
 
 ## P7 质量发布
