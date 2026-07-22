@@ -24,6 +24,8 @@
 *.opendb
 *.VC.db
 *.meta
+# Unity 的 Assets 数据库依赖稳定 GUID；只放开项目资产 meta，其他目录继续忽略。
+!/[Aa]ssets/**/*.meta
 sysinfo.txt
 mono_crash.*
 crashlytics-build.properties

@@ -62,6 +62,7 @@
 | T680 | P6 代码可读性 | DONE | T679 | 0.5 | 通过导出器为ConfigIds生成中文注释。 |
 | T681 | P6 代码可读性 | DONE | T680 | 0.5 | 审计Scripts全量中文注释覆盖。 |
 | T690 | P6 表现与资源 | DONE | T630, T660 | 0.5 | 将火鱼静态原型替换为用户提供的九帧循环动画Prefab。 |
+| T691 | P6 工程卫生 | DONE | T690 | 0.1 | 仅放开Assets目录下Unity必需的meta跟踪。 |
 | T700 | P7 质量发布 | READY | T540, T660, T681 | 2.0 | 补齐纯规则EditMode回归矩阵。 |
 | T710 | P7 质量发布 | BACKLOG | T550, T650 | 3.0 | 补齐Unity集成、完整单局、暂停、重开和生命周期PlayMode测试。 |
 | T720 | P7 质量发布 | BACKLOG | T710, T250 | 1.0 | 审计所有玩法数值、内容和文案是否来自配置表。 |
@@ -657,6 +658,18 @@
 - **验证：** 配置完整门；动画资源EditMode；火鱼对象池PlayMode；全量EditMode/PlayMode；Unity Editor玩家路径目视确认。
 - **证据：** `artifacts/evals/T690/`
 - **提交：** `T690: animate fire fish prototype`
+
+### T691 · 仅放开Assets目录下Unity必需的meta跟踪。
+
+- **状态：** `DONE`
+- **依赖：** T690
+- **估算：** 0.1 人日
+- **产出：** `.gitignore`保留全局meta兜底，仅反向放开`Assets/**/*.meta`；补齐对应已跟踪资产遗漏的meta。
+- **明确不做：** 不放开Library、Temp、工具缓存或其他目录的meta；不修改产品逻辑或Unity资源内容。
+- **验收：** Assets下meta不再被忽略；Assets外meta仍被忽略；无成批历史遗漏或无主meta进入提交。
+- **验证：** `git check-ignore`边界检查；未跟踪meta审计；暂存白名单检查。
+- **证据：** `artifacts/evals/T691/`
+- **提交：** `T691: track Unity asset metadata`
 
 
 ## P7 质量发布
