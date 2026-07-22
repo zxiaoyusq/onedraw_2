@@ -1,0 +1,25 @@
+Unity version: 6000.5.1f1
+Build profile: Assets/Settings/Build Profiles/Android.asset
+Output: Builds/Android/T693/onedraw_2.apk
+
+First clean build job: build-a6e9909bea
+Result: Failed during libil2cpp.so link after 445.9584251 seconds.
+Diagnostic: Bee/clang returned exit 1 with an empty linker diagnostic stream.
+Reproduction: rerunning Bee's exact clang++ response file completed successfully in 7 seconds with exit code 0.
+
+Cached retry build job: build-3dfa86d982
+Result: Succeeded
+Duration: 125.13584 seconds
+Errors: 0
+Warnings: 2
+APK bytes: 46258919
+APK SHA-256: 94d33cdbd978b2d62a530a767640c9828cb2737f12b24283a443410d9cf52ec0
+
+Package inspection:
+- Tool: Android SDK build-tools 36.0.0 aapt2
+- Activity: com.unity3d.player.UnityPlayerGameActivity
+- android:screenOrientation numeric value: 11
+- Android 36 attrs_manifest.xml mapping: userLandscape = 11
+- android:resizeableActivity: true
+
+Conclusion: the final merged APK manifest requests userLandscape, so portrait is not an allowed Activity orientation while left/right landscape can follow the user's rotation setting.

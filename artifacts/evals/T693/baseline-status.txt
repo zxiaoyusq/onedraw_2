@@ -1,0 +1,10 @@
+T693 baseline captured before writes on 2026-07-23.
+
+## main...origin/main [ahead 4]
+ M ProjectSettings/ProjectSettings.asset
+ M ProjectSettings/QualitySettings.asset
+ M ProjectSettings/UnityConnectSettings.asset
+?? Assets/Resources.meta
+
+The pre-existing ProjectSettings.asset change added Standalone batching settings only.
+QualitySettings.asset, UnityConnectSettings.asset, and Assets/Resources.meta are user-owned and excluded from T693.

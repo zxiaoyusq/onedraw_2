@@ -1,0 +1,21 @@
+T693 whitelist audit: PASS
+
+Tracked task changes:
+- ProjectSettings/ProjectSettings.asset: two orientation lines changed by T693; pre-existing Standalone batching hunk preserved but excluded from the task commit.
+- docs/TASKS.md
+- docs/PROGRESS.md
+
+New task changes:
+- Assets/_Game/Tests/EditMode/T693.meta
+- Assets/_Game/Tests/EditMode/T693/AndroidOrientationSettingsTests.cs
+- Assets/_Game/Tests/EditMode/T693/AndroidOrientationSettingsTests.cs.meta
+- artifacts/evals/T693/*
+
+Preserved user changes excluded from the task commit:
+- ProjectSettings/ProjectSettings.asset Standalone batching hunk
+- ProjectSettings/QualitySettings.asset
+- ProjectSettings/UnityConnectSettings.asset
+- Assets/Resources.meta
+
+git diff --check: PASS
+Android Build Profile PlayerSettings override list: empty

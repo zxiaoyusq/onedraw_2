@@ -64,6 +64,7 @@
 | T690 | P6 表现与资源 | DONE | T630, T660 | 0.5 | 将火鱼静态原型替换为用户提供的九帧循环动画Prefab。 |
 | T691 | P6 工程卫生 | DONE | T690 | 0.1 | 仅放开Assets目录下Unity必需的meta跟踪。 |
 | T692 | P6 表现与资源 | DONE | T690 | 0.2 | 修复Lit角色在Actors层缺少2D全局光而显示全黑。 |
+| T693 | P6 工程修复 | DONE | T660 | 0.2 | 固定Android包只允许横屏方向。 |
 | T700 | P7 质量发布 | READY | T540, T660, T681 | 2.0 | 补齐纯规则EditMode回归矩阵。 |
 | T710 | P7 质量发布 | BACKLOG | T550, T650 | 3.0 | 补齐Unity集成、完整单局、暂停、重开和生命周期PlayMode测试。 |
 | T720 | P7 质量发布 | BACKLOG | T710, T250 | 1.0 | 审计所有玩法数值、内容和文案是否来自配置表。 |
@@ -683,6 +684,18 @@
 - **验证：** T692 EditMode；T692 PlayMode；全量EditMode/PlayMode；Unity场景运行目视确认。
 - **证据：** `artifacts/evals/T692/`
 - **提交：** `T692: fix 2D light sorting layer coverage`
+
+### T693 · 固定Android包只允许横屏方向。
+
+- **状态：** `DONE`
+- **依赖：** T660
+- **估算：** 0.2 人日
+- **产出：** Android Player Settings仅允许左右横屏；方向回归测试。
+- **明确不做：** 不修改场景、Prefab、Build Profile、微信方向配置或T640多比例安全区适配。
+- **验收：** Android构建不再以竖屏启动；设备可在左右横屏之间自动旋转；已有用户ProjectSettings改动完整保留。
+- **验证：** T693 EditMode；ProjectSettings静态差异审计。
+- **证据：** `artifacts/evals/T693/`
+- **提交：** `T693: force Android landscape orientation`
 
 
 ## P7 质量发布
