@@ -1,0 +1,14 @@
+T692 baseline captured 2026-07-22 before task edits.
+
+Branch: main
+Existing user-owned working tree state (preserve and exclude from T692):
+ M ProjectSettings/ProjectSettings.asset
+ M ProjectSettings/QualitySettings.asset
+ M ProjectSettings/UnityConnectSettings.asset
+?? Assets/Resources.meta
+
+Notes:
+- ProjectSettings/ProjectSettings.asset adds Standalone batching settings.
+- ProjectSettings/UnityConnectSettings.asset disables Unity Connect.
+- ProjectSettings/QualitySettings.asset has no content diff against the index.
+- Assets/Resources.meta belongs to an empty local folder and remains untracked.

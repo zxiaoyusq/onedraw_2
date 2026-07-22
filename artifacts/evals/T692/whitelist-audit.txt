@@ -1,0 +1,20 @@
+T692 whitelist audit: PASS
+
+Included:
+- Assets/_Game/Scenes/{Bootstrap,MainMenu,Battle}.unity
+- Assets/_Game/Scripts/Editor/OneStrokeDemon.Editor.asmdef
+- Assets/_Game/Scripts/Editor/Art/T692GlobalLightSortingLayerAuthoring.cs(.meta)
+- Assets/_Game/Tests/EditMode/T692(.meta) and contained test(.meta)
+- Assets/_Game/Tests/PlayMode/OneStrokeDemon.Tests.PlayMode.asmdef
+- Assets/_Game/Tests/PlayMode/T692(.meta) and contained test(.meta)
+- docs/TASKS.md
+- docs/PROGRESS.md
+- artifacts/evals/T692/**
+
+Excluded and preserved:
+- ProjectSettings/ProjectSettings.asset
+- ProjectSettings/QualitySettings.asset
+- ProjectSettings/UnityConnectSettings.asset
+- Assets/Resources.meta
+
+No fire fish texture, animation, Prefab, Registry, configuration source, generated configuration, gameplay runtime, package, or build output is included.

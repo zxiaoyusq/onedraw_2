@@ -1,7 +1,7 @@
 # PROGRESS
 
 - 日期：2026-07-22
-- 当前成熟度：P6工程卫生；Unity meta忽略边界已收窄到Assets目录
+- 当前成熟度：P6表现修复完成；2D全局光已覆盖全部项目Sorting Layer
 - 当前任务：T700
 - 状态：READY
 - Unity精确版本：6000.5.1f1（已由ProjectVersion.txt与本机安装核验）
@@ -11,10 +11,11 @@
 
 ## 进行中
 
-- T700是唯一`READY`任务，范围为补齐纯规则EditMode回归矩阵；本轮止于T691 meta跟踪规则修正，不提前实现T700。
+- T700是唯一`READY`任务，范围为补齐纯规则EditMode回归矩阵；本轮止于T692灯光层修复，不提前实现T700。
 
 ## 已完成
 
+- T692：定位到火鱼Prefab继续使用正确的`Actors` Sorting Layer和URP 2D `Sprite-Lit-Default`材质，但Bootstrap、MainMenu、Battle的Global Light 2D只覆盖`Default`，因此Lit角色动画正常却显示全黑。现已通过Unity Editor API让三个场景的全局光覆盖Background、Default、Actors、Projectiles、VFX全部5层，并保留可重复执行的修复工具。T692 EditMode 4/4、PlayMode 1/1、全量EditMode 203/203、干净域重载后的全量PlayMode 52/52通过；相机直接渲染的火鱼目视图确认恢复原始彩色。连续专项与全量PlayMode首轮曾触发Unity Input System编辑器状态串扰，9条既有测试统一因`Map index out of range in ProcessControlStateChange`失败，干净域重载单独重跑后52/52通过。最终Unity重编译无产品Error，Console仅有本机VS/Unity UDP端口占用warning；用户已有ProjectSettings改动与未跟踪`Assets/Resources.meta`继续排除。
 - T691：保留全局`*.meta`兜底，仅以`!/[Aa]ssets/**/*.meta`放开Unity资产数据库必需的meta；Assets外meta继续忽略。审计只发现`Android.asset.meta`与空本地`Resources.meta`两项历史遗漏：前者对应已跟踪Build Profile并纳入提交，后者没有受管目录内容，保留为未跟踪本地文件且未删除/未提交。用户已有ProjectSettings改动继续排除。
 - T690：保持`enemy_fire_fish`稳定键和全部玩法参数不变，将用户提供的3×3鱼妖图集切为9个256×256 Sprite，以12 FPS生成循环`FireFishIdle`、AnimatorController和`EnemyFireFish` Prefab；Registry改绑Prefab，旧静态`fire_fish.png`由Unity AssetDatabase删除，敌人图集同步重建。权威工作簿及镜像经表格工具同步，受管JSON/hash/ConfigIds及样例JSON经导出器重生成，当前hash为`0cf75f9d...75d81`；ConfigIds跨平台统一LF。T690 EditMode 1/1、PlayMode 1/1、全量EditMode 199/199、PlayMode 51/51、ConfigExporter 58/58和最终Unity重编译均通过；未修改或暂存用户已有ProjectSettings改动。
 - T681：对`Assets/_Game/Scripts`全量147个C#、当前35,744行执行最终审计；147/147文件包含中文说明，478/478个类型和1,314/1,314个方法通过相邻中文职责注释检查。审计发现并补齐`T660SceneAuthoring.EnsureProductionRoot<T>`一个泛型方法遗漏，仅新增1行注释。完整配置门中ConfigExporter 58/58、ConfigPipeline EditMode 19/19与PlayMode 3/3通过，最终全量EditMode 198/198、PlayMode 50/50通过；生成物漂移0、日志无新增产品Error/Warning，用户`AGENTS.md`未修改/未暂存。P6代码可读性T670–T681全部完成。

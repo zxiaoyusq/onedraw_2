@@ -63,6 +63,7 @@
 | T681 | P6 代码可读性 | DONE | T680 | 0.5 | 审计Scripts全量中文注释覆盖。 |
 | T690 | P6 表现与资源 | DONE | T630, T660 | 0.5 | 将火鱼静态原型替换为用户提供的九帧循环动画Prefab。 |
 | T691 | P6 工程卫生 | DONE | T690 | 0.1 | 仅放开Assets目录下Unity必需的meta跟踪。 |
+| T692 | P6 表现与资源 | DONE | T690 | 0.2 | 修复Lit角色在Actors层缺少2D全局光而显示全黑。 |
 | T700 | P7 质量发布 | READY | T540, T660, T681 | 2.0 | 补齐纯规则EditMode回归矩阵。 |
 | T710 | P7 质量发布 | BACKLOG | T550, T650 | 3.0 | 补齐Unity集成、完整单局、暂停、重开和生命周期PlayMode测试。 |
 | T720 | P7 质量发布 | BACKLOG | T710, T250 | 1.0 | 审计所有玩法数值、内容和文案是否来自配置表。 |
@@ -671,12 +672,24 @@
 - **证据：** `artifacts/evals/T691/`
 - **提交：** `T691: track Unity asset metadata`
 
+### T692 · 修复Lit角色在Actors层缺少2D全局光而显示全黑。
+
+- **状态：** `DONE`
+- **依赖：** T690
+- **估算：** 0.2 人日
+- **产出：** 三个运行场景的Global Light 2D覆盖全部项目Sorting Layer；可重复执行的场景修复工具与回归测试。
+- **明确不做：** 不改火鱼图集、动画、Prefab、Registry、玩法配置或材质类型；不以切回Default层或Unlit材质掩盖场景灯光配置缺口。
+- **验收：** `Actors`层被Bootstrap、MainMenu、Battle的Global Light 2D覆盖；火鱼继续使用`Actors`层和`Sprite-Lit-Default`材质；运行时不再呈现全黑剪影。
+- **验证：** T692 EditMode；T692 PlayMode；全量EditMode/PlayMode；Unity场景运行目视确认。
+- **证据：** `artifacts/evals/T692/`
+- **提交：** `T692: fix 2D light sorting layer coverage`
+
 
 ## P7 质量发布
 
 ### T700 · 补齐纯规则EditMode回归矩阵。
 
-- **状态：** `BACKLOG`
+- **状态：** `READY`
 - **依赖：** T540, T660, T681
 - **估算：** 2.0 人日
 - **产出：** 手势/伤害/配置/技能/状态机/Boss测试。
