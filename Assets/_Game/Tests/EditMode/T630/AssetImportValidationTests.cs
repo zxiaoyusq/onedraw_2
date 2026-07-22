@@ -68,7 +68,11 @@ namespace OneStrokeDemon.Tests.EditMode.T630
                 var importer = AssetImporter.GetAtPath(path) as TextureImporter;
                 Assert.That(importer, Is.Not.Null, path);
                 Assert.That(importer.textureType, Is.EqualTo(TextureImporterType.Sprite), path);
-                Assert.That(importer.spriteImportMode, Is.EqualTo(SpriteImportMode.Single), path);
+                bool animated = path.Contains("/Animated/", StringComparison.Ordinal);
+                Assert.That(
+                    importer.spriteImportMode,
+                    Is.EqualTo(animated ? SpriteImportMode.Multiple : SpriteImportMode.Single),
+                    path);
                 Assert.That(importer.spritePixelsPerUnit, Is.EqualTo(100f), path);
                 Assert.That(importer.alphaSource, Is.EqualTo(TextureImporterAlphaSource.FromInput), path);
                 Assert.That(importer.alphaIsTransparency, Is.True, path);
@@ -88,16 +92,22 @@ namespace OneStrokeDemon.Tests.EditMode.T630
                 Assert.That(spriteSettings.spriteMeshType,
                     Is.EqualTo(background || ui ? SpriteMeshType.FullRect : SpriteMeshType.Tight), path);
                 Assert.That(importer.maxTextureSize,
-                    Is.EqualTo(background ? 4096 : actor || ui ? 2048 : 1024), path);
+                    Is.EqualTo(background ? 4096 : animated ? 1024 : actor || ui ? 2048 : 1024), path);
 
-                Sprite sprite = AssetDatabase.LoadAssetAtPath<Sprite>(path);
-                Assert.That(sprite, Is.Not.Null, path);
-                Vector2 normalizedPivot = new Vector2(
-                    sprite.pivot.x / sprite.rect.width,
-                    sprite.pivot.y / sprite.rect.height);
                 Vector2 expectedPivot = actor ? new Vector2(0.5f, 0.08f) : new Vector2(0.5f, 0.5f);
-                Assert.That(normalizedPivot.x, Is.EqualTo(expectedPivot.x).Within(0.01f), path);
-                Assert.That(normalizedPivot.y, Is.EqualTo(expectedPivot.y).Within(0.01f), path);
+                Sprite[] sprites = animated
+                    ? AssetDatabase.LoadAllAssetsAtPath(path).OfType<Sprite>().ToArray()
+                    : new[] { AssetDatabase.LoadAssetAtPath<Sprite>(path) };
+                Assert.That(sprites, Is.Not.Empty, path);
+                Assert.That(sprites.All(sprite => sprite != null), Is.True, path);
+                foreach (Sprite sprite in sprites)
+                {
+                    Vector2 normalizedPivot = new Vector2(
+                        sprite.pivot.x / sprite.rect.width,
+                        sprite.pivot.y / sprite.rect.height);
+                    Assert.That(normalizedPivot.x, Is.EqualTo(expectedPivot.x).Within(0.01f), path);
+                    Assert.That(normalizedPivot.y, Is.EqualTo(expectedPivot.y).Within(0.01f), path);
+                }
             }
         }
 

@@ -25,7 +25,7 @@ namespace OneStrokeDemon.Config
         public string Code { get; }
 
         /// <summary>获取发生错误的注册表来源。</summary>
-        public string Source { get; }
+        public new string Source { get; }
 
         /// <summary>获取发生错误的字段或生命周期上下文。</summary>
         public string Context { get; }

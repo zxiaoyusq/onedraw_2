@@ -50,8 +50,8 @@ namespace OneStrokeDemon.Tests.EditMode.T240
             Assert.That(summary.ConfigHash, Is.EqualTo(config.ContentHash));
             Assert.That(buildSummary.EntryCount, Is.EqualTo(summary.EntryCount));
             Assert.That(summary.EntryCount, Is.EqualTo(76));
-            Assert.That(summary.PrefabCount, Is.EqualTo(40));
-            Assert.That(summary.SpriteCount, Is.EqualTo(18));
+            Assert.That(summary.PrefabCount, Is.EqualTo(41));
+            Assert.That(summary.SpriteCount, Is.EqualTo(17));
             Assert.That(summary.AudioClipCount, Is.EqualTo(17));
             Assert.That(summary.SceneCount, Is.EqualTo(1));
             Assert.That(summary.ToLogMessage(), Does.Contain("entries=76"));

@@ -61,6 +61,7 @@
 | T679 | P6 代码可读性 | DONE | T678 | 1.0 | 为Editor脚本补齐中文注释。 |
 | T680 | P6 代码可读性 | DONE | T679 | 0.5 | 通过导出器为ConfigIds生成中文注释。 |
 | T681 | P6 代码可读性 | DONE | T680 | 0.5 | 审计Scripts全量中文注释覆盖。 |
+| T690 | P6 表现与资源 | DONE | T630, T660 | 0.5 | 将火鱼静态原型替换为用户提供的九帧循环动画Prefab。 |
 | T700 | P7 质量发布 | READY | T540, T660, T681 | 2.0 | 补齐纯规则EditMode回归矩阵。 |
 | T710 | P7 质量发布 | BACKLOG | T550, T650 | 3.0 | 补齐Unity集成、完整单局、暂停、重开和生命周期PlayMode测试。 |
 | T720 | P7 质量发布 | BACKLOG | T710, T250 | 1.0 | 审计所有玩法数值、内容和文案是否来自配置表。 |
@@ -644,6 +645,18 @@
 | T679 | DONE | T678 | Editor |
 | T680 | DONE | T679 | ConfigExporter注释生成逻辑与重新生成`ConfigIds.g.cs` |
 | T681 | DONE | T680 | `Assets/_Game/Scripts`全量覆盖审计与最终回归 |
+
+### T690 · 将火鱼静态原型替换为九帧循环动画Prefab。
+
+- **状态：** `DONE`
+- **依赖：** T630, T660
+- **估算：** 0.5 人日
+- **产出：** 用户提供的3×3鱼妖图集、九帧循环AnimationClip、AnimatorController、`EnemyFireFish` Prefab，以及保持`enemy_fire_fish`稳定键的配置与Registry绑定。
+- **明确不做：** 不改火鱼玩法数值、攻击判定或状态机；不接入主角或其他敌人动画；不手工编辑Unity YAML和生成配置。
+- **验收：** 九帧按源JSON顺序循环；对象池实例使用Prefab并保留现有敌人组件补齐与回收语义；配置与Registry严格校验通过；无新增编译警告或错误。
+- **验证：** 配置完整门；动画资源EditMode；火鱼对象池PlayMode；全量EditMode/PlayMode；Unity Editor玩家路径目视确认。
+- **证据：** `artifacts/evals/T690/`
+- **提交：** `T690: animate fire fish prototype`
 
 
 ## P7 质量发布

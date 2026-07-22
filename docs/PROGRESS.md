@@ -1,20 +1,21 @@
 # PROGRESS
 
-- 日期：2026-07-17
-- 当前成熟度：P6代码可读性T670–T681全部完成；147个Scripts C#全量中文注释审计通过
+- 日期：2026-07-22
+- 当前成熟度：P6原型资源增量接入；火鱼九帧循环动画Prefab已完成并验证
 - 当前任务：T700
 - 状态：READY
 - Unity精确版本：6000.5.1f1（已由ProjectVersion.txt与本机安装核验）
 - 微信SDK来源或版本：官方 `minigame-tuanjie-transform-sdk` v0.1.33 / commit `ed4ad28f433c6b52b5fd3f22a6fa155a0c98c228` / embedded最小补丁
 - Active Scene：Assets/_Game/Scenes/Bootstrap.unity
-- 配置版本：schema 5 / content 0.6.3-sample / hash `2c005061c9a4bf806afcc6d6c16e7504b2df8b4bbecfec6edcc262900cd1dfdc`
+- 配置版本：schema 5 / content 0.6.3-sample / hash `0cf75f9d11b2db5311d2910a35b38cbc0500709833723ad8086fb19f34f75d81`
 
 ## 进行中
 
-- T700是唯一`READY`任务，范围为补齐纯规则EditMode回归矩阵；本轮按用户要求止于全部P6代码可读性任务完成，不提前实现T700。
+- T700是唯一`READY`任务，范围为补齐纯规则EditMode回归矩阵；本轮止于T690火鱼动画资源替换，不提前实现T700。
 
 ## 已完成
 
+- T690：保持`enemy_fire_fish`稳定键和全部玩法参数不变，将用户提供的3×3鱼妖图集切为9个256×256 Sprite，以12 FPS生成循环`FireFishIdle`、AnimatorController和`EnemyFireFish` Prefab；Registry改绑Prefab，旧静态`fire_fish.png`由Unity AssetDatabase删除，敌人图集同步重建。权威工作簿及镜像经表格工具同步，受管JSON/hash/ConfigIds及样例JSON经导出器重生成，当前hash为`0cf75f9d...75d81`；ConfigIds跨平台统一LF。T690 EditMode 1/1、PlayMode 1/1、全量EditMode 199/199、PlayMode 51/51、ConfigExporter 58/58和最终Unity重编译均通过；未修改或暂存用户已有ProjectSettings改动。
 - T681：对`Assets/_Game/Scripts`全量147个C#、当前35,744行执行最终审计；147/147文件包含中文说明，478/478个类型和1,314/1,314个方法通过相邻中文职责注释检查。审计发现并补齐`T660SceneAuthoring.EnsureProductionRoot<T>`一个泛型方法遗漏，仅新增1行注释。完整配置门中ConfigExporter 58/58、ConfigPipeline EditMode 19/19与PlayMode 3/3通过，最终全量EditMode 198/198、PlayMode 50/50通过；生成物漂移0、日志无新增产品Error/Warning，用户`AGENTS.md`未修改/未暂存。P6代码可读性T670–T681全部完成。
 - T680：修改ConfigExporter的ConfigIds模板，使生成物确定性包含中文文件职责、5项元数据、28个来源分组和377个稳定ID说明；`ConfigIds.g.cs`由导出器新增412行注释，未手改。生成器新增23行中文注释，E2E测试新增中文输出断言与8行注释；受管JSON/hash字节及schema/content/hash均不变。ConfigExporter 58/58、完整ConfigPipeline EditMode 19/19与PlayMode 3/3、全量EditMode 198/198及PlayMode 50/50通过，用户`AGENTS.md`未修改/未暂存。
 - T679：为Editor目录及其子目录9个手写C#脚本、1,556行基线代码补充158行中文类型、方法和主要逻辑注释，覆盖美术/Registry/字体/场景资产生成、标准Web与微信构建入口；删除0行且无语义变化。配置漂移门与ConfigExporter 58/58、Editor相关专项EditMode 29/29和PlayMode 8/8、全量EditMode 198/198及PlayMode 50/50通过；TMP测试漂移已恢复，用户`AGENTS.md`未修改/未暂存。

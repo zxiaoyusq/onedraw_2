@@ -101,8 +101,12 @@ internal sealed class ConfigIdsGenerator
 
         builder.AppendLine("    }");
         builder.AppendLine("}");
+        // StringBuilder.AppendLine 跟随宿主平台；编码前归一化，保证生成物跨平台字节一致。
+        string source = builder.ToString()
+            .Replace("\r\n", "\n", StringComparison.Ordinal)
+            .Replace("\r", "\n", StringComparison.Ordinal);
         return new GeneratedConfigIds(
-            new UTF8Encoding(encoderShouldEmitUTF8Identifier: false).GetBytes(builder.ToString()),
+            new UTF8Encoding(encoderShouldEmitUTF8Identifier: false).GetBytes(source),
             resolvedSets.Length,
             constantCount);
     }

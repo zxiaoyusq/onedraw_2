@@ -11,7 +11,7 @@ namespace OneStrokeDemon.Tests.EditMode
         {
             string output = WechatBuildEntry.ResolveOutputPath(WechatBuildEntry.DefaultOutputPath);
 
-            Assert.That(output, Does.EndWith("Builds/WeChat/T120"));
+            Assert.That(output, Does.EndWith(Path.Combine("Builds", "WeChat", "T120")));
             Assert.That(WechatBuildEntry.RequiredMiniGameFiles, Does.Contain("minigame/game.js"));
             Assert.That(WechatBuildEntry.RequiredMiniGameFiles,
                 Does.Contain("minigame/project.config.json"));

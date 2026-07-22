@@ -165,6 +165,12 @@ namespace OneStrokeDemon.Editor.Art
             // 逐项处理资源或配置条目，保证生成与验证顺序稳定。
             foreach (string path in EnumeratePngPaths())
             {
+                // 动画图集由各自的专用作者工具维护切片，不能被旧的单图导入流程覆盖。
+                if (path.Contains("/Animated/", StringComparison.Ordinal))
+                {
+                    continue;
+                }
+
                 var importer = AssetImporter.GetAtPath(path) as TextureImporter;
                 // 检查编辑器输入、资源状态或写入边界，避免生成不完整资产。
                 if (importer == null)

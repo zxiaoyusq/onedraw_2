@@ -12,7 +12,7 @@ namespace OneStrokeDemon.Config
         // 当前配置内容版本。
         public const string ContentVersion = "0.6.3-sample";
         // 规范化配置内容的SHA-256哈希。
-        public const string ContentHash = "2c005061c9a4bf806afcc6d6c16e7504b2df8b4bbecfec6edcc262900cd1dfdc";
+        public const string ContentHash = "0cf75f9d11b2db5311d2910a35b38cbc0500709833723ad8086fb19f34f75d81";
         // 本文件包含的稳定ID分组数量。
         public const int IdSetCount = 28;
         // 本文件包含的稳定ID常量总数。

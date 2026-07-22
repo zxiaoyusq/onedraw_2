@@ -44,7 +44,7 @@ namespace OneStrokeDemon.Tests.PlayMode.T230
             Assert.That(GameplayConfigRuntime.IsReady, Is.True);
             Assert.That(GameplayConfigRuntime.CurrentSummary.RecordCount, Is.EqualTo(745));
             Assert.That(GameplayConfigRuntime.Current.ContentHash, Is.EqualTo(
-                "2c005061c9a4bf806afcc6d6c16e7504b2df8b4bbecfec6edcc262900cd1dfdc"));
+                "0cf75f9d11b2db5311d2910a35b38cbc0500709833723ad8086fb19f34f75d81"));
             Assert.That(GameplayConfigRuntime.Current.GetEnemy("boss_tomb_king").Tier, Is.EqualTo("Boss"));
         }
 

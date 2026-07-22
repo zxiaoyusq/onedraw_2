@@ -20,7 +20,9 @@ namespace OneStrokeDemon.Tests.EditMode
             Assert.That(options.scenes, Is.EqualTo(scenesBefore));
             Assert.That(options.scenes[0], Is.EqualTo(WebBuildEntry.BootstrapScenePath));
             Assert.That(Path.IsPathRooted(options.locationPathName), Is.True);
-            Assert.That(options.locationPathName, Does.EndWith(WebBuildEntry.DefaultOutputPath));
+            Assert.That(
+                options.locationPathName,
+                Is.EqualTo(Path.GetFullPath(WebBuildEntry.DefaultOutputPath)));
             Assert.That(EnabledScenePaths(), Is.EqualTo(scenesBefore));
         }
 
