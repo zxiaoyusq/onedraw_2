@@ -15,7 +15,7 @@
 ## 绝对规则
 
 - 只做第一个依赖均为DONE的READY任务；任何时刻只做一个原子任务。
-- 开始前记录Git状态、保护用户已有改动，并先写预计改动白名单。
+- 开始前一次性记录Git状态、保护用户已有改动，并先写预计改动白名单；实现过程中不重复扫描同一基线。
 - 所有玩法数值、敌人、技能、效果、关卡、波次、Boss、教程和文案必须来自配置表。
 - Inspector/ScriptableObject只能保存Unity资源引用、场景引用和明确调试兜底，不能成为第二数值库。
 - 配置源与生成物的身份以 docs/CONFIG_SCHEMA.md 为准。配置变更应修改权威源，并通过导出器重新生成 JSON、DTO 或其他生成物；不得通过同时手改源文件和生成物来维持表面一致。。
@@ -27,6 +27,16 @@
 - Gameplay不直接调用微信SDK静态API，统一通过 `IPlatformService`。
 - 一个任务一个可回滚提交，提交信息以TASK-ID开头。
 - 不在任务结束时顺手实现下一任务。
+
+## 快速收尾规则
+
+- 最后一次代码、配置或Unity资源变更后冻结验证边界，按任务验收运行计划内测试一次并复用结果。仅修改文档或证据摘要不使既有测试失效。
+- 完成后文档集中在一个补丁中更新。`docs/TASKS.md`和`docs/PROGRESS.md`固定更新；`docs/DECISIONS.md`、`docs/BUGS.md`及其他专项文档仅在其对应事实发生变化时更新。
+- 需要文件化证据时，默认用一个`closeout.md`合并起始状态、白名单、验证摘要和保留的用户改动；除非任务模板明确要求，不拆成多份重复文件。
+- 文档完成后只做一次批量只读审计：查看Git状态、暂存/未暂存路径、非生成文件空白错误及验收所需的hash或测试摘要。先按路径核对白名单，只展开检查异常路径、手写内容、删除项或可疑计数/hash漂移。
+- Unity Editor生成的`.anim`、Controller、Prefab、Atlas、Registry和`.meta`通过作者工具与Unity测试验证；不得为满足文本格式检查而手工修改其YAML。
+- 只有出现白名单外文件、删除、配置或工作簿漂移、Registry类型/计数漂移、ProjectSettings变化、测试失败，或验证边界后再次修改产品产物时，才升级为深度审计或重跑昂贵测试。
+- 使用一次显式`git add -- <白名单路径...>`暂存，禁止`git add .`；确认暂存路径属于白名单、未暂存内容等于任务开始时保留的用户改动后提交。
 
 ## 架构规则
 - 保持运行时代码与编辑器代码分离。
@@ -49,4 +59,9 @@
 
 - `docs/TASKS.md`
 - `docs/PROGRESS.md`
-- 必要时 `docs/DECISIONS.md` 和 `docs/BUGS.md`
+- 新增架构或生命周期决定时更新`docs/DECISIONS.md`
+- 新增未解决缺陷时更新`docs/BUGS.md`
+- 配置合同变化时更新`docs/CONFIG_SCHEMA.md`
+- 配置流水线行为或计数变化时更新`docs/CONFIG_PIPELINE.md`
+- Registry类型、计数或资源替换规则变化时更新`docs/ASSET_INTEGRATION.md`
+- 当前索引指标变化时更新`project-index.yaml`
