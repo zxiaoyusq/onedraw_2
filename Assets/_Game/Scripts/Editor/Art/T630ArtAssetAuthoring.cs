@@ -232,7 +232,9 @@ namespace OneStrokeDemon.Editor.Art
             CreateSpriteAtlas(
                 T630ArtAssetPaths.VfxAtlas,
                 EnumeratePngPaths().Where(path =>
-                    path.Contains("/VFX/Sprites/") || Path.GetFileName(path).StartsWith("proj_", StringComparison.Ordinal)),
+                    path.Contains("/VFX/Sprites/") ||
+                    path.Contains("/VFX/Animated/") ||
+                    Path.GetFileName(path).StartsWith("proj_", StringComparison.Ordinal)),
                 2048);
         }
 
@@ -321,7 +323,8 @@ namespace OneStrokeDemon.Editor.Art
             // 逐项处理资源或配置条目，保证生成与验证顺序稳定。
             foreach (AssetManifestConfig row in config.GetAssetManifest()
                          .Where(row => row.AssetType == "Prefab" &&
-                             row.AssetKey.StartsWith("vfx_", StringComparison.Ordinal)))
+                             row.AssetKey.StartsWith("vfx_", StringComparison.Ordinal) &&
+                             !row.AddressOrPath.Contains("/Animated/", StringComparison.Ordinal)))
             {
                 var root = new GameObject(ToPascalCase(row.AssetKey));
                 try

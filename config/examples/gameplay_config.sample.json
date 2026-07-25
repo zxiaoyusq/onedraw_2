@@ -1,7 +1,7 @@
 {
   "schemaVersion": 5,
-  "contentVersion": "0.6.4-sample",
-  "contentHash": "e348bab0eaf2bce5fa21c0588eb53c3b755791d8a537c4d7f29c93110ee6522c",
+  "contentVersion": "0.6.5-sample",
+  "contentHash": "9cc48fcb5f3b45cff68dd0bfc09cf533d808b26cc956553bc5b060cfa5113abb",
   "global": [
     {
       "key": "battle_countdown_sec",
@@ -38,7 +38,7 @@
       "valueType": "string",
       "intValue": null,
       "floatValue": null,
-      "stringValue": "0.6.4-sample",
+      "stringValue": "0.6.5-sample",
       "boolValue": null,
       "unit": "semver",
       "description": "内容版本"
@@ -2939,6 +2939,15 @@
       "sortingOrder": 30
     },
     {
+      "vfxKey": "vfx_enemy_death",
+      "assetKey": "vfx_enemy_death",
+      "lifeSec": 0.92,
+      "poolPrewarm": 6,
+      "followTarget": false,
+      "sortingLayer": "VFX",
+      "sortingOrder": 40
+    },
+    {
       "vfxKey": "vfx_ghost_volley",
       "assetKey": "vfx_ghost_volley",
       "lifeSec": 0.8,
@@ -3513,6 +3522,13 @@
       "addressOrPath": "Assets/_Game/Art/VFX/vfx_enemy_cast.prefab",
       "requiredInMvp": true,
       "notes": "模板占位路径，导入资源后更新"
+    },
+    {
+      "assetKey": "vfx_enemy_death",
+      "assetType": "Prefab",
+      "addressOrPath": "Assets/_Game/Art/VFX/Animated/EnemyDeath/vfx_enemy_death.prefab",
+      "requiredInMvp": true,
+      "notes": "用户提供的十一帧怪物死亡爆炸动画"
     },
     {
       "assetKey": "vfx_ghost_volley",
@@ -7464,6 +7480,24 @@
       "vfxTintColorHex": "#FF9F43FF",
       "vfxScaleRefPx": 44,
       "description": "破甲：橙色爆发、强震屏与重震动。"
+    },
+    {
+      "feedbackId": "feedback_enemy_death",
+      "vfxKey": "vfx_enemy_death",
+      "audioKey": "sfx_hit",
+      "timeScale": 0.1,
+      "timeScaleSec": 0.12,
+      "flashSec": 0.04,
+      "shakeStrengthRefPx": 8,
+      "shakeSec": 0.16,
+      "vibrationPattern": "Medium",
+      "damageNumberColorHex": "#FFFFFFFF",
+      "damageNumberFontSizeRefPx": 34,
+      "damageNumberLifeSec": 0.92,
+      "damageNumberRiseRefPx": 64,
+      "vfxTintColorHex": "#FFFFFFFF",
+      "vfxScaleRefPx": 96,
+      "description": "怪物死亡：白色爆炸序列、中等震屏与震动；不承担死亡判定。"
     },
     {
       "feedbackId": "feedback_enemy_hit",

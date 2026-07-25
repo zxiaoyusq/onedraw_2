@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 2,
+  "defaults": {
+    "fps": 12,
+    "pixelsPerUnit": 100,
+    "pivot": [
+      0.5,
+      0.5
+    ],
+    "sortingLayer": "VFX",
+    "artRoot": "Assets/_Game/Art/VFX/Animated",
+    "prefabRoot": "Assets/_Game/Art/VFX/Animated/EnemyDeath"
+  },
+  "animations": [
+    {
+      "id": "enemy-death",
+      "sourceTexture": "Assets/_Game/Art/VFX/Animated/EnemyDeath/enemy_death_sheet.png",
+      "frameData": "Assets/_Game/Art/VFX/Animated/EnemyDeath/enemy_death_sheet.frames.json",
+      "sourceProvenance": "/Users/cqmizhangxiaoyu2/Downloads/一笔镇妖 sprite sheet/video-frames-20260716-153124_sheet",
+      "assetKey": "vfx_enemy_death",
+      "bindRegistry": true,
+      "runtimeGroup": "enemy-death-vfx",
+      "outputFolder": "EnemyDeath",
+      "spritePrefix": "enemy_death",
+      "clipName": "EnemyDeath",
+      "controllerName": "EnemyDeath",
+      "prefabName": "vfx_enemy_death",
+      "stateName": "Play",
+      "defaultState": true,
+      "loop": false,
+      "targetTextureName": "enemy_death_sheet.png",
+      "targetFrameDataName": "enemy_death_sheet.frames.json",
+      "atlas": "Assets/_Game/Art/SpriteAtlases/VFX.spriteatlasv2",
+      "sourceTextureSha256": "07ad8828fb806e6b3948e0ac3e061788cee7f7be00e371993de2ed011985452a",
+      "frameDataSha256": "a647b539e31d2ff4a755127b12895e7f10cccb8320d7b44d632aabf47efaeae2"
+    }
+  ]
+}

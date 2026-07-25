@@ -21,6 +21,7 @@ namespace OneStrokeDemon.Presentation
             CombatFeedbackType.ArmorBreak,
             CombatFeedbackType.ProjectileReflect,
             CombatFeedbackType.PlayerHit,
+            CombatFeedbackType.EnemyDeath,
         };
 
         // 定义 TargetState 的表现层契约，隔离战斗状态与具体Unity视图实现。

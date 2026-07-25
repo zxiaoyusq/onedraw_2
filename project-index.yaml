@@ -23,9 +23,9 @@ config:
   generated_hash: Assets/_Game/Config/Generated/gameplay_config.hash
   generated_ids: Assets/_Game/Scripts/Config/Generated/ConfigIds.g.cs
   schema_version: 5
-  content_version: 0.6.3-sample
-  content_hash: 2c005061c9a4bf806afcc6d6c16e7504b2df8b4bbecfec6edcc262900cd1dfdc
-  workbook_sha256: 9f2330c94bc86f67563feba816cd2b8acb3f05cbd2f2f5811431ee891a4233ee
+  content_version: 0.6.5-sample
+  content_hash: 9cc48fcb5f3b45cff68dd0bfc09cf533d808b26cc956553bc5b060cfa5113abb
+  workbook_sha256: 64c78fda5c3d4bb6b5c2131c818b6a7b85153a33243410b1dd34978ed1fbc8c3
   mirror_status: byte_identical
   contract_audit: pass
   exporter:
@@ -35,9 +35,9 @@ config:
     status: pass
     test_count: 8
     exported_tables: 29
-    exported_records: 745
-    output_bytes: 194319
-    output_sha256: 0f7d3c304ef52ed03d5197846cac3a29eb2acf308933d38851b9c01c59b4d5b3
+    exported_records: 748
+    output_bytes: 195476
+    output_sha256: 816db3246e9c903d373c9422699faad3c3fc136cd3c53b4b2a815998fc82d084
     runtime_snapshot_committed: true
   validator:
     path: Tools/ConfigExporter/Validation
@@ -54,18 +54,18 @@ config:
     compatibility: schema_5_content_0_6_x
     dto_tables: 29
     dto_fields: 266
-    loaded_records: 745
-    readonly_primary_indexes: 341
+    loaded_records: 748
+    readonly_primary_indexes: 344
     readonly_group_indexes: 56
-    full_editmode_tests: 198
-    full_playmode_tests: 50
+    full_editmode_tests: 206
+    full_playmode_tests: 55
     bootstrap_smoke: pass
   asset_registry:
     status: pass
     path: Assets/_Game/Config/Registry/AssetRegistry.asset
-    manifest_entries: 76
-    prefabs: 40
-    sprites: 18
+    manifest_entries: 77
+    prefabs: 43
+    sprites: 16
     audio_clips: 17
     scenes: 1
     scene_reference: Assets/_Game/Scenes/Battle.unity
@@ -79,19 +79,19 @@ config:
     default_read_only: true
     update_flag: --update
     drift_diagnostic: CFG013
-    generated_json_bytes: 194319
-    generated_json_sha256: 0f7d3c304ef52ed03d5197846cac3a29eb2acf308933d38851b9c01c59b4d5b3
+    generated_json_bytes: 195476
+    generated_json_sha256: 816db3246e9c903d373c9422699faad3c3fc136cd3c53b4b2a815998fc82d084
     generated_hash_bytes: 65
-    generated_hash_sha256: 180f77508b89100955e33db6a3e8e6bd4ac4312b61ae29c9485a6355b733e966
-    generated_ids_bytes: 28168
-    generated_ids_sha256: 85f2a06c5f7e19568e0ded2a3376a543fd0dcddc121c92150f4367ade6e5513f
+    generated_hash_sha256: 990b876083a2ad3765f246d7850a327104bb708d8d9bfa2e2c1cfd9811786e4b
+    generated_ids_bytes: 48146
+    generated_ids_sha256: c1b6039191fe48f1e9efb44fa10a92aaa569fcc0aa9a95dec40c4c11ffb888bc
     id_sets: 28
-    id_constants: 377
+    id_constants: 380
     dotnet_tests: 58
     config_editmode_tests: 19
     config_playmode_tests: 3
-    full_editmode_tests: 198
-    full_playmode_tests: 50
+    full_editmode_tests: 206
+    full_playmode_tests: 55
     full_command_smoke: pass_via_readonly_drift_gate_plus_isolated_unity_batch_project
 result_progress:
   status: pass
@@ -176,8 +176,8 @@ combat_feedback:
   service: CombatFeedbackService
   runtime_output: CombatFeedbackRuntime
   configured_table: FeedbackCues
-  configured_profiles: 5
-  profile_ids: [feedback_enemy_hit, feedback_weakpoint_hit, feedback_armor_break, feedback_projectile_reflect, feedback_player_hit]
+  configured_profiles: 6
+  profile_ids: [feedback_enemy_hit, feedback_weakpoint_hit, feedback_armor_break, feedback_projectile_reflect, feedback_player_hit, feedback_enemy_death]
   outputs: [gameplay_time_scale, target_white_flash, camera_shake, pooled_vfx, pooled_damage_number, cached_audio, optional_vibration]
   result_policy: readonly_never_changes_damage_truth
   resource_policy: preload_registry_assets_before_hit
@@ -185,7 +185,7 @@ combat_feedback:
   vibration_port: ICombatFeedbackVibration
   vibration_master_switch: true
   platform_adapter: deferred_to_T130_IPlatformService
-  visual_assets: T630_prototype_assets
+  visual_assets: T630_prototype_assets_plus_T695_enemy_death_animation
   audio_assets: T240_managed_silent_placeholders
   dotnet_config_tests: 58
   roslyn_response_compile: pass_zero_errors
@@ -198,6 +198,29 @@ combat_feedback:
   perceptual_screenshot: artifacts/evals/T620/combat-feedback-1920x1080.png
   perceptual_screenshot_sha256: 8c687c19e993035461d01c1eeb3d63a7c43febb180dd949a176c1da08195797d
   perceptual_resolution: 1920x1080_Metal
+enemy_death_vfx:
+  status: pass
+  source_provenance: "/Users/cqmizhangxiaoyu2/Downloads/一笔镇妖 sprite sheet/video-frames-20260716-153124_sheet"
+  source_texture_sha256: 07ad8828fb806e6b3948e0ac3e061788cee7f7be00e371993de2ed011985452a
+  source_frame_data_sha256: a647b539e31d2ff4a755127b12895e7f10cccb8320d7b44d632aabf47efaeae2
+  sprite_frames: 11
+  frame_size: 256x256
+  fps: 12
+  loop: false
+  animator_state: Play
+  asset_key: vfx_enemy_death
+  feedback_id: feedback_enemy_death
+  follow_target: false
+  pool_prewarm: 6
+  death_truth_owner: existing_level_coordinator
+  pool_reuse_reset: animator_rebind_and_zero_time_sample
+  editmode_focused: 1
+  playmode_focused: 2
+  full_editmode_tests: 206
+  full_playmode_tests: 55
+  visual_review: artifacts/evals/T695/enemy-death-vfx-gallery.png
+  visual_review_resolution: 1920x1080_Metal
+  visual_review_sha256: 5194a40b37a98c408e7ed49e4790357feb476a65306575fd5db03ef3e023a3a4
 prototype_art:
   status: pass_prototype_scope
   source_psd_filename: "一笔镇妖 主视觉 测试 03.psd"
@@ -214,9 +237,9 @@ prototype_art:
   transparent_foregrounds: 26
   sprite_atlases_v2: [Backgrounds, Characters, Enemies, UI, VFX]
   sorting_layers: [Background, Default, Actors, Projectiles, VFX]
-  actor_prefabs: 2
-  vfx_prefabs: 38
-  registry_actual_visual_assets: {sprites: 18, prefabs: 40}
+  actor_prefabs: 4
+  vfx_prefabs: 39
+  registry_actual_visual_assets: {sprites: 16, prefabs: 43}
   registry_remaining_placeholders: {audio_clips: 17}
   editor_authoring: T630ArtAssetAuthoring
   focused_editmode: 5

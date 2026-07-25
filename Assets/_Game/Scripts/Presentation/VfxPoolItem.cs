@@ -23,6 +23,7 @@ namespace OneStrokeDemon.Presentation
         private bool isConfigured;
         private bool isPlaying;
         private SpriteRenderer[] renderers = Array.Empty<SpriteRenderer>();
+        private Animator[] animators = Array.Empty<Animator>();
         private Color[] originalColors = Array.Empty<Color>();
         private string[] originalSortingLayers = Array.Empty<string>();
         private int[] originalSortingOrders = Array.Empty<int>();
@@ -138,6 +139,7 @@ namespace OneStrokeDemon.Presentation
             }
 
             CacheRenderers();
+            RestartAnimators();
             tint = configuredTint;
             visualScale = configuredScale;
             transform.localScale = Vector3.one;
@@ -283,6 +285,28 @@ namespace OneStrokeDemon.Presentation
                 originalColors[index] = renderers[index].color;
                 originalSortingLayers[index] = renderers[index].sortingLayerName;
                 originalSortingOrders[index] = renderers[index].sortingOrder;
+            }
+        }
+
+        // 对象池复用动画特效时重绑Animator，并在同一帧重新采样默认状态首帧。
+        private void RestartAnimators()
+        {
+            if (animators.Length == 0)
+            {
+                animators = GetComponentsInChildren<Animator>(true);
+            }
+
+            // Animator会在GameObject重新激活时保留旧状态；显式重绑保证每次播放都从首帧开始。
+            for (int index = 0; index < animators.Length; index += 1)
+            {
+                Animator animator = animators[index];
+                if (animator == null || animator.runtimeAnimatorController == null)
+                {
+                    continue;
+                }
+
+                animator.Rebind();
+                animator.Update(0f);
             }
         }
 

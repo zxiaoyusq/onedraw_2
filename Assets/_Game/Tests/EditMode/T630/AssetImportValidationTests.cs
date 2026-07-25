@@ -82,7 +82,8 @@ namespace OneStrokeDemon.Tests.EditMode.T630
                 Assert.That(importer.wrapMode, Is.EqualTo(TextureWrapMode.Clamp), path);
                 Assert.That(importer.filterMode, Is.EqualTo(FilterMode.Bilinear), path);
                 TextureImporterCompression expectedCompression =
-                    path.Contains("/Characters/Animated/Moyan/", StringComparison.Ordinal)
+                    path.Contains("/Characters/Animated/Moyan/", StringComparison.Ordinal) ||
+                    path.Contains("/VFX/Animated/", StringComparison.Ordinal)
                         ? TextureImporterCompression.Uncompressed
                         : TextureImporterCompression.CompressedHQ;
                 Assert.That(importer.textureCompression, Is.EqualTo(expectedCompression), path);
@@ -148,6 +149,7 @@ namespace OneStrokeDemon.Tests.EditMode.T630
             AssertAtlasBinds(T630ArtAssetPaths.UiAtlas, "Assets/_Game/Art/Sprites/icon_skill_blade_echo.png");
             AssertAtlasBinds(T630ArtAssetPaths.VfxAtlas, "Assets/_Game/Art/Sprites/proj_ghost_fire.png");
             AssertAtlasBinds(T630ArtAssetPaths.VfxAtlas, T630ArtAssetPaths.SlashArcSprite);
+            AssertAtlasBinds(T630ArtAssetPaths.VfxAtlas, T695EnemyDeathVfxAuthoring.TexturePath);
         }
 
         [Test]
@@ -208,7 +210,7 @@ namespace OneStrokeDemon.Tests.EditMode.T630
             }
 
             AssetRegistryLoadSummary summary = AssetRegistryEditorValidator.ValidateCanonical();
-            Assert.That(summary.EntryCount, Is.EqualTo(76));
+            Assert.That(summary.EntryCount, Is.EqualTo(77));
         }
 
         private static void AssertAtlasBinds(string atlasPath, string spritePath)

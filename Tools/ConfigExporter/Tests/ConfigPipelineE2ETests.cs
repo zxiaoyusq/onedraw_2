@@ -8,7 +8,7 @@ namespace OneStrokeDemon.ConfigExporter.Tests;
 public sealed class ConfigPipelineE2ETests
 {
     private const string ExpectedContentHash =
-        "e348bab0eaf2bce5fa21c0588eb53c3b755791d8a537c4d7f29c93110ee6522c";
+        "9cc48fcb5f3b45cff68dd0bfc09cf533d808b26cc956553bc5b060cfa5113abb";
 
     [Fact]
     // 验证两次导出字节一致，并与仓库受管产物（含中文注释）完全相同。
@@ -43,7 +43,7 @@ public sealed class ConfigPipelineE2ETests
         Assert.Equal(firstResult.ContentHash, secondResult.ContentHash);
         Assert.Equal(firstResult.ContentHash, trackedResult.ContentHash);
         Assert.Equal(28, firstResult.ConfigIdSetCount);
-        Assert.Equal(377, firstResult.ConfigIdConstantCount);
+        Assert.Equal(380, firstResult.ConfigIdConstantCount);
         Assert.Equal(File.ReadAllBytes(first.Json), File.ReadAllBytes(second.Json));
         Assert.Equal(File.ReadAllBytes(first.Hash), File.ReadAllBytes(second.Hash));
         Assert.Equal(File.ReadAllBytes(first.Ids), File.ReadAllBytes(second.Ids));

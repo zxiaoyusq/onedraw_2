@@ -14,6 +14,7 @@ namespace OneStrokeDemon.Presentation
         ArmorBreak = 2,
         ProjectileReflect = 3,
         PlayerHit = 4,
+        EnemyDeath = 5,
     }
 
     // 定义 FeedbackVibrationPattern 的表现层契约，隔离战斗状态与具体Unity视图实现。
@@ -203,6 +204,10 @@ namespace OneStrokeDemon.Presentation
                         configProvider,
                         CombatFeedbackType.PlayerHit,
                         ConfigIds.FeedbackCues.FeedbackPlayerHit),
+                    [CombatFeedbackType.EnemyDeath] = CreateProfile(
+                        configProvider,
+                        CombatFeedbackType.EnemyDeath,
+                        ConfigIds.FeedbackCues.FeedbackEnemyDeath),
                 });
         }
 
@@ -371,6 +376,17 @@ namespace OneStrokeDemon.Presentation
                 -appliedHit.Damage.AppliedTotalDamage,
                 timestamp));
             return true;
+        }
+
+        // 怪物死亡判定已由关卡流程确认后，只发布不带伤害数字的死亡表现事件。
+        public void HandleEnemyDeath(int targetId, string sourceId, double timestamp)
+        {
+            Publish(new CombatFeedbackEvent(
+                CombatFeedbackType.EnemyDeath,
+                targetId,
+                sourceId,
+                0L,
+                timestamp));
         }
 
         // 处理 HandleProjectileStroke 对应的表现逻辑，使视图与只读战斗状态保持同步。

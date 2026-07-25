@@ -66,6 +66,7 @@
 | T692 | P6 表现与资源 | DONE | T690 | 0.2 | 修复Lit角色在Actors层缺少2D全局光而显示全黑。 |
 | T693 | P6 工程修复 | DONE | T660 | 0.2 | 固定Android包只允许横屏方向。 |
 | T694 | P6 表现与资源 | DONE | T630, T660, T692 | 0.8 | 将主角静态原型替换为用户提供的待机与攻击动画Prefab。 |
+| T695 | P6 表现与资源 | DONE | T440, T620, T630, T660, T692 | 0.8 | 将用户提供的十一帧爆炸动画接入怪物死亡特效。 |
 | T700 | P7 质量发布 | READY | T540, T660, T681 | 2.0 | 补齐纯规则EditMode回归矩阵。 |
 | T710 | P7 质量发布 | BACKLOG | T550, T650 | 3.0 | 补齐Unity集成、完整单局、暂停、重开和生命周期PlayMode测试。 |
 | T720 | P7 质量发布 | BACKLOG | T710, T250 | 1.0 | 审计所有玩法数值、内容和文案是否来自配置表。 |
@@ -709,6 +710,18 @@
 - **验证：** 素材批次预检；配置完整门；T694动画资源EditMode；生产入口攻击动画PlayMode；全量EditMode/PlayMode；真实相机目视确认。
 - **证据：** `artifacts/evals/T694/`
 - **提交：** `T694: animate player prototype`
+
+### T695 · 将十一帧爆炸动画接入怪物死亡特效。
+
+- **状态：** `DONE`
+- **依赖：** T440, T620, T630, T660, T692
+- **估算：** 0.8 人日
+- **产出：** 用户提供的十一帧爆炸图集、非循环AnimationClip、AnimatorController、池化`vfx_enemy_death` Prefab，以及`VfxCues`、`FeedbackCues`、AssetManifest和Registry绑定。
+- **明确不做：** 不改敌人HP、死亡判定、掉落、计分、波次或Boss结算；动画完成事件不承担死亡真相；不替换其他VFX；不手工编辑Unity YAML和生成配置。
+- **验收：** 十一帧按源JSON自然顺序播放且末帧获得完整帧时长；生产战斗入口只在已接受的敌人死亡事件上播放一次；敌人本体回收后特效仍在死亡位置完成播放；池化复用从首帧重新开始；配置、Registry、图集和2D光照合同保持有效。
+- **验证：** 素材批次预检；配置完整门；T695动画资源EditMode；死亡反馈池化PlayMode；全量EditMode/PlayMode；真实相机目视确认。
+- **证据：** `artifacts/evals/T695/`
+- **提交：** `T695: animate enemy death effect`
 
 
 ## P7 质量发布

@@ -36,10 +36,10 @@ namespace OneStrokeDemon.Tests.PlayMode.T600
         {
             LogAssert.Expect(
                 LogType.Log,
-                new Regex("CONFIG_RUNTIME_READY.*content=0\\.6\\.4-sample.*records=745"));
+                new Regex("CONFIG_RUNTIME_READY.*content=0\\.6\\.5-sample.*records=748"));
             LogAssert.Expect(
                 LogType.Log,
-                new Regex("ASSET_REGISTRY_READY.*entries=76"));
+                new Regex("ASSET_REGISTRY_READY.*entries=77"));
             yield return SceneManager.LoadSceneAsync(SceneNames.Bootstrap, LoadSceneMode.Single);
             yield return WaitForScene(SceneNames.MainMenu);
 

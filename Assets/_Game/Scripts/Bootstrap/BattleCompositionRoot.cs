@@ -788,6 +788,15 @@ namespace OneStrokeDemon.Bootstrap
             // 检查入口状态、依赖或生命周期边界，避免重复装配和悬空引用。
             if (accepted)
             {
+                // 先在目标仍注册且位置有效时发布纯表现死亡事件，再回收怪物实体。
+                if (world.TryGetEnemyController(entityId, out EnemyController defeatedEnemy))
+                {
+                    feedback.HandleEnemyDeath(
+                        defeatedEnemy.Damage.HitTargetId,
+                        $"enemy_death:{entityId}",
+                        battle.Flow.Time.Current.GameplayElapsedSeconds);
+                }
+
                 world.Release(entityId);
             }
         }

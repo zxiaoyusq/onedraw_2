@@ -2,7 +2,7 @@
 
 ## 1. 版本与唯一真相源
 
-- 当前冻结版本：`schemaVersion = 5`、`contentVersion = 0.6.4-sample`。
+- 当前冻结版本：`schemaVersion = 5`、`contentVersion = 0.6.5-sample`。
 - 正式内容唯一源：`Design/Config/GameConfig.xlsx`。
 - `config/一笔镇妖_游戏配置表模板.xlsx` 只是随正式源同步的示例镜像，不接受独立内容修改。
 - `Assets/_Game/Config/Generated/gameplay_config.json`和`gameplay_config.hash`由T250导出器生成，是可审查、可构建的只读Runtime快照与hash旁车。
@@ -284,7 +284,7 @@ T360新增的`Stances.damageFormulaId -> DamageFormulas.formulaId`是必填普�
 - T620把schema升级为`5`、content升级为`0.6.1-sample`，新增`FeedbackCues`。当前五个稳定协议ID分别映射普通命中、弱点命中、破甲、弹反和玩家受击；每行只保存`VfxCues/AudioCues`外键、玩法时间缩放与持续时间、白闪/震屏、伤害数字样式、VFX染色/尺寸及震动等级，不保存伤害或命中裁决。
 - `timeScale`范围为0～1，0表达完全停顿；全部持续时间由未缩放时间推进。震屏、伤害数字上浮、字号和VFX尺寸以1920×1080参考像素表达。颜色必须使用`#RRGGBBAA`；震动仅允许`Off/Light/Medium/Heavy`，工作簿Enums、Schema和代码登记集合必须精确一致。
 - `CombatFeedbackService`只消费已经形成的战斗结果或显式反馈事件，并按破甲优先于弱点、弱点优先于普通命中的语义选择配置档案；它只能向表现输出与可注入震动端口发命令，不能修改HP、护甲、分数、弹体归属或其他战斗真相。震动总开关关闭后仍须保留视觉/音频命令。
-- Unity输出层在创建时一次性解析五份配置、取得Registry中的AudioClip/Prefab并建立音频并发通道和T440 VFX/伤害数字池；命中热路径不得加载资源。回收必须恢复目标颜色、相机基位、TMP内容、VFX染色/缩放和精确池租约。T620仍使用T240占位音频/VFX，正式资源替换属于T630。
+- Unity输出层在创建时一次性解析全部反馈配置、取得Registry中的AudioClip/Prefab并建立音频并发通道和T440 VFX/伤害数字池；命中热路径不得加载资源。回收必须恢复目标颜色、相机基位、TMP内容、VFX染色/缩放、Animator首帧和精确池租约。
 
 ## 29. T650教程遮罩、跳过与回看语义
 
@@ -303,3 +303,10 @@ T360新增的`Stances.damageFormulaId -> DamageFormulas.formulaId`是必填普�
 - T694不改变JSON字段形状、FieldDictionary或schema，content升级为`0.6.4-sample`。`Players.assetKey`继续使用稳定键`char_moyan_idle`；对应`AssetManifest`只把类型从`Sprite`改为`Prefab`并指向`Assets/_Game/Prefabs/Actors/PlayerMoyan.prefab`，玩法参数、技能、手势、关卡和文案均不改变。
 - 主角Prefab只保存`SpriteRenderer`、共享`AnimatorController`和Unity资源引用，不保存HP、伤害、速度或其他玩法数值。待机由源JSON九帧自然顺序以12 FPS循环；攻击由十二帧自然顺序以12 FPS单次播放并返回待机。两张源图保持100 PPU、脚底枢轴`(0.5, 0.08)`、`Actors`层和无损源纹理，统一进入Characters Sprite Atlas。
 - `BattleCompositionRoot`按AssetManifest类型实例化Sprite或Prefab，普通有效笔势才发送`Attack`触发器；无效笔势和终极绘制不触发该普通攻击表现。Animator事件、Clip时长和当前帧不得成为命中、伤害、能量或教程事实来源，原手势分类、命中解析和技能链继续独占玩法裁决。
+
+## 32. T695怪物死亡动画特效与池化语义
+
+- T695不改变JSON字段形状、FieldDictionary或schema，content升级为`0.6.5-sample`。`VfxCues`新增`vfx_enemy_death`，`FeedbackCues`新增`feedback_enemy_death`，`AssetManifest`新增同名Prefab键；寿命、预热数、跟随策略、层级、排序、震屏、震动、染色与显示尺寸全部来自工作簿。
+- 用户提供的十一帧爆炸序列按源JSON自然顺序切成256×256 Sprite，以12 FPS播放一次；末帧重复一个采样间隔但Clip不循环。Prefab只保存Sprite、AnimatorController和`VfxPoolItem`资源引用，不保存死亡条件、伤害、掉落、计分或波次规则。
+- 生产入口只在关卡协调器接受既有死亡事实后、敌人目标仍注册时发布死亡反馈，再回收敌人本体。`followTarget=false`使特效固定在发布时的死亡位置；事件的伤害数值为0，不生成伤害数字，也不参与HP或死亡裁决。
+- `VfxPoolItem`每次租用播放前对Animator执行重绑并采样默认状态首帧，保证复用对象不会从旧末帧继续。T630通用作者工具跳过`/Animated/`专用Prefab并把动画纹理纳入VFX Sprite Atlas，后续重建不会覆盖专用切片或控制器。

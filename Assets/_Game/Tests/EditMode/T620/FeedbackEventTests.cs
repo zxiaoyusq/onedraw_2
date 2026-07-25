@@ -19,7 +19,7 @@ namespace OneStrokeDemon.Tests.EditMode.T620
         }
 
         [Test]
-        public void FiveSemanticEventsSelectConfiguredProfilesWithoutChangingEventTruth()
+        public void SixSemanticEventsSelectConfiguredProfilesWithoutChangingEventTruth()
         {
             var output = new RecordingOutput();
             var vibration = new RecordingVibration();
@@ -34,6 +34,7 @@ namespace OneStrokeDemon.Tests.EditMode.T620
                 new CombatFeedbackEvent(CombatFeedbackType.ArmorBreak, 13, "break", -30L, 3d),
                 new CombatFeedbackEvent(CombatFeedbackType.ProjectileReflect, 14, "bolt", 0L, 4d),
                 new CombatFeedbackEvent(CombatFeedbackType.PlayerHit, -1, "enemy_attack", -18L, 5d),
+                new CombatFeedbackEvent(CombatFeedbackType.EnemyDeath, 15, "enemy_death", 0L, 6d),
             };
 
             for (int index = 0; index < events.Length; index += 1)
@@ -44,12 +45,13 @@ namespace OneStrokeDemon.Tests.EditMode.T620
                 Assert.That(command.Event.SourceId, Is.EqualTo(events[index].SourceId));
             }
 
-            Assert.That(output.Commands, Has.Count.EqualTo(5));
+            Assert.That(output.Commands, Has.Count.EqualTo(6));
             Assert.That(output.Commands[0].Profile.FeedbackId, Is.EqualTo(ConfigIds.FeedbackCues.FeedbackEnemyHit));
             Assert.That(output.Commands[1].Profile.FeedbackId, Is.EqualTo(ConfigIds.FeedbackCues.FeedbackWeakpointHit));
             Assert.That(output.Commands[2].Profile.FeedbackId, Is.EqualTo(ConfigIds.FeedbackCues.FeedbackArmorBreak));
             Assert.That(output.Commands[3].Profile.FeedbackId, Is.EqualTo(ConfigIds.FeedbackCues.FeedbackProjectileReflect));
             Assert.That(output.Commands[4].Profile.FeedbackId, Is.EqualTo(ConfigIds.FeedbackCues.FeedbackPlayerHit));
+            Assert.That(output.Commands[5].Profile.FeedbackId, Is.EqualTo(ConfigIds.FeedbackCues.FeedbackEnemyDeath));
             Assert.That(vibration.Patterns, Is.EqualTo(new[]
             {
                 FeedbackVibrationPattern.Light,
@@ -57,6 +59,7 @@ namespace OneStrokeDemon.Tests.EditMode.T620
                 FeedbackVibrationPattern.Heavy,
                 FeedbackVibrationPattern.Medium,
                 FeedbackVibrationPattern.Heavy,
+                FeedbackVibrationPattern.Medium,
             }));
         }
 

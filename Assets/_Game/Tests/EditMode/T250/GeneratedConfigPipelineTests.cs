@@ -40,9 +40,9 @@ namespace OneStrokeDemon.Tests.EditMode.T250
             Assert.That(ConfigIds.SchemaVersion, Is.EqualTo(service.SchemaVersion));
             Assert.That(ConfigIds.ContentVersion, Is.EqualTo(service.ContentVersion));
             Assert.That(ConfigIds.ContentHash, Is.EqualTo(service.ContentHash));
-            Assert.That(summary.RecordCount, Is.EqualTo(745));
+            Assert.That(summary.RecordCount, Is.EqualTo(748));
             Assert.That(ConfigIds.IdSetCount, Is.EqualTo(28));
-            Assert.That(ConfigIds.IdConstantCount, Is.EqualTo(377));
+            Assert.That(ConfigIds.IdConstantCount, Is.EqualTo(380));
         }
 
         [Test]
@@ -84,7 +84,7 @@ namespace OneStrokeDemon.Tests.EditMode.T250
                 Is.EqualTo("scene_battle"));
             Assert.That(config.GetFeedbackCue(ConfigIds.FeedbackCues.FeedbackArmorBreak).VfxKey,
                 Is.EqualTo(ConfigIds.VfxCues.VfxArmorBreak));
-            Assert.That(AssetRegistryEditorValidator.ValidateCanonical().EntryCount, Is.EqualTo(76));
+            Assert.That(AssetRegistryEditorValidator.ValidateCanonical().EntryCount, Is.EqualTo(77));
         }
     }
 }

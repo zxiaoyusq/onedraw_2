@@ -10,13 +10,13 @@ namespace OneStrokeDemon.Config
         // 当前配置契约的schema版本。
         public const int SchemaVersion = 5;
         // 当前配置内容版本。
-        public const string ContentVersion = "0.6.4-sample";
+        public const string ContentVersion = "0.6.5-sample";
         // 规范化配置内容的SHA-256哈希。
-        public const string ContentHash = "e348bab0eaf2bce5fa21c0588eb53c3b755791d8a537c4d7f29c93110ee6522c";
+        public const string ContentHash = "9cc48fcb5f3b45cff68dd0bfc09cf533d808b26cc956553bc5b060cfa5113abb";
         // 本文件包含的稳定ID分组数量。
         public const int IdSetCount = 28;
         // 本文件包含的稳定ID常量总数。
-        public const int IdConstantCount = 377;
+        public const int IdConstantCount = 380;
 
         // 汇总来自Global.key的稳定配置ID。
         public static class GlobalKeys
@@ -696,6 +696,8 @@ namespace OneStrokeDemon.Config
             public const string VfxBurn = "vfx_burn";
             // 配置ID：vfx_enemy_cast。
             public const string VfxEnemyCast = "vfx_enemy_cast";
+            // 配置ID：vfx_enemy_death。
+            public const string VfxEnemyDeath = "vfx_enemy_death";
             // 配置ID：vfx_ghost_volley。
             public const string VfxGhostVolley = "vfx_ghost_volley";
             // 配置ID：vfx_hit。
@@ -853,6 +855,8 @@ namespace OneStrokeDemon.Config
             public const string VfxBurn = "vfx_burn";
             // 配置ID：vfx_enemy_cast。
             public const string VfxEnemyCast = "vfx_enemy_cast";
+            // 配置ID：vfx_enemy_death。
+            public const string VfxEnemyDeath = "vfx_enemy_death";
             // 配置ID：vfx_ghost_volley。
             public const string VfxGhostVolley = "vfx_ghost_volley";
             // 配置ID：vfx_hit。
@@ -902,6 +906,8 @@ namespace OneStrokeDemon.Config
         {
             // 配置ID：feedback_armor_break。
             public const string FeedbackArmorBreak = "feedback_armor_break";
+            // 配置ID：feedback_enemy_death。
+            public const string FeedbackEnemyDeath = "feedback_enemy_death";
             // 配置ID：feedback_enemy_hit。
             public const string FeedbackEnemyHit = "feedback_enemy_hit";
             // 配置ID：feedback_player_hit。

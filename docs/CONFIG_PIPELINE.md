@@ -85,7 +85,7 @@ dotnet run --project Tools/ConfigExporter -- \
 6. 对排除 `contentHash` 后的规范化完整对象计算SHA-256：递归Ordinal键序、稳定数组序、UTF-8无BOM、紧凑JSON、无区域格式。
 7. 写入 `contentHash` 后以固定缩进和UTF-8无BOM序列化；生成时间只写日志。
 8. 先写目标同目录 `<output>.tmp`，落盘后重新读取并完成属性顺序、版本、记录数与hash自校验，再原子替换正式JSON；失败时保留旧输出并清理临时文件。
-9. T250从同一个`PreparedExport`生成JSON、64位hash+LF旁车，以及位于Config asmdef内的28组/当前377项`ConfigIds.g.cs`；禁止分别实现另一套排序、解析或数值真相。
+9. T250从同一个`PreparedExport`生成JSON、64位hash+LF旁车，以及位于Config asmdef内的28组/当前380项`ConfigIds.g.cs`；禁止分别实现另一套排序、解析或数值真相。
 10. 同一输入连续两次导出并比较全部生成文件，必须字节完全相同；测试还会反转源数据行，证明稳定排序不依赖Excel行号。
 
 ## T250生成物与漂移门
@@ -94,7 +94,7 @@ dotnet run --project Tools/ConfigExporter -- \
 2. `verify`只读重建预期字节并逐文件比较，不更新时间戳或修正文件；缺失、任意字节漂移、C#标识符冲突或输出路径冲突均以`CFG013`失败。
 3. `ConfigIds.g.cs`只包含稳定ID/Key和schema/content/hash元数据，不包含HP、CD、伤害或Unity对象引用；Runtime内容仍由JSON加载。
 4. 一键脚本会在临时目录再次生成并执行`cmp`；漂移时输出受管文件与预期文件的unified diff，验证通过后运行.NET 58项及Unity分类测试。
-5. Unity T250测试断言hash旁车、生成元数据、JSON Runtime hash一致，C#实际编入`OneStrokeDemon.Config.dll`，28组377常量均为稳定ID，并用代表性常量完成类型化配置/Registry查询。
+5. Unity T250测试断言hash旁车、生成元数据、JSON Runtime hash一致，C#实际编入`OneStrokeDemon.Config.dll`，28组380常量均为稳定ID，并用代表性常量完成类型化配置/Registry查询。
 
 T220坏配置清单位于 `Tools/ConfigExporter/Tests/Fixtures/invalid-config-cases.json`。测试只克隆并修改内存中的原始单元格，不生成或提交派生坏xlsx；每个用例都断言稳定错误码、Sheet、Excel数据行和字段。
 
@@ -112,7 +112,7 @@ T220坏配置清单位于 `Tools/ConfigExporter/Tests/Fixtures/invalid-config-ca
 1. T240由`IConfigProvider.GetAssetManifest()`暴露加载后只读清单；`AssetRegistryService`按Ordinal键精确核对Canonical `Assets/_Game/Config/Registry/AssetRegistry.asset`，全部通过后才发布只读对象索引。
 2. Registry条目只保存`assetKey`和Unity对象引用；Prefab、Sprite、AudioClip和Scene分别做类型检查，Scene使用`AssetSceneReference`包装明确场景引用。SO、Inspector和代码不得保存玩法平衡值。
 3. 运行时和Editor作者工具不读取AssetManifest的`addressOrPath`，不通过GUID或路径完成Prefab/Sprite/Audio绑定；资源替换只改Registry引用，稳定配置ID不变。
-4. `One Stroke Demon/Config/Validate Asset Registry`检查76键覆盖、持久化资产、Prefab和启用场景；同一校验由`IPreprocessBuildWithReport`在构建前执行，缺失、重复、额外、空或错型键均阻断构建。
+4. `One Stroke Demon/Config/Validate Asset Registry`检查77键覆盖、持久化资产、Prefab和启用场景；同一校验由`IPreprocessBuildWithReport`在构建前执行，缺失、重复、额外、空或错型键均阻断构建。
 5. 当前正式资源未接入的键按类型共享受管占位Sprite、AudioClip和Prefab，`scene_battle`引用Battle场景；作者工具保留合法的既有引用，允许后续逐键替换。占位不代表表现验收完成。
 6. Bootstrap先通过Runtime配置检查，再初始化Registry；两者的摘要都成功输出后才进入MainMenu，任一失败均不发布可用Registry或继续场景流。
 

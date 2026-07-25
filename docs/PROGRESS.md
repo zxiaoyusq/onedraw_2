@@ -7,14 +7,15 @@
 - Unity精确版本：6000.5.1f1（已由ProjectVersion.txt与本机安装核验）
 - 微信SDK来源或版本：官方 `minigame-tuanjie-transform-sdk` v0.1.33 / commit `ed4ad28f433c6b52b5fd3f22a6fa155a0c98c228` / embedded最小补丁
 - Active Scene：Assets/_Game/Scenes/Bootstrap.unity
-- 配置版本：schema 5 / content 0.6.4-sample / hash `e348bab0eaf2bce5fa21c0588eb53c3b755791d8a537c4d7f29c93110ee6522c`
+- 配置版本：schema 5 / content 0.6.5-sample / hash `9cc48fcb5f3b45cff68dd0bfc09cf533d808b26cc956553bc5b060cfa5113abb`
 
 ## 进行中
 
-- 当前没有`IN_PROGRESS`任务；T694已完成，依赖均为DONE的首个后续任务T700进入`READY`。
+- 当前没有`IN_PROGRESS`任务；T695已完成，依赖均为DONE的首个后续任务T700保持`READY`。
 
 ## 已完成
 
+- T695：将用户提供的1024×768爆炸图集按源JSON自然顺序切成十一帧256×256 Sprite，以12 FPS生成非循环`EnemyDeath` Clip、单状态Controller和池化`vfx_enemy_death` Prefab；生产死亡链只在关卡接受既有死亡事实后发布0伤害表现事件，先快照目标位置再回收敌人。`VfxPoolItem`复用时重绑Animator并采样首帧，T630通用作者工具跳过专用动画Prefab且把图集纳入VFX Atlas。工作簿新增VfxCue、FeedbackCue、AssetManifest并升级content `0.6.5-sample`；双工作簿SHA-256均为`64c78fda...fbc8c3`，受管hash为`9cc48fcb...13abb`、748条记录、380个ID常量，Registry为77键。素材预检1/1、T695 EditMode 1/1、PlayMode 2/2、AssetImport 5/5、ConfigPipeline EditMode 19/19与PlayMode 3/3、ConfigExporter 58/58、全量EditMode 206/206和PlayMode 55/55通过；1920×1080 Metal逐帧Gallery确认白烟爆炸由饱满烟团过渡到烟圈消散。一次外部同步EditorSettings后的PlayMode初始化在Unity Test Framework `PlayModeRunTask`内空引用，未执行产品测试并作为无效证据丢弃；恢复Bootstrap与测试状态后相同命令及全量回归通过。用户已有`Design/Config/~$GameConfig.xlsx`删除状态未纳入提交。
 - T694：保持`char_moyan_idle`稳定键和全部玩法参数不变，将用户提供的3×3九帧待机与4×3十二帧攻击图集按源JSON自然顺序切片；以12 FPS生成循环待机、非循环攻击、共享AnimatorController和`PlayerMoyan` Prefab。生产Battle入口现在按AssetManifest实例化Sprite或Prefab，只有普通有效笔势触发纯表现`Attack`，命中与伤害仍由原战斗链裁决。工作簿AssetManifest由Sprite改为Prefab并升级content `0.6.4-sample`，双工作簿SHA-256均为`a5fc5a21...a286`，受管hash为`e348bab0...52c`。素材预检2/2、T694 EditMode 1/1、PlayMode 1/1、Metal图形专项1/1、全量EditMode 205/205、PlayMode 53/53、ConfigExporter 58/58及完整配置门全部通过；真实相机1920×1080截图确认新主角在战斗场景正确受光并显示攻击帧。用户已有`Design/Config/~$GameConfig.xlsx`删除状态未纳入提交。
 - T693：根因是Unity Player Settings使用Auto Rotation但同时允许Portrait、Portrait Upside Down、Landscape Left和Landscape Right，Android因此可直接竖屏启动。现保留Auto Rotation与左右横屏，仅关闭两个竖屏方向；新增方向合同EditMode测试1/1通过，Android Build Profile确认未覆盖全局Player Settings。Unity 6000.5.1f1验证APK构建成功（46,258,919字节，SHA-256 `94d33cdb...52ec0`），包内最终AndroidManifest的UnityPlayerGameActivity声明`screenOrientation=11`，本机Android 36 SDK将值11定义为`userLandscape`。首次IL2CPP链接无诊断返回1，使用Bee同一clang响应文件原样重跑7秒成功，复用缓存后构建0 error/2 warning通过；用户已有Standalone batching、QualitySettings、UnityConnectSettings及未跟踪`Assets/Resources.meta`改动均未纳入T693提交。
 - T692：定位到火鱼Prefab继续使用正确的`Actors` Sorting Layer和URP 2D `Sprite-Lit-Default`材质，但Bootstrap、MainMenu、Battle的Global Light 2D只覆盖`Default`，因此Lit角色动画正常却显示全黑。现已通过Unity Editor API让三个场景的全局光覆盖Background、Default、Actors、Projectiles、VFX全部5层，并保留可重复执行的修复工具。T692 EditMode 4/4、PlayMode 1/1、全量EditMode 203/203、干净域重载后的全量PlayMode 52/52通过；相机直接渲染的火鱼目视图确认恢复原始彩色。连续专项与全量PlayMode首轮曾触发Unity Input System编辑器状态串扰，9条既有测试统一因`Map index out of range in ProcessControlStateChange`失败，干净域重载单独重跑后52/52通过。最终Unity重编译无产品Error，Console仅有本机VS/Unity UDP端口占用warning；用户已有ProjectSettings改动与未跟踪`Assets/Resources.meta`继续排除。
