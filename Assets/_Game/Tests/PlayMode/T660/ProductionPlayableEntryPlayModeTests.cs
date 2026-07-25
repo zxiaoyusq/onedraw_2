@@ -362,8 +362,7 @@ namespace OneStrokeDemon.Tests.PlayMode.T660
         private static MeshRenderer FindMeshRenderer(string objectName)
         {
             MeshRenderer[] renderers = Object.FindObjectsByType<MeshRenderer>(
-                FindObjectsInactive.Include,
-                FindObjectsSortMode.None);
+                FindObjectsInactive.Include);
             for (int index = 0; index < renderers.Length; index++)
             {
                 if (string.Equals(

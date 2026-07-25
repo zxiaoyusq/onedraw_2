@@ -2,7 +2,7 @@
 
 ## 1. 版本与唯一真相源
 
-- 当前冻结版本：`schemaVersion = 5`、`contentVersion = 0.6.3-sample`。
+- 当前冻结版本：`schemaVersion = 5`、`contentVersion = 0.6.4-sample`。
 - 正式内容唯一源：`Design/Config/GameConfig.xlsx`。
 - `config/一笔镇妖_游戏配置表模板.xlsx` 只是随正式源同步的示例镜像，不接受独立内容修改。
 - `Assets/_Game/Config/Generated/gameplay_config.json`和`gameplay_config.hash`由T250导出器生成，是可审查、可构建的只读Runtime快照与hash旁车。
@@ -297,3 +297,9 @@ T360新增的`Stances.damageFormulaId -> DamageFormulas.formulaId`是必填普�
 - T660不改变JSON字段形状、FieldDictionary或schema，content升级为`0.6.3-sample`。`Texts`新增`text_game_title`、`text_ui_start_game`和`text_ui_select_level`三条中英文入口文案；标题、开始按钮、选择标题、关卡名和锁定状态全部沿`Texts/Levels/ProgressSnapshot`取得，场景与Inspector不保存第二套文案、关卡列表或解锁规则。
 - `MainMenuCompositionRoot`只创建生产Canvas、显示配置Levels并把已解锁选择写入经配置校验的跨场景启动意图；`BattleCompositionRoot`按该levelId组合现有Player、Enemy、Wave、Input、HUD、Tutorial/Boss、Feedback、Result和Navigation，不复制其数值或规则。正式组合根由Unity Editor写入单位变换的独立场景对象，运行时子对象不得继承灰盒展示物的缩放。
 - Editor/Web最小进度适配使用版本化T550编码和`IProgressSaveStore`边界；`PlayerPrefs`只作为当前生产入口的本地存储实现，不进入Gameplay规则，也不替代T130未来的`IPlatformService`/微信存储适配。Restart必须释放后重建同关全新会话，下一关和主菜单仍只经T550回执与场景流服务导航。
+
+## 31. T694主角动画资源与触发语义
+
+- T694不改变JSON字段形状、FieldDictionary或schema，content升级为`0.6.4-sample`。`Players.assetKey`继续使用稳定键`char_moyan_idle`；对应`AssetManifest`只把类型从`Sprite`改为`Prefab`并指向`Assets/_Game/Prefabs/Actors/PlayerMoyan.prefab`，玩法参数、技能、手势、关卡和文案均不改变。
+- 主角Prefab只保存`SpriteRenderer`、共享`AnimatorController`和Unity资源引用，不保存HP、伤害、速度或其他玩法数值。待机由源JSON九帧自然顺序以12 FPS循环；攻击由十二帧自然顺序以12 FPS单次播放并返回待机。两张源图保持100 PPU、脚底枢轴`(0.5, 0.08)`、`Actors`层和无损源纹理，统一进入Characters Sprite Atlas。
+- `BattleCompositionRoot`按AssetManifest类型实例化Sprite或Prefab，普通有效笔势才发送`Attack`触发器；无效笔势和终极绘制不触发该普通攻击表现。Animator事件、Clip时长和当前帧不得成为命中、伤害、能量或教程事实来源，原手势分类、命中解析和技能链继续独占玩法裁决。

@@ -1,7 +1,7 @@
 {
   "schemaVersion": 5,
-  "contentVersion": "0.6.3-sample",
-  "contentHash": "0cf75f9d11b2db5311d2910a35b38cbc0500709833723ad8086fb19f34f75d81",
+  "contentVersion": "0.6.4-sample",
+  "contentHash": "e348bab0eaf2bce5fa21c0588eb53c3b755791d8a537c4d7f29c93110ee6522c",
   "global": [
     {
       "key": "battle_countdown_sec",
@@ -38,7 +38,7 @@
       "valueType": "string",
       "intValue": null,
       "floatValue": null,
-      "stringValue": "0.6.3-sample",
+      "stringValue": "0.6.4-sample",
       "boolValue": null,
       "unit": "semver",
       "description": "内容版本"
@@ -3271,10 +3271,10 @@
     },
     {
       "assetKey": "char_moyan_idle",
-      "assetType": "Sprite",
-      "addressOrPath": "Assets/_Game/Art/Characters/Moyan/moyan_idle.png",
+      "assetType": "Prefab",
+      "addressOrPath": "Assets/_Game/Prefabs/Actors/PlayerMoyan.prefab",
       "requiredInMvp": true,
-      "notes": "PSD导出静态主角"
+      "notes": "用户提供的九帧待机与十二帧攻击动画Prefab"
     },
     {
       "assetKey": "enemy_fire_fish",

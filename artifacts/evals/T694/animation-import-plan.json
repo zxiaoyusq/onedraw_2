@@ -1,0 +1,424 @@
+{
+  "schemaVersion": 1,
+  "projectRoot": "/Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2",
+  "animationCount": 2,
+  "animations": [
+    {
+      "id": "moyan-idle",
+      "assetKey": "char_moyan_idle",
+      "bindRegistry": true,
+      "sourceTexture": "/Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/Assets/_Game/Art/Characters/Animated/Moyan/moyan_idle_sheet.png",
+      "frameData": "/Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/Assets/_Game/Art/Characters/Animated/Moyan/moyan_idle_sheet.frames.json",
+      "textureSize": {
+        "w": 768,
+        "h": 768
+      },
+      "textureAssetPath": "Assets/_Game/Art/Characters/Animated/Moyan/moyan_idle_sheet.png",
+      "frameDataAssetPath": "Assets/_Game/Art/Characters/Animated/Moyan/moyan_idle_sheet.frames.json",
+      "clipAssetPath": "Assets/_Game/Art/Characters/Animated/Moyan/MoyanIdle.anim",
+      "controllerAssetPath": "Assets/_Game/Art/Characters/Animated/Moyan/PlayerMoyan.controller",
+      "prefabAssetPath": "Assets/_Game/Prefabs/Actors/PlayerMoyan.prefab",
+      "legacyAsset": "Assets/_Game/Art/Characters/Moyan/moyan_idle.png",
+      "atlas": "Assets/_Game/Art/SpriteAtlases/Characters.spriteatlasv2",
+      "spritePrefix": "moyan_idle",
+      "stateName": "Idle",
+      "loop": true,
+      "fps": 12.0,
+      "pixelsPerUnit": 100.0,
+      "pivot": {
+        "x": 0.5,
+        "y": 0.08
+      },
+      "sortingLayer": "Actors",
+      "frames": [
+        {
+          "index": 1,
+          "sourceName": "001.png",
+          "spriteName": "moyan_idle_001",
+          "sourceRectTopLeft": {
+            "x": 0,
+            "y": 0,
+            "w": 256,
+            "h": 256
+          },
+          "unityRectBottomLeft": {
+            "x": 0,
+            "y": 512,
+            "w": 256,
+            "h": 256
+          }
+        },
+        {
+          "index": 2,
+          "sourceName": "002.png",
+          "spriteName": "moyan_idle_002",
+          "sourceRectTopLeft": {
+            "x": 256,
+            "y": 0,
+            "w": 256,
+            "h": 256
+          },
+          "unityRectBottomLeft": {
+            "x": 256,
+            "y": 512,
+            "w": 256,
+            "h": 256
+          }
+        },
+        {
+          "index": 3,
+          "sourceName": "003.png",
+          "spriteName": "moyan_idle_003",
+          "sourceRectTopLeft": {
+            "x": 512,
+            "y": 0,
+            "w": 256,
+            "h": 256
+          },
+          "unityRectBottomLeft": {
+            "x": 512,
+            "y": 512,
+            "w": 256,
+            "h": 256
+          }
+        },
+        {
+          "index": 4,
+          "sourceName": "004.png",
+          "spriteName": "moyan_idle_004",
+          "sourceRectTopLeft": {
+            "x": 0,
+            "y": 256,
+            "w": 256,
+            "h": 256
+          },
+          "unityRectBottomLeft": {
+            "x": 0,
+            "y": 256,
+            "w": 256,
+            "h": 256
+          }
+        },
+        {
+          "index": 5,
+          "sourceName": "005.png",
+          "spriteName": "moyan_idle_005",
+          "sourceRectTopLeft": {
+            "x": 256,
+            "y": 256,
+            "w": 256,
+            "h": 256
+          },
+          "unityRectBottomLeft": {
+            "x": 256,
+            "y": 256,
+            "w": 256,
+            "h": 256
+          }
+        },
+        {
+          "index": 6,
+          "sourceName": "006.png",
+          "spriteName": "moyan_idle_006",
+          "sourceRectTopLeft": {
+            "x": 512,
+            "y": 256,
+            "w": 256,
+            "h": 256
+          },
+          "unityRectBottomLeft": {
+            "x": 512,
+            "y": 256,
+            "w": 256,
+            "h": 256
+          }
+        },
+        {
+          "index": 7,
+          "sourceName": "007.png",
+          "spriteName": "moyan_idle_007",
+          "sourceRectTopLeft": {
+            "x": 0,
+            "y": 512,
+            "w": 256,
+            "h": 256
+          },
+          "unityRectBottomLeft": {
+            "x": 0,
+            "y": 0,
+            "w": 256,
+            "h": 256
+          }
+        },
+        {
+          "index": 8,
+          "sourceName": "008.png",
+          "spriteName": "moyan_idle_008",
+          "sourceRectTopLeft": {
+            "x": 256,
+            "y": 512,
+            "w": 256,
+            "h": 256
+          },
+          "unityRectBottomLeft": {
+            "x": 256,
+            "y": 0,
+            "w": 256,
+            "h": 256
+          }
+        },
+        {
+          "index": 9,
+          "sourceName": "009.png",
+          "spriteName": "moyan_idle_009",
+          "sourceRectTopLeft": {
+            "x": 512,
+            "y": 512,
+            "w": 256,
+            "h": 256
+          },
+          "unityRectBottomLeft": {
+            "x": 512,
+            "y": 0,
+            "w": 256,
+            "h": 256
+          }
+        }
+      ]
+    },
+    {
+      "id": "moyan-attack",
+      "assetKey": "char_moyan_idle",
+      "bindRegistry": false,
+      "sourceTexture": "/Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/Assets/_Game/Art/Characters/Animated/Moyan/moyan_attack_sheet.png",
+      "frameData": "/Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/Assets/_Game/Art/Characters/Animated/Moyan/moyan_attack_sheet.frames.json",
+      "textureSize": {
+        "w": 1024,
+        "h": 768
+      },
+      "textureAssetPath": "Assets/_Game/Art/Characters/Animated/Moyan/moyan_attack_sheet.png",
+      "frameDataAssetPath": "Assets/_Game/Art/Characters/Animated/Moyan/moyan_attack_sheet.frames.json",
+      "clipAssetPath": "Assets/_Game/Art/Characters/Animated/Moyan/MoyanAttack.anim",
+      "controllerAssetPath": "Assets/_Game/Art/Characters/Animated/Moyan/PlayerMoyanAttackSource.controller",
+      "prefabAssetPath": "Assets/_Game/Prefabs/Actors/PlayerMoyanAttackSource.prefab",
+      "legacyAsset": null,
+      "atlas": "Assets/_Game/Art/SpriteAtlases/Characters.spriteatlasv2",
+      "spritePrefix": "moyan_attack",
+      "stateName": "Attack",
+      "loop": false,
+      "fps": 12.0,
+      "pixelsPerUnit": 100.0,
+      "pivot": {
+        "x": 0.5,
+        "y": 0.08
+      },
+      "sortingLayer": "Actors",
+      "frames": [
+        {
+          "index": 1,
+          "sourceName": "001.png",
+          "spriteName": "moyan_attack_001",
+          "sourceRectTopLeft": {
+            "x": 0,
+            "y": 0,
+            "w": 256,
+            "h": 256
+          },
+          "unityRectBottomLeft": {
+            "x": 0,
+            "y": 512,
+            "w": 256,
+            "h": 256
+          }
+        },
+        {
+          "index": 2,
+          "sourceName": "002.png",
+          "spriteName": "moyan_attack_002",
+          "sourceRectTopLeft": {
+            "x": 256,
+            "y": 0,
+            "w": 256,
+            "h": 256
+          },
+          "unityRectBottomLeft": {
+            "x": 256,
+            "y": 512,
+            "w": 256,
+            "h": 256
+          }
+        },
+        {
+          "index": 3,
+          "sourceName": "003.png",
+          "spriteName": "moyan_attack_003",
+          "sourceRectTopLeft": {
+            "x": 512,
+            "y": 0,
+            "w": 256,
+            "h": 256
+          },
+          "unityRectBottomLeft": {
+            "x": 512,
+            "y": 512,
+            "w": 256,
+            "h": 256
+          }
+        },
+        {
+          "index": 4,
+          "sourceName": "004.png",
+          "spriteName": "moyan_attack_004",
+          "sourceRectTopLeft": {
+            "x": 768,
+            "y": 0,
+            "w": 256,
+            "h": 256
+          },
+          "unityRectBottomLeft": {
+            "x": 768,
+            "y": 512,
+            "w": 256,
+            "h": 256
+          }
+        },
+        {
+          "index": 5,
+          "sourceName": "005.png",
+          "spriteName": "moyan_attack_005",
+          "sourceRectTopLeft": {
+            "x": 0,
+            "y": 256,
+            "w": 256,
+            "h": 256
+          },
+          "unityRectBottomLeft": {
+            "x": 0,
+            "y": 256,
+            "w": 256,
+            "h": 256
+          }
+        },
+        {
+          "index": 6,
+          "sourceName": "006.png",
+          "spriteName": "moyan_attack_006",
+          "sourceRectTopLeft": {
+            "x": 256,
+            "y": 256,
+            "w": 256,
+            "h": 256
+          },
+          "unityRectBottomLeft": {
+            "x": 256,
+            "y": 256,
+            "w": 256,
+            "h": 256
+          }
+        },
+        {
+          "index": 7,
+          "sourceName": "007.png",
+          "spriteName": "moyan_attack_007",
+          "sourceRectTopLeft": {
+            "x": 512,
+            "y": 256,
+            "w": 256,
+            "h": 256
+          },
+          "unityRectBottomLeft": {
+            "x": 512,
+            "y": 256,
+            "w": 256,
+            "h": 256
+          }
+        },
+        {
+          "index": 8,
+          "sourceName": "008.png",
+          "spriteName": "moyan_attack_008",
+          "sourceRectTopLeft": {
+            "x": 768,
+            "y": 256,
+            "w": 256,
+            "h": 256
+          },
+          "unityRectBottomLeft": {
+            "x": 768,
+            "y": 256,
+            "w": 256,
+            "h": 256
+          }
+        },
+        {
+          "index": 9,
+          "sourceName": "009.png",
+          "spriteName": "moyan_attack_009",
+          "sourceRectTopLeft": {
+            "x": 0,
+            "y": 512,
+            "w": 256,
+            "h": 256
+          },
+          "unityRectBottomLeft": {
+            "x": 0,
+            "y": 0,
+            "w": 256,
+            "h": 256
+          }
+        },
+        {
+          "index": 10,
+          "sourceName": "010.png",
+          "spriteName": "moyan_attack_010",
+          "sourceRectTopLeft": {
+            "x": 256,
+            "y": 512,
+            "w": 256,
+            "h": 256
+          },
+          "unityRectBottomLeft": {
+            "x": 256,
+            "y": 0,
+            "w": 256,
+            "h": 256
+          }
+        },
+        {
+          "index": 11,
+          "sourceName": "011.png",
+          "spriteName": "moyan_attack_011",
+          "sourceRectTopLeft": {
+            "x": 512,
+            "y": 512,
+            "w": 256,
+            "h": 256
+          },
+          "unityRectBottomLeft": {
+            "x": 512,
+            "y": 0,
+            "w": 256,
+            "h": 256
+          }
+        },
+        {
+          "index": 12,
+          "sourceName": "012.png",
+          "spriteName": "moyan_attack_012",
+          "sourceRectTopLeft": {
+            "x": 768,
+            "y": 512,
+            "w": 256,
+            "h": 256
+          },
+          "unityRectBottomLeft": {
+            "x": 768,
+            "y": 0,
+            "w": 256,
+            "h": 256
+          }
+        }
+      ]
+    }
+  ]
+}

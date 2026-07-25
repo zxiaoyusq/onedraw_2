@@ -1,0 +1,815 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="53" result="Passed" total="53" passed="53" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-07-25 07:39:43Z" end-time="2026-07-25 07:40:18Z" duration="35.2496916">
+  <test-suite type="TestSuite" id="1126" name="onedraw_2" fullname="onedraw_2" runstate="Runnable" testcasecount="53" result="Passed" start-time="2026-07-25 07:39:43Z" end-time="2026-07-25 07:40:18Z" duration="35.249692" total="53" passed="53" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="PlayMode" />
+    </properties>
+    <test-suite type="Assembly" id="1088" name="OneStrokeDemon.Tests.PlayMode.dll" fullname="/Users/cqmizhangxiaoyu2/dev/u3d/onedraw_2/Library/ScriptAssemblies/OneStrokeDemon.Tests.PlayMode.dll" runstate="Runnable" testcasecount="53" result="Passed" start-time="2026-07-25 07:39:43Z" end-time="2026-07-25 07:40:18Z" duration="35.245920" total="53" passed="53" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="15901" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="PlayMode" />
+        <property name="EditorOnly" value="False" />
+      </properties>
+      <test-suite type="TestSuite" id="1089" name="OneStrokeDemon" fullname="OneStrokeDemon" runstate="Runnable" testcasecount="53" result="Passed" start-time="2026-07-25 07:39:43Z" end-time="2026-07-25 07:40:18Z" duration="35.245741" total="53" passed="53" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1090" name="Tests" fullname="OneStrokeDemon.Tests" runstate="Runnable" testcasecount="53" result="Passed" start-time="2026-07-25 07:39:43Z" end-time="2026-07-25 07:40:18Z" duration="35.245671" total="53" passed="53" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestSuite" id="1091" name="PlayMode" fullname="OneStrokeDemon.Tests.PlayMode" runstate="Runnable" testcasecount="53" result="Passed" start-time="2026-07-25 07:39:43Z" end-time="2026-07-25 07:40:18Z" duration="35.245486" total="53" passed="53" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-suite type="TestFixture" id="1001" name="InputBaselinePlayModeTests" fullname="OneStrokeDemon.Tests.PlayMode.InputBaselinePlayModeTests" classname="OneStrokeDemon.Tests.PlayMode.InputBaselinePlayModeTests" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-07-25 07:39:43Z" end-time="2026-07-25 07:39:43Z" duration="0.078900" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1002" name="MouseAndTouchCanDriveTheSamePointerAction" fullname="OneStrokeDemon.Tests.PlayMode.InputBaselinePlayModeTests.MouseAndTouchCanDriveTheSamePointerAction" methodname="MouseAndTouchCanDriveTheSamePointerAction" classname="OneStrokeDemon.Tests.PlayMode.InputBaselinePlayModeTests" runstate="Runnable" seed="940483481" result="Passed" start-time="2026-07-25 07:39:43Z" end-time="2026-07-25 07:39:43Z" duration="0.073811" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+            </test-suite>
+            <test-suite type="TestFixture" id="1003" name="SceneFlowSmokePlayModeTests" fullname="OneStrokeDemon.Tests.PlayMode.SceneFlowSmokePlayModeTests" classname="OneStrokeDemon.Tests.PlayMode.SceneFlowSmokePlayModeTests" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-07-25 07:39:43Z" end-time="2026-07-25 07:39:44Z" duration="0.946571" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1004" name="BootstrapLoadsMainMenuThenSceneFlowLoadsBattleGraybox" fullname="OneStrokeDemon.Tests.PlayMode.SceneFlowSmokePlayModeTests.BootstrapLoadsMainMenuThenSceneFlowLoadsBattleGraybox" methodname="BootstrapLoadsMainMenuThenSceneFlowLoadsBattleGraybox" classname="OneStrokeDemon.Tests.PlayMode.SceneFlowSmokePlayModeTests" runstate="Runnable" seed="613403158" result="Passed" start-time="2026-07-25 07:39:43Z" end-time="2026-07-25 07:39:44Z" duration="0.946194" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[CONFIG_RUNTIME_READY source=TextAsset:gameplay_config schema=5 content=0.6.4-sample hash=e348bab0eaf2bce5fa21c0588eb53c3b755791d8a537c4d7f29c93110ee6522c tables=29 records=745 primaryIndexes=341 groupIndexes=56
+ASSET_REGISTRY_READY source=AssetRegistry:asset_registry configHash=e348bab0eaf2bce5fa21c0588eb53c3b755791d8a537c4d7f29c93110ee6522c entries=76 prefabs=42 sprites=16 audioClips=17 scenes=1
+POINTER_INPUT_READY source=InputSystem modes=Mouse,Touch reference=1920x1080 safeArea=dynamic uiBeginBlock=true maxActivePointers=1
+]]></output>
+              </test-case>
+            </test-suite>
+            <test-suite type="TestSuite" id="1122" name="T230" fullname="OneStrokeDemon.Tests.PlayMode.T230" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-07-25 07:39:44Z" end-time="2026-07-25 07:39:45Z" duration="0.480244" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-suite type="TestFixture" id="1085" name="RuntimeConfigBootstrapPlayModeTests" fullname="OneStrokeDemon.Tests.PlayMode.T230.RuntimeConfigBootstrapPlayModeTests" classname="OneStrokeDemon.Tests.PlayMode.T230.RuntimeConfigBootstrapPlayModeTests" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-07-25 07:39:44Z" end-time="2026-07-25 07:39:45Z" duration="0.468270" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+                <properties>
+                  <property name="Category" value="ConfigPipeline" />
+                </properties>
+                <test-case id="1086" name="BootstrapLoadsAndIndexesGeneratedSnapshotBeforeMainMenu" fullname="OneStrokeDemon.Tests.PlayMode.T230.RuntimeConfigBootstrapPlayModeTests.BootstrapLoadsAndIndexesGeneratedSnapshotBeforeMainMenu" methodname="BootstrapLoadsAndIndexesGeneratedSnapshotBeforeMainMenu" classname="OneStrokeDemon.Tests.PlayMode.T230.RuntimeConfigBootstrapPlayModeTests" runstate="Runnable" seed="2098038724" result="Passed" start-time="2026-07-25 07:39:44Z" end-time="2026-07-25 07:39:45Z" duration="0.455602" asserts="0">
+                  <properties>
+                    <property name="_JOINTYPE" value="UnityCombinatorial" />
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                  <output><![CDATA[CONFIG_RUNTIME_READY source=TextAsset:gameplay_config schema=5 content=0.6.4-sample hash=e348bab0eaf2bce5fa21c0588eb53c3b755791d8a537c4d7f29c93110ee6522c tables=29 records=745 primaryIndexes=341 groupIndexes=56
+ASSET_REGISTRY_READY source=AssetRegistry:asset_registry configHash=e348bab0eaf2bce5fa21c0588eb53c3b755791d8a537c4d7f29c93110ee6522c entries=76 prefabs=42 sprites=16 audioClips=17 scenes=1
+POINTER_INPUT_READY source=InputSystem modes=Mouse,Touch reference=1920x1080 safeArea=dynamic uiBeginBlock=true maxActivePointers=1
+]]></output>
+                </test-case>
+                <test-case id="1087" name="IncompatibleVersionLogsContextAndBlocksSceneAdvance" fullname="OneStrokeDemon.Tests.PlayMode.T230.RuntimeConfigBootstrapPlayModeTests.IncompatibleVersionLogsContextAndBlocksSceneAdvance" methodname="IncompatibleVersionLogsContextAndBlocksSceneAdvance" classname="OneStrokeDemon.Tests.PlayMode.T230.RuntimeConfigBootstrapPlayModeTests" runstate="Runnable" seed="1962436143" result="Passed" start-time="2026-07-25 07:39:45Z" end-time="2026-07-25 07:39:45Z" duration="0.012019" asserts="0">
+                  <properties>
+                    <property name="_JOINTYPE" value="UnityCombinatorial" />
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                  <output><![CDATA[CONFIG_RUNTIME_FAILED error=CFGRT003 [TextAsset:gameplay_config::schemaVersion]: Unsupported schema version 999; expected 5.
+]]></output>
+                </test-case>
+              </test-suite>
+            </test-suite>
+            <test-suite type="TestSuite" id="1121" name="T240" fullname="OneStrokeDemon.Tests.PlayMode.T240" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-07-25 07:39:45Z" end-time="2026-07-25 07:39:45Z" duration="0.445784" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-suite type="TestFixture" id="1083" name="AssetRegistryBootstrapPlayModeTests" fullname="OneStrokeDemon.Tests.PlayMode.T240.AssetRegistryBootstrapPlayModeTests" classname="OneStrokeDemon.Tests.PlayMode.T240.AssetRegistryBootstrapPlayModeTests" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-07-25 07:39:45Z" end-time="2026-07-25 07:39:45Z" duration="0.445644" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+                <properties>
+                  <property name="Category" value="ConfigPipeline" />
+                </properties>
+                <test-case id="1084" name="BootstrapValidatesRegistryBeforeEnteringMainMenu" fullname="OneStrokeDemon.Tests.PlayMode.T240.AssetRegistryBootstrapPlayModeTests.BootstrapValidatesRegistryBeforeEnteringMainMenu" methodname="BootstrapValidatesRegistryBeforeEnteringMainMenu" classname="OneStrokeDemon.Tests.PlayMode.T240.AssetRegistryBootstrapPlayModeTests" runstate="Runnable" seed="1209513520" result="Passed" start-time="2026-07-25 07:39:45Z" end-time="2026-07-25 07:39:45Z" duration="0.445355" asserts="0">
+                  <properties>
+                    <property name="_JOINTYPE" value="UnityCombinatorial" />
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                  <output><![CDATA[CONFIG_RUNTIME_READY source=TextAsset:gameplay_config schema=5 content=0.6.4-sample hash=e348bab0eaf2bce5fa21c0588eb53c3b755791d8a537c4d7f29c93110ee6522c tables=29 records=745 primaryIndexes=341 groupIndexes=56
+ASSET_REGISTRY_READY source=AssetRegistry:asset_registry configHash=e348bab0eaf2bce5fa21c0588eb53c3b755791d8a537c4d7f29c93110ee6522c entries=76 prefabs=42 sprites=16 audioClips=17 scenes=1
+POINTER_INPUT_READY source=InputSystem modes=Mouse,Touch reference=1920x1080 safeArea=dynamic uiBeginBlock=true maxActivePointers=1
+]]></output>
+                </test-case>
+              </test-suite>
+            </test-suite>
+            <test-suite type="TestSuite" id="1120" name="T300" fullname="OneStrokeDemon.Tests.PlayMode.T300" runstate="Runnable" testcasecount="7" result="Passed" start-time="2026-07-25 07:39:45Z" end-time="2026-07-25 07:39:46Z" duration="0.472634" total="7" passed="7" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-suite type="TestFixture" id="1074" name="PointerCancelPlayModeTests" fullname="OneStrokeDemon.Tests.PlayMode.T300.PointerCancelPlayModeTests" classname="OneStrokeDemon.Tests.PlayMode.T300.PointerCancelPlayModeTests" runstate="Runnable" testcasecount="6" result="Passed" start-time="2026-07-25 07:39:45Z" end-time="2026-07-25 07:39:45Z" duration="0.025744" total="6" passed="6" failed="0" inconclusive="0" skipped="0" asserts="0">
+                <properties>
+                  <property name="Category" value="PointerInput" />
+                </properties>
+                <test-case id="1078" name="ApplicationPauseCancelsAnActivePointer" fullname="OneStrokeDemon.Tests.PlayMode.T300.PointerCancelPlayModeTests.ApplicationPauseCancelsAnActivePointer" methodname="ApplicationPauseCancelsAnActivePointer" classname="OneStrokeDemon.Tests.PlayMode.T300.PointerCancelPlayModeTests" runstate="Runnable" seed="546082867" result="Passed" start-time="2026-07-25 07:39:45Z" end-time="2026-07-25 07:39:45Z" duration="0.005512" asserts="0">
+                  <properties>
+                    <property name="_JOINTYPE" value="UnityCombinatorial" />
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1077" name="FocusLossCancelsAnActivePointerExactlyOnce" fullname="OneStrokeDemon.Tests.PlayMode.T300.PointerCancelPlayModeTests.FocusLossCancelsAnActivePointerExactlyOnce" methodname="FocusLossCancelsAnActivePointerExactlyOnce" classname="OneStrokeDemon.Tests.PlayMode.T300.PointerCancelPlayModeTests" runstate="Runnable" seed="1067488107" result="Passed" start-time="2026-07-25 07:39:45Z" end-time="2026-07-25 07:39:45Z" duration="0.002002" asserts="0">
+                  <properties>
+                    <property name="_JOINTYPE" value="UnityCombinatorial" />
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1075" name="MouseAndTouchEmitTheSamePointerContract" fullname="OneStrokeDemon.Tests.PlayMode.T300.PointerCancelPlayModeTests.MouseAndTouchEmitTheSamePointerContract" methodname="MouseAndTouchEmitTheSamePointerContract" classname="OneStrokeDemon.Tests.PlayMode.T300.PointerCancelPlayModeTests" runstate="Runnable" seed="1902142261" result="Passed" start-time="2026-07-25 07:39:45Z" end-time="2026-07-25 07:39:45Z" duration="0.005669" asserts="0">
+                  <properties>
+                    <property name="_JOINTYPE" value="UnityCombinatorial" />
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1080" name="RemovingTheActiveDeviceCancelsThePointer" fullname="OneStrokeDemon.Tests.PlayMode.T300.PointerCancelPlayModeTests.RemovingTheActiveDeviceCancelsThePointer" methodname="RemovingTheActiveDeviceCancelsThePointer" classname="OneStrokeDemon.Tests.PlayMode.T300.PointerCancelPlayModeTests" runstate="Runnable" seed="1970621580" result="Passed" start-time="2026-07-25 07:39:45Z" end-time="2026-07-25 07:39:45Z" duration="0.002601" asserts="0">
+                  <properties>
+                    <property name="_JOINTYPE" value="UnityCombinatorial" />
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1079" name="SecondTouchDoesNotReplaceOrExtendTheActiveTouch" fullname="OneStrokeDemon.Tests.PlayMode.T300.PointerCancelPlayModeTests.SecondTouchDoesNotReplaceOrExtendTheActiveTouch" methodname="SecondTouchDoesNotReplaceOrExtendTheActiveTouch" classname="OneStrokeDemon.Tests.PlayMode.T300.PointerCancelPlayModeTests" runstate="Runnable" seed="1591760038" result="Passed" start-time="2026-07-25 07:39:45Z" end-time="2026-07-25 07:39:45Z" duration="0.002625" asserts="0">
+                  <properties>
+                    <property name="_JOINTYPE" value="UnityCombinatorial" />
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1076" name="UiBeginIsBlockedAndDoesNotBecomeAStrokeAfterLeavingUi" fullname="OneStrokeDemon.Tests.PlayMode.T300.PointerCancelPlayModeTests.UiBeginIsBlockedAndDoesNotBecomeAStrokeAfterLeavingUi" methodname="UiBeginIsBlockedAndDoesNotBecomeAStrokeAfterLeavingUi" classname="OneStrokeDemon.Tests.PlayMode.T300.PointerCancelPlayModeTests" runstate="Runnable" seed="726971351" result="Passed" start-time="2026-07-25 07:39:45Z" end-time="2026-07-25 07:39:45Z" duration="0.005979" asserts="0">
+                  <properties>
+                    <property name="_JOINTYPE" value="UnityCombinatorial" />
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+              </test-suite>
+              <test-suite type="TestFixture" id="1081" name="PointerRuntimeBootstrapPlayModeTests" fullname="OneStrokeDemon.Tests.PlayMode.T300.PointerRuntimeBootstrapPlayModeTests" classname="OneStrokeDemon.Tests.PlayMode.T300.PointerRuntimeBootstrapPlayModeTests" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-07-25 07:39:45Z" end-time="2026-07-25 07:39:46Z" duration="0.437380" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+                <properties>
+                  <property name="Category" value="PointerInput" />
+                </properties>
+                <test-case id="1082" name="BootstrapInitializesPointerRuntimeFromConfigBeforeMainMenu" fullname="OneStrokeDemon.Tests.PlayMode.T300.PointerRuntimeBootstrapPlayModeTests.BootstrapInitializesPointerRuntimeFromConfigBeforeMainMenu" methodname="BootstrapInitializesPointerRuntimeFromConfigBeforeMainMenu" classname="OneStrokeDemon.Tests.PlayMode.T300.PointerRuntimeBootstrapPlayModeTests" runstate="Runnable" seed="1649609542" result="Passed" start-time="2026-07-25 07:39:45Z" end-time="2026-07-25 07:39:46Z" duration="0.436869" asserts="0">
+                  <properties>
+                    <property name="_JOINTYPE" value="UnityCombinatorial" />
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                  <output><![CDATA[CONFIG_RUNTIME_READY source=TextAsset:gameplay_config schema=5 content=0.6.4-sample hash=e348bab0eaf2bce5fa21c0588eb53c3b755791d8a537c4d7f29c93110ee6522c tables=29 records=745 primaryIndexes=341 groupIndexes=56
+ASSET_REGISTRY_READY source=AssetRegistry:asset_registry configHash=e348bab0eaf2bce5fa21c0588eb53c3b755791d8a537c4d7f29c93110ee6522c entries=76 prefabs=42 sprites=16 audioClips=17 scenes=1
+POINTER_INPUT_READY source=InputSystem modes=Mouse,Touch reference=1920x1080 safeArea=dynamic uiBeginBlock=true maxActivePointers=1
+]]></output>
+                </test-case>
+              </test-suite>
+            </test-suite>
+            <test-suite type="TestSuite" id="1119" name="T310" fullname="OneStrokeDemon.Tests.PlayMode.T310" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-07-25 07:39:46Z" end-time="2026-07-25 07:39:46Z" duration="0.014614" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-suite type="TestFixture" id="1072" name="StrokeInputCollectorPlayModeTests" fullname="OneStrokeDemon.Tests.PlayMode.T310.StrokeInputCollectorPlayModeTests" classname="OneStrokeDemon.Tests.PlayMode.T310.StrokeInputCollectorPlayModeTests" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-07-25 07:39:46Z" end-time="2026-07-25 07:39:46Z" duration="0.004967" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+                <properties>
+                  <property name="Category" value="StrokeSampling" />
+                </properties>
+                <test-case id="1073" name="MouseDragFlowsThroughPointerAdapterIntoOneImmutableStroke" fullname="OneStrokeDemon.Tests.PlayMode.T310.StrokeInputCollectorPlayModeTests.MouseDragFlowsThroughPointerAdapterIntoOneImmutableStroke" methodname="MouseDragFlowsThroughPointerAdapterIntoOneImmutableStroke" classname="OneStrokeDemon.Tests.PlayMode.T310.StrokeInputCollectorPlayModeTests" runstate="Runnable" seed="1918770530" result="Passed" start-time="2026-07-25 07:39:46Z" end-time="2026-07-25 07:39:46Z" duration="0.004255" asserts="0">
+                  <properties>
+                    <property name="_JOINTYPE" value="UnityCombinatorial" />
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+              </test-suite>
+            </test-suite>
+            <test-suite type="TestSuite" id="1118" name="T320" fullname="OneStrokeDemon.Tests.PlayMode.T320" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-07-25 07:39:46Z" end-time="2026-07-25 07:39:46Z" duration="0.004371" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-suite type="TestFixture" id="1070" name="StrokeGeometryPipelinePlayModeTests" fullname="OneStrokeDemon.Tests.PlayMode.T320.StrokeGeometryPipelinePlayModeTests" classname="OneStrokeDemon.Tests.PlayMode.T320.StrokeGeometryPipelinePlayModeTests" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-07-25 07:39:46Z" end-time="2026-07-25 07:39:46Z" duration="0.004257" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+                <properties>
+                  <property name="Category" value="StrokeGeometry" />
+                </properties>
+                <test-case id="1071" name="MouseGestureProducesOneSharedImmutableGeometryResult" fullname="OneStrokeDemon.Tests.PlayMode.T320.StrokeGeometryPipelinePlayModeTests.MouseGestureProducesOneSharedImmutableGeometryResult" methodname="MouseGestureProducesOneSharedImmutableGeometryResult" classname="OneStrokeDemon.Tests.PlayMode.T320.StrokeGeometryPipelinePlayModeTests" runstate="Runnable" seed="1795274349" result="Passed" start-time="2026-07-25 07:39:46Z" end-time="2026-07-25 07:39:46Z" duration="0.003846" asserts="0">
+                  <properties>
+                    <property name="_JOINTYPE" value="UnityCombinatorial" />
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+              </test-suite>
+            </test-suite>
+            <test-suite type="TestSuite" id="1117" name="T330" fullname="OneStrokeDemon.Tests.PlayMode.T330" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-07-25 07:39:46Z" end-time="2026-07-25 07:39:46Z" duration="0.447938" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-suite type="TestFixture" id="1068" name="GestureClassificationPipelinePlayModeTests" fullname="OneStrokeDemon.Tests.PlayMode.T330.GestureClassificationPipelinePlayModeTests" classname="OneStrokeDemon.Tests.PlayMode.T330.GestureClassificationPipelinePlayModeTests" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-07-25 07:39:46Z" end-time="2026-07-25 07:39:46Z" duration="0.447810" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+                <properties>
+                  <property name="Category" value="GestureClassifier" />
+                </properties>
+                <test-case id="1069" name="MousePathUsesRuntimeStrokeRulesForSamplingGeometryAndClassification" fullname="OneStrokeDemon.Tests.PlayMode.T330.GestureClassificationPipelinePlayModeTests.MousePathUsesRuntimeStrokeRulesForSamplingGeometryAndClassification" methodname="MousePathUsesRuntimeStrokeRulesForSamplingGeometryAndClassification" classname="OneStrokeDemon.Tests.PlayMode.T330.GestureClassificationPipelinePlayModeTests" runstate="Runnable" seed="1522554757" result="Passed" start-time="2026-07-25 07:39:46Z" end-time="2026-07-25 07:39:46Z" duration="0.447372" asserts="0">
+                  <properties>
+                    <property name="_JOINTYPE" value="UnityCombinatorial" />
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                  <output><![CDATA[CONFIG_RUNTIME_READY source=TextAsset:gameplay_config schema=5 content=0.6.4-sample hash=e348bab0eaf2bce5fa21c0588eb53c3b755791d8a537c4d7f29c93110ee6522c tables=29 records=745 primaryIndexes=341 groupIndexes=56
+ASSET_REGISTRY_READY source=AssetRegistry:asset_registry configHash=e348bab0eaf2bce5fa21c0588eb53c3b755791d8a537c4d7f29c93110ee6522c entries=76 prefabs=42 sprites=16 audioClips=17 scenes=1
+POINTER_INPUT_READY source=InputSystem modes=Mouse,Touch reference=1920x1080 safeArea=dynamic uiBeginBlock=true maxActivePointers=1
+]]></output>
+                </test-case>
+              </test-suite>
+            </test-suite>
+            <test-suite type="TestSuite" id="1116" name="T340" fullname="OneStrokeDemon.Tests.PlayMode.T340" runstate="Runnable" testcasecount="5" result="Passed" start-time="2026-07-25 07:39:46Z" end-time="2026-07-25 07:39:48Z" duration="2.190300" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-suite type="TestFixture" id="1062" name="StrokeTrailPoolPlayModeTests" fullname="OneStrokeDemon.Tests.PlayMode.T340.StrokeTrailPoolPlayModeTests" classname="OneStrokeDemon.Tests.PlayMode.T340.StrokeTrailPoolPlayModeTests" runstate="Runnable" testcasecount="5" result="Passed" start-time="2026-07-25 07:39:46Z" end-time="2026-07-25 07:39:48Z" duration="2.190128" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
+                <properties>
+                  <property name="Category" value="StrokeTrail" />
+                </properties>
+                <test-case id="1063" name="ConfigurationAndGeometryUseOneSharedPointCollection" fullname="OneStrokeDemon.Tests.PlayMode.T340.StrokeTrailPoolPlayModeTests.ConfigurationAndGeometryUseOneSharedPointCollection" methodname="ConfigurationAndGeometryUseOneSharedPointCollection" classname="OneStrokeDemon.Tests.PlayMode.T340.StrokeTrailPoolPlayModeTests" runstate="Runnable" seed="1780290974" result="Passed" start-time="2026-07-25 07:39:46Z" end-time="2026-07-25 07:39:46Z" duration="0.431670" asserts="0">
+                  <properties>
+                    <property name="_JOINTYPE" value="UnityCombinatorial" />
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                  <output><![CDATA[CONFIG_RUNTIME_READY source=TextAsset:gameplay_config schema=5 content=0.6.4-sample hash=e348bab0eaf2bce5fa21c0588eb53c3b755791d8a537c4d7f29c93110ee6522c tables=29 records=745 primaryIndexes=341 groupIndexes=56
+ASSET_REGISTRY_READY source=AssetRegistry:asset_registry configHash=e348bab0eaf2bce5fa21c0588eb53c3b755791d8a537c4d7f29c93110ee6522c entries=76 prefabs=42 sprites=16 audioClips=17 scenes=1
+POINTER_INPUT_READY source=InputSystem modes=Mouse,Touch reference=1920x1080 safeArea=dynamic uiBeginBlock=true maxActivePointers=1
+]]></output>
+                </test-case>
+                <test-case id="1064" name="FadeExpiryAndReuseCompletelyResetViewState" fullname="OneStrokeDemon.Tests.PlayMode.T340.StrokeTrailPoolPlayModeTests.FadeExpiryAndReuseCompletelyResetViewState" methodname="FadeExpiryAndReuseCompletelyResetViewState" classname="OneStrokeDemon.Tests.PlayMode.T340.StrokeTrailPoolPlayModeTests" runstate="Runnable" seed="1378142016" result="Passed" start-time="2026-07-25 07:39:46Z" end-time="2026-07-25 07:39:47Z" duration="0.446123" asserts="0">
+                  <properties>
+                    <property name="_JOINTYPE" value="UnityCombinatorial" />
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                  <output><![CDATA[CONFIG_RUNTIME_READY source=TextAsset:gameplay_config schema=5 content=0.6.4-sample hash=e348bab0eaf2bce5fa21c0588eb53c3b755791d8a537c4d7f29c93110ee6522c tables=29 records=745 primaryIndexes=341 groupIndexes=56
+ASSET_REGISTRY_READY source=AssetRegistry:asset_registry configHash=e348bab0eaf2bce5fa21c0588eb53c3b755791d8a537c4d7f29c93110ee6522c entries=76 prefabs=42 sprites=16 audioClips=17 scenes=1
+POINTER_INPUT_READY source=InputSystem modes=Mouse,Touch reference=1920x1080 safeArea=dynamic uiBeginBlock=true maxActivePointers=1
+]]></output>
+                </test-case>
+                <test-case id="1067" name="MousePlayerPathDisplaysTheProcessedRuntimeConfiguredStroke" fullname="OneStrokeDemon.Tests.PlayMode.T340.StrokeTrailPoolPlayModeTests.MousePlayerPathDisplaysTheProcessedRuntimeConfiguredStroke" methodname="MousePlayerPathDisplaysTheProcessedRuntimeConfiguredStroke" classname="OneStrokeDemon.Tests.PlayMode.T340.StrokeTrailPoolPlayModeTests" runstate="Runnable" seed="1760728752" result="Passed" start-time="2026-07-25 07:39:47Z" end-time="2026-07-25 07:39:47Z" duration="0.456840" asserts="0">
+                  <properties>
+                    <property name="_JOINTYPE" value="UnityCombinatorial" />
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                  <output><![CDATA[CONFIG_RUNTIME_READY source=TextAsset:gameplay_config schema=5 content=0.6.4-sample hash=e348bab0eaf2bce5fa21c0588eb53c3b755791d8a537c4d7f29c93110ee6522c tables=29 records=745 primaryIndexes=341 groupIndexes=56
+ASSET_REGISTRY_READY source=AssetRegistry:asset_registry configHash=e348bab0eaf2bce5fa21c0588eb53c3b755791d8a537c4d7f29c93110ee6522c entries=76 prefabs=42 sprites=16 audioClips=17 scenes=1
+POINTER_INPUT_READY source=InputSystem modes=Mouse,Touch reference=1920x1080 safeArea=dynamic uiBeginBlock=true maxActivePointers=1
+]]></output>
+                </test-case>
+                <test-case id="1065" name="RapidStrokesRecycleOldestAndKeepThreeSharedMaterialViews" fullname="OneStrokeDemon.Tests.PlayMode.T340.StrokeTrailPoolPlayModeTests.RapidStrokesRecycleOldestAndKeepThreeSharedMaterialViews" methodname="RapidStrokesRecycleOldestAndKeepThreeSharedMaterialViews" classname="OneStrokeDemon.Tests.PlayMode.T340.StrokeTrailPoolPlayModeTests" runstate="Runnable" seed="795730233" result="Passed" start-time="2026-07-25 07:39:47Z" end-time="2026-07-25 07:39:48Z" duration="0.421936" asserts="0">
+                  <properties>
+                    <property name="_JOINTYPE" value="UnityCombinatorial" />
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                  <output><![CDATA[CONFIG_RUNTIME_READY source=TextAsset:gameplay_config schema=5 content=0.6.4-sample hash=e348bab0eaf2bce5fa21c0588eb53c3b755791d8a537c4d7f29c93110ee6522c tables=29 records=745 primaryIndexes=341 groupIndexes=56
+ASSET_REGISTRY_READY source=AssetRegistry:asset_registry configHash=e348bab0eaf2bce5fa21c0588eb53c3b755791d8a537c4d7f29c93110ee6522c entries=76 prefabs=42 sprites=16 audioClips=17 scenes=1
+POINTER_INPUT_READY source=InputSystem modes=Mouse,Touch reference=1920x1080 safeArea=dynamic uiBeginBlock=true maxActivePointers=1
+]]></output>
+                </test-case>
+                <test-case id="1066" name="WarmPoolShowAndReclaimHotPathAllocatesNoManagedMemory" fullname="OneStrokeDemon.Tests.PlayMode.T340.StrokeTrailPoolPlayModeTests.WarmPoolShowAndReclaimHotPathAllocatesNoManagedMemory" methodname="WarmPoolShowAndReclaimHotPathAllocatesNoManagedMemory" classname="OneStrokeDemon.Tests.PlayMode.T340.StrokeTrailPoolPlayModeTests" runstate="Runnable" seed="1270255411" result="Passed" start-time="2026-07-25 07:39:48Z" end-time="2026-07-25 07:39:48Z" duration="0.432678" asserts="0">
+                  <properties>
+                    <property name="_JOINTYPE" value="UnityCombinatorial" />
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                  <output><![CDATA[CONFIG_RUNTIME_READY source=TextAsset:gameplay_config schema=5 content=0.6.4-sample hash=e348bab0eaf2bce5fa21c0588eb53c3b755791d8a537c4d7f29c93110ee6522c tables=29 records=745 primaryIndexes=341 groupIndexes=56
+ASSET_REGISTRY_READY source=AssetRegistry:asset_registry configHash=e348bab0eaf2bce5fa21c0588eb53c3b755791d8a537c4d7f29c93110ee6522c entries=76 prefabs=42 sprites=16 audioClips=17 scenes=1
+POINTER_INPUT_READY source=InputSystem modes=Mouse,Touch reference=1920x1080 safeArea=dynamic uiBeginBlock=true maxActivePointers=1
+]]></output>
+                </test-case>
+              </test-suite>
+            </test-suite>
+            <test-suite type="TestSuite" id="1115" name="T350" fullname="OneStrokeDemon.Tests.PlayMode.T350" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-07-25 07:39:48Z" end-time="2026-07-25 07:39:49Z" duration="0.865134" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-suite type="TestFixture" id="1059" name="MultiTargetHitPlayModeTests" fullname="OneStrokeDemon.Tests.PlayMode.T350.MultiTargetHitPlayModeTests" classname="OneStrokeDemon.Tests.PlayMode.T350.MultiTargetHitPlayModeTests" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-07-25 07:39:48Z" end-time="2026-07-25 07:39:49Z" duration="0.855674" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+                <properties>
+                  <property name="Category" value="StrokeHitResolver" />
+                </properties>
+                <test-case id="1060" name="MouseStrokeSharesTrailPointsAndHitsMultipleTargetsInPathOrder" fullname="OneStrokeDemon.Tests.PlayMode.T350.MultiTargetHitPlayModeTests.MouseStrokeSharesTrailPointsAndHitsMultipleTargetsInPathOrder" methodname="MouseStrokeSharesTrailPointsAndHitsMultipleTargetsInPathOrder" classname="OneStrokeDemon.Tests.PlayMode.T350.MultiTargetHitPlayModeTests" runstate="Runnable" seed="1332956234" result="Passed" start-time="2026-07-25 07:39:48Z" end-time="2026-07-25 07:39:49Z" duration="0.435339" asserts="0">
+                  <properties>
+                    <property name="_JOINTYPE" value="UnityCombinatorial" />
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                  <output><![CDATA[CONFIG_RUNTIME_READY source=TextAsset:gameplay_config schema=5 content=0.6.4-sample hash=e348bab0eaf2bce5fa21c0588eb53c3b755791d8a537c4d7f29c93110ee6522c tables=29 records=745 primaryIndexes=341 groupIndexes=56
+ASSET_REGISTRY_READY source=AssetRegistry:asset_registry configHash=e348bab0eaf2bce5fa21c0588eb53c3b755791d8a537c4d7f29c93110ee6522c entries=76 prefabs=42 sprites=16 audioClips=17 scenes=1
+POINTER_INPUT_READY source=InputSystem modes=Mouse,Touch reference=1920x1080 safeArea=dynamic uiBeginBlock=true maxActivePointers=1
+]]></output>
+                </test-case>
+                <test-case id="1061" name="WarmPhysicsCircleCastAndResolveHotPathAllocatesNoManagedMemory" fullname="OneStrokeDemon.Tests.PlayMode.T350.MultiTargetHitPlayModeTests.WarmPhysicsCircleCastAndResolveHotPathAllocatesNoManagedMemory" methodname="WarmPhysicsCircleCastAndResolveHotPathAllocatesNoManagedMemory" classname="OneStrokeDemon.Tests.PlayMode.T350.MultiTargetHitPlayModeTests" runstate="Runnable" seed="1518577075" result="Passed" start-time="2026-07-25 07:39:49Z" end-time="2026-07-25 07:39:49Z" duration="0.419601" asserts="0">
+                  <properties>
+                    <property name="_JOINTYPE" value="UnityCombinatorial" />
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                  <output><![CDATA[CONFIG_RUNTIME_READY source=TextAsset:gameplay_config schema=5 content=0.6.4-sample hash=e348bab0eaf2bce5fa21c0588eb53c3b755791d8a537c4d7f29c93110ee6522c tables=29 records=745 primaryIndexes=341 groupIndexes=56
+ASSET_REGISTRY_READY source=AssetRegistry:asset_registry configHash=e348bab0eaf2bce5fa21c0588eb53c3b755791d8a537c4d7f29c93110ee6522c entries=76 prefabs=42 sprites=16 audioClips=17 scenes=1
+POINTER_INPUT_READY source=InputSystem modes=Mouse,Touch reference=1920x1080 safeArea=dynamic uiBeginBlock=true maxActivePointers=1
+]]></output>
+                </test-case>
+              </test-suite>
+            </test-suite>
+            <test-suite type="TestSuite" id="1114" name="T360" fullname="OneStrokeDemon.Tests.PlayMode.T360" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-07-25 07:39:49Z" end-time="2026-07-25 07:39:49Z" duration="0.443426" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-suite type="TestFixture" id="1057" name="CombatResolutionPipelinePlayModeTests" fullname="OneStrokeDemon.Tests.PlayMode.T360.CombatResolutionPipelinePlayModeTests" classname="OneStrokeDemon.Tests.PlayMode.T360.CombatResolutionPipelinePlayModeTests" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-07-25 07:39:49Z" end-time="2026-07-25 07:39:49Z" duration="0.434257" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+                <properties>
+                  <property name="Category" value="CombatResolutionPipeline" />
+                </properties>
+                <test-case id="1058" name="MouseStrokeResolvesOrderedTargetsIntoConfiguredDamageScoreAndEnergy" fullname="OneStrokeDemon.Tests.PlayMode.T360.CombatResolutionPipelinePlayModeTests.MouseStrokeResolvesOrderedTargetsIntoConfiguredDamageScoreAndEnergy" methodname="MouseStrokeResolvesOrderedTargetsIntoConfiguredDamageScoreAndEnergy" classname="OneStrokeDemon.Tests.PlayMode.T360.CombatResolutionPipelinePlayModeTests" runstate="Runnable" seed="1617234741" result="Passed" start-time="2026-07-25 07:39:49Z" end-time="2026-07-25 07:39:49Z" duration="0.433591" asserts="0">
+                  <properties>
+                    <property name="_JOINTYPE" value="UnityCombinatorial" />
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                  <output><![CDATA[CONFIG_RUNTIME_READY source=TextAsset:gameplay_config schema=5 content=0.6.4-sample hash=e348bab0eaf2bce5fa21c0588eb53c3b755791d8a537c4d7f29c93110ee6522c tables=29 records=745 primaryIndexes=341 groupIndexes=56
+ASSET_REGISTRY_READY source=AssetRegistry:asset_registry configHash=e348bab0eaf2bce5fa21c0588eb53c3b755791d8a537c4d7f29c93110ee6522c entries=76 prefabs=42 sprites=16 audioClips=17 scenes=1
+POINTER_INPUT_READY source=InputSystem modes=Mouse,Touch reference=1920x1080 safeArea=dynamic uiBeginBlock=true maxActivePointers=1
+]]></output>
+                </test-case>
+              </test-suite>
+            </test-suite>
+            <test-suite type="TestSuite" id="1113" name="T370" fullname="OneStrokeDemon.Tests.PlayMode.T370" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-07-25 07:39:49Z" end-time="2026-07-25 07:39:50Z" duration="0.866577" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-suite type="TestFixture" id="1054" name="ProjectileReflectPlayModeTests" fullname="OneStrokeDemon.Tests.PlayMode.T370.ProjectileReflectPlayModeTests" classname="OneStrokeDemon.Tests.PlayMode.T370.ProjectileReflectPlayModeTests" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-07-25 07:39:49Z" end-time="2026-07-25 07:39:50Z" duration="0.866432" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+                <properties>
+                  <property name="Category" value="ProjectileReflect" />
+                </properties>
+                <test-case id="1056" name="CutStanceGateAndLifetimeTransitionsUseRealStrokeColliders" fullname="OneStrokeDemon.Tests.PlayMode.T370.ProjectileReflectPlayModeTests.CutStanceGateAndLifetimeTransitionsUseRealStrokeColliders" methodname="CutStanceGateAndLifetimeTransitionsUseRealStrokeColliders" classname="OneStrokeDemon.Tests.PlayMode.T370.ProjectileReflectPlayModeTests" runstate="Runnable" seed="164846387" result="Passed" start-time="2026-07-25 07:39:49Z" end-time="2026-07-25 07:39:50Z" duration="0.426281" asserts="0">
+                  <properties>
+                    <property name="_JOINTYPE" value="UnityCombinatorial" />
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                  <output><![CDATA[CONFIG_RUNTIME_READY source=TextAsset:gameplay_config schema=5 content=0.6.4-sample hash=e348bab0eaf2bce5fa21c0588eb53c3b755791d8a537c4d7f29c93110ee6522c tables=29 records=745 primaryIndexes=341 groupIndexes=56
+ASSET_REGISTRY_READY source=AssetRegistry:asset_registry configHash=e348bab0eaf2bce5fa21c0588eb53c3b755791d8a537c4d7f29c93110ee6522c entries=76 prefabs=42 sprites=16 audioClips=17 scenes=1
+POINTER_INPUT_READY source=InputSystem modes=Mouse,Touch reference=1920x1080 safeArea=dynamic uiBeginBlock=true maxActivePointers=1
+]]></output>
+                </test-case>
+                <test-case id="1055" name="MouseStrokeReflectsProjectileAndPreservesDamageAttributionAcrossReuse" fullname="OneStrokeDemon.Tests.PlayMode.T370.ProjectileReflectPlayModeTests.MouseStrokeReflectsProjectileAndPreservesDamageAttributionAcrossReuse" methodname="MouseStrokeReflectsProjectileAndPreservesDamageAttributionAcrossReuse" classname="OneStrokeDemon.Tests.PlayMode.T370.ProjectileReflectPlayModeTests" runstate="Runnable" seed="457624587" result="Passed" start-time="2026-07-25 07:39:50Z" end-time="2026-07-25 07:39:50Z" duration="0.439620" asserts="0">
+                  <properties>
+                    <property name="_JOINTYPE" value="UnityCombinatorial" />
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                  <output><![CDATA[CONFIG_RUNTIME_READY source=TextAsset:gameplay_config schema=5 content=0.6.4-sample hash=e348bab0eaf2bce5fa21c0588eb53c3b755791d8a537c4d7f29c93110ee6522c tables=29 records=745 primaryIndexes=341 groupIndexes=56
+ASSET_REGISTRY_READY source=AssetRegistry:asset_registry configHash=e348bab0eaf2bce5fa21c0588eb53c3b755791d8a537c4d7f29c93110ee6522c entries=76 prefabs=42 sprites=16 audioClips=17 scenes=1
+POINTER_INPUT_READY source=InputSystem modes=Mouse,Touch reference=1920x1080 safeArea=dynamic uiBeginBlock=true maxActivePointers=1
+]]></output>
+                </test-case>
+              </test-suite>
+            </test-suite>
+            <test-suite type="TestSuite" id="1112" name="T400" fullname="OneStrokeDemon.Tests.PlayMode.T400" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-07-25 07:39:50Z" end-time="2026-07-25 07:39:51Z" duration="0.848549" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-suite type="TestFixture" id="1051" name="StanceSwitchPlayModeTests" fullname="OneStrokeDemon.Tests.PlayMode.T400.StanceSwitchPlayModeTests" classname="OneStrokeDemon.Tests.PlayMode.T400.StanceSwitchPlayModeTests" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-07-25 07:39:50Z" end-time="2026-07-25 07:39:51Z" duration="0.848414" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+                <properties>
+                  <property name="Category" value="StanceSwitch" />
+                </properties>
+                <test-case id="1053" name="ResolvedDamageEnergySkillCostAndSameFrameDeathShareOnePlayerState" fullname="OneStrokeDemon.Tests.PlayMode.T400.StanceSwitchPlayModeTests.ResolvedDamageEnergySkillCostAndSameFrameDeathShareOnePlayerState" methodname="ResolvedDamageEnergySkillCostAndSameFrameDeathShareOnePlayerState" classname="OneStrokeDemon.Tests.PlayMode.T400.StanceSwitchPlayModeTests" runstate="Runnable" seed="1320520306" result="Passed" start-time="2026-07-25 07:39:50Z" end-time="2026-07-25 07:39:51Z" duration="0.416427" asserts="0">
+                  <properties>
+                    <property name="_JOINTYPE" value="UnityCombinatorial" />
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                  <output><![CDATA[CONFIG_RUNTIME_READY source=TextAsset:gameplay_config schema=5 content=0.6.4-sample hash=e348bab0eaf2bce5fa21c0588eb53c3b755791d8a537c4d7f29c93110ee6522c tables=29 records=745 primaryIndexes=341 groupIndexes=56
+ASSET_REGISTRY_READY source=AssetRegistry:asset_registry configHash=e348bab0eaf2bce5fa21c0588eb53c3b755791d8a537c4d7f29c93110ee6522c entries=76 prefabs=42 sprites=16 audioClips=17 scenes=1
+POINTER_INPUT_READY source=InputSystem modes=Mouse,Touch reference=1920x1080 safeArea=dynamic uiBeginBlock=true maxActivePointers=1
+]]></output>
+                </test-case>
+                <test-case id="1052" name="SwitchIntentImmediatelyChangesTrailDamageAndProjectileInteraction" fullname="OneStrokeDemon.Tests.PlayMode.T400.StanceSwitchPlayModeTests.SwitchIntentImmediatelyChangesTrailDamageAndProjectileInteraction" methodname="SwitchIntentImmediatelyChangesTrailDamageAndProjectileInteraction" classname="OneStrokeDemon.Tests.PlayMode.T400.StanceSwitchPlayModeTests" runstate="Runnable" seed="546145746" result="Passed" start-time="2026-07-25 07:39:51Z" end-time="2026-07-25 07:39:51Z" duration="0.431618" asserts="0">
+                  <properties>
+                    <property name="_JOINTYPE" value="UnityCombinatorial" />
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                  <output><![CDATA[CONFIG_RUNTIME_READY source=TextAsset:gameplay_config schema=5 content=0.6.4-sample hash=e348bab0eaf2bce5fa21c0588eb53c3b755791d8a537c4d7f29c93110ee6522c tables=29 records=745 primaryIndexes=341 groupIndexes=56
+ASSET_REGISTRY_READY source=AssetRegistry:asset_registry configHash=e348bab0eaf2bce5fa21c0588eb53c3b755791d8a537c4d7f29c93110ee6522c entries=76 prefabs=42 sprites=16 audioClips=17 scenes=1
+POINTER_INPUT_READY source=InputSystem modes=Mouse,Touch reference=1920x1080 safeArea=dynamic uiBeginBlock=true maxActivePointers=1
+]]></output>
+                </test-case>
+              </test-suite>
+            </test-suite>
+            <test-suite type="TestSuite" id="1111" name="T410" fullname="OneStrokeDemon.Tests.PlayMode.T410" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-07-25 07:39:51Z" end-time="2026-07-25 07:39:51Z" duration="0.028677" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-suite type="TestFixture" id="1049" name="UltimateSkillPlayModeTests" fullname="OneStrokeDemon.Tests.PlayMode.T410.UltimateSkillPlayModeTests" classname="OneStrokeDemon.Tests.PlayMode.T410.UltimateSkillPlayModeTests" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-07-25 07:39:51Z" end-time="2026-07-25 07:39:51Z" duration="0.019112" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+                <properties>
+                  <property name="Category" value="T410" />
+                </properties>
+                <test-case id="1050" name="UltimateWaitsForValidGestureEventThenRunsConfiguredWorldChain" fullname="OneStrokeDemon.Tests.PlayMode.T410.UltimateSkillPlayModeTests.UltimateWaitsForValidGestureEventThenRunsConfiguredWorldChain" methodname="UltimateWaitsForValidGestureEventThenRunsConfiguredWorldChain" classname="OneStrokeDemon.Tests.PlayMode.T410.UltimateSkillPlayModeTests" runstate="Runnable" seed="674680978" result="Passed" start-time="2026-07-25 07:39:51Z" end-time="2026-07-25 07:39:51Z" duration="0.018649" asserts="0">
+                  <properties>
+                    <property name="_JOINTYPE" value="UnityCombinatorial" />
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+              </test-suite>
+            </test-suite>
+            <test-suite type="TestSuite" id="1110" name="T420" fullname="OneStrokeDemon.Tests.PlayMode.T420" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-07-25 07:39:51Z" end-time="2026-07-25 07:39:52Z" duration="0.434755" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-suite type="TestFixture" id="1047" name="EnemyWeakpointCombatPlayModeTests" fullname="OneStrokeDemon.Tests.PlayMode.T420.EnemyWeakpointCombatPlayModeTests" classname="OneStrokeDemon.Tests.PlayMode.T420.EnemyWeakpointCombatPlayModeTests" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-07-25 07:39:51Z" end-time="2026-07-25 07:39:52Z" duration="0.434651" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+                <properties>
+                  <property name="Category" value="T420" />
+                </properties>
+                <test-case id="1048" name="DiagonalMouseStrokeHitsConfiguredBossWeakpointAndInterruptsAttack" fullname="OneStrokeDemon.Tests.PlayMode.T420.EnemyWeakpointCombatPlayModeTests.DiagonalMouseStrokeHitsConfiguredBossWeakpointAndInterruptsAttack" methodname="DiagonalMouseStrokeHitsConfiguredBossWeakpointAndInterruptsAttack" classname="OneStrokeDemon.Tests.PlayMode.T420.EnemyWeakpointCombatPlayModeTests" runstate="Runnable" seed="317183347" result="Passed" start-time="2026-07-25 07:39:51Z" end-time="2026-07-25 07:39:52Z" duration="0.434241" asserts="0">
+                  <properties>
+                    <property name="_JOINTYPE" value="UnityCombinatorial" />
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                  <output><![CDATA[CONFIG_RUNTIME_READY source=TextAsset:gameplay_config schema=5 content=0.6.4-sample hash=e348bab0eaf2bce5fa21c0588eb53c3b755791d8a537c4d7f29c93110ee6522c tables=29 records=745 primaryIndexes=341 groupIndexes=56
+ASSET_REGISTRY_READY source=AssetRegistry:asset_registry configHash=e348bab0eaf2bce5fa21c0588eb53c3b755791d8a537c4d7f29c93110ee6522c entries=76 prefabs=42 sprites=16 audioClips=17 scenes=1
+POINTER_INPUT_READY source=InputSystem modes=Mouse,Touch reference=1920x1080 safeArea=dynamic uiBeginBlock=true maxActivePointers=1
+]]></output>
+                </test-case>
+              </test-suite>
+            </test-suite>
+            <test-suite type="TestSuite" id="1109" name="T430" fullname="OneStrokeDemon.Tests.PlayMode.T430" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-07-25 07:39:52Z" end-time="2026-07-25 07:39:52Z" duration="0.019335" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-suite type="TestFixture" id="1045" name="AttackTelegraphPlayModeTests" fullname="OneStrokeDemon.Tests.PlayMode.T430.AttackTelegraphPlayModeTests" classname="OneStrokeDemon.Tests.PlayMode.T430.AttackTelegraphPlayModeTests" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-07-25 07:39:52Z" end-time="2026-07-25 07:39:52Z" duration="0.019208" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+                <properties>
+                  <property name="Category" value="T430" />
+                </properties>
+                <test-case id="1046" name="SupportTelegraphExecutesConfiguredShieldOnceAtActiveBoundary" fullname="OneStrokeDemon.Tests.PlayMode.T430.AttackTelegraphPlayModeTests.SupportTelegraphExecutesConfiguredShieldOnceAtActiveBoundary" methodname="SupportTelegraphExecutesConfiguredShieldOnceAtActiveBoundary" classname="OneStrokeDemon.Tests.PlayMode.T430.AttackTelegraphPlayModeTests" runstate="Runnable" seed="1664192419" result="Passed" start-time="2026-07-25 07:39:52Z" end-time="2026-07-25 07:39:52Z" duration="0.018976" asserts="0">
+                  <properties>
+                    <property name="_JOINTYPE" value="UnityCombinatorial" />
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+              </test-suite>
+            </test-suite>
+            <test-suite type="TestSuite" id="1108" name="T440" fullname="OneStrokeDemon.Tests.PlayMode.T440" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-07-25 07:39:52Z" end-time="2026-07-25 07:39:52Z" duration="0.447381" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-suite type="TestFixture" id="1043" name="RestartThreeTimesPlayModeTests" fullname="OneStrokeDemon.Tests.PlayMode.T440.RestartThreeTimesPlayModeTests" classname="OneStrokeDemon.Tests.PlayMode.T440.RestartThreeTimesPlayModeTests" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-07-25 07:39:52Z" end-time="2026-07-25 07:39:52Z" duration="0.447274" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+                <properties>
+                  <property name="Category" value="T440" />
+                </properties>
+                <test-case id="1044" name="SpawnKillClearAndRestartThreeTimesLeavesNoOldState" fullname="OneStrokeDemon.Tests.PlayMode.T440.RestartThreeTimesPlayModeTests.SpawnKillClearAndRestartThreeTimesLeavesNoOldState" methodname="SpawnKillClearAndRestartThreeTimesLeavesNoOldState" classname="OneStrokeDemon.Tests.PlayMode.T440.RestartThreeTimesPlayModeTests" runstate="Runnable" seed="778975454" result="Passed" start-time="2026-07-25 07:39:52Z" end-time="2026-07-25 07:39:52Z" duration="0.446971" asserts="0">
+                  <properties>
+                    <property name="_JOINTYPE" value="UnityCombinatorial" />
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                  <output><![CDATA[CONFIG_RUNTIME_READY source=TextAsset:gameplay_config schema=5 content=0.6.4-sample hash=e348bab0eaf2bce5fa21c0588eb53c3b755791d8a537c4d7f29c93110ee6522c tables=29 records=745 primaryIndexes=341 groupIndexes=56
+ASSET_REGISTRY_READY source=AssetRegistry:asset_registry configHash=e348bab0eaf2bce5fa21c0588eb53c3b755791d8a537c4d7f29c93110ee6522c entries=76 prefabs=42 sprites=16 audioClips=17 scenes=1
+POINTER_INPUT_READY source=InputSystem modes=Mouse,Touch reference=1920x1080 safeArea=dynamic uiBeginBlock=true maxActivePointers=1
+]]></output>
+                </test-case>
+              </test-suite>
+            </test-suite>
+            <test-suite type="TestSuite" id="1107" name="T450" fullname="OneStrokeDemon.Tests.PlayMode.T450" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-07-25 07:39:52Z" end-time="2026-07-25 07:39:53Z" duration="0.432643" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-suite type="TestFixture" id="1041" name="EnemyGalleryPlayModeTests" fullname="OneStrokeDemon.Tests.PlayMode.T450.EnemyGalleryPlayModeTests" classname="OneStrokeDemon.Tests.PlayMode.T450.EnemyGalleryPlayModeTests" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-07-25 07:39:52Z" end-time="2026-07-25 07:39:53Z" duration="0.432513" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+                <properties>
+                  <property name="Category" value="T450" />
+                </properties>
+                <test-case id="1042" name="SixConfiguredEnemiesSpawnMoveTelegraphAttackAndReturnToPools" fullname="OneStrokeDemon.Tests.PlayMode.T450.EnemyGalleryPlayModeTests.SixConfiguredEnemiesSpawnMoveTelegraphAttackAndReturnToPools" methodname="SixConfiguredEnemiesSpawnMoveTelegraphAttackAndReturnToPools" classname="OneStrokeDemon.Tests.PlayMode.T450.EnemyGalleryPlayModeTests" runstate="Runnable" seed="57618778" result="Passed" start-time="2026-07-25 07:39:52Z" end-time="2026-07-25 07:39:53Z" duration="0.432229" asserts="0">
+                  <properties>
+                    <property name="_JOINTYPE" value="UnityCombinatorial" />
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                  <output><![CDATA[CONFIG_RUNTIME_READY source=TextAsset:gameplay_config schema=5 content=0.6.4-sample hash=e348bab0eaf2bce5fa21c0588eb53c3b755791d8a537c4d7f29c93110ee6522c tables=29 records=745 primaryIndexes=341 groupIndexes=56
+ASSET_REGISTRY_READY source=AssetRegistry:asset_registry configHash=e348bab0eaf2bce5fa21c0588eb53c3b755791d8a537c4d7f29c93110ee6522c entries=76 prefabs=42 sprites=16 audioClips=17 scenes=1
+POINTER_INPUT_READY source=InputSystem modes=Mouse,Touch reference=1920x1080 safeArea=dynamic uiBeginBlock=true maxActivePointers=1
+]]></output>
+                </test-case>
+              </test-suite>
+            </test-suite>
+            <test-suite type="TestSuite" id="1106" name="T460" fullname="OneStrokeDemon.Tests.PlayMode.T460" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-07-25 07:39:53Z" end-time="2026-07-25 07:39:53Z" duration="0.019950" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-suite type="TestFixture" id="1039" name="BossBattlePlayModeTests" fullname="OneStrokeDemon.Tests.PlayMode.T460.BossBattlePlayModeTests" classname="OneStrokeDemon.Tests.PlayMode.T460.BossBattlePlayModeTests" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-07-25 07:39:53Z" end-time="2026-07-25 07:39:53Z" duration="0.019564" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+                <properties>
+                  <property name="Category" value="T460" />
+                </properties>
+                <test-case id="1040" name="TombKingRunsThreeConfiguredProfilesEffectsAndAttacksOnce" fullname="OneStrokeDemon.Tests.PlayMode.T460.BossBattlePlayModeTests.TombKingRunsThreeConfiguredProfilesEffectsAndAttacksOnce" methodname="TombKingRunsThreeConfiguredProfilesEffectsAndAttacksOnce" classname="OneStrokeDemon.Tests.PlayMode.T460.BossBattlePlayModeTests" runstate="Runnable" seed="136175400" result="Passed" start-time="2026-07-25 07:39:53Z" end-time="2026-07-25 07:39:53Z" duration="0.019261" asserts="0">
+                  <properties>
+                    <property name="_JOINTYPE" value="UnityCombinatorial" />
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+              </test-suite>
+            </test-suite>
+            <test-suite type="TestSuite" id="1105" name="T500" fullname="OneStrokeDemon.Tests.PlayMode.T500" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-07-25 07:39:53Z" end-time="2026-07-25 07:39:53Z" duration="0.856783" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-suite type="TestFixture" id="1036" name="WaveRunnerPlayModeTests" fullname="OneStrokeDemon.Tests.PlayMode.T500.WaveRunnerPlayModeTests" classname="OneStrokeDemon.Tests.PlayMode.T500.WaveRunnerPlayModeTests" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-07-25 07:39:53Z" end-time="2026-07-25 07:39:53Z" duration="0.856673" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+                <properties>
+                  <property name="Category" value="T500" />
+                </properties>
+                <test-case id="1038" name="BossLevelCompletesOnlyAfterConfiguredBossEntityIsDefeated" fullname="OneStrokeDemon.Tests.PlayMode.T500.WaveRunnerPlayModeTests.BossLevelCompletesOnlyAfterConfiguredBossEntityIsDefeated" methodname="BossLevelCompletesOnlyAfterConfiguredBossEntityIsDefeated" classname="OneStrokeDemon.Tests.PlayMode.T500.WaveRunnerPlayModeTests" runstate="Runnable" seed="1728494967" result="Passed" start-time="2026-07-25 07:39:53Z" end-time="2026-07-25 07:39:53Z" duration="0.427546" asserts="0">
+                  <properties>
+                    <property name="_JOINTYPE" value="UnityCombinatorial" />
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                  <output><![CDATA[CONFIG_RUNTIME_READY source=TextAsset:gameplay_config schema=5 content=0.6.4-sample hash=e348bab0eaf2bce5fa21c0588eb53c3b755791d8a537c4d7f29c93110ee6522c tables=29 records=745 primaryIndexes=341 groupIndexes=56
+ASSET_REGISTRY_READY source=AssetRegistry:asset_registry configHash=e348bab0eaf2bce5fa21c0588eb53c3b755791d8a537c4d7f29c93110ee6522c entries=76 prefabs=42 sprites=16 audioClips=17 scenes=1
+POINTER_INPUT_READY source=InputSystem modes=Mouse,Touch reference=1920x1080 safeArea=dynamic uiBeginBlock=true maxActivePointers=1
+]]></output>
+                </test-case>
+                <test-case id="1037" name="TutorialRunsSixConfiguredWavesAndPauseFreezesEverything" fullname="OneStrokeDemon.Tests.PlayMode.T500.WaveRunnerPlayModeTests.TutorialRunsSixConfiguredWavesAndPauseFreezesEverything" methodname="TutorialRunsSixConfiguredWavesAndPauseFreezesEverything" classname="OneStrokeDemon.Tests.PlayMode.T500.WaveRunnerPlayModeTests" runstate="Runnable" seed="939834939" result="Passed" start-time="2026-07-25 07:39:53Z" end-time="2026-07-25 07:39:53Z" duration="0.428737" asserts="0">
+                  <properties>
+                    <property name="_JOINTYPE" value="UnityCombinatorial" />
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                  <output><![CDATA[CONFIG_RUNTIME_READY source=TextAsset:gameplay_config schema=5 content=0.6.4-sample hash=e348bab0eaf2bce5fa21c0588eb53c3b755791d8a537c4d7f29c93110ee6522c tables=29 records=745 primaryIndexes=341 groupIndexes=56
+ASSET_REGISTRY_READY source=AssetRegistry:asset_registry configHash=e348bab0eaf2bce5fa21c0588eb53c3b755791d8a537c4d7f29c93110ee6522c entries=76 prefabs=42 sprites=16 audioClips=17 scenes=1
+POINTER_INPUT_READY source=InputSystem modes=Mouse,Touch reference=1920x1080 safeArea=dynamic uiBeginBlock=true maxActivePointers=1
+]]></output>
+                </test-case>
+              </test-suite>
+            </test-suite>
+            <test-suite type="TestSuite" id="1104" name="T510" fullname="OneStrokeDemon.Tests.PlayMode.T510" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-07-25 07:39:53Z" end-time="2026-07-25 07:39:54Z" duration="0.853995" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-suite type="TestFixture" id="1033" name="NoAdvanceBeforePlayerActionTests" fullname="OneStrokeDemon.Tests.PlayMode.T510.NoAdvanceBeforePlayerActionTests" classname="OneStrokeDemon.Tests.PlayMode.T510.NoAdvanceBeforePlayerActionTests" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-07-25 07:39:53Z" end-time="2026-07-25 07:39:54Z" duration="0.853606" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+                <properties>
+                  <property name="Category" value="T510" />
+                </properties>
+                <test-case id="1034" name="FocusAndApplicationPauseCancelOnceFreezeAndRequireFullResume" fullname="OneStrokeDemon.Tests.PlayMode.T510.NoAdvanceBeforePlayerActionTests.FocusAndApplicationPauseCancelOnceFreezeAndRequireFullResume" methodname="FocusAndApplicationPauseCancelOnceFreezeAndRequireFullResume" classname="OneStrokeDemon.Tests.PlayMode.T510.NoAdvanceBeforePlayerActionTests" runstate="Runnable" seed="1608391964" result="Passed" start-time="2026-07-25 07:39:53Z" end-time="2026-07-25 07:39:54Z" duration="0.425492" asserts="0">
+                  <properties>
+                    <property name="_JOINTYPE" value="UnityCombinatorial" />
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                  <output><![CDATA[CONFIG_RUNTIME_READY source=TextAsset:gameplay_config schema=5 content=0.6.4-sample hash=e348bab0eaf2bce5fa21c0588eb53c3b755791d8a537c4d7f29c93110ee6522c tables=29 records=745 primaryIndexes=341 groupIndexes=56
+ASSET_REGISTRY_READY source=AssetRegistry:asset_registry configHash=e348bab0eaf2bce5fa21c0588eb53c3b755791d8a537c4d7f29c93110ee6522c entries=76 prefabs=42 sprites=16 audioClips=17 scenes=1
+POINTER_INPUT_READY source=InputSystem modes=Mouse,Touch reference=1920x1080 safeArea=dynamic uiBeginBlock=true maxActivePointers=1
+]]></output>
+                </test-case>
+                <test-case id="1035" name="TimerCannotActivateUltimateButValidBoundaryGestureCan" fullname="OneStrokeDemon.Tests.PlayMode.T510.NoAdvanceBeforePlayerActionTests.TimerCannotActivateUltimateButValidBoundaryGestureCan" methodname="TimerCannotActivateUltimateButValidBoundaryGestureCan" classname="OneStrokeDemon.Tests.PlayMode.T510.NoAdvanceBeforePlayerActionTests" runstate="Runnable" seed="2009174102" result="Passed" start-time="2026-07-25 07:39:54Z" end-time="2026-07-25 07:39:54Z" duration="0.427683" asserts="0">
+                  <properties>
+                    <property name="_JOINTYPE" value="UnityCombinatorial" />
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                  <output><![CDATA[CONFIG_RUNTIME_READY source=TextAsset:gameplay_config schema=5 content=0.6.4-sample hash=e348bab0eaf2bce5fa21c0588eb53c3b755791d8a537c4d7f29c93110ee6522c tables=29 records=745 primaryIndexes=341 groupIndexes=56
+ASSET_REGISTRY_READY source=AssetRegistry:asset_registry configHash=e348bab0eaf2bce5fa21c0588eb53c3b755791d8a537c4d7f29c93110ee6522c entries=76 prefabs=42 sprites=16 audioClips=17 scenes=1
+POINTER_INPUT_READY source=InputSystem modes=Mouse,Touch reference=1920x1080 safeArea=dynamic uiBeginBlock=true maxActivePointers=1
+]]></output>
+                </test-case>
+              </test-suite>
+            </test-suite>
+            <test-suite type="TestSuite" id="1103" name="T520" fullname="OneStrokeDemon.Tests.PlayMode.T520" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-07-25 07:39:54Z" end-time="2026-07-25 07:39:55Z" duration="0.429633" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-suite type="TestFixture" id="1031" name="TutorialLevelE2EPlayModeTests" fullname="OneStrokeDemon.Tests.PlayMode.T520.TutorialLevelE2EPlayModeTests" classname="OneStrokeDemon.Tests.PlayMode.T520.TutorialLevelE2EPlayModeTests" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-07-25 07:39:54Z" end-time="2026-07-25 07:39:55Z" duration="0.429275" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+                <properties>
+                  <property name="Category" value="T520" />
+                </properties>
+                <test-case id="1032" name="SixConfiguredActionsDriveTutorialToVictoryWithoutTimerShortcuts" fullname="OneStrokeDemon.Tests.PlayMode.T520.TutorialLevelE2EPlayModeTests.SixConfiguredActionsDriveTutorialToVictoryWithoutTimerShortcuts" methodname="SixConfiguredActionsDriveTutorialToVictoryWithoutTimerShortcuts" classname="OneStrokeDemon.Tests.PlayMode.T520.TutorialLevelE2EPlayModeTests" runstate="Runnable" seed="287125738" result="Passed" start-time="2026-07-25 07:39:54Z" end-time="2026-07-25 07:39:55Z" duration="0.428874" asserts="0">
+                  <properties>
+                    <property name="_JOINTYPE" value="UnityCombinatorial" />
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                  <output><![CDATA[CONFIG_RUNTIME_READY source=TextAsset:gameplay_config schema=5 content=0.6.4-sample hash=e348bab0eaf2bce5fa21c0588eb53c3b755791d8a537c4d7f29c93110ee6522c tables=29 records=745 primaryIndexes=341 groupIndexes=56
+ASSET_REGISTRY_READY source=AssetRegistry:asset_registry configHash=e348bab0eaf2bce5fa21c0588eb53c3b755791d8a537c4d7f29c93110ee6522c entries=76 prefabs=42 sprites=16 audioClips=17 scenes=1
+POINTER_INPUT_READY source=InputSystem modes=Mouse,Touch reference=1920x1080 safeArea=dynamic uiBeginBlock=true maxActivePointers=1
+]]></output>
+                </test-case>
+              </test-suite>
+            </test-suite>
+            <test-suite type="TestSuite" id="1102" name="T530" fullname="OneStrokeDemon.Tests.PlayMode.T530" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-07-25 07:39:55Z" end-time="2026-07-25 07:39:55Z" duration="0.432644" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-suite type="TestFixture" id="1029" name="NormalLevelE2EPlayModeTests" fullname="OneStrokeDemon.Tests.PlayMode.T530.NormalLevelE2EPlayModeTests" classname="OneStrokeDemon.Tests.PlayMode.T530.NormalLevelE2EPlayModeTests" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-07-25 07:39:55Z" end-time="2026-07-25 07:39:55Z" duration="0.432274" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+                <properties>
+                  <property name="Category" value="T530" />
+                </properties>
+                <test-case id="1030" name="EightConfiguredWavesExerciseMixedRosterAndSettleWithinLimit" fullname="OneStrokeDemon.Tests.PlayMode.T530.NormalLevelE2EPlayModeTests.EightConfiguredWavesExerciseMixedRosterAndSettleWithinLimit" methodname="EightConfiguredWavesExerciseMixedRosterAndSettleWithinLimit" classname="OneStrokeDemon.Tests.PlayMode.T530.NormalLevelE2EPlayModeTests" runstate="Runnable" seed="750432111" result="Passed" start-time="2026-07-25 07:39:55Z" end-time="2026-07-25 07:39:55Z" duration="0.431937" asserts="0">
+                  <properties>
+                    <property name="_JOINTYPE" value="UnityCombinatorial" />
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                  <output><![CDATA[CONFIG_RUNTIME_READY source=TextAsset:gameplay_config schema=5 content=0.6.4-sample hash=e348bab0eaf2bce5fa21c0588eb53c3b755791d8a537c4d7f29c93110ee6522c tables=29 records=745 primaryIndexes=341 groupIndexes=56
+ASSET_REGISTRY_READY source=AssetRegistry:asset_registry configHash=e348bab0eaf2bce5fa21c0588eb53c3b755791d8a537c4d7f29c93110ee6522c entries=76 prefabs=42 sprites=16 audioClips=17 scenes=1
+POINTER_INPUT_READY source=InputSystem modes=Mouse,Touch reference=1920x1080 safeArea=dynamic uiBeginBlock=true maxActivePointers=1
+]]></output>
+                </test-case>
+              </test-suite>
+            </test-suite>
+            <test-suite type="TestSuite" id="1101" name="T540" fullname="OneStrokeDemon.Tests.PlayMode.T540" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-07-25 07:39:55Z" end-time="2026-07-25 07:39:56Z" duration="0.863585" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-suite type="TestFixture" id="1026" name="BossLevelE2EPlayModeTests" fullname="OneStrokeDemon.Tests.PlayMode.T540.BossLevelE2EPlayModeTests" classname="OneStrokeDemon.Tests.PlayMode.T540.BossLevelE2EPlayModeTests" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-07-25 07:39:55Z" end-time="2026-07-25 07:39:56Z" duration="0.863194" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+                <properties>
+                  <property name="Category" value="T540" />
+                </properties>
+                <test-case id="1028" name="DefeatStopsBossRuntimeAndFreshRetryCanWinWithoutLeaks" fullname="OneStrokeDemon.Tests.PlayMode.T540.BossLevelE2EPlayModeTests.DefeatStopsBossRuntimeAndFreshRetryCanWinWithoutLeaks" methodname="DefeatStopsBossRuntimeAndFreshRetryCanWinWithoutLeaks" classname="OneStrokeDemon.Tests.PlayMode.T540.BossLevelE2EPlayModeTests" runstate="Runnable" seed="1318864711" result="Passed" start-time="2026-07-25 07:39:55Z" end-time="2026-07-25 07:39:56Z" duration="0.431376" asserts="0">
+                  <properties>
+                    <property name="_JOINTYPE" value="UnityCombinatorial" />
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                  <output><![CDATA[CONFIG_RUNTIME_READY source=TextAsset:gameplay_config schema=5 content=0.6.4-sample hash=e348bab0eaf2bce5fa21c0588eb53c3b755791d8a537c4d7f29c93110ee6522c tables=29 records=745 primaryIndexes=341 groupIndexes=56
+ASSET_REGISTRY_READY source=AssetRegistry:asset_registry configHash=e348bab0eaf2bce5fa21c0588eb53c3b755791d8a537c4d7f29c93110ee6522c entries=76 prefabs=42 sprites=16 audioClips=17 scenes=1
+POINTER_INPUT_READY source=InputSystem modes=Mouse,Touch reference=1920x1080 safeArea=dynamic uiBeginBlock=true maxActivePointers=1
+]]></output>
+                </test-case>
+                <test-case id="1027" name="MixedGateThreePhasesAndExecutionSettleVictoryWithinLimit" fullname="OneStrokeDemon.Tests.PlayMode.T540.BossLevelE2EPlayModeTests.MixedGateThreePhasesAndExecutionSettleVictoryWithinLimit" methodname="MixedGateThreePhasesAndExecutionSettleVictoryWithinLimit" classname="OneStrokeDemon.Tests.PlayMode.T540.BossLevelE2EPlayModeTests" runstate="Runnable" seed="810687707" result="Passed" start-time="2026-07-25 07:39:56Z" end-time="2026-07-25 07:39:56Z" duration="0.431382" asserts="0">
+                  <properties>
+                    <property name="_JOINTYPE" value="UnityCombinatorial" />
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                  <output><![CDATA[CONFIG_RUNTIME_READY source=TextAsset:gameplay_config schema=5 content=0.6.4-sample hash=e348bab0eaf2bce5fa21c0588eb53c3b755791d8a537c4d7f29c93110ee6522c tables=29 records=745 primaryIndexes=341 groupIndexes=56
+ASSET_REGISTRY_READY source=AssetRegistry:asset_registry configHash=e348bab0eaf2bce5fa21c0588eb53c3b755791d8a537c4d7f29c93110ee6522c entries=76 prefabs=42 sprites=16 audioClips=17 scenes=1
+POINTER_INPUT_READY source=InputSystem modes=Mouse,Touch reference=1920x1080 safeArea=dynamic uiBeginBlock=true maxActivePointers=1
+]]></output>
+                </test-case>
+              </test-suite>
+            </test-suite>
+            <test-suite type="TestSuite" id="1100" name="T550" fullname="OneStrokeDemon.Tests.PlayMode.T550" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-07-25 07:39:56Z" end-time="2026-07-25 07:39:56Z" duration="0.431059" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-suite type="TestFixture" id="1024" name="RestartThreeTimesPlayModeTests" fullname="OneStrokeDemon.Tests.PlayMode.T550.RestartThreeTimesPlayModeTests" classname="OneStrokeDemon.Tests.PlayMode.T550.RestartThreeTimesPlayModeTests" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-07-25 07:39:56Z" end-time="2026-07-25 07:39:56Z" duration="0.430714" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+                <properties>
+                  <property name="Category" value="T550" />
+                </properties>
+                <test-case id="1025" name="RestartThreeTimesThenNextLevelDisposesEveryOldSessionAndPoolLease" fullname="OneStrokeDemon.Tests.PlayMode.T550.RestartThreeTimesPlayModeTests.RestartThreeTimesThenNextLevelDisposesEveryOldSessionAndPoolLease" methodname="RestartThreeTimesThenNextLevelDisposesEveryOldSessionAndPoolLease" classname="OneStrokeDemon.Tests.PlayMode.T550.RestartThreeTimesPlayModeTests" runstate="Runnable" seed="647065735" result="Passed" start-time="2026-07-25 07:39:56Z" end-time="2026-07-25 07:39:56Z" duration="0.430432" asserts="0">
+                  <properties>
+                    <property name="_JOINTYPE" value="UnityCombinatorial" />
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                  <output><![CDATA[CONFIG_RUNTIME_READY source=TextAsset:gameplay_config schema=5 content=0.6.4-sample hash=e348bab0eaf2bce5fa21c0588eb53c3b755791d8a537c4d7f29c93110ee6522c tables=29 records=745 primaryIndexes=341 groupIndexes=56
+ASSET_REGISTRY_READY source=AssetRegistry:asset_registry configHash=e348bab0eaf2bce5fa21c0588eb53c3b755791d8a537c4d7f29c93110ee6522c entries=76 prefabs=42 sprites=16 audioClips=17 scenes=1
+POINTER_INPUT_READY source=InputSystem modes=Mouse,Touch reference=1920x1080 safeArea=dynamic uiBeginBlock=true maxActivePointers=1
+]]></output>
+                </test-case>
+              </test-suite>
+            </test-suite>
+            <test-suite type="TestSuite" id="1099" name="T600" fullname="OneStrokeDemon.Tests.PlayMode.T600" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-07-25 07:39:56Z" end-time="2026-07-25 07:39:57Z" duration="0.429644" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-suite type="TestFixture" id="1022" name="HudBindingPlayModeTests" fullname="OneStrokeDemon.Tests.PlayMode.T600.HudBindingPlayModeTests" classname="OneStrokeDemon.Tests.PlayMode.T600.HudBindingPlayModeTests" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-07-25 07:39:56Z" end-time="2026-07-25 07:39:57Z" duration="0.429547" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+                <properties>
+                  <property name="Category" value="T600" />
+                </properties>
+                <test-case id="1023" name="RuntimeViewHonorsSafeAreaRendersStatesAndForwardsButtons" fullname="OneStrokeDemon.Tests.PlayMode.T600.HudBindingPlayModeTests.RuntimeViewHonorsSafeAreaRendersStatesAndForwardsButtons" methodname="RuntimeViewHonorsSafeAreaRendersStatesAndForwardsButtons" classname="OneStrokeDemon.Tests.PlayMode.T600.HudBindingPlayModeTests" runstate="Runnable" seed="602727749" result="Passed" start-time="2026-07-25 07:39:56Z" end-time="2026-07-25 07:39:57Z" duration="0.429296" asserts="0">
+                  <properties>
+                    <property name="_JOINTYPE" value="UnityCombinatorial" />
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                  <output><![CDATA[CONFIG_RUNTIME_READY source=TextAsset:gameplay_config schema=5 content=0.6.4-sample hash=e348bab0eaf2bce5fa21c0588eb53c3b755791d8a537c4d7f29c93110ee6522c tables=29 records=745 primaryIndexes=341 groupIndexes=56
+ASSET_REGISTRY_READY source=AssetRegistry:asset_registry configHash=e348bab0eaf2bce5fa21c0588eb53c3b755791d8a537c4d7f29c93110ee6522c entries=76 prefabs=42 sprites=16 audioClips=17 scenes=1
+POINTER_INPUT_READY source=InputSystem modes=Mouse,Touch reference=1920x1080 safeArea=dynamic uiBeginBlock=true maxActivePointers=1
+]]></output>
+                </test-case>
+              </test-suite>
+            </test-suite>
+            <test-suite type="TestSuite" id="1098" name="T610" fullname="OneStrokeDemon.Tests.PlayMode.T610" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-07-25 07:39:57Z" end-time="2026-07-25 07:39:57Z" duration="0.429351" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-suite type="TestFixture" id="1020" name="LocalizationGlyphPlayModeTests" fullname="OneStrokeDemon.Tests.PlayMode.T610.LocalizationGlyphPlayModeTests" classname="OneStrokeDemon.Tests.PlayMode.T610.LocalizationGlyphPlayModeTests" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-07-25 07:39:57Z" end-time="2026-07-25 07:39:57Z" duration="0.429067" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+                <properties>
+                  <property name="Category" value="T610" />
+                </properties>
+                <test-case id="1021" name="ChineseHudAndDynamicDamageDigitsRenderWithoutMissingGlyphsOrClipping" fullname="OneStrokeDemon.Tests.PlayMode.T610.LocalizationGlyphPlayModeTests.ChineseHudAndDynamicDamageDigitsRenderWithoutMissingGlyphsOrClipping" methodname="ChineseHudAndDynamicDamageDigitsRenderWithoutMissingGlyphsOrClipping" classname="OneStrokeDemon.Tests.PlayMode.T610.LocalizationGlyphPlayModeTests" runstate="Runnable" seed="33030407" result="Passed" start-time="2026-07-25 07:39:57Z" end-time="2026-07-25 07:39:57Z" duration="0.428745" asserts="0">
+                  <properties>
+                    <property name="_JOINTYPE" value="UnityCombinatorial" />
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                  <output><![CDATA[CONFIG_RUNTIME_READY source=TextAsset:gameplay_config schema=5 content=0.6.4-sample hash=e348bab0eaf2bce5fa21c0588eb53c3b755791d8a537c4d7f29c93110ee6522c tables=29 records=745 primaryIndexes=341 groupIndexes=56
+ASSET_REGISTRY_READY source=AssetRegistry:asset_registry configHash=e348bab0eaf2bce5fa21c0588eb53c3b755791d8a537c4d7f29c93110ee6522c entries=76 prefabs=42 sprites=16 audioClips=17 scenes=1
+POINTER_INPUT_READY source=InputSystem modes=Mouse,Touch reference=1920x1080 safeArea=dynamic uiBeginBlock=true maxActivePointers=1
+]]></output>
+                </test-case>
+              </test-suite>
+            </test-suite>
+            <test-suite type="TestSuite" id="1097" name="T620" fullname="OneStrokeDemon.Tests.PlayMode.T620" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-07-25 07:39:57Z" end-time="2026-07-25 07:39:58Z" duration="0.441085" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-suite type="TestFixture" id="1018" name="CombatFeedbackPlayModeTests" fullname="OneStrokeDemon.Tests.PlayMode.T620.CombatFeedbackPlayModeTests" classname="OneStrokeDemon.Tests.PlayMode.T620.CombatFeedbackPlayModeTests" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-07-25 07:39:57Z" end-time="2026-07-25 07:39:58Z" duration="0.440649" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+                <properties>
+                  <property name="Category" value="T620" />
+                </properties>
+                <test-case id="1019" name="FiveFeedbackEventsRemainPerceptuallyDistinctAndPoolCleanly" fullname="OneStrokeDemon.Tests.PlayMode.T620.CombatFeedbackPlayModeTests.FiveFeedbackEventsRemainPerceptuallyDistinctAndPoolCleanly" methodname="FiveFeedbackEventsRemainPerceptuallyDistinctAndPoolCleanly" classname="OneStrokeDemon.Tests.PlayMode.T620.CombatFeedbackPlayModeTests" runstate="Runnable" seed="1987936268" result="Passed" start-time="2026-07-25 07:39:57Z" end-time="2026-07-25 07:39:58Z" duration="0.440327" asserts="0">
+                  <properties>
+                    <property name="_JOINTYPE" value="UnityCombinatorial" />
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                  <output><![CDATA[CONFIG_RUNTIME_READY source=TextAsset:gameplay_config schema=5 content=0.6.4-sample hash=e348bab0eaf2bce5fa21c0588eb53c3b755791d8a537c4d7f29c93110ee6522c tables=29 records=745 primaryIndexes=341 groupIndexes=56
+ASSET_REGISTRY_READY source=AssetRegistry:asset_registry configHash=e348bab0eaf2bce5fa21c0588eb53c3b755791d8a537c4d7f29c93110ee6522c entries=76 prefabs=42 sprites=16 audioClips=17 scenes=1
+POINTER_INPUT_READY source=InputSystem modes=Mouse,Touch reference=1920x1080 safeArea=dynamic uiBeginBlock=true maxActivePointers=1
+]]></output>
+                </test-case>
+              </test-suite>
+            </test-suite>
+            <test-suite type="TestSuite" id="1096" name="T650" fullname="OneStrokeDemon.Tests.PlayMode.T650" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-07-25 07:39:58Z" end-time="2026-07-25 07:39:58Z" duration="0.429572" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-suite type="TestFixture" id="1016" name="TutorialSkipPlayModeTests" fullname="OneStrokeDemon.Tests.PlayMode.T650.TutorialSkipPlayModeTests" classname="OneStrokeDemon.Tests.PlayMode.T650.TutorialSkipPlayModeTests" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-07-25 07:39:58Z" end-time="2026-07-25 07:39:58Z" duration="0.429291" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+                <properties>
+                  <property name="Category" value="T650" />
+                </properties>
+                <test-case id="1017" name="SkipAndRestartReleaseAllGatesWhileReviewRemainsAvailable" fullname="OneStrokeDemon.Tests.PlayMode.T650.TutorialSkipPlayModeTests.SkipAndRestartReleaseAllGatesWhileReviewRemainsAvailable" methodname="SkipAndRestartReleaseAllGatesWhileReviewRemainsAvailable" classname="OneStrokeDemon.Tests.PlayMode.T650.TutorialSkipPlayModeTests" runstate="Runnable" seed="1409201987" result="Passed" start-time="2026-07-25 07:39:58Z" end-time="2026-07-25 07:39:58Z" duration="0.429011" asserts="0">
+                  <properties>
+                    <property name="_JOINTYPE" value="UnityCombinatorial" />
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                  <output><![CDATA[CONFIG_RUNTIME_READY source=TextAsset:gameplay_config schema=5 content=0.6.4-sample hash=e348bab0eaf2bce5fa21c0588eb53c3b755791d8a537c4d7f29c93110ee6522c tables=29 records=745 primaryIndexes=341 groupIndexes=56
+ASSET_REGISTRY_READY source=AssetRegistry:asset_registry configHash=e348bab0eaf2bce5fa21c0588eb53c3b755791d8a537c4d7f29c93110ee6522c entries=76 prefabs=42 sprites=16 audioClips=17 scenes=1
+POINTER_INPUT_READY source=InputSystem modes=Mouse,Touch reference=1920x1080 safeArea=dynamic uiBeginBlock=true maxActivePointers=1
+]]></output>
+                </test-case>
+              </test-suite>
+            </test-suite>
+            <test-suite type="TestSuite" id="1095" name="T660" fullname="OneStrokeDemon.Tests.PlayMode.T660" runstate="Runnable" testcasecount="4" result="Passed" start-time="2026-07-25 07:39:58Z" end-time="2026-07-25 07:40:14Z" duration="15.338489" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-suite type="TestFixture" id="1011" name="ProductionPlayableEntryPlayModeTests" fullname="OneStrokeDemon.Tests.PlayMode.T660.ProductionPlayableEntryPlayModeTests" classname="OneStrokeDemon.Tests.PlayMode.T660.ProductionPlayableEntryPlayModeTests" runstate="Runnable" testcasecount="4" result="Passed" start-time="2026-07-25 07:39:58Z" end-time="2026-07-25 07:40:14Z" duration="15.338342" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+                <properties>
+                  <property name="Category" value="T660" />
+                </properties>
+                <test-case id="1012" name="BootstrapMenuClickCreatesHudAndRealStrokeDamagesEnemy" fullname="OneStrokeDemon.Tests.PlayMode.T660.ProductionPlayableEntryPlayModeTests.BootstrapMenuClickCreatesHudAndRealStrokeDamagesEnemy" methodname="BootstrapMenuClickCreatesHudAndRealStrokeDamagesEnemy" classname="OneStrokeDemon.Tests.PlayMode.T660.ProductionPlayableEntryPlayModeTests" runstate="Runnable" seed="1817091807" result="Passed" start-time="2026-07-25 07:39:58Z" end-time="2026-07-25 07:40:01Z" duration="3.033110" asserts="0">
+                  <properties>
+                    <property name="_JOINTYPE" value="UnityCombinatorial" />
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                  <output><![CDATA[CONFIG_RUNTIME_READY source=TextAsset:gameplay_config schema=5 content=0.6.4-sample hash=e348bab0eaf2bce5fa21c0588eb53c3b755791d8a537c4d7f29c93110ee6522c tables=29 records=745 primaryIndexes=341 groupIndexes=56
+ASSET_REGISTRY_READY source=AssetRegistry:asset_registry configHash=e348bab0eaf2bce5fa21c0588eb53c3b755791d8a537c4d7f29c93110ee6522c entries=76 prefabs=42 sprites=16 audioClips=17 scenes=1
+POINTER_INPUT_READY source=InputSystem modes=Mouse,Touch reference=1920x1080 safeArea=dynamic uiBeginBlock=true maxActivePointers=1
+]]></output>
+                </test-case>
+                <test-case id="1015" name="ResultRestartCreatesFreshSessionAndMainMenuReturnsToEntry" fullname="OneStrokeDemon.Tests.PlayMode.T660.ProductionPlayableEntryPlayModeTests.ResultRestartCreatesFreshSessionAndMainMenuReturnsToEntry" methodname="ResultRestartCreatesFreshSessionAndMainMenuReturnsToEntry" classname="OneStrokeDemon.Tests.PlayMode.T660.ProductionPlayableEntryPlayModeTests" runstate="Runnable" seed="1088790859" result="Passed" start-time="2026-07-25 07:40:01Z" end-time="2026-07-25 07:40:06Z" duration="4.636376" asserts="0">
+                  <properties>
+                    <property name="_JOINTYPE" value="UnityCombinatorial" />
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                  <output><![CDATA[CONFIG_RUNTIME_READY source=TextAsset:gameplay_config schema=5 content=0.6.4-sample hash=e348bab0eaf2bce5fa21c0588eb53c3b755791d8a537c4d7f29c93110ee6522c tables=29 records=745 primaryIndexes=341 groupIndexes=56
+ASSET_REGISTRY_READY source=AssetRegistry:asset_registry configHash=e348bab0eaf2bce5fa21c0588eb53c3b755791d8a537c4d7f29c93110ee6522c entries=76 prefabs=42 sprites=16 audioClips=17 scenes=1
+POINTER_INPUT_READY source=InputSystem modes=Mouse,Touch reference=1920x1080 safeArea=dynamic uiBeginBlock=true maxActivePointers=1
+]]></output>
+                </test-case>
+                <test-case id="1014" name="StanceSwitchResolvesConfiguredAudioCueToRegistryAsset" fullname="OneStrokeDemon.Tests.PlayMode.T660.ProductionPlayableEntryPlayModeTests.StanceSwitchResolvesConfiguredAudioCueToRegistryAsset" methodname="StanceSwitchResolvesConfiguredAudioCueToRegistryAsset" classname="OneStrokeDemon.Tests.PlayMode.T660.ProductionPlayableEntryPlayModeTests" runstate="Runnable" seed="267012384" result="Passed" start-time="2026-07-25 07:40:06Z" end-time="2026-07-25 07:40:08Z" duration="2.424857" asserts="0">
+                  <properties>
+                    <property name="_JOINTYPE" value="UnityCombinatorial" />
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                  <output><![CDATA[CONFIG_RUNTIME_READY source=TextAsset:gameplay_config schema=5 content=0.6.4-sample hash=e348bab0eaf2bce5fa21c0588eb53c3b755791d8a537c4d7f29c93110ee6522c tables=29 records=745 primaryIndexes=341 groupIndexes=56
+ASSET_REGISTRY_READY source=AssetRegistry:asset_registry configHash=e348bab0eaf2bce5fa21c0588eb53c3b755791d8a537c4d7f29c93110ee6522c entries=76 prefabs=42 sprites=16 audioClips=17 scenes=1
+POINTER_INPUT_READY source=InputSystem modes=Mouse,Touch reference=1920x1080 safeArea=dynamic uiBeginBlock=true maxActivePointers=1
+]]></output>
+                </test-case>
+                <test-case id="1013" name="UnlockedNormalAndBossChoicesEnterTheirProductionSessions" fullname="OneStrokeDemon.Tests.PlayMode.T660.ProductionPlayableEntryPlayModeTests.UnlockedNormalAndBossChoicesEnterTheirProductionSessions" methodname="UnlockedNormalAndBossChoicesEnterTheirProductionSessions" classname="OneStrokeDemon.Tests.PlayMode.T660.ProductionPlayableEntryPlayModeTests" runstate="Runnable" seed="850948453" result="Passed" start-time="2026-07-25 07:40:08Z" end-time="2026-07-25 07:40:14Z" duration="5.243269" asserts="0">
+                  <properties>
+                    <property name="_JOINTYPE" value="UnityCombinatorial" />
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                  <output><![CDATA[CONFIG_RUNTIME_READY source=TextAsset:gameplay_config schema=5 content=0.6.4-sample hash=e348bab0eaf2bce5fa21c0588eb53c3b755791d8a537c4d7f29c93110ee6522c tables=29 records=745 primaryIndexes=341 groupIndexes=56
+ASSET_REGISTRY_READY source=AssetRegistry:asset_registry configHash=e348bab0eaf2bce5fa21c0588eb53c3b755791d8a537c4d7f29c93110ee6522c entries=76 prefabs=42 sprites=16 audioClips=17 scenes=1
+POINTER_INPUT_READY source=InputSystem modes=Mouse,Touch reference=1920x1080 safeArea=dynamic uiBeginBlock=true maxActivePointers=1
+]]></output>
+                </test-case>
+              </test-suite>
+            </test-suite>
+            <test-suite type="TestSuite" id="1094" name="T690" fullname="OneStrokeDemon.Tests.PlayMode.T690" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-07-25 07:40:14Z" end-time="2026-07-25 07:40:14Z" duration="0.489863" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-suite type="TestFixture" id="1009" name="FireFishAnimationPoolPlayModeTests" fullname="OneStrokeDemon.Tests.PlayMode.T690.FireFishAnimationPoolPlayModeTests" classname="OneStrokeDemon.Tests.PlayMode.T690.FireFishAnimationPoolPlayModeTests" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-07-25 07:40:14Z" end-time="2026-07-25 07:40:14Z" duration="0.489686" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+                <properties>
+                  <property name="Category" value="T690" />
+                </properties>
+                <test-case id="1010" name="FireFishPoolInstanceAnimatesAndReturnsCleanly" fullname="OneStrokeDemon.Tests.PlayMode.T690.FireFishAnimationPoolPlayModeTests.FireFishPoolInstanceAnimatesAndReturnsCleanly" methodname="FireFishPoolInstanceAnimatesAndReturnsCleanly" classname="OneStrokeDemon.Tests.PlayMode.T690.FireFishAnimationPoolPlayModeTests" runstate="Runnable" seed="855719213" result="Passed" start-time="2026-07-25 07:40:14Z" end-time="2026-07-25 07:40:14Z" duration="0.489376" asserts="0">
+                  <properties>
+                    <property name="_JOINTYPE" value="UnityCombinatorial" />
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                  <output><![CDATA[CONFIG_RUNTIME_READY source=TextAsset:gameplay_config schema=5 content=0.6.4-sample hash=e348bab0eaf2bce5fa21c0588eb53c3b755791d8a537c4d7f29c93110ee6522c tables=29 records=745 primaryIndexes=341 groupIndexes=56
+ASSET_REGISTRY_READY source=AssetRegistry:asset_registry configHash=e348bab0eaf2bce5fa21c0588eb53c3b755791d8a537c4d7f29c93110ee6522c entries=76 prefabs=42 sprites=16 audioClips=17 scenes=1
+POINTER_INPUT_READY source=InputSystem modes=Mouse,Touch reference=1920x1080 safeArea=dynamic uiBeginBlock=true maxActivePointers=1
+]]></output>
+                </test-case>
+              </test-suite>
+            </test-suite>
+            <test-suite type="TestSuite" id="1093" name="T692" fullname="OneStrokeDemon.Tests.PlayMode.T692" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-07-25 07:40:14Z" end-time="2026-07-25 07:40:14Z" duration="0.197635" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-suite type="TestFixture" id="1007" name="GlobalLightSortingLayerPlayModeTests" fullname="OneStrokeDemon.Tests.PlayMode.T692.GlobalLightSortingLayerPlayModeTests" classname="OneStrokeDemon.Tests.PlayMode.T692.GlobalLightSortingLayerPlayModeTests" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-07-25 07:40:14Z" end-time="2026-07-25 07:40:14Z" duration="0.197487" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+                <properties>
+                  <property name="Category" value="T692" />
+                </properties>
+                <test-case id="1008" name="BattleGlobalLightIncludesActorsLayerAtRuntime" fullname="OneStrokeDemon.Tests.PlayMode.T692.GlobalLightSortingLayerPlayModeTests.BattleGlobalLightIncludesActorsLayerAtRuntime" methodname="BattleGlobalLightIncludesActorsLayerAtRuntime" classname="OneStrokeDemon.Tests.PlayMode.T692.GlobalLightSortingLayerPlayModeTests" runstate="Runnable" seed="2027030069" result="Passed" start-time="2026-07-25 07:40:14Z" end-time="2026-07-25 07:40:14Z" duration="0.197192" asserts="0">
+                  <properties>
+                    <property name="_JOINTYPE" value="UnityCombinatorial" />
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+              </test-suite>
+            </test-suite>
+            <test-suite type="TestSuite" id="1092" name="T694" fullname="OneStrokeDemon.Tests.PlayMode.T694" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-07-25 07:40:14Z" end-time="2026-07-25 07:40:18Z" duration="4.132905" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-suite type="TestFixture" id="1005" name="MoyanAnimationProductionPlayModeTests" fullname="OneStrokeDemon.Tests.PlayMode.T694.MoyanAnimationProductionPlayModeTests" classname="OneStrokeDemon.Tests.PlayMode.T694.MoyanAnimationProductionPlayModeTests" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-07-25 07:40:14Z" end-time="2026-07-25 07:40:18Z" duration="4.123117" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+                <properties>
+                  <property name="Category" value="T694" />
+                </properties>
+                <test-case id="1006" name="ValidProductionStrokePlaysAttackThenReturnsToIdle" fullname="OneStrokeDemon.Tests.PlayMode.T694.MoyanAnimationProductionPlayModeTests.ValidProductionStrokePlaysAttackThenReturnsToIdle" methodname="ValidProductionStrokePlaysAttackThenReturnsToIdle" classname="OneStrokeDemon.Tests.PlayMode.T694.MoyanAnimationProductionPlayModeTests" runstate="Runnable" seed="1843956101" result="Passed" start-time="2026-07-25 07:40:14Z" end-time="2026-07-25 07:40:18Z" duration="4.122542" asserts="0">
+                  <properties>
+                    <property name="_JOINTYPE" value="UnityCombinatorial" />
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                  <output><![CDATA[CONFIG_RUNTIME_READY source=TextAsset:gameplay_config schema=5 content=0.6.4-sample hash=e348bab0eaf2bce5fa21c0588eb53c3b755791d8a537c4d7f29c93110ee6522c tables=29 records=745 primaryIndexes=341 groupIndexes=56
+ASSET_REGISTRY_READY source=AssetRegistry:asset_registry configHash=e348bab0eaf2bce5fa21c0588eb53c3b755791d8a537c4d7f29c93110ee6522c entries=76 prefabs=42 sprites=16 audioClips=17 scenes=1
+POINTER_INPUT_READY source=InputSystem modes=Mouse,Touch reference=1920x1080 safeArea=dynamic uiBeginBlock=true maxActivePointers=1
+<b><color=#2EA3FF>MCP-FOR-UNITY</color></b>: [TestRunnerNoThrottle] Restored Interaction Mode after test run.
+Saving results to: /Users/cqmizhangxiaoyu2/Library/Application Support/DefaultCompany/onedraw_2/TestResults.xml
+]]></output>
+                </test-case>
+              </test-suite>
+            </test-suite>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

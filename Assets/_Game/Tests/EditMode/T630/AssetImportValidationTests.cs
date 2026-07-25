@@ -81,7 +81,11 @@ namespace OneStrokeDemon.Tests.EditMode.T630
                 Assert.That(importer.isReadable, Is.False, path);
                 Assert.That(importer.wrapMode, Is.EqualTo(TextureWrapMode.Clamp), path);
                 Assert.That(importer.filterMode, Is.EqualTo(FilterMode.Bilinear), path);
-                Assert.That(importer.textureCompression, Is.EqualTo(TextureImporterCompression.CompressedHQ), path);
+                TextureImporterCompression expectedCompression =
+                    path.Contains("/Characters/Animated/Moyan/", StringComparison.Ordinal)
+                        ? TextureImporterCompression.Uncompressed
+                        : TextureImporterCompression.CompressedHQ;
+                Assert.That(importer.textureCompression, Is.EqualTo(expectedCompression), path);
 
                 bool background = path.Contains("/Backgrounds/", StringComparison.Ordinal);
                 bool actor = path.Contains("/Characters/", StringComparison.Ordinal) ||
@@ -135,7 +139,10 @@ namespace OneStrokeDemon.Tests.EditMode.T630
                 "Assets/_Game/Art/Backgrounds/bg_red_cave.png");
             AssertAtlasBinds(
                 T630ArtAssetPaths.CharacterAtlas,
-                "Assets/_Game/Art/Characters/Moyan/moyan_idle.png");
+                T694MoyanAnimationAuthoring.IdleTexturePath);
+            AssertAtlasBinds(
+                T630ArtAssetPaths.CharacterAtlas,
+                T694MoyanAnimationAuthoring.AttackTexturePath);
             AssertAtlasBinds(T630ArtAssetPaths.EnemyAtlas, T630ArtAssetPaths.SoulPuppetSprite);
             AssertAtlasBinds(T630ArtAssetPaths.UiAtlas, "Assets/_Game/Art/UI/icon_skill_ultimate.png");
             AssertAtlasBinds(T630ArtAssetPaths.UiAtlas, "Assets/_Game/Art/Sprites/icon_skill_blade_echo.png");
@@ -207,7 +214,8 @@ namespace OneStrokeDemon.Tests.EditMode.T630
         private static void AssertAtlasBinds(string atlasPath, string spritePath)
         {
             SpriteAtlas atlas = AssetDatabase.LoadAssetAtPath<SpriteAtlas>(atlasPath);
-            Sprite sprite = AssetDatabase.LoadAssetAtPath<Sprite>(spritePath);
+            Sprite sprite = AssetDatabase.LoadAssetAtPath<Sprite>(spritePath) ??
+                AssetDatabase.LoadAllAssetsAtPath(spritePath).OfType<Sprite>().FirstOrDefault();
             Assert.That(atlas, Is.Not.Null, atlasPath);
             Assert.That(sprite, Is.Not.Null, spritePath);
             Assert.That(atlas.CanBindTo(sprite), Is.True, $"{atlasPath} -> {spritePath}");

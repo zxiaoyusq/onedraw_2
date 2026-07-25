@@ -1,0 +1,53 @@
+{
+  "schemaVersion": 1,
+  "defaults": {
+    "fps": 12,
+    "pixelsPerUnit": 100,
+    "pivot": [
+      0.5,
+      0.08
+    ],
+    "sortingLayer": "Actors",
+    "artRoot": "Assets/_Game/Art/Characters/Animated",
+    "prefabRoot": "Assets/_Game/Prefabs/Actors"
+  },
+  "animations": [
+    {
+      "id": "moyan-idle",
+      "sourceTexture": "Assets/_Game/Art/Characters/Animated/Moyan/moyan_idle_sheet.png",
+      "frameData": "Assets/_Game/Art/Characters/Animated/Moyan/moyan_idle_sheet.frames.json",
+      "sourceProvenance": "/Users/cqmizhangxiaoyu2/Downloads/一笔镇妖 sprite sheet/video-frames-20260716-160532_sheet",
+      "assetKey": "char_moyan_idle",
+      "bindRegistry": true,
+      "outputFolder": "Moyan",
+      "targetTextureName": "moyan_idle_sheet.png",
+      "targetFrameDataName": "moyan_idle_sheet.frames.json",
+      "spritePrefix": "moyan_idle",
+      "clipName": "MoyanIdle",
+      "controllerName": "PlayerMoyan",
+      "prefabName": "PlayerMoyan",
+      "stateName": "Idle",
+      "loop": true,
+      "legacyAsset": "Assets/_Game/Art/Characters/Moyan/moyan_idle.png",
+      "atlas": "Assets/_Game/Art/SpriteAtlases/Characters.spriteatlasv2"
+    },
+    {
+      "id": "moyan-attack",
+      "sourceTexture": "Assets/_Game/Art/Characters/Animated/Moyan/moyan_attack_sheet.png",
+      "frameData": "Assets/_Game/Art/Characters/Animated/Moyan/moyan_attack_sheet.frames.json",
+      "sourceProvenance": "/Users/cqmizhangxiaoyu2/Downloads/一笔镇妖 sprite sheet/video-frames-20260716-164241_sheet",
+      "assetKey": "char_moyan_idle",
+      "bindRegistry": false,
+      "outputFolder": "Moyan",
+      "targetTextureName": "moyan_attack_sheet.png",
+      "targetFrameDataName": "moyan_attack_sheet.frames.json",
+      "spritePrefix": "moyan_attack",
+      "clipName": "MoyanAttack",
+      "controllerName": "PlayerMoyanAttackSource",
+      "prefabName": "PlayerMoyanAttackSource",
+      "stateName": "Attack",
+      "loop": false,
+      "atlas": "Assets/_Game/Art/SpriteAtlases/Characters.spriteatlasv2"
+    }
+  ]
+}

@@ -336,3 +336,11 @@
 - 决定：当前Editor/Web进度实现经`IProgressSaveStore`使用PlayerPrefs和T550版本化编码；Gameplay不调用微信SDK静态API，T130仍负责未来平台存储。Metal图形专项通过实际Button监听器进入教学关，并以真实InputSystem鼠标笔迹造成伤害；普通关、Boss、HUD/教程、Defeat、Restart和MainMenu返回均由生产路径PlayMode验证。
 - 理由：若继续只在测试夹具装配，Bootstrap可运行并不代表玩家可进入战斗；若把组合组件挂到现有缩放灰盒，参考像素敌人会被放大到屏外；若为避开缩放把会话放成独立场景根，Unity卸载顺序又会先销毁反馈组件。独立单位根加明确子对象所有权同时解决可玩入口、坐标一致性和释放时序。
 - 限制：1920×1080截图、197/197 EditMode和49/49 PlayMode不能冒充人手操作当前Unity窗口。主工程Editor未连接MCP且Computer Use不可用，因此人工`Play → 开始游戏 → 幽菌古道 → 划线`冒烟仍待用户确认；T640多比例、T130平台存储、标准Web、微信DevTools和真机不属于T660本次PASS范围。
+
+## D-040 · T694以稳定资源键共享待机/攻击控制器且动画不拥有伤害真相
+
+- 状态：ACCEPTED
+- 决定：配置保持schema `5`并升级content到`0.6.4-sample`。`char_moyan_idle`键与Players引用保持稳定，AssetManifest由旧单帧Sprite改为`PlayerMoyan` Prefab；旧单帧只在新Prefab、Controller、Clip和Registry绑定全部成功后删除。用户提供的九帧待机与十二帧攻击各自保留源JSON顺序，以12 FPS共享一个AnimatorController。
+- 决定：生产入口同时支持配置Sprite与Prefab，便于已有内容继续工作；仅普通有效笔势发送`Attack`触发器，攻击结束按状态机返回待机。动画事件、帧序号和Clip时长不参与命中、伤害、技能或教程裁决，避免表现资源成为第二套玩法规则。
+- 理由：直接更换Players键会扩散配置外键并破坏存档/Registry稳定性；把攻击帧绑定到伤害时点会让换图或调帧率改变玩法。稳定键、共享表现状态机和单向触发保持资源可替换，同时让战斗真相继续由既有手势与命中链拥有。
+- 限制：T694只接入当前主角待机/攻击，不制作受击、死亡、移动、终极、音效或其他角色动画；1920×1080 Metal截图与自动化入口证明当前Editor渲染，不替代Web、微信DevTools或真机性能与发布授权验收。

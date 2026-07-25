@@ -1,0 +1,6 @@
+T694暂存白名单审计：PASS
+- 首轮暂存共72个文件，均属于change-whitelist.md声明的资源、配置、产品接线、受影响测试、文档或证据范围。
+- Design/Config/~$GameConfig.xlsx未暂存；暂存后工作区唯一未暂存路径即该用户已有删除状态。
+- C#、JSON、Markdown与文本证据的git diff --check通过。
+- Unity生成的.anim/.controller YAML与原始Unity日志包含引擎自身输出的尾随空格；未手工编辑Unity YAML，也未把该格式噪声判为产品代码问题。
+- 最终全量与Metal图形日志中均无warning CS、error CS或Sprite Atlas压缩警告。

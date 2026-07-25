@@ -65,6 +65,7 @@
 | T691 | P6 工程卫生 | DONE | T690 | 0.1 | 仅放开Assets目录下Unity必需的meta跟踪。 |
 | T692 | P6 表现与资源 | DONE | T690 | 0.2 | 修复Lit角色在Actors层缺少2D全局光而显示全黑。 |
 | T693 | P6 工程修复 | DONE | T660 | 0.2 | 固定Android包只允许横屏方向。 |
+| T694 | P6 表现与资源 | DONE | T630, T660, T692 | 0.8 | 将主角静态原型替换为用户提供的待机与攻击动画Prefab。 |
 | T700 | P7 质量发布 | READY | T540, T660, T681 | 2.0 | 补齐纯规则EditMode回归矩阵。 |
 | T710 | P7 质量发布 | BACKLOG | T550, T650 | 3.0 | 补齐Unity集成、完整单局、暂停、重开和生命周期PlayMode测试。 |
 | T720 | P7 质量发布 | BACKLOG | T710, T250 | 1.0 | 审计所有玩法数值、内容和文案是否来自配置表。 |
@@ -696,6 +697,18 @@
 - **验证：** T693 EditMode；ProjectSettings静态差异审计。
 - **证据：** `artifacts/evals/T693/`
 - **提交：** `T693: force Android landscape orientation`
+
+### T694 · 将主角静态原型替换为待机与攻击动画Prefab。
+
+- **状态：** `DONE`
+- **依赖：** T630, T660, T692
+- **估算：** 0.8 人日
+- **产出：** 用户提供的九帧待机与十二帧攻击图集、两个AnimationClip、共享AnimatorController、`PlayerMoyan` Prefab，以及保持`char_moyan_idle`稳定键的配置与Registry绑定。
+- **明确不做：** 不改玩家HP、伤害、手势判定、技能、关卡或文案；动画事件不承担伤害真相；不接入其他角色动画；不手工编辑Unity YAML和生成配置。
+- **验收：** 两组帧按源JSON自然顺序播放；待机循环、攻击单次播放后回待机；生产战斗入口实例化配置Prefab，有效普通笔势触发攻击表现；配置、Registry、图集和2D光照合同保持有效。
+- **验证：** 素材批次预检；配置完整门；T694动画资源EditMode；生产入口攻击动画PlayMode；全量EditMode/PlayMode；真实相机目视确认。
+- **证据：** `artifacts/evals/T694/`
+- **提交：** `T694: animate player prototype`
 
 
 ## P7 质量发布

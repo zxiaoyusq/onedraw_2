@@ -206,6 +206,7 @@ namespace OneStrokeDemon.Bootstrap
         private readonly CombatFeedbackService feedback;
         private readonly PlayerConfig playerConfig;
         private readonly SpriteRenderer playerRenderer;
+        private readonly Animator playerAnimator;
         private readonly SessionDriver driver;
         private ResultReceipt receipt;
         private long playerDamageTaken;
@@ -242,8 +243,16 @@ namespace OneStrokeDemon.Bootstrap
             CreateBackground(config.GetLevel(LevelId));
 
             playerConfig = config.GetPlayer(ConfigIds.Players.PlayerMoyan);
-            playerRenderer = CreatePlayerVisual(playerConfig);
-            player = playerRenderer.gameObject.AddComponent<PlayerCombatController>();
+            GameObject playerObject = CreatePlayerVisual(playerConfig);
+            playerRenderer = playerObject.GetComponentInChildren<SpriteRenderer>(true);
+            if (playerRenderer == null || playerRenderer.sprite == null)
+            {
+                throw new InvalidOperationException(
+                    $"Player asset '{playerConfig.AssetKey}' must expose a configured SpriteRenderer.");
+            }
+
+            playerAnimator = playerObject.GetComponent<Animator>();
+            player = playerObject.AddComponent<PlayerCombatController>();
             player.Initialize(config, playerConfig.PlayerId);
             world = new ProductionBattleWorld(config, assets, player, referenceRoot);
 
@@ -597,6 +606,12 @@ namespace OneStrokeDemon.Bootstrap
                 return;
             }
 
+            // 攻击动画只消费已确认的普通有效笔势，不通过动画事件驱动命中或伤害。
+            if (playerAnimator != null)
+            {
+                playerAnimator.SetTrigger(T694PlayerAnimationContract.AttackTriggerHash);
+            }
+
             NotifyTutorial(
                 TutorialEventType.ValidStroke,
                 1L,
@@ -914,22 +929,45 @@ namespace OneStrokeDemon.Bootstrap
         }
 
         // 创建 CreatePlayerVisual 对应的入口装配逻辑，并维护会话所有权和跨场景边界。
-        private SpriteRenderer CreatePlayerVisual(PlayerConfig configuredPlayer)
+        private GameObject CreatePlayerVisual(PlayerConfig configuredPlayer)
         {
-            Sprite sprite = assets.GetSprite(configuredPlayer.AssetKey);
-            var playerObject = new GameObject("Configured Player", typeof(SpriteRenderer));
+            AssetManifestConfig asset = config.GetAsset(configuredPlayer.AssetKey);
+            GameObject playerObject;
+            if (string.Equals(asset.AssetType, "Sprite", StringComparison.Ordinal))
+            {
+                Sprite sprite = assets.GetSprite(configuredPlayer.AssetKey);
+                playerObject = new GameObject("Configured Player", typeof(SpriteRenderer));
+                playerObject.GetComponent<SpriteRenderer>().sprite = sprite;
+            }
+            else if (string.Equals(asset.AssetType, "Prefab", StringComparison.Ordinal))
+            {
+                playerObject = UnityEngine.Object.Instantiate(
+                    assets.GetPrefab(configuredPlayer.AssetKey));
+                playerObject.name = "Configured Player";
+            }
+            else
+            {
+                throw new InvalidOperationException(
+                    $"Player asset '{configuredPlayer.AssetKey}' must be a Sprite or Prefab.");
+            }
+
             playerObject.transform.SetParent(referenceRoot, false);
-            SpriteRenderer renderer = playerObject.GetComponent<SpriteRenderer>();
-            renderer.sprite = sprite;
-            renderer.sortingOrder = 5;
-            playerObject.transform.localScale = Vector3.one * sprite.pixelsPerUnit;
+            SpriteRenderer renderer = playerObject.GetComponentInChildren<SpriteRenderer>(true);
+            if (renderer == null || renderer.sprite == null)
+            {
+                Destroy(playerObject);
+                throw new InvalidOperationException(
+                    $"Player asset '{configuredPlayer.AssetKey}' must expose a configured SpriteRenderer.");
+            }
+
+            playerObject.transform.localScale = Vector3.one * renderer.sprite.pixelsPerUnit;
             float width = ReadReference(ConfigIds.GlobalKeys.ReferenceWidth);
             float height = ReadReference(ConfigIds.GlobalKeys.ReferenceHeight);
             playerObject.transform.localPosition = new Vector3(
                 width * 0.16f,
                 height * 0.34f,
                 0f);
-            return renderer;
+            return playerObject;
         }
 
         // 处理 ReadReference 对应的入口装配逻辑，并维护会话所有权和跨场景边界。
