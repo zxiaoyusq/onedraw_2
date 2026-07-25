@@ -336,8 +336,10 @@ namespace OneStrokeDemon.Presentation
                 }
             }
 
+            // SpriteRenderer是二维表现；Reference Pixel World会非均匀缩放XY而保持Z为1。
+            // 若把Z厚度纳入最大值，生产场景会把配置的96px特效错误缩小到约10px。
             return hasBounds
-                ? Mathf.Max(combined.size.x, combined.size.y, combined.size.z)
+                ? Mathf.Max(combined.size.x, combined.size.y)
                 : 0f;
         }
 

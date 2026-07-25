@@ -11,10 +11,11 @@
 
 ## 进行中
 
-- 当前没有`IN_PROGRESS`任务；T696已完成，依赖均为DONE的首个后续任务T700保持`READY`。
+- 当前没有`IN_PROGRESS`任务；T697已完成，依赖均为DONE的首个后续任务T700保持`READY`。
 
 ## 已完成
 
+- T697：定位到生产`Reference Pixel World`只缩放XY、保持Z为1，而`VfxPoolItem`把`SpriteRenderer.bounds`的Z厚度纳入最大边长，导致配置为96参考像素的死亡特效在真实Battle中被错误缩小到约10px。现按Sprite二维XY边界计算缩放，并在生产致死链PlayMode测试中使用真实Battle相机断言最终屏幕像素尺寸；正常致死事件、位置快照、敌人回收和池化复用语义未改。T695 PlayMode 2/2、全量PlayMode 55/55通过，真实Battle相机截图中的特效约86.31px并清晰可见，最终Console Error/Warning为0。首次专项测试初始化在Unity Test Framework `PlayModeRunTask`内空引用且未执行产品测试，清理框架状态后相同测试通过；用户已有`Design/Config/~$GameConfig.xlsx`删除状态未纳入提交。
 - T696：更新项目执行合同，保留任务开始时Git基线、白名单、用户改动保护和原子提交，同时将常规收尾限定为一次文档补丁、一次批量路径审计、一次显式暂存和一次提交。验证结果在最后一次产品产物变更后冻结，纯文档/证据更新不再触发昂贵测试；专项文档按事实变化条件更新，默认以单个`closeout.md`合并证据，只有异常路径、删除、配置/Registry漂移、ProjectSettings变化、测试失败或验证后再改产物时升级深度审计。本任务仅修改执行合同和任务文档，未运行Unity测试；用户已有`Design/Config/~$GameConfig.xlsx`删除状态未纳入提交。
 - T695：将用户提供的1024×768爆炸图集按源JSON自然顺序切成十一帧256×256 Sprite，以12 FPS生成非循环`EnemyDeath` Clip、单状态Controller和池化`vfx_enemy_death` Prefab；生产死亡链只在关卡接受既有死亡事实后发布0伤害表现事件，先快照目标位置再回收敌人。`VfxPoolItem`复用时重绑Animator并采样首帧，T630通用作者工具跳过专用动画Prefab且把图集纳入VFX Atlas。工作簿新增VfxCue、FeedbackCue、AssetManifest并升级content `0.6.5-sample`；双工作簿SHA-256均为`64c78fda...fbc8c3`，受管hash为`9cc48fcb...13abb`、748条记录、380个ID常量，Registry为77键。素材预检1/1、T695 EditMode 1/1、PlayMode 2/2、AssetImport 5/5、ConfigPipeline EditMode 19/19与PlayMode 3/3、ConfigExporter 58/58、全量EditMode 206/206和PlayMode 55/55通过；1920×1080 Metal逐帧Gallery确认白烟爆炸由饱满烟团过渡到烟圈消散。一次外部同步EditorSettings后的PlayMode初始化在Unity Test Framework `PlayModeRunTask`内空引用，未执行产品测试并作为无效证据丢弃；恢复Bootstrap与测试状态后相同命令及全量回归通过。用户已有`Design/Config/~$GameConfig.xlsx`删除状态未纳入提交。
 - T694：保持`char_moyan_idle`稳定键和全部玩法参数不变，将用户提供的3×3九帧待机与4×3十二帧攻击图集按源JSON自然顺序切片；以12 FPS生成循环待机、非循环攻击、共享AnimatorController和`PlayerMoyan` Prefab。生产Battle入口现在按AssetManifest实例化Sprite或Prefab，只有普通有效笔势触发纯表现`Attack`，命中与伤害仍由原战斗链裁决。工作簿AssetManifest由Sprite改为Prefab并升级content `0.6.4-sample`，双工作簿SHA-256均为`a5fc5a21...a286`，受管hash为`e348bab0...52c`。素材预检2/2、T694 EditMode 1/1、PlayMode 1/1、Metal图形专项1/1、全量EditMode 205/205、PlayMode 53/53、ConfigExporter 58/58及完整配置门全部通过；真实相机1920×1080截图确认新主角在战斗场景正确受光并显示攻击帧。用户已有`Design/Config/~$GameConfig.xlsx`删除状态未纳入提交。

@@ -208,6 +208,23 @@ namespace OneStrokeDemon.Tests.PlayMode.T695
             Assert.That(deathVfx.IsPlaying, Is.True);
             Assert.That(deathVfx.FollowsTarget, Is.False);
             Assert.That(deathVfx.transform.position, Is.Not.EqualTo(Vector3.zero));
+            SpriteRenderer deathRenderer = deathVfx.GetComponent<SpriteRenderer>();
+            Assert.That(deathRenderer, Is.Not.Null);
+            Vector3 screenMin = Camera.main.WorldToScreenPoint(deathRenderer.bounds.min);
+            Vector3 screenMax = Camera.main.WorldToScreenPoint(deathRenderer.bounds.max);
+            float renderedSizePixels = Mathf.Max(
+                Mathf.Abs(screenMax.x - screenMin.x),
+                Mathf.Abs(screenMax.y - screenMin.y));
+            FeedbackCueConfig deathProfile = GameplayConfigRuntime.Current.GetFeedbackCue(
+                ConfigIds.FeedbackCues.FeedbackEnemyDeath);
+            GlobalConfig referenceHeight = GameplayConfigRuntime.Current.GetGlobal(
+                ConfigIds.GlobalKeys.ReferenceHeight);
+            float expectedSizePixels = deathProfile.VfxScaleRefPx *
+                (Camera.main.pixelHeight / (float)referenceHeight.IntValue.Value);
+            Assert.That(
+                renderedSizePixels,
+                Is.EqualTo(expectedSizePixels).Within(2f),
+                "生产Battle相机中的死亡特效必须保持配置的参考像素尺寸，不能受父节点Z缩放影响。");
             Vector3 fixedPosition = deathVfx.transform.position;
             yield return null;
             Assert.That(deathVfx.transform.position, Is.EqualTo(fixedPosition));
