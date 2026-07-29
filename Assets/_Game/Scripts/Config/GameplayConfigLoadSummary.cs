@@ -37,7 +37,7 @@ namespace OneStrokeDemon.Config
         public string ContentHash { get; }
 
         /// <summary>获取当前固定配置表数量。</summary>
-        public int TableCount => 29;
+        public int TableCount => 30;
 
         /// <summary>获取全部配置记录数量。</summary>
         public int RecordCount { get; }

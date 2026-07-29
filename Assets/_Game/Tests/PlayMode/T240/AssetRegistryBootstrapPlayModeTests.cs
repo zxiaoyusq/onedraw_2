@@ -24,10 +24,10 @@ namespace OneStrokeDemon.Tests.PlayMode.T240
         {
             LogAssert.Expect(
                 LogType.Log,
-                new Regex("CONFIG_RUNTIME_READY.*hash=9cc48fcb.*tables=29.*records=748"));
+                new Regex("CONFIG_RUNTIME_READY.*hash=5c3b73b.*tables=30.*records=763"));
             LogAssert.Expect(
                 LogType.Log,
-                new Regex("ASSET_REGISTRY_READY.*configHash=9cc48fcb.*entries=77.*prefabs=43.*sprites=16.*audioClips=17.*scenes=1"));
+                new Regex("ASSET_REGISTRY_READY.*configHash=5c3b73b.*entries=77.*prefabs=43.*sprites=16.*audioClips=17.*scenes=1"));
 
             yield return SceneManager.LoadSceneAsync(SceneNames.Bootstrap, LoadSceneMode.Single);
             yield return WaitForScene(SceneNames.MainMenu);

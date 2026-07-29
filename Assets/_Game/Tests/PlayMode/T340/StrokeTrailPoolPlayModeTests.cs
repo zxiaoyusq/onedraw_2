@@ -94,7 +94,22 @@ namespace OneStrokeDemon.Tests.PlayMode.T340
             Assert.That(path.Points, Is.SameAs(geometry.Points));
             Assert.That(view.SourcePoints, Is.SameAs(geometry.Points));
             Assert.That(view.LineRenderer.positionCount, Is.EqualTo(geometry.PointCount));
-            Assert.That(view.LineRenderer.startWidth, Is.EqualTo(bladeStyle.WidthReferencePixels));
+            Assert.That(
+                view.LineRenderer.startWidth,
+                Is.EqualTo(
+                    bladeStyle.WidthReferencePixels *
+                    bladeStyle.OuterWidthMultiplier));
+            Assert.That(
+                view.BodyLineRenderer.startWidth,
+                Is.EqualTo(
+                    bladeStyle.WidthReferencePixels *
+                    bladeStyle.BodyWidthMultiplier));
+            Assert.That(
+                view.CoreLineRenderer.startWidth,
+                Is.EqualTo(
+                    bladeStyle.WidthReferencePixels *
+                    bladeStyle.CoreWidthMultiplier));
+            Assert.That(view.StyleId, Is.EqualTo(ConfigIds.StrokeTrailStyles.StrokeTrailLightningC));
             Assert.That(view.LineRenderer.sharedMaterial, Is.SameAs(sharedMaterial));
             for (int index = 0; index < geometry.PointCount; index++)
             {
@@ -155,7 +170,9 @@ namespace OneStrokeDemon.Tests.PlayMode.T340
             Assert.That(secondUse.StanceId, Is.EqualTo(ConfigIds.Stances.StanceTalisman));
             Assert.That(secondUse.SourcePoints, Is.SameAs(talismanPath.Points));
             Assert.That(secondUse.LineRenderer.positionCount, Is.EqualTo(2));
-            Assert.That(secondUse.LineRenderer.startWidth, Is.EqualTo(28f));
+            Assert.That(
+                secondUse.LineRenderer.startWidth,
+                Is.EqualTo(28f * talismanStyle.OuterWidthMultiplier));
             Assert.That(secondUse.LineRenderer.startColor.a, Is.EqualTo(1f));
 
         }
@@ -190,7 +207,9 @@ namespace OneStrokeDemon.Tests.PlayMode.T340
             Assert.That(pool.TryGetActiveView(3, out StrokeTrailView third), Is.True);
             Assert.That(pool.TryGetActiveView(4, out StrokeTrailView fourth), Is.True);
             Assert.That(newest, Is.SameAs(fourth));
-            Assert.That(fourth.LineRenderer.startWidth, Is.EqualTo(28f));
+            Assert.That(
+                fourth.LineRenderer.startWidth,
+                Is.EqualTo(28f * talismanStyle.OuterWidthMultiplier));
             Assert.That(second.LineRenderer.sharedMaterial, Is.SameAs(sharedMaterial));
             Assert.That(third.LineRenderer.sharedMaterial, Is.SameAs(sharedMaterial));
             Assert.That(fourth.LineRenderer.sharedMaterial, Is.SameAs(sharedMaterial));
@@ -288,7 +307,9 @@ namespace OneStrokeDemon.Tests.PlayMode.T340
             Assert.That(view.SourcePoints, Is.SameAs(geometry.Points));
             Assert.That(view.LineRenderer.positionCount, Is.EqualTo(geometry.PointCount));
             Assert.That(view.LineRenderer.enabled, Is.True);
-            Assert.That(view.LineRenderer.startWidth, Is.EqualTo(18f));
+            Assert.That(
+                view.LineRenderer.startWidth,
+                Is.EqualTo(18f * style.OuterWidthMultiplier));
             Assert.That(adapter.IsPointerActive, Is.False);
         }
 

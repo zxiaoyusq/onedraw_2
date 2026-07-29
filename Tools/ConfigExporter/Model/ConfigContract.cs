@@ -49,6 +49,7 @@ internal static class ConfigContract
         Sheet("Enums", "enums", "enumType", "value"),
         Sheet(FieldDictionarySheetName, "fieldDictionary"),
         Sheet("FeedbackCues", "feedbackCues", "feedbackId"),
+        Sheet("StrokeTrailStyles", "strokeTrailStyles", "styleId"),
     };
 
     public static readonly IReadOnlyList<string> WorkbookSheetOrder = new[] { ReadmeSheetName }

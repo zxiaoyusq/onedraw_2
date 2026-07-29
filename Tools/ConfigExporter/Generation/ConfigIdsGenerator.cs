@@ -48,6 +48,7 @@ internal sealed class ConfigIdsGenerator
         Set("VfxCues", "VfxCues", "vfxKey"),
         Set("Assets", "AssetManifest", "assetKey"),
         Set("FeedbackCues", "FeedbackCues", "feedbackId"),
+        Set("StrokeTrailStyles", "StrokeTrailStyles", "styleId"),
     };
 
     // 读取全部受管ID分组，按稳定顺序输出带中文说明的C#源码。

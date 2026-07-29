@@ -135,10 +135,14 @@ namespace OneStrokeDemon.Tests.PlayMode.T660
             Assert.That(liveTrail.LineRenderer.enabled, Is.True);
             Assert.That(liveTrail.LineRenderer.positionCount, Is.GreaterThanOrEqualTo(2));
             Assert.That(liveTrail.LineRenderer.useWorldSpace, Is.True);
+            StrokeTrailStyle liveTrailStyle = StrokeTrailSettingsFactory.CreateStyle(
+                GameplayConfigRuntime.Current,
+                session.Player.Current.StanceId,
+                ConfigIds.VfxCues.VfxSlash);
             float expectedWorldWidth =
-                GameplayConfigRuntime.Current
-                    .GetStance(session.Player.Current.StanceId)
-                    .StrokeWidthRefPx * liveTrail.ReferencePixelWorldScale;
+                liveTrailStyle.WidthReferencePixels *
+                liveTrailStyle.OuterWidthMultiplier *
+                liveTrail.ReferencePixelWorldScale;
             Assert.That(
                 liveTrail.LineRenderer.startWidth,
                 Is.EqualTo(expectedWorldWidth).Within(0.001f),
@@ -159,6 +163,30 @@ namespace OneStrokeDemon.Tests.PlayMode.T660
             Assert.That(completedTrail.SourcePoints.Count, Is.GreaterThanOrEqualTo(2));
             Assert.That(completedTrail.LineRenderer.enabled, Is.True);
             Assert.That(completedTrail.LineRenderer.startWidth, Is.GreaterThan(0f));
+            Assert.That(completedTrail.BodyLineRenderer.enabled, Is.True);
+            Assert.That(completedTrail.CoreLineRenderer.enabled, Is.True);
+            Assert.That(completedTrail.ActiveBranchCount, Is.GreaterThan(0));
+            string lightningScreenshotPath = Environment.GetEnvironmentVariable(
+                "ONEDRAW_T698_SCREENSHOT");
+            if (!string.IsNullOrWhiteSpace(lightningScreenshotPath))
+            {
+                string directory = Path.GetDirectoryName(lightningScreenshotPath);
+                if (!string.IsNullOrEmpty(directory))
+                {
+                    Directory.CreateDirectory(directory);
+                }
+
+                ScreenCapture.CaptureScreenshot(lightningScreenshotPath);
+                yield return new WaitForEndOfFrame();
+                float screenshotDeadline = Time.realtimeSinceStartup + 2f;
+                while (!File.Exists(lightningScreenshotPath) &&
+                       Time.realtimeSinceStartup < screenshotDeadline)
+                {
+                    yield return null;
+                }
+
+                Assert.That(new FileInfo(lightningScreenshotPath).Length, Is.GreaterThan(10_000));
+            }
 
             string stanceBefore = session.Player.Current.StanceId;
             session.HudView.StanceButton.onClick.Invoke();

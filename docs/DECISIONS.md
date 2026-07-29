@@ -353,3 +353,12 @@
 - 决定：通用`VfxPoolItem`在每次播放前重绑Animator并以0秒采样默认状态，保证六个预热实例跨轮复用时从首帧重播。T630通用作者工具明确跳过`/Animated/`专用Prefab并把动画纹理纳入VFX Atlas，避免后续批量修复覆盖专用动画资产。
 - 理由：若让Animation Event决定死亡，换帧率或替换美术会改变玩法真相；若特效继续跟随即将回收的敌人，会跳到池根或新租约位置；若只重新激活GameObject而不重置Animator，复用对象会停在末帧。已接受事实、位置快照和显式Animator重置把表现与规则、实体生命周期解耦。
 - 限制：T695只新增共享怪物死亡白烟爆炸，不区分敌人类型、不制作死亡音频、尸体、掉落或Boss专属处决；Editor Metal截图与自动化生产路径不替代Web、微信DevTools、真机性能或发布授权验收。
+
+## D-042 · T698以共享命中路径驱动配置化分层闪电画笔
+
+- 状态：ACCEPTED
+- 决定：配置升级为schema `6`/content `0.6.6-sample`，新增`StrokeTrailStyles`并由`Stances.strokeTrailStyleId`引用。架势继续拥有基础`strokeWidthRefPx`，样式表拥有青色外辉光、浅青主体、白色核心及分支的颜色、相对宽度、间距、长度、抖动和段数；Prefab和Inspector不保存第二套表现数值。
+- 决定：三层主轨迹严格复用T340已经处理并用于命中的同一不可变点集。稀疏电弧以`strokeId + path + branchIndex`经纯C#确定性布局生成，最多使用Prefab预建的12条分支Renderer；不调用Unity随机、不修改路径、不介入笔势、命中、伤害或技能裁决。主层与分支统一淡出并在池回收时清空。
+- 决定：生产入口仍沿`VfxCues.vfx_slash -> AssetRegistry`取得稳定Prefab。Unity作者工具用PrefabUtility生成外层/主体/核心/分支拓扑，并保留T630资源门要求的默认禁用兼容Sprite与`VfxPoolItem`；Registry类型和77/43/16/17/1计数不变。
+- 理由：让表现重新采样或扰动主路径会造成“看见的线”和“命中的线”分叉；把颜色/宽度写在Prefab会形成第二配置源；运行时动态创建分支对象会增加热路径分配。共享路径、配置样式、确定性纯规则和预建Renderer池同时保持玩法真相、可调性与生命周期稳定。
+- 限制：T698只交付当前方案C，不实现方案A/B/D的正式资产、玩家自选UI、样式解锁、Web/微信着色器专项或低端真机性能门；1920×1080 Editor截图和自动化测试不能替代多设备视觉评审。

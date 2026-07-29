@@ -315,6 +315,8 @@ namespace OneStrokeDemon.Bootstrap
             strokeCollector.StrokeCompleted += OnStrokeCompleted;
             strokeCollector.StrokeCanceled += OnStrokeCanceled;
             trailMaterial = CreateTrailMaterial();
+            VfxCueConfig trailCue = config.GetVfxCue(ConfigIds.VfxCues.VfxSlash);
+            GameObject trailViewPrefab = assets.GetPrefab(trailCue.AssetKey);
             var trailRoot = new GameObject("Stroke Trail Pool");
             trailRoot.transform.SetParent(root.transform, false);
             trailPool = trailRoot.AddComponent<StrokeTrailPool>();
@@ -323,7 +325,8 @@ namespace OneStrokeDemon.Bootstrap
                     config,
                     ConfigIds.VfxCues.VfxSlash),
                 trailMaterial,
-                referenceRoot);
+                referenceRoot,
+                trailViewPrefab);
 
             hudBinding = new BattleHudStateBinding(
                 LevelId,

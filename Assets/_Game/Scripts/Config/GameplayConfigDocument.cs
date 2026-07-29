@@ -22,7 +22,7 @@ namespace OneStrokeDemon.Config
         [JsonProperty("contentHash", Required = JsonRequired.Always)]
         public string ContentHash { get; private set; } = string.Empty;
 
-        // 以下数组与冻结 JSON Schema 的 29 张表一一对应，仅供快照构建器建立只读索引。
+        // 以下数组与冻结 JSON Schema 的 30 张表一一对应，仅供快照构建器建立只读索引。
         [JsonProperty("global", Required = JsonRequired.Always)] internal GlobalConfig[] GlobalRows { get; private set; } = Array.Empty<GlobalConfig>();
         [JsonProperty("players", Required = JsonRequired.Always)] internal PlayerConfig[] PlayerRows { get; private set; } = Array.Empty<PlayerConfig>();
         [JsonProperty("stances", Required = JsonRequired.Always)] internal StanceConfig[] StanceRows { get; private set; } = Array.Empty<StanceConfig>();
@@ -52,6 +52,7 @@ namespace OneStrokeDemon.Config
         [JsonProperty("enums", Required = JsonRequired.Always)] internal EnumConfig[] EnumRows { get; private set; } = Array.Empty<EnumConfig>();
         [JsonProperty("fieldDictionary", Required = JsonRequired.Always)] internal FieldDictionaryConfig[] FieldDictionaryRows { get; private set; } = Array.Empty<FieldDictionaryConfig>();
         [JsonProperty("feedbackCues", Required = JsonRequired.Always)] internal FeedbackCueConfig[] FeedbackCueRows { get; private set; } = Array.Empty<FeedbackCueConfig>();
+        [JsonProperty("strokeTrailStyles", Required = JsonRequired.Always)] internal StrokeTrailStyleConfig[] StrokeTrailStyleRows { get; private set; } = Array.Empty<StrokeTrailStyleConfig>();
 
         /// <summary>获取所有配置表记录数量之和，用于装载摘要和完整性检查。</summary>
         internal int RecordCount =>
@@ -61,6 +62,7 @@ namespace OneStrokeDemon.Config
             BuffRows.Length + SkillRows.Length + SkillEffectRows.Length + LevelRows.Length + WaveRows.Length +
             SpawnPointRows.Length + EnemyModifierRows.Length + SpawnRows.Length + BossPhaseRows.Length +
             RewardRows.Length + TutorialRows.Length + TextRows.Length + AudioCueRows.Length + VfxCueRows.Length +
-            AssetManifestRows.Length + EnumRows.Length + FieldDictionaryRows.Length + FeedbackCueRows.Length;
+            AssetManifestRows.Length + EnumRows.Length + FieldDictionaryRows.Length + FeedbackCueRows.Length +
+            StrokeTrailStyleRows.Length;
     }
 }

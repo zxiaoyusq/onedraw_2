@@ -377,6 +377,24 @@
       "mutations": [
         { "operation": "set", "sheet": "FeedbackCues", "match": { "feedbackId": "feedback_enemy_hit" }, "values": { "damageNumberColorHex": "white" } }
       ]
+    },
+    {
+      "id": "stance_stroke_trail_style_missing",
+      "expectedCode": "CFG008",
+      "expectedSheet": "Stances",
+      "expectedField": "strokeTrailStyleId",
+      "mutations": [
+        { "operation": "set", "sheet": "Stances", "match": { "stanceId": "stance_blade" }, "values": { "strokeTrailStyleId": "stroke_trail_missing" } }
+      ]
+    },
+    {
+      "id": "stroke_trail_color_malformed",
+      "expectedCode": "CFG009",
+      "expectedSheet": "StrokeTrailStyles",
+      "expectedField": "branchColorHex",
+      "mutations": [
+        { "operation": "set", "sheet": "StrokeTrailStyles", "match": { "styleId": "stroke_trail_lightning_c" }, "values": { "branchColorHex": "cyan" } }
+      ]
     }
   ]
 }

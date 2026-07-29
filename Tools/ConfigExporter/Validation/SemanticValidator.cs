@@ -11,6 +11,7 @@ internal static partial class SemanticValidator
     {
         ValidateContentVersion(context);
         ValidateFeedbackColors(context);
+        ValidateStrokeTrailColors(context);
         ValidateGlobalTypedUnion(context);
         ValidateOrderedPairs(context);
         ValidateGroupOrders(context);
@@ -26,6 +27,36 @@ internal static partial class SemanticValidator
         foreach (var row in table.Rows)
         {
             foreach (var fieldName in new[] { "damageNumberColorHex", "vfxTintColorHex" })
+            {
+                var value = ConfigValues.String(row, fieldName);
+                if (ColorHexRegex().IsMatch(value))
+                {
+                    continue;
+                }
+
+                throw Failure(
+                    "CFG009",
+                    $"Color '{value}' must use #RRGGBBAA hexadecimal format.",
+                    table,
+                    row,
+                    fieldName);
+            }
+        }
+    }
+
+    // 画笔颜色与其他表现色共用#RRGGBBAA合同，避免运行时静默回退到错误颜色。
+    private static void ValidateStrokeTrailColors(ConfigValidationContext context)
+    {
+        var table = context.Document.GetRequiredTable("StrokeTrailStyles");
+        foreach (var row in table.Rows)
+        {
+            foreach (var fieldName in new[]
+                     {
+                         "outerColorHex",
+                         "bodyColorHex",
+                         "coreColorHex",
+                         "branchColorHex",
+                     })
             {
                 var value = ConfigValues.String(row, fieldName);
                 if (ColorHexRegex().IsMatch(value))

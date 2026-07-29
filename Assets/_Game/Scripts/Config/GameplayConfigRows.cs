@@ -48,6 +48,7 @@ namespace OneStrokeDemon.Config
         [JsonProperty("switchCooldownSec", Required = JsonRequired.Always)] public float SwitchCooldownSec { get; private set; }
         [JsonProperty("onSwitchEffectGroupId", Required = JsonRequired.Always)] public string OnSwitchEffectGroupId { get; private set; } = string.Empty;
         [JsonProperty("assetKey", Required = JsonRequired.Always)] public string AssetKey { get; private set; } = string.Empty;
+        [JsonProperty("strokeTrailStyleId", Required = JsonRequired.Always)] public string StrokeTrailStyleId { get; private set; } = string.Empty;
     }
 
     /// <summary>描述手势采样、简化、识别和命中的统一笔画规则。</summary>
@@ -440,6 +441,26 @@ namespace OneStrokeDemon.Config
         [JsonProperty("vfxTintColorHex", Required = JsonRequired.Always)] public string VfxTintColorHex { get; private set; } = string.Empty;
         [JsonProperty("vfxScaleRefPx", Required = JsonRequired.Always)] public float VfxScaleRefPx { get; private set; }
         [JsonProperty("description", Required = JsonRequired.Always)] public string Description { get; private set; } = string.Empty;
+    }
+
+    /// <summary>描述画笔分层颜色、宽度与确定性电弧参数。</summary>
+    [JsonObject(MemberSerialization.OptIn)]
+    public sealed class StrokeTrailStyleConfig
+    {
+        // 架势只选择样式ID并提供基础笔宽；本表保存全部可调视觉数值。
+        [JsonProperty("styleId", Required = JsonRequired.Always)] public string StyleId { get; private set; } = string.Empty;
+        [JsonProperty("outerColorHex", Required = JsonRequired.Always)] public string OuterColorHex { get; private set; } = string.Empty;
+        [JsonProperty("bodyColorHex", Required = JsonRequired.Always)] public string BodyColorHex { get; private set; } = string.Empty;
+        [JsonProperty("coreColorHex", Required = JsonRequired.Always)] public string CoreColorHex { get; private set; } = string.Empty;
+        [JsonProperty("outerWidthMultiplier", Required = JsonRequired.Always)] public float OuterWidthMultiplier { get; private set; }
+        [JsonProperty("bodyWidthMultiplier", Required = JsonRequired.Always)] public float BodyWidthMultiplier { get; private set; }
+        [JsonProperty("coreWidthMultiplier", Required = JsonRequired.Always)] public float CoreWidthMultiplier { get; private set; }
+        [JsonProperty("branchColorHex", Required = JsonRequired.Always)] public string BranchColorHex { get; private set; } = string.Empty;
+        [JsonProperty("branchSpacingRefPx", Required = JsonRequired.Always)] public float BranchSpacingRefPx { get; private set; }
+        [JsonProperty("branchLengthRefPx", Required = JsonRequired.Always)] public float BranchLengthRefPx { get; private set; }
+        [JsonProperty("branchJitterRefPx", Required = JsonRequired.Always)] public float BranchJitterRefPx { get; private set; }
+        [JsonProperty("branchWidthMultiplier", Required = JsonRequired.Always)] public float BranchWidthMultiplier { get; private set; }
+        [JsonProperty("branchSegmentCount", Required = JsonRequired.Always)] public long BranchSegmentCount { get; private set; }
     }
 
     /// <summary>描述配置资源键所要求的 Unity 资源类型、路径和 MVP 必需性。</summary>

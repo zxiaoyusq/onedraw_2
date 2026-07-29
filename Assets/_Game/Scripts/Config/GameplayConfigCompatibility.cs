@@ -10,7 +10,7 @@ namespace OneStrokeDemon.Config
     public static class GameplayConfigCompatibility
     {
         /// <summary>客户端支持的唯一结构版本。</summary>
-        public const long SupportedSchemaVersion = 5;
+        public const long SupportedSchemaVersion = 6;
 
         /// <summary>客户端支持的内容主版本。</summary>
         public const int SupportedContentMajor = 0;

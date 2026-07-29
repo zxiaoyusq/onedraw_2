@@ -1,0 +1,196 @@
+
+
++-----------------------------------------------------------------------------+
+|                                                                             |
+|                                                                             |
+|                        �{\u2580\u2580 �{\u2580�� ��\u2580\u2580 \u2580��\u2580 ��\u2580�{\u2580�� ��\u2580\u2580 ��\u2580��                        |
+|                        ��\u2580  ��\u2580�� �{�{��  ��  �� \u2580 �� ���{�{ ��\u2580\u2580                        |
+|                                                                             |
+|                                                                             |
+|                                                                             |
+|                                FastMCP 3.4.5                                |
+|                            https://gofastmcp.com                            |
+|                                                                             |
+|                 \U0001f5a5  Server:      mcp-for-unity-server, 3.4.5                 |
+|                 \U0001f680 Deploy free: https://horizon.prefect.io                  |
+|                                                                             |
++-----------------------------------------------------------------------------+
+
+
+[07/29/26 23:52:17] INFO     Starting MCP server               transport.py:361
+                             'mcp-for-unity-server' with
+                             transport 'http' on
+                             http://127.0.0.1:8080/mcp
+INFO:     Started server process [40484]
+INFO:     Waiting for application startup.
+2026-07-29 23:52:17,832 - mcp.server.streamable_http_manager - INFO - StreamableHTTP session manager started
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8080 (Press CTRL+C to quit)
+2026-07-29 23:54:24,493 - mcp.server.streamable_http_manager - INFO - Created new transport with session ID: 7e1894eb68e44b5cbab9e0502121f70a
+2026-07-29 23:54:24,503 - root - WARNING - Failed to validate request: 31 validation errors for ClientRequest
+PingRequest.method
+  Input should be 'ping' [type=literal_error, input_value='notifications/initialized', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.13/v/literal_error
+InitializeRequest.method
+  Input should be 'initialize' [type=literal_error, input_value='notifications/initialized', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.13/v/literal_error
+InitializeRequest.params.protocolVersion
+  Field required [type=missing, input_value={}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+InitializeRequest.params.capabilities
+  Field required [type=missing, input_value={}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+InitializeRequest.params.clientInfo
+  Field required [type=missing, input_value={}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+CompleteRequest.method
+  Input should be 'completion/complete' [type=literal_error, input_value='notifications/initialized', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.13/v/literal_error
+CompleteRequest.params.ref
+  Field required [type=missing, input_value={}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+CompleteRequest.params.argument
+  Field required [type=missing, input_value={}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+SetLevelRequest.method
+  Input should be 'logging/setLevel' [type=literal_error, input_value='notifications/initialized', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.13/v/literal_error
+SetLevelRequest.params.level
+  Field required [type=missing, input_value={}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+GetPromptRequest.method
+  Input should be 'prompts/get' [type=literal_error, input_value='notifications/initialized', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.13/v/literal_error
+GetPromptRequest.params.name
+  Field required [type=missing, input_value={}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+ListPromptsRequest.method
+  Input should be 'prompts/list' [type=literal_error, input_value='notifications/initialized', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.13/v/literal_error
+ListResourcesRequest.method
+  Input should be 'resources/list' [type=literal_error, input_value='notifications/initialized', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.13/v/literal_error
+ListResourceTemplatesRequest.method
+  Input should be 'resources/templates/list' [type=literal_error, input_value='notifications/initialized', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.13/v/literal_error
+ReadResourceRequest.method
+  Input should be 'resources/read' [type=literal_error, input_value='notifications/initialized', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.13/v/literal_error
+ReadResourceRequest.params.uri
+  Field required [type=missing, input_value={}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+SubscribeRequest.method
+  Input should be 'resources/subscribe' [type=literal_error, input_value='notifications/initialized', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.13/v/literal_error
+SubscribeRequest.params.uri
+  Field required [type=missing, input_value={}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+UnsubscribeRequest.method
+  Input should be 'resources/unsubscribe' [type=literal_error, input_value='notifications/initialized', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.13/v/literal_error
+UnsubscribeRequest.params.uri
+  Field required [type=missing, input_value={}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+CallToolRequest.method
+  Input should be 'tools/call' [type=literal_error, input_value='notifications/initialized', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.13/v/literal_error
+CallToolRequest.params.name
+  Field required [type=missing, input_value={}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+ListToolsRequest.method
+  Input should be 'tools/list' [type=literal_error, input_value='notifications/initialized', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.13/v/literal_error
+GetTaskRequest.method
+  Input should be 'tasks/get' [type=literal_error, input_value='notifications/initialized', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.13/v/literal_error
+GetTaskRequest.params.taskId
+  Field required [type=missing, input_value={}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+GetTaskPayloadRequest.method
+  Input should be 'tasks/result' [type=literal_error, input_value='notifications/initialized', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.13/v/literal_error
+GetTaskPayloadRequest.params.taskId
+  Field required [type=missing, input_value={}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+ListTasksRequest.method
+  Input should be 'tasks/list' [type=literal_error, input_value='notifications/initialized', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.13/v/literal_error
+CancelTaskRequest.method
+  Input should be 'tasks/cancel' [type=literal_error, input_value='notifications/initialized', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.13/v/literal_error
+CancelTaskRequest.params.taskId
+  Field required [type=missing, input_value={}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+[07/29/26 23:54:35] DEBUG    Sending INFO to client: Activating context.py:1446
+                             tool group: testing
+INFO:     127.0.0.1:60462 - "WebSocket /hub/plugin" [accepted]
+INFO:     connection open
+2026-07-29 23:56:07,332 - transport.plugin_hub - INFO - Plugin registered: onedraw_2 (55aa3b630d81fa7a)
+2026-07-29 23:56:07,371 - transport.plugin_hub - INFO - Registered 34 tools for session 2baeb3b4-cdf5-423d-b76e-48b85c4c8621
+2026-07-29 23:56:07,375 - transport.plugin_hub - INFO - Server-level tool visibility synced from Unity: enabled=[animation, asset_gen, core, docs, probuilder, profiling, scripting_ext, testing, ui, vfx], disabled=[], total_transforms=19, unity_start=9
+2026-07-29 23:56:07,376 - transport.plugin_hub - INFO - Sent tools/list_changed notification to 1 MCP session(s)
+[07/29/26 23:56:24] DEBUG    Sending INFO to client: Activating context.py:1446
+                             tool group: scripting_ext
+2026-07-29 23:57:33,181 - services.tools.run_tests - INFO - Test job b8dbad9e9c0a47799efba66d60b27118 appears stalled (unfocused Unity), attempting nudge...
+2026-07-29 23:57:35,954 - utils.focus_nudge - INFO - Nudging Unity focus for D:\dev\game\onedraw_2 (interval: 1.0s, consecutive: 0, duration: 3.0s, will return to 7
+ChatGPT)
+2026-07-29 23:57:47,425 - utils.focus_nudge - INFO - Returned focus to 7
+ChatGPT after 3.0s Unity focus
+2026-07-29 23:57:47,427 - services.tools.run_tests - INFO - Test job b8dbad9e9c0a47799efba66d60b27118 nudge completed
+2026-07-29 23:58:38,672 - transport.plugin_hub - INFO - Plugin session 2baeb3b4-cdf5-423d-b76e-48b85c4c8621 disconnected (1005)
+INFO:     127.0.0.1:34533 - "WebSocket /hub/plugin" [accepted]
+INFO:     connection open
+2026-07-29 23:58:42,940 - transport.plugin_hub - INFO - Plugin registered: onedraw_2 (55aa3b630d81fa7a)
+2026-07-29 23:58:45,243 - transport.plugin_hub - INFO - Registered 34 tools for session 9415e5e8-d493-4011-b41b-c94c55c8ef96
+2026-07-29 23:58:45,252 - transport.plugin_hub - INFO - Server-level tool visibility synced from Unity: enabled=[animation, asset_gen, core, docs, probuilder, profiling, scripting_ext, testing, ui, vfx], disabled=[], total_transforms=19, unity_start=9
+2026-07-29 23:58:45,254 - transport.plugin_hub - INFO - Sent tools/list_changed notification to 1 MCP session(s)
+2026-07-30 00:00:47,490 - transport.plugin_hub - INFO - Plugin session 9415e5e8-d493-4011-b41b-c94c55c8ef96 disconnected (1005)
+INFO:     127.0.0.1:17241 - "WebSocket /hub/plugin" [accepted]
+INFO:     connection open
+2026-07-30 00:00:51,949 - transport.plugin_hub - INFO - Plugin registered: onedraw_2 (55aa3b630d81fa7a)
+2026-07-30 00:00:54,413 - transport.plugin_hub - INFO - Registered 34 tools for session 3f12b2b2-910d-4b41-8f7b-128996c001cf
+2026-07-30 00:00:54,413 - transport.plugin_hub - INFO - Server-level tool visibility synced from Unity: enabled=[animation, asset_gen, core, docs, probuilder, profiling, scripting_ext, testing, ui, vfx], disabled=[], total_transforms=19, unity_start=9
+2026-07-30 00:00:54,414 - transport.plugin_hub - INFO - Sent tools/list_changed notification to 1 MCP session(s)
+2026-07-30 00:01:08,432 - transport.plugin_hub - INFO - Plugin session 3f12b2b2-910d-4b41-8f7b-128996c001cf disconnected (1005)
+INFO:     127.0.0.1:19570 - "WebSocket /hub/plugin" [accepted]
+INFO:     connection open
+2026-07-30 00:01:12,820 - transport.plugin_hub - INFO - Plugin registered: onedraw_2 (55aa3b630d81fa7a)
+2026-07-30 00:01:15,210 - transport.plugin_hub - INFO - Registered 34 tools for session 2115ab57-8405-476e-9376-4071cd1726b1
+2026-07-30 00:01:15,219 - transport.plugin_hub - INFO - Server-level tool visibility synced from Unity: enabled=[animation, asset_gen, core, docs, probuilder, profiling, scripting_ext, testing, ui, vfx], disabled=[], total_transforms=19, unity_start=9
+2026-07-30 00:01:15,220 - transport.plugin_hub - INFO - Sent tools/list_changed notification to 1 MCP session(s)
+2026-07-30 00:02:04,220 - transport.plugin_hub - INFO - Plugin session 2115ab57-8405-476e-9376-4071cd1726b1 disconnected (1005)
+INFO:     127.0.0.1:46427 - "WebSocket /hub/plugin" [accepted]
+INFO:     connection open
+2026-07-30 00:02:08,500 - transport.plugin_hub - INFO - Plugin registered: onedraw_2 (55aa3b630d81fa7a)
+2026-07-30 00:02:10,876 - transport.plugin_hub - INFO - Registered 34 tools for session 754d2019-c54d-42fa-a76a-871f83bf7d0a
+2026-07-30 00:02:10,876 - transport.plugin_hub - INFO - Server-level tool visibility synced from Unity: enabled=[animation, asset_gen, core, docs, probuilder, profiling, scripting_ext, testing, ui, vfx], disabled=[], total_transforms=19, unity_start=9
+2026-07-30 00:02:10,878 - transport.plugin_hub - INFO - Sent tools/list_changed notification to 1 MCP session(s)
+2026-07-30 00:02:20,681 - transport.plugin_hub - INFO - Plugin session 754d2019-c54d-42fa-a76a-871f83bf7d0a disconnected (1005)
+INFO:     127.0.0.1:52513 - "WebSocket /hub/plugin" [accepted]
+INFO:     connection open
+2026-07-30 00:02:24,994 - transport.plugin_hub - INFO - Plugin registered: onedraw_2 (55aa3b630d81fa7a)
+2026-07-30 00:02:27,357 - transport.plugin_hub - INFO - Registered 34 tools for session 877fa1ec-73b6-4611-9278-cb0d3cc11b0a
+2026-07-30 00:02:27,367 - transport.plugin_hub - INFO - Server-level tool visibility synced from Unity: enabled=[animation, asset_gen, core, docs, probuilder, profiling, scripting_ext, testing, ui, vfx], disabled=[], total_transforms=19, unity_start=9
+2026-07-30 00:02:27,369 - transport.plugin_hub - INFO - Sent tools/list_changed notification to 1 MCP session(s)
+2026-07-30 00:04:34,877 - transport.plugin_hub - INFO - Plugin session 877fa1ec-73b6-4611-9278-cb0d3cc11b0a disconnected (1005)
+INFO:     127.0.0.1:27394 - "WebSocket /hub/plugin" [accepted]
+INFO:     connection open
+2026-07-30 00:04:39,572 - transport.plugin_hub - INFO - Plugin registered: onedraw_2 (55aa3b630d81fa7a)
+2026-07-30 00:04:42,073 - transport.plugin_hub - INFO - Registered 34 tools for session cb310993-546c-4901-847e-ab1e3af3297c
+2026-07-30 00:04:42,074 - transport.plugin_hub - INFO - Server-level tool visibility synced from Unity: enabled=[animation, asset_gen, core, docs, probuilder, profiling, scripting_ext, testing, ui, vfx], disabled=[], total_transforms=19, unity_start=9
+2026-07-30 00:04:42,075 - transport.plugin_hub - INFO - Sent tools/list_changed notification to 1 MCP session(s)
+2026-07-30 00:05:01,914 - transport.plugin_hub - INFO - Plugin session cb310993-546c-4901-847e-ab1e3af3297c disconnected (1005)
+INFO:     127.0.0.1:39145 - "WebSocket /hub/plugin" [accepted]
+INFO:     connection open
+2026-07-30 00:05:06,607 - transport.plugin_hub - INFO - Plugin registered: onedraw_2 (55aa3b630d81fa7a)
+2026-07-30 00:05:09,318 - transport.plugin_hub - INFO - Registered 34 tools for session b12a39b2-4d86-4a8e-b016-5c49fd78ab86
+2026-07-30 00:05:09,321 - transport.plugin_hub - INFO - Server-level tool visibility synced from Unity: enabled=[animation, asset_gen, core, docs, probuilder, profiling, scripting_ext, testing, ui, vfx], disabled=[], total_transforms=19, unity_start=9
+2026-07-30 00:05:09,321 - transport.plugin_hub - INFO - Sent tools/list_changed notification to 1 MCP session(s)
+2026-07-30 00:07:42,429 - transport.plugin_hub - INFO - Plugin session b12a39b2-4d86-4a8e-b016-5c49fd78ab86 disconnected (1005)
+INFO:     127.0.0.1:36346 - "WebSocket /hub/plugin" [accepted]
+INFO:     connection open
+2026-07-30 00:07:52,718 - transport.plugin_hub - INFO - Plugin registered: onedraw_2 (55aa3b630d81fa7a)
+2026-07-30 00:07:55,792 - transport.plugin_hub - INFO - Registered 34 tools for session 7d600943-1bb3-40c2-bdf8-7d321139c755
+2026-07-30 00:07:55,792 - transport.plugin_hub - INFO - Server-level tool visibility synced from Unity: enabled=[animation, asset_gen, core, docs, probuilder, profiling, scripting_ext, testing, ui, vfx], disabled=[], total_transforms=19, unity_start=9
+2026-07-30 00:07:55,793 - transport.plugin_hub - INFO - Sent tools/list_changed notification to 1 MCP session(s)
+2026-07-30 00:16:50,496 - transport.plugin_hub - INFO - Plugin session 7d600943-1bb3-40c2-bdf8-7d321139c755 disconnected (1005)

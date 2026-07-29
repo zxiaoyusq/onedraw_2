@@ -2,7 +2,7 @@
 
 ## 1. 版本与唯一真相源
 
-- 当前冻结版本：`schemaVersion = 5`、`contentVersion = 0.6.5-sample`。
+- 当前冻结版本：`schemaVersion = 6`、`contentVersion = 0.6.6-sample`。
 - 正式内容唯一源：`Design/Config/GameConfig.xlsx`。
 - `config/一笔镇妖_游戏配置表模板.xlsx` 只是随正式源同步的示例镜像，不接受独立内容修改。
 - `Assets/_Game/Config/Generated/gameplay_config.json`和`gameplay_config.hash`由T250导出器生成，是可审查、可构建的只读Runtime快照与hash旁车。
@@ -23,11 +23,11 @@
 
 ## 3. 工作簿物理结构
 
-- 工作簿固定30个Sheet：1个 `README` 加29个数据Sheet；名称和顺序属于契约。
+- 工作簿固定31个Sheet：1个 `README` 加30个数据Sheet；名称和顺序属于契约。
 - 每个数据Sheet第1行为标题、第2行为说明、第3行留空、第4行为唯一表头、第5行起为数据。
 - 首字段为空的整行视为空白行并忽略；数据区中间不得插入“看似空白但带业务值”的行。
-- `README!E5:E19` 的15个 `COUNTA` 公式只用于人工摘要，公式引用必须带Sheet单引号且限定 `A5:A1000`；公式与公式结果都不进入JSON。
-- `FieldDictionary` 有266条记录，完整描述其余28个数据Sheet（包括 `Enums` 和 `FeedbackCues`），但不递归描述自身。`FieldDictionaryRow` 的JSON结构由Schema直接定义。
+- `README` 的示例条目摘要只用于人工阅读；公式及缓存结果都不进入JSON。
+- `FieldDictionary` 有280条记录，完整描述其余29个数据Sheet（包括 `Enums`、`FeedbackCues` 和 `StrokeTrailStyles`），但不递归描述自身。`FieldDictionaryRow` 的JSON结构由Schema直接定义。
 - 表头是API，顺序必须与Schema `$defs/*Row.properties`、`required`及样例JSON对象字段一致。
 
 ## 4. Sheet、主键与分组
@@ -36,7 +36,7 @@
 |---|---|---|---|
 | Global | key | — | 全局阈值、预算、时间、上限 |
 | Players | playerId | — | 玩家基础值与默认架势 |
-| Stances | stanceId | `damageFormulaId`引用伤害公式 | 刀/符架势倍率、公式与资源 |
+| Stances | stanceId | `damageFormulaId`引用伤害公式；`strokeTrailStyleId`引用画笔样式 | 刀/符架势倍率、公式、画笔样式与资源 |
 | StrokeRules | ruleId | — | 笔势阈值与命中半径 |
 | DamageFormulas | formulaId | — | 伤害与连斩公式参数 |
 | DefenseRules | defenseRuleId | — | 护甲、方向、破甲 |
@@ -63,6 +63,7 @@
 | Enums | enumType+value | enumType内value唯一 | 策划枚举字典 |
 | FieldDictionary | sheet+field | 不自描述 | 字段类型、约束与说明 |
 | FeedbackCues | feedbackId | `vfxKey/audioKey`引用提示表 | 事件反馈的停顿、闪白、震屏、数字、特效、音频和震动强度 |
+| StrokeTrailStyles | styleId | — | 画笔三层颜色/宽度与确定性电弧参数 |
 
 `attackSetId`、`effectGroupId`、`rewardTableId`和 `tutorialId` 是分组ID；引用校验要求目标组至少存在一行，不能把分组字段单独误判为行主键。
 
@@ -102,9 +103,11 @@ FieldDictionary `foreignKey` 使用以下三种形式：
 
 T360新增的`Stances.damageFormulaId -> DamageFormulas.formulaId`是必填普通外键。调用方只提供架势ID，Runtime规则工厂必须沿此外键选择公式；禁止在C#维护“刀/符→公式ID”的第二映射。
 
+T698新增的`Stances.strokeTrailStyleId -> StrokeTrailStyles.styleId`也是必填普通外键。颜色、宽度倍率和分支参数必须沿此外键解析；Prefab、Inspector和代码不得复制样式数值。
+
 ## 8. 稳定排序与contentHash
 
-- JSON顶层属性顺序固定为：`schemaVersion`、`contentVersion`、`contentHash`，随后按工作簿中的29个数据Sheet顺序使用lowerCamelCase数组名。
+- JSON顶层属性顺序固定为：`schemaVersion`、`contentVersion`、`contentHash`，随后按工作簿中的30个数据Sheet顺序使用lowerCamelCase数组名。
 - 简单表按行主键Ordinal升序；组合表按组合键依次升序。
 - 玩法分组表的稳定顺序为：EnemyAttacks按 `attackSetId, order, attackId`；SkillEffects按 `effectGroupId, order`；Waves按 `levelId, order, waveId`；BossPhases按 `enemyId, order, bossPhaseId`；Rewards按 `rewardTableId, order`；Tutorials按 `tutorialId, order`。
 - Enums按 `enumType, value`；FieldDictionary按固定Sheet顺序和该Sheet表头顺序。排序不得依赖当前Excel行号、系统区域设置或字典遍历顺序。
@@ -115,7 +118,7 @@ T360新增的`Stances.damageFormulaId -> DamageFormulas.formulaId`是必填普�
 
 ## 9. 必须校验
 
-- 30个Sheet名称/顺序、每个表头、FieldDictionary覆盖和Schema定义一致。
+- 31个Sheet名称/顺序、每个表头、FieldDictionary覆盖和Schema定义一致。
 - 主键/组合键唯一；FieldDictionary必填字段非空；类型、范围、布尔、枚举和Trim规则有效。
 - 全部普通、分组、通配符和conditional外键符合第7节。
 - SkillEffects、EnemyAttacks、Waves、Rewards、Tutorials和BossPhases的组内order从1连续且不重复。
@@ -126,7 +129,7 @@ T360新增的`Stances.damageFormulaId -> DamageFormulas.formulaId`是必填普�
 
 ## 10. Runtime约定
 
-- JSON根包含 `schemaVersion`、`contentVersion`、`contentHash` 和29个表数组。
+- JSON根包含 `schemaVersion`、`contentVersion`、`contentHash` 和30个表数组。
 - `GameplayConfigService` 启动时一次性反序列化、校验版本并构建只读索引。
 - 业务代码通过 `IConfigProvider.GetEnemy(id)` 等API访问，不直接遍历或修改原始DTO。
 - 启动日志打印配置来源、版本、hash、记录数和校验摘要。
@@ -159,7 +162,7 @@ T360新增的`Stances.damageFormulaId -> DamageFormulas.formulaId`是必填普�
 - `PlayerCombatSettingsFactory`只从`Players`行映射`maxHp`、`maxEnergy`、`defaultStanceId`、`ultimateSkillId`和`hitInvulnSec`，并沿`ultimateSkillId`读取`Skills.energyCost`；玩家初始HP等于配置上限，当前能量从战斗语义的空槽开始，不允许Inspector或Prefab复制数值。
 - `PlayerCombatModel`是无`MonoBehaviour`依赖的纯状态模型。有效伤害把HP夹到0；成功受击后在`hitInvulnSec`内拒绝后续伤害，等于边界时允许再次受击。HP第一次从正数变为0时结果中的`DeathTriggered`为true，之后同帧或后续伤害都只返回`AlreadyDead`。
 - T360 `DamageResult.energyAward`进入玩家当前能量时按`Players.maxEnergy`饱和，不溢出；技能消耗只能读取目标`Skills.energyCost`，能量不足、所需架势不匹配或玩家已死亡均不得部分扣除。T400只预留消耗结果，不执行技能CD或EffectGroup，后者属于T410。
-- `StanceService`每次从目标`Stances`行构造不可变快照，公开伤害公式/倍率、幽魂倍率、切弹倍率、轨迹宽度、切换冷却、即时效果组与资源键。首次切换可立即发生；成功切入目标架势后使用该目标行的`switchCooldownSec`计算下一次可切换时刻，等于边界允许，重复点击当前架势或冷却内请求不发布切换事件。
+- `StanceService`每次从目标`Stances`行构造不可变快照，公开伤害公式/倍率、幽魂倍率、切弹倍率、轨迹宽度、画笔样式ID、切换冷却、即时效果组与资源键。首次切换可立即发生；成功切入目标架势后使用该目标行的`switchCooldownSec`计算下一次可切换时刻，等于边界允许，重复点击当前架势或冷却内请求不发布切换事件。
 - 成功切换立即更新唯一当前架势，并发布带`onSwitchEffectGroupId`的`StanceChanged`意图；T410只消费该意图执行配置效果链，不得在T400控制器中硬编码即时效果。玩家死亡后不能再切换架势。
 - 当前架势ID必须直接传给T340 `StrokeTrailSettingsFactory`、T360 `DamageRuleSetFactory`和T370 `ProjectileCutResolver`。因此同一玩家状态切换后，轨迹宽度、伤害公式/倍率、`projectileCutMultiplier`快照及投射物`requiredStanceId`门在同一次调用后立即生效，不维护刀/符第二映射。
 - `PlayerCombatController`只把纯模型结果转换为单调序号的`HpChanged`、`EnergyChanged`、`StanceChanged`和`Died`战斗事件；致死顺序固定为HP变化后死亡，同一玩家生命周期最多发布一次死亡事件。T400不修改场景/Prefab，也不实现自由移动、HUD、敌人状态机或技能效果执行。
@@ -310,3 +313,10 @@ T360新增的`Stances.damageFormulaId -> DamageFormulas.formulaId`是必填普�
 - 用户提供的十一帧爆炸序列按源JSON自然顺序切成256×256 Sprite，以12 FPS播放一次；末帧重复一个采样间隔但Clip不循环。Prefab只保存Sprite、AnimatorController和`VfxPoolItem`资源引用，不保存死亡条件、伤害、掉落、计分或波次规则。
 - 生产入口只在关卡协调器接受既有死亡事实后、敌人目标仍注册时发布死亡反馈，再回收敌人本体。`followTarget=false`使特效固定在发布时的死亡位置；事件的伤害数值为0，不生成伤害数字，也不参与HP或死亡裁决。
 - `VfxPoolItem`每次租用播放前对Animator执行重绑并采样默认状态首帧，保证复用对象不会从旧末帧继续。T630通用作者工具跳过`/Animated/`专用Prefab并把动画纹理纳入VFX Sprite Atlas，后续重建不会覆盖专用切片或控制器。
+
+## 33. T698方案C青白闪电画笔语义
+
+- T698把schema升级为`6`、content升级为`0.6.6-sample`，新增`StrokeTrailStyles`并给`Stances`增加必填`strokeTrailStyleId`外键。当前刀/符架势都绑定`stroke_trail_lightning_c`，但仍分别保留自己的`strokeWidthRefPx`；样式表只定义三层/分支相对宽度、颜色与电弧形态，不复制架势基础宽度。
+- `outerColor/bodyColor/coreColor/branchColor`必须是`#RRGGBBAA`；外层、主体、核心宽度倍率必须为正。分支间距、长度、抖动和宽度倍率为非负，段数至少为1；当前技术容量最多显示12条分支，容量不是策划数值，也不改变主笔迹。
+- 外层、主体和核心三个`LineRenderer`必须读取同一个T340处理点集。`LightningBranchLayout`只用`strokeId`、共享路径和分支序号生成确定性分支，不调用Unity全局随机、不修改输入点，也不参与笔势、命中、伤害、能量或教程裁决。
+- `BattleCompositionRoot`沿`VfxCues.vfx_slash -> AssetManifest -> AssetRegistry`取得Prefab；Prefab只保存LineRenderer拓扑、兼容资源引用和池化组件，材质、颜色、宽度、排序、生命期与分支形态在运行时从配置覆盖。全部层和活动分支统一淡出；回收时必须禁用Renderer、清空位置/分支计数和源路径引用。

@@ -36,12 +36,13 @@
     "assetManifest",
     "enums",
     "fieldDictionary",
-    "feedbackCues"
+    "feedbackCues",
+    "strokeTrailStyles"
   ],
   "properties": {
     "schemaVersion": {
       "type": "integer",
-      "const": 5
+      "const": 6
     },
     "contentVersion": {
       "type": "string",
@@ -224,6 +225,12 @@
       "items": {
         "$ref": "#/$defs/FeedbackCuesRow"
       }
+    },
+    "strokeTrailStyles": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/StrokeTrailStylesRow"
+      }
     }
   },
   "$defs": {
@@ -337,7 +344,8 @@
         "strokeWidthRefPx",
         "switchCooldownSec",
         "onSwitchEffectGroupId",
-        "assetKey"
+        "assetKey",
+        "strokeTrailStyleId"
       ],
       "properties": {
         "stanceId": {
@@ -369,6 +377,9 @@
           "type": "string"
         },
         "assetKey": {
+          "type": "string"
+        },
+        "strokeTrailStyleId": {
           "type": "string"
         }
       }
@@ -1718,6 +1729,86 @@
         },
         "description": {
           "type": "string"
+        }
+      }
+    },
+    "StrokeTrailStylesRow": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "styleId",
+        "outerColorHex",
+        "bodyColorHex",
+        "coreColorHex",
+        "outerWidthMultiplier",
+        "bodyWidthMultiplier",
+        "coreWidthMultiplier",
+        "branchColorHex",
+        "branchSpacingRefPx",
+        "branchLengthRefPx",
+        "branchJitterRefPx",
+        "branchWidthMultiplier",
+        "branchSegmentCount"
+      ],
+      "properties": {
+        "styleId": {
+          "type": "string"
+        },
+        "outerColorHex": {
+          "type": "string",
+          "pattern": "^#[0-9A-Fa-f]{8}$"
+        },
+        "bodyColorHex": {
+          "type": "string",
+          "pattern": "^#[0-9A-Fa-f]{8}$"
+        },
+        "coreColorHex": {
+          "type": "string",
+          "pattern": "^#[0-9A-Fa-f]{8}$"
+        },
+        "outerWidthMultiplier": {
+          "type": "number",
+          "minimum": 0.01,
+          "maximum": 4
+        },
+        "bodyWidthMultiplier": {
+          "type": "number",
+          "minimum": 0.01,
+          "maximum": 4
+        },
+        "coreWidthMultiplier": {
+          "type": "number",
+          "minimum": 0.01,
+          "maximum": 4
+        },
+        "branchColorHex": {
+          "type": "string",
+          "pattern": "^#[0-9A-Fa-f]{8}$"
+        },
+        "branchSpacingRefPx": {
+          "type": "number",
+          "minimum": 1,
+          "maximum": 1920
+        },
+        "branchLengthRefPx": {
+          "type": "number",
+          "minimum": 1,
+          "maximum": 500
+        },
+        "branchJitterRefPx": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 200
+        },
+        "branchWidthMultiplier": {
+          "type": "number",
+          "minimum": 0.01,
+          "maximum": 1
+        },
+        "branchSegmentCount": {
+          "type": "integer",
+          "minimum": 2,
+          "maximum": 8
         }
       }
     },

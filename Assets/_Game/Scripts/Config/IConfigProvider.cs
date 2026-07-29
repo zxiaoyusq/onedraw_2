@@ -103,6 +103,9 @@ namespace OneStrokeDemon.Config
         /// <summary>按反馈 ID 获取组合战斗反馈配置。</summary>
         FeedbackCueConfig GetFeedbackCue(string feedbackId);
 
+        /// <summary>按样式 ID 获取画笔表现配置。</summary>
+        StrokeTrailStyleConfig GetStrokeTrailStyle(string styleId);
+
         /// <summary>按资源键获取资源清单配置。</summary>
         AssetManifestConfig GetAsset(string assetKey);
 

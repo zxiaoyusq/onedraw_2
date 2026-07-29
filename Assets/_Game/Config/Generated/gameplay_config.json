@@ -1,7 +1,7 @@
 {
-  "schemaVersion": 5,
-  "contentVersion": "0.6.5-sample",
-  "contentHash": "9cc48fcb5f3b45cff68dd0bfc09cf533d808b26cc956553bc5b060cfa5113abb",
+  "schemaVersion": 6,
+  "contentVersion": "0.6.6-sample",
+  "contentHash": "5c3b73b2160859f6703f8430e8d63141328d648c163cd81ece611f31c4d70cb7",
   "global": [
     {
       "key": "battle_countdown_sec",
@@ -26,7 +26,7 @@
     {
       "key": "config_schema_version",
       "valueType": "int",
-      "intValue": 5,
+      "intValue": 6,
       "floatValue": null,
       "stringValue": "",
       "boolValue": null,
@@ -38,7 +38,7 @@
       "valueType": "string",
       "intValue": null,
       "floatValue": null,
-      "stringValue": "0.6.5-sample",
+      "stringValue": "0.6.6-sample",
       "boolValue": null,
       "unit": "semver",
       "description": "内容版本"
@@ -227,7 +227,8 @@
       "strokeWidthRefPx": 18,
       "switchCooldownSec": 1,
       "onSwitchEffectGroupId": "fx_switch_to_blade",
-      "assetKey": "icon_stance_blade"
+      "assetKey": "icon_stance_blade",
+      "strokeTrailStyleId": "stroke_trail_lightning_c"
     },
     {
       "stanceId": "stance_talisman",
@@ -239,7 +240,8 @@
       "strokeWidthRefPx": 28,
       "switchCooldownSec": 1,
       "onSwitchEffectGroupId": "fx_switch_to_talisman",
-      "assetKey": "icon_stance_talisman"
+      "assetKey": "icon_stance_talisman",
+      "strokeTrailStyleId": "stroke_trail_lightning_c"
     }
   ],
   "strokeRules": [
@@ -4582,6 +4584,18 @@
       "description": "Unity资源注册键"
     },
     {
+      "sheet": "Stances",
+      "field": "strokeTrailStyleId",
+      "type": "string",
+      "required": "true",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "StrokeTrailStyles.styleId",
+      "description": "架势选择的画笔表现样式外键。"
+    },
+    {
       "sheet": "StrokeRules",
       "field": "ruleId",
       "type": "string",
@@ -7460,6 +7474,162 @@
       "enumType": "",
       "foreignKey": "",
       "description": "反馈配置用途说明。"
+    },
+    {
+      "sheet": "StrokeTrailStyles",
+      "field": "styleId",
+      "type": "string",
+      "required": "true",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "",
+      "description": "画笔样式稳定ID。"
+    },
+    {
+      "sheet": "StrokeTrailStyles",
+      "field": "outerColorHex",
+      "type": "string",
+      "required": "true",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "",
+      "description": "外层辉光颜色，格式为#RRGGBBAA。"
+    },
+    {
+      "sheet": "StrokeTrailStyles",
+      "field": "bodyColorHex",
+      "type": "string",
+      "required": "true",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "",
+      "description": "主体轨迹颜色，格式为#RRGGBBAA。"
+    },
+    {
+      "sheet": "StrokeTrailStyles",
+      "field": "coreColorHex",
+      "type": "string",
+      "required": "true",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "",
+      "description": "核心高光颜色，格式为#RRGGBBAA。"
+    },
+    {
+      "sheet": "StrokeTrailStyles",
+      "field": "outerWidthMultiplier",
+      "type": "float",
+      "required": "true",
+      "default": "",
+      "min": 0.01,
+      "max": 4,
+      "enumType": "",
+      "foreignKey": "",
+      "description": "外层宽度相对架势基础笔宽的倍率。"
+    },
+    {
+      "sheet": "StrokeTrailStyles",
+      "field": "bodyWidthMultiplier",
+      "type": "float",
+      "required": "true",
+      "default": "",
+      "min": 0.01,
+      "max": 4,
+      "enumType": "",
+      "foreignKey": "",
+      "description": "主体宽度相对架势基础笔宽的倍率。"
+    },
+    {
+      "sheet": "StrokeTrailStyles",
+      "field": "coreWidthMultiplier",
+      "type": "float",
+      "required": "true",
+      "default": "",
+      "min": 0.01,
+      "max": 4,
+      "enumType": "",
+      "foreignKey": "",
+      "description": "核心宽度相对架势基础笔宽的倍率。"
+    },
+    {
+      "sheet": "StrokeTrailStyles",
+      "field": "branchColorHex",
+      "type": "string",
+      "required": "true",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "",
+      "description": "分支电弧颜色，格式为#RRGGBBAA。"
+    },
+    {
+      "sheet": "StrokeTrailStyles",
+      "field": "branchSpacingRefPx",
+      "type": "float",
+      "required": "true",
+      "default": "",
+      "min": 1,
+      "max": 1920,
+      "enumType": "",
+      "foreignKey": "",
+      "description": "相邻分支电弧在参考路径上的目标间距。"
+    },
+    {
+      "sheet": "StrokeTrailStyles",
+      "field": "branchLengthRefPx",
+      "type": "float",
+      "required": "true",
+      "default": "",
+      "min": 1,
+      "max": 500,
+      "enumType": "",
+      "foreignKey": "",
+      "description": "分支电弧的参考像素长度。"
+    },
+    {
+      "sheet": "StrokeTrailStyles",
+      "field": "branchJitterRefPx",
+      "type": "float",
+      "required": "true",
+      "default": "",
+      "min": 0,
+      "max": 200,
+      "enumType": "",
+      "foreignKey": "",
+      "description": "分支电弧折点的最大参考像素抖动。"
+    },
+    {
+      "sheet": "StrokeTrailStyles",
+      "field": "branchWidthMultiplier",
+      "type": "float",
+      "required": "true",
+      "default": "",
+      "min": 0.01,
+      "max": 1,
+      "enumType": "",
+      "foreignKey": "",
+      "description": "分支宽度相对架势基础笔宽的倍率。"
+    },
+    {
+      "sheet": "StrokeTrailStyles",
+      "field": "branchSegmentCount",
+      "type": "int",
+      "required": "true",
+      "default": "",
+      "min": 2,
+      "max": 8,
+      "enumType": "",
+      "foreignKey": "",
+      "description": "单条分支电弧的线段数量。"
     }
   ],
   "feedbackCues": [
@@ -7570,6 +7740,23 @@
       "vfxTintColorHex": "#FFE066FF",
       "vfxScaleRefPx": 34,
       "description": "弱点命中：黄色强调、较长慢动作与中等震屏。"
+    }
+  ],
+  "strokeTrailStyles": [
+    {
+      "styleId": "stroke_trail_lightning_c",
+      "outerColorHex": "#39D5FFFF",
+      "bodyColorHex": "#9AF0FFFF",
+      "coreColorHex": "#FFFFFFFF",
+      "outerWidthMultiplier": 1.75,
+      "bodyWidthMultiplier": 0.9,
+      "coreWidthMultiplier": 0.32,
+      "branchColorHex": "#C8F8FFFF",
+      "branchSpacingRefPx": 120,
+      "branchLengthRefPx": 64,
+      "branchJitterRefPx": 18,
+      "branchWidthMultiplier": 0.14,
+      "branchSegmentCount": 3
     }
   ]
 }

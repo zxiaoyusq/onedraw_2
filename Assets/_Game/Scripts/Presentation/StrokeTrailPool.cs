@@ -25,7 +25,8 @@ namespace OneStrokeDemon.Presentation
         public void Initialize(
             StrokeTrailPoolSettings poolSettings,
             Material sharedMaterial,
-            Transform referenceSpace = null)
+            Transform referenceSpace = null,
+            GameObject viewPrefab = null)
         {
             // 检查视图状态、资源或生命周期边界，避免产生无效表现。
             if (IsInitialized)
@@ -44,12 +45,11 @@ namespace OneStrokeDemon.Presentation
             // 逐项更新视图或池对象，保持显示顺序和回收行为一致。
             for (int index = 0; index < views.Length; index++)
             {
-                var child = new GameObject("Stroke Trail");
-                child.transform.SetParent(transform, false);
-                var lineRenderer = child.AddComponent<LineRenderer>();
-                var view = child.AddComponent<StrokeTrailView>();
+                StrokeTrailView view = viewPrefab != null
+                    ? InstantiatePrefabView(viewPrefab)
+                    : CreateDebugFallbackView();
+                view.gameObject.name = $"Stroke Trail {index + 1:00}";
                 view.Initialize(
-                    lineRenderer,
                     sharedMaterial,
                     referenceSpace != null ? referenceSpace : transform);
                 views[index] = view;
@@ -274,6 +274,52 @@ namespace OneStrokeDemon.Presentation
             }
 
             return oldest;
+        }
+
+        // 生产路径实例化VfxCues/AssetRegistry解析出的Prefab，并拒绝缺少视图根组件的资源。
+        private StrokeTrailView InstantiatePrefabView(GameObject viewPrefab)
+        {
+            GameObject instance = Instantiate(viewPrefab, transform, false);
+            StrokeTrailView view = instance.GetComponent<StrokeTrailView>();
+            if (view != null)
+            {
+                return view;
+            }
+
+            DestroyImmediate(instance);
+            throw new ArgumentException(
+                "Stroke trail prefab must contain StrokeTrailView on its root.",
+                nameof(viewPrefab));
+        }
+
+        // 仅供既有隔离测试使用；生产组合根始终传入配置Registry中的Prefab。
+        private StrokeTrailView CreateDebugFallbackView()
+        {
+            var root = new GameObject("Stroke Trail");
+            root.transform.SetParent(transform, false);
+            LineRenderer outer = root.AddComponent<LineRenderer>();
+            var view = root.AddComponent<StrokeTrailView>();
+            LineRenderer body = CreateChildRenderer(root.transform, "Body");
+            LineRenderer core = CreateChildRenderer(root.transform, "Core");
+            var branches = new LineRenderer[StrokeTrailView.BranchRendererCapacity];
+            var branchRoot = new GameObject("Branches");
+            branchRoot.transform.SetParent(root.transform, false);
+            for (int index = 0; index < branches.Length; index++)
+            {
+                branches[index] = CreateChildRenderer(
+                    branchRoot.transform,
+                    $"Branch {index + 1:00}");
+            }
+
+            view.ConfigureRenderersForAuthoring(outer, body, core, branches);
+            return view;
+        }
+
+        private static LineRenderer CreateChildRenderer(Transform parent, string name)
+        {
+            var child = new GameObject(name);
+            child.transform.SetParent(parent, false);
+            return child.AddComponent<LineRenderer>();
         }
 
         // 处理 EnsureInitialized 对应的表现逻辑，使视图与只读战斗状态保持同步。

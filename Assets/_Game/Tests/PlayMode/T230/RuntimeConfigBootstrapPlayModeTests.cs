@@ -23,7 +23,7 @@ namespace OneStrokeDemon.Tests.PlayMode.T230
             "\"skillEffects\":[],\"levels\":[],\"waves\":[],\"spawnPoints\":[],\"enemyModifiers\":[]," +
             "\"spawns\":[],\"bossPhases\":[],\"rewards\":[],\"tutorials\":[],\"texts\":[]," +
             "\"audioCues\":[],\"vfxCues\":[],\"assetManifest\":[],\"enums\":[],\"fieldDictionary\":[]," +
-            "\"feedbackCues\":[]}";
+            "\"feedbackCues\":[],\"strokeTrailStyles\":[]}";
 
         [SetUp]
         public void SetUp()
@@ -36,15 +36,15 @@ namespace OneStrokeDemon.Tests.PlayMode.T230
         {
             LogAssert.Expect(
                 LogType.Log,
-                new Regex("CONFIG_RUNTIME_READY.*schema=5.*content=0\\.6\\.5-sample.*tables=29.*records=748"));
+                new Regex("CONFIG_RUNTIME_READY.*schema=6.*content=0\\.6\\.6-sample.*tables=30.*records=763"));
 
             yield return SceneManager.LoadSceneAsync(SceneNames.Bootstrap, LoadSceneMode.Single);
             yield return WaitForScene(SceneNames.MainMenu);
 
             Assert.That(GameplayConfigRuntime.IsReady, Is.True);
-            Assert.That(GameplayConfigRuntime.CurrentSummary.RecordCount, Is.EqualTo(748));
+            Assert.That(GameplayConfigRuntime.CurrentSummary.RecordCount, Is.EqualTo(763));
             Assert.That(GameplayConfigRuntime.Current.ContentHash, Is.EqualTo(
-                "9cc48fcb5f3b45cff68dd0bfc09cf533d808b26cc956553bc5b060cfa5113abb"));
+                "5c3b73b2160859f6703f8430e8d63141328d648c163cd81ece611f31c4d70cb7"));
             Assert.That(GameplayConfigRuntime.Current.GetEnemy("boss_tomb_king").Tier, Is.EqualTo("Boss"));
         }
 

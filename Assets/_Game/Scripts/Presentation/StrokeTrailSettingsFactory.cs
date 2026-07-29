@@ -76,6 +76,8 @@ namespace OneStrokeDemon.Presentation
 
             StanceConfig stance = configProvider.GetStance(stanceId);
             VfxCueConfig vfxCue = configProvider.GetVfxCue(vfxKey);
+            StrokeTrailStyleConfig style = configProvider.GetStrokeTrailStyle(
+                stance.StrokeTrailStyleId);
             // 检查视图状态、资源或生命周期边界，避免产生无效表现。
             if (vfxCue.LifeSec <= 0f || float.IsNaN(vfxCue.LifeSec) || float.IsInfinity(vfxCue.LifeSec))
             {
@@ -86,7 +88,7 @@ namespace OneStrokeDemon.Presentation
 
             int width = CheckedPositiveInt(stance.StrokeWidthRefPx, nameof(stance.StrokeWidthRefPx));
             // 检查视图状态、资源或生命周期边界，避免产生无效表现。
-            if (vfxCue.SortingOrder < int.MinValue || vfxCue.SortingOrder > int.MaxValue)
+            if (vfxCue.SortingOrder < int.MinValue || vfxCue.SortingOrder > int.MaxValue - 3L)
             {
                 throw new ArgumentOutOfRangeException(
                     nameof(vfxKey),
@@ -103,10 +105,23 @@ namespace OneStrokeDemon.Presentation
 
             return new StrokeTrailStyle(
                 stance.StanceId,
+                style.StyleId,
                 width,
                 vfxCue.LifeSec,
                 SortingLayer.NameToID(vfxCue.SortingLayer),
-                (int)vfxCue.SortingOrder);
+                (int)vfxCue.SortingOrder,
+                ParseColor(style.OuterColorHex, nameof(style.OuterColorHex)),
+                ParseColor(style.BodyColorHex, nameof(style.BodyColorHex)),
+                ParseColor(style.CoreColorHex, nameof(style.CoreColorHex)),
+                CheckedPositive(style.OuterWidthMultiplier, nameof(style.OuterWidthMultiplier)),
+                CheckedPositive(style.BodyWidthMultiplier, nameof(style.BodyWidthMultiplier)),
+                CheckedPositive(style.CoreWidthMultiplier, nameof(style.CoreWidthMultiplier)),
+                ParseColor(style.BranchColorHex, nameof(style.BranchColorHex)),
+                CheckedPositive(style.BranchSpacingRefPx, nameof(style.BranchSpacingRefPx)),
+                CheckedPositive(style.BranchLengthRefPx, nameof(style.BranchLengthRefPx)),
+                CheckedNonNegative(style.BranchJitterRefPx, nameof(style.BranchJitterRefPx)),
+                CheckedPositive(style.BranchWidthMultiplier, nameof(style.BranchWidthMultiplier)),
+                CheckedPositiveInt(style.BranchSegmentCount, nameof(style.BranchSegmentCount)));
         }
 
         // 处理 CheckedPositiveInt 对应的表现逻辑，使视图与只读战斗状态保持同步。
@@ -121,6 +136,46 @@ namespace OneStrokeDemon.Presentation
             }
 
             return (int)value;
+        }
+
+        // 将已通过导出器校验的#RRGGBBAA颜色转换为Unity颜色，并保留运行时防御。
+        private static Color ParseColor(string value, string fieldName)
+        {
+            if (string.IsNullOrWhiteSpace(value) ||
+                !ColorUtility.TryParseHtmlString(value, out Color color))
+            {
+                throw new ArgumentException(
+                    $"Configured color '{value}' is invalid.",
+                    fieldName);
+            }
+
+            return color;
+        }
+
+        // 把配置浮点值收紧为有限正数。
+        private static float CheckedPositive(float value, string fieldName)
+        {
+            if (float.IsNaN(value) || float.IsInfinity(value) || value <= 0f)
+            {
+                throw new ArgumentOutOfRangeException(
+                    fieldName,
+                    $"Configured value {value} must be finite and positive.");
+            }
+
+            return value;
+        }
+
+        // 把配置浮点值收紧为有限非负数。
+        private static float CheckedNonNegative(float value, string fieldName)
+        {
+            if (float.IsNaN(value) || float.IsInfinity(value) || value < 0f)
+            {
+                throw new ArgumentOutOfRangeException(
+                    fieldName,
+                    $"Configured value {value} must be finite and non-negative.");
+            }
+
+            return value;
         }
     }
 }

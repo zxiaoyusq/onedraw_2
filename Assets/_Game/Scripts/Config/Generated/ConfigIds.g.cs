@@ -8,15 +8,15 @@ namespace OneStrokeDemon.Config
     public static class ConfigIds
     {
         // 当前配置契约的schema版本。
-        public const int SchemaVersion = 5;
+        public const int SchemaVersion = 6;
         // 当前配置内容版本。
-        public const string ContentVersion = "0.6.5-sample";
+        public const string ContentVersion = "0.6.6-sample";
         // 规范化配置内容的SHA-256哈希。
-        public const string ContentHash = "9cc48fcb5f3b45cff68dd0bfc09cf533d808b26cc956553bc5b060cfa5113abb";
+        public const string ContentHash = "5c3b73b2160859f6703f8430e8d63141328d648c163cd81ece611f31c4d70cb7";
         // 本文件包含的稳定ID分组数量。
-        public const int IdSetCount = 28;
+        public const int IdSetCount = 29;
         // 本文件包含的稳定ID常量总数。
-        public const int IdConstantCount = 380;
+        public const int IdConstantCount = 381;
 
         // 汇总来自Global.key的稳定配置ID。
         public static class GlobalKeys
@@ -916,6 +916,13 @@ namespace OneStrokeDemon.Config
             public const string FeedbackProjectileReflect = "feedback_projectile_reflect";
             // 配置ID：feedback_weakpoint_hit。
             public const string FeedbackWeakpointHit = "feedback_weakpoint_hit";
+        }
+
+        // 汇总来自StrokeTrailStyles.styleId的稳定配置ID。
+        public static class StrokeTrailStyles
+        {
+            // 配置ID：stroke_trail_lightning_c。
+            public const string StrokeTrailLightningC = "stroke_trail_lightning_c";
         }
     }
 }

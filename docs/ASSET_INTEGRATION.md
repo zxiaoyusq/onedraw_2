@@ -35,7 +35,7 @@
 
 ## 占位与替换流程
 
-T630把当时18个Sprite键和40个Prefab键改绑为实际原型资产；T694随后把主角键从单帧Sprite升级为动画Prefab，T695再新增池化怪物死亡动画Prefab。当前39个VFX键均使用含`SpriteRenderer`和`VfxPoolItem`的独立Prefab，其中`vfx_enemy_death`还包含非循环Animator。17个AudioClip键继续复用T240静音占位，`scene_battle`继续引用Build Settings中的Battle场景。当前视觉资产只代表原型品质，生成角色与PSD原画的细节密度仍有差异，也不包含正式骨骼动画或逐对象身体碰撞制作。
+T630把当时18个Sprite键和40个Prefab键改绑为实际原型资产；T694随后把主角键从单帧Sprite升级为动画Prefab，T695再新增池化怪物死亡动画Prefab。当前39个VFX键均使用含`SpriteRenderer`和`VfxPoolItem`的独立Prefab，其中`vfx_enemy_death`还包含非循环Animator。T698保持`vfx_slash`稳定键与Registry计数不变，将其升级为外层/主体/核心加12条预建分支的`LineRenderer`拓扑；为兼容T630通用资源合同，Prefab仍保留一个绑定`vfx_slash_arc`且默认禁用的`SpriteRenderer`，实际画笔表现不使用该兼容Sprite。17个AudioClip键继续复用T240静音占位，`scene_battle`继续引用Build Settings中的Battle场景。当前视觉资产只代表原型品质，生成角色与PSD原画的细节密度仍有差异，也不包含正式骨骼动画或逐对象身体碰撞制作。
 
 替换单项资源时：
 

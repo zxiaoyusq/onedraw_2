@@ -40,9 +40,9 @@ namespace OneStrokeDemon.Tests.EditMode.T250
             Assert.That(ConfigIds.SchemaVersion, Is.EqualTo(service.SchemaVersion));
             Assert.That(ConfigIds.ContentVersion, Is.EqualTo(service.ContentVersion));
             Assert.That(ConfigIds.ContentHash, Is.EqualTo(service.ContentHash));
-            Assert.That(summary.RecordCount, Is.EqualTo(748));
-            Assert.That(ConfigIds.IdSetCount, Is.EqualTo(28));
-            Assert.That(ConfigIds.IdConstantCount, Is.EqualTo(380));
+            Assert.That(summary.RecordCount, Is.EqualTo(763));
+            Assert.That(ConfigIds.IdSetCount, Is.EqualTo(29));
+            Assert.That(ConfigIds.IdConstantCount, Is.EqualTo(381));
         }
 
         [Test]
@@ -84,6 +84,9 @@ namespace OneStrokeDemon.Tests.EditMode.T250
                 Is.EqualTo("scene_battle"));
             Assert.That(config.GetFeedbackCue(ConfigIds.FeedbackCues.FeedbackArmorBreak).VfxKey,
                 Is.EqualTo(ConfigIds.VfxCues.VfxArmorBreak));
+            Assert.That(
+                config.GetStrokeTrailStyle(ConfigIds.StrokeTrailStyles.StrokeTrailLightningC).StyleId,
+                Is.EqualTo("stroke_trail_lightning_c"));
             Assert.That(AssetRegistryEditorValidator.ValidateCanonical().EntryCount, Is.EqualTo(77));
         }
     }
