@@ -807,6 +807,20 @@ code_commenting:
   missing_chinese_files: 0
   missing_type_comments: 0
   missing_method_comments: 0
+content_authoring_guide:
+  status: pass
+  task: T699
+  path: docs/CONTENT_AUTHORING_GUIDE.md
+  scope: [stroke_trail, player, static_enemy, animated_enemy, enemy_death_vfx]
+  workflow: source_to_config_to_unity_to_atlas_to_registry_to_tests_to_visual_review
+  verified_paths: 19
+  verified_markdown_links: 6
+  verified_unity_menus: 8
+  verified_test_categories: 5
+  verified_stroke_style_fields: 13
+  unity_product_changes: none
+  unity_tests: not_run_docs_only
+  known_issues: [BUG-0009]
 manual_gates:
   unity_editor_smoke: pass
   t660_production_manual_click: pass

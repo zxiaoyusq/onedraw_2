@@ -1,7 +1,7 @@
 # PROGRESS
 
-- 日期：2026-07-29
-- 当前成熟度：P6方案C画笔特效完成；进入P7质量发布
+- 日期：2026-07-30
+- 当前成熟度：P6内容制作流程文档化完成；进入P7质量发布
 - 当前任务：T700
 - 状态：READY
 - Unity精确版本：6000.5.1f1（已由ProjectVersion.txt与本机安装核验）
@@ -11,10 +11,11 @@
 
 ## 进行中
 
-- 当前没有`IN_PROGRESS`任务；T698已完成，依赖均为DONE的首个后续任务T700保持`READY`。
+- 当前没有`IN_PROGRESS`任务；T699已完成，依赖均为DONE的首个后续任务T700保持`READY`。
 
 ## 已完成
 
+- T699：新增`docs/CONTENT_AUTHORING_GUIDE.md`，以内容作者视角串联来源/授权、PNG与帧JSON预检、权威工作簿、配置导出、Unity手动或作者工具生成、SpriteAtlas、AssetRegistry、专项测试和真实Battle相机验收；覆盖同拓扑画笔换样式、方案C Prefab结构、静态/动画主角、静态/动画敌人、新玩法敌人配置链和池化死亡VFX。手册准确列出8个现有Unity菜单、13个画笔配置字段和T630→专用动画→T698的防覆盖顺序，并明确T694/T695归档计划含历史绝对源路径、需为新批次重新预检。采用`unity-import-sprite-animations`的manifest驱动批次原则，保留手动Unity步骤和Codex/Unity MCP等价执行说明。19个关键路径、6个文档链接、8个菜单、5个测试分类、13个配置字段及作者合同交叉核对通过；未修改或运行产品代码、配置、场景、Prefab、动画或美术资产，因此Unity测试为NOT RUN。Windows核对发现`.sh`未固定LF且`core.autocrlf=true`会导致CI脚本以CRLF失效，已登记BUG-0009并给出Unity内置.NET 8与Test Runner/MCP替代流程。任务进行期间出现的4个未跟踪FireFish动画/Controller文件不属于T699，已原样保留且不纳入提交。
 - T698：新增权威`StrokeTrailStyles`表及`Stances.strokeTrailStyleId`外键，刀/符架势共同绑定`stroke_trail_lightning_c`；schema升级为6、content升级为`0.6.6-sample`。青色外辉光、浅青主体、白色核心和稀疏电弧的颜色、宽度倍率、间距、长度、抖动、分支宽度与段数全部来自配置；主轨迹继续复用T340同一处理点集，分叉由`strokeId + path + branchIndex`确定性生成，不参与命中或伤害。生产入口沿`VfxCues.vfx_slash -> AssetRegistry`实例化Unity作者工具生成的分层Prefab，固定12条分支渲染器随主轨迹统一淡出并完整池化复位；Registry保持77键/43 Prefab/16 Sprite/17 AudioClip/1 Scene。双工作簿98,287字节且SHA-256均为`2c737eab...37cc9`，受管配置30表/763条、hash `5c3b73b...70cb7`、29组381个ID常量；ConfigExporter 60/60、最终全量EditMode 208/208、PlayMode 56/56通过。真实Battle相机截图确认青白三层主轨迹与电弧分叉可见。Unity Test Framework在一次紧邻失败回归后的重跑中卡在`ExitPlayModeTask`且0/56未执行，确认内部队列为空并清理MCP孤儿任务后，干净重跑56/56通过；用户已有`.gitignore`、`AGENTS.md`、ProjectSettings与Recovery/动画资产改动未纳入提交。
 - T697：定位到生产`Reference Pixel World`只缩放XY、保持Z为1，而`VfxPoolItem`把`SpriteRenderer.bounds`的Z厚度纳入最大边长，导致配置为96参考像素的死亡特效在真实Battle中被错误缩小到约10px。现按Sprite二维XY边界计算缩放，并在生产致死链PlayMode测试中使用真实Battle相机断言最终屏幕像素尺寸；正常致死事件、位置快照、敌人回收和池化复用语义未改。T695 PlayMode 2/2、全量PlayMode 55/55通过，真实Battle相机截图中的特效约86.31px并清晰可见，最终Console Error/Warning为0。首次专项测试初始化在Unity Test Framework `PlayModeRunTask`内空引用且未执行产品测试，清理框架状态后相同测试通过；用户已有`Design/Config/~$GameConfig.xlsx`删除状态未纳入提交。
 - T696：更新项目执行合同，保留任务开始时Git基线、白名单、用户改动保护和原子提交，同时将常规收尾限定为一次文档补丁、一次批量路径审计、一次显式暂存和一次提交。验证结果在最后一次产品产物变更后冻结，纯文档/证据更新不再触发昂贵测试；专项文档按事实变化条件更新，默认以单个`closeout.md`合并证据，只有异常路径、删除、配置/Registry漂移、ProjectSettings变化、测试失败或验证后再改产物时升级深度审计。本任务仅修改执行合同和任务文档，未运行Unity测试；用户已有`Design/Config/~$GameConfig.xlsx`删除状态未纳入提交。
@@ -253,6 +254,7 @@
 7. PSD主角和怪物大多为单张Sprite；T610两个静态TMP资产约2.78MB，实际Web压缩包、运行内存和真机触摸延迟仍需T730及平台门验证。
 8. T630已替换18个Sprite和40个Prefab视觉占位，但17个AudioClip仍使用T240静音占位；单帧角色尚无正式动画或逐对象身体碰撞，ImageGen补图与PSD原画的细节密度存在差异，全部美术仅获原型授权，不能外推为发布品质。
 9. 三个MVP关卡已接入生产主菜单和Battle组合根，用户已确认Unity Editor入口、Mac触控板笔迹与修复后视觉。`IProgressSaveStore`与震动仍待T130平台适配，T640多比例/安全区又依赖T120，因此当前证据不能外推为平台持久化、多设备布局或真机体验。
+10. Windows在`core.autocrlf=true`时把索引中的LF Shell脚本检出为CRLF，而`.gitattributes`未固定`*.sh`，导致`verify-config.sh`和`run-unity-tests.sh`在Bash解析阶段失败（BUG-0009）；修复前Windows内容作者应使用Unity随附.NET 8及Test Runner/MCP，不能把脚本解析错误误判为配置或产品失败。
 ## 下一步
 
 执行T700：补齐纯规则EditMode回归矩阵。该任务属于P7，需在下一原子任务中独立实施与提交。

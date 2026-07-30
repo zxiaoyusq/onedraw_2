@@ -120,6 +120,21 @@
 - 回归测试：每次主Editor刷新后分别扫描产品异常与无堆栈Editor Assert，不能只按红色计数判定产品失败。
 - 证据：`artifacts/evals/T660/main-editor-visual-review-2026-07-15.txt`、`verification.md`。
 
+## BUG-0009 · Windows自动换行转换使CI Shell脚本无法执行
+
+- 状态：OPEN
+- 严重度：S2
+- 发现版本或commit：T699工作树 / Unity `6000.5.1f1`
+- 配置hash：不适用
+- 环境：Windows 11、Git `core.autocrlf=true`、PowerShell调用WSL Bash
+- 复现步骤：在Windows检出当前仓库；运行`git ls-files --eol Tools/CI/run-unity-tests.sh Tools/CI/verify-config.sh`确认索引为LF而工作树为CRLF；执行`bash Tools/CI/run-unity-tests.sh --help`。
+- 期望：仓库CI脚本在支持的Bash环境中可解析参数并显示帮助。
+- 实际：Bash在第2行起报告`$'\r': command not found`、`pipefail\r`非法选项和语法错误；`.gitattributes`固定了C#/JSON/Markdown/YAML为LF，但没有覆盖`*.sh`。
+- 可证伪假设：问题来自工作树换行转换而非脚本业务逻辑；在LF检出中相同索引内容应恢复执行。
+- 最小修复范围：独立工程卫生任务在`.gitattributes`增加`*.sh text eol=lf`，重新规范化Shell脚本并在Windows Git Bash/WSL及既有macOS批处理环境验证，不在内容制作任务顺手改写脚本。
+- 回归测试：Windows新检出后`git ls-files --eol`显示`w/lf`；`verify-config.sh --help`、`run-unity-tests.sh --help`和`test-harness-smoke.sh`通过。
+- 证据：`artifacts/evals/T699/closeout.md`。
+
 ## 缺陷模板
 
 ### BUG-XXXX · 标题
