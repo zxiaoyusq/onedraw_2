@@ -979,6 +979,17 @@ namespace OneStrokeDemon.Bootstrap
                 width * 0.16f,
                 height * 0.34f,
                 0f);
+            BoxCollider2D body = playerObject.GetComponent<BoxCollider2D>();
+            if (body == null)
+            {
+                body = playerObject.AddComponent<BoxCollider2D>();
+            }
+
+            // 身体碰撞体只承担生产战斗的接触判定，不参与笔迹命中查询语义。
+            body.isTrigger = true;
+            body.offset = playerObject.transform.InverseTransformPoint(
+                renderer.transform.TransformPoint(renderer.sprite.bounds.center));
+            body.size = renderer.sprite.bounds.size;
             return playerObject;
         }
 

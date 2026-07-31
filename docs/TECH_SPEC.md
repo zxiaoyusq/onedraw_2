@@ -90,6 +90,8 @@ Tests.EditMode / Tests.PlayMode
 - `DamageContext` / `DamageCalculator`：纯规则。
 - `PlayerCombatModel`：HP、能量、架势。
 - `EnemyController`：通用状态机；策略注册表组合移动、攻击和防御。
+- 生产敌人按各自首次推进时刻建立独立移动年龄，不能把关卡累计时间直接当作新出生敌人的路径时间；出生点、朝向、路径、速度与精英速度倍率均来自配置。
+- 玩家与敌人的身体`Collider2D`只用于接触判定；未相交时攻击演出不得直接扣玩家HP，相交后按`Enemies.contactDamage`结算并复用玩家受击无敌帧。投射物生成/可切事件与身体接触伤害保持分离。
 - `SkillService`：Skill → EffectGroup → 有序Effect执行器。
 - `ObjectPoolService`：敌人、投射物、VFX和数字复用并完整重置。
 - `CombatFeedbackService`：消费只读战斗结果，按`FeedbackCues`发布停顿、闪白、震屏、池化VFX/数字、预载音频与可关闭震动命令；不修改伤害真相。

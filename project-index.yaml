@@ -57,8 +57,8 @@ config:
     loaded_records: 763
     readonly_primary_indexes: 345
     readonly_group_indexes: 56
-    full_editmode_tests: 208
-    full_playmode_tests: 56
+    full_editmode_tests: 210
+    full_playmode_tests: 57
     bootstrap_smoke: pass
   asset_registry:
     status: pass
@@ -90,8 +90,8 @@ config:
     dotnet_tests: 60
     config_editmode_tests: 19
     config_playmode_tests: 3
-    full_editmode_tests: 208
-    full_playmode_tests: 56
+    full_editmode_tests: 210
+    full_playmode_tests: 57
     full_command_smoke: pass_via_readonly_drift_gate_plus_isolated_unity_batch_project
 result_progress:
   status: pass
@@ -784,6 +784,23 @@ production_playable_entry:
   live_trail_review_screenshot: artifacts/evals/T660/production-live-trail-review-2026-07-15.jpg
   live_trail_review_screenshot_sha256: 289d97a907f6846371778f58e3e15d7e5ded0a5306ddd891923acd1294fd3f95
   manual_editor_click: user_confirmed_entry_trackpad_input_and_post_visual_fix
+production_enemy_contact:
+  status: pass
+  task: T699
+  spawn_side: configured_right_half
+  approach_direction: configured_right_to_left
+  movement_clock: per_enemy_spawn_relative
+  movement_speed: enemy_pattern_speed_times_modifier_speed_multiplier
+  body_colliders: runtime_player_and_enemy_sprite_bounds
+  damage_gate: body_bounds_intersection
+  damage_source: Enemies.contactDamage
+  attack_damage_policy: no_direct_player_hp_mutation
+  projectile_policy: spawn_and_cut_events_remain_separate_from_body_contact
+  editmode_focused: 2
+  playmode_focused: 1
+  full_editmode_tests: 210
+  full_playmode_tests: 57
+  manual_game_view: bootstrap_to_tutorial_battle_right_spawn_approach_and_100_of_100_hp_before_contact
 code_commenting:
   status: complete
   requested_scope: Assets/_Game/Scripts_all_csharp

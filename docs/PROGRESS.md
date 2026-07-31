@@ -1,7 +1,7 @@
 # PROGRESS
 
-- 日期：2026-07-29
-- 当前成熟度：P6方案C画笔特效完成；进入P7质量发布
+- 日期：2026-07-31
+- 当前成熟度：P6生产战斗接触与移动修复完成；进入P7质量发布
 - 当前任务：T700
 - 状态：READY
 - Unity精确版本：6000.5.1f1（已由ProjectVersion.txt与本机安装核验）
@@ -11,10 +11,11 @@
 
 ## 进行中
 
-- 当前没有`IN_PROGRESS`任务；T698已完成，依赖均为DONE的首个后续任务T700保持`READY`。
+- 当前没有`IN_PROGRESS`任务；T699已完成，依赖均为DONE的首个后续任务T700恢复为`READY`。
 
 ## 已完成
 
+- T699：权威配置中的四个出生点原本已全部位于屏幕右半区，七种敌人路径也全部由右向左；真实根因是生产世界把攻击距离条件写死为真、攻击执行时直接扣玩家HP，并用关卡累计时间采样每个新敌人的移动。现为每个活动敌人建立独立出生移动时钟，普通敌人与Boss均消费配置路径和速度倍率；玩家/敌人身体`Collider2D`相交前不再扣血，相交后读取`Enemies.contactDamage`并沿用受击无敌帧，攻击投射物/效果事件保持独立。T699 EditMode 2/2、PlayMode 1/1、最终全量EditMode 210/210、PlayMode 57/57通过；真实Bootstrap→MainMenu→教程Battle Game视图确认两只火鱼从右半区向左推进且未接触时HUD保持100/100。一次PlayMode初始化在Unity Test Framework `PlayModeRunTask`空引用并卡于`ExitPlayModeTask`，清理孤儿任务后专项通过；首次全量PlayMode仅因Game视图失焦触发配置的自动暂停而使T660一项失败，聚焦Game视图后该项1/1及全量57/57通过。未修改配置、场景、Prefab、Registry或ProjectSettings；用户已有`Design/Config/~$GameConfig.xlsx`删除状态未纳入提交。
 - T698：新增权威`StrokeTrailStyles`表及`Stances.strokeTrailStyleId`外键，刀/符架势共同绑定`stroke_trail_lightning_c`；schema升级为6、content升级为`0.6.6-sample`。青色外辉光、浅青主体、白色核心和稀疏电弧的颜色、宽度倍率、间距、长度、抖动、分支宽度与段数全部来自配置；主轨迹继续复用T340同一处理点集，分叉由`strokeId + path + branchIndex`确定性生成，不参与命中或伤害。生产入口沿`VfxCues.vfx_slash -> AssetRegistry`实例化Unity作者工具生成的分层Prefab，固定12条分支渲染器随主轨迹统一淡出并完整池化复位；Registry保持77键/43 Prefab/16 Sprite/17 AudioClip/1 Scene。双工作簿98,287字节且SHA-256均为`2c737eab...37cc9`，受管配置30表/763条、hash `5c3b73b...70cb7`、29组381个ID常量；ConfigExporter 60/60、最终全量EditMode 208/208、PlayMode 56/56通过。真实Battle相机截图确认青白三层主轨迹与电弧分叉可见。Unity Test Framework在一次紧邻失败回归后的重跑中卡在`ExitPlayModeTask`且0/56未执行，确认内部队列为空并清理MCP孤儿任务后，干净重跑56/56通过；用户已有`.gitignore`、`AGENTS.md`、ProjectSettings与Recovery/动画资产改动未纳入提交。
 - T697：定位到生产`Reference Pixel World`只缩放XY、保持Z为1，而`VfxPoolItem`把`SpriteRenderer.bounds`的Z厚度纳入最大边长，导致配置为96参考像素的死亡特效在真实Battle中被错误缩小到约10px。现按Sprite二维XY边界计算缩放，并在生产致死链PlayMode测试中使用真实Battle相机断言最终屏幕像素尺寸；正常致死事件、位置快照、敌人回收和池化复用语义未改。T695 PlayMode 2/2、全量PlayMode 55/55通过，真实Battle相机截图中的特效约86.31px并清晰可见，最终Console Error/Warning为0。首次专项测试初始化在Unity Test Framework `PlayModeRunTask`内空引用且未执行产品测试，清理框架状态后相同测试通过；用户已有`Design/Config/~$GameConfig.xlsx`删除状态未纳入提交。
 - T696：更新项目执行合同，保留任务开始时Git基线、白名单、用户改动保护和原子提交，同时将常规收尾限定为一次文档补丁、一次批量路径审计、一次显式暂存和一次提交。验证结果在最后一次产品产物变更后冻结，纯文档/证据更新不再触发昂贵测试；专项文档按事实变化条件更新，默认以单个`closeout.md`合并证据，只有异常路径、删除、配置/Registry漂移、ProjectSettings变化、测试失败或验证后再改产物时升级深度审计。本任务仅修改执行合同和任务文档，未运行Unity测试；用户已有`Design/Config/~$GameConfig.xlsx`删除状态未纳入提交。
@@ -251,7 +252,7 @@
 5. 标准Web存在URP EASU不支持与PlayerPrefs手动同步弃用warning，见BUG-0001/BUG-0002；T610已在Editor Metal路径验证TMP中文，但尚未重新构建Web验证字体压缩/加载，G1仍未覆盖后台音频恢复或真机触摸。
 6. 长Web构建后Unity MCP实例桥接未自动恢复，见BUG-0003；Unity batch测试与Web运行未受影响。
 7. PSD主角和怪物大多为单张Sprite；T610两个静态TMP资产约2.78MB，实际Web压缩包、运行内存和真机触摸延迟仍需T730及平台门验证。
-8. T630已替换18个Sprite和40个Prefab视觉占位，但17个AudioClip仍使用T240静音占位；单帧角色尚无正式动画或逐对象身体碰撞，ImageGen补图与PSD原画的细节密度存在差异，全部美术仅获原型授权，不能外推为发布品质。
+8. T630已替换18个Sprite和40个Prefab视觉占位，但17个AudioClip仍使用T240静音占位；目前只有火鱼与主角具备正式动画，生产玩家/敌人身体碰撞由运行时按主Sprite边界装配，尚未逐对象进行美术轮廓调校；ImageGen补图与PSD原画的细节密度存在差异，全部美术仅获原型授权，不能外推为发布品质。
 9. 三个MVP关卡已接入生产主菜单和Battle组合根，用户已确认Unity Editor入口、Mac触控板笔迹与修复后视觉。`IProgressSaveStore`与震动仍待T130平台适配，T640多比例/安全区又依赖T120，因此当前证据不能外推为平台持久化、多设备布局或真机体验。
 ## 下一步
 
