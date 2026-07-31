@@ -20,10 +20,10 @@ Runtime不解析xlsx；生成目录只由工具写入。T210/T220实现独立.NE
 
 ## 当前受管快照
 
-- schema `6` / content `0.6.7-sample` / content hash `e0dabca95f0d20cc86bdcf3eb83e56db90bc2bebb513631f708a7d28a48b489d`。
-- 权威工作簿与模板镜像均为98,273字节、SHA-256 `620ca6aaa9af1012f2d2f4e059663b91a3b88fa9996e49f40bd046ef8183c29f`，字节完全一致。
-- 受管JSON为200,340字节、文件SHA-256 `22c758a5f89375336b7a9b3d7209bd96b0ddd7ac0c9fae8d43b1fe04541b40d5`，包含30个数据表、763条记录；`ConfigIds.g.cs`保持29组381个常量。
-- T699A只调整`Projectiles`五行的速度/寿命并升级content版本，没有字段、表数、记录数、Registry类型或ID计数变化；默认只读生成/漂移门与ConfigExporter 60项测试通过。
+- schema `6` / content `0.6.8-sample` / content hash `6ab856f9e53dc3726c684340df8851d88b0447833872a21a01b737ed49847fdb`。
+- 权威工作簿与模板镜像均为110,303字节、SHA-256 `7ccb004ea4bc5cfe3ff3d179c268d2085c65e9cfa65be71677581b430b529567`，字节完全一致。
+- 受管JSON为216,081字节、文件SHA-256 `b523b205d13ed750687474c40527e15199423779943a836ac71ae8506aab61c0`，包含30个数据表、763条记录；`ConfigIds.g.cs`保持29组381个常量。
+- T699B为30个数据Sheet补充第3行290个中文字段名，并把FieldDictionary全部280条description完善为具体中文语义；只因description属于导出内容而升级content版本，字段/记录/ID/Registry计数均未改变。默认只读生成/漂移门与ConfigExporter 62项测试通过。
 
 ## 已实现命令
 
@@ -100,7 +100,7 @@ dotnet run --project Tools/ConfigExporter -- \
 1. `generate`在完整生产校验通过后才构造三份字节；JSON继续执行`CFG012`结构/hash自检，hash和C#执行精确字节自检，三个输出路径必须互不相同。
 2. `verify`只读重建预期字节并逐文件比较，不更新时间戳或修正文件；缺失、任意字节漂移、C#标识符冲突或输出路径冲突均以`CFG013`失败。
 3. `ConfigIds.g.cs`只包含稳定ID/Key和schema/content/hash元数据，不包含HP、CD、伤害或Unity对象引用；Runtime内容仍由JSON加载。
-4. 一键脚本会在临时目录再次生成并执行`cmp`；漂移时输出受管文件与预期文件的unified diff，验证通过后运行.NET 60项及Unity分类测试。
+4. 一键脚本会在临时目录再次生成并执行`cmp`；漂移时输出受管文件与预期文件的unified diff，验证通过后运行.NET 62项及Unity分类测试。
 5. Unity T250测试断言hash旁车、生成元数据、JSON Runtime hash一致，C#实际编入`OneStrokeDemon.Config.dll`，29组381常量均为稳定ID，并用代表性常量完成类型化配置/Registry查询。
 
 T220坏配置清单位于 `Tools/ConfigExporter/Tests/Fixtures/invalid-config-cases.json`。测试只克隆并修改内存中的原始单元格，不生成或提交派生坏xlsx；每个用例都断言稳定错误码、Sheet、Excel数据行和字段。

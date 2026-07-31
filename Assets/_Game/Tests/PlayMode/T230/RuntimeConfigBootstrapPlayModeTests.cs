@@ -36,7 +36,7 @@ namespace OneStrokeDemon.Tests.PlayMode.T230
         {
             LogAssert.Expect(
                 LogType.Log,
-                new Regex("CONFIG_RUNTIME_READY.*schema=6.*content=0\\.6\\.7-sample.*tables=30.*records=763"));
+                new Regex("CONFIG_RUNTIME_READY.*schema=6.*content=0\\.6\\.8-sample.*tables=30.*records=763"));
 
             yield return SceneManager.LoadSceneAsync(SceneNames.Bootstrap, LoadSceneMode.Single);
             yield return WaitForScene(SceneNames.MainMenu);
@@ -44,7 +44,7 @@ namespace OneStrokeDemon.Tests.PlayMode.T230
             Assert.That(GameplayConfigRuntime.IsReady, Is.True);
             Assert.That(GameplayConfigRuntime.CurrentSummary.RecordCount, Is.EqualTo(763));
             Assert.That(GameplayConfigRuntime.Current.ContentHash, Is.EqualTo(
-                "e0dabca95f0d20cc86bdcf3eb83e56db90bc2bebb513631f708a7d28a48b489d"));
+                "6ab856f9e53dc3726c684340df8851d88b0447833872a21a01b737ed49847fdb"));
             Assert.That(GameplayConfigRuntime.Current.GetEnemy("boss_tomb_king").Tier, Is.EqualTo("Boss"));
         }
 

@@ -7,7 +7,7 @@
 - Unity精确版本：6000.5.1f1（已由ProjectVersion.txt与本机安装核验）
 - 微信SDK来源或版本：官方 `minigame-tuanjie-transform-sdk` v0.1.33 / commit `ed4ad28f433c6b52b5fd3f22a6fa155a0c98c228` / embedded最小补丁
 - Active Scene：Assets/_Game/Scenes/Bootstrap.unity
-- 配置版本：schema 6 / content 0.6.7-sample / hash `e0dabca95f0d20cc86bdcf3eb83e56db90bc2bebb513631f708a7d28a48b489d`
+- 配置版本：schema 6 / content 0.6.8-sample / hash `6ab856f9e53dc3726c684340df8851d88b0447833872a21a01b737ed49847fdb`
 
 ## 进行中
 
@@ -15,6 +15,7 @@
 
 ## 已完成
 
+- T699B：保留全部第4行英文API字段名，在30个数据Sheet第3行新增290个同列中文字段名；31个Sheet的第2行中文用途说明全部保留，README也新增第3/4行阅读约定。FieldDictionary覆盖的280个业务字段现统一使用“中文名称：具体语义”格式，补齐单位、时间口径、范围、枚举、外键、留空语义和运行时用途，原165条“X表的Y字段”占位文案降为0；FieldDictionary不递归描述自身，但其10个列名同样在第3行获得中文名称。配置字段形状、玩法数值、ID、枚举和外键均未改变，schema保持6、content升级为`0.6.8-sample`；双工作簿110,303字节且SHA-256均为`7ccb004e...9567`，受管配置30表/763条、hash `6ab856f9...47fdb`、29组381个ID常量。31个Sheet修改前后均完成渲染检查，公式错误扫描0，结构审计确认除说明区域和content版本外没有数据变化；新增文档覆盖测试2/2、ConfigExporter 62/62、最终全量EditMode 215/215、PlayMode 59/59通过。首次EditMode初始化为域刷新后的0项孤儿任务，清理后有效回归通过；首次PlayMode因Game视图失焦自动暂停导致4项失败，聚焦后受影响项4/4及全量59/59通过。未修改Schema、DTO、Scene、Prefab、Registry、ProjectSettings或Packages；用户已有`Design/Config/~$GameConfig.xlsx`删除状态未纳入提交。
 - T699A：生产Battle现在从真实攻击者位置租用T440投射物池实例，按`Projectiles.assetKey`取得Registry Sprite，并沿敌人到玩家的方向在参考像素空间移动；五类弹体速度调整为160–210参考像素/秒、寿命8–11秒，均可覆盖右半屏出生点到玩家的距离。敌方弹体仅在碰撞玩家身体后按`Projectiles.damage`扣血并沿用受击无敌帧；真实T350笔迹命中后复用T370规则完成切断或反弹，反弹弹体可沿既有死亡链伤害敌人，清场与回池会清除可见、碰撞、归属和时钟状态。配置保持schema 6并升级content `0.6.7-sample`；双工作簿98,273字节且SHA-256均为`620ca6aa...c29f`，受管配置30表/763条、hash `e0dabca...489d`、29组381个ID常量。ConfigExporter 60/60、T699A EditMode 5/5、PlayMode 2/2、最终全量EditMode 215/215、PlayMode 59/59通过；真实Bootstrap→MainMenu→教程Battle截图确认蓝白弹体在敌人与玩家之间可见，运行时查询记录`proj_ghost_fire`速度180。首次真实全量PlayMode的6项失败均为旧content/hash/位移冻结期望，同步快照后通过；Unity域刷新后两次Test Framework初始化在`PlayModeRunTask`空引用且0/59未执行，清理孤儿任务后完成有效测试。未修改场景、Prefab、Registry或ProjectSettings；用户已有`Design/Config/~$GameConfig.xlsx`删除状态未纳入提交。
 - T699：权威配置中的四个出生点原本已全部位于屏幕右半区，七种敌人路径也全部由右向左；真实根因是生产世界把攻击距离条件写死为真、攻击执行时直接扣玩家HP，并用关卡累计时间采样每个新敌人的移动。现为每个活动敌人建立独立出生移动时钟，普通敌人与Boss均消费配置路径和速度倍率；玩家/敌人身体`Collider2D`相交前不再扣血，相交后读取`Enemies.contactDamage`并沿用受击无敌帧，攻击投射物/效果事件保持独立。T699 EditMode 2/2、PlayMode 1/1、最终全量EditMode 210/210、PlayMode 57/57通过；真实Bootstrap→MainMenu→教程Battle Game视图确认两只火鱼从右半区向左推进且未接触时HUD保持100/100。一次PlayMode初始化在Unity Test Framework `PlayModeRunTask`空引用并卡于`ExitPlayModeTask`，清理孤儿任务后专项通过；首次全量PlayMode仅因Game视图失焦触发配置的自动暂停而使T660一项失败，聚焦Game视图后该项1/1及全量57/57通过。未修改配置、场景、Prefab、Registry或ProjectSettings；用户已有`Design/Config/~$GameConfig.xlsx`删除状态未纳入提交。
 - T698：新增权威`StrokeTrailStyles`表及`Stances.strokeTrailStyleId`外键，刀/符架势共同绑定`stroke_trail_lightning_c`；schema升级为6、content升级为`0.6.6-sample`。青色外辉光、浅青主体、白色核心和稀疏电弧的颜色、宽度倍率、间距、长度、抖动、分支宽度与段数全部来自配置；主轨迹继续复用T340同一处理点集，分叉由`strokeId + path + branchIndex`确定性生成，不参与命中或伤害。生产入口沿`VfxCues.vfx_slash -> AssetRegistry`实例化Unity作者工具生成的分层Prefab，固定12条分支渲染器随主轨迹统一淡出并完整池化复位；Registry保持77键/43 Prefab/16 Sprite/17 AudioClip/1 Scene。双工作簿98,287字节且SHA-256均为`2c737eab...37cc9`，受管配置30表/763条、hash `5c3b73b...70cb7`、29组381个ID常量；ConfigExporter 60/60、最终全量EditMode 208/208、PlayMode 56/56通过。真实Battle相机截图确认青白三层主轨迹与电弧分叉可见。Unity Test Framework在一次紧邻失败回归后的重跑中卡在`ExitPlayModeTask`且0/56未执行，确认内部队列为空并清理MCP孤儿任务后，干净重跑56/56通过；用户已有`.gitignore`、`AGENTS.md`、ProjectSettings与Recovery/动画资产改动未纳入提交。

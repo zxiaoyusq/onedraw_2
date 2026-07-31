@@ -10,9 +10,9 @@ namespace OneStrokeDemon.Config
         // 当前配置契约的schema版本。
         public const int SchemaVersion = 6;
         // 当前配置内容版本。
-        public const string ContentVersion = "0.6.7-sample";
+        public const string ContentVersion = "0.6.8-sample";
         // 规范化配置内容的SHA-256哈希。
-        public const string ContentHash = "e0dabca95f0d20cc86bdcf3eb83e56db90bc2bebb513631f708a7d28a48b489d";
+        public const string ContentHash = "6ab856f9e53dc3726c684340df8851d88b0447833872a21a01b737ed49847fdb";
         // 本文件包含的稳定ID分组数量。
         public const int IdSetCount = 29;
         // 本文件包含的稳定ID常量总数。
