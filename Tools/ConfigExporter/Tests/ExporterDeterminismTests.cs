@@ -10,7 +10,7 @@ namespace OneStrokeDemon.ConfigExporter.Tests;
 public sealed class ExporterDeterminismTests
 {
     private const string ExpectedContentHash =
-        "5c3b73b2160859f6703f8430e8d63141328d648c163cd81ece611f31c4d70cb7";
+        "e0dabca95f0d20cc86bdcf3eb83e56db90bc2bebb513631f708a7d28a48b489d";
 
     [Fact]
     public void SameInputExportsByteIdenticalJsonWithFrozenHash()

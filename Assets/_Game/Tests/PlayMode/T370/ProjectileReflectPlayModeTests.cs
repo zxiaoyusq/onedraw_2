@@ -140,7 +140,7 @@ namespace OneStrokeDemon.Tests.PlayMode.T370
             ProjectileReleaseSnapshot earlyRelease = projectile.Tick(0.5f);
             Assert.That(earlyRelease.IsValid, Is.False);
             Assert.That(projectile.ReferencePosition.x,
-                Is.EqualTo(reflectedAt.x + 130f).Within(0.001f));
+                Is.EqualTo(reflectedAt.x + 90f).Within(0.001f));
             Assert.That(projectile.ReferencePosition.y,
                 Is.EqualTo(reflectedAt.y).Within(0.001f));
 

@@ -293,6 +293,7 @@ namespace OneStrokeDemon.Bootstrap
             world.Bind(battle, skills);
             world.EnemySpawned += OnEnemySpawned;
             world.EnemyReleased += OnEnemyReleased;
+            world.EnemyDefeatedByProjectile += OnEnemyDefeatedByProjectile;
             world.AttackExecuted += OnAttackExecuted;
 
             StrokeRuleConfig sampling = config.GetStrokeRule(ConfigIds.StrokeRules.StrokeAny);
@@ -375,6 +376,12 @@ namespace OneStrokeDemon.Bootstrap
         public ResultReceipt Receipt => receipt;
 
         public int ActiveEnemyCount => world.ActiveCount;
+
+        public int ActiveProjectileCount => world.PendingProjectileCount;
+
+        // 获取 GetActiveProjectile 对应的入口装配逻辑，并维护会话所有权和跨场景边界。
+        public ProjectileController GetActiveProjectile(int index) =>
+            world.GetActiveProjectile(index);
 
         public BattleFlowState FlowState => battle.Flow.State;
 
@@ -539,6 +546,7 @@ namespace OneStrokeDemon.Bootstrap
             player.CombatEventPublished -= OnPlayerCombatEvent;
             world.EnemySpawned -= OnEnemySpawned;
             world.EnemyReleased -= OnEnemyReleased;
+            world.EnemyDefeatedByProjectile -= OnEnemyDefeatedByProjectile;
             world.AttackExecuted -= OnAttackExecuted;
             strokeCollector.StrokeStarted -= OnStrokeStarted;
             strokeCollector.StrokePointAdded -= OnStrokePointAdded;
@@ -619,12 +627,6 @@ namespace OneStrokeDemon.Bootstrap
                 TutorialEventType.ValidStroke,
                 1L,
                 ToTutorialGesture(gesture.GestureType));
-            // 检查入口状态、依赖或生命周期边界，避免重复装配和悬空引用。
-            if (world.TryCutProjectile())
-            {
-                reflectedProjectileCount += 1;
-                NotifyTutorial(TutorialEventType.ProjectileCut);
-            }
 
             Physics2D.SyncTransforms();
             StrokeHitRule hitRule = StrokeHitSettingsFactory.CreateRule(
@@ -647,6 +649,23 @@ namespace OneStrokeDemon.Bootstrap
             for (int index = 0; index < count; index++)
             {
                 HitRecord hit = hits[index];
+                // 投射物必须由真实笔迹路径命中；规则决定切断、反弹、架势不符或不可切断。
+                if (hit.Target is ProjectileHitTarget)
+                {
+                    if (world.TryResolveProjectileStroke(
+                            hit,
+                            player.Current.StanceId,
+                            out ProjectileStrokeResult projectileResult) &&
+                        (projectileResult.Outcome == ProjectileStrokeOutcome.Cut ||
+                         projectileResult.Outcome == ProjectileStrokeOutcome.Reflected))
+                    {
+                        reflectedProjectileCount += 1;
+                        NotifyTutorial(TutorialEventType.ProjectileCut);
+                    }
+
+                    continue;
+                }
+
                 // 检查入口状态、依赖或生命周期边界，避免重复装配和悬空引用。
                 if (!world.TryGetByHitTarget(
                         hit.TargetId,
@@ -846,6 +865,12 @@ namespace OneStrokeDemon.Bootstrap
         private void OnEnemyReleased(int hitTargetId)
         {
             feedbackRuntime.UnregisterTarget(hitTargetId);
+        }
+
+        // 响应反弹投射物造成的敌人死亡，并复用既有关卡记账、死亡反馈和实体回收链。
+        private void OnEnemyDefeatedByProjectile(long entityId)
+        {
+            NotifyEnemyDefeated(entityId);
         }
 
         // 响应 OnAttackExecuted 对应的入口装配逻辑，并维护会话所有权和跨场景边界。

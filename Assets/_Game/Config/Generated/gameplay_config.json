@@ -1,7 +1,7 @@
 {
   "schemaVersion": 6,
-  "contentVersion": "0.6.6-sample",
-  "contentHash": "5c3b73b2160859f6703f8430e8d63141328d648c163cd81ece611f31c4d70cb7",
+  "contentVersion": "0.6.7-sample",
+  "contentHash": "e0dabca95f0d20cc86bdcf3eb83e56db90bc2bebb513631f708a7d28a48b489d",
   "global": [
     {
       "key": "battle_countdown_sec",
@@ -38,7 +38,7 @@
       "valueType": "string",
       "intValue": null,
       "floatValue": null,
-      "stringValue": "0.6.6-sample",
+      "stringValue": "0.6.7-sample",
       "boolValue": null,
       "unit": "semver",
       "description": "内容版本"
@@ -864,8 +864,8 @@
     {
       "projectileId": "proj_ghost_fire",
       "movePatternId": "move_ground_left",
-      "speedRefPxSec": 260,
-      "lifeSec": 4,
+      "speedRefPxSec": 180,
+      "lifeSec": 10,
       "damage": 8,
       "cuttable": true,
       "reflectable": true,
@@ -877,8 +877,8 @@
     {
       "projectileId": "proj_rockfall",
       "movePatternId": "move_ground_left",
-      "speedRefPxSec": 360,
-      "lifeSec": 2.5,
+      "speedRefPxSec": 200,
+      "lifeSec": 8,
       "damage": 18,
       "cuttable": true,
       "reflectable": false,
@@ -890,8 +890,8 @@
     {
       "projectileId": "proj_seal_bolt",
       "movePatternId": "move_ground_left",
-      "speedRefPxSec": 280,
-      "lifeSec": 4,
+      "speedRefPxSec": 190,
+      "lifeSec": 10,
       "damage": 16,
       "cuttable": true,
       "reflectable": true,
@@ -903,8 +903,8 @@
     {
       "projectileId": "proj_seal_wave",
       "movePatternId": "move_ground_left",
-      "speedRefPxSec": 220,
-      "lifeSec": 4.5,
+      "speedRefPxSec": 160,
+      "lifeSec": 11,
       "damage": 22,
       "cuttable": true,
       "reflectable": false,
@@ -916,8 +916,8 @@
     {
       "projectileId": "proj_soul_shard",
       "movePatternId": "move_ground_left",
-      "speedRefPxSec": 320,
-      "lifeSec": 3.5,
+      "speedRefPxSec": 210,
+      "lifeSec": 9,
       "damage": 10,
       "cuttable": true,
       "reflectable": false,

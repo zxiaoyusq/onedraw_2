@@ -1,20 +1,21 @@
 # PROGRESS
 
-- 日期：2026-07-31
-- 当前成熟度：P6生产战斗接触与移动修复完成；进入P7质量发布
+- 日期：2026-08-01
+- 当前成熟度：P7质量与发布准备
 - 当前任务：T700
 - 状态：READY
 - Unity精确版本：6000.5.1f1（已由ProjectVersion.txt与本机安装核验）
 - 微信SDK来源或版本：官方 `minigame-tuanjie-transform-sdk` v0.1.33 / commit `ed4ad28f433c6b52b5fd3f22a6fa155a0c98c228` / embedded最小补丁
 - Active Scene：Assets/_Game/Scenes/Bootstrap.unity
-- 配置版本：schema 6 / content 0.6.6-sample / hash `5c3b73b2160859f6703f8430e8d63141328d648c163cd81ece611f31c4d70cb7`
+- 配置版本：schema 6 / content 0.6.7-sample / hash `e0dabca95f0d20cc86bdcf3eb83e56db90bc2bebb513631f708a7d28a48b489d`
 
 ## 进行中
 
-- 当前没有`IN_PROGRESS`任务；T699已完成，依赖均为DONE的首个后续任务T700恢复为`READY`。
+- 当前没有`IN_PROGRESS`任务；T700依赖已满足并进入`READY`，须在下一原子任务中独立开始。
 
 ## 已完成
 
+- T699A：生产Battle现在从真实攻击者位置租用T440投射物池实例，按`Projectiles.assetKey`取得Registry Sprite，并沿敌人到玩家的方向在参考像素空间移动；五类弹体速度调整为160–210参考像素/秒、寿命8–11秒，均可覆盖右半屏出生点到玩家的距离。敌方弹体仅在碰撞玩家身体后按`Projectiles.damage`扣血并沿用受击无敌帧；真实T350笔迹命中后复用T370规则完成切断或反弹，反弹弹体可沿既有死亡链伤害敌人，清场与回池会清除可见、碰撞、归属和时钟状态。配置保持schema 6并升级content `0.6.7-sample`；双工作簿98,273字节且SHA-256均为`620ca6aa...c29f`，受管配置30表/763条、hash `e0dabca...489d`、29组381个ID常量。ConfigExporter 60/60、T699A EditMode 5/5、PlayMode 2/2、最终全量EditMode 215/215、PlayMode 59/59通过；真实Bootstrap→MainMenu→教程Battle截图确认蓝白弹体在敌人与玩家之间可见，运行时查询记录`proj_ghost_fire`速度180。首次真实全量PlayMode的6项失败均为旧content/hash/位移冻结期望，同步快照后通过；Unity域刷新后两次Test Framework初始化在`PlayModeRunTask`空引用且0/59未执行，清理孤儿任务后完成有效测试。未修改场景、Prefab、Registry或ProjectSettings；用户已有`Design/Config/~$GameConfig.xlsx`删除状态未纳入提交。
 - T699：权威配置中的四个出生点原本已全部位于屏幕右半区，七种敌人路径也全部由右向左；真实根因是生产世界把攻击距离条件写死为真、攻击执行时直接扣玩家HP，并用关卡累计时间采样每个新敌人的移动。现为每个活动敌人建立独立出生移动时钟，普通敌人与Boss均消费配置路径和速度倍率；玩家/敌人身体`Collider2D`相交前不再扣血，相交后读取`Enemies.contactDamage`并沿用受击无敌帧，攻击投射物/效果事件保持独立。T699 EditMode 2/2、PlayMode 1/1、最终全量EditMode 210/210、PlayMode 57/57通过；真实Bootstrap→MainMenu→教程Battle Game视图确认两只火鱼从右半区向左推进且未接触时HUD保持100/100。一次PlayMode初始化在Unity Test Framework `PlayModeRunTask`空引用并卡于`ExitPlayModeTask`，清理孤儿任务后专项通过；首次全量PlayMode仅因Game视图失焦触发配置的自动暂停而使T660一项失败，聚焦Game视图后该项1/1及全量57/57通过。未修改配置、场景、Prefab、Registry或ProjectSettings；用户已有`Design/Config/~$GameConfig.xlsx`删除状态未纳入提交。
 - T698：新增权威`StrokeTrailStyles`表及`Stances.strokeTrailStyleId`外键，刀/符架势共同绑定`stroke_trail_lightning_c`；schema升级为6、content升级为`0.6.6-sample`。青色外辉光、浅青主体、白色核心和稀疏电弧的颜色、宽度倍率、间距、长度、抖动、分支宽度与段数全部来自配置；主轨迹继续复用T340同一处理点集，分叉由`strokeId + path + branchIndex`确定性生成，不参与命中或伤害。生产入口沿`VfxCues.vfx_slash -> AssetRegistry`实例化Unity作者工具生成的分层Prefab，固定12条分支渲染器随主轨迹统一淡出并完整池化复位；Registry保持77键/43 Prefab/16 Sprite/17 AudioClip/1 Scene。双工作簿98,287字节且SHA-256均为`2c737eab...37cc9`，受管配置30表/763条、hash `5c3b73b...70cb7`、29组381个ID常量；ConfigExporter 60/60、最终全量EditMode 208/208、PlayMode 56/56通过。真实Battle相机截图确认青白三层主轨迹与电弧分叉可见。Unity Test Framework在一次紧邻失败回归后的重跑中卡在`ExitPlayModeTask`且0/56未执行，确认内部队列为空并清理MCP孤儿任务后，干净重跑56/56通过；用户已有`.gitignore`、`AGENTS.md`、ProjectSettings与Recovery/动画资产改动未纳入提交。
 - T697：定位到生产`Reference Pixel World`只缩放XY、保持Z为1，而`VfxPoolItem`把`SpriteRenderer.bounds`的Z厚度纳入最大边长，导致配置为96参考像素的死亡特效在真实Battle中被错误缩小到约10px。现按Sprite二维XY边界计算缩放，并在生产致死链PlayMode测试中使用真实Battle相机断言最终屏幕像素尺寸；正常致死事件、位置快照、敌人回收和池化复用语义未改。T695 PlayMode 2/2、全量PlayMode 55/55通过，真实Battle相机截图中的特效约86.31px并清晰可见，最终Console Error/Warning为0。首次专项测试初始化在Unity Test Framework `PlayModeRunTask`内空引用且未执行产品测试，清理框架状态后相同测试通过；用户已有`Design/Config/~$GameConfig.xlsx`删除状态未纳入提交。
@@ -133,7 +134,7 @@
 - T370：`ProjectileRuleSetFactory`从现有`Projectiles`表完整映射移动策略ID、参考像素速度、寿命、伤害、切断/反弹开关、所需架势、命中半径和资源键；未修改xlsx、Schema、导出器或三生成物，也未在Prefab/Inspector/C#复制玩法数值。
 - T370：`ProjectileCutResolver`冻结架势门→反弹→切断→不可切断优先级；`reflectable=true`时优先反弹，只有`cuttable=true`时回收，两者都false时保持弹体。反弹把当前归属切为玩家并反转显式方向，同时保留原敌方实体与反弹次数；同阵营笔迹和碰撞均不会错误消费弹体。
 - T370：`ProjectileController`在参考像素空间按配置速度/寿命与外部delta做确定性Transform位移，不使用Rigidbody力；`ProjectileHitTarget`直接接入T350 `IHittable/HitRecord`。切断、敌方命中、寿命到期和显式释放均先保留快照，再清空规则、归属、参考空间、位置、方向、时间、命中ID、Collider和Transform并停用，同对象复用由新配置/来源完整覆盖。
-- T370：`ProjectileDamageSource`同时携带配置`projectileId/damage`、当前归属、原始归属与反弹次数。真实Mouse横划命中`proj_ghost_fire`后由敌方7001切换到玩家101，方向左→右，0.5秒按260参考像素/秒移动130像素，再命中原敌方并以配置8点伤害归因给玩家；复用为`proj_rockfall`时旧归属/反弹/时间/半径均未残留。
+- T370：`ProjectileDamageSource`同时携带配置`projectileId/damage`、当前归属、原始归属与反弹次数。真实Mouse横划命中`proj_ghost_fire`后由敌方7001切换到玩家101，方向左→右；当前T699A配置下0.5秒按180参考像素/秒移动90像素，再命中原敌方并以配置8点伤害归因给玩家；复用为`proj_rockfall`时旧归属/反弹/时间/半径均未残留。
 - T370：专项EditMode 8/8、专项PlayMode 2/2，最终全量EditMode 98/98、PlayMode 25/25；配置三生成物无漂移、.NET 55/55，最终脚本刷新编译Console Error/Warning为0。首次PlayMode只因Unity把禁用Collider的零半径钳制为0.0001而产生错误断言，修正为验证Collider禁用与新配置覆盖后稳定通过。
 - T370：未修改场景、Prefab、Input Actions、Packages、ProjectSettings或微信SDK；未实现T400玩家HP/当前能量/架势状态、T420敌人HP/状态机、T430攻击策略或T440通用对象池。
 - T360：新增`Stances.damageFormulaId -> DamageFormulas.formulaId`必填外键和`DamageFormulas.scorePerDamage`伤害评分系数；配置契约升级为schema 2/content 0.2.x。双工作簿SHA-256均为`c1c04c57...edb8f`，29表渲染与公式扫描通过；受管JSON为168,862字节、647条记录、hash `19dc788f...2f733`，FieldDictionary为250条。

@@ -18,6 +18,13 @@ Assets/_Game/Scripts/Config/Generated/
 
 Runtime不解析xlsx；生成目录只由工具写入。T210/T220实现独立.NET 8确定性导出和生产级内容校验；T230接入Runtime一次性加载；T240绑定Unity对象；T250从同一模型生成受管JSON、hash和ID常量，并建立一键漂移/Unity回归门。
 
+## 当前受管快照
+
+- schema `6` / content `0.6.7-sample` / content hash `e0dabca95f0d20cc86bdcf3eb83e56db90bc2bebb513631f708a7d28a48b489d`。
+- 权威工作簿与模板镜像均为98,273字节、SHA-256 `620ca6aaa9af1012f2d2f4e059663b91a3b88fa9996e49f40bd046ef8183c29f`，字节完全一致。
+- 受管JSON为200,340字节、文件SHA-256 `22c758a5f89375336b7a9b3d7209bd96b0ddd7ac0c9fae8d43b1fe04541b40d5`，包含30个数据表、763条记录；`ConfigIds.g.cs`保持29组381个常量。
+- T699A只调整`Projectiles`五行的速度/寿命并升级content版本，没有字段、表数、记录数、Registry类型或ID计数变化；默认只读生成/漂移门与ConfigExporter 60项测试通过。
+
 ## 已实现命令
 
 仓库根目录的默认完整门：

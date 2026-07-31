@@ -23,9 +23,9 @@ config:
   generated_hash: Assets/_Game/Config/Generated/gameplay_config.hash
   generated_ids: Assets/_Game/Scripts/Config/Generated/ConfigIds.g.cs
   schema_version: 6
-  content_version: 0.6.6-sample
-  content_hash: 5c3b73b2160859f6703f8430e8d63141328d648c163cd81ece611f31c4d70cb7
-  workbook_sha256: 2c737eab7d46025b4e45343b54e694332e2c627ad4552159b1b736a570537cc9
+  content_version: 0.6.7-sample
+  content_hash: e0dabca95f0d20cc86bdcf3eb83e56db90bc2bebb513631f708a7d28a48b489d
+  workbook_sha256: 620ca6aaa9af1012f2d2f4e059663b91a3b88fa9996e49f40bd046ef8183c29f
   mirror_status: byte_identical
   contract_audit: pass
   exporter:
@@ -36,8 +36,8 @@ config:
     test_count: 8
     exported_tables: 30
     exported_records: 763
-    output_bytes: 208104
-    output_sha256: 9e6ff384df594cca6ada98a9bafbf57329c45f757271b560f8c49f021dea3c86
+    output_bytes: 200340
+    output_sha256: 22c758a5f89375336b7a9b3d7209bd96b0ddd7ac0c9fae8d43b1fe04541b40d5
     runtime_snapshot_committed: true
   validator:
     path: Tools/ConfigExporter/Validation
@@ -423,7 +423,7 @@ projectile_interaction:
   reset_fields: [rules, ownership, reference_space, position, direction, elapsed_time, hit_target_id, collider, transform, active_state]
   editmode_tests: 8
   playmode_tests: 2
-  player_path: {projectile: proj_ghost_fire, original_enemy: 7001, reflector_player: 101, damage: 8, half_second_displacement_ref_px: 130}
+  player_path: {projectile: proj_ghost_fire, original_enemy: 7001, reflector_player: 101, damage: 8, half_second_displacement_ref_px: 90}
   full_editmode_tests: 162
   full_playmode_tests: 41
 player_combat:
@@ -801,6 +801,31 @@ production_enemy_contact:
   full_editmode_tests: 210
   full_playmode_tests: 57
   manual_game_view: bootstrap_to_tutorial_battle_right_spawn_approach_and_100_of_100_hp_before_contact
+production_projectiles:
+  status: pass
+  task: T699A
+  runtime: ProductionProjectileRuntime
+  spawn_origin: attacking_enemy_controller_position
+  initial_direction: enemy_to_current_player
+  movement_space: reference_pixels
+  sprite_source: Projectiles_assetKey_to_AssetRegistry
+  sorting_layer: Projectiles
+  damage_gate: configured_projectile_radius_intersects_player_body
+  damage_source: Projectiles.damage
+  player_invulnerability: PlayerCombatController
+  stroke_path: T350_HitRecord_to_T370_ProjectileHitTarget
+  reflected_enemy_damage: existing_enemy_damage_death_score_and_level_chain
+  hostile_clear_policy: enemy_current_owner_only
+  speed_ref_px_sec: {proj_ghost_fire: 180, proj_soul_shard: 210, proj_seal_bolt: 190, proj_rockfall: 200, proj_seal_wave: 160}
+  life_sec: {proj_ghost_fire: 10, proj_soul_shard: 9, proj_seal_bolt: 10, proj_rockfall: 8, proj_seal_wave: 11}
+  focused_editmode_tests: 5
+  focused_playmode_tests: 2
+  full_editmode_tests: 215
+  full_playmode_tests: 59
+  config_exporter_tests: 60
+  screenshot: artifacts/evals/T699A/production-projectile-visible.png
+  screenshot_sha256: 08f36eddfc54a7cfa560055fbeb9947840f7d61bef10034dab2d5ae1333898a0
+  manual_game_view: bootstrap_to_tutorial_battle_visible_blue_white_projectile_between_enemy_and_player
 code_commenting:
   status: complete
   requested_scope: Assets/_Game/Scripts_all_csharp
@@ -871,7 +896,7 @@ execution_order:
   deferred_tasks: [T120, T130]
   deferral_reason: user_prioritized_main_game_content_over_wechat_devtools_device_and_packaging_work
   next_content_task: T700
-  paused_content_task: none
+  paused_content_task: null
   reprioritization_reason: user_requested_full_chinese_comments_completed
   resume_platform_before: [T640, T750]
 workflow:

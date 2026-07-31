@@ -145,7 +145,10 @@ namespace OneStrokeDemon.Tests.PlayMode.T430
 
             public ISkillEffectTarget PrimaryTarget { get; private set; }
 
-            public void ExecuteAttack(in EnemyAttackAction action, double timestamp)
+            public void ExecuteAttack(
+                EnemyController source,
+                in EnemyAttackAction action,
+                double timestamp)
             {
                 ExecutionCount++;
                 LastAction = action;

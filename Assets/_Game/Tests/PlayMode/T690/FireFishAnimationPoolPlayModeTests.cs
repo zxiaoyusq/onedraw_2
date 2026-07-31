@@ -81,7 +81,10 @@ namespace OneStrokeDemon.Tests.PlayMode.T690
 
         private sealed class NoOpAttackWorld : IEnemyAttackWorld
         {
-            public void ExecuteAttack(in EnemyAttackAction action, double timestamp)
+            public void ExecuteAttack(
+                EnemyController source,
+                in EnemyAttackAction action,
+                double timestamp)
             {
             }
         }

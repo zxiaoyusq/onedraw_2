@@ -220,7 +220,10 @@ namespace OneStrokeDemon.Tests.PlayMode.T460
                 skills = configuredSkills;
             }
 
-            public void ExecuteAttack(in EnemyAttackAction action, double timestamp)
+            public void ExecuteAttack(
+                EnemyController source,
+                in EnemyAttackAction action,
+                double timestamp)
             {
                 Actions.Add(action);
                 skills.ExecuteEffectGroup(

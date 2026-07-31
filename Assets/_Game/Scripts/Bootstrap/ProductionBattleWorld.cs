@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using OneStrokeDemon.Actors;
+using OneStrokeDemon.Combat;
 using OneStrokeDemon.Config;
 using OneStrokeDemon.Core;
 using OneStrokeDemon.Levels;
@@ -18,8 +19,10 @@ namespace OneStrokeDemon.Bootstrap
         private readonly Collider2D playerBody;
         private readonly Transform root;
         private readonly EnemyArchetypePool pool;
+        private readonly ProductionProjectileRuntime projectiles;
         private readonly Dictionary<long, ActiveEnemy> active =
             new Dictionary<long, ActiveEnemy>();
+        private readonly List<long> projectileDefeatedIds = new List<long>();
         private readonly float referenceWidth;
         private readonly float referenceHeight;
         private readonly AudioSource audioSource;
@@ -27,7 +30,6 @@ namespace OneStrokeDemon.Bootstrap
         private BattleFlowCoordinator flow;
         private ISkillEffectTarget primaryTarget;
         private long nextEntityId = 1L;
-        private int pendingProjectileCount;
         private float nextStrokeDamageMultiplier = 1f;
         private bool disposed;
 
@@ -49,6 +51,12 @@ namespace OneStrokeDemon.Bootstrap
             referenceWidth = ReadReference(config, ConfigIds.GlobalKeys.ReferenceWidth);
             referenceHeight = ReadReference(config, ConfigIds.GlobalKeys.ReferenceHeight);
             pool = new EnemyArchetypePool(config, assets, root);
+            projectiles = new ProductionProjectileRuntime(
+                config,
+                assets,
+                player,
+                playerBody,
+                root);
             audioSource = root.gameObject.AddComponent<AudioSource>();
             audioSource.playOnAwake = false;
             audioSource.spatialBlend = 0f;
@@ -58,11 +66,17 @@ namespace OneStrokeDemon.Bootstrap
 
         public event Action<int> EnemyReleased;
 
+        public event Action<long> EnemyDefeatedByProjectile;
+
         public event Action<EnemyAttackAction> AttackExecuted;
 
         public int ActiveCount => active.Count;
 
-        public int PendingProjectileCount => pendingProjectileCount;
+        public int PendingProjectileCount => projectiles.ActiveCount;
+
+        // 获取 GetActiveProjectile 对应的入口装配逻辑，并维护会话所有权和跨场景边界。
+        public ProjectileController GetActiveProjectile(int index) =>
+            projectiles.GetActiveProjectile(index);
 
         public IReadOnlyList<ISkillEffectTarget> Targets
         {
@@ -226,6 +240,7 @@ namespace OneStrokeDemon.Bootstrap
                 return;
             }
 
+            AdvanceProjectiles(gameplayTimestamp);
             long[] ids = GetActiveIds();
             string supportTargetId = FindSupportTargetId(ids);
             double actorTimestamp = ActorTimestamp();
@@ -263,7 +278,7 @@ namespace OneStrokeDemon.Bootstrap
                     item.Pooled.Actor.TryBeginAttack(
                         new EnemyAttackTriggerContext(
                             cooldownReady: true,
-                            targetInDistance: touchingPlayer,
+                            targetInDistance: true,
                             hpThresholdReached: true,
                             supportTargetId),
                         UnitSelection(ids[index]),
@@ -306,7 +321,7 @@ namespace OneStrokeDemon.Bootstrap
             phases.TryBeginAttack(
                 new EnemyAttackTriggerContext(
                     cooldownReady: true,
-                    targetInDistance: touchingPlayer,
+                    targetInDistance: true,
                     hpThresholdReached: true,
                     FindSupportTargetId(ids)),
                 UnitSelection(ids.Length > 0 ? ids[0] : 1L),
@@ -315,17 +330,22 @@ namespace OneStrokeDemon.Bootstrap
         }
 
         // 处理 ExecuteAttack 对应的入口装配逻辑，并维护会话所有权和跨场景边界。
-        public void ExecuteAttack(in EnemyAttackAction action, double timestamp)
+        public void ExecuteAttack(
+            EnemyController source,
+            in EnemyAttackAction action,
+            double timestamp)
         {
             ThrowIfDisposed();
+            if (source == null)
+            {
+                throw new ArgumentNullException(nameof(source));
+            }
+
             double gameplayTimestamp = flow?.Flow.Time.Current.GameplayElapsedSeconds ?? 0d;
             // 检查入口状态、依赖或生命周期边界，避免重复装配和悬空引用。
             if (!string.IsNullOrEmpty(action.ProjectileId))
             {
-                checked
-                {
-                    pendingProjectileCount += 1;
-                }
+                projectiles.TrySpawn(action.ProjectileId, source, gameplayTimestamp);
             }
 
             // 检查入口状态、依赖或生命周期边界，避免重复装配和悬空引用。
@@ -348,17 +368,13 @@ namespace OneStrokeDemon.Bootstrap
             AttackExecuted?.Invoke(action);
         }
 
-        // 尝试执行 TryCutProjectile 对应的入口装配逻辑，并维护会话所有权和跨场景边界。
-        public bool TryCutProjectile()
+        // 尝试执行 TryResolveProjectileStroke 对应的入口装配逻辑，并维护会话所有权和跨场景边界。
+        public bool TryResolveProjectileStroke(
+            in HitRecord hit,
+            string stanceId,
+            out ProjectileStrokeResult result)
         {
-            // 检查入口状态、依赖或生命周期边界，避免重复装配和悬空引用。
-            if (pendingProjectileCount <= 0)
-            {
-                return false;
-            }
-
-            pendingProjectileCount -= 1;
-            return true;
+            return projectiles.TryResolveStroke(hit, stanceId, out result);
         }
 
         // 清理 ClearStrokeSelection 对应的入口装配逻辑，并维护会话所有权和跨场景边界。
@@ -464,9 +480,7 @@ namespace OneStrokeDemon.Bootstrap
         // 清理 ClearHostileProjectiles 对应的入口装配逻辑，并维护会话所有权和跨场景边界。
         public int ClearHostileProjectiles(string sourceId, double timestamp)
         {
-            int cleared = pendingProjectileCount;
-            pendingProjectileCount = 0;
-            return cleared;
+            return projectiles.ClearHostileProjectiles();
         }
 
         // 处理 PlayVfx 对应的入口装配逻辑，并维护会话所有权和跨场景边界。
@@ -529,9 +543,11 @@ namespace OneStrokeDemon.Bootstrap
                 Release(ids[index], PoolReleaseReason.Restart);
             }
 
+            projectiles.Dispose();
             pool.Dispose();
             EnemySpawned = null;
             EnemyReleased = null;
+            EnemyDefeatedByProjectile = null;
             AttackExecuted = null;
             disposed = true;
         }
@@ -664,6 +680,58 @@ namespace OneStrokeDemon.Bootstrap
             return item.BodyCollider.enabled &&
                    playerBody.enabled &&
                    item.BodyCollider.bounds.Intersects(playerBody.bounds);
+        }
+
+        // 推进真实投射物，并在安全边界外通知会话处理反弹致死与实体回收。
+        private void AdvanceProjectiles(double gameplayTimestamp)
+        {
+            projectileDefeatedIds.Clear();
+            projectiles.Advance(gameplayTimestamp, TryResolveReflectedProjectileImpact);
+            for (int index = 0; index < projectileDefeatedIds.Count; index++)
+            {
+                EnemyDefeatedByProjectile?.Invoke(projectileDefeatedIds[index]);
+            }
+        }
+
+        // 反弹后的玩家归属投射物碰到敌人身体时，沿用T370伤害来源和敌人伤害入口。
+        private bool TryResolveReflectedProjectileImpact(
+            ProjectileController projectile,
+            double gameplayTimestamp)
+        {
+            long[] ids = GetActiveIds();
+            for (int index = 0; index < ids.Length; index++)
+            {
+                ActiveEnemy item = active[ids[index]];
+                if (!item.Controller.IsAlive ||
+                    !item.BodyCollider.enabled ||
+                    !projectile.HitCollider.bounds.Intersects(item.BodyCollider.bounds))
+                {
+                    continue;
+                }
+
+                var targetOwner = new ProjectileOwner(
+                    ProjectileFaction.Enemy,
+                    item.Controller.Damage.HitTargetId);
+                if (!projectile.TryResolveImpact(targetOwner, out ProjectileImpactResult impact))
+                {
+                    continue;
+                }
+
+                double actorTimestamp = Math.Max(
+                    ActorTimestamp(),
+                    item.Controller.State.LastTimestamp);
+                EnemyDamageResult damage = item.Controller.ApplyProjectileDamage(
+                    impact.DamageSource,
+                    actorTimestamp);
+                if (damage.DeathTriggered)
+                {
+                    projectileDefeatedIds.Add(ids[index]);
+                }
+
+                return true;
+            }
+
+            return false;
         }
 
         // Boss关卡任一时刻只允许一个活动Boss；这里按稳定实体顺序解析它。
