@@ -2,7 +2,7 @@
 
 ## 1. 版本与唯一真相源
 
-- 当前冻结版本：`schemaVersion = 6`、`contentVersion = 0.6.8-sample`。
+- 当前冻结版本：`schemaVersion = 6`、`contentVersion = 0.6.9-sample`。
 - 正式内容唯一源：`Design/Config/GameConfig.xlsx`。
 - `config/一笔镇妖_游戏配置表模板.xlsx` 只是随正式源同步的示例镜像，不接受独立内容修改。
 - `Assets/_Game/Config/Generated/gameplay_config.json`和`gameplay_config.hash`由T250导出器生成，是可审查、可构建的只读Runtime快照与hash旁车。
@@ -334,3 +334,11 @@ T698新增的`Stances.strokeTrailStyleId -> StrokeTrailStyles.styleId`也是必�
 - 第3行中文字段名与第4行非空英文表头必须逐列一一对应。中文名称只用于工作簿阅读，不参与导出、Schema、DTO、排序、外键或运行时查询；修改中文名称不得被误认为英文API改名。导出器仍只读取第4行表头与第5行起数据。
 - FieldDictionary继续只描述其余29个数据Sheet的280个业务字段，不递归增加自身记录；FieldDictionary自己的10列通过第3行中文名称解释。每条`description`必须使用“中文字段名：具体语义”格式，前缀与目标Sheet第3行名称一致，并说明用途、单位、范围/空值、枚举或外键语义中的适用内容；禁止“X表的Y字段”式占位文案。
 - 第3行中文名称是非导出元数据，不改变content hash；FieldDictionary.description属于导出内容，修改后必须升级content版本并通过同源生成、漂移门和Runtime快照测试。当前覆盖为31个Sheet中文用途说明、290个可见中文字段名和280条具体业务字段说明。
+
+## 36. T699C字段与枚举的业务说明质量合同
+
+- T699C不改变JSON字段形状、枚举成员、外键或schema，content升级为`0.6.9-sample`。说明质量以“读者能否据此理解配置控制什么、何时生效以及取值会产生什么结果”为准，不设置最少字数；简短但完整的说明合法，冗长但只复述字段名的说明不合法。
+- FieldDictionary全部280条`description`必须自包含地说明业务对象与运行时用途，并按字段性质补充触发/结束条件、单位与时间口径、边界/留空语义、外键目标或枚举效果。不得使用“X表的Y字段”“用于配置X”或单纯改写中文字段名等占位表达。
+- Enums全部98条`description`必须解释该枚举值被选择后的具体行为。引用枚举的25个字段还必须在字段说明中逐一列出当前允许值及其业务效果，使策划无需跳转到另一Sheet才能判断如何配置。
+- 说明必须区分“配置数据表达的意图”和“当前运行时实际消费能力”。目前`SpawnPoints.lane`和`facing`只做校验/透传，不会自动改变移动、碰撞或Sprite朝向；`Enemies.stanceVulnerability`尚未进入伤害链；`Projectiles.movePatternId`已保留但生产投射物仍按显式方向直线移动；`BuffType.DamageOverTime`尚无周期扣血执行器；架势中的幽灵/切断倍率已暴露但尚未被伤害链消费。这些边界必须在相关字段或枚举说明中明确，不得把预期设计写成已实现事实。
+- FieldDictionary与Enums说明属于导出内容；任何修改都必须升级content版本、同源更新模板镜像/JSON/hash/ConfigIds/样例快照，并通过说明覆盖测试、确定性漂移门和Runtime版本/hash回归。当前覆盖为280个字段、98个枚举值和25个枚举引用字段，模糊占位说明为0。

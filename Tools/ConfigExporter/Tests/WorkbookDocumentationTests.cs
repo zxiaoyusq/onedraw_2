@@ -13,6 +13,9 @@ public sealed class WorkbookDocumentationTests
     private static readonly Regex PlaceholderDescription = new(
         "^[A-Za-z0-9_]+ 表的 [A-Za-z0-9_]+ 字段[。]?$",
         RegexOptions.CultureInvariant);
+    private static readonly Regex VagueDescription = new(
+        "代码与配置共享|稳定枚举值|取值必须来自[A-Za-z0-9_]+枚举[。]?$|取值来自[A-Za-z0-9_]+枚举[。]?$",
+        RegexOptions.CultureInvariant);
 
     /// <summary>
     /// 验证每个Sheet都有中文用途说明，且每个第4行英文API字段在第3行拥有同列中文名称。
@@ -110,6 +113,9 @@ public sealed class WorkbookDocumentationTests
             Assert.False(
                 PlaceholderDescription.IsMatch(description),
                 $"{sheetName}.{field} still uses a placeholder description: {description}");
+            Assert.False(
+                VagueDescription.IsMatch(description),
+                $"{sheetName}.{field} still uses a vague description: {description}");
 
             WorksheetPart targetPart = GetWorksheetPart(workbookPart, sheets[sheetName]);
             IReadOnlyDictionary<int, string> headers = ReadRow(targetPart, sharedStrings, rowIndex: 4);
@@ -117,13 +123,100 @@ public sealed class WorkbookDocumentationTests
             IReadOnlyDictionary<int, string> labels = ReadRow(targetPart, sharedStrings, rowIndex: 3);
             string label = labels[column];
             Assert.StartsWith($"{label}：", description, StringComparison.Ordinal);
-            Assert.True(
-                description.Length >= label.Length + 10,
-                $"{sheetName}.{field} description must explain more than its Chinese label.");
             documentedFieldCount++;
         }
 
         Assert.Equal(280, documentedFieldCount);
+    }
+
+    /// <summary>
+    /// 验证枚举字段逐值说明业务效果，并锁定当前已知“仅传递未消费”等实现边界，避免文档把预期写成已实现。
+    /// </summary>
+    [Fact]
+    public void EnumFieldsAndValuesExplainBusinessBehaviorAndRuntimeLimits()
+    {
+        var repository = TestRepository.Find();
+        using var document = SpreadsheetDocument.Open(repository.WorkbookPath, isEditable: false);
+        WorkbookPart workbookPart = document.WorkbookPart
+            ?? throw new InvalidDataException("Workbook part is missing.");
+        Workbook workbook = workbookPart.Workbook
+            ?? throw new InvalidDataException("Workbook metadata is missing.");
+        IReadOnlyList<string> sharedStrings = ReadSharedStrings(workbookPart);
+        Dictionary<string, Sheet> sheets = (workbook.Sheets?.Elements<Sheet>()
+                ?? Enumerable.Empty<Sheet>())
+            .ToDictionary(
+                sheet => sheet.Name?.Value
+                    ?? throw new InvalidDataException("Sheet name is missing."),
+                StringComparer.Ordinal);
+
+        WorksheetPart enumsPart = GetWorksheetPart(workbookPart, sheets["Enums"]);
+        SheetData enumsData = enumsPart.Worksheet?.GetFirstChild<SheetData>()
+            ?? throw new InvalidDataException("Enums sheet data is missing.");
+        var valuesByGroup = new Dictionary<string, List<string>>(StringComparer.Ordinal);
+        int documentedEnumCount = 0;
+        foreach (Row row in enumsData.Elements<Row>().Where(item => item.RowIndex?.Value >= 5))
+        {
+            IReadOnlyDictionary<int, string> values = ReadRow(row, sharedStrings);
+            if (!values.TryGetValue(0, out string? group) || string.IsNullOrWhiteSpace(group))
+            {
+                continue;
+            }
+
+            string value = values[1];
+            string description = values[3];
+            Assert.True(ChineseText.IsMatch(description), $"{group}.{value} must contain Chinese business meaning.");
+            Assert.False(VagueDescription.IsMatch(description), $"{group}.{value} is still vague: {description}");
+            Assert.NotEqual(value, description);
+            if (!valuesByGroup.TryGetValue(group, out List<string>? groupValues))
+            {
+                groupValues = new List<string>();
+                valuesByGroup.Add(group, groupValues);
+            }
+
+            groupValues.Add(value);
+            documentedEnumCount++;
+        }
+
+        Assert.Equal(98, documentedEnumCount);
+
+        WorksheetPart dictionaryPart = GetWorksheetPart(workbookPart, sheets["FieldDictionary"]);
+        SheetData dictionaryData = dictionaryPart.Worksheet?.GetFirstChild<SheetData>()
+            ?? throw new InvalidDataException("FieldDictionary sheet data is missing.");
+        var descriptions = new Dictionary<string, string>(StringComparer.Ordinal);
+        int enumFieldCount = 0;
+        foreach (Row row in dictionaryData.Elements<Row>().Where(item => item.RowIndex?.Value >= 5))
+        {
+            IReadOnlyDictionary<int, string> values = ReadRow(row, sharedStrings);
+            if (!values.TryGetValue(0, out string? sheetName) || string.IsNullOrWhiteSpace(sheetName))
+            {
+                continue;
+            }
+
+            string field = values[1];
+            string description = values[9];
+            descriptions.Add($"{sheetName}.{field}", description);
+            if (!values.TryGetValue(7, out string? enumGroup) || string.IsNullOrWhiteSpace(enumGroup))
+            {
+                continue;
+            }
+
+            Assert.True(valuesByGroup.TryGetValue(enumGroup, out List<string>? enumValues),
+                $"{sheetName}.{field} references missing enum group {enumGroup}.");
+            foreach (string enumValue in enumValues!)
+            {
+                Assert.Contains($"{enumValue}=", description, StringComparison.Ordinal);
+            }
+
+            enumFieldCount++;
+        }
+
+        Assert.Equal(25, enumFieldCount);
+        Assert.Contains("以哪个业务事件作为startDelaySec的计时基准", descriptions["Waves.startTrigger"]);
+        Assert.Contains("不是本波总生成数", descriptions["Waves.maxAlive"]);
+        Assert.Contains("单独修改不会自动改变飞行、碰撞层或移动", descriptions["SpawnPoints.lane"]);
+        Assert.Contains("DamageOverTime尚无周期扣血执行器", descriptions["Buffs.type"]);
+        Assert.Contains("单独修改不会改变伤害", descriptions["Enemies.stanceVulnerability"]);
+        Assert.Contains("尚未按该模式采样曲线路径", descriptions["Projectiles.movePatternId"]);
     }
 
     // 读取共享字符串表，兼容artifact-tool导出的标准OpenXML字符串单元格。

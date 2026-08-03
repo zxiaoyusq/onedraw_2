@@ -23,9 +23,9 @@ config:
   generated_hash: Assets/_Game/Config/Generated/gameplay_config.hash
   generated_ids: Assets/_Game/Scripts/Config/Generated/ConfigIds.g.cs
   schema_version: 6
-  content_version: 0.6.8-sample
-  content_hash: 6ab856f9e53dc3726c684340df8851d88b0447833872a21a01b737ed49847fdb
-  workbook_sha256: 7ccb004ea4bc5cfe3ff3d179c268d2085c65e9cfa65be71677581b430b529567
+  content_version: 0.6.9-sample
+  content_hash: bf4fd0714fed80e4637ef2fb6c7161b1ce23e09fa522bd0df51011d01391602e
+  workbook_sha256: fbdfed5112bd82a6554060be4be41815c0d2268623f64afd238cd4e1fe7a2319
   mirror_status: byte_identical
   contract_audit: pass
   exporter:
@@ -36,13 +36,13 @@ config:
     test_count: 8
     exported_tables: 30
     exported_records: 763
-    output_bytes: 216081
-    output_sha256: b523b205d13ed750687474c40527e15199423779943a836ac71ae8506aab61c0
+    output_bytes: 259436
+    output_sha256: 5ebb6b8d5015893082574e2781778b550b97006f2090b60b47917ab75f1c0a64
     runtime_snapshot_committed: true
   validator:
     path: Tools/ConfigExporter/Validation
     status: pass
-    test_count: 62
+    test_count: 63
     invalid_case_count: 43
     diagnostic_location: Sheet/ExcelRow/Field
     schema_mirror_check: pass
@@ -79,23 +79,26 @@ config:
     default_read_only: true
     update_flag: --update
     drift_diagnostic: CFG013
-    generated_json_bytes: 216081
-    generated_json_sha256: b523b205d13ed750687474c40527e15199423779943a836ac71ae8506aab61c0
+    generated_json_bytes: 259436
+    generated_json_sha256: 5ebb6b8d5015893082574e2781778b550b97006f2090b60b47917ab75f1c0a64
     generated_hash_bytes: 65
-    generated_hash_sha256: 6bc5618c7d506b1980fa5c9aedaab4096819bbd7c18de3bb508f94d3c98f84a1
+    generated_hash_sha256: acba0e442922dddea978cbd7a94fc3e8a9f4f8f59fbbbb26ace38e2ca6db8fd4
     generated_ids_bytes: 48420
-    generated_ids_sha256: e04d3945c3fb84399f8605ead6c2abcd01a6f38e17e445da25e933b5ced3548b
+    generated_ids_sha256: fa70357eff93c876555e947a236a68c7ff3486e18862ae70fa7ab06183fdadc2
     id_sets: 29
     id_constants: 381
-    dotnet_tests: 62
+    dotnet_tests: 63
   documentation:
     status: pass
-    task: T699B
+    task: T699C
     sheet_count: 31
     sheet_purpose_chinese_count: 31
     visible_chinese_field_labels: 290
     documented_business_fields: 280
+    documented_enum_values: 98
+    enum_reference_fields: 25
     placeholder_descriptions: 0
+    minimum_description_length: none
     label_row: 3
     api_header_row: 4
     data_start_row: 5
@@ -103,15 +106,11 @@ config:
     formula_errors: 0
     rendered_sheets_before: 31
     rendered_sheets_after: 31
-    focused_dotnet_tests: 2
-    full_dotnet_tests: 62
-    full_editmode_tests: 215
-    full_playmode_tests: 59
+    focused_dotnet_tests: 3
+    full_dotnet_tests: 63
     config_editmode_tests: 19
     config_playmode_tests: 3
-    full_editmode_tests: 210
-    full_playmode_tests: 57
-    full_command_smoke: pass_via_readonly_drift_gate_plus_isolated_unity_batch_project
+    full_command_smoke: pass_via_readonly_drift_gate_plus_unity_batchmode
 result_progress:
   status: pass
   scoring:

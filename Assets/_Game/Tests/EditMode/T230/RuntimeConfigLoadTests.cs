@@ -58,8 +58,8 @@ namespace OneStrokeDemon.Tests.EditMode.T230
 
             Assert.That(service.State, Is.EqualTo(GameplayConfigServiceState.Ready));
             Assert.That(summary.SchemaVersion, Is.EqualTo(6));
-            Assert.That(summary.ContentVersion, Is.EqualTo("0.6.8-sample"));
-            Assert.That(summary.ContentHash, Is.EqualTo("6ab856f9e53dc3726c684340df8851d88b0447833872a21a01b737ed49847fdb"));
+            Assert.That(summary.ContentVersion, Is.EqualTo("0.6.9-sample"));
+            Assert.That(summary.ContentHash, Is.EqualTo("bf4fd0714fed80e4637ef2fb6c7161b1ce23e09fa522bd0df51011d01391602e"));
             Assert.That(summary.TableCount, Is.EqualTo(30));
             Assert.That(summary.RecordCount, Is.EqualTo(763));
             Assert.That(summary.PrimaryIndexCount, Is.GreaterThan(0));

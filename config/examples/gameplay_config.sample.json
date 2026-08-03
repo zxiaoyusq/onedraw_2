@@ -1,7 +1,7 @@
 {
   "schemaVersion": 6,
-  "contentVersion": "0.6.8-sample",
-  "contentHash": "6ab856f9e53dc3726c684340df8851d88b0447833872a21a01b737ed49847fdb",
+  "contentVersion": "0.6.9-sample",
+  "contentHash": "bf4fd0714fed80e4637ef2fb6c7161b1ce23e09fa522bd0df51011d01391602e",
   "global": [
     {
       "key": "battle_countdown_sec",
@@ -38,7 +38,7 @@
       "valueType": "string",
       "intValue": null,
       "floatValue": null,
-      "stringValue": "0.6.8-sample",
+      "stringValue": "0.6.9-sample",
       "boolValue": null,
       "unit": "semver",
       "description": "内容版本"
@@ -3685,259 +3685,259 @@
       "enumType": "AssetType",
       "value": "AnimationClip",
       "displayName": "AnimationClip",
-      "description": "代码与配置共享的稳定枚举值"
+      "description": "要求AssetRegistry中的对应对象为AnimationClip，供动画状态或表现流程使用。"
     },
     {
       "enumType": "AssetType",
       "value": "AudioClip",
       "displayName": "AudioClip",
-      "description": "代码与配置共享的稳定枚举值"
+      "description": "要求AssetRegistry中的对应对象为AudioClip，供AudioCues播放。"
     },
     {
       "enumType": "AssetType",
       "value": "Font",
       "displayName": "Font",
-      "description": "代码与配置共享的稳定枚举值"
+      "description": "要求AssetRegistry中的对应对象为字体资源，供本地化UI使用。"
     },
     {
       "enumType": "AssetType",
       "value": "Material",
       "displayName": "Material",
-      "description": "代码与配置共享的稳定枚举值"
+      "description": "要求AssetRegistry中的对应对象为Material，供渲染资源引用。"
     },
     {
       "enumType": "AssetType",
       "value": "Prefab",
       "displayName": "Prefab",
-      "description": "代码与配置共享的稳定枚举值"
+      "description": "要求AssetRegistry中的对应对象为Prefab，用于实例化角色、特效或其他GameObject。"
     },
     {
       "enumType": "AssetType",
       "value": "Scene",
       "displayName": "Scene",
-      "description": "代码与配置共享的稳定枚举值"
+      "description": "要求AssetRegistry中的对应对象为SceneAsset，并在构建场景清单中可用。"
     },
     {
       "enumType": "AssetType",
       "value": "Sprite",
       "displayName": "Sprite",
-      "description": "代码与配置共享的稳定枚举值"
+      "description": "要求AssetRegistry中的对应对象为Sprite，用于静态图片、图标或精灵表现。"
     },
     {
       "enumType": "AttackTriggerType",
       "value": "Cooldown",
       "displayName": "Cooldown",
-      "description": "代码与配置共享的稳定枚举值"
+      "description": "攻击冷却就绪时可参与选择；无距离、支援目标或生命阈值附加门槛。"
     },
     {
       "enumType": "AttackTriggerType",
       "value": "Distance",
       "displayName": "Distance",
-      "description": "代码与配置共享的稳定枚举值"
+      "description": "目标进入攻击距离后可参与选择；无投射物时会生成冲撞类动作。"
     },
     {
       "enumType": "AttackTriggerType",
       "value": "HpThreshold",
       "displayName": "HpThreshold",
-      "description": "代码与配置共享的稳定枚举值"
+      "description": "攻击者生命比例达到外部阶段阈值时可参与选择；无投射物时会生成冲撞类动作。"
     },
     {
       "enumType": "AttackTriggerType",
       "value": "Support",
       "displayName": "Support",
-      "description": "代码与配置共享的稳定枚举值"
+      "description": "存在合法友方支援目标时可参与选择；该类攻击不能配置直接伤害或投射物。"
     },
     {
       "enumType": "AudioCategory",
       "value": "BGM",
       "displayName": "BGM",
-      "description": "代码与配置共享的稳定枚举值"
+      "description": "背景音乐通道；用于关卡或波次持续音乐，可由音乐切换逻辑替换。"
     },
     {
       "enumType": "AudioCategory",
       "value": "SFX",
       "displayName": "SFX",
-      "description": "代码与配置共享的稳定枚举值"
+      "description": "战斗与环境音效通道；受同事件并发数和冷却限制。"
     },
     {
       "enumType": "AudioCategory",
       "value": "UI",
       "displayName": "UI",
-      "description": "代码与配置共享的稳定枚举值"
+      "description": "界面交互音效通道；用于按钮、提示和结算等UI反馈。"
     },
     {
       "enumType": "BuffRefreshPolicy",
       "value": "AddStack",
       "displayName": "AddStack",
-      "description": "代码与配置共享的稳定枚举值"
+      "description": "重复施加同一Buff时增加1层但不超过maxStacks，同时重新计算到期时间。"
     },
     {
       "enumType": "BuffRefreshPolicy",
       "value": "Refresh",
       "displayName": "Refresh",
-      "description": "代码与配置共享的稳定枚举值"
+      "description": "重复施加同一Buff时保留当前层数，并从本次施加时刻重新计算到期时间。"
     },
     {
       "enumType": "BuffRefreshPolicy",
       "value": "Replace",
       "displayName": "Replace",
-      "description": "代码与配置共享的稳定枚举值"
+      "description": "重复施加同一Buff时替换旧实例、层数重置为1，并重新计算到期时间。"
     },
     {
       "enumType": "BuffType",
       "value": "DamageOverTime",
       "displayName": "DamageOverTime",
-      "description": "代码与配置共享的稳定枚举值"
+      "description": "周期伤害分类；当前运行时尚无按tickSec扣血的执行器，单独配置不会产生周期伤害。"
     },
     {
       "enumType": "BuffType",
       "value": "DamageReduction",
       "displayName": "DamageReduction",
-      "description": "降低受到的伤害；magnitude 为减伤比例，叠层后按 1-magnitude×stacks 计算并钳制到非负。"
+      "description": "按1-magnitude×层数降低目标受到的伤害倍率，结果钳制为不小于0。"
     },
     {
       "enumType": "BuffType",
       "value": "DamageTaken",
       "displayName": "DamageTaken",
-      "description": "代码与配置共享的稳定枚举值"
+      "description": "按1+magnitude×层数提高目标受到的伤害倍率，可与其他伤害倍率相乘。"
     },
     {
       "enumType": "BuffType",
       "value": "Root",
       "displayName": "Root",
-      "description": "代码与配置共享的稳定枚举值"
+      "description": "定身分类；有效期间敌人保持IsRooted，生产移动适配器据此停止位置推进。"
     },
     {
       "enumType": "BuffType",
       "value": "Slow",
       "displayName": "Slow",
-      "description": "代码与配置共享的稳定枚举值"
+      "description": "按1-magnitude×层数降低敌人移动倍率，最终倍率不会低于0。"
     },
     {
       "enumType": "BuffType",
       "value": "Stun",
       "displayName": "Stun",
-      "description": "代码与配置共享的稳定枚举值"
+      "description": "使敌人进入限时眩晕状态并中断正常状态推进，到持续时间后恢复。"
     },
     {
       "enumType": "EffectType",
       "value": "ApplyBuff",
       "displayName": "ApplyBuff",
-      "description": "代码与配置共享的稳定枚举值"
+      "description": "向选中目标施加buffId；durationSec大于0时覆盖Buffs.durationSec。"
     },
     {
       "enumType": "EffectType",
       "value": "ClearProjectiles",
       "displayName": "ClearProjectiles",
-      "description": "代码与配置共享的稳定枚举值"
+      "description": "清除当前世界中的敌方投射物，不影响已反弹为玩家阵营的投射物。"
     },
     {
       "enumType": "EffectType",
       "value": "Damage",
       "displayName": "Damage",
-      "description": "代码与配置共享的稳定枚举值"
+      "description": "对选中目标造成value1点直接伤害。"
     },
     {
       "enumType": "EffectType",
       "value": "DamageMultiplier",
       "displayName": "DamageMultiplier",
-      "description": "代码与配置共享的稳定枚举值"
+      "description": "把下一笔画的伤害倍率设为value1，value1必须大于0。"
     },
     {
       "enumType": "EffectType",
       "value": "ExecuteBelowHpRatio",
       "displayName": "ExecuteBelowHpRatio",
-      "description": "代码与配置共享的稳定枚举值"
+      "description": "当目标当前生命比例不高于value1时执行处决；value1范围为0到1。"
     },
     {
       "enumType": "EffectType",
       "value": "Heal",
       "displayName": "Heal",
-      "description": "代码与配置共享的稳定枚举值"
+      "description": "为选中目标恢复value1点生命；目标接口负责上限和不可复活规则。"
     },
     {
       "enumType": "EffectType",
       "value": "IncrementCounter",
       "displayName": "IncrementCounter",
-      "description": "代码与配置共享的稳定枚举值"
+      "description": "给目标计数器增加value1，并以value2作为上限或触发阈值。"
     },
     {
       "enumType": "EffectType",
       "value": "Knockback",
       "displayName": "Knockback",
-      "description": "代码与配置共享的稳定枚举值"
+      "description": "使选中目标在durationSec内产生value1参考像素的击退意图。"
     },
     {
       "enumType": "EffectType",
       "value": "PlayVfx",
       "displayName": "PlayVfx",
-      "description": "代码与配置共享的稳定枚举值"
+      "description": "不改变战斗数值，只按vfxKey在所选目标或世界范围播放特效。"
     },
     {
       "enumType": "EffectType",
       "value": "RemoveArmor",
       "displayName": "RemoveArmor",
-      "description": "代码与配置共享的稳定枚举值"
+      "description": "移除选中目标value1点护甲，不直接扣除生命。"
     },
     {
       "enumType": "EffectType",
       "value": "RepeatStroke",
       "displayName": "RepeatStroke",
-      "description": "代码与配置共享的稳定枚举值"
+      "description": "以value1伤害倍率在value2秒后重复上一笔命中结果。"
     },
     {
       "enumType": "EffectType",
       "value": "TimeScale",
       "displayName": "TimeScale",
-      "description": "代码与配置共享的稳定枚举值"
+      "description": "把战斗时间倍率设为value1并保持durationSec；value1范围为(0,1]。"
     },
     {
       "enumType": "EnemyTier",
       "value": "Boss",
       "displayName": "Boss",
-      "description": "代码与配置共享的稳定枚举值"
+      "description": "Boss层级；启用Boss身份校验、阶段配置和Boss专用目标/波次结束判断。"
     },
     {
       "enumType": "EnemyTier",
       "value": "Elite",
       "displayName": "Elite",
-      "description": "代码与配置共享的稳定枚举值"
+      "description": "精英敌人层级；仍属于非Boss目标并可被NormalEnemies筛选，但用于区分更高强度内容。"
     },
     {
       "enumType": "EnemyTier",
       "value": "Normal",
       "displayName": "Normal",
-      "description": "代码与配置共享的稳定枚举值"
+      "description": "普通敌人层级；可被NormalEnemies目标筛选命中，不启用Boss阶段控制。"
     },
     {
       "enumType": "Facing",
       "value": "Left",
       "displayName": "Left",
-      "description": "代码与配置共享的稳定枚举值"
+      "description": "声明实体出生时朝左；当前运行时会传递该值，但生产角色表现尚未据此自动翻转。"
     },
     {
       "enumType": "Facing",
       "value": "Right",
       "displayName": "Right",
-      "description": "代码与配置共享的稳定枚举值"
+      "description": "声明实体出生时朝右；当前运行时会传递该值，但生产角色表现尚未据此自动翻转。"
     },
     {
       "enumType": "FeedbackVibrationPattern",
       "value": "Heavy",
       "displayName": "重震",
-      "description": "强烈事件反馈。"
+      "description": "请求强震动，适合重击、Boss或重大结算反馈。"
     },
     {
       "enumType": "FeedbackVibrationPattern",
       "value": "Light",
       "displayName": "轻震",
-      "description": "轻量命中反馈。"
+      "description": "请求轻量短震，适合普通命中等低强度反馈。"
     },
     {
       "enumType": "FeedbackVibrationPattern",
       "value": "Medium",
       "displayName": "中震",
-      "description": "中等强度反馈。"
+      "description": "请求中等震动，适合受击或较强技能反馈。"
     },
     {
       "enumType": "FeedbackVibrationPattern",
@@ -3949,325 +3949,325 @@
       "enumType": "GestureType",
       "value": "Any",
       "displayName": "Any",
-      "description": "代码与配置共享的稳定枚举值"
+      "description": "不限制具体笔势类别；上游输入或命中有效即可继续，常用于通用防御、效果或教程条件。"
     },
     {
       "enumType": "GestureType",
       "value": "Arc",
       "displayName": "Arc",
-      "description": "代码与配置共享的稳定枚举值"
+      "description": "要求笔迹形成达到minArcCurvature阈值的弧线，不要求首尾闭合。"
     },
     {
       "enumType": "GestureType",
       "value": "Charged",
       "displayName": "Charged",
-      "description": "代码与配置共享的稳定枚举值"
+      "description": "要求持续按住达到chargeHoldSec后释放的蓄力输入，不以普通直线方向分类。"
     },
     {
       "enumType": "GestureType",
       "value": "Circle",
       "displayName": "Circle",
-      "description": "代码与配置共享的稳定枚举值"
+      "description": "要求笔迹首尾距离和包围面积同时达到圆形规则，用于闭合环形输入。"
     },
     {
       "enumType": "GestureType",
       "value": "Diagonal",
       "displayName": "Diagonal",
-      "description": "代码与配置共享的稳定枚举值"
+      "description": "要求笔迹主方向为斜线；允许偏差由所用StrokeRules.directionToleranceDeg控制。"
     },
     {
       "enumType": "GestureType",
       "value": "Horizontal",
       "displayName": "Horizontal",
-      "description": "代码与配置共享的稳定枚举值"
+      "description": "要求笔迹主方向接近水平线；允许偏差由所用StrokeRules.directionToleranceDeg控制。"
     },
     {
       "enumType": "GestureType",
       "value": "Vertical",
       "displayName": "Vertical",
-      "description": "代码与配置共享的稳定枚举值"
+      "description": "要求笔迹主方向接近竖直线；允许偏差由所用StrokeRules.directionToleranceDeg控制。"
     },
     {
       "enumType": "MovePatternType",
       "value": "Boss",
       "displayName": "Boss",
-      "description": "代码与配置共享的稳定枚举值"
+      "description": "按Boss专用往返曲线在配置区域移动，用于阶段战中的大体型目标。"
     },
     {
       "enumType": "MovePatternType",
       "value": "Dive",
       "displayName": "Dive",
-      "description": "代码与配置共享的稳定枚举值"
+      "description": "沿路径以前慢后快的下潜曲线推进，用于形成俯冲接近感。"
     },
     {
       "enumType": "MovePatternType",
       "value": "Hover",
       "displayName": "Hover",
-      "description": "代码与配置共享的稳定枚举值"
+      "description": "围绕配置起点按振幅和频率悬浮摆动，不持续推进到终点。"
     },
     {
       "enumType": "MovePatternType",
       "value": "Linear",
       "displayName": "Linear",
-      "description": "代码与配置共享的稳定枚举值"
+      "description": "按起点到终点的直线匀速插值移动，速度由敌人基础速度与speedMultiplier共同决定。"
     },
     {
       "enumType": "MovePatternType",
       "value": "Sine",
       "displayName": "Sine",
-      "description": "代码与配置共享的稳定枚举值"
+      "description": "沿起点到终点推进，同时按amplitudeRefPx和frequency在垂直于主路径方向做正弦摆动。"
     },
     {
       "enumType": "PoolExhaustionPolicy",
       "value": "Reject",
       "displayName": "Reject",
-      "description": "达到配置活动容量时拒绝本次租用，不扩容也不回收活动玩法对象。"
+      "description": "对象池达到活动容量时拒绝本次租用，不扩容、不回收仍在使用的对象。"
     },
     {
       "enumType": "PoolExhaustionPolicy",
       "value": "ReuseOldest",
       "displayName": "ReuseOldest",
-      "description": "达到配置活动容量时先完整回收最早活动项，再服务本次租用。"
+      "description": "对象池达到活动容量时先完整回收最早的活动对象，再把该实例用于本次租用。"
     },
     {
       "enumType": "RewardCondition",
       "value": "Clear",
       "displayName": "Clear",
-      "description": "代码与配置共享的稳定枚举值"
+      "description": "关卡完成即满足；conditionValue必须填1，不额外要求星级或分数。"
     },
     {
       "enumType": "RewardCondition",
       "value": "ScoreAtLeast",
       "displayName": "ScoreAtLeast",
-      "description": "代码与配置共享的稳定枚举值"
+      "description": "最终结算分数不低于conditionValue时满足；阈值必须为非负整数。"
     },
     {
       "enumType": "RewardCondition",
       "value": "StarAtLeast",
       "displayName": "StarAtLeast",
-      "description": "代码与配置共享的稳定枚举值"
+      "description": "结算星级达到conditionValue时满足；conditionValue只能为1、2或3。"
     },
     {
       "enumType": "RewardType",
       "value": "ScoreToken",
       "displayName": "ScoreToken",
-      "description": "代码与配置共享的稳定枚举值"
+      "description": "向rewardId指定的token_命名空间计数累加amount，可用于局外累计资源。"
     },
     {
       "enumType": "RewardType",
       "value": "UnlockFeature",
       "displayName": "UnlockFeature",
-      "description": "代码与配置共享的稳定枚举值"
+      "description": "解锁rewardId指定的feature_命名空间功能标记；amount必须为1。"
     },
     {
       "enumType": "RewardType",
       "value": "UnlockLevel",
       "displayName": "UnlockLevel",
-      "description": "代码与配置共享的稳定枚举值"
+      "description": "解锁rewardId指定的Levels.levelId；amount必须为1。"
     },
     {
       "enumType": "SkillTriggerType",
       "value": "Gesture",
       "displayName": "Gesture",
-      "description": "代码与配置共享的稳定枚举值"
+      "description": "由普通笔势输入触发；必须在inputWindowSec内匹配gestureType后才可执行。"
     },
     {
       "enumType": "SkillTriggerType",
       "value": "Passive",
       "displayName": "Passive",
-      "description": "代码与配置共享的稳定枚举值"
+      "description": "由系统事件或代码入口主动请求的被动技能；不要求笔势匹配，但仍经过架势、能量和冷却校验。"
     },
     {
       "enumType": "SkillTriggerType",
       "value": "Ultimate",
       "displayName": "Ultimate",
-      "description": "代码与配置共享的稳定枚举值"
+      "description": "由终极技能入口触发；仍要求配置笔势，并同时校验能量、架势、输入窗和冷却。"
     },
     {
       "enumType": "SpawnLane",
       "value": "Air",
       "displayName": "Air",
-      "description": "代码与配置共享的稳定枚举值"
+      "description": "空中出生通道标签；实际高度仍由normalizedY决定，当前生产适配器不据此自动赋予飞行能力。"
     },
     {
       "enumType": "SpawnLane",
       "value": "Boss",
       "displayName": "Boss",
-      "description": "代码与配置共享的稳定枚举值"
+      "description": "Boss出生通道标签；Boss身份仍由Enemies.tier、Levels.bossEnemyId和出生计划共同校验。"
     },
     {
       "enumType": "SpawnLane",
       "value": "Ground",
       "displayName": "Ground",
-      "description": "代码与配置共享的稳定枚举值"
+      "description": "地面出生通道标签；实际位置仍由normalizedX/Y决定，当前生产适配器不据此自动改变移动策略。"
     },
     {
       "enumType": "SpawnPattern",
       "value": "Line",
       "displayName": "Line",
-      "description": "代码与配置共享的稳定枚举值"
+      "description": "在出生点的-jitterY到+jitterY范围内按实例顺序排成竖线，X保持中心值。"
     },
     {
       "enumType": "SpawnPattern",
       "value": "Scatter",
       "displayName": "Scatter",
-      "description": "代码与配置共享的稳定枚举值"
+      "description": "在±jitterX和±jitterY矩形内按spawnId与实例序号确定性散布，重开结果一致。"
     },
     {
       "enumType": "SpawnPattern",
       "value": "Single",
       "displayName": "Single",
-      "description": "代码与配置共享的稳定枚举值"
+      "description": "同一出生条目的所有实例使用出生点中心，不应用jitterX或jitterY偏移。"
     },
     {
       "enumType": "SpawnPattern",
       "value": "Stagger",
       "displayName": "Stagger",
-      "description": "代码与配置共享的稳定枚举值"
+      "description": "实例在左右、上下两个偏移端点之间交替出生，形成错位节奏。"
     },
     {
       "enumType": "StanceVulnerability",
       "value": "Any",
       "displayName": "Any",
-      "description": "代码与配置共享的稳定枚举值"
+      "description": "不声明特定架势弱点；当前运行时仅保存该分类，伤害仍由DamageFormulas和DefenseRules决定。"
     },
     {
       "enumType": "StanceVulnerability",
       "value": "Blade",
       "displayName": "Blade",
-      "description": "代码与配置共享的稳定枚举值"
+      "description": "声明目标偏向受刀势克制；当前生产伤害链尚未读取此分类，单改该值不会改变伤害。"
     },
     {
       "enumType": "StanceVulnerability",
       "value": "Talisman",
       "displayName": "Talisman",
-      "description": "代码与配置共享的稳定枚举值"
+      "description": "声明目标偏向受符势克制；当前生产伤害链尚未读取此分类，单改该值不会改变伤害。"
     },
     {
       "enumType": "TargetType",
       "value": "AllEnemies",
       "displayName": "AllEnemies",
-      "description": "代码与配置共享的稳定枚举值"
+      "description": "选择当前全部存活敌人，包括普通、精英和Boss。"
     },
     {
       "enumType": "TargetType",
       "value": "Battle",
       "displayName": "Battle",
-      "description": "代码与配置共享的稳定枚举值"
+      "description": "不选择单体目标，效果直接作用于整个战斗世界。"
     },
     {
       "enumType": "TargetType",
       "value": "Boss",
       "displayName": "Boss",
-      "description": "代码与配置共享的稳定枚举值"
+      "description": "只选择EnemyTier为Boss的存活敌人。"
     },
     {
       "enumType": "TargetType",
       "value": "EnemiesInRadius",
       "displayName": "EnemiesInRadius",
-      "description": "代码与配置共享的稳定枚举值"
+      "description": "选择被运行时标记为处于效果半径内的全部存活敌人。"
     },
     {
       "enumType": "TargetType",
       "value": "EnemiesInsideGesture",
       "displayName": "EnemiesInsideGesture",
-      "description": "代码与配置共享的稳定枚举值"
+      "description": "选择位于当前闭合笔势区域内的全部存活敌人。"
     },
     {
       "enumType": "TargetType",
       "value": "LastStrokeTargets",
       "displayName": "LastStrokeTargets",
-      "description": "代码与配置共享的稳定枚举值"
+      "description": "选择上一笔画实际命中的全部存活敌人。"
     },
     {
       "enumType": "TargetType",
       "value": "NextStroke",
       "displayName": "NextStroke",
-      "description": "代码与配置共享的稳定枚举值"
+      "description": "不选择当前实体，效果写入世界状态并作用于下一笔画。"
     },
     {
       "enumType": "TargetType",
       "value": "NormalEnemies",
       "displayName": "NormalEnemies",
-      "description": "代码与配置共享的稳定枚举值"
+      "description": "选择全部非Boss存活敌人，因此同时包含Normal与Elite。"
     },
     {
       "enumType": "TargetType",
       "value": "Target",
       "displayName": "Target",
-      "description": "代码与配置共享的稳定枚举值"
+      "description": "选择本次技能上下文中的主目标；无存活主目标时目标列表为空。"
     },
     {
       "enumType": "ValueType",
       "value": "bool",
       "displayName": "bool",
-      "description": "代码与配置共享的稳定枚举值"
+      "description": "Global行从boolValue读取真假开关，其他三个值列必须留空。"
     },
     {
       "enumType": "ValueType",
       "value": "float",
       "displayName": "float",
-      "description": "代码与配置共享的稳定枚举值"
+      "description": "Global行从floatValue读取浮点数，其他三个值列必须留空。"
     },
     {
       "enumType": "ValueType",
       "value": "int",
       "displayName": "int",
-      "description": "代码与配置共享的稳定枚举值"
+      "description": "Global行从intValue读取整数，其他三个值列必须留空。"
     },
     {
       "enumType": "ValueType",
       "value": "string",
       "displayName": "string",
-      "description": "代码与配置共享的稳定枚举值"
+      "description": "Global行从stringValue读取文本或稳定协议值，其他三个值列必须留空。"
     },
     {
       "enumType": "WaveEndCondition",
       "value": "AllEnemiesDefeated",
       "displayName": "AllEnemiesDefeated",
-      "description": "代码与配置共享的稳定枚举值"
+      "description": "本波全部出生计划已发出且活动敌人数归零时满足结束条件。"
     },
     {
       "enumType": "WaveEndCondition",
       "value": "BossDefeated",
       "displayName": "BossDefeated",
-      "description": "代码与配置共享的稳定枚举值"
+      "description": "关卡配置的Boss实体被击败时满足结束条件；该波必须实际生成该Boss。"
     },
     {
       "enumType": "WaveEndCondition",
       "value": "PlayerConfirmed",
       "displayName": "PlayerConfirmed",
-      "description": "代码与配置共享的稳定枚举值"
+      "description": "本波运行期间收到玩家确认操作时满足条件，再等待endDelaySec后完成。"
     },
     {
       "enumType": "WaveEndCondition",
       "value": "TimeElapsed",
       "displayName": "TimeElapsed",
-      "description": "代码与配置共享的稳定枚举值"
+      "description": "本波运行时间达到endDelaySec时直接完成；此取值下endDelaySec是持续时长而非额外结束等待。"
     },
     {
       "enumType": "WaveStartTrigger",
       "value": "LevelStart",
       "displayName": "LevelStart",
-      "description": "代码与配置共享的稳定枚举值"
+      "description": "以关卡开始时刻为计时零点，等待startDelaySec后启动；只允许第一波使用。"
     },
     {
       "enumType": "WaveStartTrigger",
       "value": "PlayerConfirmed",
       "displayName": "PlayerConfirmed",
-      "description": "代码与配置共享的稳定枚举值"
+      "description": "保持等待，收到玩家确认操作后再等待startDelaySec启动。"
     },
     {
       "enumType": "WaveStartTrigger",
       "value": "PreviousWaveEnd",
       "displayName": "PreviousWaveEnd",
-      "description": "代码与配置共享的稳定枚举值"
+      "description": "以上一波完成时刻为计时起点，等待startDelaySec后启动；第一波不可使用。"
     },
     {
       "enumType": "WaveStartTrigger",
       "value": "TimeElapsed",
       "displayName": "TimeElapsed",
-      "description": "代码与配置共享的稳定枚举值"
+      "description": "以关卡开始时刻为计时零点，在累计时间达到startDelaySec后启动；若本波较晚才激活且时间已过则立即启动。"
     }
   ],
   "fieldDictionary": [
@@ -4281,7 +4281,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "配置键：全局参数的稳定英文键；代码和配置查询均以此键定位，发布后不得复用。"
+      "description": "配置键：全局参数的稳定主键。运行时代码按该键读取参数；改名等同于删除旧参数并新增参数，必须同步所有读取方，不能用中文显示名替代。 配置约束：不得留空。"
     },
     {
       "sheet": "Global",
@@ -4293,7 +4293,7 @@
       "max": null,
       "enumType": "ValueType",
       "foreignKey": "",
-      "description": "值类型：指定当前全局参数实际使用的值列，只允许登记在ValueType枚举中的类型。"
+      "description": "值类型：决定本行唯一生效的值列；选择后运行时只读取对应的intValue、floatValue、stringValue或boolValue，其余值列必须留空。 允许值及作用：int=Global行从intValue读取整数，其他三个值列必须留空；float=Global行从floatValue读取浮点数，其他三个值列必须留空；string=Global行从stringValue读取文本或稳定协议值，其他三个值列必须留空；bool=Global行从boolValue读取真假开关，其他三个值列必须留空。 配置约束：不得留空。"
     },
     {
       "sheet": "Global",
@@ -4305,7 +4305,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "整数值：当值类型为int时读取的整数；其他值类型下必须留空。"
+      "description": "整数值：仅当valueType=int时作为该全局参数的实际整数值读取；其他valueType下必须留空，不能同时填写多个值列。 配置约束：允许留空。"
     },
     {
       "sheet": "Global",
@@ -4317,7 +4317,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "小数值：当值类型为float时读取的小数；其他值类型下必须留空。"
+      "description": "小数值：仅当valueType=float时作为该全局参数的实际浮点值读取；其他valueType下必须留空，不能同时填写多个值列。 配置约束：允许留空。"
     },
     {
       "sheet": "Global",
@@ -4329,7 +4329,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "文本值：当值类型为string时读取的文本；其他值类型下必须留空。"
+      "description": "文本值：仅当valueType=string时读取，可承载稳定ID或策略协议值；具体可填内容由key对应的业务读取方决定，其他valueType下必须留空。 配置约束：允许留空。"
     },
     {
       "sheet": "Global",
@@ -4341,7 +4341,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "布尔值：当值类型为bool时读取的真假值；其他值类型下必须留空。"
+      "description": "布尔值：仅当valueType=bool时读取为开关；其他valueType下必须留空，关闭应填false而不是删除整行。 配置约束：允许留空。"
     },
     {
       "sheet": "Global",
@@ -4353,7 +4353,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "单位：标明参数的量纲或解释口径，例如秒、参考像素、数量、比例或版本。"
+      "description": "单位：写明策划阅读单位，例如秒、参考像素、比例或数量；只用于文档和审计，不参与运行时换算。 配置约束：不得留空。"
     },
     {
       "sheet": "Global",
@@ -4365,7 +4365,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "参数说明：说明该全局配置键控制的系统行为和使用边界。"
+      "description": "参数说明：说明该key控制的具体系统行为、计时口径和边界；只用于策划阅读，不参与运行时规则计算。 配置约束：不得留空。"
     },
     {
       "sheet": "Players",
@@ -4377,7 +4377,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "玩家ID：玩家定义的稳定主键，用于跨表引用和运行时索引。"
+      "description": "玩家ID：玩家定义的稳定主键，用于跨表引用和运行时索引。 删除或改名必须同步全部引用；该ID不直接展示给玩家。 配置约束：不得留空。"
     },
     {
       "sheet": "Players",
@@ -4389,7 +4389,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "Texts.textKey",
-      "description": "名称文案键：引用Texts.textKey取得本地化显示名称，不直接填写玩家可见文字。"
+      "description": "名称文案键：引用Texts.textKey取得本地化显示名称，不直接填写玩家可见文字。 玩家可见内容从Texts.zhCN/enUS读取，不能把显示文案直接写进ID字段。 配置约束：不得留空；必须引用Texts.textKey的现有值，不存在时导出失败。"
     },
     {
       "sheet": "Players",
@@ -4401,7 +4401,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "最大生命值：实体满状态时可拥有的生命值上限；生命值降至零时进入死亡流程。"
+      "description": "最大生命值：实体满状态时可拥有的生命值上限；生命值降至零时进入死亡流程。 配置约束：不得留空；不得小于1。"
     },
     {
       "sheet": "Players",
@@ -4413,7 +4413,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "最大能量：玩家可储存的能量上限，获得能量时不得超过该值。"
+      "description": "最大能量：玩家可储存的能量上限，获得能量时不得超过该值。 配置约束：不得留空；不得小于1。"
     },
     {
       "sheet": "Players",
@@ -4425,7 +4425,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "Stances.stanceId",
-      "description": "默认架势：引用Stances.stanceId，指定玩家进入战斗时采用的初始架势。"
+      "description": "默认架势：引用Stances.stanceId，指定玩家进入战斗时采用的初始架势。 配置约束：不得留空；必须引用Stances.stanceId的现有值，不存在时导出失败。"
     },
     {
       "sheet": "Players",
@@ -4437,7 +4437,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "Skills.skillId",
-      "description": "终极技能：引用Skills.skillId，指定玩家能量满足条件后可释放的终极技能。"
+      "description": "终极技能：引用Skills.skillId，指定玩家能量满足条件后可释放的终极技能。 配置约束：不得留空；必须引用Skills.skillId的现有值，不存在时导出失败。"
     },
     {
       "sheet": "Players",
@@ -4449,7 +4449,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "受击无敌秒数：玩家受到一次有效伤害后忽略后续伤害的非负时间窗口，单位为秒。"
+      "description": "受击无敌秒数：玩家受到一次有效伤害后忽略后续伤害的非负时间窗口，单位为秒。 配置约束：不得留空。"
     },
     {
       "sheet": "Players",
@@ -4461,7 +4461,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "AssetManifest.assetKey",
-      "description": "角色资源键：引用AssetManifest.assetKey，并由Unity AssetRegistry解析为主角Sprite或Prefab。"
+      "description": "角色资源键：引用AssetManifest.assetKey，并由Unity AssetRegistry解析为主角Sprite或Prefab。 运行时通过AssetRegistry按稳定键取Unity对象，缺失或类型错误会使资源校验失败。 配置约束：不得留空；必须引用AssetManifest.assetKey的现有值，不存在时导出失败。"
     },
     {
       "sheet": "Stances",
@@ -4473,7 +4473,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "架势ID：架势定义的稳定主键，用于玩家状态、技能和投射物规则引用。"
+      "description": "架势ID：架势定义的稳定主键，用于玩家状态、技能和投射物规则引用。 删除或改名必须同步全部引用；该ID不直接展示给玩家。 配置约束：不得留空。"
     },
     {
       "sheet": "Stances",
@@ -4485,7 +4485,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "Texts.textKey",
-      "description": "名称文案键：引用Texts.textKey取得本地化显示名称，不直接填写玩家可见文字。"
+      "description": "名称文案键：引用Texts.textKey取得本地化显示名称，不直接填写玩家可见文字。 玩家可见内容从Texts.zhCN/enUS读取，不能把显示文案直接写进ID字段。 配置约束：不得留空；必须引用Texts.textKey的现有值，不存在时导出失败。"
     },
     {
       "sheet": "Stances",
@@ -4497,7 +4497,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "DamageFormulas.formulaId",
-      "description": "伤害公式：引用DamageFormulas.formulaId，指定该架势使用的基础伤害计算参数组。"
+      "description": "伤害公式：引用DamageFormulas.formulaId，指定该架势使用的基础伤害计算参数组。 配置约束：不得留空；必须引用DamageFormulas.formulaId的现有值，不存在时导出失败。"
     },
     {
       "sheet": "Stances",
@@ -4509,7 +4509,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "架势伤害倍率：使用该架势计算玩家伤害时应用的基础乘数。"
+      "description": "架势伤害倍率：使用该架势计算玩家伤害时应用的基础乘数。 配置约束：不得留空；不得小于0。"
     },
     {
       "sheet": "Stances",
@@ -4521,7 +4521,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "幽魂伤害倍率：该架势攻击幽魂类目标时应用的额外伤害乘数。"
+      "description": "幽魂伤害倍率：声明该架势对幽魂类目标的额外伤害乘数。当前伤害结算只公开该配置快照、尚未按敌人类型应用此倍率，单独修改不会改变最终伤害。 配置约束：不得留空。"
     },
     {
       "sheet": "Stances",
@@ -4533,7 +4533,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "切弹倍率：该架势与可交互投射物接触时使用的切断能力倍率。"
+      "description": "切弹倍率：声明该架势切断投射物的能力倍率。当前切弹规则按Projectiles.requiredStanceId与cuttable/reflectable判定、尚未读取此倍率，单独修改不会改变结果。 配置约束：不得留空。"
     },
     {
       "sheet": "Stances",
@@ -4545,7 +4545,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "笔迹宽度：1920×1080参考分辨率下的基础笔迹宽度，单位为参考像素。"
+      "description": "笔迹宽度：1920×1080参考分辨率下的基础笔迹宽度，单位为参考像素。 参考像素以Global.reference_width/reference_height为设计空间，再映射到实际画面。 配置约束：不得留空。"
     },
     {
       "sheet": "Stances",
@@ -4557,7 +4557,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "切换冷却秒数：两次架势切换之间必须等待的最短时间，单位为秒。"
+      "description": "切换冷却秒数：两次架势切换之间必须等待的最短时间，单位为秒。 配置约束：不得留空。"
     },
     {
       "sheet": "Stances",
@@ -4569,7 +4569,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "SkillEffects.effectGroupId",
-      "description": "切换效果组：引用SkillEffects.effectGroupId，切入该架势时按顺序执行对应效果链。"
+      "description": "切换效果组：引用SkillEffects.effectGroupId，切入该架势时按顺序执行对应效果链。 配置约束：允许留空；必须引用SkillEffects.effectGroupId的现有值，不存在时导出失败。"
     },
     {
       "sheet": "Stances",
@@ -4581,7 +4581,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "AssetManifest.assetKey",
-      "description": "架势图标资源键：引用AssetManifest.assetKey，并由Unity AssetRegistry解析为架势图标。"
+      "description": "架势图标资源键：引用AssetManifest.assetKey，并由Unity AssetRegistry解析为架势图标。 运行时通过AssetRegistry按稳定键取Unity对象，缺失或类型错误会使资源校验失败。 配置约束：不得留空；必须引用AssetManifest.assetKey的现有值，不存在时导出失败。"
     },
     {
       "sheet": "Stances",
@@ -4593,7 +4593,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "StrokeTrailStyles.styleId",
-      "description": "画笔样式：引用StrokeTrailStyles.styleId，指定该架势的分层轨迹和电弧表现。"
+      "description": "画笔样式：引用StrokeTrailStyles.styleId，指定该架势的分层轨迹和电弧表现。 配置约束：不得留空；必须引用StrokeTrailStyles.styleId的现有值，不存在时导出失败。"
     },
     {
       "sheet": "StrokeRules",
@@ -4605,7 +4605,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "笔势规则ID：笔势识别规则的稳定主键，用于采样、分类和命中参数查询。"
+      "description": "笔势规则ID：笔势识别规则的稳定主键，用于采样、分类和命中参数查询。 删除或改名必须同步全部引用；该ID不直接展示给玩家。 配置约束：不得留空。"
     },
     {
       "sheet": "StrokeRules",
@@ -4617,7 +4617,7 @@
       "max": null,
       "enumType": "GestureType",
       "foreignKey": "",
-      "description": "笔势类型：指定该规则或交互要求的手势类别，取值必须登记在GestureType枚举。"
+      "description": "笔势类型：决定该笔势规则最终识别的输入类别；分类还会继续受到长度、方向、闭合、面积、曲率或蓄力阈值约束。 允许值及作用：Any=不限制具体笔势类别；Horizontal=要求笔迹主方向接近水平线；Vertical=要求笔迹主方向接近竖直线；Diagonal=要求笔迹主方向为斜线；Arc=要求笔迹形成达到minArcCurvature阈值的弧线，不要求首尾闭合；Circle=要求笔迹首尾距离和包围面积同时达到圆形规则，用于闭合环形输入；Charged=要求持续按住达到chargeHoldSec后释放的蓄力输入，不以普通直线方向分类。 配置约束：不得留空。"
     },
     {
       "sheet": "StrokeRules",
@@ -4629,7 +4629,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "最小采样间距：相邻采样点必须达到的最小距离，单位为参考像素，用于抑制高频抖动点。"
+      "description": "最小采样间距：相邻采样点必须达到的最小距离，单位为参考像素，用于抑制高频抖动点。 参考像素以Global.reference_width/reference_height为设计空间，再映射到实际画面。 配置约束：不得留空。"
     },
     {
       "sheet": "StrokeRules",
@@ -4641,7 +4641,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "最大笔迹长度：单次笔迹允许保留的最大累计长度，单位为参考像素，超出部分会被裁剪。"
+      "description": "最大笔迹长度：单次笔迹允许保留的最大累计长度，单位为参考像素，超出部分会被裁剪。 参考像素以Global.reference_width/reference_height为设计空间，再映射到实际画面。 配置约束：不得留空。"
     },
     {
       "sheet": "StrokeRules",
@@ -4653,7 +4653,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "简化容差：RDP路径简化允许的最大偏差，单位为参考像素；数值越大保留点越少。"
+      "description": "简化容差：RDP路径简化允许的最大偏差，单位为参考像素；数值越大保留点越少。 参考像素以Global.reference_width/reference_height为设计空间，再映射到实际画面。 配置约束：不得留空。"
     },
     {
       "sheet": "StrokeRules",
@@ -4665,7 +4665,7 @@
       "max": 256,
       "enumType": "",
       "foreignKey": "",
-      "description": "最大点数：单次笔迹处理和缓存允许保留的采样点数量上限。"
+      "description": "最大点数：单次笔迹处理和缓存允许保留的采样点数量上限。 配置约束：不得留空；有效范围2到256。"
     },
     {
       "sheet": "StrokeRules",
@@ -4677,7 +4677,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "最小有效长度：笔势被判定为有效前必须达到的最小路径长度，单位为参考像素。"
+      "description": "最小有效长度：笔势被判定为有效前必须达到的最小路径长度，单位为参考像素。 参考像素以Global.reference_width/reference_height为设计空间，再映射到实际画面。 配置约束：不得留空。"
     },
     {
       "sheet": "StrokeRules",
@@ -4689,7 +4689,7 @@
       "max": 90,
       "enumType": "",
       "foreignKey": "",
-      "description": "方向容差角：横、竖或斜向笔势相对目标方向允许偏离的最大角度，单位为度。"
+      "description": "方向容差角：横、竖或斜向笔势相对目标方向允许偏离的最大角度，单位为度。 配置约束：不得留空；有效范围0到90。"
     },
     {
       "sheet": "StrokeRules",
@@ -4701,7 +4701,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "闭合距离：首尾点距离不超过该参考像素值时可视为闭合笔势；不适用时填0。"
+      "description": "闭合距离：首尾点距离不超过该参考像素值时可视为闭合笔势；不适用时填0。 参考像素以Global.reference_width/reference_height为设计空间，再映射到实际画面。 配置约束：不得留空。"
     },
     {
       "sheet": "StrokeRules",
@@ -4713,7 +4713,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "最小包围面积：闭合笔势必须覆盖的最小参考像素平方面积，用于过滤过小圆形。"
+      "description": "最小包围面积：闭合笔势必须覆盖的最小参考像素平方面积，用于过滤过小圆形。 参考像素以Global.reference_width/reference_height为设计空间，再映射到实际画面。 配置约束：不得留空。"
     },
     {
       "sheet": "StrokeRules",
@@ -4725,7 +4725,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "最小弧线曲率：弧形笔势必须达到的无量纲曲率阈值；不适用时填0。"
+      "description": "最小弧线曲率：弧形笔势必须达到的无量纲曲率阈值；不适用时填0。 配置约束：不得留空。"
     },
     {
       "sheet": "StrokeRules",
@@ -4737,7 +4737,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "蓄力时长：按住输入达到蓄力笔势所需的最短时间，单位为秒；不适用时填0。"
+      "description": "蓄力时长：按住输入达到蓄力笔势所需的最短时间，单位为秒；不适用时填0。 配置约束：不得留空；不得小于0。"
     },
     {
       "sheet": "StrokeRules",
@@ -4749,7 +4749,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "命中半径：围绕笔迹或投射物中心参与碰撞查询的半径，单位为参考像素。"
+      "description": "命中半径：围绕笔迹或投射物中心参与碰撞查询的半径，单位为参考像素。 参考像素以Global.reference_width/reference_height为设计空间，再映射到实际画面。 配置约束：不得留空；不得小于0。"
     },
     {
       "sheet": "DamageFormulas",
@@ -4761,7 +4761,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "公式ID：伤害公式参数组的稳定主键，供架势和战斗规则引用。"
+      "description": "公式ID：伤害公式参数组的稳定主键，供架势和战斗规则引用。 删除或改名必须同步全部引用；该ID不直接展示给玩家。 配置约束：不得留空。"
     },
     {
       "sheet": "DamageFormulas",
@@ -4773,7 +4773,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "基础伤害：进入倍率、暴击、弱点和连击计算前的基础伤害值。"
+      "description": "基础伤害：进入倍率、暴击、弱点和连击计算前的基础伤害值。 配置约束：不得留空；不得小于0。"
     },
     {
       "sheet": "DamageFormulas",
@@ -4785,7 +4785,7 @@
       "max": 1,
       "enumType": "",
       "foreignKey": "",
-      "description": "暴击概率：单次命中触发暴击的0到1概率。"
+      "description": "暴击概率：每次伤害结算触发暴击的概率，范围0到1；运行时将注入的随机值与该概率比较，0表示永不暴击，1表示必定暴击。 配置约束：不得留空；有效范围0到1。"
     },
     {
       "sheet": "DamageFormulas",
@@ -4797,7 +4797,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "暴击倍率：暴击成立时应用于伤害的乘数。"
+      "description": "暴击倍率：暴击成立时乘到伤害链上的倍率；1表示暴击不增伤，大于1表示增伤，0会使暴击分支伤害归零。 配置约束：不得留空；不得小于0。"
     },
     {
       "sheet": "DamageFormulas",
@@ -4809,7 +4809,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "弱点倍率：命中有效弱点窗口时应用于伤害的乘数。"
+      "description": "弱点倍率：命中当前开放且合法的弱点窗口时乘到伤害链上的倍率；未命中弱点时不应用该值，弱点规则自身还可追加第二层倍率。 配置约束：不得留空。"
     },
     {
       "sheet": "DamageFormulas",
@@ -4821,7 +4821,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "错误方向倍率：笔势方向不符合目标要求时应用的伤害乘数。"
+      "description": "错误方向倍率：笔势方向未满足DefenseRules.requiredGestureType或方向要求时乘到伤害上的倍率；正确方向时不应用该值。 配置约束：不得留空。"
     },
     {
       "sheet": "DamageFormulas",
@@ -4833,7 +4833,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "连击步进倍率：每增加一层有效连击时追加的伤害倍率增量。"
+      "description": "连击步进倍率：从第二个有效连击开始，每增加一层连击追加的伤害倍率增量；最终连击倍率仍受comboMaxMultiplier封顶。 配置约束：不得留空。"
     },
     {
       "sheet": "DamageFormulas",
@@ -4845,7 +4845,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "连击倍率上限：连击系统允许达到的总伤害倍率上限。"
+      "description": "连击倍率上限：连击系统允许应用到单次伤害的总倍率上限；即使连击层数继续增加，也不会超过此值。 配置约束：不得留空。"
     },
     {
       "sheet": "DamageFormulas",
@@ -4857,7 +4857,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "每击能量：每次有效命中基础获得的玩家能量值。"
+      "description": "每击能量：每个被伤害系统接受的有效命中提供的基础能量；弱点命中会在此基础上再加WeakpointRules.energyBonus，玩家能量最终受maxEnergy封顶。 配置约束：不得留空。"
     },
     {
       "sheet": "DamageFormulas",
@@ -4869,7 +4869,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "每击得分：每次有效命中直接增加的基础分数。"
+      "description": "每击得分：每个被伤害系统接受的有效命中直接提供的基础分数；弱点得分和按伤害计分会在此值之外继续累加。 配置约束：不得留空。"
     },
     {
       "sheet": "DamageFormulas",
@@ -4881,7 +4881,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "每伤害得分：每造成1点最终伤害追加的分数。"
+      "description": "每伤害得分：每1点原始结算伤害追加的评分系数；最终该部分按rawDamage×scorePerDamage计算并统一舍入，不等同于击败敌人的Enemies.scoreValue。 配置约束：不得留空；不得小于0。"
     },
     {
       "sheet": "DefenseRules",
@@ -4893,7 +4893,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "防御规则ID：防御规则的稳定主键，供敌人和Boss阶段引用。"
+      "description": "防御规则ID：防御规则的稳定主键，供敌人和Boss阶段引用。 删除或改名必须同步全部引用；该ID不直接展示给玩家。 配置约束：不得留空。"
     },
     {
       "sheet": "DefenseRules",
@@ -4905,7 +4905,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "护甲生命值：目标初始护甲耐久；为0表示没有护甲层。"
+      "description": "护甲生命值：敌人生成时建立的护甲耐久；受到伤害时先消耗护甲、溢出再进入生命，为0表示没有护甲层且不触发首次破甲表现。 配置约束：不得留空。"
     },
     {
       "sheet": "DefenseRules",
@@ -4917,7 +4917,7 @@
       "max": null,
       "enumType": "GestureType",
       "foreignKey": "",
-      "description": "要求笔势：破防或有效攻击要求的GestureType；Any表示不限制具体笔势。"
+      "description": "要求笔势：决定攻击护甲或触发有效破防所需的笔势；不匹配时改走wrongGestureDamageMultiplier和reflectDamage规则。 允许值及作用：Any=不限制具体笔势类别；Horizontal=要求笔迹主方向接近水平线；Vertical=要求笔迹主方向接近竖直线；Diagonal=要求笔迹主方向为斜线；Arc=要求笔迹形成达到minArcCurvature阈值的弧线，不要求首尾闭合；Circle=要求笔迹首尾距离和包围面积同时达到圆形规则，用于闭合环形输入；Charged=要求持续按住达到chargeHoldSec后释放的蓄力输入，不以普通直线方向分类。 配置约束：不得留空。"
     },
     {
       "sheet": "DefenseRules",
@@ -4929,7 +4929,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "Stances.stanceId",
-      "description": "破防要求架势：引用Stances.stanceId；留空表示任意架势都可满足防御规则。"
+      "description": "破防要求架势：引用Stances.stanceId；留空表示任意架势都可满足防御规则。 配置约束：允许留空；必须引用Stances.stanceId的现有值，不存在时导出失败。"
     },
     {
       "sheet": "DefenseRules",
@@ -4941,7 +4941,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "破甲伤害倍率：护甲首次被击破时对该次伤害应用的乘数。"
+      "description": "破甲伤害倍率：护甲在本次命中中首次降为0时额外应用的伤害倍率；只作用于破甲发生的那次结算，不持续影响后续无甲伤害。 配置约束：不得留空。"
     },
     {
       "sheet": "DefenseRules",
@@ -4953,7 +4953,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "错误笔势倍率：笔势不符合防御要求时应用的伤害乘数。"
+      "description": "错误笔势倍率：笔势未满足requiredGestureType时应用的防御倍率；会与DamageFormulas.wrongDirectionMultiplier组合，可能同时触发reflectDamage。 配置约束：不得留空。"
     },
     {
       "sheet": "DefenseRules",
@@ -4965,7 +4965,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "反伤值：触发该防御规则的反伤条件时返还给攻击方的固定伤害。"
+      "description": "反伤值：触发该防御规则的反伤条件时返还给攻击方的固定伤害。 配置约束：不得留空。"
     },
     {
       "sheet": "DefenseRules",
@@ -4977,7 +4977,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "SkillEffects.effectGroupId",
-      "description": "破甲效果组：引用SkillEffects.effectGroupId，护甲首次归零时执行对应效果链。"
+      "description": "破甲效果组：引用SkillEffects.effectGroupId，护甲首次归零时执行对应效果链。 配置约束：允许留空；必须引用SkillEffects.effectGroupId的现有值，不存在时导出失败。"
     },
     {
       "sheet": "WeakpointRules",
@@ -4989,7 +4989,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "弱点规则ID：弱点窗口规则的稳定主键，供敌人和Boss阶段引用。"
+      "description": "弱点规则ID：弱点窗口规则的稳定主键，供敌人和Boss阶段引用。 删除或改名必须同步全部引用；该ID不直接展示给玩家。 配置约束：不得留空。"
     },
     {
       "sheet": "WeakpointRules",
@@ -5001,7 +5001,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "窗口开始秒数：相对攻击开始时刻，弱点进入有效状态的时间偏移，单位为秒。"
+      "description": "窗口开始秒数：相对攻击开始时刻，弱点进入有效状态的时间偏移，单位为秒。 配置约束：不得留空。"
     },
     {
       "sheet": "WeakpointRules",
@@ -5013,7 +5013,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "窗口结束秒数：相对攻击开始时刻，弱点结束有效状态的时间偏移，单位为秒。"
+      "description": "窗口结束秒数：相对攻击开始时刻，弱点结束有效状态的时间偏移，单位为秒。 配置约束：不得留空。"
     },
     {
       "sheet": "WeakpointRules",
@@ -5025,7 +5025,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "弱点半径：弱点命中区域的半径，单位为参考像素；为0表示不创建弱点区域。"
+      "description": "弱点半径：弱点命中区域的半径，单位为参考像素；为0表示不创建弱点区域。 参考像素以Global.reference_width/reference_height为设计空间，再映射到实际画面。 配置约束：不得留空；不得小于0。"
     },
     {
       "sheet": "WeakpointRules",
@@ -5037,7 +5037,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "弱点伤害倍率：命中有效弱点窗口时对本次伤害应用的乘数。"
+      "description": "弱点伤害倍率：命中有效弱点窗口时对本次伤害应用的乘数。 配置约束：不得留空；不得小于0。"
     },
     {
       "sheet": "WeakpointRules",
@@ -5049,7 +5049,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "是否打断攻击：命中有效弱点后是否立即中断敌人当前攻击。"
+      "description": "是否打断攻击：命中开放弱点且同时满足攻击配置的打断笔势与时间窗时，是否把敌人当前攻击切入Stun；仅命中普通身体不触发。 配置约束：不得留空。"
     },
     {
       "sheet": "WeakpointRules",
@@ -5061,7 +5061,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "额外能量：命中有效弱点时在常规能量奖励之外追加的能量。"
+      "description": "额外能量：命中有效弱点时在DamageFormulas.energyPerHit之外追加的能量；普通命中不追加，最终玩家能量受Players.maxEnergy封顶。 配置约束：不得留空。"
     },
     {
       "sheet": "WeakpointRules",
@@ -5073,7 +5073,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "额外得分：命中有效弱点时在常规计分之外追加的分数。"
+      "description": "额外得分：命中有效弱点时在DamageFormulas.scorePerHit与按伤害计分之外追加的固定分数；普通命中不追加。 配置约束：不得留空。"
     },
     {
       "sheet": "WeakpointRules",
@@ -5085,7 +5085,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "VfxCues.vfxKey",
-      "description": "特效键：引用VfxCues.vfxKey；留空表示该事件不播放额外特效。"
+      "description": "特效键：引用VfxCues.vfxKey；留空表示该事件不播放额外特效。 填写时选择VfxCues.vfxKey；留空表示该节点不额外播放特效。 配置约束：允许留空；必须引用VfxCues.vfxKey的现有值，不存在时导出失败。"
     },
     {
       "sheet": "MovePatterns",
@@ -5097,7 +5097,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "移动模式ID：移动策略参数组的稳定主键，供敌人、投射物和Boss阶段引用。"
+      "description": "移动模式ID：移动策略参数组的稳定主键，供敌人、投射物和Boss阶段引用。 删除或改名必须同步全部引用；该ID不直接展示给玩家。 配置约束：不得留空。"
     },
     {
       "sheet": "MovePatterns",
@@ -5109,7 +5109,7 @@
       "max": null,
       "enumType": "MovePatternType",
       "foreignKey": "",
-      "description": "移动类型：选择代码已登记的移动策略类型，取值必须来自MovePatternType枚举。"
+      "description": "移动类型：选择实体沿起终点移动时使用的采样算法；速度、振幅、频率和循环字段是否生效取决于所选算法。 允许值及作用：Linear=按起点到终点的直线匀速插值移动，速度由敌人基础速度与speedMultiplier共同决定；Sine=沿起点到终点推进，同时按amplitudeRefPx和frequency在垂直于主路径方向做正弦摆动；Dive=沿路径以前慢后快的下潜曲线推进，用于形成俯冲接近感；Hover=围绕配置起点按振幅和频率悬浮摆动，不持续推进到终点；Boss=按Boss专用往返曲线在配置区域移动，用于阶段战中的大体型目标。 配置约束：不得留空。"
     },
     {
       "sheet": "MovePatterns",
@@ -5121,7 +5121,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "速度倍率：对实体基础移动速度应用的乘数；1表示保持基础速度。"
+      "description": "速度倍率：对实体基础移动速度应用的乘数；1表示保持基础速度。 配置约束：不得留空。"
     },
     {
       "sheet": "MovePatterns",
@@ -5133,7 +5133,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "振幅：摆动类移动相对主路径的最大偏移，单位为参考像素。"
+      "description": "振幅：摆动类移动相对主路径的最大偏移，单位为参考像素。 参考像素以Global.reference_width/reference_height为设计空间，再映射到实际画面。 配置约束：不得留空。"
     },
     {
       "sheet": "MovePatterns",
@@ -5145,7 +5145,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "频率：周期移动每秒完成的循环次数；线性或不循环策略可填0。"
+      "description": "频率：周期移动每秒完成的循环次数；线性或不循环策略可填0。 配置约束：不得留空。"
     },
     {
       "sheet": "MovePatterns",
@@ -5157,7 +5157,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "起点X比例：移动路径起点在Safe Area宽度中的归一化X坐标，范围0到1。"
+      "description": "起点X比例：移动路径起点在Safe Area宽度中的归一化X坐标，范围0到1。 配置约束：不得留空。"
     },
     {
       "sheet": "MovePatterns",
@@ -5169,7 +5169,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "终点X比例：移动路径终点在Safe Area宽度中的归一化X坐标，范围0到1。"
+      "description": "终点X比例：移动路径终点在Safe Area宽度中的归一化X坐标，范围0到1。 配置约束：不得留空。"
     },
     {
       "sheet": "MovePatterns",
@@ -5181,7 +5181,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "起点Y比例：移动路径起点在Safe Area高度中的归一化Y坐标，范围0到1。"
+      "description": "起点Y比例：移动路径起点在Safe Area高度中的归一化Y坐标，范围0到1。 配置约束：不得留空。"
     },
     {
       "sheet": "MovePatterns",
@@ -5193,7 +5193,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "终点Y比例：移动路径终点在Safe Area高度中的归一化Y坐标，范围0到1。"
+      "description": "终点Y比例：移动路径终点在Safe Area高度中的归一化Y坐标，范围0到1。 配置约束：不得留空。"
     },
     {
       "sheet": "MovePatterns",
@@ -5205,7 +5205,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "是否循环：到达路径末端后是否从头继续执行该移动模式。"
+      "description": "是否循环：路径进度到达终点后是否重新从起点开始采样；false时停在完成位置，true时按同一模式循环，Hover本身围绕起点持续摆动。 配置约束：不得留空。"
     },
     {
       "sheet": "MovePatterns",
@@ -5217,7 +5217,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "移动说明：用中文概括该移动模式的路径方向、对象或设计用途。"
+      "description": "移动说明：用中文概括该移动模式的路径方向、对象或设计用途。 该文本用于策划、翻译或审计，不参与玩法数值计算。 配置约束：不得留空。"
     },
     {
       "sheet": "Enemies",
@@ -5229,7 +5229,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "敌人ID：敌人定义的稳定主键，用于出生、Boss阶段和运行时实体配置。"
+      "description": "敌人ID：敌人定义的稳定主键，用于出生、Boss阶段和运行时实体配置。 删除或改名必须同步全部引用；该ID不直接展示给玩家。 配置约束：不得留空。"
     },
     {
       "sheet": "Enemies",
@@ -5241,7 +5241,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "Texts.textKey",
-      "description": "名称文案键：引用Texts.textKey取得本地化显示名称，不直接填写玩家可见文字。"
+      "description": "名称文案键：引用Texts.textKey取得本地化显示名称，不直接填写玩家可见文字。 玩家可见内容从Texts.zhCN/enUS读取，不能把显示文案直接写进ID字段。 配置约束：不得留空；必须引用Texts.textKey的现有值，不存在时导出失败。"
     },
     {
       "sheet": "Enemies",
@@ -5253,7 +5253,7 @@
       "max": null,
       "enumType": "EnemyTier",
       "foreignKey": "",
-      "description": "敌人层级：区分普通、精英或Boss等内容层级，取值必须来自EnemyTier枚举。"
+      "description": "敌人层级：决定敌人的内容层级、技能目标筛选和Boss阶段资格；它不直接修改HP或伤害数值。 允许值及作用：Normal=普通敌人层级；Elite=精英敌人层级；Boss=Boss层级。 配置约束：不得留空。"
     },
     {
       "sheet": "Enemies",
@@ -5265,7 +5265,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "最大生命值：实体满状态时可拥有的生命值上限；生命值降至零时进入死亡流程。"
+      "description": "最大生命值：实体满状态时可拥有的生命值上限；生命值降至零时进入死亡流程。 配置约束：不得留空；不得小于1。"
     },
     {
       "sheet": "Enemies",
@@ -5277,7 +5277,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "MovePatterns.movePatternId",
-      "description": "移动模式ID：引用MovePatterns.movePatternId，指定实体或投射物采用的移动策略参数。"
+      "description": "移动模式ID：引用MovePatterns.movePatternId，指定实体或投射物采用的移动策略参数。 配置约束：不得留空；必须引用MovePatterns.movePatternId的现有值，不存在时导出失败。"
     },
     {
       "sheet": "Enemies",
@@ -5289,7 +5289,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "移动速度：敌人的基础移动速度，单位为参考像素/秒，并受移动模式和修饰器倍率影响。"
+      "description": "移动速度：敌人的基础移动速度，单位为参考像素/秒，并受移动模式和修饰器倍率影响。 参考像素以Global.reference_width/reference_height为设计空间，再映射到实际画面。 配置约束：不得留空；不得小于0。"
     },
     {
       "sheet": "Enemies",
@@ -5301,7 +5301,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "攻击集合ID：引用EnemyAttacks.attackSetId分组，指定该敌人可选择的攻击集合。"
+      "description": "攻击集合ID：引用EnemyAttacks.attackSetId分组，指定该敌人可选择的攻击集合。 配置约束：不得留空。"
     },
     {
       "sheet": "Enemies",
@@ -5313,7 +5313,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "DefenseRules.defenseRuleId",
-      "description": "防御规则ID：引用DefenseRules.defenseRuleId，指定该敌人的护甲和破防要求。"
+      "description": "防御规则ID：引用DefenseRules.defenseRuleId，指定该敌人的护甲和破防要求。 配置约束：不得留空；必须引用DefenseRules.defenseRuleId的现有值，不存在时导出失败。"
     },
     {
       "sheet": "Enemies",
@@ -5325,7 +5325,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "WeakpointRules.weakpointRuleId",
-      "description": "弱点规则ID：引用WeakpointRules.weakpointRuleId，指定该敌人的弱点窗口。"
+      "description": "弱点规则ID：引用WeakpointRules.weakpointRuleId，指定该敌人的弱点窗口。 配置约束：不得留空；必须引用WeakpointRules.weakpointRuleId的现有值，不存在时导出失败。"
     },
     {
       "sheet": "Enemies",
@@ -5337,7 +5337,7 @@
       "max": null,
       "enumType": "StanceVulnerability",
       "foreignKey": "",
-      "description": "架势弱点：指定目标更容易受到哪类架势影响，取值必须来自StanceVulnerability枚举。"
+      "description": "架势弱点：声明目标的架势弱点分类；当前生产伤害链尚未消费该字段，单独修改不会改变伤害，实际伤害仍由DamageFormulas和DefenseRules决定。 允许值及作用：Any=不声明特定架势弱点；Blade=声明目标偏向受刀势克制；Talisman=声明目标偏向受符势克制。 配置约束：不得留空。"
     },
     {
       "sheet": "Enemies",
@@ -5349,7 +5349,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "接触伤害：敌人身体碰撞体实际接触玩家时造成的基础伤害。"
+      "description": "接触伤害：敌人身体碰撞体实际接触玩家时造成的基础伤害。 配置约束：不得留空；不得小于0。"
     },
     {
       "sheet": "Enemies",
@@ -5361,7 +5361,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "击败得分：该敌人被击败并被关卡接受后增加的基础分数。"
+      "description": "击败得分：该敌人被击败并被关卡接受后增加的基础分数。 配置约束：不得留空；不得小于0。"
     },
     {
       "sheet": "Enemies",
@@ -5373,7 +5373,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "AssetManifest.assetKey",
-      "description": "敌人资源键：引用AssetManifest.assetKey，并由Unity AssetRegistry解析为敌人Sprite或Prefab。"
+      "description": "敌人资源键：引用AssetManifest.assetKey，并由Unity AssetRegistry解析为敌人Sprite或Prefab。 运行时通过AssetRegistry按稳定键取Unity对象，缺失或类型错误会使资源校验失败。 配置约束：不得留空；必须引用AssetManifest.assetKey的现有值，不存在时导出失败。"
     },
     {
       "sheet": "Enemies",
@@ -5385,7 +5385,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "池预热数量：进入会话时为该资源预先创建的对象数量，用于降低首次生成开销。"
+      "description": "池预热数量：进入会话时为该资源预先创建的对象数量，用于降低首次生成开销。 配置约束：不得留空；不得小于0。"
     },
     {
       "sheet": "EnemyAttacks",
@@ -5397,7 +5397,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "攻击ID：敌人攻击定义的稳定主键。"
+      "description": "攻击ID：敌人攻击定义的稳定主键。 删除或改名必须同步全部引用；该ID不直接展示给玩家。 配置约束：不得留空。"
     },
     {
       "sheet": "EnemyAttacks",
@@ -5409,7 +5409,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "攻击集合ID：把同组攻击条目组织成敌人或Boss阶段可选择的攻击集合。"
+      "description": "攻击集合ID：把同组攻击条目组织成敌人或Boss阶段可选择的攻击集合。 配置约束：不得留空。"
     },
     {
       "sheet": "EnemyAttacks",
@@ -5421,7 +5421,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "组内顺序：同一分组内从1开始的稳定执行、选择或展示顺序。"
+      "description": "组内顺序：同一attackSetId内的稳定优先顺序；先按order、再按attackId排序后参与策略选择，改值会改变同条件攻击的裁决顺序。 配置约束：不得留空；不得小于1。"
     },
     {
       "sheet": "EnemyAttacks",
@@ -5433,7 +5433,7 @@
       "max": null,
       "enumType": "AttackTriggerType",
       "foreignKey": "",
-      "description": "攻击触发类型：指定攻击由冷却、距离、支援或生命阈值触发，取值来自AttackTriggerType枚举。"
+      "description": "攻击触发类型：决定该攻击在什么运行时条件满足后可进入同攻击集的选择；满足条件后仍按order和weight稳定裁决。 允许值及作用：Cooldown=攻击冷却就绪时可参与选择；Distance=目标进入攻击距离后可参与选择；Support=存在合法友方支援目标时可参与选择；HpThreshold=攻击者生命比例达到外部阶段阈值时可参与选择。 配置约束：不得留空。"
     },
     {
       "sheet": "EnemyAttacks",
@@ -5445,7 +5445,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "冷却秒数：同一动作再次可用前必须等待的最短时间，单位为秒。"
+      "description": "冷却秒数：同一动作再次可用前必须等待的最短时间，单位为秒。 配置约束：不得留空；不得小于0。"
     },
     {
       "sheet": "EnemyAttacks",
@@ -5457,7 +5457,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "前摇秒数：攻击开始后到有效窗口开启前的预警时间，单位为秒。"
+      "description": "前摇秒数：攻击开始后到有效窗口开启前的预警时间，单位为秒。 配置约束：不得留空；不得小于0。"
     },
     {
       "sheet": "EnemyAttacks",
@@ -5469,7 +5469,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "有效秒数：攻击进入可生效状态后持续的时间，单位为秒。"
+      "description": "有效秒数：攻击进入可生效状态后持续的时间，单位为秒。 配置约束：不得留空；不得小于0。"
     },
     {
       "sheet": "EnemyAttacks",
@@ -5481,7 +5481,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "基础伤害：当前攻击或投射物命中合法目标时提交的基础伤害。"
+      "description": "基础伤害：攻击命中时提交的基础伤害。配置projectileId时必须与Projectiles.damage一致；Support攻击必须为0；空投射物的普通攻击直接使用此值。 配置约束：不得留空；不得小于0。"
     },
     {
       "sheet": "EnemyAttacks",
@@ -5493,7 +5493,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "Projectiles.projectileId",
-      "description": "投射物ID：引用Projectiles.projectileId；留空表示该攻击不生成投射物。"
+      "description": "投射物ID：留空表示近战、冲撞或支援动作；填写时引用Projectiles.projectileId并生成投射物动作，且本行damage必须与投射物伤害一致。 配置约束：允许留空；必须引用Projectiles.projectileId的现有值，不存在时导出失败。"
     },
     {
       "sheet": "EnemyAttacks",
@@ -5505,7 +5505,7 @@
       "max": null,
       "enumType": "GestureType",
       "foreignKey": "",
-      "description": "打断笔势：攻击前摇期间可打断该攻击的GestureType；Any表示任意有效笔势。"
+      "description": "打断笔势：决定敌人攻击前摇期间允许哪类笔势打断；还必须命中interruptStartSec到interruptEndSec窗口。 允许值及作用：Any=不限制具体笔势类别；Horizontal=要求笔迹主方向接近水平线；Vertical=要求笔迹主方向接近竖直线；Diagonal=要求笔迹主方向为斜线；Arc=要求笔迹形成达到minArcCurvature阈值的弧线，不要求首尾闭合；Circle=要求笔迹首尾距离和包围面积同时达到圆形规则，用于闭合环形输入；Charged=要求持续按住达到chargeHoldSec后释放的蓄力输入，不以普通直线方向分类。 配置约束：不得留空。"
     },
     {
       "sheet": "EnemyAttacks",
@@ -5517,7 +5517,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "打断开始秒数：相对攻击开始时刻，可被笔势打断的窗口起点，单位为秒。"
+      "description": "打断开始秒数：相对攻击开始时刻，可被笔势打断的窗口起点，单位为秒。 配置约束：不得留空。"
     },
     {
       "sheet": "EnemyAttacks",
@@ -5529,7 +5529,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "打断结束秒数：相对攻击开始时刻，可被笔势打断的窗口终点，单位为秒。"
+      "description": "打断结束秒数：相对攻击开始时刻，可被笔势打断的窗口终点，单位为秒。 配置约束：不得留空。"
     },
     {
       "sheet": "EnemyAttacks",
@@ -5541,7 +5541,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "SkillEffects.effectGroupId",
-      "description": "效果组ID：引用SkillEffects.effectGroupId，按order执行同组效果；留空表示没有附加效果。"
+      "description": "效果组ID：引用SkillEffects.effectGroupId，按order执行同组效果；留空表示没有附加效果。 配置约束：允许留空；必须引用SkillEffects.effectGroupId的现有值，不存在时导出失败。"
     },
     {
       "sheet": "EnemyAttacks",
@@ -5553,7 +5553,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "选择权重：同一攻击集合中参与确定性加权选择的相对权重。"
+      "description": "选择权重：同一攻击集合中满足触发条件的候选项采用的相对权重；0表示不获得加权份额，值越大越容易被确定性选择，但不改变伤害。 配置约束：不得留空。"
     },
     {
       "sheet": "Projectiles",
@@ -5565,7 +5565,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "投射物ID：投射物定义的稳定主键，供敌人攻击配置引用。"
+      "description": "投射物ID：投射物定义的稳定主键，供敌人攻击配置引用。 删除或改名必须同步全部引用；该ID不直接展示给玩家。 配置约束：不得留空。"
     },
     {
       "sheet": "Projectiles",
@@ -5577,7 +5577,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "MovePatterns.movePatternId",
-      "description": "移动模式ID：引用MovePatterns.movePatternId，指定实体或投射物采用的移动策略参数。"
+      "description": "移动模式ID：声明投射物关联的MovePatterns条目并进入规则快照；当前ProjectileController按显式方向直线推进，尚未按该模式采样曲线路径，单改此字段不会改变弹道。 配置约束：不得留空；必须引用MovePatterns.movePatternId的现有值，不存在时导出失败。"
     },
     {
       "sheet": "Projectiles",
@@ -5589,7 +5589,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "飞行速度：投射物在参考像素空间中的移动速度，单位为参考像素/秒。"
+      "description": "飞行速度：投射物在参考像素空间中的移动速度，单位为参考像素/秒。 参考像素以Global.reference_width/reference_height为设计空间，再映射到实际画面。 配置约束：不得留空；不得小于0。"
     },
     {
       "sheet": "Projectiles",
@@ -5601,7 +5601,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "投射物寿命秒数：投射物生成后允许飞行的最长玩法时间，单位为秒，到期后回池。"
+      "description": "投射物寿命秒数：投射物生成后允许飞行的最长玩法时间，单位为秒，到期后回池。 配置约束：不得留空；不得小于0。"
     },
     {
       "sheet": "Projectiles",
@@ -5613,7 +5613,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "基础伤害：当前攻击或投射物命中合法目标时提交的基础伤害。"
+      "description": "基础伤害：当前攻击或投射物命中合法目标时提交的基础伤害。 配置约束：不得留空；不得小于0。"
     },
     {
       "sheet": "Projectiles",
@@ -5625,7 +5625,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "可切断：是否允许有效画笔命中后直接切断并回收该投射物。"
+      "description": "可切断：为true时有效画笔命中可直接切断并回收投射物；若reflectable也为true且架势满足，反弹优先于切断；false时不能走直接切断分支。 配置约束：不得留空。"
     },
     {
       "sheet": "Projectiles",
@@ -5637,7 +5637,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "可反弹：是否允许满足架势要求的画笔把投射物归属和方向反转。"
+      "description": "可反弹：是否允许满足架势要求的画笔把投射物归属和方向反转。 配置约束：不得留空。"
     },
     {
       "sheet": "Projectiles",
@@ -5649,7 +5649,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "Stances.stanceId",
-      "description": "交互要求架势：引用Stances.stanceId；留空表示任意架势都可切断或反弹该投射物。"
+      "description": "交互要求架势：引用Stances.stanceId；留空表示任意架势都可切断或反弹该投射物。 配置约束：允许留空；必须引用Stances.stanceId的现有值，不存在时导出失败。"
     },
     {
       "sheet": "Projectiles",
@@ -5661,7 +5661,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "命中半径：围绕笔迹或投射物中心参与碰撞查询的半径，单位为参考像素。"
+      "description": "命中半径：围绕笔迹或投射物中心参与碰撞查询的半径，单位为参考像素。 参考像素以Global.reference_width/reference_height为设计空间，再映射到实际画面。 配置约束：不得留空；不得小于0。"
     },
     {
       "sheet": "Projectiles",
@@ -5673,7 +5673,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "AssetManifest.assetKey",
-      "description": "投射物资源键：引用AssetManifest.assetKey，并由Unity AssetRegistry解析为投射物Sprite。"
+      "description": "投射物资源键：引用AssetManifest.assetKey，并由Unity AssetRegistry解析为投射物Sprite。 运行时通过AssetRegistry按稳定键取Unity对象，缺失或类型错误会使资源校验失败。 配置约束：不得留空；必须引用AssetManifest.assetKey的现有值，不存在时导出失败。"
     },
     {
       "sheet": "Projectiles",
@@ -5685,7 +5685,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "VfxCues.vfxKey",
-      "description": "特效键：引用VfxCues.vfxKey；留空表示该事件不播放额外特效。"
+      "description": "特效键：引用VfxCues.vfxKey；留空表示该事件不播放额外特效。 填写时选择VfxCues.vfxKey；留空表示该节点不额外播放特效。 配置约束：允许留空；必须引用VfxCues.vfxKey的现有值，不存在时导出失败。"
     },
     {
       "sheet": "Buffs",
@@ -5697,7 +5697,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "状态效果ID：状态效果定义的稳定主键，供技能效果和敌人修饰器引用。"
+      "description": "状态效果ID：状态效果定义的稳定主键，供技能效果和敌人修饰器引用。 删除或改名必须同步全部引用；该ID不直接展示给玩家。 配置约束：不得留空。"
     },
     {
       "sheet": "Buffs",
@@ -5709,7 +5709,7 @@
       "max": null,
       "enumType": "BuffType",
       "foreignKey": "",
-      "description": "状态类型：指定状态效果的行为类别，取值必须来自BuffType枚举。"
+      "description": "状态类型：决定Buff被运行时解释成移动、状态或受伤倍率中的哪种行为；magnitude、tickSec等参数含义随类型变化。当前DamageOverTime尚无周期扣血执行器，单独选择该值不会产生跳伤。 允许值及作用：Slow=按1-magnitude×层数降低敌人移动倍率，最终倍率不会低于0；Stun=使敌人进入限时眩晕状态并中断正常状态推进，到持续时间后恢复；DamageOverTime=周期伤害分类；Root=定身分类；DamageTaken=按1+magnitude×层数提高目标受到的伤害倍率，可与其他伤害倍率相乘；DamageReduction=按1-magnitude×层数降低目标受到的伤害倍率，结果钳制为不小于0。 配置约束：不得留空。"
     },
     {
       "sheet": "Buffs",
@@ -5721,7 +5721,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "状态持续秒数：状态效果保持有效的基础时间，单位为秒。"
+      "description": "状态持续秒数：状态效果保持有效的基础时间，单位为秒。 配置约束：不得留空；不得小于0。"
     },
     {
       "sheet": "Buffs",
@@ -5733,7 +5733,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "最大层数：同一状态效果在单个目标上允许累计的层数上限。"
+      "description": "最大层数：同一状态效果在单个目标上允许累计的层数上限。 配置约束：不得留空；不得小于1。"
     },
     {
       "sheet": "Buffs",
@@ -5745,7 +5745,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "效果强度：状态效果的主要强度参数，具体含义由BuffType决定，例如减速比例或增伤比例。"
+      "description": "效果强度：Buff的主强度参数：Slow、DamageTaken和DamageReduction按magnitude×层数计算倍率；Root与Stun当前不读取该数值；DamageOverTime尚无周期扣血执行器。 配置约束：不得留空；不得小于0。"
     },
     {
       "sheet": "Buffs",
@@ -5757,7 +5757,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "跳动间隔：周期状态两次结算之间的时间，单位为秒；为0表示不按周期跳动。"
+      "description": "跳动间隔：周期执行间隔，单位为秒；仅供需要周期结算的Buff类型使用。当前DamageOverTime尚无周期扣血执行器，因此修改此值暂不会产生伤害跳数。 配置约束：不得留空；不得小于0。"
     },
     {
       "sheet": "Buffs",
@@ -5769,7 +5769,7 @@
       "max": null,
       "enumType": "BuffRefreshPolicy",
       "foreignKey": "",
-      "description": "刷新策略：重复施加同一状态时采用的时长或层数处理方式，取值来自BuffRefreshPolicy枚举。"
+      "description": "刷新策略：决定同一buffId已存在时再次施加如何处理层数和到期时间。 允许值及作用：Refresh=重复施加同一Buff时保留当前层数，并从本次施加时刻重新计算到期时间；Replace=重复施加同一Buff时替换旧实例、层数重置为1，并重新计算到期时间；AddStack=重复施加同一Buff时增加1层但不超过maxStacks，同时重新计算到期时间。 配置约束：不得留空。"
     },
     {
       "sheet": "Buffs",
@@ -5781,7 +5781,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "VfxCues.vfxKey",
-      "description": "特效键：引用VfxCues.vfxKey；留空表示该事件不播放额外特效。"
+      "description": "特效键：引用VfxCues.vfxKey；留空表示该事件不播放额外特效。 填写时选择VfxCues.vfxKey；留空表示该节点不额外播放特效。 配置约束：允许留空；必须引用VfxCues.vfxKey的现有值，不存在时导出失败。"
     },
     {
       "sheet": "Buffs",
@@ -5793,7 +5793,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "Texts.textKey",
-      "description": "文案键：引用Texts.textKey取得玩家可见的本地化文本。"
+      "description": "文案键：引用Texts.textKey取得玩家可见的本地化文本。 玩家可见内容从Texts.zhCN/enUS读取，不能把显示文案直接写进ID字段。 配置约束：不得留空；必须引用Texts.textKey的现有值，不存在时导出失败。"
     },
     {
       "sheet": "Skills",
@@ -5805,7 +5805,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "技能ID：技能定义的稳定主键，供玩家、输入和进度系统引用。"
+      "description": "技能ID：技能定义的稳定主键，供玩家、输入和进度系统引用。 删除或改名必须同步全部引用；该ID不直接展示给玩家。 配置约束：不得留空。"
     },
     {
       "sheet": "Skills",
@@ -5817,7 +5817,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "Texts.textKey",
-      "description": "名称文案键：引用Texts.textKey取得本地化显示名称，不直接填写玩家可见文字。"
+      "description": "名称文案键：引用Texts.textKey取得本地化显示名称，不直接填写玩家可见文字。 玩家可见内容从Texts.zhCN/enUS读取，不能把显示文案直接写进ID字段。 配置约束：不得留空；必须引用Texts.textKey的现有值，不存在时导出失败。"
     },
     {
       "sheet": "Skills",
@@ -5829,7 +5829,7 @@
       "max": null,
       "enumType": "SkillTriggerType",
       "foreignKey": "",
-      "description": "技能触发类型：指定技能由被动、笔势或其他入口触发，取值来自SkillTriggerType枚举。"
+      "description": "技能触发类型：决定技能从被动事件、普通笔势还是终极入口激活，并决定是否必须校验gestureType与inputWindowSec。 允许值及作用：Passive=由系统事件或代码入口主动请求的被动技能；Gesture=由普通笔势输入触发；Ultimate=由终极技能入口触发。 配置约束：不得留空。"
     },
     {
       "sheet": "Skills",
@@ -5841,7 +5841,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "Stances.stanceId",
-      "description": "释放要求架势：引用Stances.stanceId；留空表示任意架势都可释放该技能。"
+      "description": "释放要求架势：引用Stances.stanceId；留空表示任意架势都可释放该技能。 配置约束：允许留空；必须引用Stances.stanceId的现有值，不存在时导出失败。"
     },
     {
       "sheet": "Skills",
@@ -5853,7 +5853,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "能量消耗：释放技能时需要扣除的玩家能量；被动技能通常为0。"
+      "description": "能量消耗：释放技能时需要扣除的玩家能量；被动技能通常为0。 配置约束：不得留空；不得小于0。"
     },
     {
       "sheet": "Skills",
@@ -5865,7 +5865,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "冷却秒数：同一动作再次可用前必须等待的最短时间，单位为秒。"
+      "description": "冷却秒数：同一动作再次可用前必须等待的最短时间，单位为秒。 配置约束：不得留空；不得小于0。"
     },
     {
       "sheet": "Skills",
@@ -5877,7 +5877,7 @@
       "max": null,
       "enumType": "GestureType",
       "foreignKey": "",
-      "description": "笔势类型：指定该规则或交互要求的手势类别，取值必须登记在GestureType枚举。"
+      "description": "笔势类型：决定Gesture或Ultimate技能接受的笔势；Passive不依赖该笔势，但字段仍需填写有效协议值。 允许值及作用：Any=不限制具体笔势类别；Horizontal=要求笔迹主方向接近水平线；Vertical=要求笔迹主方向接近竖直线；Diagonal=要求笔迹主方向为斜线；Arc=要求笔迹形成达到minArcCurvature阈值的弧线，不要求首尾闭合；Circle=要求笔迹首尾距离和包围面积同时达到圆形规则，用于闭合环形输入；Charged=要求持续按住达到chargeHoldSec后释放的蓄力输入，不以普通直线方向分类。 配置约束：不得留空。"
     },
     {
       "sheet": "Skills",
@@ -5889,7 +5889,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "输入窗口秒数：触发技能所需笔势允许完成的最长输入时间，单位为秒。"
+      "description": "输入窗口秒数：触发技能所需笔势允许完成的最长输入时间，单位为秒。 配置约束：不得留空；不得小于0。"
     },
     {
       "sheet": "Skills",
@@ -5901,7 +5901,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "SkillEffects.effectGroupId",
-      "description": "技能效果组：引用SkillEffects.effectGroupId，指定释放技能时按order执行的效果链。"
+      "description": "技能效果组：引用SkillEffects.effectGroupId，指定释放技能时按order执行的效果链。 配置约束：不得留空；必须引用SkillEffects.effectGroupId的现有值，不存在时导出失败。"
     },
     {
       "sheet": "Skills",
@@ -5913,7 +5913,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "AssetManifest.assetKey",
-      "description": "图标资源键：引用AssetManifest.assetKey，指定技能在UI中使用的图标资源。"
+      "description": "图标资源键：引用AssetManifest.assetKey，指定技能在UI中使用的图标资源。 运行时通过AssetRegistry按稳定键取Unity对象，缺失或类型错误会使资源校验失败。 配置约束：不得留空；必须引用AssetManifest.assetKey的现有值，不存在时导出失败。"
     },
     {
       "sheet": "Skills",
@@ -5925,7 +5925,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "Texts.textKey",
-      "description": "文案键：引用Texts.textKey取得玩家可见的本地化文本。"
+      "description": "文案键：引用Texts.textKey取得玩家可见的本地化文本。 玩家可见内容从Texts.zhCN/enUS读取，不能把显示文案直接写进ID字段。 配置约束：不得留空；必须引用Texts.textKey的现有值，不存在时导出失败。"
     },
     {
       "sheet": "SkillEffects",
@@ -5937,7 +5937,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "效果组ID：把多条SkillEffects按order组织成可复用的有序效果链。"
+      "description": "效果组ID：把多条SkillEffects按order组织成可复用的有序效果链。 配置约束：不得留空。"
     },
     {
       "sheet": "SkillEffects",
@@ -5949,7 +5949,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "组内顺序：同一分组内从1开始的稳定执行、选择或展示顺序。"
+      "description": "组内顺序：同一effectGroupId内的执行顺序，从小到大逐行执行；前一行产生的世界状态可被后续行观察，改序可能改变最终技能结果。 配置约束：不得留空；不得小于1。"
     },
     {
       "sheet": "SkillEffects",
@@ -5961,7 +5961,7 @@
       "max": null,
       "enumType": "EffectType",
       "foreignKey": "",
-      "description": "效果类型：指定该效果行执行的规则类型，取值必须来自EffectType枚举并由代码注册。"
+      "description": "效果类型：决定本效果行调用哪个显式执行器，并同时决定value1、value2、durationSec、buffId和目标选择的参数语义。 允许值及作用：Damage=对选中目标造成value1点直接伤害；ApplyBuff=向选中目标施加buffId；RemoveArmor=移除选中目标value1点护甲，不直接扣除生命；Knockback=使选中目标在durationSec内产生value1参考像素的击退意图；RepeatStroke=以value1伤害倍率在value2秒后重复上一笔命中结果；TimeScale=把战斗时间倍率设为value1并保持durationSec；ExecuteBelowHpRatio=当目标当前生命比例不高于value1时执行处决；DamageMultiplier=把下一笔画的伤害倍率设为value1，value1必须大于0；IncrementCounter=给目标计数器增加value1，并以value2作为上限或触发阈值；PlayVfx=不改变战斗数值，只按vfxKey在所选目标或世界范围播放特效；Heal=为选中目标恢复value1点生命；ClearProjectiles=清除当前世界中的敌方投射物，不影响已反弹为玩家阵营的投射物。 配置约束：不得留空。"
     },
     {
       "sheet": "SkillEffects",
@@ -5973,7 +5973,7 @@
       "max": null,
       "enumType": "TargetType",
       "foreignKey": "",
-      "description": "目标类型：指定效果作用对象的选择方式，取值必须来自TargetType枚举。"
+      "description": "目标类型：决定效果执行前如何从主目标、上一笔命中、笔势区域或整个战斗世界中选取作用对象。 允许值及作用：Target=选择本次技能上下文中的主目标；NextStroke=不选择当前实体，效果写入世界状态并作用于下一笔画；EnemiesInRadius=选择被运行时标记为处于效果半径内的全部存活敌人；LastStrokeTargets=选择上一笔画实际命中的全部存活敌人；EnemiesInsideGesture=选择位于当前闭合笔势区域内的全部存活敌人；Battle=不选择单体目标，效果直接作用于整个战斗世界；AllEnemies=选择当前全部存活敌人，包括普通、精英和Boss；NormalEnemies=选择全部非Boss存活敌人，因此同时包含Normal与Elite；Boss=只选择EnemyTier为Boss的存活敌人。 配置约束：不得留空。"
     },
     {
       "sheet": "SkillEffects",
@@ -5985,7 +5985,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "主参数：效果类型定义的第一个数值参数；具体单位和含义由effectType决定。"
+      "description": "主参数：效果主参数，含义由effectType决定：伤害/治疗/破甲为数值，击退为参考像素，TimeScale为时间倍率，处决为生命比例，DamageMultiplier为下一笔倍率。 配置约束：不得留空。"
     },
     {
       "sheet": "SkillEffects",
@@ -5997,7 +5997,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "次参数：效果类型定义的第二个数值参数；不需要时填0。"
+      "description": "次参数：效果次参数，含义由effectType决定：RepeatStroke表示延迟秒数，IncrementCounter表示上限或阈值；其他当前效果通常填0。 配置约束：不得留空。"
     },
     {
       "sheet": "SkillEffects",
@@ -6009,7 +6009,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "效果持续秒数：该效果影响保持的时间，单位为秒；瞬时效果填0。"
+      "description": "效果持续秒数：效果持续时间，单位为秒。ApplyBuff大于0时覆盖Buffs.durationSec；Knockback和TimeScale直接使用；瞬时效果填0。 配置约束：不得留空；不得小于0。"
     },
     {
       "sheet": "SkillEffects",
@@ -6021,7 +6021,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "Buffs.buffId",
-      "description": "状态效果ID：引用Buffs.buffId；仅需要施加状态的effectType填写，其他效果留空。"
+      "description": "状态效果ID：仅ApplyBuff必须填写，引用Buffs.buffId；其他效果留空。填写有效ID并不自动施加，仍由effectType、targetType和condition共同决定。 配置约束：允许留空；必须引用Buffs.buffId的现有值，不存在时导出失败。"
     },
     {
       "sheet": "SkillEffects",
@@ -6033,7 +6033,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "VfxCues.vfxKey",
-      "description": "特效键：引用VfxCues.vfxKey；留空表示该事件不播放额外特效。"
+      "description": "特效键：引用VfxCues.vfxKey；留空表示该事件不播放额外特效。 填写时选择VfxCues.vfxKey；留空表示该节点不额外播放特效。 配置约束：允许留空；必须引用VfxCues.vfxKey的现有值，不存在时导出失败。"
     },
     {
       "sheet": "SkillEffects",
@@ -6045,7 +6045,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "AudioCues.audioKey",
-      "description": "音频键：引用AudioCues.audioKey；留空表示该事件不播放额外音频。"
+      "description": "音频键：引用AudioCues.audioKey；留空表示该事件不播放额外音频。 填写时选择AudioCues.audioKey；留空表示该节点不额外播放音频。 配置约束：允许留空；必须引用AudioCues.audioKey的现有值，不存在时导出失败。"
     },
     {
       "sheet": "SkillEffects",
@@ -6057,7 +6057,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "执行条件：效果执行前检查的可选条件表达式；留空表示无额外条件。"
+      "description": "执行条件：执行该效果行前检查的可选比较表达式，例如comboCount>=3；留空表示无附加条件，条件不成立时跳过本行但继续后续效果。 配置约束：允许留空。"
     },
     {
       "sheet": "Levels",
@@ -6069,7 +6069,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "关卡ID：关卡定义的稳定主键，供波次、出生点和进度系统引用。"
+      "description": "关卡ID：关卡定义的稳定主键，供波次、出生点和进度系统引用。 删除或改名必须同步全部引用；该ID不直接展示给玩家。 配置约束：不得留空。"
     },
     {
       "sheet": "Levels",
@@ -6081,7 +6081,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "Texts.textKey",
-      "description": "名称文案键：引用Texts.textKey取得本地化显示名称，不直接填写玩家可见文字。"
+      "description": "名称文案键：引用Texts.textKey取得本地化显示名称，不直接填写玩家可见文字。 玩家可见内容从Texts.zhCN/enUS读取，不能把显示文案直接写进ID字段。 配置约束：不得留空；必须引用Texts.textKey的现有值，不存在时导出失败。"
     },
     {
       "sheet": "Levels",
@@ -6093,7 +6093,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "AssetManifest.assetKey",
-      "description": "场景资源键：引用AssetManifest.assetKey，指定承载该关卡的Unity场景。"
+      "description": "场景资源键：引用AssetManifest.assetKey，指定承载该关卡的Unity场景。 配置约束：不得留空；必须引用AssetManifest.assetKey的现有值，不存在时导出失败。"
     },
     {
       "sheet": "Levels",
@@ -6105,7 +6105,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "AssetManifest.assetKey",
-      "description": "背景资源键：引用AssetManifest.assetKey，指定关卡使用的背景资源。"
+      "description": "背景资源键：引用AssetManifest.assetKey，指定关卡使用的背景资源。 配置约束：不得留空；必须引用AssetManifest.assetKey的现有值，不存在时导出失败。"
     },
     {
       "sheet": "Levels",
@@ -6117,7 +6117,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "时限秒数：关卡允许的最大玩法时间，单位为秒。"
+      "description": "时限秒数：关卡从运行开始允许累计的最大玩法秒数；达到上限后DurationLimitReached成立，供战斗流程判定超时，不是单个波次的时长。 配置约束：不得留空。"
     },
     {
       "sheet": "Levels",
@@ -6129,7 +6129,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "Levels.levelId",
-      "description": "下一关ID：引用Levels.levelId；留空表示通关后没有自动可解锁的下一关。"
+      "description": "下一关ID：引用Levels.levelId；留空表示通关后没有自动可解锁的下一关。 配置约束：允许留空；必须引用Levels.levelId的现有值，不存在时导出失败。"
     },
     {
       "sheet": "Levels",
@@ -6141,7 +6141,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "Rewards.rewardTableId",
-      "description": "奖励表ID：引用Rewards.rewardTableId分组，指定该关卡结算时评估的奖励集合。"
+      "description": "奖励表ID：引用Rewards.rewardTableId分组，指定该关卡结算时评估的奖励集合。 配置约束：不得留空；必须引用Rewards.rewardTableId的现有值，不存在时导出失败。"
     },
     {
       "sheet": "Levels",
@@ -6153,7 +6153,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "一星分数：结算获得一星所需达到的最低分数。"
+      "description": "一星分数：结算获得至少一星所需的最低最终分数；必须严格小于starScore2，未达到时结算为0星。 配置约束：不得留空；不得小于0。"
     },
     {
       "sheet": "Levels",
@@ -6165,7 +6165,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "二星分数：结算获得二星所需达到的最低分数，必须不低于一星门槛。"
+      "description": "二星分数：结算获得二星所需达到的最低分数，必须不低于一星门槛。 配置约束：不得留空；不得小于0。"
     },
     {
       "sheet": "Levels",
@@ -6177,7 +6177,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "三星分数：结算获得三星所需达到的最低分数，必须不低于二星门槛。"
+      "description": "三星分数：结算获得三星所需达到的最低分数，必须不低于二星门槛。 配置约束：不得留空；不得小于0。"
     },
     {
       "sheet": "Levels",
@@ -6189,7 +6189,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "Tutorials.tutorialId",
-      "description": "教程ID：引用Tutorials.tutorialId分组，指定该关卡加载的教程流程。"
+      "description": "教程ID：引用Tutorials.tutorialId分组，指定该关卡加载的教程流程。 配置约束：不得留空；必须引用Tutorials.tutorialId的现有值，不存在时导出失败。"
     },
     {
       "sheet": "Levels",
@@ -6201,7 +6201,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "Enemies.enemyId",
-      "description": "Boss敌人ID：引用Enemies.enemyId；留空表示该关卡不是Boss关。"
+      "description": "Boss敌人ID：引用Enemies.enemyId；留空表示该关卡不是Boss关。 配置约束：允许留空；必须引用Enemies.enemyId的现有值，不存在时导出失败。"
     },
     {
       "sheet": "Waves",
@@ -6213,7 +6213,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "波次ID：波次定义的稳定主键，供出生计划引用。"
+      "description": "波次ID：波次定义的稳定主键，供出生计划引用。 删除或改名必须同步全部引用；该ID不直接展示给玩家。 配置约束：不得留空。"
     },
     {
       "sheet": "Waves",
@@ -6225,7 +6225,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "Levels.levelId",
-      "description": "所属关卡ID：引用Levels.levelId，指定该波次归属的关卡。"
+      "description": "所属关卡ID：引用Levels.levelId，指定该波次归属的关卡。 配置约束：不得留空；必须引用Levels.levelId的现有值，不存在时导出失败。"
     },
     {
       "sheet": "Waves",
@@ -6237,7 +6237,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "组内顺序：同一分组内从1开始的稳定执行、选择或展示顺序。"
+      "description": "组内顺序：同一levelId内从1开始且连续的波次顺序。第一波不能使用PreviousWaveEnd，后续波不能重新使用LevelStart；改序必须同步这些触发约束。 配置约束：不得留空；不得小于1。"
     },
     {
       "sheet": "Waves",
@@ -6249,7 +6249,7 @@
       "max": null,
       "enumType": "WaveStartTrigger",
       "foreignKey": "",
-      "description": "开始条件：指定波次何时允许开始，取值必须来自WaveStartTrigger枚举。"
+      "description": "开始条件：决定本波以哪个业务事件作为startDelaySec的计时基准；该字段选择基准事件，不直接填写秒数。 允许值及作用：LevelStart=以关卡开始时刻为计时零点，等待startDelaySec后启动；PreviousWaveEnd=以上一波完成时刻为计时起点，等待startDelaySec后启动；PlayerConfirmed=保持等待，收到玩家确认操作后再等待startDelaySec启动；TimeElapsed=以关卡开始时刻为计时零点，在累计时间达到startDelaySec后启动。 配置约束：不得留空。"
     },
     {
       "sheet": "Waves",
@@ -6261,7 +6261,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "开始延迟秒数：开始条件成立后到波次正式开始的等待时间，单位为秒。"
+      "description": "开始延迟秒数：从startTrigger指定的基准事件到本波正式启动的等待秒数。LevelStart和TimeElapsed以关卡开始为零点，PreviousWaveEnd以上一波完成为零点，PlayerConfirmed以确认时刻为零点。 配置约束：不得留空。"
     },
     {
       "sheet": "Waves",
@@ -6273,7 +6273,7 @@
       "max": null,
       "enumType": "WaveEndCondition",
       "foreignKey": "",
-      "description": "结束条件：指定波次完成所需事实，取值必须来自WaveEndCondition枚举。"
+      "description": "结束条件：决定本波以哪个运行时事实判定完成；除TimeElapsed外，条件成立后还要等待endDelaySec。 允许值及作用：AllEnemiesDefeated=本波全部出生计划已发出且活动敌人数归零时满足结束条件；BossDefeated=关卡配置的Boss实体被击败时满足结束条件；TimeElapsed=本波运行时间达到endDelaySec时直接完成；PlayerConfirmed=本波运行期间收到玩家确认操作时满足条件，再等待endDelaySec后完成。 配置约束：不得留空。"
     },
     {
       "sheet": "Waves",
@@ -6285,7 +6285,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "结束延迟秒数：结束条件成立后到推进下一波的等待时间，单位为秒。"
+      "description": "结束延迟秒数：大多数结束条件满足后到本波完成的等待秒数；当endCondition=TimeElapsed时，它改为本波从启动到自动完成的总持续时间，不再额外等待一次。 配置约束：不得留空。"
     },
     {
       "sheet": "Waves",
@@ -6297,7 +6297,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "AudioCues.audioKey",
-      "description": "背景音乐键：引用AudioCues.audioKey，指定该波次播放的背景音乐。"
+      "description": "背景音乐键：引用AudioCues.audioKey，指定该波次播放的背景音乐。 填写时选择AudioCues.audioKey；留空表示该节点不额外播放音频。 配置约束：不得留空；必须引用AudioCues.audioKey的现有值，不存在时导出失败。"
     },
     {
       "sheet": "Waves",
@@ -6309,7 +6309,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "最大存活数：该波次允许同时处于活动状态的敌人数量上限。"
+      "description": "最大存活数：本波同时存在的活动敌人上限，不是本波总生成数。达到上限后，已到出生时间的后续实例排队；有敌人死亡释放名额后继续生成，直到全部计划完成。 配置约束：不得留空；不得小于1。"
     },
     {
       "sheet": "SpawnPoints",
@@ -6321,7 +6321,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "出生点ID：出生点定义的稳定主键，供出生计划引用。"
+      "description": "出生点ID：出生点定义的稳定主键，供出生计划引用。 删除或改名必须同步全部引用；该ID不直接展示给玩家。 配置约束：不得留空。"
     },
     {
       "sheet": "SpawnPoints",
@@ -6333,7 +6333,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "Levels.levelId",
-      "description": "适用关卡ID：引用Levels.levelId；星号表示该出生点可供所有关卡使用。"
+      "description": "适用关卡ID：限制出生点可被哪些关卡引用；填写具体Levels.levelId时仅该关卡可用，填写*时所有关卡可用，*是本配置包唯一允许的外键通配符。 配置约束：不得留空；必须引用Levels.levelId的现有值，不存在时导出失败。"
     },
     {
       "sheet": "SpawnPoints",
@@ -6345,7 +6345,7 @@
       "max": 1,
       "enumType": "",
       "foreignKey": "",
-      "description": "归一化X：出生点在Safe Area宽度中的X比例，0为左侧、1为右侧。"
+      "description": "归一化X：出生区域中心在战斗安全区域水平方向的位置，0为最左、1为最右。最终坐标还会叠加spawnPattern产生的jitterX偏移并钳制到0到1；0.9以上表示屏幕右侧区域。 配置约束：不得留空；有效范围0到1。"
     },
     {
       "sheet": "SpawnPoints",
@@ -6357,7 +6357,7 @@
       "max": 1,
       "enumType": "",
       "foreignKey": "",
-      "description": "归一化Y：出生点在Safe Area高度中的Y比例，0为底部、1为顶部。"
+      "description": "归一化Y：出生区域中心在战斗安全区域垂直方向的位置，0为底部、1为顶部。最终坐标还会叠加spawnPattern产生的jitterY偏移并钳制到0到1。 配置约束：不得留空；有效范围0到1。"
     },
     {
       "sheet": "SpawnPoints",
@@ -6369,7 +6369,7 @@
       "max": null,
       "enumType": "SpawnLane",
       "foreignKey": "",
-      "description": "路线层级：指定出生点属于地面、空中或Boss等路线，取值来自SpawnLane枚举。"
+      "description": "路线层级：标记出生点的地面、空中或Boss业务通道；它不计算实际坐标，也不替代敌人的移动策略。当前生产适配器仅校验并传递该值，单独修改不会自动改变飞行、碰撞层或移动。 允许值及作用：Ground=地面出生通道标签；Air=空中出生通道标签；Boss=Boss出生通道标签。 配置约束：不得留空。"
     },
     {
       "sheet": "SpawnPoints",
@@ -6381,7 +6381,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "X随机偏移：出生时允许施加的最大横向归一化偏移量。"
+      "description": "X随机偏移：出生区域中心左右两侧允许的最大归一化偏移。Single和Line不改变X；Scatter在±jitterX内确定性取点；Stagger在左右端点交替；最终坐标钳制到0到1。 配置约束：不得留空。"
     },
     {
       "sheet": "SpawnPoints",
@@ -6393,7 +6393,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "Y随机偏移：出生时允许施加的最大纵向归一化偏移量。"
+      "description": "Y随机偏移：出生区域中心上下两侧允许的最大归一化偏移。Single不偏移；Line在±jitterY间排布；Scatter确定性取点；Stagger在上下端点交替；最终坐标钳制到0到1。 配置约束：不得留空。"
     },
     {
       "sheet": "SpawnPoints",
@@ -6405,7 +6405,7 @@
       "max": null,
       "enumType": "Facing",
       "foreignKey": "",
-      "description": "初始朝向：实体出生时的朝向，取值必须来自Facing枚举。"
+      "description": "初始朝向：声明实体出生时的初始朝向；当前生产适配器仅传递该值，尚未据此自动翻转Sprite或移动方向。 允许值及作用：Left=声明实体出生时朝左；Right=声明实体出生时朝右。 配置约束：不得留空。"
     },
     {
       "sheet": "SpawnPoints",
@@ -6417,7 +6417,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "备注：记录该出生点或资源条目的策划用途、来源或替换注意事项。"
+      "description": "备注：记录该出生点面向策划的适用对象、画面位置和替换注意事项；不参与出生坐标、路线或运行时规则计算。 配置约束：不得留空。"
     },
     {
       "sheet": "EnemyModifiers",
@@ -6429,7 +6429,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "修饰器ID：敌人出生修饰器的稳定主键，供出生计划引用。"
+      "description": "修饰器ID：敌人出生修饰器的稳定主键，供出生计划引用。 删除或改名必须同步全部引用；该ID不直接展示给玩家。 配置约束：不得留空。"
     },
     {
       "sheet": "EnemyModifiers",
@@ -6441,7 +6441,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "Texts.textKey",
-      "description": "名称文案键：引用Texts.textKey取得本地化显示名称，不直接填写玩家可见文字。"
+      "description": "名称文案键：引用Texts.textKey取得本地化显示名称，不直接填写玩家可见文字。 玩家可见内容从Texts.zhCN/enUS读取，不能把显示文案直接写进ID字段。 配置约束：不得留空；必须引用Texts.textKey的现有值，不存在时导出失败。"
     },
     {
       "sheet": "EnemyModifiers",
@@ -6453,7 +6453,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "生命倍率：出生时对敌人最大生命值应用的乘数。"
+      "description": "生命倍率：敌人实例出生时乘到Enemies.maxHp上的生命倍率；1保持原生命，大于1增强、小于1削弱，结果随该出生实例保存。 配置约束：不得留空。"
     },
     {
       "sheet": "EnemyModifiers",
@@ -6465,7 +6465,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "敌人伤害倍率：出生时对敌人攻击和接触伤害应用的乘数。"
+      "description": "敌人伤害倍率：出生时对敌人攻击和接触伤害应用的乘数。 配置约束：不得留空；不得小于0。"
     },
     {
       "sheet": "EnemyModifiers",
@@ -6477,7 +6477,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "速度倍率：对实体基础移动速度应用的乘数；1表示保持基础速度。"
+      "description": "速度倍率：对实体基础移动速度应用的乘数；1表示保持基础速度。 配置约束：不得留空。"
     },
     {
       "sheet": "EnemyModifiers",
@@ -6489,7 +6489,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "得分倍率：击败带有该修饰器的敌人时对基础得分应用的乘数。"
+      "description": "得分倍率：带该修饰器的敌人被关卡接受为击败后，乘到Enemies.scoreValue上的奖励倍率；不影响实时命中得分。 配置约束：不得留空。"
     },
     {
       "sheet": "EnemyModifiers",
@@ -6501,7 +6501,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "染色色值：敌人表现使用的十六进制颜色；不改变玩法属性。"
+      "description": "染色色值：敌人实例出生时使用的#RRGGBB表现染色；只改变Sprite颜色，不改变生命、伤害、速度或目标筛选。 配置约束：不得留空。"
     },
     {
       "sheet": "EnemyModifiers",
@@ -6513,7 +6513,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "Buffs.buffId",
-      "description": "附加状态ID：引用Buffs.buffId；留空表示出生时不附加额外状态。"
+      "description": "附加状态ID：引用Buffs.buffId；留空表示出生时不附加额外状态。 配置约束：允许留空；必须引用Buffs.buffId的现有值，不存在时导出失败。"
     },
     {
       "sheet": "Spawns",
@@ -6525,7 +6525,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "出生条目ID：单条出生计划的稳定主键。"
+      "description": "出生条目ID：单条出生计划的稳定主键。 删除或改名必须同步全部引用；该ID不直接展示给玩家。 配置约束：不得留空。"
     },
     {
       "sheet": "Spawns",
@@ -6537,7 +6537,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "Waves.waveId",
-      "description": "所属波次ID：引用Waves.waveId，指定该出生条目归属的波次。"
+      "description": "所属波次ID：引用Waves.waveId，指定该出生条目归属的波次。 配置约束：不得留空；必须引用Waves.waveId的现有值，不存在时导出失败。"
     },
     {
       "sheet": "Spawns",
@@ -6549,7 +6549,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "出生时刻秒数：相对所属波次开始时刻的第一次出生时间，单位为秒。"
+      "description": "出生时刻秒数：本行第一个实例相对所属波次启动时刻的出生秒数；后续实例在此基础上按occurrenceIndex×intervalSec依次排期。 配置约束：不得留空。"
     },
     {
       "sheet": "Spawns",
@@ -6561,7 +6561,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "Enemies.enemyId",
-      "description": "敌人ID：引用Enemies.enemyId，指定该出生条目创建的敌人类型。"
+      "description": "敌人ID：引用Enemies.enemyId，指定该出生条目创建的敌人类型。 配置约束：不得留空；必须引用Enemies.enemyId的现有值，不存在时导出失败。"
     },
     {
       "sheet": "Spawns",
@@ -6573,7 +6573,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "出生数量：该行计划连续生成的敌人总数。"
+      "description": "出生数量：本行最终计划生成的实例总数，不是同时存活上限；同时存活数由Waves.maxAlive控制。 配置约束：不得留空；不得小于1。"
     },
     {
       "sheet": "Spawns",
@@ -6585,7 +6585,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "出生间隔秒数：同一行多个敌人之间的生成间隔，单位为秒；单个敌人可填0。"
+      "description": "出生间隔秒数：同一出生行相邻两个实例之间的排期秒数；为0表示同一时刻到期，但仍可能因Waves.maxAlive或对象池拒绝而延后实际生成。 配置约束：不得留空；不得小于0。"
     },
     {
       "sheet": "Spawns",
@@ -6597,7 +6597,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "SpawnPoints.spawnPointId",
-      "description": "出生点ID：引用SpawnPoints.spawnPointId，指定敌人生成的位置规则。"
+      "description": "出生点ID：引用SpawnPoints.spawnPointId，指定敌人生成的位置规则。 配置约束：不得留空；必须引用SpawnPoints.spawnPointId的现有值，不存在时导出失败。"
     },
     {
       "sheet": "Spawns",
@@ -6609,7 +6609,7 @@
       "max": null,
       "enumType": "SpawnPattern",
       "foreignKey": "",
-      "description": "出生队形：同一出生条目采用的队形策略，取值必须来自SpawnPattern枚举。"
+      "description": "出生队形：决定同一出生条目中的多个实例如何在出生点中心和jitter范围内排布；不会改变实例数量或出生时间。 允许值及作用：Single=同一出生条目的所有实例使用出生点中心，不应用jitterX或jitterY偏移；Line=在出生点的-jitterY到+jitterY范围内按实例顺序排成竖线，X保持中心值；Scatter=在±jitterX和±jitterY矩形内按spawnId与实例序号确定性散布，重开结果一致；Stagger=实例在左右、上下两个偏移端点之间交替出生，形成错位节奏。 配置约束：不得留空。"
     },
     {
       "sheet": "Spawns",
@@ -6621,7 +6621,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "EnemyModifiers.modifierId",
-      "description": "修饰器ID：引用EnemyModifiers.modifierId，指定出生时附加的数值修饰。"
+      "description": "修饰器ID：引用EnemyModifiers.modifierId，指定出生时附加的数值修饰。 配置约束：不得留空；必须引用EnemyModifiers.modifierId的现有值，不存在时导出失败。"
     },
     {
       "sheet": "BossPhases",
@@ -6633,7 +6633,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "Boss阶段ID：Boss阶段定义的稳定主键。"
+      "description": "Boss阶段ID：Boss阶段定义的稳定主键。 删除或改名必须同步全部引用；该ID不直接展示给玩家。 配置约束：不得留空。"
     },
     {
       "sheet": "BossPhases",
@@ -6645,7 +6645,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "Enemies.enemyId",
-      "description": "Boss敌人ID：引用Enemies.enemyId，指定该阶段所属的Boss实体。"
+      "description": "Boss敌人ID：引用Enemies.enemyId，指定该阶段所属的Boss实体。 配置约束：不得留空；必须引用Enemies.enemyId的现有值，不存在时导出失败。"
     },
     {
       "sheet": "BossPhases",
@@ -6657,7 +6657,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "组内顺序：同一分组内从1开始的稳定执行、选择或展示顺序。"
+      "description": "组内顺序：同一enemyId的Boss阶段顺序；运行时按生命比例依次切换，不能跳回已完成阶段，阶段区间必须与前后行衔接。 配置约束：不得留空；不得小于1。"
     },
     {
       "sheet": "BossPhases",
@@ -6669,7 +6669,7 @@
       "max": 1,
       "enumType": "",
       "foreignKey": "",
-      "description": "进入生命比例：Boss生命比例降到该上界时进入本阶段，范围0到1。"
+      "description": "进入生命比例：进入本阶段的Boss生命比例上界，范围0到1；运行时观察当前HP比例达到该阶段区间时应用本行移动、攻击、防御和弱点配置。 配置约束：不得留空；有效范围0到1。"
     },
     {
       "sheet": "BossPhases",
@@ -6681,7 +6681,7 @@
       "max": 1,
       "enumType": "",
       "foreignKey": "",
-      "description": "退出生命比例：Boss生命比例降到该下界时退出本阶段，范围0到1。"
+      "description": "退出生命比例：离开本阶段并尝试推进下一阶段的生命比例下界，范围0到1；必须小于enterHpRatio并与相邻阶段形成有效顺序。 配置约束：不得留空；有效范围0到1。"
     },
     {
       "sheet": "BossPhases",
@@ -6693,7 +6693,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "MovePatterns.movePatternId",
-      "description": "阶段移动模式：引用MovePatterns.movePatternId，指定Boss在该阶段使用的移动策略。"
+      "description": "阶段移动模式：引用MovePatterns.movePatternId，指定Boss在该阶段使用的移动策略。 配置约束：不得留空；必须引用MovePatterns.movePatternId的现有值，不存在时导出失败。"
     },
     {
       "sheet": "BossPhases",
@@ -6705,7 +6705,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "阶段攻击集合：引用EnemyAttacks.attackSetId分组，指定Boss在该阶段使用的攻击集合。"
+      "description": "阶段攻击集合：引用EnemyAttacks.attackSetId分组，指定Boss在该阶段使用的攻击集合。 配置约束：不得留空。"
     },
     {
       "sheet": "BossPhases",
@@ -6717,7 +6717,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "DefenseRules.defenseRuleId",
-      "description": "阶段防御规则：引用DefenseRules.defenseRuleId，指定Boss在该阶段使用的防御规则。"
+      "description": "阶段防御规则：引用DefenseRules.defenseRuleId，指定Boss在该阶段使用的防御规则。 配置约束：不得留空；必须引用DefenseRules.defenseRuleId的现有值，不存在时导出失败。"
     },
     {
       "sheet": "BossPhases",
@@ -6729,7 +6729,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "WeakpointRules.weakpointRuleId",
-      "description": "阶段弱点规则：引用WeakpointRules.weakpointRuleId，指定Boss在该阶段使用的弱点窗口。"
+      "description": "阶段弱点规则：引用WeakpointRules.weakpointRuleId，指定Boss在该阶段使用的弱点窗口。 配置约束：不得留空；必须引用WeakpointRules.weakpointRuleId的现有值，不存在时导出失败。"
     },
     {
       "sheet": "BossPhases",
@@ -6741,7 +6741,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "SkillEffects.effectGroupId",
-      "description": "入场效果组：引用SkillEffects.effectGroupId，进入该Boss阶段时执行对应效果链。"
+      "description": "入场效果组：引用SkillEffects.effectGroupId，进入该Boss阶段时执行对应效果链。 配置约束：不得留空；必须引用SkillEffects.effectGroupId的现有值，不存在时导出失败。"
     },
     {
       "sheet": "BossPhases",
@@ -6753,7 +6753,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "Texts.textKey",
-      "description": "阶段文案键：引用Texts.textKey，取得该Boss阶段的本地化说明。"
+      "description": "阶段文案键：引用Texts.textKey，取得该Boss阶段的本地化说明。 玩家可见内容从Texts.zhCN/enUS读取，不能把显示文案直接写进ID字段；该文本用于策划、翻译或审计，不参与玩法数值计算。 配置约束：不得留空；必须引用Texts.textKey的现有值，不存在时导出失败。"
     },
     {
       "sheet": "Rewards",
@@ -6765,7 +6765,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "奖励表ID：把多条Rewards规则分组为关卡可引用的奖励集合。"
+      "description": "奖励表ID：把多条Rewards规则分组为关卡可引用的奖励集合。 配置约束：不得留空。"
     },
     {
       "sheet": "Rewards",
@@ -6777,7 +6777,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "组内顺序：同一分组内从1开始的稳定执行、选择或展示顺序。"
+      "description": "组内顺序：同一rewardTableId内奖励的稳定处理顺序；所有满足conditionType的行都会按此顺序生成奖励，不是只选第一条。 配置约束：不得留空；不得小于1。"
     },
     {
       "sheet": "Rewards",
@@ -6789,7 +6789,7 @@
       "max": null,
       "enumType": "RewardCondition",
       "foreignKey": "",
-      "description": "奖励条件类型：指定奖励判定规则，取值必须来自RewardCondition枚举。"
+      "description": "奖励条件类型：决定结算时用通关、星级还是最终分数判断该奖励行是否生效，并改变conditionValue的合法含义。 允许值及作用：Clear=关卡完成即满足；StarAtLeast=结算星级达到conditionValue时满足；ScoreAtLeast=最终结算分数不低于conditionValue时满足。 配置约束：不得留空。"
     },
     {
       "sheet": "Rewards",
@@ -6801,7 +6801,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "奖励条件值：按conditionType解释的条件参数，例如通关标记或最低星级。"
+      "description": "奖励条件值：与conditionType联动的阈值：Clear必须填1，StarAtLeast填1到3，ScoreAtLeast填非负最终分数；虽然单元格是字符串，内容必须可解析为整数。 配置约束：不得留空。"
     },
     {
       "sheet": "Rewards",
@@ -6813,7 +6813,7 @@
       "max": null,
       "enumType": "RewardType",
       "foreignKey": "",
-      "description": "奖励类型：指定满足条件后发放的奖励类别，取值必须来自RewardType枚举。"
+      "description": "奖励类型：决定条件满足后rewardId指向关卡、功能标记还是计分代币，并改变amount的限制。 允许值及作用：UnlockLevel=解锁rewardId指定的Levels.levelId；UnlockFeature=解锁rewardId指定的feature_命名空间功能标记；ScoreToken=向rewardId指定的token_命名空间计数累加amount，可用于局外累计资源。 配置约束：不得留空。"
     },
     {
       "sheet": "Rewards",
@@ -6825,7 +6825,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "conditional",
-      "description": "奖励对象ID：按rewardType解释的奖励对象标识；解锁关卡时引用Levels.levelId。"
+      "description": "奖励对象ID：与rewardType联动的奖励目标：UnlockLevel填写现有Levels.levelId，UnlockFeature填写feature_前缀标记，ScoreToken填写token_前缀计数键。 配置约束：不得留空；必须引用conditional的现有值，不存在时导出失败。"
     },
     {
       "sheet": "Rewards",
@@ -6837,7 +6837,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "奖励数量：满足条件后发放或累计的奖励数量。"
+      "description": "奖励数量：满足条件后发放的正整数数量。UnlockLevel和UnlockFeature固定为1；ScoreToken可大于1并累加到对应token_计数。 配置约束：不得留空。"
     },
     {
       "sheet": "Tutorials",
@@ -6849,7 +6849,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "教程ID：把多条Tutorials步骤分组为关卡可引用的教程流程。"
+      "description": "教程ID：把多条Tutorials步骤分组为关卡可引用的教程流程。 配置约束：不得留空。"
     },
     {
       "sheet": "Tutorials",
@@ -6861,7 +6861,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "组内顺序：同一分组内从1开始的稳定执行、选择或展示顺序。"
+      "description": "组内顺序：同一tutorialId内从小到大的步骤顺序；当前步骤的completeEvent完成后才推进下一行，改序会改变玩家实际教学流程。 配置约束：不得留空；不得小于1。"
     },
     {
       "sheet": "Tutorials",
@@ -6873,7 +6873,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "教程触发事件：教程步骤开始等待的运行时事件协议名。"
+      "description": "教程触发事件：开始显示该步骤所等待的稳定运行时事件名；事件未发生时步骤不出现，名称必须与教程协调器发布协议一致。 配置约束：不得留空。"
     },
     {
       "sheet": "Tutorials",
@@ -6885,7 +6885,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "阻断战斗推进：步骤显示期间是否暂停受教程门控制的战斗推进。"
+      "description": "阻断战斗推进：为true时步骤显示期间阻止受教程门控制的波次完成与战斗推进，但不等同于暂停整个Unity时间；为false时仅显示提示。 配置约束：不得留空。"
     },
     {
       "sheet": "Tutorials",
@@ -6897,7 +6897,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "最短展示秒数：教程步骤即使已满足完成条件也必须保持显示的最短时间，单位为秒。"
+      "description": "最短展示秒数：教程步骤即使已满足完成条件也必须保持显示的最短时间，单位为秒。 配置约束：不得留空。"
     },
     {
       "sheet": "Tutorials",
@@ -6909,7 +6909,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "教程完成事件：玩家完成本步骤所需发布的事件协议或带阈值事件表达式。"
+      "description": "教程完成事件：结束当前步骤所等待的稳定运行时事件名；只有收到该事件且满足minDisplaySec后才能推进到下一步。 配置约束：不得留空。"
     },
     {
       "sheet": "Tutorials",
@@ -6921,7 +6921,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "Texts.textKey",
-      "description": "文案键：引用Texts.textKey取得玩家可见的本地化文本。"
+      "description": "文案键：引用Texts.textKey取得玩家可见的本地化文本。 玩家可见内容从Texts.zhCN/enUS读取，不能把显示文案直接写进ID字段。 配置约束：不得留空；必须引用Texts.textKey的现有值，不存在时导出失败。"
     },
     {
       "sheet": "Tutorials",
@@ -6933,7 +6933,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "高亮目标：教程遮罩需要突出显示的UI或战斗区域协议名。"
+      "description": "高亮目标：教程遮罩或引导需要突出显示的稳定目标协议名；它不通过场景对象名称自动查找，必须由教程视图适配器认识。 配置约束：不得留空。"
     },
     {
       "sheet": "Tutorials",
@@ -6945,7 +6945,7 @@
       "max": null,
       "enumType": "GestureType",
       "foreignKey": "",
-      "description": "笔势类型：指定该规则或交互要求的手势类别，取值必须登记在GestureType枚举。"
+      "description": "笔势类型：决定该教程步骤期望玩家完成的笔势；实际完成还要由completeEvent到达，不能只靠显示提示。 允许值及作用：Any=不限制具体笔势类别；Horizontal=要求笔迹主方向接近水平线；Vertical=要求笔迹主方向接近竖直线；Diagonal=要求笔迹主方向为斜线；Arc=要求笔迹形成达到minArcCurvature阈值的弧线，不要求首尾闭合；Circle=要求笔迹首尾距离和包围面积同时达到圆形规则，用于闭合环形输入；Charged=要求持续按住达到chargeHoldSec后释放的蓄力输入，不以普通直线方向分类。 配置约束：不得留空。"
     },
     {
       "sheet": "Texts",
@@ -6957,7 +6957,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "文案键：本地化文案的稳定主键，供配置和UI引用。"
+      "description": "文案键：本地化文案的稳定主键，供配置和UI引用。 删除或改名必须同步全部引用；该ID不直接展示给玩家；玩家可见内容从Texts.zhCN/enUS读取，不能把显示文案直接写进ID字段。 配置约束：不得留空。"
     },
     {
       "sheet": "Texts",
@@ -6969,7 +6969,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "简体中文：该文案键对应的简体中文玩家可见文本。"
+      "description": "简体中文：textKey在简体中文环境下显示给玩家的最终文案；修改会影响所有引用该键的UI、教程或反馈，不应写入技术ID。 配置约束：不得留空。"
     },
     {
       "sheet": "Texts",
@@ -6981,7 +6981,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "英文：该文案键对应的英文回退或本地化文本。"
+      "description": "英文：textKey在英文环境下显示的最终文案，并作为缺少其他语言时的英文内容；必须与zhCN表达同一业务含义。 配置约束：不得留空。"
     },
     {
       "sheet": "Texts",
@@ -6993,7 +6993,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "使用场景：说明文案出现的位置或用途，便于翻译和字体覆盖审查。"
+      "description": "使用场景：说明文案出现的位置或用途，便于翻译和字体覆盖审查。 该文本用于策划、翻译或审计，不参与玩法数值计算。 配置约束：不得留空。"
     },
     {
       "sheet": "AudioCues",
@@ -7005,7 +7005,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "音频事件键：音频提示的稳定主键，供战斗、UI和反馈配置引用。"
+      "description": "音频事件键：音频提示的稳定主键，供战斗、UI和反馈配置引用。 删除或改名必须同步全部引用；该ID不直接展示给玩家；填写时选择AudioCues.audioKey；留空表示该节点不额外播放音频。 配置约束：不得留空。"
     },
     {
       "sheet": "AudioCues",
@@ -7017,7 +7017,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "AssetManifest.assetKey",
-      "description": "音频资源键：引用AssetManifest.assetKey，并由Unity AssetRegistry解析为AudioClip。"
+      "description": "音频资源键：引用AssetManifest.assetKey，并由Unity AssetRegistry解析为AudioClip。 运行时通过AssetRegistry按稳定键取Unity对象，缺失或类型错误会使资源校验失败。 配置约束：不得留空；必须引用AssetManifest.assetKey的现有值，不存在时导出失败。"
     },
     {
       "sheet": "AudioCues",
@@ -7029,7 +7029,7 @@
       "max": null,
       "enumType": "AudioCategory",
       "foreignKey": "",
-      "description": "音频分类：区分背景音乐、音效等通道类型，取值必须来自AudioCategory枚举。"
+      "description": "音频分类：决定音频进入背景音乐、战斗音效或UI音效通道；volume、并发和冷却仍由本行其他字段控制。 允许值及作用：BGM=背景音乐通道；SFX=战斗与环境音效通道；UI=界面交互音效通道。 配置约束：不得留空。"
     },
     {
       "sheet": "AudioCues",
@@ -7041,7 +7041,7 @@
       "max": 1,
       "enumType": "",
       "foreignKey": "",
-      "description": "音量：播放该音频时使用的0到1线性音量。"
+      "description": "音量：播放该audioKey时使用的线性音量倍率，范围0到1；0为静音、1为资源原始音量，不改变其他音频事件。 配置约束：不得留空；有效范围0到1。"
     },
     {
       "sheet": "AudioCues",
@@ -7053,7 +7053,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "最低音调：随机音调范围的下界；1表示原始音调。"
+      "description": "最低音调：每次播放时可选音调范围下界，1为原速原调；必须不大于pitchMax。当前播放适配器在该范围内取确定或随机值。 配置约束：不得留空。"
     },
     {
       "sheet": "AudioCues",
@@ -7065,7 +7065,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "最高音调：随机音调范围的上界，必须不低于最低音调。"
+      "description": "最高音调：每次播放时可选音调范围上界，1为原速原调；必须不小于pitchMin。 配置约束：不得留空。"
     },
     {
       "sheet": "AudioCues",
@@ -7077,7 +7077,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "最大并发数：该音频事件允许同时播放的实例数量上限。"
+      "description": "最大并发数：同一audioKey允许同时存在的播放实例上限；达到上限时后续请求由音频适配器拒绝或复用，不影响其他audioKey。 配置约束：不得留空；不得小于1。"
     },
     {
       "sheet": "AudioCues",
@@ -7089,7 +7089,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "冷却秒数：同一动作再次可用前必须等待的最短时间，单位为秒。"
+      "description": "冷却秒数：同一动作再次可用前必须等待的最短时间，单位为秒。 配置约束：不得留空；不得小于0。"
     },
     {
       "sheet": "VfxCues",
@@ -7101,7 +7101,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "特效事件键：特效提示的稳定主键，供技能、弱点和战斗反馈引用。"
+      "description": "特效事件键：特效提示的稳定主键，供技能、弱点和战斗反馈引用。 删除或改名必须同步全部引用；该ID不直接展示给玩家；填写时选择VfxCues.vfxKey；留空表示该节点不额外播放特效。 配置约束：不得留空。"
     },
     {
       "sheet": "VfxCues",
@@ -7113,7 +7113,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "AssetManifest.assetKey",
-      "description": "特效资源键：引用AssetManifest.assetKey，并由Unity AssetRegistry解析为特效Prefab。"
+      "description": "特效资源键：引用AssetManifest.assetKey，并由Unity AssetRegistry解析为特效Prefab。 运行时通过AssetRegistry按稳定键取Unity对象，缺失或类型错误会使资源校验失败。 配置约束：不得留空；必须引用AssetManifest.assetKey的现有值，不存在时导出失败。"
     },
     {
       "sheet": "VfxCues",
@@ -7125,7 +7125,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "特效寿命秒数：特效实例从播放到自动回池的非缩放时间，单位为秒。"
+      "description": "特效寿命秒数：特效实例从播放到自动回池的非缩放时间，单位为秒。 配置约束：不得留空；不得小于0。"
     },
     {
       "sheet": "VfxCues",
@@ -7137,7 +7137,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "池预热数量：进入会话时为该资源预先创建的对象数量，用于降低首次生成开销。"
+      "description": "池预热数量：进入会话时为该资源预先创建的对象数量，用于降低首次生成开销。 配置约束：不得留空；不得小于0。"
     },
     {
       "sheet": "VfxCues",
@@ -7149,7 +7149,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "跟随目标：特效播放期间是否持续跟随目标；关闭时使用触发瞬间的位置快照。"
+      "description": "跟随目标：为true时特效在生命周期内跟随目标位置；为false时只在触发瞬间记录世界位置，目标移动或回收后特效仍留在原处。 配置约束：不得留空。"
     },
     {
       "sheet": "VfxCues",
@@ -7161,7 +7161,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "排序层：SpriteRenderer或LineRenderer使用的Unity Sorting Layer名称。"
+      "description": "排序层：SpriteRenderer或LineRenderer使用的Unity Sorting Layer名称。 配置约束：不得留空。"
     },
     {
       "sheet": "VfxCues",
@@ -7173,7 +7173,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "层内顺序：在相同Sorting Layer内决定前后遮挡关系的整数顺序。"
+      "description": "层内顺序：在相同Sorting Layer内决定前后遮挡关系的整数顺序。 配置约束：不得留空。"
     },
     {
       "sheet": "AssetManifest",
@@ -7185,7 +7185,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "资源键：资源清单条目的稳定主键，供各配置表和Unity AssetRegistry共同引用。"
+      "description": "资源键：资源清单条目的稳定主键，供各配置表和Unity AssetRegistry共同引用。 删除或改名必须同步全部引用；该ID不直接展示给玩家；运行时通过AssetRegistry按稳定键取Unity对象，缺失或类型错误会使资源校验失败。 配置约束：不得留空。"
     },
     {
       "sheet": "AssetManifest",
@@ -7197,7 +7197,7 @@
       "max": null,
       "enumType": "AssetType",
       "foreignKey": "",
-      "description": "资源类型：指定资源键对应的Unity对象类型，取值必须来自AssetType枚举。"
+      "description": "资源类型：声明assetKey在Unity AssetRegistry中必须绑定的对象类型；类型不匹配会在编辑器或构建校验时失败。 允许值及作用：Sprite=要求AssetRegistry中的对应对象为Sprite，用于静态图片、图标或精灵表现；Prefab=要求AssetRegistry中的对应对象为Prefab，用于实例化角色、特效或其他GameObject；AudioClip=要求AssetRegistry中的对应对象为AudioClip，供AudioCues播放；Scene=要求AssetRegistry中的对应对象为SceneAsset，并在构建场景清单中可用；Material=要求AssetRegistry中的对应对象为Material，供渲染资源引用；Font=要求AssetRegistry中的对应对象为字体资源，供本地化UI使用；AnimationClip=要求AssetRegistry中的对应对象为AnimationClip，供动画状态或表现流程使用。 配置约束：不得留空。"
     },
     {
       "sheet": "AssetManifest",
@@ -7209,7 +7209,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "审查路径：供作者工具和人工审查定位资源的工程路径；运行时仍通过AssetRegistry引用对象。"
+      "description": "审查路径：Unity工程中的资产路径或构建地址，用于编辑器作者工具绑定AssetRegistry；Gameplay运行时不按此字符串直接加载资源。 配置约束：不得留空。"
     },
     {
       "sheet": "AssetManifest",
@@ -7221,7 +7221,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "MVP必需：该资源是否属于MVP不可缺失的构建内容。"
+      "description": "MVP必需：为true时该资源必须存在、类型正确并进入AssetRegistry/构建；为false表示允许后续替换，但现有配置引用仍必须满足对应校验。 配置约束：不得留空。"
     },
     {
       "sheet": "AssetManifest",
@@ -7233,7 +7233,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "备注：记录该出生点或资源条目的策划用途、来源或替换注意事项。"
+      "description": "备注：记录资源来源、占位状态和替换要求；不作为运行时加载地址，也不改变资源类型。 配置约束：不得留空。"
     },
     {
       "sheet": "Enums",
@@ -7245,7 +7245,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "枚举类型：枚举值所属的稳定类型名。"
+      "description": "枚举类型：把多个允许值归入同一稳定协议类型，供FieldDictionary.enumType和导出器校验；改名必须同步所有引用该组的字段合同。 配置约束：不得留空。"
     },
     {
       "sheet": "Enums",
@@ -7257,7 +7257,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "枚举值：写入业务字段的稳定英文枚举值，必须与代码协议一致。"
+      "description": "枚举值：写入业务字段的稳定英文枚举值，必须与代码协议一致。 配置约束：不得留空。"
     },
     {
       "sheet": "Enums",
@@ -7269,7 +7269,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "枚举显示名：供配置编辑和审查使用的枚举名称，不作为玩家本地化文案。"
+      "description": "枚举显示名：供配置编辑和审查使用的枚举名称，不作为玩家本地化文案。 配置约束：不得留空。"
     },
     {
       "sheet": "Enums",
@@ -7281,7 +7281,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "枚举说明：说明该枚举值的协议用途、约束或选择含义。"
+      "description": "枚举说明：解释该枚举值被业务字段选中后产生的具体行为、参数联动和当前实现限制；不能只重复英文值或写“代码共享值”。 配置约束：不得留空。"
     },
     {
       "sheet": "FeedbackCues",
@@ -7293,7 +7293,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "反馈配置ID：战斗反馈档案的稳定主键，供命中、受击和死亡事件选择。"
+      "description": "反馈配置ID：战斗反馈档案的稳定主键，供命中、受击和死亡事件选择。 删除或改名必须同步全部引用；该ID不直接展示给玩家。 配置约束：不得留空。"
     },
     {
       "sheet": "FeedbackCues",
@@ -7305,7 +7305,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "VfxCues.vfxKey",
-      "description": "反馈特效键：引用VfxCues.vfxKey，指定该战斗反馈必须播放的特效提示。"
+      "description": "反馈特效键：引用VfxCues.vfxKey，指定该战斗反馈必须播放的特效提示。 填写时选择VfxCues.vfxKey；留空表示该节点不额外播放特效。 配置约束：不得留空；必须引用VfxCues.vfxKey的现有值，不存在时导出失败。"
     },
     {
       "sheet": "FeedbackCues",
@@ -7317,7 +7317,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "AudioCues.audioKey",
-      "description": "反馈音频键：引用AudioCues.audioKey，指定该战斗反馈必须播放的音频提示。"
+      "description": "反馈音频键：引用AudioCues.audioKey，指定该战斗反馈必须播放的音频提示。 填写时选择AudioCues.audioKey；留空表示该节点不额外播放音频。 配置约束：不得留空；必须引用AudioCues.audioKey的现有值，不存在时导出失败。"
     },
     {
       "sheet": "FeedbackCues",
@@ -7329,7 +7329,7 @@
       "max": 1,
       "enumType": "",
       "foreignKey": "",
-      "description": "时间缩放：反馈期间玩法时间的缩放比例；0表示完全停顿，1表示正常速度。"
+      "description": "时间缩放：命中反馈期间请求的时间倍率，1表示不减速，低于1表示慢动作；保持时长由timeScaleSec决定。 配置约束：不得留空；有效范围0到1。"
     },
     {
       "sheet": "FeedbackCues",
@@ -7341,7 +7341,7 @@
       "max": 2,
       "enumType": "",
       "foreignKey": "",
-      "description": "时间缩放秒数：时间缩放保持的非缩放时长，单位为秒。"
+      "description": "时间缩放秒数：时间缩放保持的非缩放时长，单位为秒。 配置约束：不得留空；有效范围0.01到2。"
     },
     {
       "sheet": "FeedbackCues",
@@ -7353,7 +7353,7 @@
       "max": 2,
       "enumType": "",
       "foreignKey": "",
-      "description": "闪白秒数：受击目标保持闪白表现的时间，单位为非缩放秒。"
+      "description": "闪白秒数：受击目标保持闪白表现的时间，单位为非缩放秒。 配置约束：不得留空；有效范围0到2。"
     },
     {
       "sheet": "FeedbackCues",
@@ -7365,7 +7365,7 @@
       "max": 100,
       "enumType": "",
       "foreignKey": "",
-      "description": "震屏强度：1920×1080参考分辨率下相机震动的最大位移，单位为参考像素。"
+      "description": "震屏强度：1920×1080参考分辨率下相机震动的最大位移，单位为参考像素。 参考像素以Global.reference_width/reference_height为设计空间，再映射到实际画面。 配置约束：不得留空；有效范围0到100。"
     },
     {
       "sheet": "FeedbackCues",
@@ -7377,7 +7377,7 @@
       "max": 2,
       "enumType": "",
       "foreignKey": "",
-      "description": "震屏秒数：相机震动持续的非缩放时间，单位为秒。"
+      "description": "震屏秒数：相机震动持续的非缩放时间，单位为秒。 配置约束：不得留空；有效范围0到2。"
     },
     {
       "sheet": "FeedbackCues",
@@ -7389,7 +7389,7 @@
       "max": null,
       "enumType": "FeedbackVibrationPattern",
       "foreignKey": "",
-      "description": "震动档位：平台震动强度协议，取值来自FeedbackVibrationPattern枚举并受用户总开关控制。"
+      "description": "震动档位：决定该反馈请求的平台震动档位；Off不请求震动，其他档位仍受玩家总开关与平台能力限制。 允许值及作用：Off=不请求平台震动；Light=请求轻量短震，适合普通命中等低强度反馈；Medium=请求中等震动，适合受击或较强技能反馈；Heavy=请求强震动，适合重击、Boss或重大结算反馈。 配置约束：不得留空。"
     },
     {
       "sheet": "FeedbackCues",
@@ -7401,7 +7401,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "伤害数字颜色：伤害数字使用的#RRGGBBAA十六进制颜色。"
+      "description": "伤害数字颜色：伤害数字使用的#RRGGBBAA十六进制颜色。 配置约束：不得留空。"
     },
     {
       "sheet": "FeedbackCues",
@@ -7413,7 +7413,7 @@
       "max": 200,
       "enumType": "",
       "foreignKey": "",
-      "description": "伤害数字字号：1920×1080参考分辨率下的伤害数字字号。"
+      "description": "伤害数字字号：1920×1080参考分辨率下的伤害数字字号。 参考像素以Global.reference_width/reference_height为设计空间，再映射到实际画面。 配置约束：不得留空；有效范围1到200。"
     },
     {
       "sheet": "FeedbackCues",
@@ -7425,7 +7425,7 @@
       "max": 3,
       "enumType": "",
       "foreignKey": "",
-      "description": "伤害数字寿命：伤害数字从出现到回池的非缩放时间，单位为秒。"
+      "description": "伤害数字寿命：伤害数字从出现到回池的非缩放时间，单位为秒。 配置约束：不得留空；有效范围0.01到3。"
     },
     {
       "sheet": "FeedbackCues",
@@ -7437,7 +7437,7 @@
       "max": 300,
       "enumType": "",
       "foreignKey": "",
-      "description": "伤害数字上浮：伤害数字生命周期内向上移动的总距离，单位为参考像素。"
+      "description": "伤害数字上浮：伤害数字生命周期内向上移动的总距离，单位为参考像素。 参考像素以Global.reference_width/reference_height为设计空间，再映射到实际画面。 配置约束：不得留空；有效范围0到300。"
     },
     {
       "sheet": "FeedbackCues",
@@ -7449,7 +7449,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "特效染色：反馈特效使用的#RRGGBBAA十六进制乘色色值。"
+      "description": "特效染色：反馈特效使用的#RRGGBBAA十六进制乘色色值。 配置约束：不得留空。"
     },
     {
       "sheet": "FeedbackCues",
@@ -7461,7 +7461,7 @@
       "max": 200,
       "enumType": "",
       "foreignKey": "",
-      "description": "特效尺寸：1920×1080参考分辨率下反馈特效的目标显示尺寸。"
+      "description": "特效尺寸：1920×1080参考分辨率下反馈特效的目标显示尺寸。 参考像素以Global.reference_width/reference_height为设计空间，再映射到实际画面。 配置约束：不得留空；有效范围1到200。"
     },
     {
       "sheet": "FeedbackCues",
@@ -7473,7 +7473,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "反馈说明：概括该反馈档案对应的战斗事件和玩家感受目标。"
+      "description": "反馈说明：说明该反馈档案对应的战斗事件、玩家感受和使用边界；只用于策划选择，不参与数值结算。 配置约束：不得留空。"
     },
     {
       "sheet": "StrokeTrailStyles",
@@ -7485,7 +7485,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "样式ID：画笔轨迹样式的稳定主键，供Stances引用。"
+      "description": "样式ID：画笔轨迹样式的稳定主键，供Stances引用。 删除或改名必须同步全部引用；该ID不直接展示给玩家。 配置约束：不得留空。"
     },
     {
       "sheet": "StrokeTrailStyles",
@@ -7497,7 +7497,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "外层颜色：轨迹外层辉光使用的#RRGGBBAA十六进制颜色。"
+      "description": "外层颜色：轨迹外层辉光使用的#RRGGBBAA十六进制颜色。 配置约束：不得留空。"
     },
     {
       "sheet": "StrokeTrailStyles",
@@ -7509,7 +7509,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "主体颜色：轨迹主体使用的#RRGGBBAA十六进制颜色。"
+      "description": "主体颜色：画笔主轨迹主体层使用的#RRGGBBAA颜色；与outerColorHex和coreColorHex叠加形成最终视觉，不参与命中判定。 配置约束：不得留空。"
     },
     {
       "sheet": "StrokeTrailStyles",
@@ -7521,7 +7521,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "核心颜色：轨迹核心高光使用的#RRGGBBAA十六进制颜色。"
+      "description": "核心颜色：轨迹核心高光使用的#RRGGBBAA十六进制颜色。 配置约束：不得留空。"
     },
     {
       "sheet": "StrokeTrailStyles",
@@ -7533,7 +7533,7 @@
       "max": 4,
       "enumType": "",
       "foreignKey": "",
-      "description": "外层宽度倍率：外层辉光宽度相对架势基础笔宽的乘数。"
+      "description": "外层宽度倍率：外层辉光宽度相对架势基础笔宽的乘数。 配置约束：不得留空；有效范围0.01到4。"
     },
     {
       "sheet": "StrokeTrailStyles",
@@ -7545,7 +7545,7 @@
       "max": 4,
       "enumType": "",
       "foreignKey": "",
-      "description": "主体宽度倍率：主体轨迹宽度相对架势基础笔宽的乘数。"
+      "description": "主体宽度倍率：主体轨迹宽度相对架势基础笔宽的乘数。 配置约束：不得留空；有效范围0.01到4。"
     },
     {
       "sheet": "StrokeTrailStyles",
@@ -7557,7 +7557,7 @@
       "max": 4,
       "enumType": "",
       "foreignKey": "",
-      "description": "核心宽度倍率：核心高光宽度相对架势基础笔宽的乘数。"
+      "description": "核心宽度倍率：核心高光宽度相对架势基础笔宽的乘数。 配置约束：不得留空；有效范围0.01到4。"
     },
     {
       "sheet": "StrokeTrailStyles",
@@ -7569,7 +7569,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "分支颜色：分支电弧使用的#RRGGBBAA十六进制颜色。"
+      "description": "分支颜色：主轨迹两侧分支电弧使用的#RRGGBBAA颜色；只改变分支表现，不影响主路径、命中半径或伤害。 配置约束：不得留空。"
     },
     {
       "sheet": "StrokeTrailStyles",
@@ -7581,7 +7581,7 @@
       "max": 1920,
       "enumType": "",
       "foreignKey": "",
-      "description": "分支间距：相邻分支沿主路径分布的目标间距，单位为参考像素。"
+      "description": "分支间距：相邻分支沿主路径分布的目标间距，单位为参考像素。 参考像素以Global.reference_width/reference_height为设计空间，再映射到实际画面。 配置约束：不得留空；有效范围1到1920。"
     },
     {
       "sheet": "StrokeTrailStyles",
@@ -7593,7 +7593,7 @@
       "max": 500,
       "enumType": "",
       "foreignKey": "",
-      "description": "分支长度：单条分支电弧的目标长度，单位为参考像素。"
+      "description": "分支长度：单条分支电弧的目标长度，单位为参考像素。 参考像素以Global.reference_width/reference_height为设计空间，再映射到实际画面。 配置约束：不得留空；有效范围1到500。"
     },
     {
       "sheet": "StrokeTrailStyles",
@@ -7605,7 +7605,7 @@
       "max": 200,
       "enumType": "",
       "foreignKey": "",
-      "description": "分支抖动：分支折点允许偏离基准线的最大距离，单位为参考像素。"
+      "description": "分支抖动：分支折点允许偏离基准线的最大距离，单位为参考像素。 参考像素以Global.reference_width/reference_height为设计空间，再映射到实际画面。 配置约束：不得留空；有效范围0到200。"
     },
     {
       "sheet": "StrokeTrailStyles",
@@ -7617,7 +7617,7 @@
       "max": 1,
       "enumType": "",
       "foreignKey": "",
-      "description": "分支宽度倍率：分支电弧宽度相对架势基础笔宽的乘数。"
+      "description": "分支宽度倍率：分支电弧宽度相对架势基础笔宽的乘数。 配置约束：不得留空；有效范围0.01到1。"
     },
     {
       "sheet": "StrokeTrailStyles",
@@ -7629,7 +7629,7 @@
       "max": 8,
       "enumType": "",
       "foreignKey": "",
-      "description": "分支线段数：构成单条分支电弧的折线段数量。"
+      "description": "分支线段数：构成单条分支电弧的折线段数量。 配置约束：不得留空；有效范围2到8。"
     }
   ],
   "feedbackCues": [
