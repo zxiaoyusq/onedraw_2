@@ -30,8 +30,8 @@ namespace OneStrokeDemon.Tests.EditMode.T370
 
             Assert.That(rules.ProjectileId, Is.EqualTo(ConfigIds.Projectiles.ProjGhostFire));
             Assert.That(rules.MovePatternId, Is.EqualTo(ConfigIds.MovePatterns.MoveGroundLeft));
-            Assert.That(rules.SpeedReferencePixelsPerSecond, Is.EqualTo(260f));
-            Assert.That(rules.LifetimeSeconds, Is.EqualTo(4f));
+            Assert.That(rules.SpeedReferencePixelsPerSecond, Is.EqualTo(180f));
+            Assert.That(rules.LifetimeSeconds, Is.EqualTo(10f));
             Assert.That(rules.Damage, Is.EqualTo(8));
             Assert.That(rules.Cuttable, Is.True);
             Assert.That(rules.Reflectable, Is.True);

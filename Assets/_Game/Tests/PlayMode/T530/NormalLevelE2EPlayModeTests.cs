@@ -412,7 +412,10 @@ namespace OneStrokeDemon.Tests.PlayMode.T530
                 return true;
             }
 
-            public void ExecuteAttack(in EnemyAttackAction action, double timestamp)
+            public void ExecuteAttack(
+                EnemyController source,
+                in EnemyAttackAction action,
+                double timestamp)
             {
                 actions.Add(action);
             }

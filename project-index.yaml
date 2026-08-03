@@ -23,9 +23,9 @@ config:
   generated_hash: Assets/_Game/Config/Generated/gameplay_config.hash
   generated_ids: Assets/_Game/Scripts/Config/Generated/ConfigIds.g.cs
   schema_version: 6
-  content_version: 0.6.6-sample
-  content_hash: 5c3b73b2160859f6703f8430e8d63141328d648c163cd81ece611f31c4d70cb7
-  workbook_sha256: 2c737eab7d46025b4e45343b54e694332e2c627ad4552159b1b736a570537cc9
+  content_version: 0.6.8-sample
+  content_hash: 6ab856f9e53dc3726c684340df8851d88b0447833872a21a01b737ed49847fdb
+  workbook_sha256: 7ccb004ea4bc5cfe3ff3d179c268d2085c65e9cfa65be71677581b430b529567
   mirror_status: byte_identical
   contract_audit: pass
   exporter:
@@ -36,13 +36,13 @@ config:
     test_count: 8
     exported_tables: 30
     exported_records: 763
-    output_bytes: 208104
-    output_sha256: 9e6ff384df594cca6ada98a9bafbf57329c45f757271b560f8c49f021dea3c86
+    output_bytes: 216081
+    output_sha256: b523b205d13ed750687474c40527e15199423779943a836ac71ae8506aab61c0
     runtime_snapshot_committed: true
   validator:
     path: Tools/ConfigExporter/Validation
     status: pass
-    test_count: 60
+    test_count: 62
     invalid_case_count: 43
     diagnostic_location: Sheet/ExcelRow/Field
     schema_mirror_check: pass
@@ -57,8 +57,8 @@ config:
     loaded_records: 763
     readonly_primary_indexes: 345
     readonly_group_indexes: 56
-    full_editmode_tests: 208
-    full_playmode_tests: 56
+    full_editmode_tests: 215
+    full_playmode_tests: 59
     bootstrap_smoke: pass
   asset_registry:
     status: pass
@@ -79,19 +79,38 @@ config:
     default_read_only: true
     update_flag: --update
     drift_diagnostic: CFG013
-    generated_json_bytes: 208104
-    generated_json_sha256: 9e6ff384df594cca6ada98a9bafbf57329c45f757271b560f8c49f021dea3c86
+    generated_json_bytes: 216081
+    generated_json_sha256: b523b205d13ed750687474c40527e15199423779943a836ac71ae8506aab61c0
     generated_hash_bytes: 65
-    generated_hash_sha256: 5d2e9352acb5648dc275619a1accd98202767efc3a17b5b3b8f9b0f3a5950de8
+    generated_hash_sha256: 6bc5618c7d506b1980fa5c9aedaab4096819bbd7c18de3bb508f94d3c98f84a1
     generated_ids_bytes: 48420
-    generated_ids_sha256: 7f14033a588262eba1dd080306d2a1b786231f8255f89ecc83145fe3375cb529
+    generated_ids_sha256: e04d3945c3fb84399f8605ead6c2abcd01a6f38e17e445da25e933b5ced3548b
     id_sets: 29
     id_constants: 381
-    dotnet_tests: 60
+    dotnet_tests: 62
+  documentation:
+    status: pass
+    task: T699B
+    sheet_count: 31
+    sheet_purpose_chinese_count: 31
+    visible_chinese_field_labels: 290
+    documented_business_fields: 280
+    placeholder_descriptions: 0
+    label_row: 3
+    api_header_row: 4
+    data_start_row: 5
+    field_dictionary_self_recursive: false
+    formula_errors: 0
+    rendered_sheets_before: 31
+    rendered_sheets_after: 31
+    focused_dotnet_tests: 2
+    full_dotnet_tests: 62
+    full_editmode_tests: 215
+    full_playmode_tests: 59
     config_editmode_tests: 19
     config_playmode_tests: 3
-    full_editmode_tests: 208
-    full_playmode_tests: 56
+    full_editmode_tests: 210
+    full_playmode_tests: 57
     full_command_smoke: pass_via_readonly_drift_gate_plus_isolated_unity_batch_project
 result_progress:
   status: pass
@@ -423,7 +442,7 @@ projectile_interaction:
   reset_fields: [rules, ownership, reference_space, position, direction, elapsed_time, hit_target_id, collider, transform, active_state]
   editmode_tests: 8
   playmode_tests: 2
-  player_path: {projectile: proj_ghost_fire, original_enemy: 7001, reflector_player: 101, damage: 8, half_second_displacement_ref_px: 130}
+  player_path: {projectile: proj_ghost_fire, original_enemy: 7001, reflector_player: 101, damage: 8, half_second_displacement_ref_px: 90}
   full_editmode_tests: 162
   full_playmode_tests: 41
 player_combat:
@@ -784,6 +803,48 @@ production_playable_entry:
   live_trail_review_screenshot: artifacts/evals/T660/production-live-trail-review-2026-07-15.jpg
   live_trail_review_screenshot_sha256: 289d97a907f6846371778f58e3e15d7e5ded0a5306ddd891923acd1294fd3f95
   manual_editor_click: user_confirmed_entry_trackpad_input_and_post_visual_fix
+production_enemy_contact:
+  status: pass
+  task: T699
+  spawn_side: configured_right_half
+  approach_direction: configured_right_to_left
+  movement_clock: per_enemy_spawn_relative
+  movement_speed: enemy_pattern_speed_times_modifier_speed_multiplier
+  body_colliders: runtime_player_and_enemy_sprite_bounds
+  damage_gate: body_bounds_intersection
+  damage_source: Enemies.contactDamage
+  attack_damage_policy: no_direct_player_hp_mutation
+  projectile_policy: spawn_and_cut_events_remain_separate_from_body_contact
+  editmode_focused: 2
+  playmode_focused: 1
+  full_editmode_tests: 210
+  full_playmode_tests: 57
+  manual_game_view: bootstrap_to_tutorial_battle_right_spawn_approach_and_100_of_100_hp_before_contact
+production_projectiles:
+  status: pass
+  task: T699A
+  runtime: ProductionProjectileRuntime
+  spawn_origin: attacking_enemy_controller_position
+  initial_direction: enemy_to_current_player
+  movement_space: reference_pixels
+  sprite_source: Projectiles_assetKey_to_AssetRegistry
+  sorting_layer: Projectiles
+  damage_gate: configured_projectile_radius_intersects_player_body
+  damage_source: Projectiles.damage
+  player_invulnerability: PlayerCombatController
+  stroke_path: T350_HitRecord_to_T370_ProjectileHitTarget
+  reflected_enemy_damage: existing_enemy_damage_death_score_and_level_chain
+  hostile_clear_policy: enemy_current_owner_only
+  speed_ref_px_sec: {proj_ghost_fire: 180, proj_soul_shard: 210, proj_seal_bolt: 190, proj_rockfall: 200, proj_seal_wave: 160}
+  life_sec: {proj_ghost_fire: 10, proj_soul_shard: 9, proj_seal_bolt: 10, proj_rockfall: 8, proj_seal_wave: 11}
+  focused_editmode_tests: 5
+  focused_playmode_tests: 2
+  full_editmode_tests: 215
+  full_playmode_tests: 59
+  config_exporter_tests: 60
+  screenshot: artifacts/evals/T699A/production-projectile-visible.png
+  screenshot_sha256: 08f36eddfc54a7cfa560055fbeb9947840f7d61bef10034dab2d5ae1333898a0
+  manual_game_view: bootstrap_to_tutorial_battle_visible_blue_white_projectile_between_enemy_and_player
 code_commenting:
   status: complete
   requested_scope: Assets/_Game/Scripts_all_csharp
@@ -868,7 +929,7 @@ execution_order:
   deferred_tasks: [T120, T130]
   deferral_reason: user_prioritized_main_game_content_over_wechat_devtools_device_and_packaging_work
   next_content_task: T700
-  paused_content_task: none
+  paused_content_task: null
   reprioritization_reason: user_requested_full_chinese_comments_completed
   resume_platform_before: [T640, T750]
 workflow:

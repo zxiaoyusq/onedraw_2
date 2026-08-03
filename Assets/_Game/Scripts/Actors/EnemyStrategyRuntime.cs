@@ -7,7 +7,10 @@ namespace OneStrokeDemon.Actors
     // 定义 IEnemyAttackWorld 的角色领域数据与行为边界，供上层流程以明确契约使用。
     public interface IEnemyAttackWorld
     {
-        void ExecuteAttack(in EnemyAttackAction action, double timestamp);
+        void ExecuteAttack(
+            EnemyController source,
+            in EnemyAttackAction action,
+            double timestamp);
     }
 
     // 定义 EnemyStrategyRuntime 的角色领域数据与行为边界，供上层流程以明确契约使用。
@@ -183,7 +186,7 @@ namespace OneStrokeDemon.Actors
             }
 
             actionExecuted = true;
-            world.ExecuteAttack(activeAction, timestamp);
+            world.ExecuteAttack(controller, activeAction, timestamp);
         }
 
         // 清理 ClearActiveAttack 对应的角色逻辑，并返回或发布一致的状态结果。

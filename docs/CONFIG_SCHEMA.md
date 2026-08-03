@@ -2,7 +2,7 @@
 
 ## 1. 版本与唯一真相源
 
-- 当前冻结版本：`schemaVersion = 6`、`contentVersion = 0.6.6-sample`。
+- 当前冻结版本：`schemaVersion = 6`、`contentVersion = 0.6.8-sample`。
 - 正式内容唯一源：`Design/Config/GameConfig.xlsx`。
 - `config/一笔镇妖_游戏配置表模板.xlsx` 只是随正式源同步的示例镜像，不接受独立内容修改。
 - `Assets/_Game/Config/Generated/gameplay_config.json`和`gameplay_config.hash`由T250导出器生成，是可审查、可构建的只读Runtime快照与hash旁车。
@@ -320,3 +320,17 @@ T698新增的`Stances.strokeTrailStyleId -> StrokeTrailStyles.styleId`也是必�
 - `outerColor/bodyColor/coreColor/branchColor`必须是`#RRGGBBAA`；外层、主体、核心宽度倍率必须为正。分支间距、长度、抖动和宽度倍率为非负，段数至少为1；当前技术容量最多显示12条分支，容量不是策划数值，也不改变主笔迹。
 - 外层、主体和核心三个`LineRenderer`必须读取同一个T340处理点集。`LightningBranchLayout`只用`strokeId`、共享路径和分支序号生成确定性分支，不调用Unity全局随机、不修改输入点，也不参与笔势、命中、伤害、能量或教程裁决。
 - `BattleCompositionRoot`沿`VfxCues.vfx_slash -> AssetManifest -> AssetRegistry`取得Prefab；Prefab只保存LineRenderer拓扑、兼容资源引用和池化组件，材质、颜色、宽度、排序、生命期与分支形态在运行时从配置覆盖。全部层和活动分支统一淡出；回收时必须禁用Renderer、清空位置/分支计数和源路径引用。
+
+## 34. T699A生产投射物可见性、碰撞与画笔语义
+
+- T699A不改变JSON字段形状、FieldDictionary或schema，content升级为`0.6.7-sample`。五类`Projectiles.speedRefPxSec/lifeSec`分别调整为幽火180/10、魂片210/9、封印弹190/10、落石200/8、封印波160/11；每类最大航程均不少于1536参考像素，可覆盖1920参考宽度右半区到玩家的行进距离。伤害、命中半径、切断/反弹、所需架势和资源键保持原值。
+- 生产运行时必须从发起攻击的`EnemyController`当前位置生成弹体，方向取生成时敌人到玩家的单位向量；速度、寿命、伤害、半径、交互开关和Sprite资源键全部读取对应`Projectiles`行。Sprite只通过`assetKey -> AssetRegistry`解析，场景、Prefab、Inspector和运行时代码不得复制弹速或伤害。
+- 敌方投射物只有在自身配置半径与玩家身体碰撞体相交后才能按`Projectiles.damage`调用玩家受击链；生成、攻击事件或仅靠近玩家均不得直接扣HP。反弹后当前归属改为玩家，允许碰撞敌人并复用既有敌人受伤、死亡、计分和关卡结算链。
+- 画笔交互必须使用T350实际轨迹产生的`HitRecord`并调用T370 `ProjectileHitTarget`，不能用“存在任意笔迹就递减计数”的替代逻辑。切断立即回池；反弹保留不可变原始归属并反转方向；清除敌方弹体不误删已反弹的玩家弹体。任何回收路径都必须清空Sprite可见性、Collider、规则、归属、参考空间、位置、方向和时钟。
+
+## 35. T699B工作簿中文文档行与字段说明语义
+
+- T699B不改变JSON字段形状、FieldDictionary列结构或schema，content升级为`0.6.8-sample`。每个Sheet第1行是英文稳定表名、第2行是中文用途说明；30个数据Sheet第3行是面向策划的中文字段名，第4行继续是导出器和代码使用的英文API字段名，第5行起才是数据。README不使用数据表头结构。
+- 第3行中文字段名与第4行非空英文表头必须逐列一一对应。中文名称只用于工作簿阅读，不参与导出、Schema、DTO、排序、外键或运行时查询；修改中文名称不得被误认为英文API改名。导出器仍只读取第4行表头与第5行起数据。
+- FieldDictionary继续只描述其余29个数据Sheet的280个业务字段，不递归增加自身记录；FieldDictionary自己的10列通过第3行中文名称解释。每条`description`必须使用“中文字段名：具体语义”格式，前缀与目标Sheet第3行名称一致，并说明用途、单位、范围/空值、枚举或外键语义中的适用内容；禁止“X表的Y字段”式占位文案。
+- 第3行中文名称是非导出元数据，不改变content hash；FieldDictionary.description属于导出内容，修改后必须升级content版本并通过同源生成、漂移门和Runtime快照测试。当前覆盖为31个Sheet中文用途说明、290个可见中文字段名和280条具体业务字段说明。

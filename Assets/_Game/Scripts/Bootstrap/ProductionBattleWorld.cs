@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using OneStrokeDemon.Actors;
+using OneStrokeDemon.Combat;
 using OneStrokeDemon.Config;
 using OneStrokeDemon.Core;
 using OneStrokeDemon.Levels;
@@ -15,10 +16,13 @@ namespace OneStrokeDemon.Bootstrap
         private readonly IConfigProvider config;
         private readonly IAssetRegistry assets;
         private readonly PlayerCombatController player;
+        private readonly Collider2D playerBody;
         private readonly Transform root;
         private readonly EnemyArchetypePool pool;
+        private readonly ProductionProjectileRuntime projectiles;
         private readonly Dictionary<long, ActiveEnemy> active =
             new Dictionary<long, ActiveEnemy>();
+        private readonly List<long> projectileDefeatedIds = new List<long>();
         private readonly float referenceWidth;
         private readonly float referenceHeight;
         private readonly AudioSource audioSource;
@@ -26,7 +30,6 @@ namespace OneStrokeDemon.Bootstrap
         private BattleFlowCoordinator flow;
         private ISkillEffectTarget primaryTarget;
         private long nextEntityId = 1L;
-        private int pendingProjectileCount;
         private float nextStrokeDamageMultiplier = 1f;
         private bool disposed;
 
@@ -40,10 +43,20 @@ namespace OneStrokeDemon.Bootstrap
             config = configProvider ?? throw new ArgumentNullException(nameof(configProvider));
             assets = assetRegistry ?? throw new ArgumentNullException(nameof(assetRegistry));
             player = playerController ?? throw new ArgumentNullException(nameof(playerController));
+            playerBody = player.GetComponent<Collider2D>() ??
+                throw new ArgumentException(
+                    "Production player must expose a body Collider2D.",
+                    nameof(playerController));
             root = configuredRoot ?? throw new ArgumentNullException(nameof(configuredRoot));
             referenceWidth = ReadReference(config, ConfigIds.GlobalKeys.ReferenceWidth);
             referenceHeight = ReadReference(config, ConfigIds.GlobalKeys.ReferenceHeight);
             pool = new EnemyArchetypePool(config, assets, root);
+            projectiles = new ProductionProjectileRuntime(
+                config,
+                assets,
+                player,
+                playerBody,
+                root);
             audioSource = root.gameObject.AddComponent<AudioSource>();
             audioSource.playOnAwake = false;
             audioSource.spatialBlend = 0f;
@@ -53,11 +66,17 @@ namespace OneStrokeDemon.Bootstrap
 
         public event Action<int> EnemyReleased;
 
+        public event Action<long> EnemyDefeatedByProjectile;
+
         public event Action<EnemyAttackAction> AttackExecuted;
 
         public int ActiveCount => active.Count;
 
-        public int PendingProjectileCount => pendingProjectileCount;
+        public int PendingProjectileCount => projectiles.ActiveCount;
+
+        // 获取 GetActiveProjectile 对应的入口装配逻辑，并维护会话所有权和跨场景边界。
+        public ProjectileController GetActiveProjectile(int index) =>
+            projectiles.GetActiveProjectile(index);
 
         public IReadOnlyList<ISkillEffectTarget> Targets
         {
@@ -120,21 +139,20 @@ namespace OneStrokeDemon.Bootstrap
             long candidate = nextEntityId++;
             int hitTargetId = checked((int)candidate);
             double timestamp = ActorTimestamp();
-            ActiveEnemy item;
+            EnemyController controller;
+            bool isPooled;
+            EnemyArchetypeSpawnResult pooled;
+            GameObject gameObject;
             // 检查入口状态、依赖或生命周期边界，避免重复装配和悬空引用。
             if (request.IsBoss)
             {
-                EnemyController controller = CreateBoss(
+                controller = CreateBoss(
                     request.EnemyId,
                     hitTargetId,
                     timestamp);
-                item = new ActiveEnemy(
-                    request,
-                    controller,
-                    new EnemySkillEffectTarget(controller),
-                    false,
-                    default,
-                    controller.gameObject);
+                isPooled = false;
+                pooled = default;
+                gameObject = controller.gameObject;
             }
             else
             {
@@ -150,20 +168,25 @@ namespace OneStrokeDemon.Bootstrap
                     return false;
                 }
 
-                item = new ActiveEnemy(
-                    request,
-                    spawned.Actor.Controller,
-                    new EnemySkillEffectTarget(spawned.Actor.Controller),
-                    true,
-                    spawned,
-                    spawned.Actor.gameObject);
+                controller = spawned.Actor.Controller;
+                isPooled = true;
+                pooled = spawned;
+                gameObject = spawned.Actor.gameObject;
             }
 
-            ConfigurePresentation(item.GameObject, request);
-            item.GameObject.transform.localPosition = new Vector3(
+            BoxCollider2D body = ConfigurePresentation(gameObject, request);
+            gameObject.transform.localPosition = new Vector3(
                 (float)(request.Position.X * referenceWidth),
                 (float)(request.Position.Y * referenceHeight),
                 0f);
+            var item = new ActiveEnemy(
+                request,
+                controller,
+                new EnemySkillEffectTarget(controller),
+                isPooled,
+                pooled,
+                gameObject,
+                body);
             entityId = candidate;
             active.Add(candidate, item);
             SpriteRenderer[] renderers = item.GameObject.GetComponentsInChildren<SpriteRenderer>(true);
@@ -217,9 +240,26 @@ namespace OneStrokeDemon.Bootstrap
                 return;
             }
 
+            AdvanceProjectiles(gameplayTimestamp);
             long[] ids = GetActiveIds();
             string supportTargetId = FindSupportTargetId(ids);
             double actorTimestamp = ActorTimestamp();
+            // 先统一移动再同步Transform，使本帧接触判定使用最新位置。
+            for (int index = 0; index < ids.Length; index++)
+            {
+                ActiveEnemy item = active[ids[index]];
+                if (!item.Controller.IsAlive || !item.IsPooled)
+                {
+                    continue;
+                }
+
+                double movementAge = item.MovementClock.GetElapsedSeconds(
+                    movementElapsedSeconds);
+                item.Pooled.Actor.AdvanceMovement(
+                    movementAge * item.Request.Modifier.SpeedMultiplier);
+            }
+
+            Physics2D.SyncTransforms();
             // 逐项装配或释放会话资源，保持创建与回收顺序一致。
             for (int index = 0; index < ids.Length; index++)
             {
@@ -233,7 +273,8 @@ namespace OneStrokeDemon.Bootstrap
                 // 检查入口状态、依赖或生命周期边界，避免重复装配和悬空引用。
                 if (item.IsPooled)
                 {
-                    item.Pooled.Actor.AdvanceMovement(movementElapsedSeconds);
+                    bool touchingPlayer = IsTouchingPlayer(item);
+                    ApplyContactDamage(item, touchingPlayer, gameplayTimestamp);
                     item.Pooled.Actor.TryBeginAttack(
                         new EnemyAttackTriggerContext(
                             cooldownReady: true,
@@ -257,6 +298,26 @@ namespace OneStrokeDemon.Bootstrap
 
             long[] ids = GetActiveIds();
             double timestamp = ActorTimestamp();
+            ActiveEnemy boss = FindActiveBoss(ids);
+            bool touchingPlayer = false;
+            if (boss != null)
+            {
+                double movementAge = boss.MovementClock.GetElapsedSeconds(
+                    flow.Flow.Time.Current.GameplayElapsedSeconds);
+                EnemyMovementSample sample = phases.Strategy.SampleMovement(
+                    movementAge * boss.Request.Modifier.SpeedMultiplier);
+                boss.GameObject.transform.localPosition = new Vector3(
+                    (float)sample.XReferencePixels,
+                    (float)sample.YReferencePixels,
+                    0f);
+                Physics2D.SyncTransforms();
+                touchingPlayer = IsTouchingPlayer(boss);
+                ApplyContactDamage(
+                    boss,
+                    touchingPlayer,
+                    flow.Flow.Time.Current.GameplayElapsedSeconds);
+            }
+
             phases.TryBeginAttack(
                 new EnemyAttackTriggerContext(
                     cooldownReady: true,
@@ -269,23 +330,22 @@ namespace OneStrokeDemon.Bootstrap
         }
 
         // 处理 ExecuteAttack 对应的入口装配逻辑，并维护会话所有权和跨场景边界。
-        public void ExecuteAttack(in EnemyAttackAction action, double timestamp)
+        public void ExecuteAttack(
+            EnemyController source,
+            in EnemyAttackAction action,
+            double timestamp)
         {
             ThrowIfDisposed();
-            double gameplayTimestamp = flow?.Flow.Time.Current.GameplayElapsedSeconds ?? 0d;
-            // 检查入口状态、依赖或生命周期边界，避免重复装配和悬空引用。
-            if (action.Damage > 0L)
+            if (source == null)
             {
-                player.ApplyDamage(action.Damage, gameplayTimestamp, action.AttackId);
+                throw new ArgumentNullException(nameof(source));
             }
 
+            double gameplayTimestamp = flow?.Flow.Time.Current.GameplayElapsedSeconds ?? 0d;
             // 检查入口状态、依赖或生命周期边界，避免重复装配和悬空引用。
             if (!string.IsNullOrEmpty(action.ProjectileId))
             {
-                checked
-                {
-                    pendingProjectileCount += 1;
-                }
+                projectiles.TrySpawn(action.ProjectileId, source, gameplayTimestamp);
             }
 
             // 检查入口状态、依赖或生命周期边界，避免重复装配和悬空引用。
@@ -308,17 +368,13 @@ namespace OneStrokeDemon.Bootstrap
             AttackExecuted?.Invoke(action);
         }
 
-        // 尝试执行 TryCutProjectile 对应的入口装配逻辑，并维护会话所有权和跨场景边界。
-        public bool TryCutProjectile()
+        // 尝试执行 TryResolveProjectileStroke 对应的入口装配逻辑，并维护会话所有权和跨场景边界。
+        public bool TryResolveProjectileStroke(
+            in HitRecord hit,
+            string stanceId,
+            out ProjectileStrokeResult result)
         {
-            // 检查入口状态、依赖或生命周期边界，避免重复装配和悬空引用。
-            if (pendingProjectileCount <= 0)
-            {
-                return false;
-            }
-
-            pendingProjectileCount -= 1;
-            return true;
+            return projectiles.TryResolveStroke(hit, stanceId, out result);
         }
 
         // 清理 ClearStrokeSelection 对应的入口装配逻辑，并维护会话所有权和跨场景边界。
@@ -424,9 +480,7 @@ namespace OneStrokeDemon.Bootstrap
         // 清理 ClearHostileProjectiles 对应的入口装配逻辑，并维护会话所有权和跨场景边界。
         public int ClearHostileProjectiles(string sourceId, double timestamp)
         {
-            int cleared = pendingProjectileCount;
-            pendingProjectileCount = 0;
-            return cleared;
+            return projectiles.ClearHostileProjectiles();
         }
 
         // 处理 PlayVfx 对应的入口装配逻辑，并维护会话所有权和跨场景边界。
@@ -489,9 +543,11 @@ namespace OneStrokeDemon.Bootstrap
                 Release(ids[index], PoolReleaseReason.Restart);
             }
 
+            projectiles.Dispose();
             pool.Dispose();
             EnemySpawned = null;
             EnemyReleased = null;
+            EnemyDefeatedByProjectile = null;
             AttackExecuted = null;
             disposed = true;
         }
@@ -556,7 +612,9 @@ namespace OneStrokeDemon.Bootstrap
         }
 
         // 处理 ConfigurePresentation 对应的入口装配逻辑，并维护会话所有权和跨场景边界。
-        private void ConfigurePresentation(GameObject actor, in LevelSpawnRequest request)
+        private BoxCollider2D ConfigurePresentation(
+            GameObject actor,
+            in LevelSpawnRequest request)
         {
             SpriteRenderer[] renderers = actor.GetComponentsInChildren<SpriteRenderer>(true);
             SpriteRenderer primary = null;
@@ -595,6 +653,100 @@ namespace OneStrokeDemon.Bootstrap
             }
             body.isTrigger = true;
             body.size = primary.sprite.bounds.size;
+            return body;
+        }
+
+        // 仅在敌人与主角身体碰撞体相交时消费配置中的接触伤害。
+        private void ApplyContactDamage(
+            ActiveEnemy item,
+            bool touchingPlayer,
+            double gameplayTimestamp)
+        {
+            long damage = item.Controller.Definition.ContactDamage;
+            if (!touchingPlayer || damage <= 0L || player.Current.IsDead)
+            {
+                return;
+            }
+
+            player.ApplyDamage(
+                damage,
+                gameplayTimestamp,
+                $"contact:{item.Controller.Definition.EnemyId}");
+        }
+
+        // 使用缓存的身体碰撞体做无分配接触检查。
+        private bool IsTouchingPlayer(ActiveEnemy item)
+        {
+            return item.BodyCollider.enabled &&
+                   playerBody.enabled &&
+                   item.BodyCollider.bounds.Intersects(playerBody.bounds);
+        }
+
+        // 推进真实投射物，并在安全边界外通知会话处理反弹致死与实体回收。
+        private void AdvanceProjectiles(double gameplayTimestamp)
+        {
+            projectileDefeatedIds.Clear();
+            projectiles.Advance(gameplayTimestamp, TryResolveReflectedProjectileImpact);
+            for (int index = 0; index < projectileDefeatedIds.Count; index++)
+            {
+                EnemyDefeatedByProjectile?.Invoke(projectileDefeatedIds[index]);
+            }
+        }
+
+        // 反弹后的玩家归属投射物碰到敌人身体时，沿用T370伤害来源和敌人伤害入口。
+        private bool TryResolveReflectedProjectileImpact(
+            ProjectileController projectile,
+            double gameplayTimestamp)
+        {
+            long[] ids = GetActiveIds();
+            for (int index = 0; index < ids.Length; index++)
+            {
+                ActiveEnemy item = active[ids[index]];
+                if (!item.Controller.IsAlive ||
+                    !item.BodyCollider.enabled ||
+                    !projectile.HitCollider.bounds.Intersects(item.BodyCollider.bounds))
+                {
+                    continue;
+                }
+
+                var targetOwner = new ProjectileOwner(
+                    ProjectileFaction.Enemy,
+                    item.Controller.Damage.HitTargetId);
+                if (!projectile.TryResolveImpact(targetOwner, out ProjectileImpactResult impact))
+                {
+                    continue;
+                }
+
+                double actorTimestamp = Math.Max(
+                    ActorTimestamp(),
+                    item.Controller.State.LastTimestamp);
+                EnemyDamageResult damage = item.Controller.ApplyProjectileDamage(
+                    impact.DamageSource,
+                    actorTimestamp);
+                if (damage.DeathTriggered)
+                {
+                    projectileDefeatedIds.Add(ids[index]);
+                }
+
+                return true;
+            }
+
+            return false;
+        }
+
+        // Boss关卡任一时刻只允许一个活动Boss；这里按稳定实体顺序解析它。
+        private ActiveEnemy FindActiveBoss(long[] ids)
+        {
+            for (int index = 0; index < ids.Length; index++)
+            {
+                ActiveEnemy item = active[ids[index]];
+                if (!item.IsPooled && item.Controller.IsAlive)
+                {
+                    return item;
+                }
+            }
+
+            return null;
         }
 
         // 处理 ResolveSupportTarget 对应的入口装配逻辑，并维护会话所有权和跨场景边界。
@@ -710,7 +862,8 @@ namespace OneStrokeDemon.Bootstrap
                 EnemySkillEffectTarget target,
                 bool isPooled,
                 in EnemyArchetypeSpawnResult pooled,
-                GameObject gameObject)
+                GameObject gameObject,
+                Collider2D bodyCollider)
             {
                 Request = request;
                 Controller = controller;
@@ -718,6 +871,9 @@ namespace OneStrokeDemon.Bootstrap
                 IsPooled = isPooled;
                 Pooled = pooled;
                 GameObject = gameObject;
+                BodyCollider = bodyCollider ??
+                    throw new ArgumentNullException(nameof(bodyCollider));
+                MovementClock = new EnemyMovementAgeClock();
             }
 
             public LevelSpawnRequest Request { get; }
@@ -726,6 +882,8 @@ namespace OneStrokeDemon.Bootstrap
             public bool IsPooled { get; }
             public EnemyArchetypeSpawnResult Pooled { get; }
             public GameObject GameObject { get; }
+            public Collider2D BodyCollider { get; }
+            public EnemyMovementAgeClock MovementClock { get; }
         }
     }
 }

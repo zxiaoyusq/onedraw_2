@@ -1,7 +1,7 @@
 {
   "schemaVersion": 6,
-  "contentVersion": "0.6.6-sample",
-  "contentHash": "5c3b73b2160859f6703f8430e8d63141328d648c163cd81ece611f31c4d70cb7",
+  "contentVersion": "0.6.8-sample",
+  "contentHash": "6ab856f9e53dc3726c684340df8851d88b0447833872a21a01b737ed49847fdb",
   "global": [
     {
       "key": "battle_countdown_sec",
@@ -38,7 +38,7 @@
       "valueType": "string",
       "intValue": null,
       "floatValue": null,
-      "stringValue": "0.6.6-sample",
+      "stringValue": "0.6.8-sample",
       "boolValue": null,
       "unit": "semver",
       "description": "内容版本"
@@ -864,8 +864,8 @@
     {
       "projectileId": "proj_ghost_fire",
       "movePatternId": "move_ground_left",
-      "speedRefPxSec": 260,
-      "lifeSec": 4,
+      "speedRefPxSec": 180,
+      "lifeSec": 10,
       "damage": 8,
       "cuttable": true,
       "reflectable": true,
@@ -877,8 +877,8 @@
     {
       "projectileId": "proj_rockfall",
       "movePatternId": "move_ground_left",
-      "speedRefPxSec": 360,
-      "lifeSec": 2.5,
+      "speedRefPxSec": 200,
+      "lifeSec": 8,
       "damage": 18,
       "cuttable": true,
       "reflectable": false,
@@ -890,8 +890,8 @@
     {
       "projectileId": "proj_seal_bolt",
       "movePatternId": "move_ground_left",
-      "speedRefPxSec": 280,
-      "lifeSec": 4,
+      "speedRefPxSec": 190,
+      "lifeSec": 10,
       "damage": 16,
       "cuttable": true,
       "reflectable": true,
@@ -903,8 +903,8 @@
     {
       "projectileId": "proj_seal_wave",
       "movePatternId": "move_ground_left",
-      "speedRefPxSec": 220,
-      "lifeSec": 4.5,
+      "speedRefPxSec": 160,
+      "lifeSec": 11,
       "damage": 22,
       "cuttable": true,
       "reflectable": false,
@@ -916,8 +916,8 @@
     {
       "projectileId": "proj_soul_shard",
       "movePatternId": "move_ground_left",
-      "speedRefPxSec": 320,
-      "lifeSec": 3.5,
+      "speedRefPxSec": 210,
+      "lifeSec": 9,
       "damage": 10,
       "cuttable": true,
       "reflectable": false,
@@ -4281,7 +4281,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "Global 表的 key 字段"
+      "description": "配置键：全局参数的稳定英文键；代码和配置查询均以此键定位，发布后不得复用。"
     },
     {
       "sheet": "Global",
@@ -4293,7 +4293,7 @@
       "max": null,
       "enumType": "ValueType",
       "foreignKey": "",
-      "description": "Global 表的 valueType 字段"
+      "description": "值类型：指定当前全局参数实际使用的值列，只允许登记在ValueType枚举中的类型。"
     },
     {
       "sheet": "Global",
@@ -4305,7 +4305,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "Global 表的 intValue 字段"
+      "description": "整数值：当值类型为int时读取的整数；其他值类型下必须留空。"
     },
     {
       "sheet": "Global",
@@ -4317,7 +4317,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "Global 表的 floatValue 字段"
+      "description": "小数值：当值类型为float时读取的小数；其他值类型下必须留空。"
     },
     {
       "sheet": "Global",
@@ -4329,7 +4329,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "Global 表的 stringValue 字段"
+      "description": "文本值：当值类型为string时读取的文本；其他值类型下必须留空。"
     },
     {
       "sheet": "Global",
@@ -4341,7 +4341,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "Global 表的 boolValue 字段"
+      "description": "布尔值：当值类型为bool时读取的真假值；其他值类型下必须留空。"
     },
     {
       "sheet": "Global",
@@ -4353,7 +4353,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "Global 表的 unit 字段"
+      "description": "单位：标明参数的量纲或解释口径，例如秒、参考像素、数量、比例或版本。"
     },
     {
       "sheet": "Global",
@@ -4365,7 +4365,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "Global 表的 description 字段"
+      "description": "参数说明：说明该全局配置键控制的系统行为和使用边界。"
     },
     {
       "sheet": "Players",
@@ -4377,7 +4377,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "玩家稳定ID"
+      "description": "玩家ID：玩家定义的稳定主键，用于跨表引用和运行时索引。"
     },
     {
       "sheet": "Players",
@@ -4389,7 +4389,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "Texts.textKey",
-      "description": "显示名称文案键"
+      "description": "名称文案键：引用Texts.textKey取得本地化显示名称，不直接填写玩家可见文字。"
     },
     {
       "sheet": "Players",
@@ -4401,7 +4401,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "最大生命值"
+      "description": "最大生命值：实体满状态时可拥有的生命值上限；生命值降至零时进入死亡流程。"
     },
     {
       "sheet": "Players",
@@ -4413,7 +4413,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "最大能量"
+      "description": "最大能量：玩家可储存的能量上限，获得能量时不得超过该值。"
     },
     {
       "sheet": "Players",
@@ -4425,7 +4425,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "Stances.stanceId",
-      "description": "Players 表的 defaultStanceId 字段"
+      "description": "默认架势：引用Stances.stanceId，指定玩家进入战斗时采用的初始架势。"
     },
     {
       "sheet": "Players",
@@ -4437,7 +4437,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "Skills.skillId",
-      "description": "Players 表的 ultimateSkillId 字段"
+      "description": "终极技能：引用Skills.skillId，指定玩家能量满足条件后可释放的终极技能。"
     },
     {
       "sheet": "Players",
@@ -4449,7 +4449,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "Players 表的 hitInvulnSec 字段"
+      "description": "受击无敌秒数：玩家受到一次有效伤害后忽略后续伤害的非负时间窗口，单位为秒。"
     },
     {
       "sheet": "Players",
@@ -4461,7 +4461,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "AssetManifest.assetKey",
-      "description": "Unity资源注册键"
+      "description": "角色资源键：引用AssetManifest.assetKey，并由Unity AssetRegistry解析为主角Sprite或Prefab。"
     },
     {
       "sheet": "Stances",
@@ -4473,7 +4473,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "Stances 表的 stanceId 字段"
+      "description": "架势ID：架势定义的稳定主键，用于玩家状态、技能和投射物规则引用。"
     },
     {
       "sheet": "Stances",
@@ -4485,7 +4485,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "Texts.textKey",
-      "description": "显示名称文案键"
+      "description": "名称文案键：引用Texts.textKey取得本地化显示名称，不直接填写玩家可见文字。"
     },
     {
       "sheet": "Stances",
@@ -4497,7 +4497,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "DamageFormulas.formulaId",
-      "description": "架势使用的伤害公式外键"
+      "description": "伤害公式：引用DamageFormulas.formulaId，指定该架势使用的基础伤害计算参数组。"
     },
     {
       "sheet": "Stances",
@@ -4509,7 +4509,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "Stances 表的 damageMultiplier 字段"
+      "description": "架势伤害倍率：使用该架势计算玩家伤害时应用的基础乘数。"
     },
     {
       "sheet": "Stances",
@@ -4521,7 +4521,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "Stances 表的 ghostDamageMultiplier 字段"
+      "description": "幽魂伤害倍率：该架势攻击幽魂类目标时应用的额外伤害乘数。"
     },
     {
       "sheet": "Stances",
@@ -4533,7 +4533,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "Stances 表的 projectileCutMultiplier 字段"
+      "description": "切弹倍率：该架势与可交互投射物接触时使用的切断能力倍率。"
     },
     {
       "sheet": "Stances",
@@ -4545,7 +4545,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "Stances 表的 strokeWidthRefPx 字段"
+      "description": "笔迹宽度：1920×1080参考分辨率下的基础笔迹宽度，单位为参考像素。"
     },
     {
       "sheet": "Stances",
@@ -4557,7 +4557,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "Stances 表的 switchCooldownSec 字段"
+      "description": "切换冷却秒数：两次架势切换之间必须等待的最短时间，单位为秒。"
     },
     {
       "sheet": "Stances",
@@ -4569,7 +4569,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "SkillEffects.effectGroupId",
-      "description": "Stances 表的 onSwitchEffectGroupId 字段"
+      "description": "切换效果组：引用SkillEffects.effectGroupId，切入该架势时按顺序执行对应效果链。"
     },
     {
       "sheet": "Stances",
@@ -4581,7 +4581,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "AssetManifest.assetKey",
-      "description": "Unity资源注册键"
+      "description": "架势图标资源键：引用AssetManifest.assetKey，并由Unity AssetRegistry解析为架势图标。"
     },
     {
       "sheet": "Stances",
@@ -4593,7 +4593,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "StrokeTrailStyles.styleId",
-      "description": "架势选择的画笔表现样式外键。"
+      "description": "画笔样式：引用StrokeTrailStyles.styleId，指定该架势的分层轨迹和电弧表现。"
     },
     {
       "sheet": "StrokeRules",
@@ -4605,7 +4605,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "手势规则稳定ID"
+      "description": "笔势规则ID：笔势识别规则的稳定主键，用于采样、分类和命中参数查询。"
     },
     {
       "sheet": "StrokeRules",
@@ -4617,7 +4617,7 @@
       "max": null,
       "enumType": "GestureType",
       "foreignKey": "",
-      "description": "StrokeRules 表的 gestureType 字段"
+      "description": "笔势类型：指定该规则或交互要求的手势类别，取值必须登记在GestureType枚举。"
     },
     {
       "sheet": "StrokeRules",
@@ -4629,7 +4629,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "StrokeRules 表的 minPointDistanceRefPx 字段"
+      "description": "最小采样间距：相邻采样点必须达到的最小距离，单位为参考像素，用于抑制高频抖动点。"
     },
     {
       "sheet": "StrokeRules",
@@ -4641,7 +4641,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "StrokeRules 表的 maxStrokeLengthRefPx 字段"
+      "description": "最大笔迹长度：单次笔迹允许保留的最大累计长度，单位为参考像素，超出部分会被裁剪。"
     },
     {
       "sheet": "StrokeRules",
@@ -4653,7 +4653,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "StrokeRules 表的 rdpEpsilonRefPx 字段"
+      "description": "简化容差：RDP路径简化允许的最大偏差，单位为参考像素；数值越大保留点越少。"
     },
     {
       "sheet": "StrokeRules",
@@ -4665,7 +4665,7 @@
       "max": 256,
       "enumType": "",
       "foreignKey": "",
-      "description": "StrokeRules 表的 maxPointCount 字段"
+      "description": "最大点数：单次笔迹处理和缓存允许保留的采样点数量上限。"
     },
     {
       "sheet": "StrokeRules",
@@ -4677,7 +4677,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "StrokeRules 表的 minLengthRefPx 字段"
+      "description": "最小有效长度：笔势被判定为有效前必须达到的最小路径长度，单位为参考像素。"
     },
     {
       "sheet": "StrokeRules",
@@ -4689,7 +4689,7 @@
       "max": 90,
       "enumType": "",
       "foreignKey": "",
-      "description": "StrokeRules 表的 directionToleranceDeg 字段"
+      "description": "方向容差角：横、竖或斜向笔势相对目标方向允许偏离的最大角度，单位为度。"
     },
     {
       "sheet": "StrokeRules",
@@ -4701,7 +4701,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "StrokeRules 表的 closeDistanceRefPx 字段"
+      "description": "闭合距离：首尾点距离不超过该参考像素值时可视为闭合笔势；不适用时填0。"
     },
     {
       "sheet": "StrokeRules",
@@ -4713,7 +4713,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "StrokeRules 表的 minAreaRefPx2 字段"
+      "description": "最小包围面积：闭合笔势必须覆盖的最小参考像素平方面积，用于过滤过小圆形。"
     },
     {
       "sheet": "StrokeRules",
@@ -4725,7 +4725,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "StrokeRules 表的 minArcCurvature 字段"
+      "description": "最小弧线曲率：弧形笔势必须达到的无量纲曲率阈值；不适用时填0。"
     },
     {
       "sheet": "StrokeRules",
@@ -4737,7 +4737,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "StrokeRules 表的 chargeHoldSec 字段"
+      "description": "蓄力时长：按住输入达到蓄力笔势所需的最短时间，单位为秒；不适用时填0。"
     },
     {
       "sheet": "StrokeRules",
@@ -4749,7 +4749,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "StrokeRules 表的 hitRadiusRefPx 字段"
+      "description": "命中半径：围绕笔迹或投射物中心参与碰撞查询的半径，单位为参考像素。"
     },
     {
       "sheet": "DamageFormulas",
@@ -4761,7 +4761,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "伤害公式稳定ID"
+      "description": "公式ID：伤害公式参数组的稳定主键，供架势和战斗规则引用。"
     },
     {
       "sheet": "DamageFormulas",
@@ -4773,7 +4773,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "DamageFormulas 表的 baseDamage 字段"
+      "description": "基础伤害：进入倍率、暴击、弱点和连击计算前的基础伤害值。"
     },
     {
       "sheet": "DamageFormulas",
@@ -4785,7 +4785,7 @@
       "max": 1,
       "enumType": "",
       "foreignKey": "",
-      "description": "DamageFormulas 表的 criticalChance 字段"
+      "description": "暴击概率：单次命中触发暴击的0到1概率。"
     },
     {
       "sheet": "DamageFormulas",
@@ -4797,7 +4797,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "DamageFormulas 表的 criticalMultiplier 字段"
+      "description": "暴击倍率：暴击成立时应用于伤害的乘数。"
     },
     {
       "sheet": "DamageFormulas",
@@ -4809,7 +4809,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "DamageFormulas 表的 weakpointMultiplier 字段"
+      "description": "弱点倍率：命中有效弱点窗口时应用于伤害的乘数。"
     },
     {
       "sheet": "DamageFormulas",
@@ -4821,7 +4821,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "DamageFormulas 表的 wrongDirectionMultiplier 字段"
+      "description": "错误方向倍率：笔势方向不符合目标要求时应用的伤害乘数。"
     },
     {
       "sheet": "DamageFormulas",
@@ -4833,7 +4833,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "DamageFormulas 表的 comboStep 字段"
+      "description": "连击步进倍率：每增加一层有效连击时追加的伤害倍率增量。"
     },
     {
       "sheet": "DamageFormulas",
@@ -4845,7 +4845,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "DamageFormulas 表的 comboMaxMultiplier 字段"
+      "description": "连击倍率上限：连击系统允许达到的总伤害倍率上限。"
     },
     {
       "sheet": "DamageFormulas",
@@ -4857,7 +4857,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "DamageFormulas 表的 energyPerHit 字段"
+      "description": "每击能量：每次有效命中基础获得的玩家能量值。"
     },
     {
       "sheet": "DamageFormulas",
@@ -4869,7 +4869,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "DamageFormulas 表的 scorePerHit 字段"
+      "description": "每击得分：每次有效命中直接增加的基础分数。"
     },
     {
       "sheet": "DamageFormulas",
@@ -4881,7 +4881,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "每点最终原始伤害计入评分的系数"
+      "description": "每伤害得分：每造成1点最终伤害追加的分数。"
     },
     {
       "sheet": "DefenseRules",
@@ -4893,7 +4893,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "防御规则稳定ID"
+      "description": "防御规则ID：防御规则的稳定主键，供敌人和Boss阶段引用。"
     },
     {
       "sheet": "DefenseRules",
@@ -4905,7 +4905,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "DefenseRules 表的 armorHp 字段"
+      "description": "护甲生命值：目标初始护甲耐久；为0表示没有护甲层。"
     },
     {
       "sheet": "DefenseRules",
@@ -4917,7 +4917,7 @@
       "max": null,
       "enumType": "GestureType",
       "foreignKey": "",
-      "description": "DefenseRules 表的 requiredGestureType 字段"
+      "description": "要求笔势：破防或有效攻击要求的GestureType；Any表示不限制具体笔势。"
     },
     {
       "sheet": "DefenseRules",
@@ -4929,7 +4929,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "Stances.stanceId",
-      "description": "DefenseRules 表的 requiredStanceId 字段"
+      "description": "破防要求架势：引用Stances.stanceId；留空表示任意架势都可满足防御规则。"
     },
     {
       "sheet": "DefenseRules",
@@ -4941,7 +4941,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "DefenseRules 表的 breakDamageMultiplier 字段"
+      "description": "破甲伤害倍率：护甲首次被击破时对该次伤害应用的乘数。"
     },
     {
       "sheet": "DefenseRules",
@@ -4953,7 +4953,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "DefenseRules 表的 wrongGestureDamageMultiplier 字段"
+      "description": "错误笔势倍率：笔势不符合防御要求时应用的伤害乘数。"
     },
     {
       "sheet": "DefenseRules",
@@ -4965,7 +4965,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "DefenseRules 表的 reflectDamage 字段"
+      "description": "反伤值：触发该防御规则的反伤条件时返还给攻击方的固定伤害。"
     },
     {
       "sheet": "DefenseRules",
@@ -4977,7 +4977,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "SkillEffects.effectGroupId",
-      "description": "DefenseRules 表的 breakEffectGroupId 字段"
+      "description": "破甲效果组：引用SkillEffects.effectGroupId，护甲首次归零时执行对应效果链。"
     },
     {
       "sheet": "WeakpointRules",
@@ -4989,7 +4989,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "弱点规则稳定ID"
+      "description": "弱点规则ID：弱点窗口规则的稳定主键，供敌人和Boss阶段引用。"
     },
     {
       "sheet": "WeakpointRules",
@@ -5001,7 +5001,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "WeakpointRules 表的 windowStartSec 字段"
+      "description": "窗口开始秒数：相对攻击开始时刻，弱点进入有效状态的时间偏移，单位为秒。"
     },
     {
       "sheet": "WeakpointRules",
@@ -5013,7 +5013,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "WeakpointRules 表的 windowEndSec 字段"
+      "description": "窗口结束秒数：相对攻击开始时刻，弱点结束有效状态的时间偏移，单位为秒。"
     },
     {
       "sheet": "WeakpointRules",
@@ -5025,7 +5025,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "WeakpointRules 表的 radiusRefPx 字段"
+      "description": "弱点半径：弱点命中区域的半径，单位为参考像素；为0表示不创建弱点区域。"
     },
     {
       "sheet": "WeakpointRules",
@@ -5037,7 +5037,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "WeakpointRules 表的 damageMultiplier 字段"
+      "description": "弱点伤害倍率：命中有效弱点窗口时对本次伤害应用的乘数。"
     },
     {
       "sheet": "WeakpointRules",
@@ -5049,7 +5049,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "WeakpointRules 表的 interruptAttack 字段"
+      "description": "是否打断攻击：命中有效弱点后是否立即中断敌人当前攻击。"
     },
     {
       "sheet": "WeakpointRules",
@@ -5061,7 +5061,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "WeakpointRules 表的 energyBonus 字段"
+      "description": "额外能量：命中有效弱点时在常规能量奖励之外追加的能量。"
     },
     {
       "sheet": "WeakpointRules",
@@ -5073,7 +5073,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "WeakpointRules 表的 scoreBonus 字段"
+      "description": "额外得分：命中有效弱点时在常规计分之外追加的分数。"
     },
     {
       "sheet": "WeakpointRules",
@@ -5085,7 +5085,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "VfxCues.vfxKey",
-      "description": "特效事件键"
+      "description": "特效键：引用VfxCues.vfxKey；留空表示该事件不播放额外特效。"
     },
     {
       "sheet": "MovePatterns",
@@ -5097,7 +5097,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "移动策略配置ID"
+      "description": "移动模式ID：移动策略参数组的稳定主键，供敌人、投射物和Boss阶段引用。"
     },
     {
       "sheet": "MovePatterns",
@@ -5109,7 +5109,7 @@
       "max": null,
       "enumType": "MovePatternType",
       "foreignKey": "",
-      "description": "MovePatterns 表的 patternType 字段"
+      "description": "移动类型：选择代码已登记的移动策略类型，取值必须来自MovePatternType枚举。"
     },
     {
       "sheet": "MovePatterns",
@@ -5121,7 +5121,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "MovePatterns 表的 speedMultiplier 字段"
+      "description": "速度倍率：对实体基础移动速度应用的乘数；1表示保持基础速度。"
     },
     {
       "sheet": "MovePatterns",
@@ -5133,7 +5133,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "MovePatterns 表的 amplitudeRefPx 字段"
+      "description": "振幅：摆动类移动相对主路径的最大偏移，单位为参考像素。"
     },
     {
       "sheet": "MovePatterns",
@@ -5145,7 +5145,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "MovePatterns 表的 frequency 字段"
+      "description": "频率：周期移动每秒完成的循环次数；线性或不循环策略可填0。"
     },
     {
       "sheet": "MovePatterns",
@@ -5157,7 +5157,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "MovePatterns 表的 startXNorm 字段"
+      "description": "起点X比例：移动路径起点在Safe Area宽度中的归一化X坐标，范围0到1。"
     },
     {
       "sheet": "MovePatterns",
@@ -5169,7 +5169,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "MovePatterns 表的 endXNorm 字段"
+      "description": "终点X比例：移动路径终点在Safe Area宽度中的归一化X坐标，范围0到1。"
     },
     {
       "sheet": "MovePatterns",
@@ -5181,7 +5181,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "MovePatterns 表的 startYNorm 字段"
+      "description": "起点Y比例：移动路径起点在Safe Area高度中的归一化Y坐标，范围0到1。"
     },
     {
       "sheet": "MovePatterns",
@@ -5193,7 +5193,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "MovePatterns 表的 endYNorm 字段"
+      "description": "终点Y比例：移动路径终点在Safe Area高度中的归一化Y坐标，范围0到1。"
     },
     {
       "sheet": "MovePatterns",
@@ -5205,7 +5205,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "MovePatterns 表的 loop 字段"
+      "description": "是否循环：到达路径末端后是否从头继续执行该移动模式。"
     },
     {
       "sheet": "MovePatterns",
@@ -5217,7 +5217,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "MovePatterns 表的 description 字段"
+      "description": "移动说明：用中文概括该移动模式的路径方向、对象或设计用途。"
     },
     {
       "sheet": "Enemies",
@@ -5229,7 +5229,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "敌人稳定ID"
+      "description": "敌人ID：敌人定义的稳定主键，用于出生、Boss阶段和运行时实体配置。"
     },
     {
       "sheet": "Enemies",
@@ -5241,7 +5241,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "Texts.textKey",
-      "description": "显示名称文案键"
+      "description": "名称文案键：引用Texts.textKey取得本地化显示名称，不直接填写玩家可见文字。"
     },
     {
       "sheet": "Enemies",
@@ -5253,7 +5253,7 @@
       "max": null,
       "enumType": "EnemyTier",
       "foreignKey": "",
-      "description": "Enemies 表的 tier 字段"
+      "description": "敌人层级：区分普通、精英或Boss等内容层级，取值必须来自EnemyTier枚举。"
     },
     {
       "sheet": "Enemies",
@@ -5265,7 +5265,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "最大生命值"
+      "description": "最大生命值：实体满状态时可拥有的生命值上限；生命值降至零时进入死亡流程。"
     },
     {
       "sheet": "Enemies",
@@ -5277,7 +5277,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "MovePatterns.movePatternId",
-      "description": "移动策略配置ID"
+      "description": "移动模式ID：引用MovePatterns.movePatternId，指定实体或投射物采用的移动策略参数。"
     },
     {
       "sheet": "Enemies",
@@ -5289,7 +5289,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "Enemies 表的 moveSpeedRefPxSec 字段"
+      "description": "移动速度：敌人的基础移动速度，单位为参考像素/秒，并受移动模式和修饰器倍率影响。"
     },
     {
       "sheet": "Enemies",
@@ -5301,7 +5301,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "攻击集合分组ID"
+      "description": "攻击集合ID：引用EnemyAttacks.attackSetId分组，指定该敌人可选择的攻击集合。"
     },
     {
       "sheet": "Enemies",
@@ -5313,7 +5313,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "DefenseRules.defenseRuleId",
-      "description": "防御规则稳定ID"
+      "description": "防御规则ID：引用DefenseRules.defenseRuleId，指定该敌人的护甲和破防要求。"
     },
     {
       "sheet": "Enemies",
@@ -5325,7 +5325,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "WeakpointRules.weakpointRuleId",
-      "description": "弱点规则稳定ID"
+      "description": "弱点规则ID：引用WeakpointRules.weakpointRuleId，指定该敌人的弱点窗口。"
     },
     {
       "sheet": "Enemies",
@@ -5337,7 +5337,7 @@
       "max": null,
       "enumType": "StanceVulnerability",
       "foreignKey": "",
-      "description": "Enemies 表的 stanceVulnerability 字段"
+      "description": "架势弱点：指定目标更容易受到哪类架势影响，取值必须来自StanceVulnerability枚举。"
     },
     {
       "sheet": "Enemies",
@@ -5349,7 +5349,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "Enemies 表的 contactDamage 字段"
+      "description": "接触伤害：敌人身体碰撞体实际接触玩家时造成的基础伤害。"
     },
     {
       "sheet": "Enemies",
@@ -5361,7 +5361,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "击败基础得分"
+      "description": "击败得分：该敌人被击败并被关卡接受后增加的基础分数。"
     },
     {
       "sheet": "Enemies",
@@ -5373,7 +5373,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "AssetManifest.assetKey",
-      "description": "Unity资源注册键"
+      "description": "敌人资源键：引用AssetManifest.assetKey，并由Unity AssetRegistry解析为敌人Sprite或Prefab。"
     },
     {
       "sheet": "Enemies",
@@ -5385,7 +5385,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "对象池预热数量"
+      "description": "池预热数量：进入会话时为该资源预先创建的对象数量，用于降低首次生成开销。"
     },
     {
       "sheet": "EnemyAttacks",
@@ -5397,7 +5397,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "EnemyAttacks 表的 attackId 字段"
+      "description": "攻击ID：敌人攻击定义的稳定主键。"
     },
     {
       "sheet": "EnemyAttacks",
@@ -5409,7 +5409,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "攻击集合分组ID"
+      "description": "攻击集合ID：把同组攻击条目组织成敌人或Boss阶段可选择的攻击集合。"
     },
     {
       "sheet": "EnemyAttacks",
@@ -5421,7 +5421,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "组内执行/展示顺序，从1开始"
+      "description": "组内顺序：同一分组内从1开始的稳定执行、选择或展示顺序。"
     },
     {
       "sheet": "EnemyAttacks",
@@ -5433,7 +5433,7 @@
       "max": null,
       "enumType": "AttackTriggerType",
       "foreignKey": "",
-      "description": "EnemyAttacks 表的 triggerType 字段"
+      "description": "攻击触发类型：指定攻击由冷却、距离、支援或生命阈值触发，取值来自AttackTriggerType枚举。"
     },
     {
       "sheet": "EnemyAttacks",
@@ -5445,7 +5445,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "冷却时间（秒）"
+      "description": "冷却秒数：同一动作再次可用前必须等待的最短时间，单位为秒。"
     },
     {
       "sheet": "EnemyAttacks",
@@ -5457,7 +5457,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "攻击前摇（秒）"
+      "description": "前摇秒数：攻击开始后到有效窗口开启前的预警时间，单位为秒。"
     },
     {
       "sheet": "EnemyAttacks",
@@ -5469,7 +5469,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "有效窗口（秒）"
+      "description": "有效秒数：攻击进入可生效状态后持续的时间，单位为秒。"
     },
     {
       "sheet": "EnemyAttacks",
@@ -5481,7 +5481,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "造成的基础伤害"
+      "description": "基础伤害：当前攻击或投射物命中合法目标时提交的基础伤害。"
     },
     {
       "sheet": "EnemyAttacks",
@@ -5493,7 +5493,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "Projectiles.projectileId",
-      "description": "弹幕稳定ID"
+      "description": "投射物ID：引用Projectiles.projectileId；留空表示该攻击不生成投射物。"
     },
     {
       "sheet": "EnemyAttacks",
@@ -5505,7 +5505,7 @@
       "max": null,
       "enumType": "GestureType",
       "foreignKey": "",
-      "description": "EnemyAttacks 表的 gestureInterruptType 字段"
+      "description": "打断笔势：攻击前摇期间可打断该攻击的GestureType；Any表示任意有效笔势。"
     },
     {
       "sheet": "EnemyAttacks",
@@ -5517,7 +5517,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "EnemyAttacks 表的 interruptStartSec 字段"
+      "description": "打断开始秒数：相对攻击开始时刻，可被笔势打断的窗口起点，单位为秒。"
     },
     {
       "sheet": "EnemyAttacks",
@@ -5529,7 +5529,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "EnemyAttacks 表的 interruptEndSec 字段"
+      "description": "打断结束秒数：相对攻击开始时刻，可被笔势打断的窗口终点，单位为秒。"
     },
     {
       "sheet": "EnemyAttacks",
@@ -5541,7 +5541,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "SkillEffects.effectGroupId",
-      "description": "效果链分组ID"
+      "description": "效果组ID：引用SkillEffects.effectGroupId，按order执行同组效果；留空表示没有附加效果。"
     },
     {
       "sheet": "EnemyAttacks",
@@ -5553,7 +5553,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "EnemyAttacks 表的 weight 字段"
+      "description": "选择权重：同一攻击集合中参与确定性加权选择的相对权重。"
     },
     {
       "sheet": "Projectiles",
@@ -5565,7 +5565,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "弹幕稳定ID"
+      "description": "投射物ID：投射物定义的稳定主键，供敌人攻击配置引用。"
     },
     {
       "sheet": "Projectiles",
@@ -5577,7 +5577,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "MovePatterns.movePatternId",
-      "description": "移动策略配置ID"
+      "description": "移动模式ID：引用MovePatterns.movePatternId，指定实体或投射物采用的移动策略参数。"
     },
     {
       "sheet": "Projectiles",
@@ -5589,7 +5589,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "Projectiles 表的 speedRefPxSec 字段"
+      "description": "飞行速度：投射物在参考像素空间中的移动速度，单位为参考像素/秒。"
     },
     {
       "sheet": "Projectiles",
@@ -5601,7 +5601,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "Projectiles 表的 lifeSec 字段"
+      "description": "投射物寿命秒数：投射物生成后允许飞行的最长玩法时间，单位为秒，到期后回池。"
     },
     {
       "sheet": "Projectiles",
@@ -5613,7 +5613,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "造成的基础伤害"
+      "description": "基础伤害：当前攻击或投射物命中合法目标时提交的基础伤害。"
     },
     {
       "sheet": "Projectiles",
@@ -5625,7 +5625,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "Projectiles 表的 cuttable 字段"
+      "description": "可切断：是否允许有效画笔命中后直接切断并回收该投射物。"
     },
     {
       "sheet": "Projectiles",
@@ -5637,7 +5637,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "Projectiles 表的 reflectable 字段"
+      "description": "可反弹：是否允许满足架势要求的画笔把投射物归属和方向反转。"
     },
     {
       "sheet": "Projectiles",
@@ -5649,7 +5649,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "Stances.stanceId",
-      "description": "Projectiles 表的 requiredStanceId 字段"
+      "description": "交互要求架势：引用Stances.stanceId；留空表示任意架势都可切断或反弹该投射物。"
     },
     {
       "sheet": "Projectiles",
@@ -5661,7 +5661,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "Projectiles 表的 hitRadiusRefPx 字段"
+      "description": "命中半径：围绕笔迹或投射物中心参与碰撞查询的半径，单位为参考像素。"
     },
     {
       "sheet": "Projectiles",
@@ -5673,7 +5673,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "AssetManifest.assetKey",
-      "description": "Unity资源注册键"
+      "description": "投射物资源键：引用AssetManifest.assetKey，并由Unity AssetRegistry解析为投射物Sprite。"
     },
     {
       "sheet": "Projectiles",
@@ -5685,7 +5685,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "VfxCues.vfxKey",
-      "description": "特效事件键"
+      "description": "特效键：引用VfxCues.vfxKey；留空表示该事件不播放额外特效。"
     },
     {
       "sheet": "Buffs",
@@ -5697,7 +5697,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "状态效果稳定ID"
+      "description": "状态效果ID：状态效果定义的稳定主键，供技能效果和敌人修饰器引用。"
     },
     {
       "sheet": "Buffs",
@@ -5709,7 +5709,7 @@
       "max": null,
       "enumType": "BuffType",
       "foreignKey": "",
-      "description": "Buffs 表的 type 字段"
+      "description": "状态类型：指定状态效果的行为类别，取值必须来自BuffType枚举。"
     },
     {
       "sheet": "Buffs",
@@ -5721,7 +5721,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "持续时间（秒）"
+      "description": "状态持续秒数：状态效果保持有效的基础时间，单位为秒。"
     },
     {
       "sheet": "Buffs",
@@ -5733,7 +5733,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "Buffs 表的 maxStacks 字段"
+      "description": "最大层数：同一状态效果在单个目标上允许累计的层数上限。"
     },
     {
       "sheet": "Buffs",
@@ -5745,7 +5745,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "Buffs 表的 magnitude 字段"
+      "description": "效果强度：状态效果的主要强度参数，具体含义由BuffType决定，例如减速比例或增伤比例。"
     },
     {
       "sheet": "Buffs",
@@ -5757,7 +5757,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "Buffs 表的 tickSec 字段"
+      "description": "跳动间隔：周期状态两次结算之间的时间，单位为秒；为0表示不按周期跳动。"
     },
     {
       "sheet": "Buffs",
@@ -5769,7 +5769,7 @@
       "max": null,
       "enumType": "BuffRefreshPolicy",
       "foreignKey": "",
-      "description": "Buffs 表的 refreshPolicy 字段"
+      "description": "刷新策略：重复施加同一状态时采用的时长或层数处理方式，取值来自BuffRefreshPolicy枚举。"
     },
     {
       "sheet": "Buffs",
@@ -5781,7 +5781,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "VfxCues.vfxKey",
-      "description": "特效事件键"
+      "description": "特效键：引用VfxCues.vfxKey；留空表示该事件不播放额外特效。"
     },
     {
       "sheet": "Buffs",
@@ -5793,7 +5793,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "Texts.textKey",
-      "description": "文案键"
+      "description": "文案键：引用Texts.textKey取得玩家可见的本地化文本。"
     },
     {
       "sheet": "Skills",
@@ -5805,7 +5805,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "技能稳定ID"
+      "description": "技能ID：技能定义的稳定主键，供玩家、输入和进度系统引用。"
     },
     {
       "sheet": "Skills",
@@ -5817,7 +5817,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "Texts.textKey",
-      "description": "显示名称文案键"
+      "description": "名称文案键：引用Texts.textKey取得本地化显示名称，不直接填写玩家可见文字。"
     },
     {
       "sheet": "Skills",
@@ -5829,7 +5829,7 @@
       "max": null,
       "enumType": "SkillTriggerType",
       "foreignKey": "",
-      "description": "Skills 表的 triggerType 字段"
+      "description": "技能触发类型：指定技能由被动、笔势或其他入口触发，取值来自SkillTriggerType枚举。"
     },
     {
       "sheet": "Skills",
@@ -5841,7 +5841,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "Stances.stanceId",
-      "description": "Skills 表的 requiredStanceId 字段"
+      "description": "释放要求架势：引用Stances.stanceId；留空表示任意架势都可释放该技能。"
     },
     {
       "sheet": "Skills",
@@ -5853,7 +5853,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "Skills 表的 energyCost 字段"
+      "description": "能量消耗：释放技能时需要扣除的玩家能量；被动技能通常为0。"
     },
     {
       "sheet": "Skills",
@@ -5865,7 +5865,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "冷却时间（秒）"
+      "description": "冷却秒数：同一动作再次可用前必须等待的最短时间，单位为秒。"
     },
     {
       "sheet": "Skills",
@@ -5877,7 +5877,7 @@
       "max": null,
       "enumType": "GestureType",
       "foreignKey": "",
-      "description": "Skills 表的 gestureType 字段"
+      "description": "笔势类型：指定该规则或交互要求的手势类别，取值必须登记在GestureType枚举。"
     },
     {
       "sheet": "Skills",
@@ -5889,7 +5889,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "Skills 表的 inputWindowSec 字段"
+      "description": "输入窗口秒数：触发技能所需笔势允许完成的最长输入时间，单位为秒。"
     },
     {
       "sheet": "Skills",
@@ -5901,7 +5901,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "SkillEffects.effectGroupId",
-      "description": "效果链分组ID"
+      "description": "技能效果组：引用SkillEffects.effectGroupId，指定释放技能时按order执行的效果链。"
     },
     {
       "sheet": "Skills",
@@ -5913,7 +5913,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "AssetManifest.assetKey",
-      "description": "Skills 表的 iconAssetKey 字段"
+      "description": "图标资源键：引用AssetManifest.assetKey，指定技能在UI中使用的图标资源。"
     },
     {
       "sheet": "Skills",
@@ -5925,7 +5925,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "Texts.textKey",
-      "description": "文案键"
+      "description": "文案键：引用Texts.textKey取得玩家可见的本地化文本。"
     },
     {
       "sheet": "SkillEffects",
@@ -5937,7 +5937,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "效果链分组ID"
+      "description": "效果组ID：把多条SkillEffects按order组织成可复用的有序效果链。"
     },
     {
       "sheet": "SkillEffects",
@@ -5949,7 +5949,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "组内执行/展示顺序，从1开始"
+      "description": "组内顺序：同一分组内从1开始的稳定执行、选择或展示顺序。"
     },
     {
       "sheet": "SkillEffects",
@@ -5961,7 +5961,7 @@
       "max": null,
       "enumType": "EffectType",
       "foreignKey": "",
-      "description": "SkillEffects 表的 effectType 字段"
+      "description": "效果类型：指定该效果行执行的规则类型，取值必须来自EffectType枚举并由代码注册。"
     },
     {
       "sheet": "SkillEffects",
@@ -5973,7 +5973,7 @@
       "max": null,
       "enumType": "TargetType",
       "foreignKey": "",
-      "description": "SkillEffects 表的 targetType 字段"
+      "description": "目标类型：指定效果作用对象的选择方式，取值必须来自TargetType枚举。"
     },
     {
       "sheet": "SkillEffects",
@@ -5985,7 +5985,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "SkillEffects 表的 value1 字段"
+      "description": "主参数：效果类型定义的第一个数值参数；具体单位和含义由effectType决定。"
     },
     {
       "sheet": "SkillEffects",
@@ -5997,7 +5997,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "SkillEffects 表的 value2 字段"
+      "description": "次参数：效果类型定义的第二个数值参数；不需要时填0。"
     },
     {
       "sheet": "SkillEffects",
@@ -6009,7 +6009,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "持续时间（秒）"
+      "description": "效果持续秒数：该效果影响保持的时间，单位为秒；瞬时效果填0。"
     },
     {
       "sheet": "SkillEffects",
@@ -6021,7 +6021,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "Buffs.buffId",
-      "description": "状态效果稳定ID"
+      "description": "状态效果ID：引用Buffs.buffId；仅需要施加状态的effectType填写，其他效果留空。"
     },
     {
       "sheet": "SkillEffects",
@@ -6033,7 +6033,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "VfxCues.vfxKey",
-      "description": "特效事件键"
+      "description": "特效键：引用VfxCues.vfxKey；留空表示该事件不播放额外特效。"
     },
     {
       "sheet": "SkillEffects",
@@ -6045,7 +6045,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "AudioCues.audioKey",
-      "description": "音频事件键"
+      "description": "音频键：引用AudioCues.audioKey；留空表示该事件不播放额外音频。"
     },
     {
       "sheet": "SkillEffects",
@@ -6057,7 +6057,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "SkillEffects 表的 condition 字段"
+      "description": "执行条件：效果执行前检查的可选条件表达式；留空表示无额外条件。"
     },
     {
       "sheet": "Levels",
@@ -6069,7 +6069,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "关卡稳定ID"
+      "description": "关卡ID：关卡定义的稳定主键，供波次、出生点和进度系统引用。"
     },
     {
       "sheet": "Levels",
@@ -6081,7 +6081,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "Texts.textKey",
-      "description": "显示名称文案键"
+      "description": "名称文案键：引用Texts.textKey取得本地化显示名称，不直接填写玩家可见文字。"
     },
     {
       "sheet": "Levels",
@@ -6093,7 +6093,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "AssetManifest.assetKey",
-      "description": "Levels 表的 sceneKey 字段"
+      "description": "场景资源键：引用AssetManifest.assetKey，指定承载该关卡的Unity场景。"
     },
     {
       "sheet": "Levels",
@@ -6105,7 +6105,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "AssetManifest.assetKey",
-      "description": "Levels 表的 backgroundAssetKey 字段"
+      "description": "背景资源键：引用AssetManifest.assetKey，指定关卡使用的背景资源。"
     },
     {
       "sheet": "Levels",
@@ -6117,7 +6117,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "Levels 表的 durationLimitSec 字段"
+      "description": "时限秒数：关卡允许的最大玩法时间，单位为秒。"
     },
     {
       "sheet": "Levels",
@@ -6129,7 +6129,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "Levels.levelId",
-      "description": "Levels 表的 nextLevelId 字段"
+      "description": "下一关ID：引用Levels.levelId；留空表示通关后没有自动可解锁的下一关。"
     },
     {
       "sheet": "Levels",
@@ -6141,7 +6141,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "Rewards.rewardTableId",
-      "description": "奖励表分组ID"
+      "description": "奖励表ID：引用Rewards.rewardTableId分组，指定该关卡结算时评估的奖励集合。"
     },
     {
       "sheet": "Levels",
@@ -6153,7 +6153,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "Levels 表的 starScore1 字段"
+      "description": "一星分数：结算获得一星所需达到的最低分数。"
     },
     {
       "sheet": "Levels",
@@ -6165,7 +6165,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "Levels 表的 starScore2 字段"
+      "description": "二星分数：结算获得二星所需达到的最低分数，必须不低于一星门槛。"
     },
     {
       "sheet": "Levels",
@@ -6177,7 +6177,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "Levels 表的 starScore3 字段"
+      "description": "三星分数：结算获得三星所需达到的最低分数，必须不低于二星门槛。"
     },
     {
       "sheet": "Levels",
@@ -6189,7 +6189,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "Tutorials.tutorialId",
-      "description": "教程流程ID"
+      "description": "教程ID：引用Tutorials.tutorialId分组，指定该关卡加载的教程流程。"
     },
     {
       "sheet": "Levels",
@@ -6201,7 +6201,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "Enemies.enemyId",
-      "description": "Levels 表的 bossEnemyId 字段"
+      "description": "Boss敌人ID：引用Enemies.enemyId；留空表示该关卡不是Boss关。"
     },
     {
       "sheet": "Waves",
@@ -6213,7 +6213,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "波次稳定ID"
+      "description": "波次ID：波次定义的稳定主键，供出生计划引用。"
     },
     {
       "sheet": "Waves",
@@ -6225,7 +6225,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "Levels.levelId",
-      "description": "关卡稳定ID"
+      "description": "所属关卡ID：引用Levels.levelId，指定该波次归属的关卡。"
     },
     {
       "sheet": "Waves",
@@ -6237,7 +6237,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "组内执行/展示顺序，从1开始"
+      "description": "组内顺序：同一分组内从1开始的稳定执行、选择或展示顺序。"
     },
     {
       "sheet": "Waves",
@@ -6249,7 +6249,7 @@
       "max": null,
       "enumType": "WaveStartTrigger",
       "foreignKey": "",
-      "description": "Waves 表的 startTrigger 字段"
+      "description": "开始条件：指定波次何时允许开始，取值必须来自WaveStartTrigger枚举。"
     },
     {
       "sheet": "Waves",
@@ -6261,7 +6261,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "Waves 表的 startDelaySec 字段"
+      "description": "开始延迟秒数：开始条件成立后到波次正式开始的等待时间，单位为秒。"
     },
     {
       "sheet": "Waves",
@@ -6273,7 +6273,7 @@
       "max": null,
       "enumType": "WaveEndCondition",
       "foreignKey": "",
-      "description": "Waves 表的 endCondition 字段"
+      "description": "结束条件：指定波次完成所需事实，取值必须来自WaveEndCondition枚举。"
     },
     {
       "sheet": "Waves",
@@ -6285,7 +6285,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "Waves 表的 endDelaySec 字段"
+      "description": "结束延迟秒数：结束条件成立后到推进下一波的等待时间，单位为秒。"
     },
     {
       "sheet": "Waves",
@@ -6297,7 +6297,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "AudioCues.audioKey",
-      "description": "Waves 表的 musicKey 字段"
+      "description": "背景音乐键：引用AudioCues.audioKey，指定该波次播放的背景音乐。"
     },
     {
       "sheet": "Waves",
@@ -6309,7 +6309,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "Waves 表的 maxAlive 字段"
+      "description": "最大存活数：该波次允许同时处于活动状态的敌人数量上限。"
     },
     {
       "sheet": "SpawnPoints",
@@ -6321,7 +6321,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "SpawnPoints 表的 spawnPointId 字段"
+      "description": "出生点ID：出生点定义的稳定主键，供出生计划引用。"
     },
     {
       "sheet": "SpawnPoints",
@@ -6333,7 +6333,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "Levels.levelId",
-      "description": "关卡稳定ID"
+      "description": "适用关卡ID：引用Levels.levelId；星号表示该出生点可供所有关卡使用。"
     },
     {
       "sheet": "SpawnPoints",
@@ -6345,7 +6345,7 @@
       "max": 1,
       "enumType": "",
       "foreignKey": "",
-      "description": "Safe Area归一化X坐标"
+      "description": "归一化X：出生点在Safe Area宽度中的X比例，0为左侧、1为右侧。"
     },
     {
       "sheet": "SpawnPoints",
@@ -6357,7 +6357,7 @@
       "max": 1,
       "enumType": "",
       "foreignKey": "",
-      "description": "Safe Area归一化Y坐标"
+      "description": "归一化Y：出生点在Safe Area高度中的Y比例，0为底部、1为顶部。"
     },
     {
       "sheet": "SpawnPoints",
@@ -6369,7 +6369,7 @@
       "max": null,
       "enumType": "SpawnLane",
       "foreignKey": "",
-      "description": "SpawnPoints 表的 lane 字段"
+      "description": "路线层级：指定出生点属于地面、空中或Boss等路线，取值来自SpawnLane枚举。"
     },
     {
       "sheet": "SpawnPoints",
@@ -6381,7 +6381,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "SpawnPoints 表的 jitterX 字段"
+      "description": "X随机偏移：出生时允许施加的最大横向归一化偏移量。"
     },
     {
       "sheet": "SpawnPoints",
@@ -6393,7 +6393,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "SpawnPoints 表的 jitterY 字段"
+      "description": "Y随机偏移：出生时允许施加的最大纵向归一化偏移量。"
     },
     {
       "sheet": "SpawnPoints",
@@ -6405,7 +6405,7 @@
       "max": null,
       "enumType": "Facing",
       "foreignKey": "",
-      "description": "SpawnPoints 表的 facing 字段"
+      "description": "初始朝向：实体出生时的朝向，取值必须来自Facing枚举。"
     },
     {
       "sheet": "SpawnPoints",
@@ -6417,7 +6417,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "SpawnPoints 表的 notes 字段"
+      "description": "备注：记录该出生点或资源条目的策划用途、来源或替换注意事项。"
     },
     {
       "sheet": "EnemyModifiers",
@@ -6429,7 +6429,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "EnemyModifiers 表的 modifierId 字段"
+      "description": "修饰器ID：敌人出生修饰器的稳定主键，供出生计划引用。"
     },
     {
       "sheet": "EnemyModifiers",
@@ -6441,7 +6441,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "Texts.textKey",
-      "description": "显示名称文案键"
+      "description": "名称文案键：引用Texts.textKey取得本地化显示名称，不直接填写玩家可见文字。"
     },
     {
       "sheet": "EnemyModifiers",
@@ -6453,7 +6453,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "EnemyModifiers 表的 hpMultiplier 字段"
+      "description": "生命倍率：出生时对敌人最大生命值应用的乘数。"
     },
     {
       "sheet": "EnemyModifiers",
@@ -6465,7 +6465,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "EnemyModifiers 表的 damageMultiplier 字段"
+      "description": "敌人伤害倍率：出生时对敌人攻击和接触伤害应用的乘数。"
     },
     {
       "sheet": "EnemyModifiers",
@@ -6477,7 +6477,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "EnemyModifiers 表的 speedMultiplier 字段"
+      "description": "速度倍率：对实体基础移动速度应用的乘数；1表示保持基础速度。"
     },
     {
       "sheet": "EnemyModifiers",
@@ -6489,7 +6489,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "EnemyModifiers 表的 scoreMultiplier 字段"
+      "description": "得分倍率：击败带有该修饰器的敌人时对基础得分应用的乘数。"
     },
     {
       "sheet": "EnemyModifiers",
@@ -6501,7 +6501,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "EnemyModifiers 表的 tintHex 字段"
+      "description": "染色色值：敌人表现使用的十六进制颜色；不改变玩法属性。"
     },
     {
       "sheet": "EnemyModifiers",
@@ -6513,7 +6513,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "Buffs.buffId",
-      "description": "EnemyModifiers 表的 extraBuffId 字段"
+      "description": "附加状态ID：引用Buffs.buffId；留空表示出生时不附加额外状态。"
     },
     {
       "sheet": "Spawns",
@@ -6525,7 +6525,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "出生条目稳定ID"
+      "description": "出生条目ID：单条出生计划的稳定主键。"
     },
     {
       "sheet": "Spawns",
@@ -6537,7 +6537,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "Waves.waveId",
-      "description": "波次稳定ID"
+      "description": "所属波次ID：引用Waves.waveId，指定该出生条目归属的波次。"
     },
     {
       "sheet": "Spawns",
@@ -6549,7 +6549,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "Spawns 表的 spawnTimeSec 字段"
+      "description": "出生时刻秒数：相对所属波次开始时刻的第一次出生时间，单位为秒。"
     },
     {
       "sheet": "Spawns",
@@ -6561,7 +6561,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "Enemies.enemyId",
-      "description": "敌人稳定ID"
+      "description": "敌人ID：引用Enemies.enemyId，指定该出生条目创建的敌人类型。"
     },
     {
       "sheet": "Spawns",
@@ -6573,7 +6573,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "Spawns 表的 count 字段"
+      "description": "出生数量：该行计划连续生成的敌人总数。"
     },
     {
       "sheet": "Spawns",
@@ -6585,7 +6585,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "Spawns 表的 intervalSec 字段"
+      "description": "出生间隔秒数：同一行多个敌人之间的生成间隔，单位为秒；单个敌人可填0。"
     },
     {
       "sheet": "Spawns",
@@ -6597,7 +6597,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "SpawnPoints.spawnPointId",
-      "description": "Spawns 表的 spawnPointId 字段"
+      "description": "出生点ID：引用SpawnPoints.spawnPointId，指定敌人生成的位置规则。"
     },
     {
       "sheet": "Spawns",
@@ -6609,7 +6609,7 @@
       "max": null,
       "enumType": "SpawnPattern",
       "foreignKey": "",
-      "description": "Spawns 表的 spawnPattern 字段"
+      "description": "出生队形：同一出生条目采用的队形策略，取值必须来自SpawnPattern枚举。"
     },
     {
       "sheet": "Spawns",
@@ -6621,7 +6621,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "EnemyModifiers.modifierId",
-      "description": "Spawns 表的 modifierId 字段"
+      "description": "修饰器ID：引用EnemyModifiers.modifierId，指定出生时附加的数值修饰。"
     },
     {
       "sheet": "BossPhases",
@@ -6633,7 +6633,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "BossPhases 表的 bossPhaseId 字段"
+      "description": "Boss阶段ID：Boss阶段定义的稳定主键。"
     },
     {
       "sheet": "BossPhases",
@@ -6645,7 +6645,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "Enemies.enemyId",
-      "description": "敌人稳定ID"
+      "description": "Boss敌人ID：引用Enemies.enemyId，指定该阶段所属的Boss实体。"
     },
     {
       "sheet": "BossPhases",
@@ -6657,7 +6657,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "组内执行/展示顺序，从1开始"
+      "description": "组内顺序：同一分组内从1开始的稳定执行、选择或展示顺序。"
     },
     {
       "sheet": "BossPhases",
@@ -6669,7 +6669,7 @@
       "max": 1,
       "enumType": "",
       "foreignKey": "",
-      "description": "BossPhases 表的 enterHpRatio 字段"
+      "description": "进入生命比例：Boss生命比例降到该上界时进入本阶段，范围0到1。"
     },
     {
       "sheet": "BossPhases",
@@ -6681,7 +6681,7 @@
       "max": 1,
       "enumType": "",
       "foreignKey": "",
-      "description": "BossPhases 表的 exitHpRatio 字段"
+      "description": "退出生命比例：Boss生命比例降到该下界时退出本阶段，范围0到1。"
     },
     {
       "sheet": "BossPhases",
@@ -6693,7 +6693,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "MovePatterns.movePatternId",
-      "description": "BossPhases 表的 movementPatternId 字段"
+      "description": "阶段移动模式：引用MovePatterns.movePatternId，指定Boss在该阶段使用的移动策略。"
     },
     {
       "sheet": "BossPhases",
@@ -6705,7 +6705,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "攻击集合分组ID"
+      "description": "阶段攻击集合：引用EnemyAttacks.attackSetId分组，指定Boss在该阶段使用的攻击集合。"
     },
     {
       "sheet": "BossPhases",
@@ -6717,7 +6717,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "DefenseRules.defenseRuleId",
-      "description": "防御规则稳定ID"
+      "description": "阶段防御规则：引用DefenseRules.defenseRuleId，指定Boss在该阶段使用的防御规则。"
     },
     {
       "sheet": "BossPhases",
@@ -6729,7 +6729,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "WeakpointRules.weakpointRuleId",
-      "description": "弱点规则稳定ID"
+      "description": "阶段弱点规则：引用WeakpointRules.weakpointRuleId，指定Boss在该阶段使用的弱点窗口。"
     },
     {
       "sheet": "BossPhases",
@@ -6741,7 +6741,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "SkillEffects.effectGroupId",
-      "description": "BossPhases 表的 onEnterEffectGroupId 字段"
+      "description": "入场效果组：引用SkillEffects.effectGroupId，进入该Boss阶段时执行对应效果链。"
     },
     {
       "sheet": "BossPhases",
@@ -6753,7 +6753,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "Texts.textKey",
-      "description": "BossPhases 表的 descriptionKey 字段"
+      "description": "阶段文案键：引用Texts.textKey，取得该Boss阶段的本地化说明。"
     },
     {
       "sheet": "Rewards",
@@ -6765,7 +6765,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "奖励表分组ID"
+      "description": "奖励表ID：把多条Rewards规则分组为关卡可引用的奖励集合。"
     },
     {
       "sheet": "Rewards",
@@ -6777,7 +6777,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "组内执行/展示顺序，从1开始"
+      "description": "组内顺序：同一分组内从1开始的稳定执行、选择或展示顺序。"
     },
     {
       "sheet": "Rewards",
@@ -6789,7 +6789,7 @@
       "max": null,
       "enumType": "RewardCondition",
       "foreignKey": "",
-      "description": "Rewards 表的 conditionType 字段"
+      "description": "奖励条件类型：指定奖励判定规则，取值必须来自RewardCondition枚举。"
     },
     {
       "sheet": "Rewards",
@@ -6801,7 +6801,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "Rewards 表的 conditionValue 字段"
+      "description": "奖励条件值：按conditionType解释的条件参数，例如通关标记或最低星级。"
     },
     {
       "sheet": "Rewards",
@@ -6813,7 +6813,7 @@
       "max": null,
       "enumType": "RewardType",
       "foreignKey": "",
-      "description": "Rewards 表的 rewardType 字段"
+      "description": "奖励类型：指定满足条件后发放的奖励类别，取值必须来自RewardType枚举。"
     },
     {
       "sheet": "Rewards",
@@ -6825,7 +6825,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "conditional",
-      "description": "Rewards 表的 rewardId 字段"
+      "description": "奖励对象ID：按rewardType解释的奖励对象标识；解锁关卡时引用Levels.levelId。"
     },
     {
       "sheet": "Rewards",
@@ -6837,7 +6837,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "Rewards 表的 amount 字段"
+      "description": "奖励数量：满足条件后发放或累计的奖励数量。"
     },
     {
       "sheet": "Tutorials",
@@ -6849,7 +6849,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "教程流程ID"
+      "description": "教程ID：把多条Tutorials步骤分组为关卡可引用的教程流程。"
     },
     {
       "sheet": "Tutorials",
@@ -6861,7 +6861,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "组内执行/展示顺序，从1开始"
+      "description": "组内顺序：同一分组内从1开始的稳定执行、选择或展示顺序。"
     },
     {
       "sheet": "Tutorials",
@@ -6873,7 +6873,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "Tutorials 表的 triggerEvent 字段"
+      "description": "教程触发事件：教程步骤开始等待的运行时事件协议名。"
     },
     {
       "sheet": "Tutorials",
@@ -6885,7 +6885,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "Tutorials 表的 blockProgress 字段"
+      "description": "阻断战斗推进：步骤显示期间是否暂停受教程门控制的战斗推进。"
     },
     {
       "sheet": "Tutorials",
@@ -6897,7 +6897,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "Tutorials 表的 minDisplaySec 字段"
+      "description": "最短展示秒数：教程步骤即使已满足完成条件也必须保持显示的最短时间，单位为秒。"
     },
     {
       "sheet": "Tutorials",
@@ -6909,7 +6909,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "Tutorials 表的 completeEvent 字段"
+      "description": "教程完成事件：玩家完成本步骤所需发布的事件协议或带阈值事件表达式。"
     },
     {
       "sheet": "Tutorials",
@@ -6921,7 +6921,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "Texts.textKey",
-      "description": "文案键"
+      "description": "文案键：引用Texts.textKey取得玩家可见的本地化文本。"
     },
     {
       "sheet": "Tutorials",
@@ -6933,7 +6933,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "Tutorials 表的 highlightTarget 字段"
+      "description": "高亮目标：教程遮罩需要突出显示的UI或战斗区域协议名。"
     },
     {
       "sheet": "Tutorials",
@@ -6945,7 +6945,7 @@
       "max": null,
       "enumType": "GestureType",
       "foreignKey": "",
-      "description": "Tutorials 表的 gestureType 字段"
+      "description": "笔势类型：指定该规则或交互要求的手势类别，取值必须登记在GestureType枚举。"
     },
     {
       "sheet": "Texts",
@@ -6957,7 +6957,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "文案键"
+      "description": "文案键：本地化文案的稳定主键，供配置和UI引用。"
     },
     {
       "sheet": "Texts",
@@ -6969,7 +6969,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "Texts 表的 zhCN 字段"
+      "description": "简体中文：该文案键对应的简体中文玩家可见文本。"
     },
     {
       "sheet": "Texts",
@@ -6981,7 +6981,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "Texts 表的 enUS 字段"
+      "description": "英文：该文案键对应的英文回退或本地化文本。"
     },
     {
       "sheet": "Texts",
@@ -6993,7 +6993,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "Texts 表的 context 字段"
+      "description": "使用场景：说明文案出现的位置或用途，便于翻译和字体覆盖审查。"
     },
     {
       "sheet": "AudioCues",
@@ -7005,7 +7005,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "音频事件键"
+      "description": "音频事件键：音频提示的稳定主键，供战斗、UI和反馈配置引用。"
     },
     {
       "sheet": "AudioCues",
@@ -7017,7 +7017,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "AssetManifest.assetKey",
-      "description": "Unity资源注册键"
+      "description": "音频资源键：引用AssetManifest.assetKey，并由Unity AssetRegistry解析为AudioClip。"
     },
     {
       "sheet": "AudioCues",
@@ -7029,7 +7029,7 @@
       "max": null,
       "enumType": "AudioCategory",
       "foreignKey": "",
-      "description": "AudioCues 表的 category 字段"
+      "description": "音频分类：区分背景音乐、音效等通道类型，取值必须来自AudioCategory枚举。"
     },
     {
       "sheet": "AudioCues",
@@ -7041,7 +7041,7 @@
       "max": 1,
       "enumType": "",
       "foreignKey": "",
-      "description": "AudioCues 表的 volume 字段"
+      "description": "音量：播放该音频时使用的0到1线性音量。"
     },
     {
       "sheet": "AudioCues",
@@ -7053,7 +7053,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "AudioCues 表的 pitchMin 字段"
+      "description": "最低音调：随机音调范围的下界；1表示原始音调。"
     },
     {
       "sheet": "AudioCues",
@@ -7065,7 +7065,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "AudioCues 表的 pitchMax 字段"
+      "description": "最高音调：随机音调范围的上界，必须不低于最低音调。"
     },
     {
       "sheet": "AudioCues",
@@ -7077,7 +7077,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "AudioCues 表的 maxConcurrent 字段"
+      "description": "最大并发数：该音频事件允许同时播放的实例数量上限。"
     },
     {
       "sheet": "AudioCues",
@@ -7089,7 +7089,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "冷却时间（秒）"
+      "description": "冷却秒数：同一动作再次可用前必须等待的最短时间，单位为秒。"
     },
     {
       "sheet": "VfxCues",
@@ -7101,7 +7101,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "特效事件键"
+      "description": "特效事件键：特效提示的稳定主键，供技能、弱点和战斗反馈引用。"
     },
     {
       "sheet": "VfxCues",
@@ -7113,7 +7113,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "AssetManifest.assetKey",
-      "description": "Unity资源注册键"
+      "description": "特效资源键：引用AssetManifest.assetKey，并由Unity AssetRegistry解析为特效Prefab。"
     },
     {
       "sheet": "VfxCues",
@@ -7125,7 +7125,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "VfxCues 表的 lifeSec 字段"
+      "description": "特效寿命秒数：特效实例从播放到自动回池的非缩放时间，单位为秒。"
     },
     {
       "sheet": "VfxCues",
@@ -7137,7 +7137,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "对象池预热数量"
+      "description": "池预热数量：进入会话时为该资源预先创建的对象数量，用于降低首次生成开销。"
     },
     {
       "sheet": "VfxCues",
@@ -7149,7 +7149,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "VfxCues 表的 followTarget 字段"
+      "description": "跟随目标：特效播放期间是否持续跟随目标；关闭时使用触发瞬间的位置快照。"
     },
     {
       "sheet": "VfxCues",
@@ -7161,7 +7161,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "VfxCues 表的 sortingLayer 字段"
+      "description": "排序层：SpriteRenderer或LineRenderer使用的Unity Sorting Layer名称。"
     },
     {
       "sheet": "VfxCues",
@@ -7173,7 +7173,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "VfxCues 表的 sortingOrder 字段"
+      "description": "层内顺序：在相同Sorting Layer内决定前后遮挡关系的整数顺序。"
     },
     {
       "sheet": "AssetManifest",
@@ -7185,7 +7185,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "Unity资源注册键"
+      "description": "资源键：资源清单条目的稳定主键，供各配置表和Unity AssetRegistry共同引用。"
     },
     {
       "sheet": "AssetManifest",
@@ -7197,7 +7197,7 @@
       "max": null,
       "enumType": "AssetType",
       "foreignKey": "",
-      "description": "AssetManifest 表的 assetType 字段"
+      "description": "资源类型：指定资源键对应的Unity对象类型，取值必须来自AssetType枚举。"
     },
     {
       "sheet": "AssetManifest",
@@ -7209,7 +7209,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "AssetManifest 表的 addressOrPath 字段"
+      "description": "审查路径：供作者工具和人工审查定位资源的工程路径；运行时仍通过AssetRegistry引用对象。"
     },
     {
       "sheet": "AssetManifest",
@@ -7221,7 +7221,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "AssetManifest 表的 requiredInMvp 字段"
+      "description": "MVP必需：该资源是否属于MVP不可缺失的构建内容。"
     },
     {
       "sheet": "AssetManifest",
@@ -7233,7 +7233,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "AssetManifest 表的 notes 字段"
+      "description": "备注：记录该出生点或资源条目的策划用途、来源或替换注意事项。"
     },
     {
       "sheet": "Enums",
@@ -7245,7 +7245,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "Enums 表的 enumType 字段"
+      "description": "枚举类型：枚举值所属的稳定类型名。"
     },
     {
       "sheet": "Enums",
@@ -7257,7 +7257,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "Enums 表的 value 字段"
+      "description": "枚举值：写入业务字段的稳定英文枚举值，必须与代码协议一致。"
     },
     {
       "sheet": "Enums",
@@ -7269,7 +7269,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "Enums 表的 displayName 字段"
+      "description": "枚举显示名：供配置编辑和审查使用的枚举名称，不作为玩家本地化文案。"
     },
     {
       "sheet": "Enums",
@@ -7281,7 +7281,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "Enums 表的 description 字段"
+      "description": "枚举说明：说明该枚举值的协议用途、约束或选择含义。"
     },
     {
       "sheet": "FeedbackCues",
@@ -7293,7 +7293,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "反馈配置稳定ID。"
+      "description": "反馈配置ID：战斗反馈档案的稳定主键，供命中、受击和死亡事件选择。"
     },
     {
       "sheet": "FeedbackCues",
@@ -7305,7 +7305,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "VfxCues.vfxKey",
-      "description": "反馈使用的特效提示外键。"
+      "description": "反馈特效键：引用VfxCues.vfxKey，指定该战斗反馈必须播放的特效提示。"
     },
     {
       "sheet": "FeedbackCues",
@@ -7317,7 +7317,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "AudioCues.audioKey",
-      "description": "反馈使用的音频提示外键。"
+      "description": "反馈音频键：引用AudioCues.audioKey，指定该战斗反馈必须播放的音频提示。"
     },
     {
       "sheet": "FeedbackCues",
@@ -7329,7 +7329,7 @@
       "max": 1,
       "enumType": "",
       "foreignKey": "",
-      "description": "反馈期间的玩法时间缩放；0表示完全停顿。"
+      "description": "时间缩放：反馈期间玩法时间的缩放比例；0表示完全停顿，1表示正常速度。"
     },
     {
       "sheet": "FeedbackCues",
@@ -7341,7 +7341,7 @@
       "max": 2,
       "enumType": "",
       "foreignKey": "",
-      "description": "玩法时间缩放持续秒数，使用非缩放时间推进。"
+      "description": "时间缩放秒数：时间缩放保持的非缩放时长，单位为秒。"
     },
     {
       "sheet": "FeedbackCues",
@@ -7353,7 +7353,7 @@
       "max": 2,
       "enumType": "",
       "foreignKey": "",
-      "description": "目标白闪持续秒数。"
+      "description": "闪白秒数：受击目标保持闪白表现的时间，单位为非缩放秒。"
     },
     {
       "sheet": "FeedbackCues",
@@ -7365,7 +7365,7 @@
       "max": 100,
       "enumType": "",
       "foreignKey": "",
-      "description": "1920×1080参考分辨率下的震屏强度像素。"
+      "description": "震屏强度：1920×1080参考分辨率下相机震动的最大位移，单位为参考像素。"
     },
     {
       "sheet": "FeedbackCues",
@@ -7377,7 +7377,7 @@
       "max": 2,
       "enumType": "",
       "foreignKey": "",
-      "description": "震屏持续秒数。"
+      "description": "震屏秒数：相机震动持续的非缩放时间，单位为秒。"
     },
     {
       "sheet": "FeedbackCues",
@@ -7389,7 +7389,7 @@
       "max": null,
       "enumType": "FeedbackVibrationPattern",
       "foreignKey": "",
-      "description": "平台震动强度；可由用户总开关禁用。"
+      "description": "震动档位：平台震动强度协议，取值来自FeedbackVibrationPattern枚举并受用户总开关控制。"
     },
     {
       "sheet": "FeedbackCues",
@@ -7401,7 +7401,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "伤害数字颜色，格式为#RRGGBBAA。"
+      "description": "伤害数字颜色：伤害数字使用的#RRGGBBAA十六进制颜色。"
     },
     {
       "sheet": "FeedbackCues",
@@ -7413,7 +7413,7 @@
       "max": 200,
       "enumType": "",
       "foreignKey": "",
-      "description": "1920×1080参考分辨率下的伤害数字字号。"
+      "description": "伤害数字字号：1920×1080参考分辨率下的伤害数字字号。"
     },
     {
       "sheet": "FeedbackCues",
@@ -7425,7 +7425,7 @@
       "max": 3,
       "enumType": "",
       "foreignKey": "",
-      "description": "伤害数字存活秒数。"
+      "description": "伤害数字寿命：伤害数字从出现到回池的非缩放时间，单位为秒。"
     },
     {
       "sheet": "FeedbackCues",
@@ -7437,7 +7437,7 @@
       "max": 300,
       "enumType": "",
       "foreignKey": "",
-      "description": "伤害数字生命周期内上浮的参考像素。"
+      "description": "伤害数字上浮：伤害数字生命周期内向上移动的总距离，单位为参考像素。"
     },
     {
       "sheet": "FeedbackCues",
@@ -7449,7 +7449,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "反馈特效染色，格式为#RRGGBBAA。"
+      "description": "特效染色：反馈特效使用的#RRGGBBAA十六进制乘色色值。"
     },
     {
       "sheet": "FeedbackCues",
@@ -7461,7 +7461,7 @@
       "max": 200,
       "enumType": "",
       "foreignKey": "",
-      "description": "1920×1080参考分辨率下的特效尺寸。"
+      "description": "特效尺寸：1920×1080参考分辨率下反馈特效的目标显示尺寸。"
     },
     {
       "sheet": "FeedbackCues",
@@ -7473,7 +7473,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "反馈配置用途说明。"
+      "description": "反馈说明：概括该反馈档案对应的战斗事件和玩家感受目标。"
     },
     {
       "sheet": "StrokeTrailStyles",
@@ -7485,7 +7485,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "画笔样式稳定ID。"
+      "description": "样式ID：画笔轨迹样式的稳定主键，供Stances引用。"
     },
     {
       "sheet": "StrokeTrailStyles",
@@ -7497,7 +7497,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "外层辉光颜色，格式为#RRGGBBAA。"
+      "description": "外层颜色：轨迹外层辉光使用的#RRGGBBAA十六进制颜色。"
     },
     {
       "sheet": "StrokeTrailStyles",
@@ -7509,7 +7509,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "主体轨迹颜色，格式为#RRGGBBAA。"
+      "description": "主体颜色：轨迹主体使用的#RRGGBBAA十六进制颜色。"
     },
     {
       "sheet": "StrokeTrailStyles",
@@ -7521,7 +7521,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "核心高光颜色，格式为#RRGGBBAA。"
+      "description": "核心颜色：轨迹核心高光使用的#RRGGBBAA十六进制颜色。"
     },
     {
       "sheet": "StrokeTrailStyles",
@@ -7533,7 +7533,7 @@
       "max": 4,
       "enumType": "",
       "foreignKey": "",
-      "description": "外层宽度相对架势基础笔宽的倍率。"
+      "description": "外层宽度倍率：外层辉光宽度相对架势基础笔宽的乘数。"
     },
     {
       "sheet": "StrokeTrailStyles",
@@ -7545,7 +7545,7 @@
       "max": 4,
       "enumType": "",
       "foreignKey": "",
-      "description": "主体宽度相对架势基础笔宽的倍率。"
+      "description": "主体宽度倍率：主体轨迹宽度相对架势基础笔宽的乘数。"
     },
     {
       "sheet": "StrokeTrailStyles",
@@ -7557,7 +7557,7 @@
       "max": 4,
       "enumType": "",
       "foreignKey": "",
-      "description": "核心宽度相对架势基础笔宽的倍率。"
+      "description": "核心宽度倍率：核心高光宽度相对架势基础笔宽的乘数。"
     },
     {
       "sheet": "StrokeTrailStyles",
@@ -7569,7 +7569,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "分支电弧颜色，格式为#RRGGBBAA。"
+      "description": "分支颜色：分支电弧使用的#RRGGBBAA十六进制颜色。"
     },
     {
       "sheet": "StrokeTrailStyles",
@@ -7581,7 +7581,7 @@
       "max": 1920,
       "enumType": "",
       "foreignKey": "",
-      "description": "相邻分支电弧在参考路径上的目标间距。"
+      "description": "分支间距：相邻分支沿主路径分布的目标间距，单位为参考像素。"
     },
     {
       "sheet": "StrokeTrailStyles",
@@ -7593,7 +7593,7 @@
       "max": 500,
       "enumType": "",
       "foreignKey": "",
-      "description": "分支电弧的参考像素长度。"
+      "description": "分支长度：单条分支电弧的目标长度，单位为参考像素。"
     },
     {
       "sheet": "StrokeTrailStyles",
@@ -7605,7 +7605,7 @@
       "max": 200,
       "enumType": "",
       "foreignKey": "",
-      "description": "分支电弧折点的最大参考像素抖动。"
+      "description": "分支抖动：分支折点允许偏离基准线的最大距离，单位为参考像素。"
     },
     {
       "sheet": "StrokeTrailStyles",
@@ -7617,7 +7617,7 @@
       "max": 1,
       "enumType": "",
       "foreignKey": "",
-      "description": "分支宽度相对架势基础笔宽的倍率。"
+      "description": "分支宽度倍率：分支电弧宽度相对架势基础笔宽的乘数。"
     },
     {
       "sheet": "StrokeTrailStyles",
@@ -7629,7 +7629,7 @@
       "max": 8,
       "enumType": "",
       "foreignKey": "",
-      "description": "单条分支电弧的线段数量。"
+      "description": "分支线段数：构成单条分支电弧的折线段数量。"
     }
   ],
   "feedbackCues": [

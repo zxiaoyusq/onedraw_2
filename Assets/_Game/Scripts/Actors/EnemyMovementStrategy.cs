@@ -4,6 +4,37 @@ using OneStrokeDemon.Config;
 
 namespace OneStrokeDemon.Actors
 {
+    // 为每个敌人保存独立出生时刻，避免晚出生单位继承关卡累计移动时间。
+    public sealed class EnemyMovementAgeClock
+    {
+        private double originSeconds;
+        private bool hasOrigin;
+
+        public bool HasOrigin => hasOrigin;
+
+        // 将关卡累计时间转换为从该敌人出生后开始计算的移动时间。
+        public double GetElapsedSeconds(double levelElapsedSeconds)
+        {
+            if (double.IsNaN(levelElapsedSeconds) ||
+                double.IsInfinity(levelElapsedSeconds) ||
+                levelElapsedSeconds < 0d)
+            {
+                throw new ArgumentOutOfRangeException(
+                    nameof(levelElapsedSeconds),
+                    levelElapsedSeconds,
+                    "Level elapsed time must be finite and non-negative.");
+            }
+
+            if (!hasOrigin)
+            {
+                originSeconds = levelElapsedSeconds;
+                hasOrigin = true;
+            }
+
+            return Math.Max(0d, levelElapsedSeconds - originSeconds);
+        }
+    }
+
     // 定义 EnemyMovementPatternTypes 的角色领域数据与行为边界，供上层流程以明确契约使用。
     public static class EnemyMovementPatternTypes
     {
