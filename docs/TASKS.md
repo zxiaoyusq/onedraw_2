@@ -75,6 +75,7 @@
 | T699B | P6 配置可读性 | DONE | T250, T699A | 0.8 | 完善配置工作簿全部Sheet与字段的中文说明。 |
 | T699C | P6 配置可读性 | DONE | T699B | 0.8 | 将字段和枚举说明完善为可直接理解的业务语义。 |
 | T699D | P6 工程修复 | DONE | T330, T340, T660, T699C | 0.5 | 为生产战斗补齐配置驱动的蓄力按住反馈。 |
+| T699E | P6 表现与资源 | DONE | T698, T699D | 0.3 | 将画笔单环蓄力反馈替换为A方案青白雷核特效。 |
 | T700 | P7 质量发布 | READY | T540, T660, T681, T699A, T699D | 2.0 | 补齐纯规则EditMode回归矩阵。 |
 | T710 | P7 质量发布 | BACKLOG | T550, T650 | 3.0 | 补齐Unity集成、完整单局、暂停、重开和生命周期PlayMode测试。 |
 | T720 | P7 质量发布 | BACKLOG | T710, T250 | 1.0 | 审计所有玩法数值、内容和文案是否来自配置表。 |
@@ -825,6 +826,18 @@
 - **验证：** StrokeSampling EditMode；StrokeTrail与T660生产入口PlayMode；全量EditMode/PlayMode；640宽隔离批处理下既有投射物测试边界回归。
 - **证据：** `artifacts/evals/T699D/`
 - **提交：** `T699D: add charged stroke hold feedback`
+
+### T699E · 将画笔单环蓄力反馈替换为A方案青白雷核特效。
+
+- **状态：** `DONE`
+- **依赖：** T698, T699D
+- **估算：** 0.3 人日
+- **产出：** 用户选定A方案参考图；白色雷核、青白中环与外环、八向径向电弧的分阶段蓄力表现；生产入口与池化复位回归。
+- **明确不做：** 不修改Charged手势、命中半径、蓄力时间、伤害或其他玩法数值；不新增配置字段、贴图、粒子系统、Scene、Prefab、Registry或ProjectSettings；不提前实施T700。
+- **验收：** 蓄力从中心雷核依次展开中环和外环，满蓄时显示八向向外收尖的电弧；颜色、宽度、视觉外圈与抖动继续消费现有画笔配置，规则命中半径保持不变；首个有效移动点后全部蓄力层清空并切换为正常闪电轨迹，池化复用无残留。
+- **验证：** StrokeTrail与T660生产入口PlayMode；全量PlayMode；真实Battle相机截图。
+- **证据：** `artifacts/evals/T699E/`
+- **提交：** `T699E: replace charged stroke effect with thunder core`
 
 
 ## P7 质量发布

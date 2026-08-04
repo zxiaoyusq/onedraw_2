@@ -15,6 +15,13 @@ namespace OneStrokeDemon.Presentation
         /// <summary>蓄力环使用的固定技术分段数；半径、宽度、颜色与时长仍全部来自配置。</summary>
         public const int ChargePreviewSegmentCount = 32;
 
+        /// <summary>A方案蓄力雷核占用的核心光与三层环固定渲染器数量。</summary>
+        public const int ChargePreviewLayerRendererCount = 4;
+
+        /// <summary>A方案蓄力雷核可用的固定径向电弧数量。</summary>
+        public const int ChargePreviewRadialRendererCount =
+            BranchRendererCapacity - ChargePreviewLayerRendererCount;
+
         private const int MaximumBranchPointCount = 9;
 
         private static readonly Color TransparentWhite = new Color(1f, 1f, 1f, 0f);
@@ -34,6 +41,11 @@ namespace OneStrokeDemon.Presentation
         private Color bodyColor;
         private Color coreColor;
         private Color branchColor;
+        private float chargeOuterWidth;
+        private float chargeBodyWidth;
+        private float chargeCoreWidth;
+        private float chargeBranchLengthReferencePixels;
+        private float chargeBranchJitterReferencePixels;
 
         public bool IsInitialized { get; private set; }
 
@@ -234,7 +246,7 @@ namespace OneStrokeDemon.Presentation
         }
 
         /// <summary>
-        /// 在首个有效移动点出现前，以配置样式和命中半径绘制顺时针蓄力进度环。
+        /// 在首个有效移动点出现前，以配置样式和命中半径绘制A方案雷核、同心环和径向电弧。
         /// </summary>
         public void UpdateChargePreview(
             Vector2 referencePosition,
@@ -262,26 +274,20 @@ namespace OneStrokeDemon.Presentation
 
             ChargePreviewProgress = Mathf.Clamp01(normalizedProgress);
             ChargePreviewRadiusReferencePixels = radiusReferencePixels;
-            int visibleSegments = Mathf.Max(
-                1,
-                Mathf.CeilToInt(ChargePreviewProgress * ChargePreviewSegmentCount));
-            LineRenderer renderer = branchLineRenderers[0];
-            renderer.positionCount = visibleSegments + 1;
-            renderer.startWidth = bodyLineRenderer.startWidth;
-            renderer.endWidth = bodyLineRenderer.endWidth;
-            renderer.startColor = bodyColor;
-            renderer.endColor = bodyColor;
-            for (int index = 0; index <= visibleSegments; index++)
-            {
-                float angleRadians =
-                    (90f - 360f * index / ChargePreviewSegmentCount) * Mathf.Deg2Rad;
-                Vector2 point = referencePosition + new Vector2(
-                    Mathf.Cos(angleRadians),
-                    Mathf.Sin(angleRadians)) * radiusReferencePixels;
-                renderer.SetPosition(index, ReferenceToWorld(point));
-            }
-
-            renderer.enabled = true;
+            // 命中半径只描述规则范围；视觉外圈复用配置电弧长度放大，不反向改变手势判定。
+            float visualRadiusReferencePixels = Mathf.Max(
+                radiusReferencePixels,
+                chargeBranchLengthReferencePixels);
+            RenderChargeCoreAndRings(
+                referencePosition,
+                ChargePreviewProgress,
+                radiusReferencePixels,
+                visualRadiusReferencePixels);
+            RenderChargeRadials(
+                referencePosition,
+                ChargePreviewProgress,
+                radiusReferencePixels,
+                visualRadiusReferencePixels);
             IsChargePreviewVisible = true;
         }
 
@@ -293,9 +299,12 @@ namespace OneStrokeDemon.Presentation
                 return;
             }
 
-            LineRenderer renderer = branchLineRenderers[0];
-            renderer.enabled = false;
-            renderer.positionCount = 0;
+            for (int index = 0; index < branchLineRenderers.Length; index++)
+            {
+                branchLineRenderers[index].enabled = false;
+                branchLineRenderers[index].positionCount = 0;
+            }
+
             IsChargePreviewVisible = false;
             ChargePreviewProgress = 0f;
             ChargePreviewRadiusReferencePixels = 0f;
@@ -357,6 +366,11 @@ namespace OneStrokeDemon.Presentation
             bodyColor = TransparentWhite;
             coreColor = TransparentWhite;
             branchColor = TransparentWhite;
+            chargeOuterWidth = 0f;
+            chargeBodyWidth = 0f;
+            chargeCoreWidth = 0f;
+            chargeBranchLengthReferencePixels = 0f;
+            chargeBranchJitterReferencePixels = 0f;
 
             ResetRenderer(outerLineRenderer);
             ResetRenderer(bodyLineRenderer);
@@ -383,6 +397,13 @@ namespace OneStrokeDemon.Presentation
             bodyColor = style.BodyColor;
             coreColor = style.CoreColor;
             branchColor = style.BranchColor;
+            float worldBranchBaseWidth =
+                worldBaseWidth * style.BranchWidthMultiplier;
+            chargeOuterWidth = worldBranchBaseWidth * style.OuterWidthMultiplier;
+            chargeBodyWidth = worldBranchBaseWidth * style.BodyWidthMultiplier;
+            chargeCoreWidth = worldBaseWidth * style.CoreWidthMultiplier;
+            chargeBranchLengthReferencePixels = style.BranchLengthReferencePixels;
+            chargeBranchJitterReferencePixels = style.BranchJitterReferencePixels;
             ApplyRendererStyle(
                 outerLineRenderer,
                 worldBaseWidth * style.OuterWidthMultiplier,
@@ -405,11 +426,145 @@ namespace OneStrokeDemon.Presentation
             {
                 ApplyRendererStyle(
                     branchLineRenderers[index],
-                    worldBaseWidth * style.BranchWidthMultiplier,
+                    worldBranchBaseWidth,
                     branchColor,
                     style.SortingLayerId,
                     style.SortingOrder + 3);
             }
+        }
+
+        // 三阶段依次闭合白色雷核、中圈和外圈；颜色与线宽继续来自当前画笔配置。
+        private void RenderChargeCoreAndRings(
+            Vector2 center,
+            float normalizedProgress,
+            float hitRadiusReferencePixels,
+            float visualRadiusReferencePixels)
+        {
+            float coreProgress = Mathf.Clamp01(normalizedProgress * 3f);
+            float middleProgress = Mathf.Clamp01(normalizedProgress * 3f - 1f);
+            float outerProgress = Mathf.Clamp01(normalizedProgress * 3f - 2f);
+            float coreRadius = hitRadiusReferencePixels / 3f;
+
+            WriteChargeRing(
+                branchLineRenderers[0],
+                center,
+                coreRadius,
+                coreProgress,
+                chargeOuterWidth,
+                outerColor);
+            WriteChargeRing(
+                branchLineRenderers[1],
+                center,
+                coreRadius,
+                coreProgress,
+                chargeCoreWidth,
+                coreColor);
+            WriteChargeRing(
+                branchLineRenderers[2],
+                center,
+                visualRadiusReferencePixels * 2f / 3f,
+                middleProgress,
+                chargeBodyWidth,
+                bodyColor);
+            WriteChargeRing(
+                branchLineRenderers[3],
+                center,
+                visualRadiusReferencePixels,
+                outerProgress,
+                chargeOuterWidth,
+                outerColor);
+        }
+
+        // 固定八向拓扑只承担表现；长度、抖动、颜色和宽度仍消费画笔配置。
+        private void RenderChargeRadials(
+            Vector2 center,
+            float normalizedProgress,
+            float hitRadiusReferencePixels,
+            float visualRadiusReferencePixels)
+        {
+            int visibleRadialCount = Mathf.CeilToInt(
+                normalizedProgress * ChargePreviewRadialRendererCount);
+            float coreRadius = hitRadiusReferencePixels / 3f;
+            float branchLength = Mathf.Min(
+                chargeBranchLengthReferencePixels,
+                hitRadiusReferencePixels);
+            float jitter = Mathf.Min(
+                chargeBranchJitterReferencePixels,
+                branchLength / 2f);
+            float endRadius =
+                visualRadiusReferencePixels + branchLength * normalizedProgress;
+
+            for (int radialIndex = 0;
+                 radialIndex < ChargePreviewRadialRendererCount;
+                 radialIndex++)
+            {
+                LineRenderer renderer =
+                    branchLineRenderers[ChargePreviewLayerRendererCount + radialIndex];
+                if (radialIndex >= visibleRadialCount)
+                {
+                    renderer.enabled = false;
+                    renderer.positionCount = 0;
+                    continue;
+                }
+
+                float angle =
+                    360f * radialIndex / ChargePreviewRadialRendererCount * Mathf.Deg2Rad;
+                Vector2 direction = new Vector2(Mathf.Cos(angle), Mathf.Sin(angle));
+                Vector2 tangent = new Vector2(-direction.y, direction.x);
+                float signedJitter = (radialIndex & 1) == 0 ? jitter : -jitter;
+                Vector2 start = center + direction * coreRadius;
+                Vector2 middle = center + direction *
+                    ((coreRadius + visualRadiusReferencePixels) / 2f) +
+                    tangent * signedJitter;
+                Vector2 end = center + direction * endRadius;
+
+                renderer.positionCount = 3;
+                renderer.startWidth = chargeCoreWidth;
+                renderer.endWidth = chargeBodyWidth;
+                renderer.startColor = coreColor;
+                renderer.endColor = branchColor;
+                renderer.SetPosition(0, ReferenceToWorld(start));
+                renderer.SetPosition(1, ReferenceToWorld(middle));
+                renderer.SetPosition(2, ReferenceToWorld(end));
+                renderer.enabled = true;
+            }
+        }
+
+        // 按阶段进度写入闭合圆弧，不创建临时点集。
+        private void WriteChargeRing(
+            LineRenderer renderer,
+            Vector2 center,
+            float radiusReferencePixels,
+            float normalizedProgress,
+            float width,
+            Color color)
+        {
+            if (normalizedProgress <= 0f)
+            {
+                renderer.enabled = false;
+                renderer.positionCount = 0;
+                return;
+            }
+
+            int visibleSegments = Mathf.Max(
+                1,
+                Mathf.CeilToInt(normalizedProgress * ChargePreviewSegmentCount));
+            renderer.positionCount = visibleSegments + 1;
+            renderer.startWidth = width;
+            renderer.endWidth = width;
+            renderer.startColor = color;
+            renderer.endColor = color;
+            for (int index = 0; index <= visibleSegments; index++)
+            {
+                float angleRadians =
+                    (90f - 360f * index / ChargePreviewSegmentCount) * Mathf.Deg2Rad;
+                Vector2 point = center + new Vector2(
+                    Mathf.Cos(angleRadians),
+                    Mathf.Sin(angleRadians)) * radiusReferencePixels;
+                renderer.SetPosition(index, ReferenceToWorld(point));
+            }
+
+            renderer.enabled = true;
         }
 
         // 三个主层严格共享同一组完成路径点。

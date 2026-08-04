@@ -231,15 +231,45 @@ namespace OneStrokeDemon.Tests.PlayMode.T660
             Assert.That(chargeTrail, Is.Not.Null);
             Assert.That(chargeTrail.IsChargePreviewVisible, Is.True);
             Assert.That(chargeTrail.ChargePreviewProgress, Is.EqualTo(1f).Within(0.001f));
-            Assert.That(chargeTrail.BranchLineRenderers[0].enabled, Is.True);
             Assert.That(
-                chargeTrail.BranchLineRenderers[0].positionCount,
+                chargeTrail.BranchLineRenderers[3].positionCount,
                 Is.EqualTo(StrokeTrailView.ChargePreviewSegmentCount + 1));
+            for (int index = 0; index < chargeTrail.BranchLineRenderers.Count; index++)
+            {
+                Assert.That(chargeTrail.BranchLineRenderers[index].enabled, Is.True);
+            }
+
+            string chargeScreenshotPath = Environment.GetEnvironmentVariable(
+                "ONEDRAW_T699E_SCREENSHOT");
+            if (!string.IsNullOrWhiteSpace(chargeScreenshotPath))
+            {
+                string directory = Path.GetDirectoryName(chargeScreenshotPath);
+                if (!string.IsNullOrEmpty(directory))
+                {
+                    Directory.CreateDirectory(directory);
+                }
+
+                ScreenCapture.CaptureScreenshot(chargeScreenshotPath);
+                yield return new WaitForEndOfFrame();
+                float screenshotDeadline = Time.realtimeSinceStartup + 2f;
+                while (!File.Exists(chargeScreenshotPath) &&
+                       Time.realtimeSinceStartup < screenshotDeadline)
+                {
+                    yield return null;
+                }
+
+                Assert.That(new FileInfo(chargeScreenshotPath).Length, Is.GreaterThan(10_000));
+            }
 
             var swipeEnd = new Vector2(Screen.width * 0.7f, Screen.height * 0.5f);
             Set(mouse.position, swipeEnd, queueEventOnly: true);
             yield return null;
             Assert.That(chargeTrail.IsChargePreviewVisible, Is.False);
+            for (int index = 0; index < chargeTrail.BranchLineRenderers.Count; index++)
+            {
+                Assert.That(chargeTrail.BranchLineRenderers[index].enabled, Is.False);
+            }
+
             Assert.That(chargeTrail.LineRenderer.enabled, Is.True);
             Assert.That(chargeTrail.LineRenderer.positionCount, Is.GreaterThanOrEqualTo(2));
 

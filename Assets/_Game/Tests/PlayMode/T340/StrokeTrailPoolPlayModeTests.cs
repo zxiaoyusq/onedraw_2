@@ -260,7 +260,7 @@ namespace OneStrokeDemon.Tests.PlayMode.T340
         }
 
         [UnityTest]
-        public IEnumerator StationaryHoldDrawsConfiguredChargeRingThenMovementBecomesTrail()
+        public IEnumerator StationaryHoldDrawsConfiguredThunderCoreThenMovementBecomesTrail()
         {
             yield return LoadRuntimeConfiguration();
             IConfigProvider config = GameplayConfigRuntime.Current;
@@ -290,19 +290,54 @@ namespace OneStrokeDemon.Tests.PlayMode.T340
             Assert.That(view.BranchLineRenderers[0].enabled, Is.True);
             Assert.That(
                 view.BranchLineRenderers[0].positionCount,
-                Is.EqualTo(StrokeTrailView.ChargePreviewSegmentCount / 2 + 1));
+                Is.EqualTo(StrokeTrailView.ChargePreviewSegmentCount + 1));
             Assert.That(
                 view.BranchLineRenderers[0].startWidth,
-                Is.EqualTo(view.BodyLineRenderer.startWidth));
+                Is.EqualTo(
+                    style.WidthReferencePixels *
+                    style.BranchWidthMultiplier *
+                    style.OuterWidthMultiplier));
+            Assert.That(view.BranchLineRenderers[1].enabled, Is.True);
+            Assert.That(
+                view.BranchLineRenderers[1].startColor,
+                Is.EqualTo(style.CoreColor));
+            Assert.That(
+                view.BranchLineRenderers[1].startWidth,
+                Is.EqualTo(view.CoreLineRenderer.startWidth));
+            Assert.That(view.BranchLineRenderers[2].enabled, Is.True);
+            Assert.That(
+                view.BranchLineRenderers[2].positionCount,
+                Is.EqualTo(StrokeTrailView.ChargePreviewSegmentCount / 2 + 1));
+            Assert.That(view.BranchLineRenderers[3].enabled, Is.False);
+            for (int index = 0; index < StrokeTrailView.ChargePreviewRadialRendererCount; index++)
+            {
+                LineRenderer radial = view.BranchLineRenderers[
+                    StrokeTrailView.ChargePreviewLayerRendererCount + index];
+                Assert.That(radial.enabled, Is.EqualTo(index < 4));
+                Assert.That(radial.positionCount, Is.EqualTo(index < 4 ? 3 : 0));
+                if (index < 4)
+                {
+                    Assert.That(radial.startWidth, Is.GreaterThan(radial.endWidth));
+                }
+            }
 
             pool.TryUpdateChargePreview(91, origin, 1f, chargedRule.HitRadiusRefPx);
             Assert.That(
-                view.BranchLineRenderers[0].positionCount,
+                view.BranchLineRenderers[3].positionCount,
                 Is.EqualTo(StrokeTrailView.ChargePreviewSegmentCount + 1));
+            for (int index = 0; index < view.BranchLineRenderers.Count; index++)
+            {
+                Assert.That(view.BranchLineRenderers[index].enabled, Is.True);
+            }
 
             Assert.That(pool.TryAppendPreviewPoint(91, origin + Vector2.right * 120f), Is.True);
             Assert.That(view.IsChargePreviewVisible, Is.False);
-            Assert.That(view.BranchLineRenderers[0].enabled, Is.False);
+            for (int index = 0; index < view.BranchLineRenderers.Count; index++)
+            {
+                Assert.That(view.BranchLineRenderers[index].enabled, Is.False);
+                Assert.That(view.BranchLineRenderers[index].positionCount, Is.Zero);
+            }
+
             Assert.That(view.LineRenderer.enabled, Is.True);
             Assert.That(view.LineRenderer.positionCount, Is.EqualTo(2));
         }
