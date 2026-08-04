@@ -143,6 +143,9 @@ namespace OneStrokeDemon.Config
         /// <summary>按样式 ID 获取画笔表现配置。</summary>
         public StrokeTrailStyleConfig GetStrokeTrailStyle(string styleId) =>
             Get(RequireSnapshot().StrokeTrailStyles, "StrokeTrailStyles", "styleId", styleId);
+        /// <summary>获取全部画笔表现配置的只读列表。</summary>
+        public IReadOnlyList<StrokeTrailStyleConfig> GetStrokeTrailStyles() =>
+            RequireSnapshot().StrokeTrailStyleEntries;
         /// <summary>按资源键获取资源清单配置。</summary>
         public AssetManifestConfig GetAsset(string assetKey) => Get(RequireSnapshot().Assets, "AssetManifest", "assetKey", assetKey);
         /// <summary>获取完整资源清单的只读列表。</summary>

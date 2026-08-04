@@ -12,16 +12,6 @@ namespace OneStrokeDemon.Presentation
         /// <summary>单个预热视图内固定的技术性分支渲染器容量。</summary>
         public const int BranchRendererCapacity = 12;
 
-        /// <summary>蓄力环使用的固定技术分段数；半径、宽度、颜色与时长仍全部来自配置。</summary>
-        public const int ChargePreviewSegmentCount = 32;
-
-        /// <summary>A方案蓄力雷核占用的核心光与三层环固定渲染器数量。</summary>
-        public const int ChargePreviewLayerRendererCount = 4;
-
-        /// <summary>A方案蓄力雷核可用的固定径向电弧数量。</summary>
-        public const int ChargePreviewRadialRendererCount =
-            BranchRendererCapacity - ChargePreviewLayerRendererCount;
-
         private const int MaximumBranchPointCount = 9;
 
         private static readonly Color TransparentWhite = new Color(1f, 1f, 1f, 0f);
@@ -41,11 +31,10 @@ namespace OneStrokeDemon.Presentation
         private Color bodyColor;
         private Color coreColor;
         private Color branchColor;
-        private float chargeOuterWidth;
-        private float chargeBodyWidth;
-        private float chargeCoreWidth;
-        private float chargeBranchLengthReferencePixels;
-        private float chargeBranchJitterReferencePixels;
+        private StrokeTrailStyle currentStyle;
+        private string[] chargeVfxAssetKeys = Array.Empty<string>();
+        private StrokeChargeVfxView[] chargeVfxViews = Array.Empty<StrokeChargeVfxView>();
+        private StrokeChargeVfxView activeChargeVfx;
 
         public bool IsInitialized { get; private set; }
 
@@ -80,6 +69,8 @@ namespace OneStrokeDemon.Presentation
         public LineRenderer CoreLineRenderer => coreLineRenderer;
 
         public IReadOnlyList<LineRenderer> BranchLineRenderers => branchLineRenderers;
+
+        public StrokeChargeVfxView ActiveChargeVfx => activeChargeVfx;
 
         public int ActiveBranchCount { get; private set; }
 
@@ -126,7 +117,8 @@ namespace OneStrokeDemon.Presentation
         /// <summary>用共享材质和参考空间初始化已由Prefab绑定的分层渲染拓扑。</summary>
         public void Initialize(
             Material sharedMaterial,
-            Transform configuredReferenceSpace = null)
+            Transform configuredReferenceSpace = null,
+            IReadOnlyList<StrokeChargeVfxPrefab> chargeVfxPrefabs = null)
         {
             if (IsInitialized)
             {
@@ -156,6 +148,8 @@ namespace OneStrokeDemon.Presentation
                     capVertices: 2,
                     cornerVertices: 1);
             }
+
+            InitializeChargeVfx(chargeVfxPrefabs);
 
             IsInitialized = true;
             ResetForPool();
@@ -221,6 +215,7 @@ namespace OneStrokeDemon.Presentation
             StyleId = style.StyleId;
             lifetimeSeconds = style.LifetimeSeconds;
             ConfigureStyle(style);
+            activeChargeVfx = FindChargeVfx(style.ChargeVfxAssetKey);
             SetMainPositionCount(1);
             SetMainPosition(0, ReferenceToWorld(firstPoint));
             IsActive = true;
@@ -245,9 +240,7 @@ namespace OneStrokeDemon.Presentation
             SetMainEnabled(true);
         }
 
-        /// <summary>
-        /// 在首个有效移动点出现前，以配置样式和命中半径绘制A方案雷核、同心环和径向电弧。
-        /// </summary>
+        /// <summary>在首个有效移动点出现前，把进度转发给配置选择的独立蓄力Prefab。</summary>
         public void UpdateChargePreview(
             Vector2 referencePosition,
             float normalizedProgress,
@@ -272,22 +265,20 @@ namespace OneStrokeDemon.Presentation
                 throw new ArgumentOutOfRangeException(nameof(radiusReferencePixels));
             }
 
+            if (activeChargeVfx == null)
+            {
+                throw new InvalidOperationException(
+                    "The configured stroke style has no preloaded charge VFX prefab.");
+            }
+
             ChargePreviewProgress = Mathf.Clamp01(normalizedProgress);
             ChargePreviewRadiusReferencePixels = radiusReferencePixels;
-            // 命中半径只描述规则范围；视觉外圈复用配置电弧长度放大，不反向改变手势判定。
-            float visualRadiusReferencePixels = Mathf.Max(
-                radiusReferencePixels,
-                chargeBranchLengthReferencePixels);
-            RenderChargeCoreAndRings(
+            activeChargeVfx.Show(
                 referencePosition,
                 ChargePreviewProgress,
                 radiusReferencePixels,
-                visualRadiusReferencePixels);
-            RenderChargeRadials(
-                referencePosition,
-                ChargePreviewProgress,
-                radiusReferencePixels,
-                visualRadiusReferencePixels);
+                currentStyle,
+                ReferencePixelWorldScale);
             IsChargePreviewVisible = true;
         }
 
@@ -299,11 +290,7 @@ namespace OneStrokeDemon.Presentation
                 return;
             }
 
-            for (int index = 0; index < branchLineRenderers.Length; index++)
-            {
-                branchLineRenderers[index].enabled = false;
-                branchLineRenderers[index].positionCount = 0;
-            }
+            activeChargeVfx?.Hide();
 
             IsChargePreviewVisible = false;
             ChargePreviewProgress = 0f;
@@ -348,6 +335,8 @@ namespace OneStrokeDemon.Presentation
         public void ResetForPool()
         {
             EnsureInitialized();
+            activeChargeVfx?.Hide();
+            activeChargeVfx = null;
             IsActive = false;
             IsPreviewing = false;
             IsChargePreviewVisible = false;
@@ -366,11 +355,7 @@ namespace OneStrokeDemon.Presentation
             bodyColor = TransparentWhite;
             coreColor = TransparentWhite;
             branchColor = TransparentWhite;
-            chargeOuterWidth = 0f;
-            chargeBodyWidth = 0f;
-            chargeCoreWidth = 0f;
-            chargeBranchLengthReferencePixels = 0f;
-            chargeBranchJitterReferencePixels = 0f;
+            currentStyle = default;
 
             ResetRenderer(outerLineRenderer);
             ResetRenderer(bodyLineRenderer);
@@ -384,6 +369,7 @@ namespace OneStrokeDemon.Presentation
         // 将配置样式投射到世界空间，并建立稳定的层级排序。
         private void ConfigureStyle(StrokeTrailStyle style)
         {
+            currentStyle = style;
             Transform ownTransform = transform;
             ownTransform.localPosition = Vector3.zero;
             ownTransform.localRotation = Quaternion.identity;
@@ -399,11 +385,6 @@ namespace OneStrokeDemon.Presentation
             branchColor = style.BranchColor;
             float worldBranchBaseWidth =
                 worldBaseWidth * style.BranchWidthMultiplier;
-            chargeOuterWidth = worldBranchBaseWidth * style.OuterWidthMultiplier;
-            chargeBodyWidth = worldBranchBaseWidth * style.BodyWidthMultiplier;
-            chargeCoreWidth = worldBaseWidth * style.CoreWidthMultiplier;
-            chargeBranchLengthReferencePixels = style.BranchLengthReferencePixels;
-            chargeBranchJitterReferencePixels = style.BranchJitterReferencePixels;
             ApplyRendererStyle(
                 outerLineRenderer,
                 worldBaseWidth * style.OuterWidthMultiplier,
@@ -431,140 +412,6 @@ namespace OneStrokeDemon.Presentation
                     style.SortingLayerId,
                     style.SortingOrder + 3);
             }
-        }
-
-        // 三阶段依次闭合白色雷核、中圈和外圈；颜色与线宽继续来自当前画笔配置。
-        private void RenderChargeCoreAndRings(
-            Vector2 center,
-            float normalizedProgress,
-            float hitRadiusReferencePixels,
-            float visualRadiusReferencePixels)
-        {
-            float coreProgress = Mathf.Clamp01(normalizedProgress * 3f);
-            float middleProgress = Mathf.Clamp01(normalizedProgress * 3f - 1f);
-            float outerProgress = Mathf.Clamp01(normalizedProgress * 3f - 2f);
-            float coreRadius = hitRadiusReferencePixels / 3f;
-
-            WriteChargeRing(
-                branchLineRenderers[0],
-                center,
-                coreRadius,
-                coreProgress,
-                chargeOuterWidth,
-                outerColor);
-            WriteChargeRing(
-                branchLineRenderers[1],
-                center,
-                coreRadius,
-                coreProgress,
-                chargeCoreWidth,
-                coreColor);
-            WriteChargeRing(
-                branchLineRenderers[2],
-                center,
-                visualRadiusReferencePixels * 2f / 3f,
-                middleProgress,
-                chargeBodyWidth,
-                bodyColor);
-            WriteChargeRing(
-                branchLineRenderers[3],
-                center,
-                visualRadiusReferencePixels,
-                outerProgress,
-                chargeOuterWidth,
-                outerColor);
-        }
-
-        // 固定八向拓扑只承担表现；长度、抖动、颜色和宽度仍消费画笔配置。
-        private void RenderChargeRadials(
-            Vector2 center,
-            float normalizedProgress,
-            float hitRadiusReferencePixels,
-            float visualRadiusReferencePixels)
-        {
-            int visibleRadialCount = Mathf.CeilToInt(
-                normalizedProgress * ChargePreviewRadialRendererCount);
-            float coreRadius = hitRadiusReferencePixels / 3f;
-            float branchLength = Mathf.Min(
-                chargeBranchLengthReferencePixels,
-                hitRadiusReferencePixels);
-            float jitter = Mathf.Min(
-                chargeBranchJitterReferencePixels,
-                branchLength / 2f);
-            float endRadius =
-                visualRadiusReferencePixels + branchLength * normalizedProgress;
-
-            for (int radialIndex = 0;
-                 radialIndex < ChargePreviewRadialRendererCount;
-                 radialIndex++)
-            {
-                LineRenderer renderer =
-                    branchLineRenderers[ChargePreviewLayerRendererCount + radialIndex];
-                if (radialIndex >= visibleRadialCount)
-                {
-                    renderer.enabled = false;
-                    renderer.positionCount = 0;
-                    continue;
-                }
-
-                float angle =
-                    360f * radialIndex / ChargePreviewRadialRendererCount * Mathf.Deg2Rad;
-                Vector2 direction = new Vector2(Mathf.Cos(angle), Mathf.Sin(angle));
-                Vector2 tangent = new Vector2(-direction.y, direction.x);
-                float signedJitter = (radialIndex & 1) == 0 ? jitter : -jitter;
-                Vector2 start = center + direction * coreRadius;
-                Vector2 middle = center + direction *
-                    ((coreRadius + visualRadiusReferencePixels) / 2f) +
-                    tangent * signedJitter;
-                Vector2 end = center + direction * endRadius;
-
-                renderer.positionCount = 3;
-                renderer.startWidth = chargeCoreWidth;
-                renderer.endWidth = chargeBodyWidth;
-                renderer.startColor = coreColor;
-                renderer.endColor = branchColor;
-                renderer.SetPosition(0, ReferenceToWorld(start));
-                renderer.SetPosition(1, ReferenceToWorld(middle));
-                renderer.SetPosition(2, ReferenceToWorld(end));
-                renderer.enabled = true;
-            }
-        }
-
-        // 按阶段进度写入闭合圆弧，不创建临时点集。
-        private void WriteChargeRing(
-            LineRenderer renderer,
-            Vector2 center,
-            float radiusReferencePixels,
-            float normalizedProgress,
-            float width,
-            Color color)
-        {
-            if (normalizedProgress <= 0f)
-            {
-                renderer.enabled = false;
-                renderer.positionCount = 0;
-                return;
-            }
-
-            int visibleSegments = Mathf.Max(
-                1,
-                Mathf.CeilToInt(normalizedProgress * ChargePreviewSegmentCount));
-            renderer.positionCount = visibleSegments + 1;
-            renderer.startWidth = width;
-            renderer.endWidth = width;
-            renderer.startColor = color;
-            renderer.endColor = color;
-            for (int index = 0; index <= visibleSegments; index++)
-            {
-                float angleRadians =
-                    (90f - 360f * index / ChargePreviewSegmentCount) * Mathf.Deg2Rad;
-                Vector2 point = center + new Vector2(
-                    Mathf.Cos(angleRadians),
-                    Mathf.Sin(angleRadians)) * radiusReferencePixels;
-                renderer.SetPosition(index, ReferenceToWorld(point));
-            }
-
-            renderer.enabled = true;
         }
 
         // 三个主层严格共享同一组完成路径点。
@@ -707,6 +554,65 @@ namespace OneStrokeDemon.Presentation
         private Vector3 ReferenceToWorld(Vector2 point)
         {
             return referenceSpace.TransformPoint(new Vector3(point.x, point.y, 0f));
+        }
+
+        // 为每个轨迹池实例预建全部已配置蓄力Prefab，避免输入热点路径中临时实例化。
+        private void InitializeChargeVfx(IReadOnlyList<StrokeChargeVfxPrefab> prefabs)
+        {
+            if (prefabs == null || prefabs.Count == 0)
+            {
+                chargeVfxAssetKeys = Array.Empty<string>();
+                chargeVfxViews = Array.Empty<StrokeChargeVfxView>();
+                return;
+            }
+
+            chargeVfxAssetKeys = new string[prefabs.Count];
+            chargeVfxViews = new StrokeChargeVfxView[prefabs.Count];
+            for (int index = 0; index < prefabs.Count; index++)
+            {
+                StrokeChargeVfxPrefab definition = prefabs[index];
+                for (int previous = 0; previous < index; previous++)
+                {
+                    if (string.Equals(
+                        chargeVfxAssetKeys[previous],
+                        definition.AssetKey,
+                        StringComparison.Ordinal))
+                    {
+                        throw new ArgumentException(
+                            $"Duplicate charge VFX asset key '{definition.AssetKey}'.",
+                            nameof(prefabs));
+                    }
+                }
+
+                GameObject instance = Instantiate(definition.Prefab, transform, false);
+                instance.name = $"Charge VFX {definition.AssetKey}";
+                StrokeChargeVfxView view = instance.GetComponent<StrokeChargeVfxView>();
+                if (view == null)
+                {
+                    DestroyImmediate(instance);
+                    throw new ArgumentException(
+                        $"Charge VFX prefab '{definition.AssetKey}' must contain " +
+                        $"{nameof(StrokeChargeVfxView)} on its root.",
+                        nameof(prefabs));
+                }
+
+                view.Initialize(sharedTrailMaterial, referenceSpace);
+                chargeVfxAssetKeys[index] = definition.AssetKey;
+                chargeVfxViews[index] = view;
+            }
+        }
+
+        private StrokeChargeVfxView FindChargeVfx(string assetKey)
+        {
+            for (int index = 0; index < chargeVfxAssetKeys.Length; index++)
+            {
+                if (string.Equals(chargeVfxAssetKeys[index], assetKey, StringComparison.Ordinal))
+                {
+                    return chargeVfxViews[index];
+                }
+            }
+
+            return null;
         }
 
         private void ValidateRendererTopology()

@@ -49,12 +49,12 @@ namespace OneStrokeDemon.Tests.EditMode.T240
 
             Assert.That(summary.ConfigHash, Is.EqualTo(config.ContentHash));
             Assert.That(buildSummary.EntryCount, Is.EqualTo(summary.EntryCount));
-            Assert.That(summary.EntryCount, Is.EqualTo(77));
-            Assert.That(summary.PrefabCount, Is.EqualTo(43));
+            Assert.That(summary.EntryCount, Is.EqualTo(78));
+            Assert.That(summary.PrefabCount, Is.EqualTo(44));
             Assert.That(summary.SpriteCount, Is.EqualTo(16));
             Assert.That(summary.AudioClipCount, Is.EqualTo(17));
             Assert.That(summary.SceneCount, Is.EqualTo(1));
-            Assert.That(summary.ToLogMessage(), Does.Contain("entries=77"));
+            Assert.That(summary.ToLogMessage(), Does.Contain("entries=78"));
             Assert.That(canonical.Entries.Select(entry => entry.AssetKey),
                 Is.EquivalentTo(config.GetAssetManifest().Select(entry => entry.AssetKey)));
             Assert.That(canonical.Entries.All(entry => AssetDatabase.Contains(entry.Asset)), Is.True);

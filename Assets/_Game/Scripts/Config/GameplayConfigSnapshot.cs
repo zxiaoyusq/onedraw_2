@@ -51,6 +51,8 @@ namespace OneStrokeDemon.Config
                 "StrokeTrailStyles",
                 "styleId",
                 source);
+            StrokeTrailStyleEntries = new ReadOnlyCollection<StrokeTrailStyleConfig>(
+                (StrokeTrailStyleConfig[])document.StrokeTrailStyleRows.Clone());
             AssetManifestEntries = new ReadOnlyCollection<AssetManifestConfig>(
                 (AssetManifestConfig[])document.AssetManifestRows.Clone());
 
@@ -135,6 +137,7 @@ namespace OneStrokeDemon.Config
         public IReadOnlyDictionary<string, AssetManifestConfig> Assets { get; }
         public IReadOnlyDictionary<string, FeedbackCueConfig> FeedbackCues { get; }
         public IReadOnlyDictionary<string, StrokeTrailStyleConfig> StrokeTrailStyles { get; }
+        public IReadOnlyList<StrokeTrailStyleConfig> StrokeTrailStyleEntries { get; }
         public IReadOnlyList<AssetManifestConfig> AssetManifestEntries { get; }
         public IReadOnlyDictionary<string, IReadOnlyList<EnemyAttackConfig>> AttacksBySet { get; }
         public IReadOnlyDictionary<string, IReadOnlyList<SkillEffectConfig>> EffectsByGroup { get; }

@@ -58,14 +58,14 @@ namespace OneStrokeDemon.Tests.EditMode.T230
 
             Assert.That(service.State, Is.EqualTo(GameplayConfigServiceState.Ready));
             Assert.That(summary.SchemaVersion, Is.EqualTo(6));
-            Assert.That(summary.ContentVersion, Is.EqualTo("0.6.9-sample"));
-            Assert.That(summary.ContentHash, Is.EqualTo("bf4fd0714fed80e4637ef2fb6c7161b1ce23e09fa522bd0df51011d01391602e"));
+            Assert.That(summary.ContentVersion, Is.EqualTo("0.6.10-sample"));
+            Assert.That(summary.ContentHash, Is.EqualTo("0fa1caa1f5c088e9b300ec2433afed049c54d83a58a6a92a8450144556d1b231"));
             Assert.That(summary.TableCount, Is.EqualTo(30));
-            Assert.That(summary.RecordCount, Is.EqualTo(763));
+            Assert.That(summary.RecordCount, Is.EqualTo(765));
             Assert.That(summary.PrimaryIndexCount, Is.GreaterThan(0));
             Assert.That(summary.GroupIndexCount, Is.GreaterThan(0));
             Assert.That(summary.ToLogMessage(), Does.Contain("source=test:generated-gameplay-config"));
-            Assert.That(summary.ToLogMessage(), Does.Contain("records=763"));
+            Assert.That(summary.ToLogMessage(), Does.Contain("records=765"));
 
             Assert.That(service.GetGlobal("reference_width").IntValue, Is.EqualTo(1920));
             Assert.That(service.GetStance("stance_blade").DamageFormulaId, Is.EqualTo("damage_player_default"));

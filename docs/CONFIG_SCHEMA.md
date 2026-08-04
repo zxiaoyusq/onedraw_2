@@ -2,7 +2,7 @@
 
 ## 1. 版本与唯一真相源
 
-- 当前冻结版本：`schemaVersion = 6`、`contentVersion = 0.6.9-sample`。
+- 当前冻结版本：`schemaVersion = 6`、`contentVersion = 0.6.10-sample`。
 - 正式内容唯一源：`Design/Config/GameConfig.xlsx`。
 - `config/一笔镇妖_游戏配置表模板.xlsx` 只是随正式源同步的示例镜像，不接受独立内容修改。
 - `Assets/_Game/Config/Generated/gameplay_config.json`和`gameplay_config.hash`由T250导出器生成，是可审查、可构建的只读Runtime快照与hash旁车。
@@ -27,7 +27,7 @@
 - 每个数据Sheet第1行为标题、第2行为说明、第3行留空、第4行为唯一表头、第5行起为数据。
 - 首字段为空的整行视为空白行并忽略；数据区中间不得插入“看似空白但带业务值”的行。
 - `README` 的示例条目摘要只用于人工阅读；公式及缓存结果都不进入JSON。
-- `FieldDictionary` 有280条记录，完整描述其余29个数据Sheet（包括 `Enums`、`FeedbackCues` 和 `StrokeTrailStyles`），但不递归描述自身。`FieldDictionaryRow` 的JSON结构由Schema直接定义。
+- `FieldDictionary` 有281条记录，完整描述其余29个数据Sheet（包括 `Enums`、`FeedbackCues` 和 `StrokeTrailStyles`），但不递归描述自身。`FieldDictionaryRow` 的JSON结构由Schema直接定义。
 - 表头是API，顺序必须与Schema `$defs/*Row.properties`、`required`及样例JSON对象字段一致。
 
 ## 4. Sheet、主键与分组
@@ -63,7 +63,7 @@
 | Enums | enumType+value | enumType内value唯一 | 策划枚举字典 |
 | FieldDictionary | sheet+field | 不自描述 | 字段类型、约束与说明 |
 | FeedbackCues | feedbackId | `vfxKey/audioKey`引用提示表 | 事件反馈的停顿、闪白、震屏、数字、特效、音频和震动强度 |
-| StrokeTrailStyles | styleId | — | 画笔三层颜色/宽度与确定性电弧参数 |
+| StrokeTrailStyles | styleId | `chargeVfxAssetKey`引用Prefab资源 | 画笔三层颜色/宽度、确定性电弧参数与蓄力特效资源 |
 
 `attackSetId`、`effectGroupId`、`rewardTableId`和 `tutorialId` 是分组ID；引用校验要求目标组至少存在一行，不能把分组字段单独误判为行主键。
 
@@ -104,6 +104,8 @@ FieldDictionary `foreignKey` 使用以下三种形式：
 T360新增的`Stances.damageFormulaId -> DamageFormulas.formulaId`是必填普通外键。调用方只提供架势ID，Runtime规则工厂必须沿此外键选择公式；禁止在C#维护“刀/符→公式ID”的第二映射。
 
 T698新增的`Stances.strokeTrailStyleId -> StrokeTrailStyles.styleId`也是必填普通外键。颜色、宽度倍率和分支参数必须沿此外键解析；Prefab、Inspector和代码不得复制样式数值。
+
+T699F新增的`StrokeTrailStyles.chargeVfxAssetKey -> AssetManifest.assetKey`是必填普通外键，且语义校验要求目标`assetType=Prefab`。运行时必须沿该键从AssetRegistry取得蓄力特效，不得在场景、Inspector或代码维护样式到Prefab的第二映射。
 
 ## 8. 稳定排序与contentHash
 
@@ -332,8 +334,8 @@ T698新增的`Stances.strokeTrailStyleId -> StrokeTrailStyles.styleId`也是必�
 
 - T699B不改变JSON字段形状、FieldDictionary列结构或schema，content升级为`0.6.8-sample`。每个Sheet第1行是英文稳定表名、第2行是中文用途说明；30个数据Sheet第3行是面向策划的中文字段名，第4行继续是导出器和代码使用的英文API字段名，第5行起才是数据。README不使用数据表头结构。
 - 第3行中文字段名与第4行非空英文表头必须逐列一一对应。中文名称只用于工作簿阅读，不参与导出、Schema、DTO、排序、外键或运行时查询；修改中文名称不得被误认为英文API改名。导出器仍只读取第4行表头与第5行起数据。
-- FieldDictionary继续只描述其余29个数据Sheet的280个业务字段，不递归增加自身记录；FieldDictionary自己的10列通过第3行中文名称解释。每条`description`必须使用“中文字段名：具体语义”格式，前缀与目标Sheet第3行名称一致，并说明用途、单位、范围/空值、枚举或外键语义中的适用内容；禁止“X表的Y字段”式占位文案。
-- 第3行中文名称是非导出元数据，不改变content hash；FieldDictionary.description属于导出内容，修改后必须升级content版本并通过同源生成、漂移门和Runtime快照测试。当前覆盖为31个Sheet中文用途说明、290个可见中文字段名和280条具体业务字段说明。
+- FieldDictionary继续只描述其余29个数据Sheet的业务字段，不递归增加自身记录；T699F新增字段后当前为281条，FieldDictionary自己的10列通过第3行中文名称解释。每条`description`必须使用“中文字段名：具体语义”格式，前缀与目标Sheet第3行名称一致，并说明用途、单位、范围/空值、枚举或外键语义中的适用内容；禁止“X表的Y字段”式占位文案。
+- 第3行中文名称是非导出元数据，不改变content hash；FieldDictionary.description属于导出内容，修改后必须升级content版本并通过同源生成、漂移门和Runtime快照测试。当前覆盖为31个Sheet中文用途说明、291个可见中文字段名和281条具体业务字段说明。
 
 ## 36. T699C字段与枚举的业务说明质量合同
 
@@ -341,4 +343,10 @@ T698新增的`Stances.strokeTrailStyleId -> StrokeTrailStyles.styleId`也是必�
 - FieldDictionary全部280条`description`必须自包含地说明业务对象与运行时用途，并按字段性质补充触发/结束条件、单位与时间口径、边界/留空语义、外键目标或枚举效果。不得使用“X表的Y字段”“用于配置X”或单纯改写中文字段名等占位表达。
 - Enums全部98条`description`必须解释该枚举值被选择后的具体行为。引用枚举的25个字段还必须在字段说明中逐一列出当前允许值及其业务效果，使策划无需跳转到另一Sheet才能判断如何配置。
 - 说明必须区分“配置数据表达的意图”和“当前运行时实际消费能力”。目前`SpawnPoints.lane`和`facing`只做校验/透传，不会自动改变移动、碰撞或Sprite朝向；`Enemies.stanceVulnerability`尚未进入伤害链；`Projectiles.movePatternId`已保留但生产投射物仍按显式方向直线移动；`BuffType.DamageOverTime`尚无周期扣血执行器；架势中的幽灵/切断倍率已暴露但尚未被伤害链消费。这些边界必须在相关字段或枚举说明中明确，不得把预期设计写成已实现事实。
-- FieldDictionary与Enums说明属于导出内容；任何修改都必须升级content版本、同源更新模板镜像/JSON/hash/ConfigIds/样例快照，并通过说明覆盖测试、确定性漂移门和Runtime版本/hash回归。当前覆盖为280个字段、98个枚举值和25个枚举引用字段，模糊占位说明为0。
+- FieldDictionary与Enums说明属于导出内容；任何修改都必须升级content版本、同源更新模板镜像/JSON/hash/ConfigIds/样例快照，并通过说明覆盖测试、确定性漂移门和Runtime版本/hash回归。T699F新增字段后当前覆盖为281个字段、98个枚举值和25个枚举引用字段，模糊占位说明为0。
+
+## 37. T699F独立蓄力粒子Prefab与资源绑定语义
+
+- T699F保持schema `6`并把content升级为`0.6.10-sample`。`StrokeTrailStyles`新增必填`chargeVfxAssetKey`，当前`stroke_trail_lightning_c`绑定`vfx_stroke_charge`；`AssetManifest`新增同键Prefab记录。目标存在性、Prefab类型、Registry覆盖和实际Prefab组件拓扑都必须被校验。
+- `StrokeChargeVfxView`只消费位置、0到1蓄力进度、`StrokeRules.hitRadiusRefPx`和当前`StrokeTrailStyle`，以4条环线、8条径向电弧和3组ParticleSystem投影A方案表现。它不得发布手势、命中、伤害或教程事实；首个有效移动点、抬手、取消与池化回收都必须停止并清空全部粒子和线段。
+- 组合根在`StrokeTrailPool`预热时按所有样式的稳定键解析Prefab，并为每个轨迹View预建所需实例；活动输入路径不得调用AssetDatabase、Resources、Registry查找或Instantiate。后续替换同技术合同的特效只改Prefab或Registry引用；新增样式则新增配置行和资源键，不修改输入与命中链。

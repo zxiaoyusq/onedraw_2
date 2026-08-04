@@ -25,6 +25,7 @@ namespace OneStrokeDemon.Tests.EditMode
             AssetManifestConfig asset = config.GetAsset(cue.AssetKey);
 
             Assert.That(row.StyleId, Is.EqualTo(ConfigIds.StrokeTrailStyles.StrokeTrailLightningC));
+            Assert.That(row.ChargeVfxAssetKey, Is.EqualTo(ConfigIds.Assets.VfxStrokeCharge));
             Assert.That(style.StyleId, Is.EqualTo(row.StyleId));
             Assert.That(
                 style.OuterColor,

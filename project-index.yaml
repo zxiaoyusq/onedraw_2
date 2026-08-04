@@ -23,9 +23,9 @@ config:
   generated_hash: Assets/_Game/Config/Generated/gameplay_config.hash
   generated_ids: Assets/_Game/Scripts/Config/Generated/ConfigIds.g.cs
   schema_version: 6
-  content_version: 0.6.9-sample
-  content_hash: bf4fd0714fed80e4637ef2fb6c7161b1ce23e09fa522bd0df51011d01391602e
-  workbook_sha256: fbdfed5112bd82a6554060be4be41815c0d2268623f64afd238cd4e1fe7a2319
+  content_version: 0.6.10-sample
+  content_hash: 0fa1caa1f5c088e9b300ec2433afed049c54d83a58a6a92a8450144556d1b231
+  workbook_sha256: 84af0bed26a364b7c6502e9f21757900d44ed13b59b6c9a3b2df8d5780f1fe9a
   mirror_status: byte_identical
   contract_audit: pass
   exporter:
@@ -35,15 +35,15 @@ config:
     status: pass
     test_count: 8
     exported_tables: 30
-    exported_records: 763
-    output_bytes: 259436
-    output_sha256: 5ebb6b8d5015893082574e2781778b550b97006f2090b60b47917ab75f1c0a64
+    exported_records: 765
+    output_bytes: 260263
+    output_sha256: 86f7fa2d1923b0460e5446c48edaa0afe2b3fbd827dff41e8a8e9f32e8632d68
     runtime_snapshot_committed: true
   validator:
     path: Tools/ConfigExporter/Validation
     status: pass
-    test_count: 63
-    invalid_case_count: 43
+    test_count: 64
+    invalid_case_count: 44
     diagnostic_location: Sheet/ExcelRow/Field
     schema_mirror_check: pass
     whole_package_rejection: true
@@ -53,18 +53,18 @@ config:
     newtonsoft_version: 13.0.2
     compatibility: schema_6_content_0_6_x
     dto_tables: 30
-    dto_fields: 280
-    loaded_records: 763
-    readonly_primary_indexes: 345
+    dto_fields: 281
+    loaded_records: 765
+    readonly_primary_indexes: 347
     readonly_group_indexes: 56
-    full_editmode_tests: 215
-    full_playmode_tests: 59
+    full_editmode_tests: 217
+    full_playmode_tests: 61
     bootstrap_smoke: pass
   asset_registry:
     status: pass
     path: Assets/_Game/Config/Registry/AssetRegistry.asset
-    manifest_entries: 77
-    prefabs: 43
+    manifest_entries: 78
+    prefabs: 44
     sprites: 16
     audio_clips: 17
     scenes: 1
@@ -79,22 +79,22 @@ config:
     default_read_only: true
     update_flag: --update
     drift_diagnostic: CFG013
-    generated_json_bytes: 259436
-    generated_json_sha256: 5ebb6b8d5015893082574e2781778b550b97006f2090b60b47917ab75f1c0a64
+    generated_json_bytes: 260263
+    generated_json_sha256: 86f7fa2d1923b0460e5446c48edaa0afe2b3fbd827dff41e8a8e9f32e8632d68
     generated_hash_bytes: 65
-    generated_hash_sha256: acba0e442922dddea978cbd7a94fc3e8a9f4f8f59fbbbb26ace38e2ca6db8fd4
-    generated_ids_bytes: 48420
-    generated_ids_sha256: fa70357eff93c876555e947a236a68c7ff3486e18862ae70fa7ab06183fdadc2
+    generated_hash_sha256: ff0650404f4cd2118601d8a7684cac2d5db28aa65b118bc9ee878ae5415f7a1c
+    generated_ids_bytes: 48539
+    generated_ids_sha256: 99efcb5bcd34faa6a1da9cb713650232aec51e1fd11cbdb8759a031eea03371b
     id_sets: 29
-    id_constants: 381
-    dotnet_tests: 63
+    id_constants: 382
+    dotnet_tests: 64
   documentation:
     status: pass
     task: T699C
     sheet_count: 31
     sheet_purpose_chinese_count: 31
-    visible_chinese_field_labels: 290
-    documented_business_fields: 280
+    visible_chinese_field_labels: 291
+    documented_business_fields: 281
     documented_enum_values: 98
     enum_reference_fields: 25
     placeholder_descriptions: 0
@@ -107,7 +107,7 @@ config:
     rendered_sheets_before: 31
     rendered_sheets_after: 31
     focused_dotnet_tests: 3
-    full_dotnet_tests: 63
+    full_dotnet_tests: 64
     config_editmode_tests: 19
     config_playmode_tests: 3
     full_command_smoke: pass_via_readonly_drift_gate_plus_unity_batchmode
@@ -356,15 +356,18 @@ stroke_trail:
   prefab: Assets/_Game/Art/VFX/vfx_slash.prefab
   renderers: [outer, body, core, 12_prebuilt_branches]
   live_preview: accepted_sample_points_before_pointer_release
-  stationary_hold_preview: configured_clock_driven_charge_ring_at_pointer_origin
-  charge_ring_sources: [StrokeRules.chargeHoldSec, StrokeRules.hitRadiusRefPx, Stances.strokeWidthRefPx, StrokeTrailStyles.bodyColor_and_width]
-  charge_ring_topology_segments: 32
+  stationary_hold_preview: configured_clock_driven_independent_particle_prefab_at_pointer_origin
+  charge_vfx_asset_key: vfx_stroke_charge
+  charge_vfx_prefab: Assets/_Game/Art/VFX/vfx_stroke_charge.prefab
+  charge_vfx_sources: [StrokeRules.chargeHoldSec, StrokeRules.hitRadiusRefPx, Stances.strokeWidthRefPx, StrokeTrailStyles.chargeVfxAssetKey_and_visual_style, AssetManifest, AssetRegistry]
+  charge_vfx_topology: [4_ring_line_renderers, 8_radial_line_renderers, 3_particle_systems]
+  charge_vfx_preheat: one_instance_per_style_asset_per_trail_view
   charge_ring_owns_gameplay_truth: false
   renderer_transform_policy: identity_root_with_separate_reference_space_conversion
   world_space_width_policy: Stances.strokeWidthRefPx_times_StrokeTrailStyles.layer_multiplier_times_reference_pixel_world_scale
   geometry_source: same_StrokeGeometryData_points_reference
   style_id: stroke_trail_lightning_c
-  config_sources: [Stances.strokeWidthRefPx, Stances.strokeTrailStyleId, StrokeTrailStyles, StrokeRules.maxPointCount, VfxCues.lifeSec, VfxCues.poolPrewarm, VfxCues.sortingLayer, VfxCues.sortingOrder]
+  config_sources: [Stances.strokeWidthRefPx, Stances.strokeTrailStyleId, StrokeTrailStyles, StrokeRules.maxPointCount, VfxCues.lifeSec, VfxCues.poolPrewarm, VfxCues.sortingLayer, VfxCues.sortingOrder, AssetManifest.vfx_stroke_charge]
   main_layers: [cyan_outer_glow, pale_cyan_body, white_core]
   branch_layout: deterministic_from_stroke_id_path_and_branch_index
   branch_capacity: 12

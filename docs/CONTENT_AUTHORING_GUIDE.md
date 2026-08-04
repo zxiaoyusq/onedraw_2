@@ -9,6 +9,7 @@
 |---|---|---:|---:|
 | 只调整现有闪电画笔颜色、粗细、电弧密度 | 改`StrokeTrailStyles`，重新导出配置 | 是 | 最终目视需要 |
 | 新增一个仍使用“三层主线+电弧”拓扑的画笔样式 | 新增`StrokeTrailStyles`行，并让`Stances`引用它 | 是 | 最终目视需要 |
+| 替换画笔蓄力特效 | 修改`chargeVfxAssetKey`或Registry同键Prefab；粒子内容直接改独立Prefab | 视资源键是否变化 | 必须 |
 | 改变画笔组件结构，例如新增粒子、拖尾或贴图层 | 新增/修改幂等 Unity 作者工具，再生成 Prefab | 视资源键是否变化 | 是 |
 | 替换现有主角或敌人的单张立绘 | 导入同类型 Sprite 或 Prefab，改绑同一个 Registry 键 | 通常否 | 是 |
 | 把现有静态角色升级为图集动画 | PNG+帧JSON预检，生成 Clip/Controller/Prefab/Atlas，改绑 Registry | `Sprite`变`Prefab`时要改 | 是 |
@@ -38,16 +39,18 @@ T630通用原型资源
 → T690火鱼
 → T694主角
 → T695怪物死亡VFX
-→ T698闪电画笔（最后）
+→ T698闪电画笔
+→ T699F蓄力粒子Prefab
 → Validate Asset Registry
 ```
 
 原因：
 
-- T630 会重建全部非`/Animated/`的通用 VFX Prefab；
+- T630 会重建非`/Animated/`且没有专用保护的通用 VFX Prefab；
 - T690、T694、T695维护各自的动画切片、Clip、Controller、Prefab和Atlas；
 - `vfx_slash.prefab`不在`/Animated/`目录，T630会把它恢复成通用单图 VFX，所以必须最后再运行 T698；
-- 重跑工具后看到日志中的`*_AUTHORING_PASS`或`T698_STROKE_TRAIL_PREFAB_PASS`，才表示作者流程完成。
+- `vfx_stroke_charge.prefab`由T699F专用工具维护，T630已按稳定键跳过；首次创建或主动恢复当前A方案时再运行T699F；
+- 重跑工具后看到日志中的`*_AUTHORING_PASS`、`T698_STROKE_TRAIL_PREFAB_PASS`或`T699F_STROKE_CHARGE_PREFAB_PASS`，才表示对应作者流程完成。
 
 ## 2. 三条不可破坏的边界
 
@@ -224,7 +227,16 @@ Stances.strokeTrailStyleId
 → StrokeTrailView
 ```
 
-Prefab只保存稳定组件拓扑；颜色、宽度、排序、寿命和电弧形态由运行时配置覆盖。
+蓄力表现走独立链路：
+
+```text
+StrokeTrailStyles.chargeVfxAssetKey
+→ AssetManifest.vfx_stroke_charge
+→ AssetRegistry.vfx_stroke_charge
+→ StrokeChargeVfxView
+```
+
+两个Prefab只保存稳定组件拓扑；颜色、宽度、排序、寿命、半径和电弧形态由运行时配置覆盖。
 
 ### 5.2 只做一个新的外观样式
 
@@ -247,6 +259,7 @@ Prefab只保存稳定组件拓扑；颜色、宽度、排序、寿命和电弧�
 | `branchJitterRefPx` | 电弧折线抖动，参考像素 |
 | `branchWidthMultiplier` | 电弧相对基础笔宽 |
 | `branchSegmentCount` | 每条电弧分段数 |
+| `chargeVfxAssetKey` | 当前样式使用的独立蓄力Prefab键，必须指向AssetManifest中的Prefab |
 
 3. 在目标`Stances`行把`strokeTrailStyleId`改为新`styleId`。
 4. 不要复制`Stances.strokeWidthRefPx`到样式表；它仍是架势基础笔宽。
@@ -314,6 +327,19 @@ vfx_slash
 4. 运行时仍应读取配置，不把颜色、尺寸、生命期写死在Prefab。
 5. 添加纯规则EditMode、池化PlayMode和真实相机截图。
 6. 不得让新特效改变T340笔迹点、命中或伤害链。
+
+### 5.5 创建、修改或新增蓄力特效
+
+当前资源键与Prefab：
+
+```text
+vfx_stroke_charge
+Assets/_Game/Art/VFX/vfx_stroke_charge.prefab
+```
+
+可在Unity运行`One Stroke Demon/T699F/Create Stroke Charge Particle Prefab`幂等重建当前A方案。Prefab根为`StrokeChargeVfxView + VfxPoolItem`，子层包含4条环线、8条径向电弧和3组ParticleSystem；兼容Sprite默认关闭。修改现有效果时可直接在Unity编辑同一Prefab中的粒子发射形态与技术曲线，但颜色、基础宽度、半径和排序仍由运行时样式覆盖。
+
+新增另一套蓄力效果时，复制或新增实现相同生命周期合同的Prefab，在`AssetManifest`新增Prefab键，并让目标`StrokeTrailStyles.chargeVfxAssetKey`引用它；再导出配置、创建Registry绑定并执行Prefab/池化/真实相机验证。组合根会在轨迹池预热时实例化所有样式所需资源，因此切换样式不进入输入热路径创建对象。T630通用VFX作者工具会跳过`vfx_stroke_charge`，不会覆盖专用拓扑。
 
 ## 6. 主角制作与导入
 
@@ -511,6 +537,7 @@ One Stroke Demon/Art/Create or Repair T695 Enemy Death VFX
 | `One Stroke Demon/Art/Create or Repair T694 Moyan Animations` | 当前主角待机/攻击动画 | 先处理历史绝对源路径 |
 | `One Stroke Demon/Art/Create or Repair T695 Enemy Death VFX` | 当前怪物死亡动画 | 先处理历史绝对源路径和hash |
 | `One Stroke Demon/T698/Create Lightning Stroke Trail Prefab` | 当前方案C画笔Prefab | 专用工具中最后运行 |
+| `One Stroke Demon/T699F/Create Stroke Charge Particle Prefab` | 当前A方案蓄力粒子Prefab | T630保护，可独立重建 |
 | `One Stroke Demon/Art/Create or Repair T692 Global Light Coverage` | 修复Actors层2D全局光覆盖 | 角色显示全黑时使用 |
 | `One Stroke Demon/Config/Create or Repair Asset Registry` | 补齐Registry键和占位 | 不会猜测新资源绑定 |
 | `One Stroke Demon/Config/Validate Asset Registry` | 检查键、类型、持久化和Scene | 每批最后运行 |

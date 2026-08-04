@@ -324,7 +324,8 @@ namespace OneStrokeDemon.Editor.Art
             foreach (AssetManifestConfig row in config.GetAssetManifest()
                          .Where(row => row.AssetType == "Prefab" &&
                              row.AssetKey.StartsWith("vfx_", StringComparison.Ordinal) &&
-                             !row.AddressOrPath.Contains("/Animated/", StringComparison.Ordinal)))
+                             !row.AddressOrPath.Contains("/Animated/", StringComparison.Ordinal) &&
+                             !IsSpecializedVfxPrefab(row.AssetKey)))
             {
                 var root = new GameObject(ToPascalCase(row.AssetKey));
                 try
@@ -346,6 +347,15 @@ namespace OneStrokeDemon.Editor.Art
                     UnityObject.DestroyImmediate(root);
                 }
             }
+        }
+
+        // 专用作者工具维护的组件型VFX不得被通用单图Prefab流程覆盖。
+        private static bool IsSpecializedVfxPrefab(string assetKey)
+        {
+            return string.Equals(
+                assetKey,
+                T699FStrokeChargeVfxAuthoring.AssetKey,
+                StringComparison.Ordinal);
         }
 
         // 处理 SelectVfxSprite 对应的编辑器流程，并保持资源写入与校验结果可追踪。

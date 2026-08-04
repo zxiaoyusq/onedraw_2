@@ -121,7 +121,8 @@ namespace OneStrokeDemon.Presentation
                 CheckedPositive(style.BranchLengthRefPx, nameof(style.BranchLengthRefPx)),
                 CheckedNonNegative(style.BranchJitterRefPx, nameof(style.BranchJitterRefPx)),
                 CheckedPositive(style.BranchWidthMultiplier, nameof(style.BranchWidthMultiplier)),
-                CheckedPositiveInt(style.BranchSegmentCount, nameof(style.BranchSegmentCount)));
+                CheckedPositiveInt(style.BranchSegmentCount, nameof(style.BranchSegmentCount)),
+                style.ChargeVfxAssetKey);
         }
 
         // 处理 CheckedPositiveInt 对应的表现逻辑，使视图与只读战斗状态保持同步。

@@ -112,7 +112,7 @@ namespace OneStrokeDemon.Tests.EditMode.T695
             Assert.That(entry.Asset, Is.SameAs(prefab));
             Assert.That(
                 AssetRegistryEditorValidator.ValidateCanonical().EntryCount,
-                Is.EqualTo(77));
+                Is.EqualTo(78));
 
             SpriteAtlas atlas = AssetDatabase.LoadAssetAtPath<SpriteAtlas>(
                 T630ArtAssetPaths.VfxAtlas);

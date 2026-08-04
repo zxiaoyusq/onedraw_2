@@ -10,13 +10,13 @@ namespace OneStrokeDemon.Config
         // 当前配置契约的schema版本。
         public const int SchemaVersion = 6;
         // 当前配置内容版本。
-        public const string ContentVersion = "0.6.9-sample";
+        public const string ContentVersion = "0.6.10-sample";
         // 规范化配置内容的SHA-256哈希。
-        public const string ContentHash = "bf4fd0714fed80e4637ef2fb6c7161b1ce23e09fa522bd0df51011d01391602e";
+        public const string ContentHash = "0fa1caa1f5c088e9b300ec2433afed049c54d83a58a6a92a8450144556d1b231";
         // 本文件包含的稳定ID分组数量。
         public const int IdSetCount = 29;
         // 本文件包含的稳定ID常量总数。
-        public const int IdConstantCount = 381;
+        public const int IdConstantCount = 382;
 
         // 汇总来自Global.key的稳定配置ID。
         public static class GlobalKeys
@@ -879,6 +879,8 @@ namespace OneStrokeDemon.Config
             public const string VfxSlash = "vfx_slash";
             // 配置ID：vfx_slow。
             public const string VfxSlow = "vfx_slow";
+            // 配置ID：vfx_stroke_charge。
+            public const string VfxStrokeCharge = "vfx_stroke_charge";
             // 配置ID：vfx_stun。
             public const string VfxStun = "vfx_stun";
             // 配置ID：vfx_switch_blade。

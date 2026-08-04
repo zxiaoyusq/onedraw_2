@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using OneStrokeDemon.Actors;
 using OneStrokeDemon.Combat;
 using OneStrokeDemon.Config;
@@ -327,6 +328,8 @@ namespace OneStrokeDemon.Bootstrap
             trailMaterial = CreateTrailMaterial();
             VfxCueConfig trailCue = config.GetVfxCue(ConfigIds.VfxCues.VfxSlash);
             GameObject trailViewPrefab = assets.GetPrefab(trailCue.AssetKey);
+            IReadOnlyList<StrokeChargeVfxPrefab> chargeVfxPrefabs =
+                CreateChargeVfxPrefabs(config, assets);
             var trailRoot = new GameObject("Stroke Trail Pool");
             trailRoot.transform.SetParent(root.transform, false);
             trailPool = trailRoot.AddComponent<StrokeTrailPool>();
@@ -336,7 +339,8 @@ namespace OneStrokeDemon.Bootstrap
                     ConfigIds.VfxCues.VfxSlash),
                 trailMaterial,
                 referenceRoot,
-                trailViewPrefab);
+                trailViewPrefab,
+                chargeVfxPrefabs);
 
             hudBinding = new BattleHudStateBinding(
                 LevelId,
@@ -1098,6 +1102,28 @@ namespace OneStrokeDemon.Bootstrap
             {
                 name = "Production Stroke Trail Material",
             };
+        }
+
+        // 预加载所有样式引用的蓄力Prefab，同一资源键只创建一份池定义。
+        private static IReadOnlyList<StrokeChargeVfxPrefab> CreateChargeVfxPrefabs(
+            IConfigProvider configProvider,
+            IAssetRegistry assetRegistry)
+        {
+            IReadOnlyList<StrokeTrailStyleConfig> styles = configProvider.GetStrokeTrailStyles();
+            var seen = new HashSet<string>(StringComparer.Ordinal);
+            var result = new List<StrokeChargeVfxPrefab>(styles.Count);
+            for (int index = 0; index < styles.Count; index++)
+            {
+                StrokeTrailStyleConfig style = styles[index];
+                if (seen.Add(style.ChargeVfxAssetKey))
+                {
+                    result.Add(new StrokeChargeVfxPrefab(
+                        style.ChargeVfxAssetKey,
+                        assetRegistry.GetPrefab(style.ChargeVfxAssetKey)));
+                }
+            }
+
+            return result;
         }
 
         // 处理 ConfigureReferenceSpace 对应的入口装配逻辑，并维护会话所有权和跨场景边界。

@@ -210,7 +210,7 @@ namespace OneStrokeDemon.Tests.EditMode.T630
             }
 
             AssetRegistryLoadSummary summary = AssetRegistryEditorValidator.ValidateCanonical();
-            Assert.That(summary.EntryCount, Is.EqualTo(77));
+            Assert.That(summary.EntryCount, Is.EqualTo(78));
         }
 
         private static void AssertAtlasBinds(string atlasPath, string spritePath)

@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using OneStrokeDemon.Combat;
 using UnityEngine;
 
@@ -26,7 +27,8 @@ namespace OneStrokeDemon.Presentation
             StrokeTrailPoolSettings poolSettings,
             Material sharedMaterial,
             Transform referenceSpace = null,
-            GameObject viewPrefab = null)
+            GameObject viewPrefab = null,
+            IReadOnlyList<StrokeChargeVfxPrefab> chargeVfxPrefabs = null)
         {
             // 检查视图状态、资源或生命周期边界，避免产生无效表现。
             if (IsInitialized)
@@ -51,7 +53,8 @@ namespace OneStrokeDemon.Presentation
                 view.gameObject.name = $"Stroke Trail {index + 1:00}";
                 view.Initialize(
                     sharedMaterial,
-                    referenceSpace != null ? referenceSpace : transform);
+                    referenceSpace != null ? referenceSpace : transform,
+                    chargeVfxPrefabs);
                 views[index] = view;
             }
 

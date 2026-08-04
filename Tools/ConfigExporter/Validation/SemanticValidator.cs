@@ -12,6 +12,7 @@ internal static partial class SemanticValidator
         ValidateContentVersion(context);
         ValidateFeedbackColors(context);
         ValidateStrokeTrailColors(context);
+        ValidateStrokeChargeVfxAssets(context);
         ValidateGlobalTypedUnion(context);
         ValidateOrderedPairs(context);
         ValidateGroupOrders(context);
@@ -19,6 +20,33 @@ internal static partial class SemanticValidator
         ValidateRewardConditions(context);
         ValidateLevelWaveSpawnGraph(context);
         ValidateBossPhases(context);
+    }
+
+    // 蓄力效果键不仅要存在，还必须指向Prefab，避免运行时拿到Sprite或音频后才失败。
+    private static void ValidateStrokeChargeVfxAssets(ConfigValidationContext context)
+    {
+        var assets = context.Document.GetRequiredTable("AssetManifest").Rows
+            .ToDictionary(
+                row => ConfigValues.String(row, "assetKey"),
+                row => ConfigValues.String(row, "assetType"),
+                StringComparer.Ordinal);
+        var styles = context.Document.GetRequiredTable("StrokeTrailStyles");
+        foreach (var row in styles.Rows)
+        {
+            var assetKey = ConfigValues.String(row, "chargeVfxAssetKey");
+            if (assets.TryGetValue(assetKey, out var assetType) &&
+                string.Equals(assetType, "Prefab", StringComparison.Ordinal))
+            {
+                continue;
+            }
+
+            throw Failure(
+                "CFG009",
+                $"Charge VFX asset '{assetKey}' must reference an AssetManifest Prefab.",
+                styles,
+                row,
+                "chargeVfxAssetKey");
+        }
     }
 
     private static void ValidateFeedbackColors(ConfigValidationContext context)

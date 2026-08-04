@@ -461,6 +461,7 @@ namespace OneStrokeDemon.Config
         [JsonProperty("branchJitterRefPx", Required = JsonRequired.Always)] public float BranchJitterRefPx { get; private set; }
         [JsonProperty("branchWidthMultiplier", Required = JsonRequired.Always)] public float BranchWidthMultiplier { get; private set; }
         [JsonProperty("branchSegmentCount", Required = JsonRequired.Always)] public long BranchSegmentCount { get; private set; }
+        [JsonProperty("chargeVfxAssetKey", Required = JsonRequired.Always)] public string ChargeVfxAssetKey { get; private set; } = string.Empty;
     }
 
     /// <summary>描述配置资源键所要求的 Unity 资源类型、路径和 MVP 必需性。</summary>

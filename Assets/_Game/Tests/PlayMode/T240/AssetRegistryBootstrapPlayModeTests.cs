@@ -24,17 +24,17 @@ namespace OneStrokeDemon.Tests.PlayMode.T240
         {
             LogAssert.Expect(
                 LogType.Log,
-                new Regex("CONFIG_RUNTIME_READY.*hash=bf4fd07.*tables=30.*records=763"));
+                new Regex("CONFIG_RUNTIME_READY.*hash=0fa1caa.*tables=30.*records=765"));
             LogAssert.Expect(
                 LogType.Log,
-                new Regex("ASSET_REGISTRY_READY.*configHash=bf4fd07.*entries=77.*prefabs=43.*sprites=16.*audioClips=17.*scenes=1"));
+                new Regex("ASSET_REGISTRY_READY.*configHash=0fa1caa.*entries=78.*prefabs=44.*sprites=16.*audioClips=17.*scenes=1"));
 
             yield return SceneManager.LoadSceneAsync(SceneNames.Bootstrap, LoadSceneMode.Single);
             yield return WaitForScene(SceneNames.MainMenu);
 
             Assert.That(GameplayConfigRuntime.IsReady, Is.True);
             Assert.That(AssetRegistryRuntime.IsReady, Is.True);
-            Assert.That(AssetRegistryRuntime.Current.Count, Is.EqualTo(77));
+            Assert.That(AssetRegistryRuntime.Current.Count, Is.EqualTo(78));
             Assert.That(AssetRegistryRuntime.Current.GetPrefab("boss_tomb_armor_king"), Is.Not.Null);
             Assert.That(AssetRegistryRuntime.Current.GetPrefab("char_moyan_idle"), Is.Not.Null);
             Assert.That(AssetRegistryRuntime.Current.GetAudioClip("audio_sfx_slash"), Is.Not.Null);

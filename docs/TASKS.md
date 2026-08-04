@@ -76,6 +76,7 @@
 | T699C | P6 配置可读性 | DONE | T699B | 0.8 | 将字段和枚举说明完善为可直接理解的业务语义。 |
 | T699D | P6 工程修复 | DONE | T330, T340, T660, T699C | 0.5 | 为生产战斗补齐配置驱动的蓄力按住反馈。 |
 | T699E | P6 表现与资源 | DONE | T698, T699D | 0.3 | 将画笔单环蓄力反馈替换为A方案青白雷核特效。 |
+| T699F | P6 表现与资源 | DONE | T699E | 0.5 | 将画笔蓄力雷核迁移到配置绑定的独立粒子Prefab。 |
 | T700 | P7 质量发布 | READY | T540, T660, T681, T699A, T699D | 2.0 | 补齐纯规则EditMode回归矩阵。 |
 | T710 | P7 质量发布 | BACKLOG | T550, T650 | 3.0 | 补齐Unity集成、完整单局、暂停、重开和生命周期PlayMode测试。 |
 | T720 | P7 质量发布 | BACKLOG | T710, T250 | 1.0 | 审计所有玩法数值、内容和文案是否来自配置表。 |
@@ -838,6 +839,18 @@
 - **验证：** StrokeTrail与T660生产入口PlayMode；全量PlayMode；真实Battle相机截图。
 - **证据：** `artifacts/evals/T699E/`
 - **提交：** `T699E: replace charged stroke effect with thunder core`
+
+### T699F · 将画笔蓄力雷核迁移到配置绑定的独立粒子Prefab。
+
+- **状态：** `DONE`
+- **依赖：** T699E
+- **估算：** 0.5 人日
+- **产出：** `vfx_stroke_charge`独立Prefab；三组ParticleSystem与独立环/径向电弧拓扑；`StrokeTrailStyles.chargeVfxAssetKey`配置绑定；预热实例化、切换和池化清理回归。
+- **明确不做：** 不修改Charged手势、蓄力时间、命中半径、伤害、轨迹点或其他玩法数值；不新增第二套Inspector表现数值；不提前实施T700。
+- **验收：** 生产蓄力只把位置、进度、当前画笔样式和规则半径转发给独立`StrokeChargeVfxView`；首个有效移动点后立即隐藏并清空粒子，切换到`vfx_slash`轨迹；更换样式表资源键或Registry同键Prefab即可替换特效，不改输入/命中代码。
+- **验证：** ConfigExporter与生成物漂移门；Prefab/Registry EditMode；StrokeTrail与生产入口PlayMode；全量EditMode/PlayMode；真实Battle截图。
+- **证据：** `artifacts/evals/T699F/`
+- **提交：** `T699F: move charged stroke effect into particle prefab`
 
 
 ## P7 质量发布

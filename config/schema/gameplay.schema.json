@@ -1748,7 +1748,8 @@
         "branchLengthRefPx",
         "branchJitterRefPx",
         "branchWidthMultiplier",
-        "branchSegmentCount"
+        "branchSegmentCount",
+        "chargeVfxAssetKey"
       ],
       "properties": {
         "styleId": {
@@ -1809,6 +1810,9 @@
           "type": "integer",
           "minimum": 2,
           "maximum": 8
+        },
+        "chargeVfxAssetKey": {
+          "type": "string"
         }
       }
     },

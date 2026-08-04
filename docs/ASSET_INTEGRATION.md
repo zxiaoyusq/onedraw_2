@@ -29,13 +29,13 @@
 ## T240 Registry基线
 
 - Canonical资源：`Assets/_Game/Config/Registry/AssetRegistry.asset`。
-- 当前覆盖：77个AssetManifest键，其中Prefab 43、Sprite 16、AudioClip 17、Scene 1；Editor菜单和构建前门会拒绝空、重复、缺失、额外、错型或非持久化引用。
+- 当前覆盖：78个AssetManifest键，其中Prefab 44、Sprite 16、AudioClip 17、Scene 1；Editor菜单和构建前门会拒绝空、重复、缺失、额外、错型或非持久化引用。
 - Registry条目只序列化`assetKey`和Unity对象；Scene使用`AssetSceneReference`保存明确场景引用。HP、CD、伤害、冷却、关卡和文案等仍只来自配置表。
 - Runtime和Editor绑定不消费AssetManifest的`addressOrPath`，Prefab/Sprite/Audio不通过路径或GUID查找。资源文件移动或替换不要求修改配置ID。
 
 ## 占位与替换流程
 
-T630把当时18个Sprite键和40个Prefab键改绑为实际原型资产；T694随后把主角键从单帧Sprite升级为动画Prefab，T695再新增池化怪物死亡动画Prefab。当前39个VFX键均使用含`SpriteRenderer`和`VfxPoolItem`的独立Prefab，其中`vfx_enemy_death`还包含非循环Animator。T698保持`vfx_slash`稳定键与Registry计数不变，将其升级为外层/主体/核心加12条预建分支的`LineRenderer`拓扑；为兼容T630通用资源合同，Prefab仍保留一个绑定`vfx_slash_arc`且默认禁用的`SpriteRenderer`，实际画笔表现不使用该兼容Sprite。17个AudioClip键继续复用T240静音占位，`scene_battle`继续引用Build Settings中的Battle场景。当前视觉资产只代表原型品质，生成角色与PSD原画的细节密度仍有差异，也不包含正式骨骼动画或逐对象身体碰撞制作。
+T630把当时18个Sprite键和40个Prefab键改绑为实际原型资产；T694随后把主角键从单帧Sprite升级为动画Prefab，T695再新增池化怪物死亡动画Prefab。当前40个VFX键均使用独立Prefab，其中`vfx_enemy_death`还包含非循环Animator。T698保持`vfx_slash`稳定键，将其升级为外层/主体/核心加12条预建分支的`LineRenderer`拓扑；T699F新增`vfx_stroke_charge`，由4条环线、8条径向电弧、3组ParticleSystem、默认禁用兼容Sprite和`VfxPoolItem`组成。画笔轨迹与蓄力Prefab分别由轨迹池预热，互不借用Renderer；T630通用作者工具明确保护该专用蓄力Prefab，不会批量覆盖。17个AudioClip键继续复用T240静音占位，`scene_battle`继续引用Build Settings中的Battle场景。当前视觉资产只代表原型品质，生成角色与PSD原画的细节密度仍有差异，也不包含正式骨骼动画或逐对象身体碰撞制作。
 
 替换单项资源时：
 

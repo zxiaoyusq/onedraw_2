@@ -70,11 +70,11 @@ public sealed class WorkbookDocumentationTests
             }
         }
 
-        Assert.Equal(290, documentedHeaderCount);
+        Assert.Equal(291, documentedHeaderCount);
     }
 
     /// <summary>
-    /// 验证280个业务字段说明均与可见中文名称一致，并包含实际用途而非模板占位句。
+    /// 验证281个业务字段说明均与可见中文名称一致，并包含实际用途而非模板占位句。
     /// </summary>
     [Fact]
     public void FieldDictionaryDescriptionsAreSpecificAndMatchVisibleLabels()
@@ -126,7 +126,7 @@ public sealed class WorkbookDocumentationTests
             documentedFieldCount++;
         }
 
-        Assert.Equal(280, documentedFieldCount);
+        Assert.Equal(281, documentedFieldCount);
     }
 
     /// <summary>

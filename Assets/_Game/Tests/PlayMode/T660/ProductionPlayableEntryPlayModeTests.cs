@@ -231,12 +231,15 @@ namespace OneStrokeDemon.Tests.PlayMode.T660
             Assert.That(chargeTrail, Is.Not.Null);
             Assert.That(chargeTrail.IsChargePreviewVisible, Is.True);
             Assert.That(chargeTrail.ChargePreviewProgress, Is.EqualTo(1f).Within(0.001f));
+            Assert.That(chargeTrail.ActiveChargeVfx, Is.Not.Null);
             Assert.That(
-                chargeTrail.BranchLineRenderers[3].positionCount,
-                Is.EqualTo(StrokeTrailView.ChargePreviewSegmentCount + 1));
-            for (int index = 0; index < chargeTrail.BranchLineRenderers.Count; index++)
+                chargeTrail.ActiveChargeVfx.RingRenderers[3].positionCount,
+                Is.EqualTo(StrokeChargeVfxView.RingSegmentCount + 1));
+            for (int index = 0;
+                 index < chargeTrail.ActiveChargeVfx.RadialRenderers.Count;
+                 index++)
             {
-                Assert.That(chargeTrail.BranchLineRenderers[index].enabled, Is.True);
+                Assert.That(chargeTrail.ActiveChargeVfx.RadialRenderers[index].enabled, Is.True);
             }
 
             string chargeScreenshotPath = Environment.GetEnvironmentVariable(

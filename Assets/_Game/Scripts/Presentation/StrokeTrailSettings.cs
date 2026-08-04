@@ -74,7 +74,8 @@ namespace OneStrokeDemon.Presentation
                 1f,
                 0f,
                 0.1f,
-                2)
+                2,
+                string.Empty)
         {
         }
 
@@ -97,7 +98,8 @@ namespace OneStrokeDemon.Presentation
             float branchLengthReferencePixels,
             float branchJitterReferencePixels,
             float branchWidthMultiplier,
-            int branchSegmentCount)
+            int branchSegmentCount,
+            string chargeVfxAssetKey)
         {
             // 检查视图状态、资源或生命周期边界，避免产生无效表现。
             if (string.IsNullOrWhiteSpace(stanceId))
@@ -140,6 +142,14 @@ namespace OneStrokeDemon.Presentation
                     "Lightning branches support two to eight segments.");
             }
 
+            if (string.IsNullOrWhiteSpace(chargeVfxAssetKey) &&
+                !string.Equals(styleId, "legacy_white", StringComparison.Ordinal))
+            {
+                throw new ArgumentException(
+                    "Configured stroke trail styles require a charge VFX asset key.",
+                    nameof(chargeVfxAssetKey));
+            }
+
             StanceId = stanceId;
             StyleId = styleId;
             WidthReferencePixels = widthReferencePixels;
@@ -158,6 +168,7 @@ namespace OneStrokeDemon.Presentation
             BranchJitterReferencePixels = branchJitterReferencePixels;
             BranchWidthMultiplier = branchWidthMultiplier;
             BranchSegmentCount = branchSegmentCount;
+            ChargeVfxAssetKey = chargeVfxAssetKey;
         }
 
         public string StanceId { get; }
@@ -196,6 +207,8 @@ namespace OneStrokeDemon.Presentation
 
         public int BranchSegmentCount { get; }
 
+        public string ChargeVfxAssetKey { get; }
+
         // 判断是否 IsFinite 对应的表现逻辑，使视图与只读战斗状态保持同步。
         private static bool IsFinite(float value)
         {
@@ -223,5 +236,23 @@ namespace OneStrokeDemon.Presentation
                     "Stroke trail style values must be finite and non-negative.");
             }
         }
+    }
+
+    /// <summary>把配置资源键与预加载的独立蓄力Prefab配对，供轨迹池预热全部样式。</summary>
+    public readonly struct StrokeChargeVfxPrefab
+    {
+        public StrokeChargeVfxPrefab(string assetKey, GameObject prefab)
+        {
+            AssetKey = !string.IsNullOrWhiteSpace(assetKey)
+                ? assetKey
+                : throw new ArgumentException("Charge VFX asset key is required.", nameof(assetKey));
+            Prefab = prefab != null
+                ? prefab
+                : throw new ArgumentNullException(nameof(prefab));
+        }
+
+        public string AssetKey { get; }
+
+        public GameObject Prefab { get; }
     }
 }

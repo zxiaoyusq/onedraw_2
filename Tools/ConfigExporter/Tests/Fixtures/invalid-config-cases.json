@@ -395,6 +395,15 @@
       "mutations": [
         { "operation": "set", "sheet": "StrokeTrailStyles", "match": { "styleId": "stroke_trail_lightning_c" }, "values": { "branchColorHex": "cyan" } }
       ]
+    },
+    {
+      "id": "stroke_charge_vfx_asset_not_prefab",
+      "expectedCode": "CFG009",
+      "expectedSheet": "StrokeTrailStyles",
+      "expectedField": "chargeVfxAssetKey",
+      "mutations": [
+        { "operation": "set", "sheet": "AssetManifest", "match": { "assetKey": "vfx_stroke_charge" }, "values": { "assetType": "Sprite" } }
+      ]
     }
   ]
 }

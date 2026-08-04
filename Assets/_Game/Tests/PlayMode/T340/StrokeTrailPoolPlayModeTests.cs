@@ -77,7 +77,7 @@ namespace OneStrokeDemon.Tests.PlayMode.T340
                 new Vector2(500f, 600f),
                 new Vector2(900f, 300f));
             StrokeTrailPath path = StrokeTrailPath.FromGeometry(geometry);
-            StrokeTrailPool pool = CreatePool(poolSettings);
+            StrokeTrailPool pool = CreatePool(poolSettings, config);
 
             StrokeTrailView view = pool.Show(path, bladeStyle);
 
@@ -137,7 +137,7 @@ namespace OneStrokeDemon.Tests.PlayMode.T340
                 ConfigIds.VfxCues.VfxSlash);
             StrokeTrailPool pool = CreatePool(StrokeTrailSettingsFactory.CreatePoolSettings(
                 config,
-                ConfigIds.VfxCues.VfxSlash));
+                ConfigIds.VfxCues.VfxSlash), config);
             var bladePath = new StrokeTrailPath(
                 1,
                 new[] { Vector2.zero, new Vector2(100f, 50f), new Vector2(200f, 0f) });
@@ -184,7 +184,7 @@ namespace OneStrokeDemon.Tests.PlayMode.T340
             IConfigProvider config = GameplayConfigRuntime.Current;
             StrokeTrailPool pool = CreatePool(StrokeTrailSettingsFactory.CreatePoolSettings(
                 config,
-                ConfigIds.VfxCues.VfxSlash));
+                ConfigIds.VfxCues.VfxSlash), config);
             StrokeTrailStyle bladeStyle = StrokeTrailSettingsFactory.CreateStyle(
                 config,
                 ConfigIds.Stances.StanceBlade,
@@ -223,7 +223,7 @@ namespace OneStrokeDemon.Tests.PlayMode.T340
             IConfigProvider config = GameplayConfigRuntime.Current;
             StrokeTrailPool pool = CreatePool(StrokeTrailSettingsFactory.CreatePoolSettings(
                 config,
-                ConfigIds.VfxCues.VfxSlash));
+                ConfigIds.VfxCues.VfxSlash), config);
             StrokeTrailStyle style = StrokeTrailSettingsFactory.CreateStyle(
                 config,
                 ConfigIds.Stances.StanceBlade,
@@ -271,7 +271,7 @@ namespace OneStrokeDemon.Tests.PlayMode.T340
             StrokeRuleConfig chargedRule = config.GetStrokeRule(ConfigIds.StrokeRules.StrokeCharged);
             StrokeTrailPool pool = CreatePool(StrokeTrailSettingsFactory.CreatePoolSettings(
                 config,
-                ConfigIds.VfxCues.VfxSlash));
+                ConfigIds.VfxCues.VfxSlash), config);
             var origin = new Vector2(500f, 400f);
             StrokeTrailView view = pool.BeginPreview(91, origin, style);
 
@@ -287,32 +287,36 @@ namespace OneStrokeDemon.Tests.PlayMode.T340
             Assert.That(
                 view.ChargePreviewRadiusReferencePixels,
                 Is.EqualTo((float)chargedRule.HitRadiusRefPx));
-            Assert.That(view.BranchLineRenderers[0].enabled, Is.True);
+            StrokeChargeVfxView chargeVfx = view.ActiveChargeVfx;
+            Assert.That(chargeVfx, Is.Not.Null);
+            Assert.That(chargeVfx.IsVisible, Is.True);
+            Assert.That(chargeVfx.ParticleSystems.Count, Is.EqualTo(3));
+            Assert.That(chargeVfx.ParticleSystems[0].particleCount, Is.GreaterThan(0));
+            Assert.That(chargeVfx.RingRenderers[0].enabled, Is.True);
             Assert.That(
-                view.BranchLineRenderers[0].positionCount,
-                Is.EqualTo(StrokeTrailView.ChargePreviewSegmentCount + 1));
+                chargeVfx.RingRenderers[0].positionCount,
+                Is.EqualTo(StrokeChargeVfxView.RingSegmentCount + 1));
             Assert.That(
-                view.BranchLineRenderers[0].startWidth,
+                chargeVfx.RingRenderers[0].startWidth,
                 Is.EqualTo(
                     style.WidthReferencePixels *
                     style.BranchWidthMultiplier *
                     style.OuterWidthMultiplier));
-            Assert.That(view.BranchLineRenderers[1].enabled, Is.True);
+            Assert.That(chargeVfx.RingRenderers[1].enabled, Is.True);
             Assert.That(
-                view.BranchLineRenderers[1].startColor,
+                chargeVfx.RingRenderers[1].startColor,
                 Is.EqualTo(style.CoreColor));
             Assert.That(
-                view.BranchLineRenderers[1].startWidth,
+                chargeVfx.RingRenderers[1].startWidth,
                 Is.EqualTo(view.CoreLineRenderer.startWidth));
-            Assert.That(view.BranchLineRenderers[2].enabled, Is.True);
+            Assert.That(chargeVfx.RingRenderers[2].enabled, Is.True);
             Assert.That(
-                view.BranchLineRenderers[2].positionCount,
-                Is.EqualTo(StrokeTrailView.ChargePreviewSegmentCount / 2 + 1));
-            Assert.That(view.BranchLineRenderers[3].enabled, Is.False);
-            for (int index = 0; index < StrokeTrailView.ChargePreviewRadialRendererCount; index++)
+                chargeVfx.RingRenderers[2].positionCount,
+                Is.EqualTo(StrokeChargeVfxView.RingSegmentCount / 2 + 1));
+            Assert.That(chargeVfx.RingRenderers[3].enabled, Is.False);
+            for (int index = 0; index < StrokeChargeVfxView.RadialRendererCount; index++)
             {
-                LineRenderer radial = view.BranchLineRenderers[
-                    StrokeTrailView.ChargePreviewLayerRendererCount + index];
+                LineRenderer radial = chargeVfx.RadialRenderers[index];
                 Assert.That(radial.enabled, Is.EqualTo(index < 4));
                 Assert.That(radial.positionCount, Is.EqualTo(index < 4 ? 3 : 0));
                 if (index < 4)
@@ -323,15 +327,27 @@ namespace OneStrokeDemon.Tests.PlayMode.T340
 
             pool.TryUpdateChargePreview(91, origin, 1f, chargedRule.HitRadiusRefPx);
             Assert.That(
-                view.BranchLineRenderers[3].positionCount,
-                Is.EqualTo(StrokeTrailView.ChargePreviewSegmentCount + 1));
-            for (int index = 0; index < view.BranchLineRenderers.Count; index++)
+                chargeVfx.RingRenderers[3].positionCount,
+                Is.EqualTo(StrokeChargeVfxView.RingSegmentCount + 1));
+            for (int index = 0; index < chargeVfx.RingRenderers.Count; index++)
             {
-                Assert.That(view.BranchLineRenderers[index].enabled, Is.True);
+                Assert.That(chargeVfx.RingRenderers[index].enabled, Is.True);
+            }
+
+            for (int index = 0; index < chargeVfx.RadialRenderers.Count; index++)
+            {
+                Assert.That(chargeVfx.RadialRenderers[index].enabled, Is.True);
             }
 
             Assert.That(pool.TryAppendPreviewPoint(91, origin + Vector2.right * 120f), Is.True);
             Assert.That(view.IsChargePreviewVisible, Is.False);
+            Assert.That(chargeVfx.IsVisible, Is.False);
+            for (int index = 0; index < chargeVfx.RingRenderers.Count; index++)
+            {
+                Assert.That(chargeVfx.RingRenderers[index].enabled, Is.False);
+                Assert.That(chargeVfx.RingRenderers[index].positionCount, Is.Zero);
+            }
+
             for (int index = 0; index < view.BranchLineRenderers.Count; index++)
             {
                 Assert.That(view.BranchLineRenderers[index].enabled, Is.False);
@@ -350,7 +366,7 @@ namespace OneStrokeDemon.Tests.PlayMode.T340
             StrokeRuleConfig anyRule = config.GetStrokeRule(ConfigIds.StrokeRules.StrokeAny);
             StrokeTrailPool pool = CreatePool(StrokeTrailSettingsFactory.CreatePoolSettings(
                 config,
-                ConfigIds.VfxCues.VfxSlash));
+                ConfigIds.VfxCues.VfxSlash), config);
             StrokeTrailStyle style = StrokeTrailSettingsFactory.CreateStyle(
                 config,
                 ConfigIds.Stances.StanceBlade,
@@ -396,7 +412,9 @@ namespace OneStrokeDemon.Tests.PlayMode.T340
             Assert.That(adapter.IsPointerActive, Is.False);
         }
 
-        private StrokeTrailPool CreatePool(StrokeTrailPoolSettings settings)
+        private StrokeTrailPool CreatePool(
+            StrokeTrailPoolSettings settings,
+            IConfigProvider config)
         {
             poolObject = new GameObject("T340 Stroke Trail Pool");
             var pool = poolObject.AddComponent<StrokeTrailPool>();
@@ -406,7 +424,17 @@ namespace OneStrokeDemon.Tests.PlayMode.T340
             {
                 name = "T340 Shared Trail Material"
             };
-            pool.Initialize(settings, sharedMaterial);
+            StrokeTrailStyleConfig style = config.GetStrokeTrailStyle(
+                ConfigIds.StrokeTrailStyles.StrokeTrailLightningC);
+            GameObject chargePrefab = AssetRegistryRuntime.Current.GetPrefab(
+                style.ChargeVfxAssetKey);
+            pool.Initialize(
+                settings,
+                sharedMaterial,
+                chargeVfxPrefabs: new[]
+                {
+                    new StrokeChargeVfxPrefab(style.ChargeVfxAssetKey, chargePrefab),
+                });
             return pool;
         }
 

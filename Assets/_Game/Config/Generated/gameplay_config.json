@@ -1,7 +1,7 @@
 {
   "schemaVersion": 6,
-  "contentVersion": "0.6.9-sample",
-  "contentHash": "bf4fd0714fed80e4637ef2fb6c7161b1ce23e09fa522bd0df51011d01391602e",
+  "contentVersion": "0.6.10-sample",
+  "contentHash": "0fa1caa1f5c088e9b300ec2433afed049c54d83a58a6a92a8450144556d1b231",
   "global": [
     {
       "key": "battle_countdown_sec",
@@ -38,7 +38,7 @@
       "valueType": "string",
       "intValue": null,
       "floatValue": null,
-      "stringValue": "0.6.9-sample",
+      "stringValue": "0.6.10-sample",
       "boolValue": null,
       "unit": "semver",
       "description": "内容版本"
@@ -3608,6 +3608,13 @@
       "addressOrPath": "Assets/_Game/Art/VFX/vfx_slow.prefab",
       "requiredInMvp": true,
       "notes": "模板占位路径，导入资源后更新"
+    },
+    {
+      "assetKey": "vfx_stroke_charge",
+      "assetType": "Prefab",
+      "addressOrPath": "Assets/_Game/Art/VFX/vfx_stroke_charge.prefab",
+      "requiredInMvp": true,
+      "notes": "画笔停留蓄力的独立粒子特效Prefab；由StrokeTrailStyles选择。"
     },
     {
       "assetKey": "vfx_stun",
@@ -7630,6 +7637,18 @@
       "enumType": "",
       "foreignKey": "",
       "description": "分支线段数：构成单条分支电弧的折线段数量。 配置约束：不得留空；有效范围2到8。"
+    },
+    {
+      "sheet": "StrokeTrailStyles",
+      "field": "chargeVfxAssetKey",
+      "type": "string",
+      "required": "true",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "AssetManifest.assetKey",
+      "description": "蓄力特效资源键：停留蓄力使用的独立粒子Prefab；换皮或新增样式只修改此引用。配置约束：不得留空；必须引用AssetManifest.assetKey的现有值，不存在时导出失败。"
     }
   ],
   "feedbackCues": [
@@ -7756,7 +7775,8 @@
       "branchLengthRefPx": 64,
       "branchJitterRefPx": 18,
       "branchWidthMultiplier": 0.14,
-      "branchSegmentCount": 3
+      "branchSegmentCount": 3,
+      "chargeVfxAssetKey": "vfx_stroke_charge"
     }
   ]
 }
