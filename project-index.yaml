@@ -340,11 +340,14 @@ gesture_classification:
   precedence: [Circle, Charged, Arc, Directional, Any]
   same_priority_tiebreak: [confidence_desc, rule_id_ordinal]
   charged_hold_source: begin_to_first_accepted_sample
+  charged_hold_progress: explicit_unscaled_clock_until_first_accepted_sample
+  charged_player_action: hold_to_configured_threshold_then_swipe_to_configured_minimum_length
+  charged_pure_hold_release: no_match
   deterministic_replay: pass
-  editmode_tests: 14
+  editmode_tests: 15
   playmode_tests: 1
-  full_editmode_tests: 162
-  full_playmode_tests: 41
+  full_editmode_tests: 216
+  full_playmode_tests: 61
 stroke_trail:
   status: pass
   path_bridge: StrokeTrailPath
@@ -353,6 +356,10 @@ stroke_trail:
   prefab: Assets/_Game/Art/VFX/vfx_slash.prefab
   renderers: [outer, body, core, 12_prebuilt_branches]
   live_preview: accepted_sample_points_before_pointer_release
+  stationary_hold_preview: configured_clock_driven_charge_ring_at_pointer_origin
+  charge_ring_sources: [StrokeRules.chargeHoldSec, StrokeRules.hitRadiusRefPx, Stances.strokeWidthRefPx, StrokeTrailStyles.bodyColor_and_width]
+  charge_ring_topology_segments: 32
+  charge_ring_owns_gameplay_truth: false
   renderer_transform_policy: identity_root_with_separate_reference_space_conversion
   world_space_width_policy: Stances.strokeWidthRefPx_times_StrokeTrailStyles.layer_multiplier_times_reference_pixel_world_scale
   geometry_source: same_StrokeGeometryData_points_reference
@@ -371,8 +378,8 @@ stroke_trail:
   shared_material_only: true
   managed_allocation_after_warmup: zero_for_128_show_and_reclaim_cycles
   playmode_tests: 6
-  full_editmode_tests: 208
-  full_playmode_tests: 56
+  full_editmode_tests: 216
+  full_playmode_tests: 61
 stroke_hit:
   status: pass
   resolver: StrokeHitResolver
@@ -791,9 +798,9 @@ production_playable_entry:
   composed_runtime: [PlayerCombatController, EnemyArchetypePool, BattleFlowCoordinator, TutorialLevelCoordinator, BossLevelCoordinator, PointerInputRuntime, BattleHudRuntime, TutorialOverlayRuntime, CombatFeedbackRuntime, ResultService, BattleResultNavigation]
   production_paths: [tutorial, normal, boss, defeat, restart, main_menu]
   editmode_focused: 2
-  playmode_focused: 4
-  full_editmode_tests: 198
-  full_playmode_tests: 50
+  playmode_focused: 5
+  full_editmode_tests: 216
+  full_playmode_tests: 61
   graphics_path: production_buttons_then_real_InputSystem_mouse_live_preview_then_processed_residual_trail
   audio_resolution: AudioCues.audioKey_to_assetKey_to_AssetRegistry
   screenshot: artifacts/evals/T660/production-entry-1920x1080.png
@@ -838,8 +845,9 @@ production_projectiles:
   life_sec: {proj_ghost_fire: 10, proj_soul_shard: 9, proj_seal_bolt: 10, proj_rockfall: 8, proj_seal_wave: 11}
   focused_editmode_tests: 5
   focused_playmode_tests: 2
-  full_editmode_tests: 215
-  full_playmode_tests: 59
+  batch_screen_edge_stroke_policy: clamp_test_path_inside_current_screen
+  full_editmode_tests: 216
+  full_playmode_tests: 61
   config_exporter_tests: 60
   screenshot: artifacts/evals/T699A/production-projectile-visible.png
   screenshot_sha256: 08f36eddfc54a7cfa560055fbeb9947840f7d61bef10034dab2d5ae1333898a0

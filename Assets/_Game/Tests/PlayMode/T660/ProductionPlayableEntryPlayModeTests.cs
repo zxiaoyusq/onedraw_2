@@ -195,6 +195,60 @@ namespace OneStrokeDemon.Tests.PlayMode.T660
         }
 
         [UnityTest]
+        public IEnumerator StationaryHoldShowsConfiguredChargeRingBeforeSwipe()
+        {
+            yield return LoadBootstrapToMenu();
+            var results = new ResultService(
+                GameplayConfigRuntime.Current,
+                new PlayerPrefsProgressSaveStore());
+            Assert.That(
+                results.MarkTutorialCompleted(ConfigIds.Tutorials.TutorialLevel001),
+                Is.True);
+
+            MainMenuCompositionRoot menu = FindMenu();
+            menu.View.StartButton.onClick.Invoke();
+            FindChoice(menu.View, ConfigIds.Levels.Lv001Tutorial).Button.onClick.Invoke();
+            yield return WaitForScene(SceneNames.Battle);
+            ProductionBattleSession session = FindBattle().CurrentSession;
+            yield return WaitForPlaying(session);
+
+            Mouse mouse = InputSystem.AddDevice<Mouse>();
+            var holdPoint = new Vector2(Screen.width * 0.5f, Screen.height * 0.5f);
+            Assert.That(
+                new EventSystemPointerUiBlocker().IsBlocked(
+                    holdPoint,
+                    InputSystemPointerAdapter.MousePointerId),
+                Is.False);
+            StrokeRuleConfig chargedRule = GameplayConfigRuntime.Current.GetStrokeRule(
+                ConfigIds.StrokeRules.StrokeCharged);
+
+            Set(mouse.position, holdPoint, queueEventOnly: true);
+            Press(mouse.leftButton, queueEventOnly: true);
+            yield return null;
+            yield return new WaitForSecondsRealtime(chargedRule.ChargeHoldSec + 0.1f);
+
+            StrokeTrailView chargeTrail = FindVisibleTrail();
+            Assert.That(chargeTrail, Is.Not.Null);
+            Assert.That(chargeTrail.IsChargePreviewVisible, Is.True);
+            Assert.That(chargeTrail.ChargePreviewProgress, Is.EqualTo(1f).Within(0.001f));
+            Assert.That(chargeTrail.BranchLineRenderers[0].enabled, Is.True);
+            Assert.That(
+                chargeTrail.BranchLineRenderers[0].positionCount,
+                Is.EqualTo(StrokeTrailView.ChargePreviewSegmentCount + 1));
+
+            var swipeEnd = new Vector2(Screen.width * 0.7f, Screen.height * 0.5f);
+            Set(mouse.position, swipeEnd, queueEventOnly: true);
+            yield return null;
+            Assert.That(chargeTrail.IsChargePreviewVisible, Is.False);
+            Assert.That(chargeTrail.LineRenderer.enabled, Is.True);
+            Assert.That(chargeTrail.LineRenderer.positionCount, Is.GreaterThanOrEqualTo(2));
+
+            Release(mouse.leftButton, queueEventOnly: true);
+            yield return null;
+            Assert.That(session.CompletedStrokeCount, Is.EqualTo(1));
+        }
+
+        [UnityTest]
         public IEnumerator UnlockedNormalAndBossChoicesEnterTheirProductionSessions()
         {
             yield return LoadBootstrapToMenu();

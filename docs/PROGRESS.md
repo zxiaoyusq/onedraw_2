@@ -1,6 +1,6 @@
 # PROGRESS
 
-- 日期：2026-08-03
+- 日期：2026-08-04
 - 当前成熟度：P7质量与发布准备
 - 当前任务：T700
 - 状态：READY
@@ -15,6 +15,7 @@
 
 ## 已完成
 
+- T699D：根因是生产输入只发布起笔、有效移动、抬手和取消，静止按住期间没有时钟推进事件；轨迹视图在只有一个点时又保持隐藏，因此配置中的`stroke_charged.chargeHoldSec=0.4s`虽可在抬手后参与分类，玩家按住时却看不到任何反馈。现由生产会话用统一非缩放时钟显式推进起笔停留，在触点以当前架势配置的青白画笔颜色/宽度和Charged规则的`hitRadiusRefPx`绘制32段技术拓扑进度环；进度达到1只表示蓄力就绪，首个有效移动点会隐藏环并转为正常闪电轨迹，最终仍须划动至少配置的100参考像素并抬手才识别为Charged。未改配置、玩法数值、Animator、Scene、Prefab、Registry或ProjectSettings。专项StrokeSampling EditMode 11/11、StrokeTrail PlayMode 6/6、T660生产入口5/5、T699A 2/2及隔离工程全量EditMode 216/216、PlayMode 61/61通过。主工程因用户已打开Unity而保持不动，验证在包含当前工作树的隔离副本完成；全量首轮3项失败为T699C遗留的旧content日志快照，另1项为640宽批处理下投射物测试端点越界，更新快照并把测试笔迹夹在屏幕内后全绿。用户已有主角Controller、`11.anim`删除、Packages和Excel锁文件改动均未纳入提交。
 - T699C：按“能独立解释业务含义，不设机械字数门槛”的标准重写FieldDictionary全部280条字段说明，并为Enums全部98个枚举值补齐行为说明；25个引用枚举的字段直接列出每个允许值及其效果。`Waves.startTrigger/maxAlive`、`SpawnPoints.lane`等字段现说明触发/并发/数据流语义，同时如实标注`lane/facing`当前仅透传、DoT尚无周期扣血执行器、架势易伤和投射物移动模式尚未完整消费等实现边界。字段形状、玩法数值、ID、枚举成员和外键均未改变，schema保持6、content升级为`0.6.9-sample`；双工作簿124,279字节且SHA-256均为`fbdfed51...2319`，受管配置仍为30表/763条、hash `bf4fd071...1602e`、29组381个ID常量。31个Sheet完成结构、公式与渲染检查，公式错误0；ConfigExporter 63/63、ConfigPipeline EditMode 19/19、PlayMode 3/3通过。首次Unity批处理启动在资源刷新后未进入测试运行器并被安全中止，缓存完成后独立有效回归通过；PlayMode首轮1项仅匹配旧content版本，更新冻结快照后3/3通过。未修改Schema、DTO、Scene、Prefab、Registry、ProjectSettings或Packages；用户已有Excel锁文件状态未纳入提交。
 - T699B：保留全部第4行英文API字段名，在30个数据Sheet第3行新增290个同列中文字段名；31个Sheet的第2行中文用途说明全部保留，README也新增第3/4行阅读约定。FieldDictionary覆盖的280个业务字段现统一使用“中文名称：具体语义”格式，补齐单位、时间口径、范围、枚举、外键、留空语义和运行时用途，原165条“X表的Y字段”占位文案降为0；FieldDictionary不递归描述自身，但其10个列名同样在第3行获得中文名称。配置字段形状、玩法数值、ID、枚举和外键均未改变，schema保持6、content升级为`0.6.8-sample`；双工作簿110,303字节且SHA-256均为`7ccb004e...9567`，受管配置30表/763条、hash `6ab856f9...47fdb`、29组381个ID常量。31个Sheet修改前后均完成渲染检查，公式错误扫描0，结构审计确认除说明区域和content版本外没有数据变化；新增文档覆盖测试2/2、ConfigExporter 62/62、最终全量EditMode 215/215、PlayMode 59/59通过。首次EditMode初始化为域刷新后的0项孤儿任务，清理后有效回归通过；首次PlayMode因Game视图失焦自动暂停导致4项失败，聚焦后受影响项4/4及全量59/59通过。未修改Schema、DTO、Scene、Prefab、Registry、ProjectSettings或Packages；用户已有`Design/Config/~$GameConfig.xlsx`删除状态未纳入提交。
 - T699A：生产Battle现在从真实攻击者位置租用T440投射物池实例，按`Projectiles.assetKey`取得Registry Sprite，并沿敌人到玩家的方向在参考像素空间移动；五类弹体速度调整为160–210参考像素/秒、寿命8–11秒，均可覆盖右半屏出生点到玩家的距离。敌方弹体仅在碰撞玩家身体后按`Projectiles.damage`扣血并沿用受击无敌帧；真实T350笔迹命中后复用T370规则完成切断或反弹，反弹弹体可沿既有死亡链伤害敌人，清场与回池会清除可见、碰撞、归属和时钟状态。配置保持schema 6并升级content `0.6.7-sample`；双工作簿98,273字节且SHA-256均为`620ca6aa...c29f`，受管配置30表/763条、hash `e0dabca...489d`、29组381个ID常量。ConfigExporter 60/60、T699A EditMode 5/5、PlayMode 2/2、最终全量EditMode 215/215、PlayMode 59/59通过；真实Bootstrap→MainMenu→教程Battle截图确认蓝白弹体在敌人与玩家之间可见，运行时查询记录`proj_ghost_fire`速度180。首次真实全量PlayMode的6项失败均为旧content/hash/位移冻结期望，同步快照后通过；Unity域刷新后两次Test Framework初始化在`PlayModeRunTask`空引用且0/59未执行，清理孤儿任务后完成有效测试。未修改场景、Prefab、Registry或ProjectSettings；用户已有`Design/Config/~$GameConfig.xlsx`删除状态未纳入提交。

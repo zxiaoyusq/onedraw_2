@@ -195,6 +195,7 @@ namespace OneStrokeDemon.Bootstrap
         private readonly StrokeInputCollector strokeCollector;
         private readonly StrokeTrailPool trailPool;
         private readonly Material trailMaterial;
+        private readonly StrokeRuleConfig chargedStrokeRule;
         private readonly GestureClassifier classifier;
         private readonly StrokeHitResolver resolver;
         private readonly HitRecord[] hits;
@@ -297,6 +298,13 @@ namespace OneStrokeDemon.Bootstrap
             world.AttackExecuted += OnAttackExecuted;
 
             StrokeRuleConfig sampling = config.GetStrokeRule(ConfigIds.StrokeRules.StrokeAny);
+            chargedStrokeRule = config.GetStrokeRule(ConfigIds.StrokeRules.StrokeCharged);
+            if (chargedStrokeRule.ChargeHoldSec <= 0f || chargedStrokeRule.HitRadiusRefPx <= 0L)
+            {
+                throw new InvalidOperationException(
+                    "Charged stroke feedback requires positive chargeHoldSec and hitRadiusRefPx values.");
+            }
+
             classifier = new GestureClassifier(GestureRuleSetFactory.FromConfig(config));
             StrokeHitResolverSettings resolverSettings =
                 StrokeHitSettingsFactory.CreateResolverSettings(config);
@@ -313,6 +321,7 @@ namespace OneStrokeDemon.Bootstrap
                 StrokeSamplingSettingsFactory.FromConfig(sampling));
             strokeCollector.StrokeStarted += OnStrokeStarted;
             strokeCollector.StrokePointAdded += OnStrokePointAdded;
+            strokeCollector.StrokeHoldProgressed += OnStrokeHoldProgressed;
             strokeCollector.StrokeCompleted += OnStrokeCompleted;
             strokeCollector.StrokeCanceled += OnStrokeCanceled;
             trailMaterial = CreateTrailMaterial();
@@ -426,6 +435,12 @@ namespace OneStrokeDemon.Bootstrap
             }
 
             double gameplayTimestamp = report.Time.Current.GameplayElapsedSeconds;
+            if (report.State == BattleFlowState.Playing ||
+                report.State == BattleFlowState.UltimateDrawing)
+            {
+                strokeCollector.Advance(Time.unscaledTimeAsDouble);
+            }
+
             combo.AdvanceTime(gameplayTimestamp);
             world.Advance(battle.Level.ElapsedSeconds, gameplayTimestamp);
             // 检查入口状态、依赖或生命周期边界，避免重复装配和悬空引用。
@@ -550,6 +565,7 @@ namespace OneStrokeDemon.Bootstrap
             world.AttackExecuted -= OnAttackExecuted;
             strokeCollector.StrokeStarted -= OnStrokeStarted;
             strokeCollector.StrokePointAdded -= OnStrokePointAdded;
+            strokeCollector.StrokeHoldProgressed -= OnStrokeHoldProgressed;
             strokeCollector.StrokeCompleted -= OnStrokeCompleted;
             strokeCollector.StrokeCanceled -= OnStrokeCanceled;
             strokeCollector.Dispose();
@@ -761,6 +777,25 @@ namespace OneStrokeDemon.Bootstrap
             trailPool.TryAppendPreviewPoint(
                 preview.StrokeId,
                 preview.ReferencePosition);
+        }
+
+        /// <summary>把起笔停留事实映射为配置驱动的触点蓄力环，不提前确认手势或造成命中。</summary>
+        private void OnStrokeHoldProgressed(StrokeHoldProgressEvent progress)
+        {
+            if (disposed ||
+                (battle.Flow.State != BattleFlowState.Playing &&
+                 battle.Flow.State != BattleFlowState.UltimateDrawing))
+            {
+                return;
+            }
+
+            float normalizedProgress = Mathf.Clamp01(
+                (float)(progress.ElapsedSeconds / chargedStrokeRule.ChargeHoldSec));
+            trailPool.TryUpdateChargePreview(
+                progress.StrokeId,
+                progress.ReferencePosition,
+                normalizedProgress,
+                chargedStrokeRule.HitRadiusRefPx);
         }
 
         // 响应 OnStrokeCanceled 对应的入口装配逻辑，并维护会话所有权和跨场景边界。

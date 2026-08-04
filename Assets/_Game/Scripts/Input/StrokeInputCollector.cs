@@ -25,6 +25,42 @@ namespace OneStrokeDemon.Input
         public Vector2 ReferencePosition { get; }
     }
 
+    /// <summary>表示活动指针尚未产生有效位移时的起笔停留进度。</summary>
+    public readonly struct StrokeHoldProgressEvent
+    {
+        /// <summary>创建一条可由表现层映射为蓄力反馈的停留事实。</summary>
+        public StrokeHoldProgressEvent(
+            ulong strokeId,
+            Vector2 referencePosition,
+            double elapsedSeconds)
+        {
+            if (strokeId == 0)
+            {
+                throw new ArgumentOutOfRangeException(nameof(strokeId));
+            }
+
+            if (double.IsNaN(elapsedSeconds) ||
+                double.IsInfinity(elapsedSeconds) ||
+                elapsedSeconds < 0d)
+            {
+                throw new ArgumentOutOfRangeException(nameof(elapsedSeconds));
+            }
+
+            StrokeId = strokeId;
+            ReferencePosition = referencePosition;
+            ElapsedSeconds = elapsedSeconds;
+        }
+
+        /// <summary>获取停留所属的活动笔迹 ID。</summary>
+        public ulong StrokeId { get; }
+
+        /// <summary>获取起笔触点的参考像素坐标。</summary>
+        public Vector2 ReferencePosition { get; }
+
+        /// <summary>获取从合法起笔到当前推进时刻的非负秒数。</summary>
+        public double ElapsedSeconds { get; }
+    }
+
     /// <summary>表示一笔因输入生命周期中断而被丢弃。</summary>
     public readonly struct StrokeCanceledEvent
     {
@@ -62,7 +98,10 @@ namespace OneStrokeDemon.Input
         private ulong nextStrokeId;
         private int activePointerId;
         private PointerSource activeSource;
+        private Vector2 activeStartPosition;
+        private double activeStartedAt;
         private int previewPointCount;
+        private bool holdEligible;
         private bool awaitingPointerTerminal;
         private bool disposed;
 
@@ -90,8 +129,34 @@ namespace OneStrokeDemon.Input
         /// <summary>采样器接受新点或补齐裁剪终点时发布预览点。</summary>
         public event Action<StrokePreviewPointEvent> StrokePointAdded;
 
+        /// <summary>活动指针仍停留在起笔最小点距内时，由显式时钟推进发布蓄力候选进度。</summary>
+        public event Action<StrokeHoldProgressEvent> StrokeHoldProgressed;
+
         /// <summary>获取当前是否正在采样。</summary>
         public bool IsCollecting => sampler.IsSampling;
+
+        /// <summary>
+        /// 用调用方的单调时钟推进静止按住状态；一旦接受首个有效移动点就停止发布。
+        /// </summary>
+        public bool Advance(double timestamp)
+        {
+            if (disposed || !sampler.IsSampling || !holdEligible)
+            {
+                return false;
+            }
+
+            if (double.IsNaN(timestamp) || double.IsInfinity(timestamp))
+            {
+                throw new ArgumentOutOfRangeException(nameof(timestamp));
+            }
+
+            double elapsedSeconds = Math.Max(0d, timestamp - activeStartedAt);
+            StrokeHoldProgressed?.Invoke(new StrokeHoldProgressEvent(
+                nextStrokeId,
+                activeStartPosition,
+                elapsedSeconds));
+            return true;
+        }
 
         /// <summary>幂等解除输入订阅并丢弃尚未完成的笔迹。</summary>
         public void Dispose()
@@ -104,6 +169,7 @@ namespace OneStrokeDemon.Input
             pointerInput.PointerChanged -= OnPointerChanged;
             sampler.Cancel();
             previewPointCount = 0;
+            holdEligible = false;
             awaitingPointerTerminal = false;
             disposed = true;
         }
@@ -148,9 +214,12 @@ namespace OneStrokeDemon.Input
 
             activePointerId = pointerEvent.PointerId;
             activeSource = pointerEvent.Source;
+            activeStartPosition = pointerEvent.ReferencePosition;
+            activeStartedAt = pointerEvent.Timestamp;
             nextStrokeId++;
             sampler.Begin(nextStrokeId, pointerEvent.ReferencePosition, pointerEvent.Timestamp);
             previewPointCount = 1;
+            holdEligible = true;
             StrokeStarted?.Invoke(new StrokePreviewPointEvent(
                 nextStrokeId,
                 pointerEvent.ReferencePosition));
@@ -169,11 +238,13 @@ namespace OneStrokeDemon.Input
                 pointerEvent.Timestamp);
             if (result == StrokeSampleResult.Accepted)
             {
+                holdEligible = false;
                 PublishPreviewPoint(pointerEvent.ReferencePosition);
             }
             else if (result == StrokeSampleResult.CompletedMaximumLength ||
                 result == StrokeSampleResult.CompletedMaximumPointCount)
             {
+                holdEligible = false;
                 // 达到长度或点数上限后笔迹已经冻结，但仍等待原物理指针终止，禁止接管新笔。
                 awaitingPointerTerminal = true;
                 PublishMissingPreviewPoints(sampler.CompletedStroke);
@@ -199,6 +270,7 @@ namespace OneStrokeDemon.Input
             }
 
             previewPointCount = 0;
+            holdEligible = false;
             awaitingPointerTerminal = false;
         }
 
@@ -215,6 +287,7 @@ namespace OneStrokeDemon.Input
                 ulong canceledStrokeId = nextStrokeId;
                 sampler.Cancel();
                 previewPointCount = 0;
+                holdEligible = false;
                 StrokeCanceled?.Invoke(new StrokeCanceledEvent(
                     canceledStrokeId,
                     pointerEvent.Timestamp,

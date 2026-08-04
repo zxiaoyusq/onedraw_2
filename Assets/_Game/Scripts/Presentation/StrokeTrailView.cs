@@ -12,6 +12,9 @@ namespace OneStrokeDemon.Presentation
         /// <summary>单个预热视图内固定的技术性分支渲染器容量。</summary>
         public const int BranchRendererCapacity = 12;
 
+        /// <summary>蓄力环使用的固定技术分段数；半径、宽度、颜色与时长仍全部来自配置。</summary>
+        public const int ChargePreviewSegmentCount = 32;
+
         private const int MaximumBranchPointCount = 9;
 
         private static readonly Color TransparentWhite = new Color(1f, 1f, 1f, 0f);
@@ -37,6 +40,15 @@ namespace OneStrokeDemon.Presentation
         public bool IsActive { get; private set; }
 
         public bool IsPreviewing { get; private set; }
+
+        /// <summary>获取当前是否正在触点位置显示蓄力进度环。</summary>
+        public bool IsChargePreviewVisible { get; private set; }
+
+        /// <summary>获取当前蓄力环的0到1归一化进度。</summary>
+        public float ChargePreviewProgress { get; private set; }
+
+        /// <summary>获取蓄力环使用的配置参考像素半径。</summary>
+        public float ChargePreviewRadiusReferencePixels { get; private set; }
 
         public ulong StrokeId { get; private set; }
 
@@ -214,10 +226,79 @@ namespace OneStrokeDemon.Presentation
                     "Only an active preview can append a stroke point.");
             }
 
+            HideChargePreview();
             int index = outerLineRenderer.positionCount;
             SetMainPositionCount(index + 1);
             SetMainPosition(index, ReferenceToWorld(point));
             SetMainEnabled(true);
+        }
+
+        /// <summary>
+        /// 在首个有效移动点出现前，以配置样式和命中半径绘制顺时针蓄力进度环。
+        /// </summary>
+        public void UpdateChargePreview(
+            Vector2 referencePosition,
+            float normalizedProgress,
+            float radiusReferencePixels)
+        {
+            EnsureInitialized();
+            if (!IsActive || !IsPreviewing)
+            {
+                throw new InvalidOperationException(
+                    "Only an active stroke preview can display charge progress.");
+            }
+
+            if (float.IsNaN(normalizedProgress) || float.IsInfinity(normalizedProgress))
+            {
+                throw new ArgumentOutOfRangeException(nameof(normalizedProgress));
+            }
+
+            if (float.IsNaN(radiusReferencePixels) ||
+                float.IsInfinity(radiusReferencePixels) ||
+                radiusReferencePixels <= 0f)
+            {
+                throw new ArgumentOutOfRangeException(nameof(radiusReferencePixels));
+            }
+
+            ChargePreviewProgress = Mathf.Clamp01(normalizedProgress);
+            ChargePreviewRadiusReferencePixels = radiusReferencePixels;
+            int visibleSegments = Mathf.Max(
+                1,
+                Mathf.CeilToInt(ChargePreviewProgress * ChargePreviewSegmentCount));
+            LineRenderer renderer = branchLineRenderers[0];
+            renderer.positionCount = visibleSegments + 1;
+            renderer.startWidth = bodyLineRenderer.startWidth;
+            renderer.endWidth = bodyLineRenderer.endWidth;
+            renderer.startColor = bodyColor;
+            renderer.endColor = bodyColor;
+            for (int index = 0; index <= visibleSegments; index++)
+            {
+                float angleRadians =
+                    (90f - 360f * index / ChargePreviewSegmentCount) * Mathf.Deg2Rad;
+                Vector2 point = referencePosition + new Vector2(
+                    Mathf.Cos(angleRadians),
+                    Mathf.Sin(angleRadians)) * radiusReferencePixels;
+                renderer.SetPosition(index, ReferenceToWorld(point));
+            }
+
+            renderer.enabled = true;
+            IsChargePreviewVisible = true;
+        }
+
+        /// <summary>隐藏蓄力环并保留活动笔迹的主轨迹预览。</summary>
+        public void HideChargePreview()
+        {
+            if (!IsInitialized || !IsChargePreviewVisible)
+            {
+                return;
+            }
+
+            LineRenderer renderer = branchLineRenderers[0];
+            renderer.enabled = false;
+            renderer.positionCount = 0;
+            IsChargePreviewVisible = false;
+            ChargePreviewProgress = 0f;
+            ChargePreviewRadiusReferencePixels = 0f;
         }
 
         /// <summary>使用非缩放时间同步淡出全部主层和分支，并在到期时回池。</summary>
@@ -260,6 +341,9 @@ namespace OneStrokeDemon.Presentation
             EnsureInitialized();
             IsActive = false;
             IsPreviewing = false;
+            IsChargePreviewVisible = false;
+            ChargePreviewProgress = 0f;
+            ChargePreviewRadiusReferencePixels = 0f;
             StrokeId = 0;
             ActivationSequence = 0;
             StanceId = null;

@@ -209,6 +209,35 @@ namespace OneStrokeDemon.Tests.EditMode.T310
         }
 
         [Test]
+        public void CollectorPublishesStationaryHoldProgressUntilFirstAcceptedMovement()
+        {
+            var pointer = new FakePointerInput();
+            using var collector = new StrokeInputCollector(
+                pointer,
+                new StrokeSamplingSettings(5f, 100f, 10));
+            var progress = new List<StrokeHoldProgressEvent>();
+            collector.StrokeHoldProgressed += progress.Add;
+
+            pointer.Emit(Event(12, PointerPhase.Began, new Vector2(30f, 40f), 1d));
+            Assert.That(collector.Advance(1.2d), Is.True);
+            pointer.Emit(Event(12, PointerPhase.Moved, new Vector2(32f, 40f), 1.3d));
+            Assert.That(collector.Advance(1.5d), Is.True);
+
+            Assert.That(progress.Count, Is.EqualTo(2));
+            Assert.That(progress[0].StrokeId, Is.EqualTo(1));
+            AssertVector(progress[0].ReferencePosition, new Vector2(30f, 40f));
+            Assert.That(progress[0].ElapsedSeconds, Is.EqualTo(0.2d).Within(0.000001d));
+            Assert.That(progress[1].ElapsedSeconds, Is.EqualTo(0.5d).Within(0.000001d));
+
+            pointer.Emit(Event(12, PointerPhase.Moved, new Vector2(40f, 40f), 1.6d));
+            Assert.That(collector.Advance(2d), Is.False);
+            Assert.That(progress.Count, Is.EqualTo(2));
+
+            pointer.Emit(Event(12, PointerPhase.Ended, new Vector2(60f, 40f), 2.1d));
+            Assert.That(collector.Advance(2.2d), Is.False);
+        }
+
+        [Test]
         public void InvalidSamplingLimitsAreRejectedBeforeCapture()
         {
             Assert.Throws<ArgumentOutOfRangeException>(() =>

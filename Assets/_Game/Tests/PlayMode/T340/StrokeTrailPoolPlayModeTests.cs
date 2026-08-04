@@ -260,6 +260,54 @@ namespace OneStrokeDemon.Tests.PlayMode.T340
         }
 
         [UnityTest]
+        public IEnumerator StationaryHoldDrawsConfiguredChargeRingThenMovementBecomesTrail()
+        {
+            yield return LoadRuntimeConfiguration();
+            IConfigProvider config = GameplayConfigRuntime.Current;
+            StrokeTrailStyle style = StrokeTrailSettingsFactory.CreateStyle(
+                config,
+                ConfigIds.Stances.StanceBlade,
+                ConfigIds.VfxCues.VfxSlash);
+            StrokeRuleConfig chargedRule = config.GetStrokeRule(ConfigIds.StrokeRules.StrokeCharged);
+            StrokeTrailPool pool = CreatePool(StrokeTrailSettingsFactory.CreatePoolSettings(
+                config,
+                ConfigIds.VfxCues.VfxSlash));
+            var origin = new Vector2(500f, 400f);
+            StrokeTrailView view = pool.BeginPreview(91, origin, style);
+
+            Assert.That(
+                pool.TryUpdateChargePreview(
+                    91,
+                    origin,
+                    0.5f,
+                    chargedRule.HitRadiusRefPx),
+                Is.True);
+            Assert.That(view.IsChargePreviewVisible, Is.True);
+            Assert.That(view.ChargePreviewProgress, Is.EqualTo(0.5f));
+            Assert.That(
+                view.ChargePreviewRadiusReferencePixels,
+                Is.EqualTo((float)chargedRule.HitRadiusRefPx));
+            Assert.That(view.BranchLineRenderers[0].enabled, Is.True);
+            Assert.That(
+                view.BranchLineRenderers[0].positionCount,
+                Is.EqualTo(StrokeTrailView.ChargePreviewSegmentCount / 2 + 1));
+            Assert.That(
+                view.BranchLineRenderers[0].startWidth,
+                Is.EqualTo(view.BodyLineRenderer.startWidth));
+
+            pool.TryUpdateChargePreview(91, origin, 1f, chargedRule.HitRadiusRefPx);
+            Assert.That(
+                view.BranchLineRenderers[0].positionCount,
+                Is.EqualTo(StrokeTrailView.ChargePreviewSegmentCount + 1));
+
+            Assert.That(pool.TryAppendPreviewPoint(91, origin + Vector2.right * 120f), Is.True);
+            Assert.That(view.IsChargePreviewVisible, Is.False);
+            Assert.That(view.BranchLineRenderers[0].enabled, Is.False);
+            Assert.That(view.LineRenderer.enabled, Is.True);
+            Assert.That(view.LineRenderer.positionCount, Is.EqualTo(2));
+        }
+
+        [UnityTest]
         public IEnumerator MousePlayerPathDisplaysTheProcessedRuntimeConfiguredStroke()
         {
             yield return LoadRuntimeConfiguration();

@@ -132,8 +132,12 @@ namespace OneStrokeDemon.Tests.PlayMode.T699A
 
             Mouse mouse = InputSystem.AddDevice<Mouse>();
             Vector2 screenPoint = Camera.main.WorldToScreenPoint(projectile.transform.position);
-            Vector2 start = screenPoint + (Vector2.left * 100f);
-            Vector2 end = screenPoint + (Vector2.right * 100f);
+            Vector2 start = new Vector2(
+                Mathf.Max(1f, screenPoint.x - 100f),
+                screenPoint.y);
+            Vector2 end = new Vector2(
+                Mathf.Min(Screen.width - 1f, screenPoint.x + 100f),
+                screenPoint.y);
             Assert.That(start.x, Is.GreaterThan(0f));
             Assert.That(end.x, Is.LessThan(Screen.width));
             Assert.That(screenPoint.y, Is.InRange(0f, (float)Screen.height));

@@ -105,6 +105,25 @@ namespace OneStrokeDemon.Presentation
             return true;
         }
 
+        /// <summary>尝试把活动笔迹的停留时长映射为触点蓄力环，不参与手势或命中判定。</summary>
+        public bool TryUpdateChargePreview(
+            ulong strokeId,
+            Vector2 referencePosition,
+            float normalizedProgress,
+            float radiusReferencePixels)
+        {
+            if (!TryGetActiveView(strokeId, out StrokeTrailView view) || !view.IsPreviewing)
+            {
+                return false;
+            }
+
+            view.UpdateChargePreview(
+                referencePosition,
+                normalizedProgress,
+                radiusReferencePixels);
+            return true;
+        }
+
         // 处理 CompletePreview 对应的表现逻辑，使视图与只读战斗状态保持同步。
         public StrokeTrailView CompletePreview(
             StrokeTrailPath path,
