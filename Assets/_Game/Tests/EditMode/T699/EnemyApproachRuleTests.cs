@@ -76,5 +76,19 @@ namespace OneStrokeDemon.Tests.EditMode.T699
             Assert.That(clock.GetElapsedSeconds(41d), Is.Zero);
             Assert.That(clock.HasOrigin, Is.True);
         }
+
+        [Test]
+        [Category("T699H")]
+        public void ScaledMovementClockSlowsOnlyFutureTravelWithoutPositionJumps()
+        {
+            var clock = new EnemyMovementAgeClock();
+
+            Assert.That(clock.GetScaledElapsedSeconds(10d, 1d), Is.Zero);
+            Assert.That(clock.GetScaledElapsedSeconds(11d, 1d), Is.EqualTo(1d));
+            Assert.That(clock.GetScaledElapsedSeconds(12d, 0.7d), Is.EqualTo(1.7d).Within(0.000001d));
+            Assert.That(clock.GetScaledElapsedSeconds(13d, 0.7d), Is.EqualTo(2.4d).Within(0.000001d));
+            Assert.That(clock.GetScaledElapsedSeconds(14d, 1d), Is.EqualTo(3.4d).Within(0.000001d));
+            Assert.That(clock.GetScaledElapsedSeconds(9d, 1d), Is.EqualTo(3.4d).Within(0.000001d));
+        }
     }
 }

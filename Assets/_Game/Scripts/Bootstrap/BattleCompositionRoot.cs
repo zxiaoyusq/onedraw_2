@@ -307,7 +307,7 @@ namespace OneStrokeDemon.Bootstrap
                     "Charged stroke feedback requires positive chargeHoldSec and hitRadiusRefPx values.");
             }
 
-            // 普通战斗只区分Any与Charged，方向、曲率和闭合不会改变命中或伤害语义。
+            // 普通战斗保留Any/Charged，并加入可配置效果的Triangle；其他方向和形状仍不改变命中语义。
             normalGestureClassifier = new GestureClassifier(new[]
             {
                 GestureRuleSetFactory.FromConfig(
@@ -316,6 +316,9 @@ namespace OneStrokeDemon.Bootstrap
                 GestureRuleSetFactory.FromConfig(
                     config,
                     ConfigIds.StrokeRules.StrokeCharged),
+                GestureRuleSetFactory.FromConfig(
+                    config,
+                    ConfigIds.StrokeRules.StrokeTriangle),
             });
             // 完整分类器仅服务终极绘制，继续由技能配置校验Circle。
             ultimateGestureClassifier = new GestureClassifier(
@@ -769,6 +772,32 @@ namespace OneStrokeDemon.Bootstrap
                     NotifyEnemyDefeated(entityId);
                 }
             }
+
+            ResolveMatchedGestureSkill(stroke, gesture, gameplayTimestamp);
+        }
+
+        /// <summary>按命中规则配置的技能ID触发效果，使形状识别层不直接依赖具体减速或伤害实现。</summary>
+        private void ResolveMatchedGestureSkill(
+            StrokeData stroke,
+            GestureMatchResult gesture,
+            double gameplayTimestamp)
+        {
+            StrokeRuleConfig rule = config.GetStrokeRule(gesture.RuleId);
+            if (string.IsNullOrEmpty(rule.OnMatchSkillId))
+            {
+                return;
+            }
+
+            // SkillService统一使用玩法时钟维护冷却；生产目标适配器负责转换为角色状态机时钟。
+            skills.TryActivate(
+                new SkillActivationRequest(
+                    rule.OnMatchSkillId,
+                    SkillTriggerTypes.Gesture,
+                    gesture.GestureType.ToString(),
+                    gesture.IsMatch,
+                    stroke.Duration,
+                    gameplayTimestamp),
+                new SkillEffectContext(world, gameplayTimestamp));
         }
 
         // 响应 OnStrokeStarted 对应的入口装配逻辑，并维护会话所有权和跨场景边界。

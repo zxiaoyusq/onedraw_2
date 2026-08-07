@@ -28,7 +28,7 @@ namespace OneStrokeDemon.Tests.EditMode.T330
         {
             IReadOnlyList<StrokeRuleConfig> rows = config.GetStrokeRules();
             var mutableRows = rows as IList<StrokeRuleConfig>;
-            Assert.That(rows.Count, Is.EqualTo(7));
+            Assert.That(rows.Count, Is.EqualTo(8));
             Assert.That(mutableRows, Is.Not.Null);
             Assert.That(mutableRows.IsReadOnly, Is.True);
             Assert.Throws<NotSupportedException>(() => mutableRows.Add(rows[0]));
@@ -46,6 +46,12 @@ namespace OneStrokeDemon.Tests.EditMode.T330
             Assert.That(circle.MinimumAreaReferencePixelsSquared, Is.EqualTo(16000f));
             Assert.That(circle.MinimumNormalizedCurvature, Is.EqualTo(0.15f));
             Assert.That(circle.ChargeHoldSeconds, Is.Zero);
+            GestureRule triangle = FindRule(rules, ConfigIds.StrokeRules.StrokeTriangle);
+            Assert.That(triangle.GestureType, Is.EqualTo(GestureType.Triangle));
+            Assert.That(triangle.CloseDistanceReferencePixels, Is.EqualTo(55f));
+            Assert.That(triangle.MinimumAreaReferencePixelsSquared, Is.EqualTo(8000f));
+            Assert.That(triangle.ShapeFitToleranceReferencePixels, Is.EqualTo(28f));
+            Assert.That(triangle.MinimumCornerAngleDegrees, Is.EqualTo(22f));
         }
 
         [TestCase(200f, 0f, GestureType.Horizontal, 0f)]
@@ -107,6 +113,58 @@ namespace OneStrokeDemon.Tests.EditMode.T330
         }
 
         [Test]
+        [Category("T699H")]
+        public void ImperfectClosedThreeSidedStrokeMatchesTriangleBeforeFallbacks()
+        {
+            StrokeGeometryData geometry = CreateGeometry(new[]
+            {
+                new Vector2(2f, 3f),
+                new Vector2(70f, 7f),
+                new Vector2(142f, 1f),
+                new Vector2(108f, 66f),
+                new Vector2(72f, 132f),
+                new Vector2(35f, 68f),
+                new Vector2(5f, 6f),
+            });
+
+            GestureMatchResult result = classifier.Classify(geometry);
+
+            Assert.That(result.IsMatch, Is.True);
+            Assert.That(result.RuleId, Is.EqualTo(ConfigIds.StrokeRules.StrokeTriangle));
+            Assert.That(result.GestureType, Is.EqualTo(GestureType.Triangle));
+            Assert.That(result.AreaReferencePixelsSquared, Is.GreaterThan(8000f));
+            Assert.That(result.ClosureDistanceReferencePixels, Is.LessThan(55f));
+            Assert.That(result.Confidence, Is.InRange(0.5f, 1f));
+        }
+
+        [Test]
+        [Category("T699H")]
+        public void CircleSquareAndOpenThreeSidesDoNotMatchTriangle()
+        {
+            GestureMatchResult circle = classifier.Classify(CreateGeometry(
+                CreateArc(100f, 0f, 360f, 32, close: true)));
+            GestureMatchResult square = classifier.Classify(CreateGeometry(new[]
+            {
+                Vector2.zero,
+                new Vector2(120f, 0f),
+                new Vector2(120f, 120f),
+                new Vector2(0f, 120f),
+                Vector2.zero,
+            }));
+            GestureMatchResult open = classifier.Classify(CreateGeometry(new[]
+            {
+                Vector2.zero,
+                new Vector2(140f, 0f),
+                new Vector2(70f, 130f),
+                new Vector2(0f, 70f),
+            }));
+
+            Assert.That(circle.GestureType, Is.EqualTo(GestureType.Circle));
+            Assert.That(square.GestureType, Is.Not.EqualTo(GestureType.Triangle));
+            Assert.That(open.GestureType, Is.Not.EqualTo(GestureType.Triangle));
+        }
+
+        [Test]
         public void ChargeUsesInitialHoldInsteadOfWholeSlowDrawingDuration()
         {
             var heldSampler = new StrokeSampler(new StrokeSamplingSettings(8f, 1000f, 16));
@@ -136,7 +194,7 @@ namespace OneStrokeDemon.Tests.EditMode.T330
 
         [Test]
         [Category("T699G")]
-        public void NormalCombatCollapsesDirectionAndShapeButKeepsCharged()
+        public void NormalCombatCollapsesOrdinaryShapesButKeepsChargedAndTriangle()
         {
             var normalCombat = new GestureClassifier(new[]
             {
@@ -146,6 +204,9 @@ namespace OneStrokeDemon.Tests.EditMode.T330
                 GestureRuleSetFactory.FromConfig(
                     config,
                     ConfigIds.StrokeRules.StrokeCharged),
+                GestureRuleSetFactory.FromConfig(
+                    config,
+                    ConfigIds.StrokeRules.StrokeTriangle),
             });
             StrokeGeometryData[] ordinaryShapes =
             {
@@ -178,9 +239,18 @@ namespace OneStrokeDemon.Tests.EditMode.T330
                 heldSampler.End(new Vector2(120f, 0f), 0.55d));
 
             GestureMatchResult charged = normalCombat.Classify(held);
+            GestureMatchResult triangle = normalCombat.Classify(CreateGeometry(new[]
+            {
+                Vector2.zero,
+                new Vector2(140f, 0f),
+                new Vector2(70f, 130f),
+                new Vector2(3f, 4f),
+            }));
             GestureMatchResult ultimateCircle = classifier.Classify(ordinaryShapes[3]);
             Assert.That(charged.GestureType, Is.EqualTo(GestureType.Charged));
             Assert.That(charged.RuleId, Is.EqualTo(ConfigIds.StrokeRules.StrokeCharged));
+            Assert.That(triangle.GestureType, Is.EqualTo(GestureType.Triangle));
+            Assert.That(triangle.RuleId, Is.EqualTo(ConfigIds.StrokeRules.StrokeTriangle));
             Assert.That(ultimateCircle.GestureType, Is.EqualTo(GestureType.Circle));
         }
 
@@ -263,7 +333,9 @@ namespace OneStrokeDemon.Tests.EditMode.T330
                 0f,
                 0f,
                 0f,
-                0d);
+                0d,
+                0f,
+                0f);
             Assert.Throws<ArgumentException>(() =>
                 new GestureClassifier(new[] { duplicate, duplicate }));
         }

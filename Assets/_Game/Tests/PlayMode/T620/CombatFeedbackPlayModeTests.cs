@@ -49,7 +49,7 @@ namespace OneStrokeDemon.Tests.PlayMode.T620
         [UnityTest]
         public IEnumerator FiveFeedbackEventsRemainPerceptuallyDistinctAndPoolCleanly()
         {
-            LogAssert.Expect(LogType.Log, new Regex("CONFIG_RUNTIME_READY.*schema=6.*records=765"));
+            LogAssert.Expect(LogType.Log, new Regex("CONFIG_RUNTIME_READY.*schema=7.*records=772"));
             LogAssert.Expect(LogType.Log, new Regex("ASSET_REGISTRY_READY.*entries=78"));
             yield return SceneManager.LoadSceneAsync(SceneNames.Bootstrap, LoadSceneMode.Single);
             yield return WaitForScene(SceneNames.MainMenu);

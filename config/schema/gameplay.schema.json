@@ -42,7 +42,7 @@
   "properties": {
     "schemaVersion": {
       "type": "integer",
-      "const": 6
+      "const": 7
     },
     "contentVersion": {
       "type": "string",
@@ -400,7 +400,10 @@
         "minAreaRefPx2",
         "minArcCurvature",
         "chargeHoldSec",
-        "hitRadiusRefPx"
+        "hitRadiusRefPx",
+        "shapeFitToleranceRefPx",
+        "minCornerAngleDeg",
+        "onMatchSkillId"
       ],
       "properties": {
         "ruleId": {
@@ -415,7 +418,8 @@
             "Diagonal",
             "Arc",
             "Circle",
-            "Charged"
+            "Charged",
+            "Triangle"
           ]
         },
         "minPointDistanceRefPx": {
@@ -456,6 +460,18 @@
         "hitRadiusRefPx": {
           "type": "integer",
           "minimum": 0
+        },
+        "shapeFitToleranceRefPx": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "minCornerAngleDeg": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 90
+        },
+        "onMatchSkillId": {
+          "type": "string"
         }
       }
     },
@@ -545,7 +561,8 @@
             "Diagonal",
             "Arc",
             "Circle",
-            "Charged"
+            "Charged",
+            "Triangle"
           ]
         },
         "requiredStanceId": {
@@ -816,7 +833,8 @@
             "Diagonal",
             "Arc",
             "Circle",
-            "Charged"
+            "Charged",
+            "Triangle"
           ]
         },
         "interruptStartSec": {
@@ -1001,7 +1019,8 @@
             "Diagonal",
             "Arc",
             "Circle",
-            "Charged"
+            "Charged",
+            "Triangle"
           ]
         },
         "inputWindowSec": {
@@ -1518,7 +1537,8 @@
             "Diagonal",
             "Arc",
             "Circle",
-            "Charged"
+            "Charged",
+            "Triangle"
           ]
         }
       }

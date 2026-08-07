@@ -9,6 +9,7 @@ namespace OneStrokeDemon.Skills
     public sealed class EnemySkillEffectTarget : ISkillEffectTarget
     {
         private readonly EnemyController enemy;
+        private readonly Func<double> timestampProvider;
         private readonly string targetId;
         private bool isInEffectRadius;
         private bool wasHitByLastStroke;
@@ -16,9 +17,20 @@ namespace OneStrokeDemon.Skills
 
         // 初始化 EnemySkillEffectTarget，并建立技能运行时所需的初始状态。
         public EnemySkillEffectTarget(EnemyController enemyController)
+            : this(enemyController, null)
+        {
+        }
+
+        /// <summary>
+        /// 为生产场景提供角色状态机时钟；领域测试不传时仍直接使用技能时间戳。
+        /// </summary>
+        public EnemySkillEffectTarget(
+            EnemyController enemyController,
+            Func<double> configuredTimestampProvider)
         {
             enemy = enemyController ??
                 throw new ArgumentNullException(nameof(enemyController));
+            timestampProvider = configuredTimestampProvider;
             // 检查技能条件或运行时边界，阻止无效状态继续执行。
             if (!enemy.IsSpawned)
             {
@@ -76,13 +88,19 @@ namespace OneStrokeDemon.Skills
         // 应用 ApplyDamage 对应的技能逻辑，并保持条件、目标与效果结果一致。
         public bool ApplyDamage(float amount, string sourceId, double timestamp)
         {
-            return enemy.ApplyDamage(ToAmount(amount), sourceId, timestamp).Changed;
+            return enemy.ApplyDamage(
+                ToAmount(amount),
+                sourceId,
+                ResolveTimestamp(timestamp)).Changed;
         }
 
         // 应用 ApplyHealing 对应的技能逻辑，并保持条件、目标与效果结果一致。
         public bool ApplyHealing(float amount, string sourceId, double timestamp)
         {
-            return enemy.Heal(ToAmount(amount), sourceId, timestamp).Changed;
+            return enemy.Heal(
+                ToAmount(amount),
+                sourceId,
+                ResolveTimestamp(timestamp)).Changed;
         }
 
         // 应用 ApplyBuff 对应的技能逻辑，并保持条件、目标与效果结果一致。
@@ -92,13 +110,20 @@ namespace OneStrokeDemon.Skills
             string sourceId,
             double timestamp)
         {
-            return enemy.ApplyBuff(buff, durationSeconds, sourceId, timestamp).Changed;
+            return enemy.ApplyBuff(
+                buff,
+                durationSeconds,
+                sourceId,
+                ResolveTimestamp(timestamp)).Changed;
         }
 
         // 移除 RemoveArmor 对应的技能逻辑，并保持条件、目标与效果结果一致。
         public bool RemoveArmor(float amount, string sourceId, double timestamp)
         {
-            return enemy.RemoveArmor(ToAmount(amount), sourceId, timestamp).Changed;
+            return enemy.RemoveArmor(
+                ToAmount(amount),
+                sourceId,
+                ResolveTimestamp(timestamp)).Changed;
         }
 
         // 应用 ApplyKnockback 对应的技能逻辑，并保持条件、目标与效果结果一致。
@@ -112,7 +137,7 @@ namespace OneStrokeDemon.Skills
                 distanceRefPixels,
                 durationSeconds,
                 sourceId,
-                timestamp);
+                ResolveTimestamp(timestamp));
         }
 
         // 执行 ExecuteBelowHpRatio 对应的技能逻辑，并保持条件、目标与效果结果一致。
@@ -121,7 +146,10 @@ namespace OneStrokeDemon.Skills
             string sourceId,
             double timestamp)
         {
-            return enemy.TryExecute(threshold, sourceId, timestamp).DeathTriggered;
+            return enemy.TryExecute(
+                threshold,
+                sourceId,
+                ResolveTimestamp(timestamp)).DeathTriggered;
         }
 
         // 处理 IncrementCounter 对应的技能逻辑，并保持条件、目标与效果结果一致。
@@ -136,7 +164,27 @@ namespace OneStrokeDemon.Skills
                 amount,
                 limit,
                 sourceId,
-                timestamp);
+                ResolveTimestamp(timestamp));
+        }
+
+        /// <summary>把技能服务的玩法时间转换为敌人状态机使用的单调角色时间。</summary>
+        private double ResolveTimestamp(double requestedTimestamp)
+        {
+            if (timestampProvider == null)
+            {
+                return requestedTimestamp;
+            }
+
+            double resolvedTimestamp = timestampProvider();
+            if (double.IsNaN(resolvedTimestamp) ||
+                double.IsInfinity(resolvedTimestamp) ||
+                resolvedTimestamp < 0d)
+            {
+                throw new InvalidOperationException(
+                    "Enemy effect timestamp provider must return a finite, non-negative value.");
+            }
+
+            return Math.Max(resolvedTimestamp, enemy.State.LastTimestamp);
         }
 
         // 处理 ToAmount 对应的技能逻辑，并保持条件、目标与效果结果一致。

@@ -36,7 +36,7 @@ namespace OneStrokeDemon.Tests.PlayMode.T600
         {
             LogAssert.Expect(
                 LogType.Log,
-                new Regex("CONFIG_RUNTIME_READY.*content=0\\.6\\.11-sample.*records=765"));
+                new Regex("CONFIG_RUNTIME_READY.*content=0\\.7\\.0-sample.*records=772"));
             LogAssert.Expect(
                 LogType.Log,
                 new Regex("ASSET_REGISTRY_READY.*entries=78"));

@@ -20,10 +20,10 @@ Runtime不解析xlsx；生成目录只由工具写入。T210/T220实现独立.NE
 
 ## 当前受管快照
 
-- schema `6` / content `0.6.11-sample` / content hash `327e0b8e9e86c3db18dd23154896fa4b1024fb3d309983f281261696c46d0e4b`。
-- 权威工作簿与模板镜像均为124,703字节、SHA-256 `ebcb9746203b287453165cb0a5d811335d5821182004ce034fc21f5f0cce7138`，字节完全一致。
-- 受管JSON为260,274字节、文件SHA-256 `cdcd0d6abfb2c901072637422d4880d776c04280e54335edda75fbc2e360ac87`，包含30个数据表、765条记录；`ConfigIds.g.cs`为29组382个常量。
-- T699G把普通战斗笔势收敛为`Any/Charged`，保留石甲龟蓄力破甲与终极`Circle`，并把攻击打断统一为弱点加时间窗；FieldDictionary仍为281条，Registry仍为78键。默认只读生成/漂移门与ConfigExporter 64项测试通过，Unity全量EditMode 219项、PlayMode 61项通过。
+- schema `7` / content `0.7.0-sample` / content hash `e0b0dcecdcea50ad079c8b7880d0f7a7a0df6771d671fecf13bf57845dbe5448`。
+- 权威工作簿与模板镜像均为126,182字节、SHA-256 `8b77e6054281e7a9bd471a7900c9606e0bec3927f11ea4c7355d0c1c8465d7e2`，字节完全一致。
+- 受管JSON为264,312字节、文件SHA-256 `7ac24ca94012ea99df3e05854673684b04cc6f9d61842f568751f4ed657d4a32`，包含30个数据表、772条记录；`ConfigIds.g.cs`为29组385个常量。
+- T699H在普通战斗的`Any/Charged`基础上新增`Triangle`纯形状识别，并通过`StrokeRules.onMatchSkillId -> Skills -> SkillEffects`配置链触发全体怪物减速；FieldDictionary为284条、Enums为99条，Registry仍为78键。默认只读生成/漂移门与ConfigExporter 64项测试通过，Unity全量EditMode 223项、PlayMode 62项通过。
 
 ## 已实现命令
 
@@ -92,7 +92,7 @@ dotnet run --project Tools/ConfigExporter -- \
 6. 对排除 `contentHash` 后的规范化完整对象计算SHA-256：递归Ordinal键序、稳定数组序、UTF-8无BOM、紧凑JSON、无区域格式。
 7. 写入 `contentHash` 后以固定缩进和UTF-8无BOM序列化；生成时间只写日志。
 8. 先写目标同目录 `<output>.tmp`，落盘后重新读取并完成属性顺序、版本、记录数与hash自校验，再原子替换正式JSON；失败时保留旧输出并清理临时文件。
-9. T250从同一个`PreparedExport`生成JSON、64位hash+LF旁车，以及位于Config asmdef内的29组/当前382项`ConfigIds.g.cs`；禁止分别实现另一套排序、解析或数值真相。
+9. T250从同一个`PreparedExport`生成JSON、64位hash+LF旁车，以及位于Config asmdef内的29组/当前385项`ConfigIds.g.cs`；禁止分别实现另一套排序、解析或数值真相。
 10. 同一输入连续两次导出并比较全部生成文件，必须字节完全相同；测试还会反转源数据行，证明稳定排序不依赖Excel行号。
 
 ## T250生成物与漂移门
@@ -101,7 +101,7 @@ dotnet run --project Tools/ConfigExporter -- \
 2. `verify`只读重建预期字节并逐文件比较，不更新时间戳或修正文件；缺失、任意字节漂移、C#标识符冲突或输出路径冲突均以`CFG013`失败。
 3. `ConfigIds.g.cs`只包含稳定ID/Key和schema/content/hash元数据，不包含HP、CD、伤害或Unity对象引用；Runtime内容仍由JSON加载。
 4. 一键脚本会在临时目录再次生成并执行`cmp`；漂移时输出受管文件与预期文件的unified diff，验证通过后运行.NET 64项及Unity分类测试。
-5. Unity T250测试断言hash旁车、生成元数据、JSON Runtime hash一致，C#实际编入`OneStrokeDemon.Config.dll`，29组382常量均为稳定ID，并用代表性常量完成类型化配置/Registry查询。
+5. Unity T250测试断言hash旁车、生成元数据、JSON Runtime hash一致，C#实际编入`OneStrokeDemon.Config.dll`，29组385常量均为稳定ID，并用代表性常量完成类型化配置/Registry查询。
 
 T220坏配置清单位于 `Tools/ConfigExporter/Tests/Fixtures/invalid-config-cases.json`。测试只克隆并修改内存中的原始单元格，不生成或提交派生坏xlsx；每个用例都断言稳定错误码、Sheet、Excel数据行和字段。
 
@@ -109,7 +109,7 @@ T220坏配置清单位于 `Tools/ConfigExporter/Tests/Fixtures/invalid-config-ca
 
 1. Bootstrap只把受管JSON作为 `TextAsset` 资源引用交给 `GameplayConfigRuntime`，Runtime不读取文件系统，也不解析xlsx。
 2. `GameplayConfigService`每个实例只允许一次加载；使用显式30表DTO严格拒绝注释、未知、缺失、重复和非法null属性，并在局部候选对象上完成全部检查。
-3. 兼容合同固定为schema `6`和content `0.6.x`；根版本必须与Global对应行一致，`contentHash`必须与导出器相同的规范化SHA-256算法吻合。
+3. 兼容合同固定为schema `7`和content `0.7.x`；根版本必须与Global对应行一致，`contentHash`必须与导出器相同的规范化SHA-256算法吻合。
 4. 所有检查通过后才原子发布只读主键字典和分组列表；失败状态不发布部分索引，也不允许同一服务实例重试。
 5. 业务层只依赖 `IConfigProvider` 的显式O(1)查询，不在热路径反序列化，不遍历可变根数组，也不通过反射选择战斗行为。
 6. 启动日志固定输出来源、schema、content、hash、表数、记录数和索引数；不兼容或损坏配置留在Bootstrap并阻断进入MainMenu/Battle。

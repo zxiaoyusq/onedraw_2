@@ -22,10 +22,10 @@ config:
   generated_json: Assets/_Game/Config/Generated/gameplay_config.json
   generated_hash: Assets/_Game/Config/Generated/gameplay_config.hash
   generated_ids: Assets/_Game/Scripts/Config/Generated/ConfigIds.g.cs
-  schema_version: 6
-  content_version: 0.6.11-sample
-  content_hash: 327e0b8e9e86c3db18dd23154896fa4b1024fb3d309983f281261696c46d0e4b
-  workbook_sha256: ebcb9746203b287453165cb0a5d811335d5821182004ce034fc21f5f0cce7138
+  schema_version: 7
+  content_version: 0.7.0-sample
+  content_hash: e0b0dcecdcea50ad079c8b7880d0f7a7a0df6771d671fecf13bf57845dbe5448
+  workbook_sha256: 8b77e6054281e7a9bd471a7900c9606e0bec3927f11ea4c7355d0c1c8465d7e2
   mirror_status: byte_identical
   contract_audit: pass
   exporter:
@@ -35,9 +35,9 @@ config:
     status: pass
     test_count: 8
     exported_tables: 30
-    exported_records: 765
-    output_bytes: 260274
-    output_sha256: cdcd0d6abfb2c901072637422d4880d776c04280e54335edda75fbc2e360ac87
+    exported_records: 772
+    output_bytes: 264312
+    output_sha256: 7ac24ca94012ea99df3e05854673684b04cc6f9d61842f568751f4ed657d4a32
     runtime_snapshot_committed: true
   validator:
     path: Tools/ConfigExporter/Validation
@@ -51,14 +51,14 @@ config:
     status: pass
     json_package: com.unity.nuget.newtonsoft-json@3.2.2
     newtonsoft_version: 13.0.2
-    compatibility: schema_6_content_0_6_x
+    compatibility: schema_7_content_0_7_x
     dto_tables: 30
-    dto_fields: 281
-    loaded_records: 765
-    readonly_primary_indexes: 347
-    readonly_group_indexes: 56
-    full_editmode_tests: 219
-    full_playmode_tests: 61
+    dto_fields: 284
+    loaded_records: 772
+    readonly_primary_indexes: 348
+    readonly_group_indexes: 57
+    full_editmode_tests: 223
+    full_playmode_tests: 62
     bootstrap_smoke: pass
   asset_registry:
     status: pass
@@ -79,23 +79,23 @@ config:
     default_read_only: true
     update_flag: --update
     drift_diagnostic: CFG013
-    generated_json_bytes: 260274
-    generated_json_sha256: cdcd0d6abfb2c901072637422d4880d776c04280e54335edda75fbc2e360ac87
+    generated_json_bytes: 264312
+    generated_json_sha256: 7ac24ca94012ea99df3e05854673684b04cc6f9d61842f568751f4ed657d4a32
     generated_hash_bytes: 65
-    generated_hash_sha256: e1795ccee5b5d7ed7376ab67fcb3f1e6ca52bfe83622c5b8e8b0680e48184337
-    generated_ids_bytes: 48539
-    generated_ids_sha256: 9d11ba9a78bc47f6fc83805d576052efd9c99ba5d65394905248f63bcf9fb8cb
+    generated_hash_sha256: ef2f25138c35c0fe32d854ab3c4ce2bc1fe16043637331e2d5f264c02e0fac14
+    generated_ids_bytes: 48890
+    generated_ids_sha256: 31849e1f12a3f5413112b5ae7a7393b24c2087a6b990618480317ad606e69135
     id_sets: 29
-    id_constants: 382
+    id_constants: 385
     dotnet_tests: 64
   documentation:
     status: pass
-    task: T699G
+    task: T699H
     sheet_count: 31
     sheet_purpose_chinese_count: 31
-    visible_chinese_field_labels: 291
-    documented_business_fields: 281
-    documented_enum_values: 98
+    visible_chinese_field_labels: 294
+    documented_business_fields: 284
+    documented_enum_values: 99
     enum_reference_fields: 25
     placeholder_descriptions: 0
     minimum_description_length: none
@@ -334,20 +334,24 @@ gesture_classification:
   result: immutable_GestureMatchResult
   config_mapping: GestureRuleSetFactory
   config_source: IConfigProvider.GetStrokeRules
-  gesture_types: [Any, Horizontal, Vertical, Diagonal, Arc, Circle, Charged]
-  threshold_fields: [minLengthRefPx, directionToleranceDeg, closeDistanceRefPx, minAreaRefPx2, minArcCurvature, chargeHoldSec]
+  gesture_types: [Any, Horizontal, Vertical, Diagonal, Arc, Circle, Charged, Triangle]
+  threshold_fields: [minLengthRefPx, directionToleranceDeg, closeDistanceRefPx, minAreaRefPx2, minArcCurvature, chargeHoldSec, shapeFitToleranceRefPx, minCornerAngleDeg]
   metrics: [confidence, length, average_speed, undirected_angle, normalized_curvature, closure_ratio, closure_distance, area, initial_hold]
-  precedence: [Circle, Charged, Arc, Directional, Any]
+  precedence: [Triangle, Circle, Charged, Arc, Directional, Any]
   same_priority_tiebreak: [confidence_desc, rule_id_ordinal]
   charged_hold_source: begin_to_first_accepted_sample
   charged_hold_progress: explicit_unscaled_clock_until_first_accepted_sample
   charged_player_action: hold_to_configured_threshold_then_swipe_to_configured_minimum_length
   charged_pure_hold_release: no_match
+  triangle_matcher: farthest_pair_third_vertex_then_configured_corner_and_edge_fit
+  triangle_effect_mapping: StrokeRules.onMatchSkillId_to_Skills_to_SkillEffects
+  ordinary_battle_rules: [Any, Charged, Triangle]
+  triangle_editmode_tests: 2
   deterministic_replay: pass
   editmode_tests: 15
   playmode_tests: 1
-  full_editmode_tests: 216
-  full_playmode_tests: 61
+  full_editmode_tests: 223
+  full_playmode_tests: 62
 stroke_trail:
   status: pass
   path_bridge: StrokeTrailPath
@@ -498,11 +502,15 @@ skill_effect_pipeline:
   healing_policy: clamp_to_configured_max_and_never_resurrect
   ultimate_gesture: {type: Circle, input_window_boundary_seconds: 2.5, timer_auto_success: false}
   ultimate_chain: [TimeScale_Battle, ClearProjectiles_Battle, Damage_AllEnemies, ExecuteBelowHpRatio_NormalEnemies, ApplyBuff_Boss]
-  editmode_tests: 4
+  triangle_chain: [stroke_triangle, skill_triangle_slow, fx_triangle_slow, AllEnemies, buff_slow_30]
+  enemy_effect_clock: gameplay_timestamp_converted_by_production_target_to_actor_monotonic_time
+  editmode_tests: 5
   playmode_tests: 1
+  triangle_editmode_tests: 1
+  triangle_production_playmode_tests: 1
   player_path: {invalid_energy_after: 100, valid_energy_after: 0, cleared_projectiles: 2, damage_all_enemies: 50, execute_ratio: 0.25, boss_buff_seconds: 2}
-  full_editmode_tests: 162
-  full_playmode_tests: 41
+  full_editmode_tests: 223
+  full_playmode_tests: 62
 enemy_runtime:
   status: pass
   definition_factory: EnemyDefinitionFactory
@@ -538,6 +546,7 @@ enemy_strategy:
   movement_types: [Linear, Sine, Dive, Hover, Boss]
   movement_clock: caller_owned_cumulative_seconds
   movement_effect_policy: [Root_stops_clock, Slow_scales_delta]
+  slow_transition_policy: accumulate_scaled_future_delta_without_position_jump
   navigation_dependency: none
   attack_registry: AttackStrategyRegistry
   attack_types: [Melee, Projectile, Charge, Support]
@@ -800,10 +809,13 @@ production_playable_entry:
   progress_store: PlayerPrefsProgressSaveStore_via_IProgressSaveStore
   composed_runtime: [PlayerCombatController, EnemyArchetypePool, BattleFlowCoordinator, TutorialLevelCoordinator, BossLevelCoordinator, PointerInputRuntime, BattleHudRuntime, TutorialOverlayRuntime, CombatFeedbackRuntime, ResultService, BattleResultNavigation]
   production_paths: [tutorial, normal, boss, defeat, restart, main_menu]
+  ordinary_gesture_rules: [Any, Charged, Triangle]
+  triangle_slow_path: StrokeRules_onMatchSkillId_to_AllEnemies_configured_buff
   editmode_focused: 2
   playmode_focused: 5
-  full_editmode_tests: 216
-  full_playmode_tests: 61
+  triangle_playmode_tests: 1
+  full_editmode_tests: 223
+  full_playmode_tests: 62
   graphics_path: production_buttons_then_real_InputSystem_mouse_live_preview_then_processed_residual_trail
   audio_resolution: AudioCues.audioKey_to_assetKey_to_AssetRegistry
   screenshot: artifacts/evals/T660/production-entry-1920x1080.png

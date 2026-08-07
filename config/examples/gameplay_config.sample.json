@@ -1,7 +1,7 @@
 {
-  "schemaVersion": 6,
-  "contentVersion": "0.6.11-sample",
-  "contentHash": "327e0b8e9e86c3db18dd23154896fa4b1024fb3d309983f281261696c46d0e4b",
+  "schemaVersion": 7,
+  "contentVersion": "0.7.0-sample",
+  "contentHash": "e0b0dcecdcea50ad079c8b7880d0f7a7a0df6771d671fecf13bf57845dbe5448",
   "global": [
     {
       "key": "battle_countdown_sec",
@@ -26,7 +26,7 @@
     {
       "key": "config_schema_version",
       "valueType": "int",
-      "intValue": 6,
+      "intValue": 7,
       "floatValue": null,
       "stringValue": "",
       "boolValue": null,
@@ -38,7 +38,7 @@
       "valueType": "string",
       "intValue": null,
       "floatValue": null,
-      "stringValue": "0.6.11-sample",
+      "stringValue": "0.7.0-sample",
       "boolValue": null,
       "unit": "semver",
       "description": "内容版本"
@@ -258,7 +258,10 @@
       "minAreaRefPx2": 0,
       "minArcCurvature": 0,
       "chargeHoldSec": 0,
-      "hitRadiusRefPx": 18
+      "hitRadiusRefPx": 18,
+      "shapeFitToleranceRefPx": 0,
+      "minCornerAngleDeg": 0,
+      "onMatchSkillId": ""
     },
     {
       "ruleId": "stroke_arc",
@@ -273,7 +276,10 @@
       "minAreaRefPx2": 0,
       "minArcCurvature": 0.22,
       "chargeHoldSec": 0,
-      "hitRadiusRefPx": 24
+      "hitRadiusRefPx": 24,
+      "shapeFitToleranceRefPx": 0,
+      "minCornerAngleDeg": 0,
+      "onMatchSkillId": ""
     },
     {
       "ruleId": "stroke_charged",
@@ -288,7 +294,10 @@
       "minAreaRefPx2": 0,
       "minArcCurvature": 0,
       "chargeHoldSec": 0.4,
-      "hitRadiusRefPx": 26
+      "hitRadiusRefPx": 26,
+      "shapeFitToleranceRefPx": 0,
+      "minCornerAngleDeg": 0,
+      "onMatchSkillId": ""
     },
     {
       "ruleId": "stroke_circle",
@@ -303,7 +312,10 @@
       "minAreaRefPx2": 16000,
       "minArcCurvature": 0.15,
       "chargeHoldSec": 0,
-      "hitRadiusRefPx": 28
+      "hitRadiusRefPx": 28,
+      "shapeFitToleranceRefPx": 0,
+      "minCornerAngleDeg": 0,
+      "onMatchSkillId": ""
     },
     {
       "ruleId": "stroke_diagonal",
@@ -318,7 +330,10 @@
       "minAreaRefPx2": 0,
       "minArcCurvature": 0,
       "chargeHoldSec": 0,
-      "hitRadiusRefPx": 18
+      "hitRadiusRefPx": 18,
+      "shapeFitToleranceRefPx": 0,
+      "minCornerAngleDeg": 0,
+      "onMatchSkillId": ""
     },
     {
       "ruleId": "stroke_horizontal",
@@ -333,7 +348,28 @@
       "minAreaRefPx2": 0,
       "minArcCurvature": 0,
       "chargeHoldSec": 0,
-      "hitRadiusRefPx": 20
+      "hitRadiusRefPx": 20,
+      "shapeFitToleranceRefPx": 0,
+      "minCornerAngleDeg": 0,
+      "onMatchSkillId": ""
+    },
+    {
+      "ruleId": "stroke_triangle",
+      "gestureType": "Triangle",
+      "minPointDistanceRefPx": 8,
+      "maxStrokeLengthRefPx": 1600,
+      "rdpEpsilonRefPx": 5,
+      "maxPointCount": 80,
+      "minLengthRefPx": 240,
+      "directionToleranceDeg": 45,
+      "closeDistanceRefPx": 55,
+      "minAreaRefPx2": 8000,
+      "minArcCurvature": 0,
+      "chargeHoldSec": 0,
+      "hitRadiusRefPx": 18,
+      "shapeFitToleranceRefPx": 28,
+      "minCornerAngleDeg": 22,
+      "onMatchSkillId": "skill_triangle_slow"
     },
     {
       "ruleId": "stroke_vertical",
@@ -348,7 +384,10 @@
       "minAreaRefPx2": 0,
       "minArcCurvature": 0,
       "chargeHoldSec": 0,
-      "hitRadiusRefPx": 20
+      "hitRadiusRefPx": 20,
+      "shapeFitToleranceRefPx": 0,
+      "minCornerAngleDeg": 0,
+      "onMatchSkillId": ""
     }
   ],
   "damageFormulas": [
@@ -1023,6 +1062,19 @@
       "textKey": "text_skill_talisman_bind_desc"
     },
     {
+      "skillId": "skill_triangle_slow",
+      "displayNameKey": "text_buff_slow",
+      "triggerType": "Gesture",
+      "requiredStanceId": "",
+      "energyCost": 0,
+      "cooldownSec": 0,
+      "gestureType": "Triangle",
+      "inputWindowSec": 3,
+      "effectGroupId": "fx_triangle_slow",
+      "iconAssetKey": "icon_skill_talisman_bind",
+      "textKey": "text_buff_slow"
+    },
+    {
       "skillId": "skill_ultimate_seal",
       "displayNameKey": "text_skill_ultimate_seal",
       "triggerType": "Ultimate",
@@ -1282,6 +1334,19 @@
       "buffId": "",
       "vfxKey": "vfx_talisman_burst",
       "audioKey": "sfx_talisman_hit",
+      "condition": ""
+    },
+    {
+      "effectGroupId": "fx_triangle_slow",
+      "order": 1,
+      "effectType": "ApplyBuff",
+      "targetType": "AllEnemies",
+      "value1": 0,
+      "value2": 0,
+      "durationSec": 0,
+      "buffId": "buff_slow_30",
+      "vfxKey": "vfx_slow",
+      "audioKey": "",
       "condition": ""
     },
     {
@@ -3990,6 +4055,12 @@
     },
     {
       "enumType": "GestureType",
+      "value": "Triangle",
+      "displayName": "Triangle",
+      "description": "要求笔迹首尾近似闭合，并能由三个角点及三条直边拟合为三角形；闭合、面积、边偏差和角度阈值均读取StrokeRules。"
+    },
+    {
+      "enumType": "GestureType",
       "value": "Vertical",
       "displayName": "Vertical",
       "description": "要求笔迹主方向接近竖直线；允许偏差由所用StrokeRules.directionToleranceDeg控制。"
@@ -4624,7 +4695,7 @@
       "max": null,
       "enumType": "GestureType",
       "foreignKey": "",
-      "description": "笔势类型：决定该笔势规则最终识别的输入类别；分类还会继续受到长度、方向、闭合、面积、曲率或蓄力阈值约束。 允许值及作用：Any=不限制具体笔势类别；Horizontal=要求笔迹主方向接近水平线；Vertical=要求笔迹主方向接近竖直线；Diagonal=要求笔迹主方向为斜线；Arc=要求笔迹形成达到minArcCurvature阈值的弧线，不要求首尾闭合；Circle=要求笔迹首尾距离和包围面积同时达到圆形规则，用于闭合环形输入；Charged=要求持续按住达到chargeHoldSec后释放的蓄力输入，不以普通直线方向分类。 配置约束：不得留空。"
+      "description": "笔势类型：决定该笔势规则最终识别的输入类别；分类还会继续受到长度、方向、闭合、面积、曲率或蓄力阈值约束。 允许值及作用：Any=不限制具体笔势类别；Horizontal=要求笔迹主方向接近水平线；Vertical=要求笔迹主方向接近竖直线；Diagonal=要求笔迹主方向为斜线；Arc=要求笔迹形成达到minArcCurvature阈值的弧线，不要求首尾闭合；Circle=要求笔迹首尾距离和包围面积同时达到圆形规则，用于闭合环形输入；Charged=要求持续按住达到chargeHoldSec后释放的蓄力输入，不以普通直线方向分类；Triangle=要求首尾近似闭合且三条边、三个角点满足配置拟合阈值。 配置约束：不得留空。"
     },
     {
       "sheet": "StrokeRules",
@@ -4720,7 +4791,7 @@
       "max": null,
       "enumType": "",
       "foreignKey": "",
-      "description": "最小包围面积：闭合笔势必须覆盖的最小参考像素平方面积，用于过滤过小圆形。 参考像素以Global.reference_width/reference_height为设计空间，再映射到实际画面。 配置约束：不得留空。"
+      "description": "最小包围面积：闭合形状必须覆盖的最小参考像素平方面积，用于过滤过小的圆形或三角形；不适用时填0。 参考像素以Global.reference_width/reference_height为设计空间，再映射到实际画面。 配置约束：不得留空。"
     },
     {
       "sheet": "StrokeRules",
@@ -4757,6 +4828,42 @@
       "enumType": "",
       "foreignKey": "",
       "description": "命中半径：围绕笔迹或投射物中心参与碰撞查询的半径，单位为参考像素。 参考像素以Global.reference_width/reference_height为设计空间，再映射到实际画面。 配置约束：不得留空；不得小于0。"
+    },
+    {
+      "sheet": "StrokeRules",
+      "field": "shapeFitToleranceRefPx",
+      "type": "int",
+      "required": "true",
+      "default": "",
+      "min": 0,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "",
+      "description": "形状拟合容差：多边形形状识别时，处理后任一点到候选边的最大允许距离，单位为参考像素；Triangle用它容纳手绘抖动，0表示该规则不使用多边形拟合。 配置约束：不得留空；不得小于0。"
+    },
+    {
+      "sheet": "StrokeRules",
+      "field": "minCornerAngleDeg",
+      "type": "int",
+      "required": "true",
+      "default": "",
+      "min": 0,
+      "max": 90,
+      "enumType": "",
+      "foreignKey": "",
+      "description": "最小角点角度：多边形形状识别时每个候选内角允许的最小角度，单位为度；Triangle中任一角小于该值时拒绝识别，0表示不使用角点门槛。 配置约束：不得留空；有效范围0到90。"
+    },
+    {
+      "sheet": "StrokeRules",
+      "field": "onMatchSkillId",
+      "type": "string",
+      "required": "false",
+      "default": "",
+      "min": null,
+      "max": null,
+      "enumType": "",
+      "foreignKey": "Skills.skillId",
+      "description": "命中后技能ID：该笔势成功分类后自动尝试释放的Skills.skillId；留空表示只执行普通笔画命中，不追加技能效果。"
     },
     {
       "sheet": "DamageFormulas",
@@ -4924,7 +5031,7 @@
       "max": null,
       "enumType": "GestureType",
       "foreignKey": "",
-      "description": "要求笔势：决定攻击护甲或触发有效破防所需的笔势；不匹配时改走wrongGestureDamageMultiplier和reflectDamage规则。 允许值及作用：Any=不限制具体笔势类别；Horizontal=要求笔迹主方向接近水平线；Vertical=要求笔迹主方向接近竖直线；Diagonal=要求笔迹主方向为斜线；Arc=要求笔迹形成达到minArcCurvature阈值的弧线，不要求首尾闭合；Circle=要求笔迹首尾距离和包围面积同时达到圆形规则，用于闭合环形输入；Charged=要求持续按住达到chargeHoldSec后释放的蓄力输入，不以普通直线方向分类。 配置约束：不得留空。"
+      "description": "要求笔势：决定攻击护甲或触发有效破防所需的笔势；不匹配时改走wrongGestureDamageMultiplier和reflectDamage规则。 允许值及作用：Any=不限制具体笔势类别；Horizontal=要求笔迹主方向接近水平线；Vertical=要求笔迹主方向接近竖直线；Diagonal=要求笔迹主方向为斜线；Arc=要求笔迹形成达到minArcCurvature阈值的弧线，不要求首尾闭合；Circle=要求笔迹首尾距离和包围面积同时达到圆形规则，用于闭合环形输入；Charged=要求持续按住达到chargeHoldSec后释放的蓄力输入，不以普通直线方向分类；Triangle=要求首尾近似闭合且三条边、三个角点满足配置拟合阈值。 配置约束：不得留空。"
     },
     {
       "sheet": "DefenseRules",
@@ -5512,7 +5619,7 @@
       "max": null,
       "enumType": "GestureType",
       "foreignKey": "",
-      "description": "打断笔势：决定敌人攻击前摇期间允许哪类笔势打断；还必须命中interruptStartSec到interruptEndSec窗口。 允许值及作用：Any=不限制具体笔势类别；Horizontal=要求笔迹主方向接近水平线；Vertical=要求笔迹主方向接近竖直线；Diagonal=要求笔迹主方向为斜线；Arc=要求笔迹形成达到minArcCurvature阈值的弧线，不要求首尾闭合；Circle=要求笔迹首尾距离和包围面积同时达到圆形规则，用于闭合环形输入；Charged=要求持续按住达到chargeHoldSec后释放的蓄力输入，不以普通直线方向分类。 配置约束：不得留空。"
+      "description": "打断笔势：决定敌人攻击前摇期间允许哪类笔势打断；还必须命中interruptStartSec到interruptEndSec窗口。 允许值及作用：Any=不限制具体笔势类别；Horizontal=要求笔迹主方向接近水平线；Vertical=要求笔迹主方向接近竖直线；Diagonal=要求笔迹主方向为斜线；Arc=要求笔迹形成达到minArcCurvature阈值的弧线，不要求首尾闭合；Circle=要求笔迹首尾距离和包围面积同时达到圆形规则，用于闭合环形输入；Charged=要求持续按住达到chargeHoldSec后释放的蓄力输入，不以普通直线方向分类；Triangle=要求首尾近似闭合且三条边、三个角点满足配置拟合阈值。 配置约束：不得留空。"
     },
     {
       "sheet": "EnemyAttacks",
@@ -5884,7 +5991,7 @@
       "max": null,
       "enumType": "GestureType",
       "foreignKey": "",
-      "description": "笔势类型：决定Gesture或Ultimate技能接受的笔势；Passive不依赖该笔势，但字段仍需填写有效协议值。 允许值及作用：Any=不限制具体笔势类别；Horizontal=要求笔迹主方向接近水平线；Vertical=要求笔迹主方向接近竖直线；Diagonal=要求笔迹主方向为斜线；Arc=要求笔迹形成达到minArcCurvature阈值的弧线，不要求首尾闭合；Circle=要求笔迹首尾距离和包围面积同时达到圆形规则，用于闭合环形输入；Charged=要求持续按住达到chargeHoldSec后释放的蓄力输入，不以普通直线方向分类。 配置约束：不得留空。"
+      "description": "笔势类型：决定Gesture或Ultimate技能接受的笔势；Passive不依赖该笔势，但字段仍需填写有效协议值。 允许值及作用：Any=不限制具体笔势类别；Horizontal=要求笔迹主方向接近水平线；Vertical=要求笔迹主方向接近竖直线；Diagonal=要求笔迹主方向为斜线；Arc=要求笔迹形成达到minArcCurvature阈值的弧线，不要求首尾闭合；Circle=要求笔迹首尾距离和包围面积同时达到圆形规则，用于闭合环形输入；Charged=要求持续按住达到chargeHoldSec后释放的蓄力输入，不以普通直线方向分类；Triangle=要求首尾近似闭合且三条边、三个角点满足配置拟合阈值。 配置约束：不得留空。"
     },
     {
       "sheet": "Skills",
@@ -6952,7 +7059,7 @@
       "max": null,
       "enumType": "GestureType",
       "foreignKey": "",
-      "description": "笔势类型：决定该教程步骤期望玩家完成的笔势；实际完成还要由completeEvent到达，不能只靠显示提示。 允许值及作用：Any=不限制具体笔势类别；Horizontal=要求笔迹主方向接近水平线；Vertical=要求笔迹主方向接近竖直线；Diagonal=要求笔迹主方向为斜线；Arc=要求笔迹形成达到minArcCurvature阈值的弧线，不要求首尾闭合；Circle=要求笔迹首尾距离和包围面积同时达到圆形规则，用于闭合环形输入；Charged=要求持续按住达到chargeHoldSec后释放的蓄力输入，不以普通直线方向分类。 配置约束：不得留空。"
+      "description": "笔势类型：决定该教程步骤期望玩家完成的笔势；实际完成还要由completeEvent到达，不能只靠显示提示。 允许值及作用：Any=不限制具体笔势类别；Horizontal=要求笔迹主方向接近水平线；Vertical=要求笔迹主方向接近竖直线；Diagonal=要求笔迹主方向为斜线；Arc=要求笔迹形成达到minArcCurvature阈值的弧线，不要求首尾闭合；Circle=要求笔迹首尾距离和包围面积同时达到圆形规则，用于闭合环形输入；Charged=要求持续按住达到chargeHoldSec后释放的蓄力输入，不以普通直线方向分类；Triangle=要求首尾近似闭合且三条边、三个角点满足配置拟合阈值。 配置约束：不得留空。"
     },
     {
       "sheet": "Texts",

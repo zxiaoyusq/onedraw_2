@@ -10,13 +10,13 @@ namespace OneStrokeDemon.Config
     public static class GameplayConfigCompatibility
     {
         /// <summary>客户端支持的唯一结构版本。</summary>
-        public const long SupportedSchemaVersion = 6;
+        public const long SupportedSchemaVersion = 7;
 
         /// <summary>客户端支持的内容主版本。</summary>
         public const int SupportedContentMajor = 0;
 
         /// <summary>客户端支持的内容次版本。</summary>
-        public const int SupportedContentMinor = 6;
+        public const int SupportedContentMinor = 7;
 
         private static readonly Regex ContentVersionPattern = new Regex(
             "^(?<major>[0-9]+)\\.(?<minor>[0-9]+)\\.(?<patch>[0-9]+)(?:-[a-z0-9][a-z0-9.-]*)?$",
@@ -48,7 +48,7 @@ namespace OneStrokeDemon.Config
                     "contentVersion");
             }
 
-            // 同一 0.6.x 内容线可在不升级客户端代码的前提下加载。
+            // 同一 0.7.x 内容线可在不升级客户端代码的前提下加载。
             if (major != SupportedContentMajor || minor != SupportedContentMinor)
             {
                 throw new GameplayConfigException(

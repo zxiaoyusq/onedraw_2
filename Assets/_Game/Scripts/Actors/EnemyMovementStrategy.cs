@@ -9,6 +9,9 @@ namespace OneStrokeDemon.Actors
     {
         private double originSeconds;
         private bool hasOrigin;
+        private double scaledElapsedSeconds;
+        private double lastScaledLevelSeconds;
+        private bool hasScaledOrigin;
 
         public bool HasOrigin => hasOrigin;
 
@@ -32,6 +35,51 @@ namespace OneStrokeDemon.Actors
             }
 
             return Math.Max(0d, levelElapsedSeconds - originSeconds);
+        }
+
+        /// <summary>
+        /// 按每次推进时的移动倍率累计出生后时间，使减速开始和结束时位置连续，不因把当前倍率乘到
+        /// 全部历史时间而发生倒退或瞬移。倒退的关卡时间不会撤销已经累计的移动。
+        /// </summary>
+        public double GetScaledElapsedSeconds(
+            double levelElapsedSeconds,
+            double movementMultiplier)
+        {
+            if (double.IsNaN(levelElapsedSeconds) ||
+                double.IsInfinity(levelElapsedSeconds) ||
+                levelElapsedSeconds < 0d)
+            {
+                throw new ArgumentOutOfRangeException(
+                    nameof(levelElapsedSeconds),
+                    levelElapsedSeconds,
+                    "Level elapsed time must be finite and non-negative.");
+            }
+
+            if (double.IsNaN(movementMultiplier) ||
+                double.IsInfinity(movementMultiplier) ||
+                movementMultiplier < 0d)
+            {
+                throw new ArgumentOutOfRangeException(
+                    nameof(movementMultiplier),
+                    movementMultiplier,
+                    "Movement multiplier must be finite and non-negative.");
+            }
+
+            if (!hasScaledOrigin)
+            {
+                lastScaledLevelSeconds = levelElapsedSeconds;
+                hasScaledOrigin = true;
+                return 0d;
+            }
+
+            if (levelElapsedSeconds > lastScaledLevelSeconds)
+            {
+                scaledElapsedSeconds +=
+                    (levelElapsedSeconds - lastScaledLevelSeconds) * movementMultiplier;
+                lastScaledLevelSeconds = levelElapsedSeconds;
+            }
+
+            return scaledElapsedSeconds;
         }
     }
 

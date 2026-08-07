@@ -70,7 +70,7 @@ namespace OneStrokeDemon.Input
             for (int index = 0; index < rules.Length; index++)
             {
                 GestureRule rule = rules[index];
-                if (!TryMatch(rule, metrics, out float confidence))
+                if (!TryMatch(rule, geometry, metrics, out float confidence))
                 {
                     continue;
                 }
@@ -133,6 +133,7 @@ namespace OneStrokeDemon.Input
         /// <summary>检查单条规则的全部阈值，并返回最弱一项决定的置信度。</summary>
         private static bool TryMatch(
             GestureRule rule,
+            StrokeGeometryData geometry,
             GestureMetrics metrics,
             out float confidence)
         {
@@ -183,6 +184,21 @@ namespace OneStrokeDemon.Input
                                metrics.NormalizedCurvature,
                                rule.MinimumNormalizedCurvature,
                                ref confidence);
+                case GestureType.Triangle:
+                    if (!TriangleGestureMatcher.TryMatch(
+                            geometry.Points,
+                            rule.CloseDistanceReferencePixels,
+                            rule.MinimumAreaReferencePixelsSquared,
+                            rule.ShapeFitToleranceReferencePixels,
+                            rule.MinimumCornerAngleDegrees,
+                            out float shapeConfidence))
+                    {
+                        confidence = 0f;
+                        return false;
+                    }
+
+                    confidence = Math.Min(confidence, shapeConfidence);
+                    return true;
                 case GestureType.Charged:
                     return MatchLowerBound(
                         metrics.InitialHoldSeconds,
@@ -292,6 +308,8 @@ namespace OneStrokeDemon.Input
         {
             switch (gestureType)
             {
+                case GestureType.Triangle:
+                    return 6;
                 case GestureType.Circle:
                     return 5;
                 case GestureType.Charged:

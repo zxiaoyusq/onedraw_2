@@ -8,15 +8,15 @@ namespace OneStrokeDemon.Config
     public static class ConfigIds
     {
         // 当前配置契约的schema版本。
-        public const int SchemaVersion = 6;
+        public const int SchemaVersion = 7;
         // 当前配置内容版本。
-        public const string ContentVersion = "0.6.11-sample";
+        public const string ContentVersion = "0.7.0-sample";
         // 规范化配置内容的SHA-256哈希。
-        public const string ContentHash = "327e0b8e9e86c3db18dd23154896fa4b1024fb3d309983f281261696c46d0e4b";
+        public const string ContentHash = "e0b0dcecdcea50ad079c8b7880d0f7a7a0df6771d671fecf13bf57845dbe5448";
         // 本文件包含的稳定ID分组数量。
         public const int IdSetCount = 29;
         // 本文件包含的稳定ID常量总数。
-        public const int IdConstantCount = 382;
+        public const int IdConstantCount = 385;
 
         // 汇总来自Global.key的稳定配置ID。
         public static class GlobalKeys
@@ -94,6 +94,8 @@ namespace OneStrokeDemon.Config
             public const string StrokeDiagonal = "stroke_diagonal";
             // 配置ID：stroke_horizontal。
             public const string StrokeHorizontal = "stroke_horizontal";
+            // 配置ID：stroke_triangle。
+            public const string StrokeTriangle = "stroke_triangle";
             // 配置ID：stroke_vertical。
             public const string StrokeVertical = "stroke_vertical";
         }
@@ -262,6 +264,8 @@ namespace OneStrokeDemon.Config
             public const string SkillBladeEcho = "skill_blade_echo";
             // 配置ID：skill_talisman_bind。
             public const string SkillTalismanBind = "skill_talisman_bind";
+            // 配置ID：skill_triangle_slow。
+            public const string SkillTriangleSlow = "skill_triangle_slow";
             // 配置ID：skill_ultimate_seal。
             public const string SkillUltimateSeal = "skill_ultimate_seal";
         }
@@ -305,6 +309,8 @@ namespace OneStrokeDemon.Config
             public const string FxSwitchToTalisman = "fx_switch_to_talisman";
             // 配置ID：fx_talisman_bind。
             public const string FxTalismanBind = "fx_talisman_bind";
+            // 配置ID：fx_triangle_slow。
+            public const string FxTriangleSlow = "fx_triangle_slow";
             // 配置ID：fx_turtle_slam。
             public const string FxTurtleSlam = "fx_turtle_slam";
             // 配置ID：fx_ultimate_seal。

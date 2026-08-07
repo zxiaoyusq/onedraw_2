@@ -2,7 +2,7 @@
 
 ## 1. 版本与唯一真相源
 
-- 当前冻结版本：`schemaVersion = 6`、`contentVersion = 0.6.11-sample`。
+- 当前冻结版本：`schemaVersion = 7`、`contentVersion = 0.7.0-sample`。
 - 正式内容唯一源：`Design/Config/GameConfig.xlsx`。
 - `config/一笔镇妖_游戏配置表模板.xlsx` 只是随正式源同步的示例镜像，不接受独立内容修改。
 - `Assets/_Game/Config/Generated/gameplay_config.json`和`gameplay_config.hash`由T250导出器生成，是可审查、可构建的只读Runtime快照与hash旁车。
@@ -27,7 +27,7 @@
 - 每个数据Sheet第1行为标题、第2行为说明、第3行留空、第4行为唯一表头、第5行起为数据。
 - 首字段为空的整行视为空白行并忽略；数据区中间不得插入“看似空白但带业务值”的行。
 - `README` 的示例条目摘要只用于人工阅读；公式及缓存结果都不进入JSON。
-- `FieldDictionary` 有281条记录，完整描述其余29个数据Sheet（包括 `Enums`、`FeedbackCues` 和 `StrokeTrailStyles`），但不递归描述自身。`FieldDictionaryRow` 的JSON结构由Schema直接定义。
+- `FieldDictionary` 有284条记录，完整描述其余29个数据Sheet（包括 `Enums`、`FeedbackCues` 和 `StrokeTrailStyles`），但不递归描述自身。`FieldDictionaryRow` 的JSON结构由Schema直接定义。
 - 表头是API，顺序必须与Schema `$defs/*Row.properties`、`required`及样例JSON对象字段一致。
 
 ## 4. Sheet、主键与分组
@@ -357,3 +357,11 @@ T699F新增的`StrokeTrailStyles.chargeVfxAssetKey -> AssetManifest.assetKey`是
 - `Charged`继续要求起笔停留达到`stroke_charged.chargeHoldSec`后再划出满足最小长度的有效笔迹，并继续使用`stroke_charged`规则、独立蓄力Prefab、石甲龟防御规则和第二关教学。纯长按抬手仍不是攻击；架势要求、护甲、投射物和弱点规则不因本次简化改变。
 - 当前除`defense_turtle_shell.requiredGestureType=Charged`外，全部防御行的`requiredGestureType=Any`；全部`EnemyAttacks.gestureInterruptType=Any`。因此普通敌人和Boss的攻击打断只由弱点命中能力与配置时间窗决定，方向/闭合形状不再触发减伤或反伤分支。
 - 非终极技能`skill_talisman_bind.gestureType=Any`；终极`skill_ultimate_seal.gestureType=Circle`及对应终极教学继续使用完整分类器验证圆形。普通状态下画圆不触发终极，也不获得独立普通技能效果。
+
+## 39. T699H三角形识别与配置技能映射语义
+
+- T699H把schema升级为`7`、content升级为`0.7.0-sample`。`StrokeRules`新增三个必填字段：`shapeFitToleranceRefPx`表示处理后笔迹点允许偏离候选形状边界的最大参考像素距离，0表示该规则不使用形状边缘拟合；`minCornerAngleDeg`表示候选多边形允许的最小内角，0表示该规则不检查角度；`onMatchSkillId`表示该规则在普通笔迹分类成功后触发的`Skills.skillId`，空字符串表示只分类和命中、不额外释放技能。非空值必须通过外键和跨表语义校验。
+- `Enums.GestureType`新增`Triangle`。当前`stroke_triangle`要求长度至少240参考像素、首尾距离不超过55参考像素、面积至少8,000参考像素²、每个内角至少22度，且所有处理后采样点到候选三边的最近距离不超过28参考像素；命中半径为18参考像素。方向容差、弧度和蓄力字段对该类型不参与判定，但仍按统一行结构保留合法值。
+- `stroke_triangle.onMatchSkillId=skill_triangle_slow`；该技能由`Gesture/Triangle`触发，不消耗能量且无冷却，沿`fx_triangle_slow`对`AllEnemies`施加`buff_slow_30`。效果行`durationSec=0`表示使用Buff自身配置，因此当前为移动速度降低30%、持续2秒、最多1层并按`Refresh`刷新；减速数值和持续时间不得复制到识别器、场景或Inspector。
+- 普通战斗分类器装配`Any/Charged/Triangle`，终极绘制仍使用完整规则并由终极技能要求`Circle`。识别层只返回`Triangle`与规则ID，具体技能和效果只由上述配置链决定；以后新增形状应新增枚举、规则阈值、纯识别器与映射配置，并补充相邻形状反例，不得在通用几何处理器中硬编码Buff。
+- 当前受管快照包含30个数据表、772条记录、284条FieldDictionary说明、99个Enums值和29组385个稳定ID常量；31个Sheet中文用途说明、294个可见中文字段名、全部字段/枚举说明与Schema镜像已通过严格校验，公式错误为0。

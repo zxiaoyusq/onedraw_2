@@ -74,7 +74,9 @@ namespace OneStrokeDemon.Combat
                 row.CloseDistanceRefPx,
                 row.MinAreaRefPx2,
                 row.MinArcCurvature,
-                row.ChargeHoldSec);
+                row.ChargeHoldSec,
+                row.ShapeFitToleranceRefPx,
+                row.MinCornerAngleDeg);
         }
 
         /// <summary>把配置字符串显式映射为支持的笔势类型，未知值立即失败。</summary>
@@ -94,6 +96,8 @@ namespace OneStrokeDemon.Combat
                     return GestureType.Arc;
                 case "Circle":
                     return GestureType.Circle;
+                case "Triangle":
+                    return GestureType.Triangle;
                 case "Charged":
                     return GestureType.Charged;
                 default:

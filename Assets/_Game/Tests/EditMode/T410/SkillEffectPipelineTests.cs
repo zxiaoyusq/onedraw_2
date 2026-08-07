@@ -5,6 +5,7 @@ using Newtonsoft.Json.Linq;
 using NUnit.Framework;
 using OneStrokeDemon.Actors;
 using OneStrokeDemon.Config;
+using OneStrokeDemon.Input;
 using OneStrokeDemon.Skills;
 using OneStrokeDemon.Tests.EditMode.T230;
 using UnityEngine;
@@ -176,6 +177,38 @@ namespace OneStrokeDemon.Tests.EditMode.T410
             Assert.That(energyAfterFirst, Is.EqualTo(80));
             Assert.That(coolingDown.Status, Is.EqualTo(SkillActivationStatus.CooldownActive));
             Assert.That(player.Current.CurrentEnergy, Is.EqualTo(energyAfterFirst));
+        }
+
+        [Test]
+        [Category("T699H")]
+        public void TriangleGestureSkillAppliesConfiguredSlowToAllEnemyTiers()
+        {
+            GameplayConfigService config = LoadConfig();
+            PlayerCombatController player = CreatePlayer(config);
+            var normal = new FakeTarget("normal", SkillEnemyTier.Normal);
+            var boss = new FakeTarget("boss", SkillEnemyTier.Boss);
+            var world = new FakeWorld(normal, boss);
+            var service = new SkillService(config, player);
+
+            SkillActivationResult result = service.TryActivate(
+                new SkillActivationRequest(
+                    ConfigIds.Skills.SkillTriangleSlow,
+                    SkillTriggerTypes.Gesture,
+                    GestureType.Triangle.ToString(),
+                    gestureIsValid: true,
+                    inputElapsedSeconds: 1d,
+                    timestamp: 1d),
+                new SkillEffectContext(world, 1d));
+
+            Assert.That(result.Status, Is.EqualTo(SkillActivationStatus.Activated));
+            Assert.That(result.Steps.Count, Is.EqualTo(1));
+            Assert.That(result.Steps[0].EffectType, Is.EqualTo(SkillEffectTypes.ApplyBuff));
+            Assert.That(result.Steps[0].SelectedTargetCount, Is.EqualTo(2));
+            Assert.That(result.Steps[0].AffectedCount, Is.EqualTo(2));
+            Assert.That(normal.LastBuffId, Is.EqualTo(ConfigIds.Buffs.BuffSlow30));
+            Assert.That(boss.LastBuffId, Is.EqualTo(ConfigIds.Buffs.BuffSlow30));
+            Assert.That(normal.LastBuffDurationSeconds, Is.EqualTo(2f));
+            Assert.That(player.Current.CurrentEnergy, Is.Zero);
         }
 
         [Test]
@@ -463,6 +496,10 @@ namespace OneStrokeDemon.Tests.EditMode.T410
 
             public bool IsInsideGesture => IsInsideGestureValue;
 
+            public string LastBuffId { get; private set; } = string.Empty;
+
+            public float LastBuffDurationSeconds { get; private set; }
+
             public bool ApplyDamage(float amount, string sourceId, double timestamp)
             {
                 Operations?.Add($"{TargetId}:damage");
@@ -481,6 +518,8 @@ namespace OneStrokeDemon.Tests.EditMode.T410
                 string sourceId,
                 double timestamp)
             {
+                LastBuffId = buff.BuffId;
+                LastBuffDurationSeconds = durationSeconds;
                 Operations?.Add($"{TargetId}:buff");
                 return true;
             }

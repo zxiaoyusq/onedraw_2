@@ -182,7 +182,7 @@ namespace OneStrokeDemon.Bootstrap
             var item = new ActiveEnemy(
                 request,
                 controller,
-                new EnemySkillEffectTarget(controller),
+                new EnemySkillEffectTarget(controller, ActorTimestamp),
                 isPooled,
                 pooled,
                 gameObject,
@@ -253,10 +253,11 @@ namespace OneStrokeDemon.Bootstrap
                     continue;
                 }
 
-                double movementAge = item.MovementClock.GetElapsedSeconds(
-                    movementElapsedSeconds);
-                item.Pooled.Actor.AdvanceMovement(
-                    movementAge * item.Request.Modifier.SpeedMultiplier);
+                item.Controller.Buffs.Tick(actorTimestamp);
+                double movementAge = item.MovementClock.GetScaledElapsedSeconds(
+                    movementElapsedSeconds,
+                    item.Request.Modifier.SpeedMultiplier * item.Controller.MovementMultiplier);
+                item.Pooled.Actor.AdvanceMovement(movementAge);
             }
 
             Physics2D.SyncTransforms();
@@ -302,10 +303,12 @@ namespace OneStrokeDemon.Bootstrap
             bool touchingPlayer = false;
             if (boss != null)
             {
-                double movementAge = boss.MovementClock.GetElapsedSeconds(
-                    flow.Flow.Time.Current.GameplayElapsedSeconds);
+                boss.Controller.Buffs.Tick(timestamp);
+                double movementAge = boss.MovementClock.GetScaledElapsedSeconds(
+                    flow.Flow.Time.Current.GameplayElapsedSeconds,
+                    boss.Request.Modifier.SpeedMultiplier * boss.Controller.MovementMultiplier);
                 EnemyMovementSample sample = phases.Strategy.SampleMovement(
-                    movementAge * boss.Request.Modifier.SpeedMultiplier);
+                    movementAge);
                 boss.GameObject.transform.localPosition = new Vector3(
                     (float)sample.XReferencePixels,
                     (float)sample.YReferencePixels,

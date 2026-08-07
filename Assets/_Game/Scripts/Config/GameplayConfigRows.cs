@@ -69,6 +69,9 @@ namespace OneStrokeDemon.Config
         [JsonProperty("minArcCurvature", Required = JsonRequired.Always)] public float MinArcCurvature { get; private set; }
         [JsonProperty("chargeHoldSec", Required = JsonRequired.Always)] public float ChargeHoldSec { get; private set; }
         [JsonProperty("hitRadiusRefPx", Required = JsonRequired.Always)] public long HitRadiusRefPx { get; private set; }
+        [JsonProperty("shapeFitToleranceRefPx", Required = JsonRequired.Always)] public long ShapeFitToleranceRefPx { get; private set; }
+        [JsonProperty("minCornerAngleDeg", Required = JsonRequired.Always)] public long MinCornerAngleDeg { get; private set; }
+        [JsonProperty("onMatchSkillId", Required = JsonRequired.Always)] public string OnMatchSkillId { get; private set; } = string.Empty;
     }
 
     /// <summary>描述一次玩家攻击的基础伤害、暴击、连击、能量和得分公式。</summary>
