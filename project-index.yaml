@@ -23,9 +23,9 @@ config:
   generated_hash: Assets/_Game/Config/Generated/gameplay_config.hash
   generated_ids: Assets/_Game/Scripts/Config/Generated/ConfigIds.g.cs
   schema_version: 6
-  content_version: 0.6.10-sample
-  content_hash: 0fa1caa1f5c088e9b300ec2433afed049c54d83a58a6a92a8450144556d1b231
-  workbook_sha256: 84af0bed26a364b7c6502e9f21757900d44ed13b59b6c9a3b2df8d5780f1fe9a
+  content_version: 0.6.11-sample
+  content_hash: 327e0b8e9e86c3db18dd23154896fa4b1024fb3d309983f281261696c46d0e4b
+  workbook_sha256: ebcb9746203b287453165cb0a5d811335d5821182004ce034fc21f5f0cce7138
   mirror_status: byte_identical
   contract_audit: pass
   exporter:
@@ -36,8 +36,8 @@ config:
     test_count: 8
     exported_tables: 30
     exported_records: 765
-    output_bytes: 260263
-    output_sha256: 86f7fa2d1923b0460e5446c48edaa0afe2b3fbd827dff41e8a8e9f32e8632d68
+    output_bytes: 260274
+    output_sha256: cdcd0d6abfb2c901072637422d4880d776c04280e54335edda75fbc2e360ac87
     runtime_snapshot_committed: true
   validator:
     path: Tools/ConfigExporter/Validation
@@ -57,7 +57,7 @@ config:
     loaded_records: 765
     readonly_primary_indexes: 347
     readonly_group_indexes: 56
-    full_editmode_tests: 217
+    full_editmode_tests: 219
     full_playmode_tests: 61
     bootstrap_smoke: pass
   asset_registry:
@@ -79,18 +79,18 @@ config:
     default_read_only: true
     update_flag: --update
     drift_diagnostic: CFG013
-    generated_json_bytes: 260263
-    generated_json_sha256: 86f7fa2d1923b0460e5446c48edaa0afe2b3fbd827dff41e8a8e9f32e8632d68
+    generated_json_bytes: 260274
+    generated_json_sha256: cdcd0d6abfb2c901072637422d4880d776c04280e54335edda75fbc2e360ac87
     generated_hash_bytes: 65
-    generated_hash_sha256: ff0650404f4cd2118601d8a7684cac2d5db28aa65b118bc9ee878ae5415f7a1c
+    generated_hash_sha256: e1795ccee5b5d7ed7376ab67fcb3f1e6ca52bfe83622c5b8e8b0680e48184337
     generated_ids_bytes: 48539
-    generated_ids_sha256: 99efcb5bcd34faa6a1da9cb713650232aec51e1fd11cbdb8759a031eea03371b
+    generated_ids_sha256: 9d11ba9a78bc47f6fc83805d576052efd9c99ba5d65394905248f63bcf9fb8cb
     id_sets: 29
     id_constants: 382
     dotnet_tests: 64
   documentation:
     status: pass
-    task: T699C
+    task: T699G
     sheet_count: 31
     sheet_purpose_chinese_count: 31
     visible_chinese_field_labels: 291

@@ -81,7 +81,7 @@ namespace OneStrokeDemon.Tests.EditMode.T450
 
             EnemyArchetypeDefinition wheel = Find(ConfigIds.Enemies.EnemyWheelZombie);
             Assert.That(wheel.Attacks[0].ActionKind, Is.EqualTo(EnemyAttackActionKind.Charge));
-            Assert.That(wheel.Attacks[0].Timeline.InterruptGestureType, Is.EqualTo("Horizontal"));
+            Assert.That(wheel.Attacks[0].Timeline.InterruptGestureType, Is.EqualTo("Any"));
 
             EnemyArchetypeDefinition turtle = Find(ConfigIds.Enemies.EnemyStoneTurtle);
             Assert.That(turtle.Defense.RequiredGestureType, Is.EqualTo("Charged"));
@@ -90,16 +90,78 @@ namespace OneStrokeDemon.Tests.EditMode.T450
             EnemyArchetypeDefinition ghost = Find(ConfigIds.Enemies.EnemySkeletonGhost);
             Assert.That(ghost.Enemy.StanceVulnerability, Is.EqualTo("Talisman"));
             Assert.That(ghost.Enemy.Weakpoint.HasHitbox, Is.False);
-            Assert.That(ghost.Attacks[0].Timeline.InterruptGestureType, Is.EqualTo("Arc"));
+            Assert.That(ghost.Attacks[0].Timeline.InterruptGestureType, Is.EqualTo("Any"));
 
             EnemyArchetypeDefinition bat = Find(ConfigIds.Enemies.EnemyTalismanBat);
             Assert.That(bat.Movement.PatternType, Is.EqualTo(EnemyMovementPatternTypes.Dive));
-            Assert.That(bat.Attacks[0].Timeline.InterruptGestureType, Is.EqualTo("Diagonal"));
+            Assert.That(bat.Attacks[0].Timeline.InterruptGestureType, Is.EqualTo("Any"));
 
             EnemyArchetypeDefinition puppet = Find(ConfigIds.Enemies.EnemySoulPuppet);
             Assert.That(puppet.Enemy.Tier, Is.EqualTo(EnemyTier.Elite));
             Assert.That(
                 HasAction(puppet, EnemyAttackActionKind.Support),
+                Is.True);
+        }
+
+        [Test]
+        [Category("T699G")]
+        public void CurrentContentKeepsOnlyChargedAndUltimateShapeRequirements()
+        {
+            Assert.That(
+                config.GetDefenseRule(ConfigIds.DefenseRules.DefenseTurtleShell)
+                    .RequiredGestureType,
+                Is.EqualTo("Charged"));
+            Assert.That(
+                config.GetDefenseRule(ConfigIds.DefenseRules.DefenseDirectionSeal)
+                    .RequiredGestureType,
+                Is.EqualTo("Any"));
+            Assert.That(
+                config.GetDefenseRule(ConfigIds.DefenseRules.DefenseBossPins)
+                    .RequiredGestureType,
+                Is.EqualTo("Any"));
+
+            IReadOnlyList<EnemyConfig> enemies = config.GetEnemies();
+            for (int enemyIndex = 0; enemyIndex < enemies.Count; enemyIndex++)
+            {
+                IReadOnlyList<EnemyAttackConfig> attacks =
+                    config.GetEnemyAttacks(enemies[enemyIndex].AttackSetId);
+                for (int attackIndex = 0; attackIndex < attacks.Count; attackIndex++)
+                {
+                    Assert.That(
+                        attacks[attackIndex].GestureInterruptType,
+                        Is.EqualTo("Any"),
+                        attacks[attackIndex].AttackId);
+                }
+            }
+
+            Assert.That(
+                config.GetSkill(ConfigIds.Skills.SkillTalismanBind).GestureType,
+                Is.EqualTo("Any"));
+            Assert.That(
+                config.GetSkill(ConfigIds.Skills.SkillUltimateSeal).GestureType,
+                Is.EqualTo("Circle"));
+            Assert.That(
+                config.GetTutorialSteps(ConfigIds.Tutorials.TutorialLevel002)[0].GestureType,
+                Is.EqualTo("Charged"));
+            Assert.That(
+                config.GetTutorialSteps(ConfigIds.Tutorials.TutorialLevel003)[0].GestureType,
+                Is.EqualTo("Circle"));
+
+            Assert.That(
+                config.GetWeakpointRule(ConfigIds.WeakpointRules.WeakpointForeheadTalisman)
+                    .InterruptAttack,
+                Is.True);
+            Assert.That(
+                config.GetWeakpointRule(ConfigIds.WeakpointRules.WeakpointTurtleBelly)
+                    .InterruptAttack,
+                Is.True);
+            Assert.That(
+                config.GetWeakpointRule(ConfigIds.WeakpointRules.WeakpointBatDive)
+                    .InterruptAttack,
+                Is.True);
+            Assert.That(
+                config.GetWeakpointRule(ConfigIds.WeakpointRules.WeakpointBossSeal)
+                    .InterruptAttack,
                 Is.True);
         }
 

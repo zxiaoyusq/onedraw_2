@@ -56,7 +56,7 @@ namespace OneStrokeDemon.Tests.PlayMode.T430
             Assert.That(opened.IsVisible, Is.True);
             Assert.That(opened.AttackId, Is.EqualTo("atk_puppet_shield"));
             Assert.That(opened.ActionKind, Is.EqualTo(EnemyAttackActionKind.Support));
-            Assert.That(opened.InterruptGestureType, Is.EqualTo("Circle"));
+            Assert.That(opened.InterruptGestureType, Is.EqualTo("Any"));
             Assert.That(executeAt - startedAt, Is.EqualTo(0.8d).Within(0.000001d));
 
             runtime.Tick(executeAt - 0.001d);

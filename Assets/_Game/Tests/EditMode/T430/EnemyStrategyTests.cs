@@ -139,7 +139,7 @@ namespace OneStrokeDemon.Tests.EditMode.T430
         }
 
         [Test]
-        public void DefenseServiceReusesConfiguredGestureStanceMultipliersAndReflection()
+        public void DefenseServiceKeepsChargedAndStanceGatesButOrdinaryShapesMatchAny()
         {
             var service = new DefenseRuleService(config);
             EnemyDefenseEvaluation shellMatch = service.Evaluate(
@@ -150,7 +150,7 @@ namespace OneStrokeDemon.Tests.EditMode.T430
                 "defense_turtle_shell",
                 "Charged",
                 "stance_talisman");
-            EnemyDefenseEvaluation sealWrongGesture = service.Evaluate(
+            EnemyDefenseEvaluation sealOrdinaryShape = service.Evaluate(
                 "defense_direction_seal",
                 "Vertical",
                 "stance_blade");
@@ -162,8 +162,12 @@ namespace OneStrokeDemon.Tests.EditMode.T430
             Assert.That(
                 shellWrongStance.ConfiguredDamageMultiplier,
                 Is.EqualTo(0.1d).Within(0.000001d));
-            Assert.That(sealWrongGesture.ReflectedDamage, Is.EqualTo(2L));
-            Assert.That(sealWrongGesture.BreakEffectGroupId, Is.EqualTo("fx_break_seal"));
+            Assert.That(sealOrdinaryShape.Matches, Is.True);
+            Assert.That(
+                sealOrdinaryShape.ConfiguredDamageMultiplier,
+                Is.EqualTo(1.3d).Within(0.000001d));
+            Assert.That(sealOrdinaryShape.ReflectedDamage, Is.Zero);
+            Assert.That(sealOrdinaryShape.BreakEffectGroupId, Is.EqualTo("fx_break_seal"));
         }
 
         [Test]

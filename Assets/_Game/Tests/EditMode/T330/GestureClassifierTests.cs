@@ -135,6 +135,56 @@ namespace OneStrokeDemon.Tests.EditMode.T330
         }
 
         [Test]
+        [Category("T699G")]
+        public void NormalCombatCollapsesDirectionAndShapeButKeepsCharged()
+        {
+            var normalCombat = new GestureClassifier(new[]
+            {
+                GestureRuleSetFactory.FromConfig(
+                    config,
+                    ConfigIds.StrokeRules.StrokeAny),
+                GestureRuleSetFactory.FromConfig(
+                    config,
+                    ConfigIds.StrokeRules.StrokeCharged),
+            });
+            StrokeGeometryData[] ordinaryShapes =
+            {
+                CreateGeometry(new[]
+                {
+                    Vector2.zero,
+                    new Vector2(100f, 0f),
+                    new Vector2(200f, 0f),
+                }),
+                CreateGeometry(new[]
+                {
+                    Vector2.zero,
+                    new Vector2(0f, 100f),
+                    new Vector2(0f, 200f),
+                }),
+                CreateGeometry(CreateArc(100f, 0f, 90f, 12, close: false)),
+                CreateGeometry(CreateArc(100f, 0f, 360f, 32, close: true)),
+            };
+            for (int index = 0; index < ordinaryShapes.Length; index++)
+            {
+                GestureMatchResult result = normalCombat.Classify(ordinaryShapes[index]);
+                Assert.That(result.GestureType, Is.EqualTo(GestureType.Any), $"shape {index}");
+                Assert.That(result.RuleId, Is.EqualTo(ConfigIds.StrokeRules.StrokeAny));
+            }
+
+            var heldSampler = new StrokeSampler(new StrokeSamplingSettings(8f, 1000f, 16));
+            heldSampler.Begin(501, Vector2.zero, 0d);
+            heldSampler.AddPoint(new Vector2(20f, 0f), 0.45d);
+            StrokeGeometryData held = Process(
+                heldSampler.End(new Vector2(120f, 0f), 0.55d));
+
+            GestureMatchResult charged = normalCombat.Classify(held);
+            GestureMatchResult ultimateCircle = classifier.Classify(ordinaryShapes[3]);
+            Assert.That(charged.GestureType, Is.EqualTo(GestureType.Charged));
+            Assert.That(charged.RuleId, Is.EqualTo(ConfigIds.StrokeRules.StrokeCharged));
+            Assert.That(ultimateCircle.GestureType, Is.EqualTo(GestureType.Circle));
+        }
+
+        [Test]
         public void AnyIsOnlyAConfiguredFallbackAndTooShortStrokeDoesNotMatch()
         {
             GestureMatchResult fallback = classifier.Classify(CreateGeometry(

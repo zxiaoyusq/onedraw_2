@@ -2,7 +2,7 @@
 
 ## 1. 版本与唯一真相源
 
-- 当前冻结版本：`schemaVersion = 6`、`contentVersion = 0.6.10-sample`。
+- 当前冻结版本：`schemaVersion = 6`、`contentVersion = 0.6.11-sample`。
 - 正式内容唯一源：`Design/Config/GameConfig.xlsx`。
 - `config/一笔镇妖_游戏配置表模板.xlsx` 只是随正式源同步的示例镜像，不接受独立内容修改。
 - `Assets/_Game/Config/Generated/gameplay_config.json`和`gameplay_config.hash`由T250导出器生成，是可审查、可构建的只读Runtime快照与hash旁车。
@@ -39,7 +39,7 @@
 | Stances | stanceId | `damageFormulaId`引用伤害公式；`strokeTrailStyleId`引用画笔样式 | 刀/符架势倍率、公式、画笔样式与资源 |
 | StrokeRules | ruleId | — | 笔势阈值与命中半径 |
 | DamageFormulas | formulaId | — | 伤害与连斩公式参数 |
-| DefenseRules | defenseRuleId | — | 护甲、方向、破甲 |
+| DefenseRules | defenseRuleId | — | 护甲、蓄力/架势门、破甲 |
 | WeakpointRules | weakpointRuleId | — | 弱点位置、窗口、倍率 |
 | MovePatterns | movePatternId | — | 移动策略参数 |
 | Enemies | enemyId | attackSetId引用攻击分组 | 敌人主数据与策略ID |
@@ -184,7 +184,7 @@ T699F新增的`StrokeTrailStyles.chargeVfxAssetKey -> AssetManifest.assetKey`是
 
 - T420不升级配置版本。`EnemyDefinitionFactory`只从`Enemies`及其`defenseRuleId/weakpointRuleId`外键映射HP、层级、移动/攻击策略ID、护甲、破甲效果、弱点窗/半径/倍率/奖励和资源键；`EnemyAttackTimelineFactory`只从敌人当前`attackSetId`分组内的`EnemyAttacks`行映射前摇、有效段、打断笔势/窗口与效果组。Prefab、Inspector和控制器不保存这些数值的副本。
 - `EnemyStateMachine`是无`MonoBehaviour`依赖的纯规则，状态集合固定为`None/Spawn/Move/Windup/Attack/Recovery/Stun/Dead`。`cooldownSec`解释为从攻击开始到再次可攻击的完整周期，恢复时长为`cooldownSec - windupSec - activeSec`；配置若不能覆盖前摇与有效段则拒绝。外部单调时间戳可一次追赶多个状态边界。
-- 弱点窗和攻击打断窗都以当前攻击开始时刻为零点，起止边界均包含。弱点Collider只在`WeakpointRules.windowStartSec <= elapsed <= windowEndSec`且状态为Windup/Attack时启用；一次T360弱点命中只有同时满足`interruptAttack=true`、当前攻击的`gestureInterruptType`和`interruptStartSec/interruptEndSec`才打断。
+- 弱点窗和攻击打断窗都以当前攻击开始时刻为零点，起止边界均包含。弱点Collider只在`WeakpointRules.windowStartSec <= elapsed <= windowEndSec`且状态为Windup/Attack时启用；一次T360弱点命中只有同时满足`interruptAttack=true`和`interruptStartSec/interruptEndSec`才打断。当前全部`EnemyAttacks.gestureInterruptType=Any`，因此不再附加方向或形状要求。
 - 弱点/攻击行没有眩晕持续时间，因此弱点打断进入无限期`Stun`，必须由后续战斗/策略流程显式调用恢复；配置`Buffs.type=Stun`仍使用效果传入或Buff默认的配置时长，并在边界自动恢复。不得以Inspector常量或动画长度猜测替代缺失的配置时长。
 - `EnemyDamageModel`先用`DefenseRules.armorHp`吸收来伤，溢出伤害进入HP；护甲从正数首次降为0时只发布一次该行`breakEffectGroupId`意图。HP首次归零只触发一次死亡，死亡后伤害与治疗不改变状态且治疗不能复活；回收清空HP、护甲、Buff、计数、攻击、弱点、时钟和目标ID后才允许复用。
 - `EnemySkillEffectTarget`在Skills程序集把T410目标端口适配到通用敌人，支持伤害、治疗、Buff、破甲、击退意图、低血处决和计数；Actors不反向依赖Skills。移动/攻击/防御/支援策略见T430，对象池见第17节，Boss阶段覆盖攻击集/防御/弱点归T460。
@@ -260,7 +260,7 @@ T699F新增的`StrokeTrailStyles.chargeVfxAssetKey -> AssetManifest.assetKey`是
 
 - T540不改变JSON字段形状或schema，content升级为`0.5.4-sample`。`lv_003_boss`完全沿既有`Levels -> Waves -> Spawns -> EnemyModifiers`与`BossPhases -> Enemies/EnemyAttacks/DefenseRules/WeakpointRules/SkillEffects/Texts`合同编排为2波、6条出生行和12个敌人实例；产品C#不得列出关卡、Boss、阶段、攻击或文案ID。
 - 第一波是11个敌人的混合前置门，覆盖5种普通原型并包含1次精英修饰请求，`maxAlive=11`；第二波只生成配置Boss。Boss未死亡时不得接受`BossDefeated`事实，防止阶段未完成便提前结算；Boss实际出生后才创建并绑定阶段控制器。
-- 镇墓玄甲王沿T460既有三阶段合同执行配置攻击集、进入效果、防御与弱点切换。三段提示必须分别表达起手应对、封印弱点和最终打断/处决意图；当前第三段中英文文案明确要求斜斩打断冲撞后处决，不得由场景组件或Inspector覆盖。
+- 镇墓玄甲王沿T460既有三阶段合同执行配置攻击集、进入效果、防御与弱点切换。三段提示必须分别表达起手应对、封印弱点和最终打断/处决意图；当前二、三阶段文案只要求命中发光弱点并抓住打断窗口，不再要求横、竖或斜向笔势，不得由场景组件或Inspector覆盖。
 - 当前Boss关时限为240秒，星级阈值为8000/12000/17000。关卡达到Victory、Defeat或被显式释放时，阶段攻击运行时、效果订阅和Boss HP订阅必须一起释放；失败重试创建新的协调器与世界实例，不跨局复用终态、实体租约或阶段事件计数。T540只形成胜败/重试原型回路，T550结算奖励、存档和面向玩家的重开入口仍在后续任务。
 
 ## 25. T550结算评分、奖励与最小进度语义
@@ -350,3 +350,10 @@ T699F新增的`StrokeTrailStyles.chargeVfxAssetKey -> AssetManifest.assetKey`是
 - T699F保持schema `6`并把content升级为`0.6.10-sample`。`StrokeTrailStyles`新增必填`chargeVfxAssetKey`，当前`stroke_trail_lightning_c`绑定`vfx_stroke_charge`；`AssetManifest`新增同键Prefab记录。目标存在性、Prefab类型、Registry覆盖和实际Prefab组件拓扑都必须被校验。
 - `StrokeChargeVfxView`只消费位置、0到1蓄力进度、`StrokeRules.hitRadiusRefPx`和当前`StrokeTrailStyle`，以4条环线、8条径向电弧和3组ParticleSystem投影A方案表现。它不得发布手势、命中、伤害或教程事实；首个有效移动点、抬手、取消与池化回收都必须停止并清空全部粒子和线段。
 - 组合根在`StrokeTrailPool`预热时按所有样式的稳定键解析Prefab，并为每个轨迹View预建所需实例；活动输入路径不得调用AssetDatabase、Resources、Registry查找或Instantiate。后续替换同技术合同的特效只改Prefab或Registry引用；新增样式则新增配置行和资源键，不修改输入与命中链。
+
+## 38. T699G普通笔势简化与蓄力保留语义
+
+- T699G不改变JSON字段形状、FieldDictionary、枚举或schema，content升级为`0.6.11-sample`。底层`GestureClassifier`和全部`StrokeRules`继续保留，供回放、调试和终极绘制使用；生产普通战斗只以`Any`与`Charged`两条规则分类，横、竖、斜、弧和普通圆形轨迹统一输出`Any`并使用`stroke_any`命中半径。
+- `Charged`继续要求起笔停留达到`stroke_charged.chargeHoldSec`后再划出满足最小长度的有效笔迹，并继续使用`stroke_charged`规则、独立蓄力Prefab、石甲龟防御规则和第二关教学。纯长按抬手仍不是攻击；架势要求、护甲、投射物和弱点规则不因本次简化改变。
+- 当前除`defense_turtle_shell.requiredGestureType=Charged`外，全部防御行的`requiredGestureType=Any`；全部`EnemyAttacks.gestureInterruptType=Any`。因此普通敌人和Boss的攻击打断只由弱点命中能力与配置时间窗决定，方向/闭合形状不再触发减伤或反伤分支。
+- 非终极技能`skill_talisman_bind.gestureType=Any`；终极`skill_ultimate_seal.gestureType=Circle`及对应终极教学继续使用完整分类器验证圆形。普通状态下画圆不触发终极，也不获得独立普通技能效果。

@@ -60,8 +60,8 @@ namespace OneStrokeDemon.Tests.EditMode.T460
             Assert.That(phases[0].CombatProfile.Weakpoint.HasHitbox, Is.False);
             Assert.That(phases[1].CombatProfile.Weakpoint.RadiusReferencePixels, Is.EqualTo(90f));
             Assert.That(phases[2].CombatProfile.Weakpoint.RadiusReferencePixels, Is.EqualTo(90f));
-            Assert.That(phases[0].Defense.RequiredGestureType, Is.EqualTo("Vertical"));
-            Assert.That(phases[1].Defense.RequiredGestureType, Is.EqualTo("Horizontal"));
+            Assert.That(phases[0].Defense.RequiredGestureType, Is.EqualTo("Any"));
+            Assert.That(phases[1].Defense.RequiredGestureType, Is.EqualTo("Any"));
             Assert.That(phases[2].Defense.RequiredGestureType, Is.EqualTo("Any"));
             Assert.That(phases[0].DescriptionZhCN, Is.Not.Empty);
             Assert.That(phases[1].OnEnterEffectGroupId, Is.EqualTo("fx_boss_phase2_enter"));

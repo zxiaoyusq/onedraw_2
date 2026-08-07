@@ -20,10 +20,10 @@ Runtime不解析xlsx；生成目录只由工具写入。T210/T220实现独立.NE
 
 ## 当前受管快照
 
-- schema `6` / content `0.6.10-sample` / content hash `0fa1caa1f5c088e9b300ec2433afed049c54d83a58a6a92a8450144556d1b231`。
-- 权威工作簿与模板镜像均为124,655字节、SHA-256 `84af0bed26a364b7c6502e9f21757900d44ed13b59b6c9a3b2df8d5780f1fe9a`，字节完全一致。
-- 受管JSON为260,263字节、文件SHA-256 `86f7fa2d1923b0460e5446c48edaa0afe2b3fbd827dff41e8a8e9f32e8632d68`，包含30个数据表、765条记录；`ConfigIds.g.cs`为29组382个常量。
-- T699F为`StrokeTrailStyles`增加蓄力Prefab资源键，并在AssetManifest登记`vfx_stroke_charge`；FieldDictionary当前281条，Registry当前78键。默认只读生成/漂移门与ConfigExporter 64项测试通过，Unity全量EditMode 217项、PlayMode 61项通过。
+- schema `6` / content `0.6.11-sample` / content hash `327e0b8e9e86c3db18dd23154896fa4b1024fb3d309983f281261696c46d0e4b`。
+- 权威工作簿与模板镜像均为124,703字节、SHA-256 `ebcb9746203b287453165cb0a5d811335d5821182004ce034fc21f5f0cce7138`，字节完全一致。
+- 受管JSON为260,274字节、文件SHA-256 `cdcd0d6abfb2c901072637422d4880d776c04280e54335edda75fbc2e360ac87`，包含30个数据表、765条记录；`ConfigIds.g.cs`为29组382个常量。
+- T699G把普通战斗笔势收敛为`Any/Charged`，保留石甲龟蓄力破甲与终极`Circle`，并把攻击打断统一为弱点加时间窗；FieldDictionary仍为281条，Registry仍为78键。默认只读生成/漂移门与ConfigExporter 64项测试通过，Unity全量EditMode 219项、PlayMode 61项通过。
 
 ## 已实现命令
 

@@ -90,13 +90,13 @@ namespace OneStrokeDemon.Tests.EditMode.T540
             Assert.That(phases[0].DescriptionZhCN, Does.Contain("符钉"));
             Assert.That(phases[0].CombatProfile.Defense.DefenseRuleId,
                 Is.EqualTo(ConfigIds.DefenseRules.DefenseBossPins));
-            Assert.That(phases[1].DescriptionZhCN, Does.Contain("方向"));
+            Assert.That(phases[1].DescriptionZhCN, Does.Contain("弱点"));
             Assert.That(phases[1].Attacks[0].Timeline.InterruptGestureType,
-                Is.EqualTo("Horizontal"));
-            Assert.That(phases[2].DescriptionZhCN, Does.Contain("斜斩"));
+                Is.EqualTo("Any"));
+            Assert.That(phases[2].DescriptionZhCN, Does.Contain("弱点"));
             Assert.That(phases[2].DescriptionZhCN, Does.Contain("处决"));
             Assert.That(phases[2].Attacks[0].Timeline.InterruptGestureType,
-                Is.EqualTo("Diagonal"));
+                Is.EqualTo("Any"));
             Assert.That(phases[2].ExitHpRatio, Is.Zero);
         }
 

@@ -1,20 +1,21 @@
 # PROGRESS
 
-- 日期：2026-08-04
+- 日期：2026-08-07
 - 当前成熟度：P7质量与发布准备
 - 当前任务：T700
 - 状态：READY
 - Unity精确版本：6000.5.1f1（已由ProjectVersion.txt与本机安装核验）
 - 微信SDK来源或版本：官方 `minigame-tuanjie-transform-sdk` v0.1.33 / commit `ed4ad28f433c6b52b5fd3f22a6fa155a0c98c228` / embedded最小补丁
 - Active Scene：Assets/_Game/Scenes/Bootstrap.unity
-- 配置版本：schema 6 / content 0.6.10-sample / hash `0fa1caa1f5c088e9b300ec2433afed049c54d83a58a6a92a8450144556d1b231`
+- 配置版本：schema 6 / content 0.6.11-sample / hash `327e0b8e9e86c3db18dd23154896fa4b1024fb3d309983f281261696c46d0e4b`
 
 ## 进行中
 
-- 当前没有`IN_PROGRESS`任务；T699F已完成，T700依赖已满足并保持`READY`，须在下一原子任务中独立开始。
+- 无。下一原子任务T700处于`READY`，本次未提前实现。
 
 ## 已完成
 
+- T699G：生产普通战斗现在只用`Any/Charged`分类器，横、竖、斜、弧及普通圆形轨迹统一为Any；终极绘制仍使用完整分类器并只接受Circle。权威配置把除石甲龟外的防御笔势改为Any、全部敌人攻击打断改为Any、缚妖符改为Any，同时保留`stroke_charged`、石甲龟蓄力破甲、第二关蓄力教程、全部弱点窗口/倍率/打断能力以及终极Circle教程。配置升级为schema 6/content `0.6.11-sample`，30表765条、hash `327e0b8e...0e4b`、29组382个ID常量；双工作簿124,703字节且SHA-256均为`ebcb9746...138`，JSON 260,274字节。配置只读漂移门与ConfigExporter 64/64、全量EditMode 219/219、PlayMode 61/61通过；字体字符集随配置文案重建为292个字符。Unity Test Runner域重载后的两次初始化任务为0测试且未计入结论，最终有效全量回归与Console检查通过；用户已有`11.anim`及meta删除、Packages修改和Excel锁文件删除状态未纳入提交。
 - T699F：把T699E原先由`StrokeTrailView`借用轨迹分支Renderer绘制的蓄力雷核迁移为独立`vfx_stroke_charge` Prefab；Prefab拥有4条环线、8条径向电弧和中心脉冲/汇聚电火花/径向电火花三组真实ParticleSystem，`StrokeTrailView`只转发位置、进度、规则半径与当前样式。`StrokeTrailStyles.chargeVfxAssetKey`沿`AssetManifest -> AssetRegistry`绑定资源，组合根在轨迹池预热时为每个View实例化全部样式所需蓄力Prefab，输入热路径不加载或创建对象；移动、取消、抬手和回池均停止并清空粒子。配置升级为schema 6/content `0.6.10-sample`，30表765条、hash `0fa1caa1...1b231`、29组382个ID常量，Registry为78键/44 Prefab/16 Sprite/17 AudioClip/1 Scene。工作簿及镜像124,655字节且SHA-256均为`84af0bed...fe9a`，公式错误0；ConfigExporter 64/64、全量EditMode 217/217、PlayMode 61/61通过，真实Battle截图确认A方案外观与粒子层可见。测试临时修改的Editor进入Play模式选项已恢复，Bootstrap场景保持干净；用户已有`11.anim`及meta删除、Packages修改和Excel锁文件删除状态未纳入提交。
 - T699E：按用户选定的A方案，将原单条青白蓄力进度环替换为分阶段雷核表现：前1/3闭合中心青白双层雷核，中段展开浅青中环，满蓄闭合青色外环并显示八向径向电弧；电弧从白色中心向外收尖。实现复用T698 Prefab既有12条池化分支渲染器，没有新增贴图、粒子系统或Prefab改动；颜色、宽度、电弧长度和抖动继续来自`stroke_trail_lightning_c`，规则`hitRadiusRefPx=26`与`chargeHoldSec=0.4s`不变，视觉外圈复用配置`branchLengthRefPx=64`放大但不参与命中。专项生产路径PlayMode 2/2、全量PlayMode 61/61通过，真实Bootstrap→Battle截图确认复杂背景下白核、双环和八向电弧清晰可见，最终Console Error/Warning为0。Unity域刷新后的首次Test Framework初始化多次停在`InitTestScene`且未执行产品测试，清理孤儿任务并恢复Bootstrap后的有效专项与全量运行均通过；用户已有`11.anim`及meta删除、Packages修改和Excel锁文件删除状态未纳入提交。
 - T699D：根因是生产输入只发布起笔、有效移动、抬手和取消，静止按住期间没有时钟推进事件；轨迹视图在只有一个点时又保持隐藏，因此配置中的`stroke_charged.chargeHoldSec=0.4s`虽可在抬手后参与分类，玩家按住时却看不到任何反馈。现由生产会话用统一非缩放时钟显式推进起笔停留，在触点以当前架势配置的青白画笔颜色/宽度和Charged规则的`hitRadiusRefPx`绘制32段技术拓扑进度环；进度达到1只表示蓄力就绪，首个有效移动点会隐藏环并转为正常闪电轨迹，最终仍须划动至少配置的100参考像素并抬手才识别为Charged。未改配置、玩法数值、Animator、Scene、Prefab、Registry或ProjectSettings。专项StrokeSampling EditMode 11/11、StrokeTrail PlayMode 6/6、T660生产入口5/5、T699A 2/2及隔离工程全量EditMode 216/216、PlayMode 61/61通过。主工程因用户已打开Unity而保持不动，验证在包含当前工作树的隔离副本完成；全量首轮3项失败为T699C遗留的旧content日志快照，另1项为640宽批处理下投射物测试端点越界，更新快照并把测试笔迹夹在屏幕内后全绿。用户已有主角Controller、`11.anim`删除、Packages和Excel锁文件改动均未纳入提交。

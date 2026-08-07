@@ -118,6 +118,9 @@ namespace OneStrokeDemon.Tests.PlayMode.T699
                 Is.EqualTo(hpBefore),
                 "远处敌人的攻击演出不能直接扣除玩家生命。");
 
+            // Test Runner 失焦会触发生产自动暂停；这里明确模拟玩家仍停留在游戏前台。
+            session.SetApplicationPaused(false);
+            session.SetApplicationFocus(true);
             session.Advance(30f);
             Physics2D.SyncTransforms();
 
@@ -143,10 +146,14 @@ namespace OneStrokeDemon.Tests.PlayMode.T699
 
         private static IEnumerator WaitForPlaying(ProductionBattleSession session)
         {
+            session.SetApplicationPaused(false);
+            session.SetApplicationFocus(true);
             float deadline = Time.realtimeSinceStartup + 6f;
             while (session.FlowState != BattleFlowState.Playing &&
                    Time.realtimeSinceStartup < deadline)
             {
+                session.SetApplicationPaused(false);
+                session.SetApplicationFocus(true);
                 yield return null;
             }
 

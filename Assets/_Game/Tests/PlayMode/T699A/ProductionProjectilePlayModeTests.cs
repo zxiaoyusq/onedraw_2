@@ -228,10 +228,15 @@ namespace OneStrokeDemon.Tests.PlayMode.T699A
 
         private static IEnumerator WaitForPlaying(ProductionBattleSession session)
         {
+            // Test Runner 窗口失焦不代表被测玩家主动离开游戏，等待期间持续模拟前台状态。
+            session.SetApplicationPaused(false);
+            session.SetApplicationFocus(true);
             float deadline = Time.realtimeSinceStartup + 6f;
             while (session.FlowState != BattleFlowState.Playing &&
                    Time.realtimeSinceStartup < deadline)
             {
+                session.SetApplicationPaused(false);
+                session.SetApplicationFocus(true);
                 yield return null;
             }
 
@@ -246,6 +251,8 @@ namespace OneStrokeDemon.Tests.PlayMode.T699A
             float deadline = Time.realtimeSinceStartup + 9f;
             while (Time.realtimeSinceStartup < deadline)
             {
+                session.SetApplicationPaused(false);
+                session.SetApplicationFocus(true);
                 for (int index = 0; index < session.ActiveProjectileCount; index++)
                 {
                     ProjectileController projectile = session.GetActiveProjectile(index);

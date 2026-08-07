@@ -103,40 +103,40 @@ namespace OneStrokeDemon.Tests.EditMode.T360
         }
 
         [Test]
-        public void DirectionMatchAndMissUseBothConfiguredDefenseBranches()
+        public void ChargedMatchAndOrdinaryMissUseBothConfiguredDefenseBranches()
         {
             DamageRuleSet rules = DamageRuleSetFactory.Create(
                 config,
                 ConfigIds.Stances.StanceBlade,
-                ConfigIds.DefenseRules.DefenseDirectionSeal,
+                ConfigIds.DefenseRules.DefenseTurtleShell,
                 ConfigIds.WeakpointRules.WeakpointNone);
             DamageResult matched = Calculate(
                 rules,
-                GestureType.Horizontal,
+                GestureType.Charged,
                 ConfigIds.Stances.StanceBlade,
                 isWeakpoint: false,
                 comboCount: 1,
                 nonCritical);
             DamageResult missed = Calculate(
                 rules,
-                GestureType.Vertical,
+                GestureType.Any,
                 ConfigIds.Stances.StanceBlade,
                 isWeakpoint: false,
                 comboCount: 1,
                 nonCritical);
 
             Assert.That(matched.DirectionMatched, Is.True);
-            Assert.That(matched.DirectionMultiplier, Is.EqualTo(1.3d).Within(0.000001d));
-            Assert.That(matched.Damage, Is.EqualTo(16));
-            Assert.That(matched.ScoreAward, Is.EqualTo(146));
-            Assert.That(matched.EnergyAward, Is.EqualTo(4));
+            Assert.That(matched.DirectionMultiplier, Is.EqualTo(1.5d).Within(0.000001d));
+            Assert.That(matched.Damage, Is.EqualTo(18));
+            Assert.That(matched.ScoreAward, Is.EqualTo(168));
+            Assert.That(matched.EnergyAward, Is.EqualTo(5));
             Assert.That(matched.ReflectedDamage, Is.Zero);
             Assert.That(missed.DirectionMatched, Is.False);
-            Assert.That(missed.DirectionMultiplier, Is.EqualTo(0.0075d).Within(0.000001d));
+            Assert.That(missed.DirectionMultiplier, Is.EqualTo(0.015d).Within(0.000001d));
             Assert.That(missed.Damage, Is.Zero);
-            Assert.That(missed.ScoreAward, Is.EqualTo(1));
+            Assert.That(missed.ScoreAward, Is.EqualTo(2));
             Assert.That(missed.EnergyAward, Is.Zero);
-            Assert.That(missed.ReflectedDamage, Is.EqualTo(2));
+            Assert.That(missed.ReflectedDamage, Is.Zero);
         }
 
         [Test]

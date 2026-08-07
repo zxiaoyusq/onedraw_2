@@ -197,7 +197,8 @@ namespace OneStrokeDemon.Bootstrap
         private readonly StrokeTrailPool trailPool;
         private readonly Material trailMaterial;
         private readonly StrokeRuleConfig chargedStrokeRule;
-        private readonly GestureClassifier classifier;
+        private readonly GestureClassifier normalGestureClassifier;
+        private readonly GestureClassifier ultimateGestureClassifier;
         private readonly StrokeHitResolver resolver;
         private readonly HitRecord[] hits;
         private readonly SystemRandomSource random = new SystemRandomSource();
@@ -306,7 +307,19 @@ namespace OneStrokeDemon.Bootstrap
                     "Charged stroke feedback requires positive chargeHoldSec and hitRadiusRefPx values.");
             }
 
-            classifier = new GestureClassifier(GestureRuleSetFactory.FromConfig(config));
+            // 普通战斗只区分Any与Charged，方向、曲率和闭合不会改变命中或伤害语义。
+            normalGestureClassifier = new GestureClassifier(new[]
+            {
+                GestureRuleSetFactory.FromConfig(
+                    config,
+                    ConfigIds.StrokeRules.StrokeAny),
+                GestureRuleSetFactory.FromConfig(
+                    config,
+                    ConfigIds.StrokeRules.StrokeCharged),
+            });
+            // 完整分类器仅服务终极绘制，继续由技能配置校验Circle。
+            ultimateGestureClassifier = new GestureClassifier(
+                GestureRuleSetFactory.FromConfig(config));
             StrokeHitResolverSettings resolverSettings =
                 StrokeHitSettingsFactory.CreateResolverSettings(config);
             resolver = new StrokeHitResolver(
@@ -617,12 +630,15 @@ namespace OneStrokeDemon.Bootstrap
             {
                 trailPool.CancelPreview(stroke.StrokeId);
             }
-            GestureMatchResult gesture = classifier.Classify(geometry);
+            bool isUltimateDrawing = battle.Flow.State == BattleFlowState.UltimateDrawing;
+            GestureMatchResult gesture = isUltimateDrawing
+                ? ultimateGestureClassifier.Classify(geometry)
+                : normalGestureClassifier.Classify(geometry);
             // 检查入口状态、依赖或生命周期边界，避免重复装配和悬空引用。
             if (!gesture.IsMatch)
             {
                 // 检查入口状态、依赖或生命周期边界，避免重复装配和悬空引用。
-                if (battle.Flow.State == BattleFlowState.UltimateDrawing)
+                if (isUltimateDrawing)
                 {
                     battle.CancelUltimateDrawing();
                 }
@@ -631,7 +647,7 @@ namespace OneStrokeDemon.Bootstrap
             }
 
             // 检查入口状态、依赖或生命周期边界，避免重复装配和悬空引用。
-            if (battle.Flow.State == BattleFlowState.UltimateDrawing)
+            if (isUltimateDrawing)
             {
                 ResolveUltimate(stroke, gesture);
                 return;

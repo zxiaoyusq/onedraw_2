@@ -30,20 +30,51 @@ namespace OneStrokeDemon.Combat
                 StrokeRuleConfig row = rows[index] ?? throw new ArgumentException(
                     $"StrokeRules row at index {index} is null.",
                     nameof(configProvider));
-                rules[index] = new GestureRule(
-                    row.RuleId,
-                    ParseGestureType(row.RuleId, row.GestureType),
-                    row.MinLengthRefPx,
-                    row.DirectionToleranceDeg,
-                    row.CloseDistanceRefPx,
-                    row.MinAreaRefPx2,
-                    row.MinArcCurvature,
-                    row.ChargeHoldSec);
+                rules[index] = CreateRule(row);
             }
 
             // 返回前复制并排序，使分类行为不依赖配置提供者的集合实现。
             Array.Sort(rules, CompareRuleIds);
             return Array.AsReadOnly(rules);
+        }
+
+        /// <summary>读取指定配置行并映射为单条不可变笔势规则。</summary>
+        public static GestureRule FromConfig(
+            IConfigProvider configProvider,
+            string ruleId)
+        {
+            if (configProvider == null)
+            {
+                throw new ArgumentNullException(nameof(configProvider));
+            }
+
+            if (string.IsNullOrWhiteSpace(ruleId))
+            {
+                throw new ArgumentException(
+                    "Gesture rule ID must be non-empty.",
+                    nameof(ruleId));
+            }
+
+            return CreateRule(configProvider.GetStrokeRule(ruleId));
+        }
+
+        /// <summary>把一行配置完整映射为Input层规则，确保全表与单规则入口语义一致。</summary>
+        private static GestureRule CreateRule(StrokeRuleConfig row)
+        {
+            if (row == null)
+            {
+                throw new ArgumentNullException(nameof(row));
+            }
+
+            return new GestureRule(
+                row.RuleId,
+                ParseGestureType(row.RuleId, row.GestureType),
+                row.MinLengthRefPx,
+                row.DirectionToleranceDeg,
+                row.CloseDistanceRefPx,
+                row.MinAreaRefPx2,
+                row.MinArcCurvature,
+                row.ChargeHoldSec);
         }
 
         /// <summary>把配置字符串显式映射为支持的笔势类型，未知值立即失败。</summary>

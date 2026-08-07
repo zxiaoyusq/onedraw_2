@@ -77,6 +77,7 @@
 | T699D | P6 工程修复 | DONE | T330, T340, T660, T699C | 0.5 | 为生产战斗补齐配置驱动的蓄力按住反馈。 |
 | T699E | P6 表现与资源 | DONE | T698, T699D | 0.3 | 将画笔单环蓄力反馈替换为A方案青白雷核特效。 |
 | T699F | P6 表现与资源 | DONE | T699E | 0.5 | 将画笔蓄力雷核迁移到配置绑定的独立粒子Prefab。 |
+| T699G | P6 玩法简化 | DONE | T360, T410, T420, T510, T699D | 0.5 | 保留终极大招与蓄力，取消普通战斗的方向和形状门槛。 |
 | T700 | P7 质量发布 | READY | T540, T660, T681, T699A, T699D | 2.0 | 补齐纯规则EditMode回归矩阵。 |
 | T710 | P7 质量发布 | BACKLOG | T550, T650 | 3.0 | 补齐Unity集成、完整单局、暂停、重开和生命周期PlayMode测试。 |
 | T720 | P7 质量发布 | BACKLOG | T710, T250 | 1.0 | 审计所有玩法数值、内容和文案是否来自配置表。 |
@@ -851,6 +852,19 @@
 - **验证：** ConfigExporter与生成物漂移门；Prefab/Registry EditMode；StrokeTrail与生产入口PlayMode；全量EditMode/PlayMode；真实Battle截图。
 - **证据：** `artifacts/evals/T699F/`
 - **提交：** `T699F: move charged stroke effect into particle prefab`
+
+
+### T699G · 保留终极大招与蓄力，取消普通战斗的方向和形状门槛。
+
+- **状态：** `DONE`
+- **依赖：** T360, T410, T420, T510, T699D
+- **估算：** 0.5 人日
+- **产出：** 普通战斗统一为Any/Charged两类笔势语义；同源配置、生成物、测试和规则说明。
+- **明确不做：** 不删除底层几何识别器；不修改终极大招Circle、普通蓄力Charged及其按住反馈、弱点位置/时间窗/倍率、护甲数值、架势、投射物、场景、Prefab或表现资源。
+- **验收：** 普通横/竖/斜/弧/圆均统一为Any并使用Any命中规则；达到起笔停留阈值的有效长笔画仍识别为Charged并使用蓄力规则；石甲龟蓄力破甲和第二关蓄力教程保持；其余敌人防御与攻击打断不再要求方向或形状；非终极技能不再要求圆形；终极技能及对应教程仍要求Circle；弱点命中、窗口、倍率和打断能力保持不变。
+- **验证：** 配置导出/漂移门；普通笔势与大招专项EditMode/PlayMode；全量EditMode/PlayMode；真实Bootstrap→Battle路径和Console检查。
+- **证据：** `artifacts/evals/T699G/`
+- **提交：** `T699G: remove normal gesture shape gates`
 
 
 ## P7 质量发布

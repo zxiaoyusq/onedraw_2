@@ -8,7 +8,7 @@ namespace OneStrokeDemon.ConfigExporter.Tests;
 public sealed class ConfigPipelineE2ETests
 {
     private const string ExpectedContentHash =
-        "0fa1caa1f5c088e9b300ec2433afed049c54d83a58a6a92a8450144556d1b231";
+        "327e0b8e9e86c3db18dd23154896fa4b1024fb3d309983f281261696c46d0e4b";
 
     [Fact]
     // 验证两次导出字节一致，并与仓库受管产物（含中文注释）完全相同。

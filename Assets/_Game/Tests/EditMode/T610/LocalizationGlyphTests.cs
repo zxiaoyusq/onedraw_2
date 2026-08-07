@@ -38,7 +38,7 @@ namespace OneStrokeDemon.Tests.EditMode.T610
                 expected.UnionWith(row.Value<string>("zhCN"));
             }
 
-            Assert.That(actualText.Length, Is.EqualTo(299));
+            Assert.That(actualText.Length, Is.EqualTo(292));
             Assert.That(actual.Count, Is.EqualTo(actualText.Length), "Character list contains duplicates.");
             Assert.That(actual, Is.EquivalentTo(expected));
             Assert.That("-1234567890 +98765 暴击".All(actual.Contains), Is.True);
@@ -63,7 +63,7 @@ namespace OneStrokeDemon.Tests.EditMode.T610
             Assert.That(fallback.atlasTexture.width, Is.EqualTo(1024));
             Assert.That(fallback.atlasTexture.height, Is.EqualTo(1024));
             Assert.That(primary.characterTable.Count, Is.EqualTo(96));
-            Assert.That(fallback.characterTable.Count, Is.EqualTo(203));
+            Assert.That(fallback.characterTable.Count, Is.EqualTo(196));
             Assert.That(primary.fallbackFontAssetTable, Is.EqualTo(new[] { fallback }));
 
             foreach (char character in characters)

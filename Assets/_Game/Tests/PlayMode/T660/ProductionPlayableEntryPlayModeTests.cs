@@ -437,10 +437,15 @@ namespace OneStrokeDemon.Tests.PlayMode.T660
 
         private static IEnumerator WaitForPlaying(ProductionBattleSession session)
         {
+            // Test Runner 窗口可能让 Editor 短暂失焦；生产入口用例在等待前显式模拟玩家已回到游戏。
+            session.SetApplicationPaused(false);
+            session.SetApplicationFocus(true);
             float deadline = Time.realtimeSinceStartup + 6f;
             while (session.FlowState != BattleFlowState.Playing &&
                    Time.realtimeSinceStartup < deadline)
             {
+                session.SetApplicationPaused(false);
+                session.SetApplicationFocus(true);
                 yield return null;
             }
 
@@ -453,6 +458,8 @@ namespace OneStrokeDemon.Tests.PlayMode.T660
             while (session.ActiveEnemyCount == 0 &&
                    Time.realtimeSinceStartup < deadline)
             {
+                session.SetApplicationPaused(false);
+                session.SetApplicationFocus(true);
                 yield return null;
             }
 

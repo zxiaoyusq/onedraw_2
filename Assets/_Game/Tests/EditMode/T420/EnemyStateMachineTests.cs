@@ -112,7 +112,7 @@ namespace OneStrokeDemon.Tests.EditMode.T420
         }
 
         [Test]
-        public void InterruptRequiresConfiguredGestureAndWindowAndIsIdempotent()
+        public void InterruptRequiresConfiguredWindowAndAcceptsAnyOrdinaryGesture()
         {
             EnemyAttackTimeline attack = EnemyAttackTimelineFactory.Create(
                 config,
@@ -127,13 +127,9 @@ namespace OneStrokeDemon.Tests.EditMode.T420
             EnemyInterruptResult early = machine.TryInterrupt(
                 "Diagonal",
                 boundaryTime - 0.000001d);
-            EnemyInterruptResult wrongGesture = machine.TryInterrupt(
-                "Horizontal",
-                boundaryTime);
-            EnemyInterruptResult boundary = machine.TryInterrupt("Diagonal", boundaryTime);
+            EnemyInterruptResult boundary = machine.TryInterrupt("Horizontal", boundaryTime);
             EnemyInterruptResult repeated = machine.TryInterrupt("Diagonal", boundaryTime);
 
-            Assert.That(wrongGesture.Status, Is.EqualTo(EnemyInterruptStatus.GestureMismatch));
             Assert.That(early.Status, Is.EqualTo(EnemyInterruptStatus.OutsideWindow));
             Assert.That(boundary.Status, Is.EqualTo(EnemyInterruptStatus.Interrupted));
             Assert.That(boundary.AttackId, Is.EqualTo("atk_bat_dive"));
@@ -246,11 +242,11 @@ namespace OneStrokeDemon.Tests.EditMode.T420
                 0.5d,
                 "stroke:1");
 
-            Assert.That(damage.Damage, Is.EqualTo(1));
-            Assert.That(hit.Damage.AppliedArmorDamage, Is.EqualTo(1));
+            Assert.That(damage.Damage, Is.EqualTo(72));
+            Assert.That(hit.Damage.AppliedArmorDamage, Is.EqualTo(72));
             Assert.That(hit.Interrupt.Status, Is.EqualTo(EnemyInterruptStatus.Interrupted));
             Assert.That(enemy.State.State, Is.EqualTo(EnemyState.Stun));
-            Assert.That(enemy.Damage.CurrentArmor, Is.EqualTo(119));
+            Assert.That(enemy.Damage.CurrentArmor, Is.EqualTo(48));
 
             Assert.That(enemy.RecoverFromStun(0.6d), Is.True);
             EnemyDamageResult killed = enemy.ApplyDamage(5000, "test_lethal", 1d);

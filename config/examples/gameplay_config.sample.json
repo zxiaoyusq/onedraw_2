@@ -1,7 +1,7 @@
 {
   "schemaVersion": 6,
-  "contentVersion": "0.6.10-sample",
-  "contentHash": "0fa1caa1f5c088e9b300ec2433afed049c54d83a58a6a92a8450144556d1b231",
+  "contentVersion": "0.6.11-sample",
+  "contentHash": "327e0b8e9e86c3db18dd23154896fa4b1024fb3d309983f281261696c46d0e4b",
   "global": [
     {
       "key": "battle_countdown_sec",
@@ -38,7 +38,7 @@
       "valueType": "string",
       "intValue": null,
       "floatValue": null,
-      "stringValue": "0.6.10-sample",
+      "stringValue": "0.6.11-sample",
       "boolValue": null,
       "unit": "semver",
       "description": "内容版本"
@@ -396,7 +396,7 @@
     {
       "defenseRuleId": "defense_boss_pins",
       "armorHp": 120,
-      "requiredGestureType": "Vertical",
+      "requiredGestureType": "Any",
       "requiredStanceId": "stance_blade",
       "breakDamageMultiplier": 1.2,
       "wrongGestureDamageMultiplier": 0.1,
@@ -406,7 +406,7 @@
     {
       "defenseRuleId": "defense_direction_seal",
       "armorHp": 60,
-      "requiredGestureType": "Horizontal",
+      "requiredGestureType": "Any",
       "requiredStanceId": "",
       "breakDamageMultiplier": 1.3,
       "wrongGestureDamageMultiplier": 0.05,
@@ -725,7 +725,7 @@
       "activeSec": 0.45,
       "damage": 22,
       "projectileId": "proj_seal_wave",
-      "gestureInterruptType": "Horizontal",
+      "gestureInterruptType": "Any",
       "interruptStartSec": 0.4,
       "interruptEndSec": 1,
       "effectGroupId": "fx_boss_wave",
@@ -741,7 +741,7 @@
       "activeSec": 0.8,
       "damage": 30,
       "projectileId": "",
-      "gestureInterruptType": "Diagonal",
+      "gestureInterruptType": "Any",
       "interruptStartSec": 0.55,
       "interruptEndSec": 1.35,
       "effectGroupId": "fx_boss_charge",
@@ -773,7 +773,7 @@
       "activeSec": 0.4,
       "damage": 10,
       "projectileId": "proj_soul_shard",
-      "gestureInterruptType": "Arc",
+      "gestureInterruptType": "Any",
       "interruptStartSec": 0.4,
       "interruptEndSec": 0.95,
       "effectGroupId": "fx_ghost_volley",
@@ -789,7 +789,7 @@
       "activeSec": 0.5,
       "damage": 0,
       "projectileId": "",
-      "gestureInterruptType": "Circle",
+      "gestureInterruptType": "Any",
       "interruptStartSec": 0.35,
       "interruptEndSec": 1.1,
       "effectGroupId": "fx_puppet_shield",
@@ -821,7 +821,7 @@
       "activeSec": 0.55,
       "damage": 18,
       "projectileId": "",
-      "gestureInterruptType": "Vertical",
+      "gestureInterruptType": "Any",
       "interruptStartSec": 0.55,
       "interruptEndSec": 1.2,
       "effectGroupId": "fx_turtle_slam",
@@ -837,7 +837,7 @@
       "activeSec": 0.55,
       "damage": 14,
       "projectileId": "",
-      "gestureInterruptType": "Diagonal",
+      "gestureInterruptType": "Any",
       "interruptStartSec": 0.2,
       "interruptEndSec": 0.65,
       "effectGroupId": "fx_bat_dive",
@@ -853,7 +853,7 @@
       "activeSec": 0.5,
       "damage": 12,
       "projectileId": "",
-      "gestureInterruptType": "Horizontal",
+      "gestureInterruptType": "Any",
       "interruptStartSec": 0.35,
       "interruptEndSec": 0.9,
       "effectGroupId": "fx_wheel_charge",
@@ -1016,7 +1016,7 @@
       "requiredStanceId": "stance_talisman",
       "energyCost": 20,
       "cooldownSec": 6,
-      "gestureType": "Circle",
+      "gestureType": "Any",
       "inputWindowSec": 1.8,
       "effectGroupId": "fx_talisman_bind",
       "iconAssetKey": "icon_skill_talisman_bind",
@@ -2249,14 +2249,14 @@
     },
     {
       "textKey": "text_boss_phase2",
-      "zhCN": "按方向斩开腹部封印",
-      "enUS": "Slash the seal in sequence",
+      "zhCN": "命中发光弱点，斩开腹部封印",
+      "enUS": "Hit the glowing weakpoint to break the abdominal seal",
       "context": "Boss phase"
     },
     {
       "textKey": "text_boss_phase3",
-      "zhCN": "斜斩打断冲撞，随后处决玄甲王",
-      "enUS": "Interrupt the charge with a diagonal slash, then execute the Tomb King",
+      "zhCN": "命中弱点打断冲撞，随后处决玄甲王",
+      "enUS": "Hit the weakpoint to interrupt the charge, then execute the Tomb King",
       "context": "Boss phase"
     },
     {
@@ -2393,14 +2393,14 @@
     },
     {
       "textKey": "text_skill_talisman_bind",
-      "zhCN": "缚妖圈",
-      "enUS": "Demon Binding Circle",
+      "zhCN": "缚妖符",
+      "enUS": "Demon Binding Talisman",
       "context": "技能名"
     },
     {
       "textKey": "text_skill_talisman_bind_desc",
-      "zhCN": "画出闭合符圈，定身圈内敌人",
-      "enUS": "Draw a closed circle to bind enemies",
+      "zhCN": "划过敌人，定身并造成符术伤害",
+      "enUS": "Swipe through enemies to bind and damage them",
       "context": "技能说明"
     },
     {

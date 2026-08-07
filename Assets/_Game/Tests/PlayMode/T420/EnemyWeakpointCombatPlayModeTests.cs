@@ -140,9 +140,9 @@ namespace OneStrokeDemon.Tests.PlayMode.T420
             Assert.That(hitBuffer[0].TargetId, Is.EqualTo(42001));
             Assert.That(hitBuffer[0].IsWeakpoint, Is.True);
             Assert.That(resolution.IsValid, Is.True);
-            Assert.That(resolution.Damage.AppliedArmorDamage, Is.EqualTo(1));
+            Assert.That(resolution.Damage.AppliedArmorDamage, Is.EqualTo(72));
             Assert.That(resolution.Interrupt.Status, Is.EqualTo(EnemyInterruptStatus.Interrupted));
-            Assert.That(enemy.Damage.CurrentArmor, Is.EqualTo(119));
+            Assert.That(enemy.Damage.CurrentArmor, Is.EqualTo(48));
             Assert.That(enemy.State.State, Is.EqualTo(EnemyState.Stun));
             Assert.That(enemy.Weakpoint.IsWindowOpen, Is.False);
             Assert.That(adapter.IsPointerActive, Is.False);
